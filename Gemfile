@@ -36,7 +36,7 @@ group :test do
   gem "rspec-rails", "~> 5.0"
   gem "rspec-retry"
   gem "rswag-specs"
-  gem "simplecov", "0.17.1"
+  gem "simplecov", "0.21.2"
   gem "timecop"
   gem "webmock", "~> 3.7"
 end
