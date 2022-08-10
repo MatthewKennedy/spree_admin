@@ -1,6 +1,6 @@
 # Spree Admin
 
-A new Admin UI for Spree.
+An alternative Admin UI for Spree
 
 ## Key Features
 
@@ -11,6 +11,20 @@ A new Admin UI for Spree.
 - Easily add 3rd party integrations such as Payments, Tax calculation services and Shipping couriers
 - Easy customization to suit your needs
 - Modern tech-stack based on [Hotwire](https://hotwired.dev/) (Stimulus & Turbo)
+
+### What Is The Difference Between Spree Admin and Spree Backend?
+
+Spree Admin is a fresh take on an Admin UI for Spree, it is currently intended to be experimental in the early stages, free from any legacy dependencies, being locked-into
+working with old Spree extensions, old Rails versions, or large Spree apps that rely heavily on Spree Backend.
+
+The goal is that we can move fast and fluid find new intuitive ways of using Spree Admin.
+
+### What About The Javascript?
+You might be pleased to know we have completely stripped out all the old JavaScript, reducing the dependency on 3rd party libraries to a minimum,
+no more jQuery, no more Select2.
+
+All new JavaScript is written in Stimulus controllers so it is all Hotwire/Turbo friendly.
+
 
 ## Installation
 
@@ -46,7 +60,7 @@ Install the Spree Admin javascript bundle
 
 ### Development Setup (JavaScript)
 
-When working on the JavaScript in Spree Dashboard locally, you will need to yarn link your local development copy of `@spree/dashboard`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
+When working locally on the JavaScript in Spree Admin, you will need to yarn link your local development copy of `@spree/admin`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
 
 From the root of `spree_admin` run:
 
