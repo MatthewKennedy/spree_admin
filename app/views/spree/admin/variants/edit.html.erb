@@ -39,7 +39,7 @@
 <% end if can?(:admin, Spree::Price) && !@product.deleted? %>
 
 <%= turbo_frame_tag :variant_digitals do %>
-  <%= form_with modle: [admin: @product], scope: :digital, url: admin_product_digitals_path(@product), builder: Spree::Dash::BootstrapBuilder, data: {turbo_frame: :variant_digitals} do |f| %>
+  <%= form_with model: [admin: @product], scope: :digital, url: admin_product_digitals_path(@product), builder: Spree::Dash::BootstrapBuilder, data: {turbo_frame: :variant_digitals} do |f| %>
     <div class="col-12">
       <%= render 'spree/admin/digitals/form', f: f, variant: @variant %>
     </div>

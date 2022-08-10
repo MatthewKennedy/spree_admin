@@ -1,5 +1,5 @@
 <%= turbo_stream.remove dom_id(@object) %>
 
 <% if @product.properties.none? %>
-  <%= turbo_stream.update 'productProperiesMainForm', partial: 'spree/admin/product_properties/form' %>
+  <%= turbo_stream.update 'productPropertiesMainForm', partial: 'spree/admin/product_properties/form' %>
 <% end %>

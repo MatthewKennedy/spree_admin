@@ -69,7 +69,7 @@ en:
         visible: Visible
         you_have_no_pages: You have no Pages, click the <b>+ Add New Page</b> button to get started.
       cms_pages:
-        basic_deatils: Basic Deatils
+        basic_details: Basic Details
         errors:
           could_not_update_page_visibility: Could not update page visibility
         new_page_details: New Page Details
@@ -255,7 +255,7 @@ en:
         active: Active
         add_a_new_option_value: Add a new option value
         add_a_new_property: Add a new property
-        add_first_property: This product has no Properties, click the Add New Property button above to begin adding properies.
+        add_first_property: This product has no Properties, click the Add New Property button above to begin adding properties.
         add_new_properties_from_prototype: Add new properties from prototype
         add_new_property: Add new property
         add_stock: Add stock
