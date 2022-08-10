@@ -36,7 +36,7 @@ module Spree
         end
 
         # Regression for #4768
-        it "doesnt process the same payment twice" do
+        it "doesn't process the same payment twice" do
           expect(Spree::LogEntry.where(source: order.payments.first).count).to eq(1)
         end
       end
