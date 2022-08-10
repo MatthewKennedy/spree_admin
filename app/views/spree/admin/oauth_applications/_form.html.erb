@@ -1,0 +1,26 @@
+<div class="card" data-hook="admin_oauth_application_form_fields">
+  <div class="card-header d-flex">
+    <h5 class="card-title"><%= I18n.t('spree.dash.details') %></h5>
+  </div>
+
+  <div class="card-body">
+    <%= f.field_container :name, data_hook: "oauth_application_name" do %>
+      <%= f.text_field :name, required: true %>
+      <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+    <% end %>
+
+    <%= f.field_container :scopes, data_hook: "oauth_application_scopes" do %>
+      <%= f.text_field :scopes %>
+      <%= f.label :scopes, raw(Spree.t(:scopes) + required_span_tag) %>
+      <small class="form-text text-muted">
+        Possible values:
+        <ul>
+          <li><strong>admin read</strong> - read only access</li>
+          <li><strong>admin write</strong> - read and write access</li>
+        </ul>
+      </small>
+    <% end %>
+
+    <div data-hook="additional_oauth_application_fields"></div>
+  </div>
+</div>

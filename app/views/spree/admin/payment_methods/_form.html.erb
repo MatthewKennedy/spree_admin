@@ -1,0 +1,83 @@
+<div data-hook="admin_payment_method_form_fields">
+  <div data-hook="payment_method" class="row">
+
+    <div class="col-12 col-md-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="card-title"><%= Spree.t(:settings) %></h5>
+        </div>
+        <div class="card-body">
+          <%= f.field_container :type do %>
+            <%= f.select(:type, @providers.collect {|p| [ p.to_s, p.name ] }, {}) %>
+            <%= f.label :type, Spree.t(:provider) %>
+          <% end %>
+
+          <hr class="my-4">
+
+          <%= f.field_container :name do %>
+            <%= f.text_field :name, required: true %>
+            <%= f.label :name, Spree.t(:name) %>
+          <% end %>
+
+          <%= f.field_container :description do %>
+            <%= f.text_area :description, { cols: 60, rows: 6, style: "height: 150px;" } %>
+            <%= f.label :description, Spree.t(:description) %>
+          <% end %>
+
+          <% if @stores.count > 1 %>
+            <%= f.field_container :stores do %>
+              <%= f.select(:store_ids, @stores.collect {|store| [store.unique_name, store.id]}, {}, {multiple: true}) %>
+              <%= f.label :stores, Spree.t(:stores) %>
+            <% end %>
+          <% end %>
+
+          <%= f.field_container :display_on do %>
+            <%= f.select(:display_on, Spree::PaymentMethod::DISPLAY.collect { |display| [I18n.t("spree.dash.display_on.#{display}"), display.to_s] }, { selected: :both }) %>
+            <%= f.label :display_on, Spree.t(:display) %>
+          <% end %>
+
+          <%= f.field_container :auto_capture do %>
+            <%= f.select(:auto_capture, [["#{Spree.t(:use_app_default)}: (#{Spree::Config[:auto_capture]})", ''], [Spree.t(:say_yes), true], [Spree.t(:say_no), false]], {}) %>
+            <%= f.label :auto_capture, Spree.t(:auto_capture) %>
+          <% end %>
+
+          <%= f.field_container :active, class: ["form-group"] do %>
+            <strong><%= Spree.t(:active) %></strong>
+            <div class="form-check">
+              <%= f.radio_button :active, true, id: :payment_method_active_true %>
+              <%= f.label :active_true, Spree.t(:say_yes), class: 'form-check-label' %>
+            </div>
+
+            <div class="form-check">
+              <%= f.radio_button :active, false, id: :payment_method_active_false %>
+              <%= f.label :active_false, Spree.t(:say_no), class: 'form-check-label' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title"><%= Spree.t(:payment_provider_settings) %></h5>
+        </div>
+        <div class="card-body">
+          <div id="preference-settings" data-hook class="form-group">
+            <% unless @object.new_record? %>
+            <% if preference_fields(@object, f).empty? %>
+              <%= I18n.t('spree.dash.no_payment_provider_settings_message') %>
+            <% end %>
+              <%= preference_fields(@object, f) %>
+
+              <% if @object.respond_to?(:preferences) %>
+                <div id="gateway-settings-warning" class="info warning"><%= Spree.t(:provider_settings_warning) %></div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

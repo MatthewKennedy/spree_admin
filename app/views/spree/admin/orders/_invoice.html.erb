@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-header d-flex">
+    <div class="flex-fill">
+      <h5 class="card-title">Invoice</h5>
+    </div>
+
+    <div>
+      <%= link_to I18n.t('spree.dash.order.email_copy_of_invoice_to_customer'), 'spree.ship_admin_shipment_path(shipment.id)', class: 'btn btn-light btn-sm', data: { turbo_method: :patch } , title: I18n.t('spree.dash.order.mark_as_shipped') %>
+    </div>
+  </div>
+  <div class="card-body" id="order_tab_summary">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span data-hook='admin_order_tab_subtotal_title'><%= Spree.t(:subtotal) %></span>
+        <span id='item_total'>
+          <%= @order.display_item_total.to_html %>
+        </span>
+      </li>
+
+      <% if @order.ship_total > 0 %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <small data-hook='admin_order_tab_ship_total_title'><%= Spree.t(:ship_total) %></small>
+          <span id='ship_total'>
+            <%= @order.display_ship_total.to_html %>
+          </span>
+        </li>
+      <% end %>
+
+      <% if @order.included_tax_total != 0 %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <small data-hook='admin_order_tab_included_tax_title'><%= Spree.t(:tax_included) %></small>
+          <span class="state badge rounded-pill text-capitalize" id='included_tax_total'>
+            <%= @order.display_included_tax_total.to_html %>
+          </span>
+        </li>
+      <% end %>
+
+      <% if @order.additional_tax_total != 0 %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <small data-hook='admin_order_tab_additional_tax_title'><%= Spree.t(:tax) %></small>
+          <span class="state badge rounded-pill text-capitalize" id='additional_tax_total'>
+            <%= @order.display_additional_tax_total.to_html %>
+          </span>
+        </li>
+      <% end %>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <small data-hook='admin_order_tab_total_title'><%= Spree.t(:total) %></small>
+        <span id='order_total'>
+          <%= @order.display_total.to_html %>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>

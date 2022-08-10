@@ -1,0 +1,14 @@
+<div data-hook="admin_state_form_fields" class="row">
+  <div class="col-12 col-md-6">
+    <%= f.field_container :name do %>
+      <%= f.text_field :name, class: 'form-control', placeholder: Spree.t(:name), required: true %>
+      <%= f.label :name, Spree.t(:name) %>
+    <% end %>
+  </div>
+  <div class="col-12 col-md-6">
+    <%= f.field_container :abbr do %>
+      <%= f.text_field :abbr, class: 'form-control', placeholder: Spree.t(:abbreviation), required: true %>
+      <%= f.label :abbr, Spree.t(:abbreviation) %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div id="state_members" data-hook="member">
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="flex-fill">
+        <h5 class="card-title"><%= Spree.t(:states) %></h5>
+      </div>
+      <div>
+        <%= render partial: 'spree/admin/shared/submit_button' %>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <%= zone_form.field_container :state_ids do %>
+        <%= zone_form.collection_select :state_ids, @states, :id, :name, {}, { class: 'form-select' ,multiple: true, data: { controller: 'ts--select', form_state_target: "watch" } } %>
+        <%= zone_form.label :state_ids, Spree.t(:states) %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<% content_for :page_title do %>
+  <%= page_header_back_button spree.edit_admin_product_path(@product) %>
+  <%= @product.name %>
+<% end %>
+
+<%= form_with model: [:admin, @product, @variant], builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <div class="card mb-3">
+    <div class="card-header">
+      <h5 class="mb-0"><%= Spree.t(:new_variant) %></h5>
+    </div>
+    <div class="card-body">
+      <div data-hook="admin_variant_new_form">
+        <%= render partial: 'form', locals: { f: f } %>
+        <%= render partial: 'spree/admin/shared/new_resource_links' %>
+      </div>
+    </div>
+  </div>
+<% end %>

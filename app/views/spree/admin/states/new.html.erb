@@ -1,0 +1,19 @@
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= I18n.t('spree.dash.countries.add_new_state') %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% end %>
+
+<% content_for :modal_body do %>
+  <div class="container">
+    <%= form_with model: [:admin, @country, @state], url: spree.admin_country_states_path(@country), id: 'countryStateNewForm', method: :post, data: { turbo_frame: :country_states, action: "turbo:submit-end->modal#submitEnd" } do |f| %>
+      <%= render partial: 'form', locals: { f: f } %>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :modal_footer do %>
+  <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.dash.actions.cancel') %></button>
+  <%= button_tag(I18n.t('spree.dash.actions.save'), class: "btn btn-success", form: "countryStateNewForm") %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog modal-dialog-centered modal-lg' } %>

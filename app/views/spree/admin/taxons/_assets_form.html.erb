@@ -1,0 +1,13 @@
+<%= f.field_container :icon do %>
+  <% if @taxon.icon.present? %>
+  <span class="ms-2">
+    <%= link_to Spree.t(:remove_image), remove_icon_admin_taxonomy_taxon_url(@taxonomy.id, @taxon.id), method: :delete %>
+  </span>
+    <div class="admin-product-image-container mb-3">
+      <%= image_tag(main_app.cdn_image_url(@taxon.icon.try(:attachment)), class: 'w-100') if @taxon.icon %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= f.label :icon, Spree.t(:header_banner) %>
+<%= f.file_field :icon %>

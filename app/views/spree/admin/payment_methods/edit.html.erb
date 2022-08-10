@@ -1,0 +1,13 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:payment_methods), spree.admin_payment_methods_path %> / <%= @payment_method.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= remote_form_submit_button(@object) %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @payment_method } %>
+
+<%= form_with model: @payment_method, scope: :payment_method, url: admin_payment_method_path(@payment_method), builder: Spree::Dash::BootstrapBuilder, data: {controller: "form-state"}, id: "mainForm" do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+<% end %>

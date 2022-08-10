@@ -1,0 +1,46 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::TaxCategory) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to_with_icon Spree.t(:new_tax_category), new_object_url, class: "btn-light btn", icon: 'plus-square.svg', id: 'admin_new_tax_categories_link' %>
+<% end if can? :create, Spree::TaxCategory %>
+
+<% if @tax_categories.any? %>
+<div class="table-responsive border rounded bg-white">
+  <table class="table" id='listing_tax_categories' data-hook>
+    <thead class="text-muted">
+      <tr data-hook="tax_header">
+        <th><%= Spree.t(:name) %></th>
+        <th><%= Spree.t(:tax_code) %></th>
+        <th><%= Spree.t(:description) %></th>
+        <th><%= Spree.t(:default) %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tax_categories.each do |tax_category|
+           @edit_url = spree.edit_admin_tax_category_path(tax_category)
+           @delete_url = spree.admin_tax_category_path(tax_category) %>
+
+        <tr id="<%= dom_id(tax_category) %>" data-hook="tax_row" data-stream-exit-class="animate__fadeOut">
+          <td><%= tax_category.name %></td>
+          <td><%= tax_category.tax_code %></td>
+          <td><%= tax_category.description %></td>
+          <td><%= active_badge(tax_category.is_default?) %></td>
+          <td class="actions">
+            <span class="d-flex justify-content-end">
+              <%= link_to_edit(tax_category) if can? :edit, tax_category %>
+              <%= link_to_delete(tax_category) if can? :delete, tax_category %>
+            </span>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+  <div class="text-center no-objects-found m-5">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::TaxCategory)) %>,
+    <%= link_to(Spree.t(:add_one), new_object_url) if can? :create, Spree::TaxCategory %>!
+  </div>
+<% end %>

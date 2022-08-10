@@ -1,0 +1,51 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::OptionType) %>
+<% end %>
+
+<% if @option_types.any? %>
+  <div class="table-responsive border rounded bg-white">
+    <table class="table" id="listing_option_types">
+      <thead class="text-muted">
+        <tr data-hook="option_header">
+          <th><%= inline_svg_tag("arrow-down-up.svg", style: "margin-left: 0.7rem") %></th>
+          <th><%= Spree.t(:name) %></th>
+          <th><%= Spree.t(:presentation) %></th>
+          <th><%= Spree.t(:filterable) %></th>
+          <th class="actions text-end"><%= link_to_with_icon Spree.t(:new_option_type), new_object_url, { class: "btn btn-secondary btn-sm", icon: 'plus-square.svg', id: 'new_option_type_link' } if can?(:create, Spree::OptionType) %></th>
+        </tr>
+      </thead>
+      <tbody data-controller="sortable" data-sortable-resource-name-value="option_type">
+        <% @option_types.each do |option_type| %>
+          <tr id="<%= dom_id(option_type) %>"
+              data-sortable-update-url="<%= spree.admin_option_type_path(option_type) %>"
+              data-stream-exit-class="animate__fadeOut">
+
+            <td class="move-handle text-center">
+              <%= render 'spree/admin/shared/drag_handle' %>
+            </td>
+            <td>
+              <%= option_type.name %>
+            </td>
+            <td>
+              <%= option_type.presentation %>
+            </td>
+            <td>
+              <%= active_badge(option_type.filterable) %>
+            </td>
+            <td class="actions">
+              <span class="d-flex justify-content-end">
+                <%= link_to_edit(option_type) if can?(:edit, option_type) %>
+                <%= link_to_delete(option_type) if can?(:delete, option_type) %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="text-center no-objects-found m-5">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::OptionType)) %>,
+    <%= link_to Spree.t(:add_one), new_object_url if can?(:create, Spree::OptionType) %>!
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= Spree.t(:new_image) %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% end %>
+
+<% content_for :modal_body do %>
+  <div class="container">
+    <%= form_with model: [:admin, @product, @image], builder: Spree::Dash::BootstrapBuilder, id: "editImageForm", data: { turbo_frame: :product_images, action: "turbo:submit-end->modal#submitEnd"} do |f| %>
+      <div data-hook="thumbnail" class="col-12 text-center">
+        <div class="admin-product-image-container product-img">
+           <%= link_to image_tag(main_app.cdn_image_url(@image.url(:product))), main_app.cdn_image_url(@image.attachment) %>
+        </div>
+      </div>
+
+      <%= render partial: 'form', locals: { f: f } %>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :modal_footer do %>
+  <%= remote_form_submit_button(@object, "editImageForm") %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog modal-dialog-centered modal-lg' } %>

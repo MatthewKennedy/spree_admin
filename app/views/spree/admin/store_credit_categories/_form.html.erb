@@ -1,0 +1,5 @@
+<%= f.field_container :name do %>
+ <%= f.text_field :name, class: 'form-control', placeholder: raw(I18n.t('spree.dash.name') + required_span_tag), required: true %>
+ <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+<% end %>
+<div data-hook="additional_store_credit_category_fields"></div>

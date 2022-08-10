@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= Spree.t(:social) %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <div class="alert alert-info">
+      <%= I18n.t('spree.dash.store_form.social_help') %>
+    </div>
+
+    <%= f.field_container :facebook do %>
+      <%= f.label :facebook, Spree.t(:facebook) %>
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon3">https://facebook.com</span>
+        <%= f.text_field :facebook, class: 'form-control' %>
+      </div>
+    <% end %>
+
+    <%= f.field_container :twitter do %>
+      <%= f.label :twitter, Spree.t(:twitter) %>
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon3">https://twitter.com</span>
+        <%= f.text_field :twitter, class: 'form-control' %>
+      </div>
+    <% end %>
+
+    <%= f.field_container :instagram do %>
+      <%= f.label :instagram, Spree.t(:instagram) %>
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon3">https://instagram.com</span>
+        <%= f.text_field :instagram, class: 'form-control' %>
+      </div>
+    <% end %>
+  </div>
+</div>

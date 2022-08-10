@@ -1,0 +1,65 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::PaymentMethod) %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_payment_methods_filter_table">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <%- locals = {f: f} %>
+      <div data-hook="admin_payment_methods_index_search" class="row">
+        <div class="form-group">
+          <%= f.label :name_cont, I18n.t('spree.dash.name') %>
+          <%= f.text_field :name_cont, size: 15, class: "form-control js-quick-search-target js-filterable" %>
+        </div>
+      </div>
+      <div data-hook="admin_products_index_search_buttons" class="form-actions">
+        <%= button Spree.t(:search), 'search.svg' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @payment_methods.any? %>
+<div class="table-responsive border rounded bg-white">
+  <table class="table" id='listing_payment_methods'>
+    <thead class="text-muted">
+      <tr data-hook="admin_payment_methods_index_headers">
+        <th><%= inline_svg_tag("arrow-down-up.svg", style: "margin-left: 0.7rem") %></th>
+        <th><%= Spree.t(:name) %></th>
+        <th><%= Spree.t(:provider) %></th>
+        <th class="text-center"><%= Spree.t(:display) %></th>
+        <th class="text-center"><%= Spree.t(:active) %></th>
+        <th class="actions text-end">
+          <%= link_to_with_icon Spree.t(:new_payment_method), new_object_url, class: "btn-secondary btn btn-sm", icon: 'plus-square.svg', id: 'admin_new_payment_methods_link' if can? :create, Spree::PaymentMethod %>
+        </th>
+      </tr>
+    </thead>
+    <tbody data-controller="sortable" data-sortable-resource-name-value="payment_method">
+      <% @payment_methods.each do |method| %>
+        <tr id="<%= dom_id(method) %>" data-hook="admin_payment_methods_index_rows" data-sortable-update-url="<%= spree.admin_payment_method_path(method) %>" data-stream-exit-class="animate__fadeOut">
+          <td class="move-handle">
+            <% if can?(:edit, method) %>
+              <%= render 'spree/admin/shared/drag_handle' %>
+            <% end %>
+          </td>
+          <td><%= method.name %></td>
+          <td><%= method.type %></td>
+          <td class="text-center"><%= I18n.t("spree.dash.display_on.#{method.display_on}") %></td>
+          <td class="text-center"><%= active_badge(method.active) %></td>
+          <td data-hook="admin_payment_methods_index_row_actions" class="actions">
+            <span class="d-flex justify-content-end">
+              <%= link_to_edit(method) if can? :edit, method %>
+              <%= link_to_delete(method) if can? :delete, method %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+<% else %>
+  <div class="text-center no-objects-found m-5">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::PaymentMethod)) %>,
+    <%= link_to(Spree.t(:add_one), new_object_url) if can? :create, Spree::PaymentMethod %>!
+  </div>
+<% end %>

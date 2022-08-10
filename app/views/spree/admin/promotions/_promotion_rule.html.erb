@@ -1,0 +1,16 @@
+<div class="promotion_rule promotion-block card mb-3" id="<%= dom_id(promotion_rule) %>">
+  <% type_name = promotion_rule.class.name.demodulize.underscore %>
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h6 class='card-title mb-0'>
+      <%= I18n.t("spree.dash.promotion_rule_types.#{type_name}.description") %>
+    </h6>
+
+    <%= link_to_with_icon 'FIXME',
+      spree.admin_promotion_promotion_rule_path(@promotion, promotion_rule), class: 'delete btn btn-danger btn-sm', icon: 'delete.svg' %>
+  </div>
+  <% param_prefix = "promotion[promotion_rules_attributes][#{promotion_rule.id}]" %>
+  <%= hidden_field_tag "#{param_prefix}[id]", promotion_rule.id %>
+
+  <%= render partial: "spree/admin/promotions/rules/#{type_name}",
+    locals: { promotion_rule: promotion_rule, param_prefix: param_prefix } %>
+</div>

@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-header">
+     <h5 class="card-title">Payment</h5>
+  </div>
+  <div class="card-body" id="order_tab_summary">
+    <%= turbo_frame_tag :payments, src: spree.admin_order_payments_path(@order) %>
+  </div>
+</div>

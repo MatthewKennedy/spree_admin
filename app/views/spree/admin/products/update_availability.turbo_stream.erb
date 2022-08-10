@@ -1,0 +1,17 @@
+<%= turbo_stream.update "productStatus" do %>
+  <%= @product.status.capitalize %>
+<% end %>
+
+<%= turbo_stream.update "productStatusOptions" do %>
+  <%= render partial: 'status' %>
+<% end %>
+
+<% if @product.available? %>
+  <%= turbo_stream.append "pageActions" do %>
+    <%= external_page_preview_link(@product) %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.remove 'adminPreviewProduct' %>
+<% end %>
+
+<%= stream_flash_alert(message: raw(I18n.t("spree.dash.products.messages.product_status_updated_to", name: @product.name, state: @product.status.capitalize ))) %>

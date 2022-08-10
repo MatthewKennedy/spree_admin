@@ -1,0 +1,32 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  <%= Spree.t(:sales_totals) %> <%= I18n.t('spree.dash.reports.for', store_name: current_store.unique_name) %>
+<% end %>
+
+<div class="card bg-light mb-3">
+  <div class="card-body">
+    <%= render partial: 'spree/admin/shared/report_order_criteria' %>
+  </div>
+</div>
+<div class="table-responsive border rounded bg-white">
+  <table class="table admin-report" data-hook="sales_total">
+    <thead class="text-muted">
+      <tr>
+        <th><%= Spree.t(:currency) %></th>
+        <th><%= Spree.t(:item_total) %></th>
+        <th><%= Spree.t(:adjustment_total) %></th>
+        <th><%= Spree.t(:sales_total) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @totals.each do |key, row| %>
+        <tr>
+          <td><%= key %></td>
+          <td><%= Spree::Money.new(row[:item_total], { currency: key }) %></td>
+          <td><%= Spree::Money.new(row[:adjustment_total], { currency: key }) %></td>
+          <td><%= Spree::Money.new(row[:sales_total], { currency: key }) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

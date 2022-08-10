@@ -1,0 +1,26 @@
+<div class="card" data-hook="admin_tax_category_form_fields">
+  <div class="card-header">
+    <h5 class="card-title"><%= I18n.t('spree.dash.settings') %></h5>
+  </div>
+  <div class="card-body">
+    <%= f.field_container :name do %>
+      <%= f.text_field :name, class: 'form-control', placeholder: raw(I18n.t('spree.dash.name') + required_span_tag), required: true %>
+      <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+    <% end %>
+
+    <%= f.field_container :tax_code do %>
+      <%= f.text_field :tax_code, class: 'form-control', placeholder:Spree.t(:tax_code) %>
+      <%= f.label :tax_code, Spree.t(:tax_code) %>
+    <% end %>
+
+    <%= f.field_container :description do %>
+      <%= f.text_field :description, class: 'form-control', placeholder: Spree.t(:description) %>
+      <%= f.label :description, Spree.t(:description) %>
+    <% end %>
+
+    <%= f.checkbox_container :is_default, class: ['checkbox'] do %>
+      <%= f.check_box :is_default, class: 'form-check-input' %>
+      <%= f.label :is_default, Spree.t(:default), class: 'form-check-label' %>
+    <% end %>
+  </div>
+</div>

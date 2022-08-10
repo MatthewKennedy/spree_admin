@@ -1,0 +1,56 @@
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= I18n.t('spree.dash.products.add_new_properties_from_prototype') %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% end %>
+
+<% content_for :modal_body do %>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Prototypes</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-muted">
+            <tr data-hook="available_header">
+              <th><%= Spree.t(:name) %></th>
+              <th class="actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @prototypes.each do |prototype| %>
+              <% if prototype.properties.any? %>
+                <tr id="row_<%= dom_id(prototype) %>">
+                  <td>
+                    <%= prototype.name %>
+                  </td>
+                  <td>
+                    <span class="d-flex justify-content-end">
+                      <%= link_to_with_icon(Spree.t(:select), spree.prototype_properties_admin_product_product_properties_path(@product, prototype_id: prototype), class: 'btn btn-success btn-sm', no_text: true, icon: 'save.svg', data: { turbo_method: :post, turbo_frame: :modal }) %>
+                    </span>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+            <% if @prototypes.empty? %>
+              <tr>
+                <td colspan="2">
+                  <% Spree.t(:none) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="prototypesFields"></div>
+  </div>
+<% end %>
+
+<% content_for :modal_footer do %>
+  <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.dash.actions.cancel') %></button>
+  <%= button_tag(I18n.t('spree.dash.actions.save'), class: "btn btn-success", form: "newProductProperty") %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal' %>

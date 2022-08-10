@@ -1,0 +1,44 @@
+<% content_for :page_title do %>
+  <%= page_title %>
+<% end %>
+
+<% if @collection.any? %>
+<div class="table-responsive border rounded bg-white">
+  <table class="table" id='listing_named_types' data-hook>
+    <thead class="text-muted">
+      <tr data-hook="named_types_header">
+        <th><%= Spree.t(:name) %></th>
+        <th><%= Spree.t(:status) %></th>
+        <th class="actions text-end">
+          <%= link_to_with_icon(new_button_text, new_object_url, class: "btn-secondary btn btn-sm", icon: 'plus-square.svg', data: {turbo_frame: :modal}) if can? :create, resource %>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="<%= resource_name.to_s.parameterize.underscore %>">
+      <% @collection.each do |named_type| %>
+        <tr id="<%= dom_id(named_type) %>" data-hook="named_type_row" data-stream-exit-class="animate__fadeOut">
+          <td class="align-center">
+            <%= named_type.name %>
+          </td>
+          <td class="align-center">
+            <%= active_badge(named_type.active, label: Spree.t(named_type.active? ? :active : :inactive)) %>
+          </td>
+          <td class="actions">
+            <span class="d-flex justify-content-end">
+              <% if named_type.mutable? %>
+                <%= link_to_edit(named_type, data: { turbo_frame: :modal }) if can? :edit, named_type %>
+                <%= link_to_delete(named_type) if can? :delete, named_type %>
+              <% end %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+  <div class="text-center no-objects-found m-5">
+    <%= Spree.t(:no_resource_found, resource: resource_name) %>,
+    <%= link_to(Spree.t(:add_one), new_object_url) if can? :create, resource %>!
+  </div>
+<% end %>

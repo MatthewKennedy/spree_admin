@@ -1,0 +1,97 @@
+{
+  "name": "@spree/admin",
+  "version": "0.0.1",
+  "description": "Admin UI for Spree",
+  "main": "app/assets/javascripts/spree_admin.js",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "app/assets/javascripts/*.js",
+    "src/*.js"
+  ],
+  "homepage": "https://spreecommerce.org/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewkennedy/spree_admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matthewkennedy/spree_admin/issues"
+  },
+  "author": "Spark Solutions <hi@sparksolutions.co>",
+  "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/turbo-rails": "^7.2.0-beta.1",
+    "@popperjs/core": "^2.11.5",
+    "@rails/request.js": "^0.0.6",
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.2.0",
+    "bootstrap-icons": "^1.9.0",
+    "cleave.js": "^1.6.0",
+    "deserialize-json-api": "^1.4.0",
+    "dompurify": "^2.3.8",
+    "flatpickr": "4.6.9",
+    "jsuri": "^1.3.1",
+    "sortablejs": "^1.15.0",
+    "stimulus-flatpickr": "^3.0.0-0",
+    "stimulus-form-state": "^0.0.2",
+    "stimulus-sortable": "^3.1.0",
+    "tinymce": "^6.0.2",
+    "tom-select": "^2.0.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.1",
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "rollup": "^2.35.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "standard": "^17.0.0",
+    "stylelint": "^14.8.3"
+  },
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "watch": "rollup --config rollup.config.js -w",
+    "lint": "eslint app/javascript",
+    "prepublishOnly": "rm -rf src && cp -R app/javascript/spree/dashboard src"
+  },
+  "standard": {
+    "ignore": [
+      "handlebars.js",
+      "lib/*"
+    ],
+    "globals": [
+      "SpreeAdmin",
+      "Turbo",
+      "URL",
+      "SPREE_CURRENCY",
+      "SPREE_LOCALE",
+      "SpreeAdmin.OAUTH_TOKEN",
+      "Handlebars",
+      "SpreeAdmin.ADDRESS_FIELDS",
+      "clearTimeout",
+      "setTimeout",
+      "jQuery",
+      "$",
+      "document",
+      "window",
+      "console",
+      "fetch",
+      "Rails",
+      "updateAddressState",
+      "toggleItemEdit",
+      "confirm",
+      "_",
+      "variantLineItemTemplate",
+      "variantTemplate",
+      "orderNumber",
+      "Option",
+      "orderId",
+      "jsonApiVariants",
+      "alert",
+      "variants",
+      "spreeWindowReload",
+      "formatSelect2Options",
+      "productTemplate"
+    ]
+  }
+}

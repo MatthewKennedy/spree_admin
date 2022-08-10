@@ -1,0 +1,51 @@
+<%= turbo_frame_tag :product_cost_price do %>
+  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_cost_price}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title"><%= I18n.t('spree.dash.products.cost_price') %></h5>
+        </div>
+        <div>
+          <%= render partial: 'spree/admin/shared/submit_button' %>
+        </div>
+      </div>
+      <div class="card-body">
+        <div data-controller="form-validation">
+          <%= f.field_container :cost_currency, data: { hook: "admin_product_form_cost_currency" } do %>
+            <%= f.select :cost_currency, currency_options(@product.cost_currency), {}, {data: { controller: 'ts--select', action: 'change->form-validation#validate'}} %>
+            <%= f.label :cost_currency, Spree.t(:cost_currency) %>
+          <% end %>
+
+          <%= submit_tag "Update Product Status", formaction: spree.update_cost_currency_admin_product_path(@product), formmethod: "post", data: { form_validation_target: "submitBtn" } %>
+        </div>
+        <%= f.field_container :cost_price, class: ['mb-0'], data: { hook: "admin_product_form_cost_price" } do %>
+          <div class="input-group">
+            <span id="costPriceCurrencySymbol" class="input-group-text"><%= currency_symbol(@product.cost_currency) %></span>
+            <div class="form-floating">
+              <%= f.text_field :cost_price, value: number_to_currency(@product.cost_price, unit: ''), data: { controller: 'input--format-decimal', form_state_target: "watch"} %>
+              <%= f.label :cost_price, Spree.t(:cost_price) %>
+            </div>
+            <span id="costPriceCurrencyIso" class="input-group-text"><%= @product.cost_currency %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<%= form_with model: [:admin, @product], scope: :prices, url: spree.admin_product_prices_path(@product), method: :post, data: {controller: "form-state", turbo_frame: :product_variants}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="flex-fill">
+        <h5 class="card-title"><%= I18n.t('spree.dash.products.pricing') %></h5>
+      </div>
+      <%= render partial: 'spree/admin/shared/submit_button' %>
+    </div>
+
+    <div>
+      <div class="my-3">
+        <%= render 'spree/admin/prices/variant_prices', variant: @product.master %>
+      </div>
+    </div>
+  </div>
+<% end if can?(:admin, Spree::Price) && !@product.deleted? %>

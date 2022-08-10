@@ -1,0 +1,71 @@
+<%= turbo_frame_tag :product_images do %>
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="flex-fill">
+        <h5 class="card-title"><%= I18n.t('spree.dash.products.images') %></h5>
+      </div>
+
+      <div>
+        <%= link_to_with_icon(Spree.t(:new_image), spree.new_admin_product_image_url(@product), { class: "btn-light btn btn-sm", icon: 'plus-square.svg', id: 'new_image_link', data: {turbo_frame: :modal} }) if can? :create, Spree::Image %>
+      </div>
+    </div>
+
+    <div>
+      <% unless @product.variant_images.any? %>
+        <div class="text-center no-objects-found m-5">
+          <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Image)) %>.
+        </div>
+      <% else %>
+        <div class="table-responsive rounded bg-white">
+          <table class="table sortable" data-hook="images_table">
+            <thead class="text-muted">
+              <tr data-hook="images_header">
+                <th class=""><%= inline_svg_tag("arrow-down-up.svg", style: "margin-left: 0.7rem") %></th>
+                <th class="text-center">
+                  <%= Spree.t(:thumbnail) %>
+                </th>
+                <% if @product.has_variants? %>
+                  <th class="text-center">
+                    <%= Spree::Variant.model_name.human %>
+                  </th>
+                <% end %>
+                <th>
+                  <%= Spree.t(:alt_text) %>
+                </th>
+                <th class="actions text-end">
+                </th>
+              </tr>
+            </thead>
+
+            <tbody data-controller="sortable" data-sortable-resource-name-value="image">
+              <% (@product.variant_images).each do |image| %>
+                <tr id="<%= dom_id(image) %>" data-hook="images_row" data-sortable-update-url="<%= spree.admin_product_image_path(@product, image) %>" data-stream-exit-class="animate__fadeOut">
+                  <td class="move-handle">
+                    <% if can? :edit, image %>
+                      <%= render 'spree/admin/shared/drag_handle' %>
+                    <% end %>
+                  </td>
+                  <td class="image text-center">
+                    <div class="admin-product-image-container small-img">
+                      <%= link_to image_tag(main_app.cdn_image_url(image.url(:product))), main_app.cdn_image_url(image.attachment), target: :blank %>
+                    </div>
+                  </td>
+                  <% if @product.has_variants? %>
+                    <td class="text-center"><%= options_text_for(image) %></td>
+                  <% end %>
+                  <td><%= image.alt %></td>
+                  <td class="actions">
+                    <span class="d-flex justify-content-end">
+                      <%= link_to_edit(image, { url: spree.edit_admin_product_image_url(@product, image), data: {turbo_frame: :modal} }) %>
+                      <%= link_to_delete(image, { url: spree.admin_product_image_url(@product, image) }) if can? :destroy, image %>
+                    </span>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end if can?(:admin, Spree::Image) && !@product.deleted? %>

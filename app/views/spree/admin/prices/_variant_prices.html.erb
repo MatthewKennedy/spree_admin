@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <div id="variant_prices-table-wrapper">
+    <table class="table">
+      <thead class="text-muted">
+        <tr data-hook="variant_prices_header">
+          <th class="text-nowrap"><%= I18n.t('spree.dash.currency') %></th>
+          <th class="text-nowrap"><%= I18n.t('spree.dash.products.price_now') %></th>
+          <th class="text-nowrap"><%= I18n.t('spree.dash.products.price_was') %></th>
+        </tr>
+      </thead>
+
+      <tbody id="variant-prices" data-hook="variant_prices_body">
+        <% supported_currencies_for_all_stores.each do |currency| %>
+          <% code  = currency.iso_code %>
+          <% price = variant.price_in(code) %>
+          <tr id="variant_prices_row" data-hook="variant_prices_row">
+            <td><%= label_tag "variant_price[#{variant.id}][#{code}]", code %></td>
+            <td>
+              <%= text_field_tag "variant_price[#{variant.id}][#{code}][price]", (price && price.price ? price.display_amount.money : ''), class: 'form-control', autocomplete: false, data: {controller: "input-formatting", form_state_target: "watch", input_disable_target: "disable", input_formatting_options_value: {numeral: true, numeralThousandsGroupStyle: "none"}} %>
+            </td>
+            <td>
+              <%= text_field_tag "variant_price[#{variant.id}][#{code}][compare_at_price]", (price && price.compare_at_price ? price.display_compare_at_amount.money : ''), class: 'form-control', autocomplete: false, data: {controller: "input-formatting", form_state_target: "watch", input_disable_target: "disable", input_formatting_options_value: {numeral: true, numeralThousandsGroupStyle: "none"}} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+</div>

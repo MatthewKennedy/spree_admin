@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= csrf_meta_tags %>
+
+<title>
+  <% if content_for? :title %>
+    <%= yield :title %>
+  <% else %>
+    <%= "#{I18n.t('spree.dash.spree_administration')}: " %>
+    <%= Spree.t(controller.controller_name, default: controller.controller_name.titleize) %>
+  <% end %>
+</title>
+
+<%= stylesheet_link_tag 'spree/backend/all', media: :all %>
+
+<%= render 'spree/admin/shared/paths' %>
+<%= javascript_include_tag "spree_admin", data: { turbo_track: "reload" } %>
+<%= render "spree/admin/shared/translations" %>
+
+<script>
+  <%== "SpreeAdmin.AUTH_TOKEN = #{form_authenticity_token.inspect}" %>
+  <%== "SpreeAdmin.OAUTH_TOKEN = '#{admin_oauth_token}'" if defined?(admin_oauth_token) %>
+</script>
+
+<%= yield :head %>

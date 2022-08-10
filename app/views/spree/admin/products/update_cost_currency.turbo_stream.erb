@@ -1,0 +1,9 @@
+<%= turbo_stream.update "costPriceCurrencySymbol" do %>
+  <%= currency_symbol(@product.cost_currency) %>
+<% end %>
+
+<%= turbo_stream.update "costPriceCurrencyIso" do %>
+  <%= @product.cost_currency %>
+<% end %>
+
+<%= stream_flash_alert(message: I18n.t("spree.dash.products.messages.product_cost_currency_updated_successfully")) %>

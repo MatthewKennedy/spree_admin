@@ -1,0 +1,9 @@
+<% if can?(:admin, current_store) && Spree::Backend::Config[:admin_show_version] %>
+  <p
+    class="spree-version ms-3 my-3"
+    aria-label="Spree Commerce version">
+    <span class="badge rounded-pill bg-info">
+    <%= Spree.version %>
+    </span>
+  </p>
+<% end %>

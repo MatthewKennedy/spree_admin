@@ -1,0 +1,14 @@
+<% if can?(:admin, current_store) %>
+  <div class="dropdown-menu overflow-hidden p-0" aria-labelledby="storeSelectorDropdown">
+    <% @stores.each do |store| %>
+      <%= store_switcher_link(store) %>
+    <% end %>
+
+    <% if can?(:create, Spree::Store) %>
+      <div class="dropdown-divider m-0"></div>
+      <%= link_to spree.new_admin_store_path, class: 'p-3 m-0 dropdown-item', id: 'addNewStoreLink' do %>
+        <%= inline_svg_tag "plus-circle", size: '18px * 18px' %> <%= Spree.t(:add_new_store) %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

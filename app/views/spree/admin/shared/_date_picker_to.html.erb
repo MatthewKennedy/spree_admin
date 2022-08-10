@@ -1,0 +1,44 @@
+<% date_time ||= false %>
+<% value ||= nil %>
+<% placeholder ||= Spree.t(:ending_at) %>
+<% f ||= nil %>
+
+<div id="<%= "datePickerTo_#{to_field.to_s}" %>" class="input-group" data-controller="datepicker"
+                                                                     data-datepicker-to="true"
+                                                                     data-wrap="true"
+                                                                     <% if date_time %>
+                                                                       data-enable-time="true"
+                                                                     <% end %>
+                                                                     data-min-date="<%= data_min_date %>"
+                                                                     data-target-pair-id="<%= "datePickerFrom_#{from_field.to_s}" %>">
+  <div class="form-floating">
+    <% if date_time %>
+      <% if f %>
+        <%= f.datetime_field to_field.to_sym, class: 'js-filterable form-control',
+                                              value: value,
+                                              placeholder: placeholder,
+                                              data: { input:'', form_state_target: "watch"} %>
+      <% else %>
+        <%= datetime_field_tag to_field.to_s, class: 'js-filterable form-control',
+                                              placeholder: placeholder,
+                                              value: value,
+                                              data: { input:'', form_state_target: "watch"} %>
+      <% end %>
+    <% else %>
+      <% if f %>
+        <%= f.text_field to_field.to_sym, class: 'js-filterable form-control',
+                                          value: value,
+                                          placeholder: placeholder,
+                                          data: { input:'', form_state_target: "watch"} %>
+      <% else %>
+        <%= text_field_tag to_field.to_s, value, class: "js-filterable form-control",
+                                                   autocomplete: false,
+                                                   placeholder: placeholder,
+                                                   data: { input:'', form_state_target: "watch"} %>
+      <% end %>
+    <% end %>
+    <%= label_tag from_field.to_s, placeholder, class: 'form-label' %>
+  </div>
+
+  <%= render partial: 'spree/admin/shared/cal_close' %>
+</div>

@@ -1,0 +1,33 @@
+<% content_for :page_title do %>
+  <%= link_to I18n.t('spree.dash.cms.all_pages'), spree.admin_cms_pages_path %> /
+  <%= link_to @cms_page.title, spree.edit_admin_cms_page_path(@cms_page) %> / <%= I18n.t('spree.dash.cms.new_section') %>
+<% end %>
+
+<%= form_with model: [:admin, @cms_page, @cms_section], url: spree.admin_cms_page_cms_sections_path, builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="flex-fill">
+        <h5 class="card-title"><%= I18n.t("spree.dash.cms.new_section") %></h5>
+      </div>
+      <div>
+        <%= render partial: 'spree/admin/shared/new_resource_links' %>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <%= f.field_container :name do %>
+            <%= f.text_field :name, required: true %>
+            <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+          <% end %>
+        </div>
+        <div class="col-12 col-md-6">
+          <%= f.field_container :type do %>
+            <%= f.select(:type, spree_humanize_cms(Rails.application.config.spree.cms.sections), {include_blank: false}) %>
+            <%= f.label :type, Spree.t('admin.cms.section_type') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

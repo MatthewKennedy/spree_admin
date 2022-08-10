@@ -1,0 +1,47 @@
+<% content_for :page_title do %>
+  <%= page_header_back_button spree.edit_admin_product_path(@product) %>
+  <%= @product.name %>
+<% end %>
+
+<%= form_with model: [:admin, @product, @variant], data: {controller: "form-state", turbo_frame: :product_variants}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <div class="card mb-0">
+    <div class="card-header d-flex">
+      <div class="flex-fill">
+        <h5 class="card-title"><%= @variant.sku || @variant.options_text %></h5>
+      </div>
+
+      <div>
+        <%= render partial: 'spree/admin/shared/submit_button' %>
+      </div>
+    </div>
+
+    <div class="card-body" data-hook="admin_variant_edit_form">
+      <%= render partial: 'form', locals: { f: f } %>
+    </div>
+  </div>
+<% end %>
+
+<%= form_with model: [:admin, @product], scope: :prices, url: spree.admin_product_prices_path(@product), method: :post, data: {controller: "form-state", turbo_frame: :product_variants}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="flex-fill">
+        <h5 class="card-title"><%= I18n.t('spree.dash.products.international_pricing') %></h5>
+      </div>
+      <%= render partial: 'spree/admin/shared/submit_button' %>
+    </div>
+
+    <div>
+      <div class="my-3">
+        <%= render 'spree/admin/prices/variant_prices', variant: @variant %>
+      </div>
+    </div>
+  </div>
+<% end if can?(:admin, Spree::Price) && !@product.deleted? %>
+
+<%= turbo_frame_tag :variant_digitals do %>
+  <%= form_with modle: [admin: @product], scope: :digital, url: admin_product_digitals_path(@product), builder: Spree::Dash::BootstrapBuilder, data: {turbo_frame: :variant_digitals} do |f| %>
+    <div class="col-12">
+      <%= render 'spree/admin/digitals/form', f: f, variant: @variant %>
+    </div>
+  <% end %>
+<% end if can?(:admin, Spree::Digital) && !@product.deleted? %>

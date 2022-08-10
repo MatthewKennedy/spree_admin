@@ -1,0 +1,41 @@
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= I18n.t('spree.dash.products.add_a_new_property') %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% end %>
+
+<% content_for :modal_body do %>
+  <div class="container">
+    <%= form_with model: [:admin, @product], url: spree.admin_product_path(@product), id: 'newProductProperty', class: "row", data: { turbo_frame: :product_properties }, method: :put do |f| %>
+      <%= f.fields_for :product_properties do |pp_form| %>
+        <% unless pp_form.object.persisted? %>
+          <div class="col-12 col-md-6">
+            <%= f.field_container :property_name do %>
+              <%= pp_form.text_field :property_name, class: 'form-control', required: true, placeholder: raw(Spree.t(:property_name) + required_span_tag) %>
+              <%= pp_form.label :property_name, raw(Spree.t(:property_name) + required_span_tag) %>
+            <% end %>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <%= f.field_container :value do %>
+              <%= pp_form.text_field :value, class: 'form-control', required: true, placeholder: raw(Spree.t(:value) + required_span_tag) %>
+              <%= pp_form.label :value, raw(Spree.t(:value) + required_span_tag) %>
+            <% end %>
+          </div>
+
+          <div class="col-12">
+            <%= f.field_container :show_property, class: ['form-check'] do %>
+              <%= pp_form.check_box :show_property, class: 'form-check-input' %>
+              <%= pp_form.label :show_property, Spree.t(:show_property), class: 'form-check-label' %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :modal_footer do %>
+  <%= button_tag(I18n.t('spree.dash.actions.add'), class: "btn btn-success", form: "newProductProperty") %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog-centered modal-lg' } %>

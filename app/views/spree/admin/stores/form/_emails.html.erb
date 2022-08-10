@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= Spree.t(:email).pluralize %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <%= f.field_container :mail_from_address do %>
+      <%= f.text_field :mail_from_address, class: 'form-control', required: true, placeholder: raw(Spree.t(:mail_from_address)  + required_span_tag) %>
+      <%= f.label :mail_from_address, raw(Spree.t(:mail_from_address)  + required_span_tag) %>
+      <small class="form-text text-muted">
+        <%= I18n.t('spree.dash.store_form.mail_from_address_help') %>
+      </small>
+    <% end %>
+
+    <% if @store.persisted? %>
+      <%= f.field_container :customer_support_email do %>
+        <%= f.text_field :customer_support_email, class: 'form-control', placeholder:  Spree.t(:customer_support_email) %>
+        <%= f.label :customer_support_email, Spree.t(:customer_support_email) %>
+
+        <small class="form-text text-muted">
+          <%= I18n.t('spree.dash.store_form.customer_support_email_help') %>
+        </small>
+      <% end %>
+
+      <%= f.field_container :new_order_notifications_email do %>
+        <%= f.text_field :new_order_notifications_email, class: 'form-control', placeholder: Spree.t(:new_order_notifications_email) %>
+        <%= f.label :new_order_notifications_email, Spree.t(:new_order_notifications_email) %>
+
+        <small class="form-text text-muted">
+          <%= I18n.t('spree.dash.store_form.new_order_notifications_email_help') %>
+        </small>
+      <% end %>
+    <% end %>
+  </div>
+</div>

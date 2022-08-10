@@ -1,0 +1,14 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:option_types), spree.admin_option_types_url %> / <%= Spree.t(:new_option_type) %>
+<% end %>
+
+<%= form_with model: [:admin, @option_type], builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <div class="card mb-3">
+    <div class="card-body">
+       <%= render partial: 'form', locals: { f: f } %>
+    </div>
+    <div class="card-footer text-center">
+       <%= render partial: 'spree/admin/shared/new_resource_links' %>
+    </div>
+  </div>
+<% end %>

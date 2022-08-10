@@ -1,0 +1,4 @@
+<ul data-hook="admin_configurations_sidebar_menu" class="collapse nav nav-pills nav-stacked" id="sidebar-configuration">
+  <%= tab :stores, url: spree.edit_admin_store_path(current_store), label: I18n.t('spree.dash.settings_menu.details') if can? :manage, current_store %>
+  <%= tab :roles, url: spree.admin_roles_path, label: I18n.t('spree.dash.settings_menu.roles') if can? :manage, Spree::Role %>
+</ul>

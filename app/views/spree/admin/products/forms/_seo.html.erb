@@ -1,0 +1,32 @@
+<%= turbo_frame_tag :product_seo do %>
+  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_seo}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title"><%= I18n.t('spree.dash.seo') %></h5>
+        </div>
+
+        <div>
+          <%= render partial: 'spree/admin/shared/submit_button' %>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <%= f.field_container :meta_title, data: { hook: "admin_product_form_meta_title" }  do %>
+          <%= f.text_field :meta_title %>
+          <%= f.label :meta_title, Spree.t(:meta_title) %>
+        <% end %>
+
+        <%= f.field_container :meta_keywords, data: { hook: "admin_product_form_meta_keywords" } do %>
+          <%= f.text_field :meta_keywords %>
+          <%= f.label :meta_keywords, Spree.t(:meta_keywords) %>
+        <% end %>
+
+        <%= f.field_container :meta_description, data: { hook: "admin_product_form_meta_description" } do %>
+          <%= f.text_area :meta_description, style: "height: 100px" %>
+          <%= f.label :meta_description, Spree.t(:meta_description) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

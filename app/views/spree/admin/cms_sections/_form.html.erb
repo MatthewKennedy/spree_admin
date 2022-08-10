@@ -1,0 +1,52 @@
+<div data-hook="admin_cms_section_form_fields">
+  <div id="alertToClickUpdate" class="d-none">
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-warning mt-3">
+          <% if %w[new create].include? controller.action_name %>
+            <%= raw I18n.t('spree.dash.cms.click_create_to_load_new_link') %>
+          <% else %>
+            <%= raw I18n.t('spree.dash.cms.click_update_to_load_new_link') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if @cms_section.type.present? %>
+    <div id="CmsSectionType"
+         data-hook="admin_cms_section_form_fields"
+         data-panel-section-type="<%= @cms_section.type %>">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-3">
+            <div class="card-header d-flex">
+              <div class="flex-fill">
+                <h5 class="card-title">
+                  <%= spree_humanize_type(@cms_section.type) %>
+                </h5>
+              </div>
+              <div>
+                <a data-bs-toggle="collapse" href="#cmsSectionInfo" role="button" aria-expanded="false" aria-controls="cmsSectionInfo" class="align-self-center">
+                  <%= inline_svg_tag "info-circle.svg", size: '20px * 20px', class: 'ms-1 shim-bottom' %>
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <% if @cms_section.type.present? %>
+              <div class="row pb-0">
+                <div class="col-12">
+                  <%= render "spree/admin/cms_sections/types/#{spree_resource_path(@cms_section)}", f: f %>
+                </div>
+              </div>
+              <% end %>
+            </div>
+            <div class="card-footer text-center">
+              <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,52 @@
+label {
+  font-size: var(--bs-body-font-size);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.form-floating > label, .form-floating > span.or {
+  opacity: 0.4;
+}
+
+span.or {
+  @extend label;
+
+  padding: 0 10px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  &.withError {
+    label,
+    .formError,
+    .required {
+      color: var(--bs-danger);
+    }
+  }
+}
+
+// Hide number toggle
+// Chrome, Safari, Edge, Opera
+input.hide-number-toggle::-webkit-outer-spin-button,
+input.hide-number-toggle::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// Firefox
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.pad-as-btn {
+  padding: 16px;
+}

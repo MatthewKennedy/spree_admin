@@ -1,0 +1,19 @@
+<div id="mobileButtons"
+     class="btn-group shadow position-fixed bottom-0 left-0 mb-4 ms-2 d-lg-none">
+  <button id="sidebar-open"
+          class="btn btn-light"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="aside#main-sidebar"
+          aria-controls="main-sidebar">
+    <%= inline_svg_tag "list.svg", size: '16px * 16px' %>
+  </button>
+
+  <button id="search-open"
+          class="btn btn-light"
+          type="button"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+    <%= inline_svg_tag "search.svg", size: '16px * 16px' %>
+  </button>
+</div>

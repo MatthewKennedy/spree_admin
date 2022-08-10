@@ -1,0 +1,37 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::Country) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to_with_icon(Spree.t(:new_country), new_object_url, { class: "btn-success btn", icon: 'plus-square.svg', id: 'admin_new_country' }) %>
+<% end if can? :create, Spree::Country %>
+
+<div class="table-responsive border rounded bg-white">
+  <table class="table" id='listing_countries' data-hook>
+    <thead class="text-muted">
+      <tr data-hook="tax_header">
+        <th><%= Spree.t(:country_name) %></th>
+        <th class="text-center"><%= Spree.t(:iso3) %></th>
+        <th class="text-center"><%= Spree.t(:states_required) %></th>
+        <th class="text-center"><%= Spree.t(:zipcode_required) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @countries.each do |country| %>
+        <tr id="<%= dom_id(country) %>" data-hook="country_row" data-stream-exit-class="animate__fadeOut">
+          <td><%= country.name %></td>
+          <td class="text-center"><%= country.iso3 %></td>
+          <td class="text-center"><%= active_badge(country.states_required?) %></td>
+          <td class="text-center"><%= active_badge(country.zipcode_required?) %></td>
+          <td class="actions">
+            <span class="d-flex justify-content-end">
+              <%= link_to_edit(country) if can? :edit, country %>
+              <%= link_to_delete(country) if can? :delete, country %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

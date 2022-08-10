@@ -1,0 +1,26 @@
+<div class="card border-0 mt-5">
+  <div class="card-header">
+    <h5 class="card-title">Properties From: <%= @prototype.name %> </h5>
+  </div>
+  <div class="card-body">
+    <%= form_with model: [:admin, @product], url: spree.admin_product_path(@product), id: 'newProductProperty', data: { turbo_frame: "_top"}, method: :patch do |pp| %>
+      <% @prototype_properties.each_with_index do |prop, index| %>
+        <div id="<%= dom_id(prop) %>" class="row">
+          <div class="col-6">
+            <div class="form-group form-floating">
+              <%= text_field_tag "product[product_properties_attributes][#{index}][property_name]", nil, value: prop.name, autocomplete: false, required: true, placeholder: raw(Spree.t(:property_name) + required_span_tag), class: 'form-control' %>
+              <%= label_tag :property_name, raw(Spree.t(:property_name) + required_span_tag) %>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group form-floating">
+              <%= text_field_tag "product[product_properties_attributes][#{index}][value]", nil, value: nil, autocomplete: false, required: true, placeholder: raw(Spree.t(:value) + required_span_tag), class: 'form-control' %>
+              <%= label_tag :property_name, raw(Spree.t(:value) + required_span_tag) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

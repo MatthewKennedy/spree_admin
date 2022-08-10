@@ -1,0 +1,39 @@
+<div class="card" data-hook="admin_country_form_fields">
+  <div class="card-header d-flex">
+    <div class="flex-fill">
+      <h5 class="card-title"><%= I18n.t('spree.dash.countries.states') %></h5>
+    </div>
+    <div>
+      <%= link_to I18n.t('spree.dash.countries.add_new_state'), spree.new_admin_country_state_path(@country), class: 'btn btn-sm btn-light', data: { turbo_frame: :modal } %>
+    </div>
+  </div>
+
+  <div class="table-responsive rounded">
+    <table class="table" id='listing_states' data-hook>
+      <thead class="text-muted">
+        <tr data-hook="states_header">
+          <th><%= Spree.t(:name) %></th>
+          <th class="text-center"><%= Spree.t(:abbreviation) %></th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @country.states.each do |state| %>
+          <tr id="<%= dom_id(state) %>" data-hook="states_row" data-stream-exit-class="animate__fadeOut">
+            <td><%= state.name %></td>
+            <td class="text-center"><%= state.abbr %></td>
+            <td class="actions">
+              <span class="d-flex justify-content-end">
+                <%= link_to_edit(I18n.t('spree.dash.countries.edit_state'), url: spree.edit_admin_country_state_path(@country, state), data: { turbo: true, turbo_frame: :modal}) if can? :edit, state %>
+                <%= link_to_delete(state, url: spree.admin_country_state_path(@country, state)) if can? :delete, state %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+        <% if @country.states.empty? %>
+          <tr><td colspan="3"><%= Spree.t(:none) %></td></tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

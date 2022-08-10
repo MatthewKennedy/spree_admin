@@ -1,0 +1,48 @@
+<div class="card" data-hook="admin_country_form_fields">
+  <div class="card-header d-flex">
+    <div class="flex-fill">
+      <h5 class="card-title"><%= I18n.t('spree.dash.details') %></h5>
+    </div>
+  </div>
+  <div class="card-body row">
+    <div class="col-12">
+      <%= f.field_container :name, data_hook: 'name' do %>
+        <%= f.text_field :name, required: true %>
+        <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+      <% end %>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <%= f.field_container :iso_name, data_hook: 'iso_name' do %>
+        <%= f.text_field :iso_name, required: true %>
+        <%= f.label :iso_name, raw(I18n.t('spree.dash.countries.iso_name') + required_span_tag) %>
+      <% end %>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <%= f.field_container :iso, data_hook: 'iso' do %>
+        <%= f.text_field :iso %>
+        <%= f.label :iso, raw(I18n.t('spree.dash.countries.iso') + required_span_tag) %>
+      <% end %>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <%= f.field_container :iso3, data_hook: 'iso3' do %>
+        <%= f.text_field :iso3, required: true %>
+        <%= f.label :iso3, raw(I18n.t('spree.dash.countries.iso3') + required_span_tag) %>
+      <% end %>
+    </div>
+
+    <div class="col-12">
+      <%= f.field_container :states_required, data_hook: 'states_required', class: ['form-check'] do %>
+        <%= f.check_box :states_required %>
+        <%= f.label :states_required, Spree.t(:states_required), class: 'form-check-label' %>
+      <% end %>
+
+      <%= f.field_container :zipcode_required, data_hook: 'states_required', class: ['form-check'] do %>
+        <%= f.check_box :zipcode_required %>
+        <%= f.label :zipcode_required, Spree.t(:zipcode_required), class: 'form-check-label' %>
+      <% end %>
+    </div>
+  </div>
+</div>

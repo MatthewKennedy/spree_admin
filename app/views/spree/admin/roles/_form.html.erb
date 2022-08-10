@@ -1,0 +1,7 @@
+<div data-hook="admin_role_form_fields">
+  <%= f.field_container :name, 'data-hook' => "role_name" do %>
+    <%= f.text_field :name, class: 'form-control', placeholder: raw(Spree.t(:name) + required_span_tag), required: true %>
+    <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+  <% end %>
+  <div data-hook="additional_role_fields"></div>
+</div>

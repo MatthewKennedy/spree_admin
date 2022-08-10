@@ -1,0 +1,92 @@
+<%= turbo_frame_tag :product_variants do %>
+  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_variants}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5><%= I18n.t('spree.dash.products.variants') %></h5>
+        </div>
+        <div>
+          <%= render partial: 'spree/admin/shared/submit_button' %>
+        </div>
+      </div>
+
+      <% if @product.has_variants? %>
+        <div class="table-responsive">
+          <table class="table">
+            <thead data-hook="variants_header" class="text-muted">
+              <tr>
+                <th class=""><%= inline_svg_tag("arrow-down-up.svg", style: "margin-left: 0.7rem") %></th>
+                <th><%= Spree.t(:sku) %></th>
+                <th><%= Spree.t(:options) %></th>
+                <th><%= Spree.t(:kind) %></th>
+                <th class="actions text-end">
+                  <%= link_to_with_icon(Spree.t(:new_variant), spree.new_admin_product_variant_url(@product), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: "_top"}}) if !@product.empty_option_values? and can? :create, Spree::Variant %>
+                </th>
+              </tr>
+            </thead>
+            <tbody data-controller="sortable" data-sortable-resource-name-value="variant">
+            <% @product.variants.each do |variant| %>
+              <tr id="<%= dom_id(variant) %>" <%= 'style="color:red;"' if variant.deleted? %> data-hook="variants_row" data-sortable-update-url="<%= spree.admin_product_variant_path(@product, variant) %>" data-stream-exit-class="animate__fadeOut">
+                <td class="move-handle">
+                  <% if can? :edit, variant %>
+                    <%= render 'spree/admin/shared/drag_handle' %>
+                  <% end %>
+                </td>
+                <td><%= variant.sku %></td>
+                <td><%= variant.options_text %></td>
+                <td>
+                  <span class="badge text-bg-success">
+                    <% if variant.digital? %>
+                      <%= I18n.t('spree.dash.product_kinds.digital') %>
+                    <% else %>
+                      <%= I18n.t('spree.dash.product_kinds.physical') %>
+                    <% end %>
+                  </span>
+                </td>
+                <td class="actions">
+                  <span class="d-flex justify-content-end">
+                    <%= link_to_edit(variant, url: spree.edit_admin_product_variant_path(@product, variant), data: {turbo_frame: "_top"}) if can?(:edit, variant) && !variant.deleted? %>
+                    <%= link_to_delete(variant, url: spree.admin_product_variant_path(@product, variant)) if can?(:destroy, variant) && !variant.deleted? %>
+                  </span>
+                </td>
+              </tr>
+              <% end %>
+              <% unless @product.has_variants? %>
+                <tr>
+                  <td colspan="5"><%= Spree.t(:none) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <div class="text-center no-objects-found mb-4">
+          <%= link_to_with_icon(I18n.t('spree.dash.products.create_your_first_variant_for_this_product'), spree.new_admin_product_variant_url(@product), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: "_top"}}) if !@product.empty_option_values? and can? :create, Spree::Variant %>
+        </div>
+      <% end %>
+
+      <div class="card-footer border-top">
+        <%= f.field_container :option_types, class: ["form-floating", "mb-0"], data: { hook: "admin_product_form_option_types" } do %>
+          <% if can? :modify, Spree::ProductOptionType %>
+            <%= f.select :option_type_ids, options_from_collection_for_select(@product.option_types, :id, :name, @product.option_type_ids),
+                                      { include_hidden: true },
+                                        multiple: true,
+                                        data: { controller: 'ts--search',
+                                                ts__search_uri_value: '/api/v2/platform/option_types',
+                                                form_state_target: "watch"
+                                               } %>
+            <%= f.label :option_type_ids, Spree.t(:option_types) %>
+          <% elsif @product.option_types.any? %>
+            <ul class="text_list">
+              <% @product.option_types.each do |type| %>
+                <li><%= type.presentation %> (<%= type.name %>)</li>
+              <% end %>
+            </ul>
+          <% else %>
+            <div class="alert alert-info"><%= Spree.t(:no_resource_found, resource: :option_types) %></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end if can?(:admin, Spree::Variant) && !@product.deleted? %>

@@ -1,0 +1,112 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::Product) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to_with_icon Spree.t(:new_product), new_object_url, { class: "btn-success btn", icon: 'plus-square.svg', id: 'admin_new_product', data: {turbo_frame: :modal} } %>
+<% end if can?(:create, Spree::Product) %>
+
+<% content_for :page_tabs do %>
+  <li class="nav-item">
+    <%= link_to t('spree.dash.products.all'),
+                spree.admin_products_path,
+                class: "nav-link #{'active' if params[:q][:status_eq].blank?}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to I18n.t('spree.dash.products.active'),
+                params.merge({q: {status_eq: :active}}).permit!,
+                class: "nav-link #{'active' if params[:q][:status_eq] == 'active'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to I18n.t('spree.dash.products.draft'),
+                params.merge({q: {status_eq: :draft}}).permit!,
+                class: "nav-link #{'active' if params[:q][:status_eq] == 'draft'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to I18n.t('spree.dash.products.archived'),
+                params.merge({q: {status_eq: :archived}}).permit!,
+                class: "nav-link #{'active' if params[:q][:status_eq] == 'archived'}" %>
+  </li>
+<% end %>
+
+<% content_for :table_filter do %>
+  <%= render partial: 'filters' %>
+<% end %>
+
+<% if @collection.any? %>
+<div class="table-responsive border rounded bg-white">
+  <table class="table table-hover rounded" id="listing_products">
+    <thead class="text-muted">
+      <tr data-hook="admin_products_index_headers">
+        <th scope="col" class="" colspan="2">
+          <%= Spree.t(:name) %>
+        </th>
+        <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
+          <th scope="col" class="text-center"><%= Spree.t(:vendor) %></th>
+        <% end %>
+        <th scope="col" class="text-center"><%= I18n.t('spree.dash.kind') %></th>
+        <th scope="col" class="text-center"><%= Spree.t(:status) %></th>
+        <th scope="col" class="text-center" class="text-center">
+          <%= Spree.t(:price) %>
+        </th>
+        <th scope="col" class="text-center" data-hook="admin_products_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.each do |product| %>
+        <% available_status = available_status(product) %>
+          <tr <%== "style='color: red;'" if product.deleted? %> id="<%= dom_id(product) %>" data-hook="admin_products_index_rows" data-stream-exit-class="animate__fadeOut">
+            <td style="width:50px;" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="mini-img">
+              <%= link_to spree.edit_admin_product_path(product) do %>
+                <%= small_image product %>
+              <% end %>
+            </td>
+
+            <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">
+              <%= link_to product.name, spree.edit_admin_product_path(product), class: 'text-reset text-decoration-none' %>
+              <br>
+              <small>SKU: <span class="text-secondary"><%= product.sku rescue '' %></span></small>
+            </td>
+
+            <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
+              <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">
+                <%= link_to product.vendor.name, spree.admin_vendor_path(product.vendor_id) if product.vendor.present? %>
+              </td>
+            <% end %>
+            <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">
+              <span class="badge rounded-pill text-bg-light">
+                <% if product.digital? %>
+                  <%= I18n.t('spree.dash.product_kinds.digital') %>
+                <% else %>
+                  <%= I18n.t('spree.dash.product_kinds.physical') %>
+                <% end %>
+              </span>
+            </td>
+
+            <td class="status text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">
+              <%= active_badge(available_status == I18n.t('spree.dash.products.active'), label: available_status) %>
+            </td>
+
+            <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">
+              <%= display_price(product) %>
+            </td>
+
+            <td class="actions " data-hook="admin_products_index_row_actions">
+              <span class="d-flex justify-content-end">
+                <%= link_to_clone(product) if can?(:clone, product) %>
+                <%= link_to_delete(product) if can?(:delete, product) && !product.deleted? %>
+              </span>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+  <div class="text-center no-objects-found m-5">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Product)) %>,
+    <%= link_to Spree.t(:add_one), new_object_url if can?(:create, Spree::Product) %>!
+  </div>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>

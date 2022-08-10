@@ -1,0 +1,45 @@
+<div class="table-responsive border rounded bg-white">
+  <table class="table rounded" id='payments' data-order-id='<%= @order.number %>'>
+    <thead class="text-muted">
+      <tr data-hook="payments_header">
+        <th><%= Spree::Payment.human_attribute_name(:number) %></th>
+        <th><%= "#{I18n.t('spree.dash.date')}/#{I18n.t('spree.dash.time')}" %></th>
+        <th class="text-center"><%= Spree.t(:amount) %></th>
+        <th class="text-center"><%= Spree.t(:via) %></th>
+        <th class="text-center"><%= Spree.t(:id) %></th>
+        <th class="text-center"><%= Spree.t(:state) %></th>
+        <th class="actions text-center"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% payments.each do |payment| %>
+        <tr id="<%= dom_id(payment) %>" data-hook="payments_row" data-number="<%= payment.number %>" data-id="<%= payment.id %>">
+          <td><%= link_to payment.number, spree.admin_order_payment_path(@order, payment) %></td>
+          <td><%= pretty_time(payment.created_at) %></td>
+          <td class="amount text-center"><%= payment.display_amount %></td>
+          <td class="text-center"><%= payment.payment_method.name %></td>
+          <td class="text-center"><%= payment.transaction_id %></td>
+          <td class="text-center">
+            <span class="badge rounded-pill bg-<%= payment.state %>">
+              <%= Spree.t(payment.state, scope: :payment_states, default: payment.state.capitalize) %>
+            </span>
+          </td>
+          <td class="actions">
+            <span class="d-flex justify-content-center payment-action-buttons">
+              <% payment.actions.each do |action| %>
+                <% if action == 'credit' %>
+                  <%= link_to_with_icon(Spree.t(:refund), spree.new_admin_order_payment_refund_path(@order, payment), no_text: true, class: 'btn btn-light btn-sm', icon: 'exit.svg') if can?(:create, Spree::Refund) %>
+                <% else %>
+                  <%= link_to_with_icon(Spree.t(action), spree.fire_admin_order_payment_path(@order, payment, e: action), no_text: true, class: 'btn btn-light btn-sm', data: {
+                                                                                                                                                                               turbo_method: :put,
+                                                                                                                                                                               turbo_confirm:  I18n.t("spree.dash.are_you_sure_you_want_to",action: action, resource: spree_humanize_type(payment.class.name))  },
+                                                                                                                                                                        icon: action + '.svg' ) if can?(action.to_sym, payment) %>
+                <% end %>
+              <% end %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

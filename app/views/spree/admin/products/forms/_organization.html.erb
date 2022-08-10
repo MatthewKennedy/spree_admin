@@ -1,0 +1,50 @@
+<%= turbo_frame_tag :product_organization do %>
+  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_organization}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title"><%= I18n.t('spree.dash.organization') %></h5>
+        </div>
+        <div>
+           <%= render partial: 'spree/admin/shared/submit_button' %>
+        </div>
+      </div>
+      <div class="card-body">
+        <%= f.field_container :taxons, data: { hook: "admin_product_form_taxons" } do %>
+          <% if can? :modify, Spree::Classification %>
+            <%= f.select :taxon_ids, options_from_collection_for_select(@product.taxons, :id, :pretty_name, @product.taxon_ids),
+                                      { include_hidden: true },
+                                        multiple: true,
+                                        data: { controller: 'ts--search',
+                                                ts__search_uri_value: '/api/v2/platform/taxons',
+                                                ts__search_val_value: 'id',
+                                                ts__search_txt_value: 'pretty_name',
+                                                ts__search_fields_value: ['pretty_name'],
+                                                ts__search_ransack_value: ['pretty_name_i_cont'],
+                                                form_state_target: "watch"
+                                               } %>
+            <%= f.label :taxon_ids, Spree.t(:taxons) %>
+
+          <% elsif @product.taxons.any? %>
+            <ul class="text_list">
+              <% @product.taxons.each do |taxon| %>
+                <li><%= taxon.name %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <div class="alert alert-info">
+              <%= Spree.t(:no_resource_found, resource: :taxons) %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @stores.count > 1 %>
+          <%= f.field_container :stores, data: { hook: "admin_product_form_stores" } do %>
+            <%= f.collection_select(:store_ids, @stores, :id, :unique_name, {}, {multiple: true}) %>
+            <%= f.label :product_stores, Spree.t(:stores) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

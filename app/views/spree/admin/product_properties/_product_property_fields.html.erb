@@ -1,0 +1,43 @@
+<tr id="<%= dom_id(f.object) %>"
+    data-sortable-update-url="<%= spree.admin_product_product_property_path(@product, f.object) %>"
+    data-stream-exit-class="animate__fadeOut">
+  <% if can?(:edit, f.object) %>
+    <td class="move-handle">
+      <%= render 'spree/admin/shared/drag_handle' %>
+    </td>
+  <% else %>
+    <td style="opacity:0.2;">
+      <%= render 'spree/admin/shared/drag_handle' %>
+    </td>
+  <% end %>
+
+  <td>
+    <%= f.text_field :property_name, class: 'form-control', required: true %>
+  </td>
+
+  <td>
+    <%= f.text_field :value, class: 'form-control', required: true %>
+  </td>
+
+  <td class="text-center">
+    <%= f.check_box :show_property, class: 'form-check-input' %>
+  </td>
+
+  <td class="actions">
+    <span class="d-flex justify-content-end">
+      <% if can?(:destroy, f.object) %>
+        <%= link_to_with_icon(I18n.t('spree.dash.delete'), spree.admin_product_product_property_path(@product, f.object), class: 'btn btn-danger btn-sm', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , title: I18n.t('spree.dash.delete'), no_text: true, icon: 'delete.svg') %>
+      <% else %>
+      <span class="btn btn-danger btn-sm icon-link disabled" style="opacity:0.2;">
+        <%= inline_svg_tag "delete.svg", size: '16px * 16px' %>
+      </span>
+      <% end %>
+    </span>
+  </td>
+
+  <!--
+    Add <%#= f.hidden_field :id %> inside the <tr> to stop f.fields_for
+    inserting one outside the <tr> and confusing sortable ordering.
+  -->
+  <%= f.hidden_field :id %>
+</tr>

@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :product_digitals do %>
+  <%= form_with modle: [admin: @product], scope: :digital, url: admin_product_digitals_path(@product), builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <div class="col-12">
+      <%= render 'spree/admin/digitals/form', f: f, variant: @product.master %>
+    </div>
+  <% end %>
+<% end if can?(:admin, Spree::Digital) && !@product.deleted? %>

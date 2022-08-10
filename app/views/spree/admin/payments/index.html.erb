@@ -1,0 +1,33 @@
+<%= turbo_frame_tag :payments do %>
+
+  <% if @order.outstanding_balance? %>
+    <div class="alert alert-info outstanding-balance d-flex">
+      <div class="flex-fill align-self-center">
+        <%= @order.outstanding_balance < 0 ? Spree.t(:credit_owed) : Spree.t(:balance_due) %>: <strong><%= @order.display_outstanding_balance %></strong>
+      </div>
+      <% if @order.outstanding_balance? && can?(:create, Spree::Payment) %>
+        <% if @payment_methods.any? %>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <% @payment_methods.each do |method| %>
+              <%= link_to Spree.t(method.name, scope: :payment_methods, default: method.name), spree.new_admin_order_payment_path(@order, payment_method_id: method.id), class: "btn btn-outline-primary", data: { turbo_frame: :modal } %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @payments.any? %>
+    <div data-hook="payment_list" class="mb-3 table-responsive">
+      <%= render partial: 'list', locals: { payments: @payments } %>
+    </div>
+
+    <% if @refunds.any? %>
+      <fieldset data-hook="payment_list" class="no-border-bottom">
+        <legend><%= Spree.t(:refunds) %></legend>
+        <%= render partial: 'spree/admin/shared/refunds', locals: { refunds: @refunds, show_actions: true } %>
+      </fieldset>
+    <% end %>
+  <% end %>
+
+<% end %>

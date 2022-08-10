@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-header d-flex">
+    <div class="flex-fill">
+     <h5 class="card-title">Summary</h5>
+    </div>
+
+    <div>
+     <h5 class="card-title">
+       <span class="badge <%= order_state_badge(@order.state) %>"><%= @order.state %></span>
+     </h5>
+    </div>
+  </div>
+  <div class="card-body" id="order_tab_summary">
+
+    <% if @order.state == 'cart' %>
+      <div>
+        <div class="alert alert-info" role="alert">
+          <%= I18n.t('spree.dash.order.instructions.cart') %>
+        </div>
+      </div>
+    <% end %>
+
+    <ul class="list-group list-group-flush">
+      <% if @order.completed? %>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+          <small data-hook='admin_order_tab_date_completed_title'><%= Spree.t(:date_completed) %></small>
+          <span class="text-end small font-weight-bold" id='date_complete'>
+            <%= pretty_time(@order.completed_at) %>
+          </span>
+        </li>
+      <% end %>
+
+      <% if @order.approved? %>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+          <small><%= Spree.t(:approved_at) %></small>
+          <span class="text-end small font-weight-bold">
+            <%= pretty_time(@order.approved_at) %>
+          </span>
+        </li>
+        <% if @order.approver.present? %>
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            <small><%= Spree.t(:approver) %></small>
+            <span class="text-end small font-weight-bold">
+              <%= link_to @order.approver.email, spree.admin_users_path(@order.approver) %>
+            </span>
+          </li>
+        <% end %>
+      <% end %>
+
+      <% if @order.canceled? && @order.canceled_at %>
+        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+          <small><%= Spree.t(:canceled_at) %></small>
+          <span class="text-end small font-weight-bold">
+            <%= pretty_time(@order.canceled_at) %>
+          </span>
+        </li>
+        <% if @order.canceler.present? %>
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            <small><%= Spree.t(:canceler) %></small>
+            <span class="text-end small font-weight-bold">
+              <%= link_to @order.canceler.email, spree.admin_users_path(@order.canceler) %>
+            </span>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

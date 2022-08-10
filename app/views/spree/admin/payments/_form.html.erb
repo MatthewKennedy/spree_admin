@@ -1,0 +1,26 @@
+<div data-hook="admin_payment_form_fields">
+  <div class="input-group">
+    <span class="input-group-text"><%= currency_symbol(@order.currency) %></span>
+      <div class="form-floating col" data-hook="amount">
+        <%= f.text_field :amount, value: @order.display_outstanding_balance.money, class: 'form-control rounded-0',
+                                  placeholder: Spree.t(:amount),
+                                  required: true,
+                                  data: { controller: 'input-formatting',
+                                          input_formatting_options_value: { numeral: true, numeralThousandsGroupStyle: 'thousand'} } %>
+        <%= f.label :amount, Spree.t(:amount), class: 'form-label' %>
+      </div>
+    <span class="input-group-text"><%= @order.currency %></span>
+  </div>
+
+  <div class="payment-methods" id="payment_method_<%= @payment_method.id %>">
+    <% if @payment_method.source_required? %>
+      <hr>
+      <%= render partial: "spree/admin/payments/source_forms/#{@payment_method.method_type}",
+                 locals: {
+                   payment_method: @payment_method,
+                   previous_cards: @payment_method.reusable_sources(@order)
+                 } %>
+    <% end %>
+    <%= hidden_field_tag 'payment[payment_method_id]', @payment_method.id %>
+  </div>
+</div>

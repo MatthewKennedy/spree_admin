@@ -1,0 +1,31 @@
+<%= turbo_frame_tag :product_details do %>
+  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_details}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title"><%= I18n.t('spree.dash.details') %></h5>
+        </div>
+
+        <div>
+          <%= render partial: 'spree/admin/shared/submit_button' %>
+        </div>
+      </div>
+      <div class="card-body">
+        <%= f.field_container :name, data: { hook: "admin_product_form_name" } do %>
+          <%= f.text_field :name, required: true %>
+          <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+        <% end %>
+
+        <%= f.field_container :slug, data: { hook: "admin_product_form_slug" } do %>
+          <%= f.text_field :slug, required: true %>
+          <%= f.label :slug, raw(Spree.t(:slug) + required_span_tag) %>
+        <% end %>
+
+        <%= f.field_container :description, data: { hook: "admin_product_form_description" } do %>
+          <%= f.label :description, Spree.t(:description) %>
+          <%= f.text_area :description, {rows: 15, data: { controller: "#{'rte' if product_wysiwyg_editor_enabled?}", form_state_target: "watch" }} %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

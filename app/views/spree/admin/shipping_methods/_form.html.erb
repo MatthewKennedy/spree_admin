@@ -1,0 +1,171 @@
+<div class="card" data-hook="admin_shipping_method_form_fields">
+  <div class="card-header d-flex">
+    <div class="flex-fill">
+      <h5 class="card-title"><%= I18n.t('spree.dash.details') %></h5>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <a data-bs-toggle="collapse" href="#shippingMethodDetailsInfo" role="button" aria-expanded="false" aria-controls="shippingMethodDetailsInfo" class="align-self-center">
+        <%= inline_svg_tag "info-circle.svg", size: '20px*20px', class: "ms-1" %>
+      </a>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div data-hook="admin_shipping_method_form_name_field" class="col-12 col-lg-6">
+        <%= f.field_container :name do %>
+          <%= f.text_field :name %>
+          <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+        <% end %>
+      </div>
+
+      <div data-hook="admin_shipping_method_form_display_field" class="col-12 col-lg-6">
+        <%= f.field_container :display_on do %>
+          <%= f.select(:display_on, Spree::ShippingMethod::DISPLAY.collect { |display| [I18n.t("spree.dash.display_on.#{display}"), display.to_s] }, { selected: :both, include_blank: false }) %>
+          <%= f.label :display_on, Spree.t(:display) %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div data-hook="admin_shipping_method_form_internal_name_field" class="col-12 col-lg-4">
+        <%= f.field_container :admin_name do %>
+          <%= f.text_field :admin_name %>
+          <%= f.label :admin_name, Spree.t(:internal_name) %>
+        <% end %>
+      </div>
+
+      <div data-hook="admin_shipping_method_form_code" class="col-12 col-lg-4">
+        <%= f.field_container :code do %>
+          <%= f.text_field :code %>
+          <%= f.label :code, Spree.t(:code) %>
+        <% end %>
+      </div>
+
+      <div data-hook="admin_shipping_method_form_tracking_url_field" class="col-12 col-lg-4">
+        <%= f.field_container :tracking_url do %>
+          <%= f.text_field :tracking_url %>
+          <%= f.label :tracking_url, Spree.t(:tracking_url) %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="collapse" id="shippingMethodDetailsInfo">
+        <div class="bs-callout bs-callout-info my-0">
+          <h6>
+             <%= I18n.t('spree.dash.shipping_methods.display') %>
+          </h6>
+          <small class="text-muted">
+            <%= raw I18n.t('spree.dash.shipping_methods.display_info') %>
+          </small>
+          <hr>
+
+          <h6>
+             <%= I18n.t('spree.dash.shipping_methods.internal_name') %>
+          </h6>
+          <small class="text-muted">
+            <%= raw I18n.t('spree.dash.shipping_methods.internal_name_info') %>
+          </small>
+
+          <hr>
+
+          <h6>
+             <%= I18n.t('spree.dash.shipping_methods.code') %>
+          </h6>
+          <small class="text-muted">
+            <%= raw I18n.t('spree.dash.shipping_methods.code_info') %>
+          </small>
+
+          <hr>
+
+          <h6>
+             <%= I18n.t('spree.dash.shipping_methods.tracking_url') %>
+          </h6>
+          <small class="text-muted">
+            <%= raw I18n.t('spree.dash.shipping_methods.tracking_url_info') %>
+          </small>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div data-hook="admin_shipping_method_form_availability_fields" class="col-12 col-lg-6">
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title">
+            <%= Spree.t(:shipping_categories) %>
+          </h5>
+        </div>
+
+        <div class="d-flex align-items-center">
+          <a data-bs-toggle="collapse" href="#shippingMethodCategoriesInfo" role="button" aria-expanded="false" aria-controls="shippingMethodCategoriesInfo" class="align-self-center">
+            <%= inline_svg_tag "info-circle.svg", size: '20px*20px', class: "ms-1" %>
+          </a>
+        </div>
+      </div>
+
+      <div class="card-body" data-controller="checkbox-validation">
+        <%= f.collection_check_boxes(:shipping_category_ids, @categories, :id, :name) do |b| %>
+          <div class="form-check">
+            <%= b.label(class: "form-check-label") %>
+            <%= b.check_box(class: "form-check-input", data: {form_state_target: "watch"}) %>
+          </div>
+        <% end %>
+
+        <div class="collapse" id="shippingMethodCategoriesInfo">
+          <div>
+            <div class="bs-callout bs-callout-info my-0">
+              <h6>
+                 <%= I18n.t('spree.dash.shipping_methods.categories') %>
+              </h6>
+              <small class="text-muted">
+                <%= raw I18n.t('spree.dash.shipping_methods.categories_info') %>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-hook="admin_shipping_method_form_calculator_fields">
+      <%= render partial: 'spree/admin/shared/calculator_fields', locals: { f: f } %>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">
+          <%= Spree.t(:zones) %>
+        </h5>
+      </div>
+
+      <div class="card-body">
+        <%= f.collection_check_boxes(:zone_ids, @available_zones, :id, :name) do |b| %>
+          <div class="form-check">
+            <%= b.label(class: "form-check-label") %>
+            <%= b.check_box(class: "form-check-input", data: {form_state_target: "watch"}) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">
+          <%= Spree.t(:tax_category) %>
+        </h5>
+      </div>
+
+      <div class="card-body">
+        <%= f.field_container :categories do %>
+          <%= f.select :tax_category_id, @tax_categories.map { |tc| [tc.name, tc.id] }, { include_blank: true } %>
+          <%= f.label :tax_category_id %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

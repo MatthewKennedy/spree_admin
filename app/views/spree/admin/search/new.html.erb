@@ -1,0 +1,11 @@
+<% content_for :modal_header do %>
+  SEARCH
+<% end %>
+
+<% content_for :modal_body do %>
+  <div class="container">
+    RESULTS
+  </div>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-xl' } %>

@@ -1,0 +1,15 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:prototypes), spree.admin_prototypes_url %> /
+  <%= @prototype.name %>
+<% end %>
+
+<div class="card">
+  <%= form_with model: [:admin, @prototype] do |f| %>
+    <div class="card-body">
+       <%= render partial: 'form', locals: { f: f } %>
+    </div>
+    <div class="card-body text-center">
+      <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+    </div>
+  <% end %>
+</div>

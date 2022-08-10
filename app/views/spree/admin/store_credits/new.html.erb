@@ -1,0 +1,13 @@
+<%= render partial: 'spree/admin/users/tabs', locals: { current: :store_credits } %>
+
+<%= form_with model: @store_credit, url: spree.admin_user_store_credits_path(@user, @store_credit) do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <%= Spree.t(:add_store_credit) %>
+    </div>
+    <div class="card-body">
+      <%= render partial: 'form', locals: { f: f } %>
+      <%= render partial: 'spree/admin/shared/new_resource_links', locals: { collection_url: spree.admin_user_store_credits_path(@user) } %>
+    </div>
+  </div>
+<% end %>

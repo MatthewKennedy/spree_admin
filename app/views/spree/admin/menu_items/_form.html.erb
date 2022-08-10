@@ -1,0 +1,150 @@
+<div data-hook="admin_menu_item_form_fields">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="card mb-3">
+        <div class="card-header d-flex">
+          <div class="flex-fill">
+            <h5 class="card-title"><%= I18n.t('spree.dash.navigation.settings') %></h5>
+          </div>
+          <div>
+            <a data-bs-toggle="collapse" href="#menuItemSettingsInformation" role="button" aria-expanded="false" aria-controls="menuItemSettingsInformation" class="align-self-center">
+              <%= inline_svg_tag "info-circle.svg", size: '20px*20px', class: "ms-1" %>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">
+          <%= f.field_container :item_type do %>
+            <%= f.select(:item_type, @menu_item_types, {include_blank: false}) %>
+            <%= f.label :item_type, I18n.t('spree.dash.navigation.item_type') %>
+            <div class="collapse" id="menuItemSettingsInformation">
+              <div class="py-3">
+                <div class="bs-callout bs-callout-info my-0">
+                  <h6>
+                    <%= I18n.t('spree.dash.navigation.item_type') %>
+                  </h6>
+                  <small class="text-muted">
+                    <%= raw I18n.t('spree.dash.navigation.information.item_type') %>
+                  </small>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <%= f.field_container :code do %>
+            <%= f.text_field :code %>
+            <%= f.label :code, I18n.t('spree.dash.navigation.code') %>
+            <div class="collapse" id="menuItemSettingsInformation">
+              <div class="py-3">
+                <div class="bs-callout bs-callout-info my-0">
+                  <h6>
+                     <%= I18n.t('spree.dash.navigation.code') %>
+                  </h6>
+                  <small class="text-muted">
+                    <%= raw I18n.t('spree.dash.navigation.set_a_code') %>
+                  </small>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <%= f.field_container :parent_id do %>
+            <%= f.select :parent_id, nested_set_options(@menu.menu_items, @menu_item) {|i| "#{'-' * i.level} #{i.name}" }, {include_blank: false} %>
+            <%= f.label :parent_id, I18n.t('spree.dash.navigation.nested_under') %>
+            <div class="collapse" id="menuItemSettingsInformation">
+              <div class="py-3">
+                <div class="bs-callout bs-callout-info my-0">
+                  <h6>
+                     <%= I18n.t('spree.dash.navigation.nested_under') %>
+                  </h6>
+                  <small class="text-muted">
+                    <%= raw I18n.t('spree.dash.navigation.nested_under_info') %>
+                  </small>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="card-title"><%= I18n.t('spree.dash.navigation.public_details') %></h5>
+        </div>
+        <div class="card-body">
+          <%= f.field_container :name do %>
+            <%= f.text_field :name, required: true %>
+            <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+          <% end %>
+
+          <%= f.field_container :subtitle do %>
+            <%= f.text_field :subtitle %>
+            <%= f.label :subtitle, I18n.t('spree.dash.navigation.subtitle') %>
+          <% end %>
+
+          <% @menu_item.build_icon unless @menu_item.icon %>
+
+          <%= f.fields_for :icon do |ff| %>
+            <%= render partial: 'icon_upload_form', locals: { f: f, ff: ff } %>
+
+            <% unless @menu_item.icon.new_record? %>
+              <%= f.field_container :icon_alt do %>
+                <%= ff.text_field :alt %>
+                <%= ff.label :alt, I18n.t('spree.dash.navigation.image_alt_text') %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% unless @menu_item.container? %>
+    <div class="row">
+      <div class="col-12">
+
+        <div id="LinkSettings">
+          <div class="card mb-3">
+            <div class="card-header d-flex">
+              <div class="flex-fill">
+                <h5 class="card-title"><%= I18n.t('spree.dash.navigation.link_settings') %></h5>
+              </div>
+              <div>
+                <a data-bs-toggle="collapse" href="#menuItemLinkInformation" role="button" aria-expanded="false" aria-controls="menuItemLinkInformation" class="align-self-center">
+                  <%= inline_svg_tag "info-circle.svg", size: '20px * 20px', class: 'ms-1 shim-bottom' %>
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <%= f.field_container :linked_resource_type do %>
+                    <%= f.select(:linked_resource_type, spree_humanize_dropdown_values('Spree::MenuItem', {const: 'LINKED_RESOURCE_TYPE'}), {include_blank: false}) %>
+                    <%= f.label :linked_resource_type, I18n.t('spree.dash.navigation.link_to') %>
+
+                    <div class="collapse" id="menuItemLinkInformation">
+                      <div class="py-3">
+                        <div class="bs-callout bs-callout-info my-0">
+                          <h6>
+                            <%= I18n.t('spree.dash.navigation.link_to') %>
+                          </h6>
+                          <small class="text-muted">
+                            <%= raw I18n.t('spree.dash.navigation.link_to_info') %>
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-12 col-md-6">
+                  <%= render "spree/admin/shared/link_fields", resource: @menu_item, f: f %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

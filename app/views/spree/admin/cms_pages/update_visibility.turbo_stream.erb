@@ -1,0 +1,7 @@
+<%= turbo_stream.update "pageVisibility" do %>
+  <%= render 'visibility' %>
+<% end %>
+
+<%= turbo_stream.update "liveViewCont" do %>
+  <%= render 'iframe_content' %>
+<% end %>

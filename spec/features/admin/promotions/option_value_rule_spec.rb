@@ -1,0 +1,73 @@
+require "spec_helper"
+
+describe "Promotion with option value rule", type: :feature do
+  stub_authorization!
+
+  let(:store) { Spree::Store.default }
+  let(:product) { create(:product, stores: [store]) }
+  let!(:variant) { create(:variant, product: product) }
+  let!(:option_value) { variant.option_values.first }
+
+  let(:promotion) { create :promotion }
+
+  before do
+    visit spree.edit_admin_promotion_path(promotion)
+  end
+
+  it "adding an option value rule", js: true do
+    select2 "Option Value(s)", from: "Add rule of type"
+    within("#rule_fields") { click_button "Add" }
+
+    within("#rules .promotion-block") do
+      click_button "Add"
+
+      expect(page).to have_content("Product")
+      expect(page).to have_content("Option Values")
+    end
+
+    within(".promo-rule-option-value") do
+      select2 product.name, css: ".product-select", search: true
+      select2 option_value.name, css: ".option-value-select", search: true
+    end
+
+    wait_for { !page.has_button?("Update") }
+    within("#rules_container") { click_button "Update" }
+
+    wait_for_turbo
+
+    first_rule = promotion.rules.reload.first
+    expect(first_rule.class).to eq Spree::Promotion::Rules::OptionValue
+    expect(first_rule.preferred_eligible_values).to eq({product.id => [option_value.id]})
+  end
+
+  context "with an existing option value rule" do
+    let(:variant1) { create(:variant, product: create(:product, stores: [store])) }
+    let(:variant2) { create(:variant, product: create(:product, stores: [store])) }
+
+    before do
+      rule = Spree::Promotion::Rules::OptionValue.new
+      rule.promotion = promotion
+      rule.preferred_eligible_values = ({variant1.product_id => variant1.option_values.pluck(:id),
+                                         variant2.product_id => variant2.option_values.pluck(:id)})
+      rule.save!
+
+      visit spree.edit_admin_promotion_path(promotion)
+    end
+
+    it "deleting a product", js: true do
+      within(".promo-rule-option-value:last-child") do
+        find(".delete").click
+      end
+
+      wait_for { !page.has_button?("Update") }
+      within("#rule_fields") { click_button "Update" }
+
+      wait_for_turbo
+
+      first_rule = promotion.rules.reload.first
+      expect(first_rule.preferred_eligible_values).to eq(
+        {variant1.product_id => variant1.option_values.pluck(:id)}
+      )
+    end
+  end
+end

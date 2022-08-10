@@ -1,0 +1,63 @@
+#itemImgContainer {
+  width: 200px;
+  img {
+    max-width: 100%;
+  }
+}
+
+#sortableTreeArea {
+  .space-buttons {
+    box-shadow: -11px 0 16px 6px var(--bs-white);
+    z-index: 9;
+    a {
+      margin: 2px;
+    }
+  }
+
+  .sortable-tree-item-row {
+    overflow: hidden;
+    border: 1px solid var(--bs-border-color);
+    margin: 2px;
+    background-color: var(--bs-white);
+    min-height: 55px;
+  }
+
+  .sortable-tree-item {
+    border: solid 1px transparent;
+    padding: 0;
+    background-color: var(--light);
+
+    [data-sortable-tree-parent-id-value] {
+      margin-left: 25px;
+      background-color: var(--light);
+    }
+
+    @include media-breakpoint-up(sm) {
+      [data-sortable-tree-parent-id-value] {
+        margin-left: 50px;
+      }
+    }
+  }
+
+  .sortable-chosen {
+    border: 1px dashed var(--gray);
+    border-radius: 5px;
+  }
+
+  .item_image_holder {
+    position: relative;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 7px;
+    overflow: hidden;
+    width: 45px;
+    height: 45px;
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 100%;
+      width: auto;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

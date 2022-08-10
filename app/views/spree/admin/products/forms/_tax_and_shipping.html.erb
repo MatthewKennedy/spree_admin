@@ -1,0 +1,25 @@
+<%= turbo_frame_tag :product_tax_and_shipping do %>
+  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_tax_and_shipping }, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title"><%= I18n.t('spree.dash.tax_and_shipping') %></h5>
+        </div>
+        <div>
+           <%= render partial: 'spree/admin/shared/submit_button' %>
+        </div>
+      </div>
+      <div class="card-body">
+        <%= f.field_container :shipping_category, data: { hook: "admin_product_form_shipping_categories" } do %>
+          <%= f.collection_select(:shipping_category_id, @shipping_categories, :id, :name, {}) %>
+          <%= f.label :shipping_category_id, Spree.t(:shipping_category) %>
+        <% end %>
+
+        <%= f.field_container :tax_category, data: { hook: "admin_product_form_tax_category" } do %>
+          <%= f.collection_select(:tax_category_id, @tax_categories, :id, :name, { include_blank: I18n.t('spree.dash.match_choices.none') }) %>
+          <%= f.label :tax_category_id, Spree.t(:tax_category) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

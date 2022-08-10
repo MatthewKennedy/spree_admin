@@ -1,0 +1,34 @@
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= I18n.t('spree.dash.products.add_stock') %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% end %>
+
+<% content_for :modal_body do %>
+  <div class="container">
+
+    <%= form_with model: [:admin, Spree::StockMovement.new], url: spree.admin_stock_items_path, builder: Spree::Dash::BootstrapBuilder, id: "addStockForm", data: {turbo_frame: :product_stock} do |f| %>
+      <%= f.hidden_field :variant_id, value: @variant.id %>
+
+      <div data-hook="admin_stock_movements_form_fields" class="row">
+        <div class="col-12 col-lg-2">
+          <%= f.field_container :quantity do %>
+            <%= f.number_field :quantity, value: 1 %>
+            <%= f.label :quantity, Spree.t(:quantity) %>
+          <% end %>
+        </div>
+        <div class="col-12 col-lg-5">
+          <%= f.field_container :stock_location_id do %>
+            <%= f.select :stock_location_id, options_from_collection_for_select(@stock_locations, :id, :name), {} %>
+            <%= f.label :stock_location_id, Spree.t(:stock_location) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :modal_footer do %>
+  <%= remote_form_submit_button(@object, "addStockForm") %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog modal-dialog-centered modal-lg' } %>

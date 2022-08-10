@@ -1,0 +1,43 @@
+<% date_time ||= false %>
+<% value ||= nil %>
+<% placeholder ||= Spree.t(:select_a_date) %>
+<% f ||= nil %>
+
+<div class="input-group" data-controller="datepicker"
+                         data-wrap="true"
+                         <% if date_time %>
+                           data-enable-time="true"
+                         <% end %>>
+
+  <div class="form-floating">
+    <% if date_time %>
+      <% if f %>
+        <%= f.datetime_field field.to_sym, class: 'js-filterable form-control',
+                                           placeholder: placeholder,
+                                           value: value,
+                                           data: { input:'', form_state_target: "watch" } %>
+      <% else %>
+        <%= datetime_field_tag field.to_s, class: 'js-filterable form-control',
+                                           placeholder: placeholder,
+                                           value: value,
+                                           data: { input:'', form_state_target: "watch" } %>
+      <% end %>
+    <% else %>
+      <% if f %>
+        <%= f.text_field field.to_sym, class: "js-filterable form-control",
+                                       placeholder: placeholder,
+                                       value: value,
+                                       data: { input:'', form_state_target: "watch"} %>
+      <% else %>
+        <%= text_field_tag field.to_s, value, class: "js-filterable form-control",
+                                              autocomplete: false,
+                                              placeholder: placeholder,
+                                              data: { input:'', form_state_target: "watch" } %>
+
+      <% end %>
+    <% end %>
+    <%= label_tag field.to_s, field.to_s.humanize, class: 'form-label' %>
+  </div>
+
+  <%= render partial: 'spree/admin/shared/cal_close' %>
+</div>

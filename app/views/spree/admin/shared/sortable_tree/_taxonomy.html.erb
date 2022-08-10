@@ -1,0 +1,32 @@
+<% taxonomy = parent_resource %>
+<% taxon = child_resource %>
+
+<div id="<%= dom_id(taxon) %>" class="sortable-tree-item-row d-flex flex-nowrap p-1 align-items-center" data-stream-exit-class="animate__fadeOut">
+  <%= render 'spree/admin/shared/drag_handle' %>
+
+  <div class="d-flex align-items-center overflow-hidden w-100">
+    <div class="overflow-hidden">
+      <%= taxon.name %> <br>
+
+      <h6 class="form-text text-muted m-0">
+        <%= turbo_frame_tag :path do %>
+          <span class="badge text-bg-light">
+            <%= inline_svg_tag('link.svg', size: '16px * 16px') %> <span id="<%= dom_id(taxon) %>_permalink"><%= taxon.permalink %></span>
+          </span>
+        <% end %>
+      </h6>
+    </div>
+    <% if taxon.icon.present? %>
+      <div class="ms-2">
+        <div class="item_image_holder">
+          <%= image_tag main_app.cdn_image_url(taxon.icon.attachment) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex align-items-center space-buttons px-2">
+    <%= link_to_edit(taxon, url: spree.edit_admin_taxonomy_taxon_path(taxonomy, taxon.id)) %>
+    <%= link_to_delete(taxon, url: spree.admin_taxonomy_taxon_path(taxonomy, taxon.id)) if can?(:destroy, taxon) %>
+  </div>
+</div>

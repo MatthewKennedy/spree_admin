@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "extends": ["standard"],
+  "globals": {
+    "SpreeAdmin": "readonly",
+    "Turbo": "readonly",
+    "URL": "readonly",
+    "SPREE_CURRENCY": "readonly",
+    "SPREE_LOCALE": "readonly",
+    "SpreeAdmin.OAUTH_TOKEN": "readonly",
+    "Handlebars": "readonly",
+    "SpreeAdmin.ADDRESS_FIELDS": "readonly",
+    "clearTimeout": "readonly",
+    "setTimeout": "readonly",
+    "jQuery": "readonly",
+    "$": "readonly",
+    "document": "readonly",
+    "window": "readonly",
+    "console": "readonly",
+    "fetch": "readonly",
+    "Rails": "readonly",
+    "updateAddressState": "readonly",
+    "toggleItemEdit": "readonly",
+    "confirm": "readonly"
+  }
+}

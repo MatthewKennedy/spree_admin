@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= Spree.t(:basic_information) %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <%= f.field_container :name do %>
+      <%= f.text_field :name, class: 'form-control', placeholder: raw(Spree.t(:name) + required_span_tag), required: true %>
+      <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+    <% end %>
+
+    <%= f.field_container :code do %>
+      <%= f.text_field :code, class: 'form-control', required: true, placeholder: raw(Spree.t(:code) + required_span_tag) %>
+      <%= f.label :code, raw(Spree.t(:code) + required_span_tag) %>
+      <small class="form-text text-muted">
+        <%= I18n.t('spree.dash.store_form.code_help') %>
+      </small>
+    <% end %>
+
+    <%= f.field_container :url do %>
+      <%= f.text_field :url, class: 'form-control', required: true, placeholder: raw(Spree.t(:url) + required_span_tag) %>
+      <%= f.label :url, raw(Spree.t(:url) + required_span_tag) %>
+    <% end %>
+  </div>
+</div>

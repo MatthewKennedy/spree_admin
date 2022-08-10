@@ -1,0 +1,10 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - '**/sandbox/**/*'
+    - '**/db/migrate/*'
+    - '**/Gemfile.lock'
+    - '**/rails'
+    - '**/dummy/**/*'
+    - '**/vendor/**/*'
+    - '**/templates/**/*'

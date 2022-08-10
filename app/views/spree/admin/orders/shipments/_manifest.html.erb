@@ -1,0 +1,58 @@
+<% shipment.manifest.each do |item| %>
+  <tr class="stock-item" data-item-quantity="<%= item.quantity %>">
+    <td style="width:50px" data-hook="item-image">
+      <%= link_to small_image(item.variant), spree.edit_admin_product_path(item.variant.product) %>
+    </td>
+
+    <td>
+      <small><%= link_to item.variant.product.name, spree.edit_admin_product_path(item.variant.product) %>
+        <br>
+        <%= "(#{item.variant.options_text})" if item.variant.options_text.present? %>
+        <% if item.variant.sku.present? %>
+          <strong><%= Spree.t(:sku) %>:</strong> <%= item.variant.sku %>
+        <% end %>
+        <br>
+        <%= item.line_item.single_money.to_html %>
+      </small>
+    </td>
+
+    <td class="text-center" style="width: 130px;">
+      <% unless shipment.ready? || shipment.shipped? and can?(:update, item.line_item) %>
+        <%= form_with model: shipment,
+                      url: spree.increment_item_admin_shipment_path(shipment.id),
+                      method: :patch,
+                      data: {controller: 'number-increment form-validation'} do |f| %>
+          <%= f.hidden_field :variant_id, value: item.line_item.variant_id %>
+
+          <%= render partial: 'spree/admin/shared/number_toggle', locals: { value: item.quantity, attribute: 'shipment[quantity]' } %>
+        <% end %>
+      <% else %>
+        <%= item.quantity %>
+      <% end %>
+    </td>
+
+    <td class="text-center">
+      <% item.states.each do |state, count| %>
+        <%= Spree.t(state).downcase %>
+      <% end %>
+    </td>
+
+    <td class="text-center">
+      <%= line_item_shipment_price(item.line_item, item.quantity) %>
+    </td>
+
+    <td class="cart-item-delete actions">
+      <span class="d-flex justify-content-center">
+        <% unless shipment.shipped? and can?(:update, item.line_item) %>
+          <%= form_with model: shipment, url: spree.remove_item_admin_shipment_path(shipment.id), method: :patch do |f| %>
+            <%= f.hidden_field :variant_id, value: item.line_item.variant_id %>
+
+            <%= f.button :submit, class: "btn btn-danger btn-sm" do %>
+              <%= inline_svg_tag "x-lg.svg", size: '16px * 16px' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </span>
+    </td>
+  </tr>
+<% end %>

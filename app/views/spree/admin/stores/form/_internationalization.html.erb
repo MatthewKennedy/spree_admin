@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= Spree.t(:internationalization) %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <h6>Currency</h6>
+    <%= f.field_container :default_currency do %>
+      <%= f.select :default_currency, currency_options(@store.default_currency), {}, { class: 'form-select', data: {controller: 'ts--select', autocomplete: false} } %>
+      <%= f.label :default_currency %>
+    <% end %>
+
+    <%= f.field_container :supported_currencies do %>
+      <%= f.select :supported_currencies, currency_options(@store.supported_currencies&.split(',')), { prompt: false }, {class: 'form-select', multiple: true, data: {controller: 'ts--select'} } %>
+      <%= f.label :supported_currencies, Spree.t(:supported_currencies) %>
+      <small class="form-text text-muted">
+        <%= I18n.t('spree.dash.store_form.currencies_help') %>
+      </small>
+    <% end %>
+
+    <hr>
+    <h6>Checkout</h6>
+    <%= f.field_container :checkout_zone_id do %>
+      <%= f.select :checkout_zone_id, options_for_select(@zones), { include_blank: Spree.t(:no_limits_zone) }, { class: 'form-select', data: {controller: 'ts--select'} } %>
+      <%= f.label :checkout_zone_id, Spree.t(:shipping_zone) %>
+      <small class="form-text text-muted">
+        <%= raw(I18n.t('spree.dash.store_form.checkout_zone_help')) %>
+      </small>
+    <% end %>
+
+    <%= f.field_container :default_country_id do %>
+      <%= f.select :default_country_id, options_for_select(@countries, @store.default_country_id), {}, { class: 'form-select', data: {controller: 'ts--select'} } %>
+      <%= f.label :default_country_id, I18n.t('spree.dash.default_country') %>
+      <small class="form-text text-muted">
+        <%= I18n.t('spree.dash.store_form.default_country_help') %>
+      </small>
+    <% end %>
+
+    <hr>
+    <h6>Language</h6>
+    <%= f.field_container :default_locale do %>
+      <%= f.select :default_locale, options_from_collection_for_select(all_locales_options, :last, :first, @store.default_locale || I18n.locale), {}, { class: 'form-select', data: {controller: 'ts--select'} } %>
+      <%= f.label :default_locale, I18n.t('spree.dash.store_form.default_language') %>
+      <% unless defined?(SpreeI18n) %>
+        <small class="form-text text-muted">
+          <%= raw(I18n.t('spree.dash.store_form.locales_help')) %>
+        </small>
+      <% end %>
+    <% end %>
+
+    <%= f.field_container :supported_locales do %>
+      <%= f.select :supported_locales, options_from_collection_for_select(all_locales_options, :last, :first, @store.supported_locales&.split(',')), {}, { class: 'form-select', multiple: true, data: {controller: 'ts--select'} } %>
+      <%= f.label :supported_locales, I18n.t('spree.dash.store_form.supported_languages') %>
+    <% end %>
+  </div>
+</div>

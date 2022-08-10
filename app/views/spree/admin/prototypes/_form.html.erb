@@ -1,0 +1,60 @@
+<div class="row" data-hook="admin_prototype_form_fields">
+  <div class="col-12">
+    <%= f.field_container :name do %>
+      <%= f.text_field :name, class: 'form-control', required: true, placeholder: raw(I18n.t('spree.dash.name') + required_span_tag) %>
+      <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+    <% end %>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <%= f.field_container :property_ids do %>
+      <%= f.select :property_ids, Spree::Property.all.map { |p| ["#{p.presentation} (#{p.name})", p.id] }, {}, { class:'form-select', placeholder: I18n.t('spree.dash.properties'), multiple: true, data: { controller: 'ts--select' } } %>
+      <%#= f.select :property_ids, options_from_collection_for_select(f.object.properties, :id, :name, f.object.property_ids),
+                                { include_hidden: true },
+                                  multiple: true,
+                                  class:'form-select',
+                                  data: { controller: 'ts--search',
+                                          ts__search_uri_value: '/api/v2/platform/properties',
+                                          ts__search_val_value: 'id',
+                                          ts__search_txt_value: 'name',
+                                          ts__search_fields_value: ['name'],
+                                          ts__search_ransack_value: ['name_i_cont']
+                                         } %>
+      <%= f.label :property_ids, Spree.t(:properties) %>
+    <% end %>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <%= f.field_container :option_type_ids  do %>
+      <%= f.select :option_type_ids, options_from_collection_for_select(f.object.option_types, :id, :name, f.object.option_type_ids),
+                                { include_hidden: true },
+                                  multiple: true,
+                                  class:'form-select',
+                                  data: { controller: 'ts--search',
+                                          ts__search_uri_value: '/api/v2/platform/option_types',
+                                          ts__search_val_value: 'id',
+                                          ts__search_txt_value: 'name',
+                                          ts__search_fields_value: ['name'],
+                                          ts__search_ransack_value: ['name_i_cont']
+                                         } %>
+      <%= f.label :option_type_ids, I18n.t('spree.dash.option_types') %>
+    <% end %>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <%= f.field_container :taxon_ids do %>
+      <%= f.select :taxon_ids, options_from_collection_for_select(f.object.taxons, :id, :pretty_name, f.object.taxon_ids),
+                                { include_hidden: true },
+                                  multiple: true,
+                                  class:'form-select',
+                                  data: { controller: 'ts--search',
+                                          ts__search_uri_value: '/api/v2/platform/taxons',
+                                          ts__search_val_value: 'id',
+                                          ts__search_txt_value: 'pretty_name',
+                                          ts__search_fields_value: ['pretty_name'],
+                                          ts__search_ransack_value: ['pretty_name_i_cont']
+                                         } %>
+      <%= f.label :taxon_ids, I18n.t('spree.dash.taxons.taxons') %>
+    <% end %>
+  </div>
+</div>

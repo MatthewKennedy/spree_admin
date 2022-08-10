@@ -1,0 +1,31 @@
+<div class="table-responsive border rounded bg-white">
+  <table class="table sortable" id='listing_taxonomies'>
+    <thead class="text-muted">
+      <tr data-hook="taxonomies_header">
+        <th>
+          <%= inline_svg_tag("arrow-down-up.svg", style: "margin-left: 0.7rem") %>
+        </th>
+        <th><%= Spree.t(:name) %></th>
+        <th class="actions text-end">
+          <%= link_to_with_icon(I18n.t('spree.dash.taxonomies.add_new_taxon'), new_object_url, class: "btn-light btn btn-sm", icon: 'plus-square.svg', id: 'admin_new_taxonomy_link', data: {turbo_frame: :modal}) if can?(:create, Spree::Taxonomy) %>
+        </th>
+      </tr>
+    </thead>
+    <tbody data-controller="sortable" data-sortable-resource-name-value="taxonomy">
+      <% @taxonomies.each do |taxonomy| %>
+        <tr id="<%= dom_id(taxonomy) %>" data-sortable-update-url="<%= spree.admin_taxonomy_path(taxonomy) %>" data-stream-exit-class="animate__fadeOut">
+          <td class="move-handle">
+            <%= render 'spree/admin/shared/drag_handle' %>
+          </td>
+          <td><%= taxonomy.name %></td>
+          <td class="actions">
+            <span class="d-flex justify-content-end">
+              <%= link_to_edit(taxonomy.id) if can?(:edit, taxonomy) %>
+              <%= link_to_delete(taxonomy) if can?(:delete, taxonomy) %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

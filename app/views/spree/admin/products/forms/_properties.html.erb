@@ -1,0 +1,44 @@
+<%= turbo_frame_tag :product_properties do %>
+  <%= form_with model: @product, url: spree.admin_product_url(@product), method: :put do |f| %>
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title"><%= I18n.t('spree.dash.products.properties') %></h5>
+        </div>
+        <div>
+          <% if can? :create, Spree::ProductProperty %>
+            <%= link_to_with_icon I18n.t('spree.dash.products.select_from_prototype'), spree.prototypes_admin_product_product_properties_path(@product), icon: 'list.svg', class: 'btn btn-light btn-sm', data: { turbo_frame: :modal} %>
+            <%= link_to_with_icon I18n.t('spree.dash.products.add_new_property'), spree.new_admin_product_product_property_path(@product), icon: 'plus-square.svg', class: 'btn btn-light btn-sm', data: { turbo_frame: :modal } %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if @product.properties.any? %>
+      <div class="table-responsive">
+        <table id="product_properties" class="table">
+          <thead class="text-muted">
+            <tr data-hook="product_properties_header">
+              <th></th>
+              <th><%= Spree.t(:name) %></th>
+              <th><%= Spree.t(:value) %></th>
+              <th class="text-center"><%= Spree.t(:show) %></th>
+              <th class="actions"></th>
+            </tr>
+          </thead>
+          <tbody data-controller="sortable" data-sortable-resource-name-value="product_property">
+            <%= f.fields_for :product_properties do |pp_form| %>
+              <%= render 'spree/admin/product_properties/product_property_fields', f: pp_form if pp_form.object.persisted? %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% else %>
+        <% if can? :create, Spree::ProductProperty %>
+          <div class="alert alert-light text-center mx-5" role="alert">
+            <%= I18n.t('spree.dash.products.add_first_property') %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

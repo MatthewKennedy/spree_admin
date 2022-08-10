@@ -1,0 +1,60 @@
+<% content_for :page_title do %>
+  <%= link_to I18n.t('spree.dash.navigation.all_menus'), spree.admin_menus_path %> / <%= @menu.name %>
+<% end %>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5 class="mb-0"><%= I18n.t('spree.dash.settings') %></h5>
+      </div>
+      <div class="card-body">
+        <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @menu } %>
+        <%= form_with model: [:admin, @menu], builder: Spree::Dash::BootstrapBuilder do |f| %>
+          <%= render partial: 'form', locals: { f: f } %>
+          <div class="d-flex ">
+            <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sortableTreeArea">
+  <div class="row mt-2">
+    <div class="col-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="row pb-0">
+            <div class="col d-flex">
+             <h5 class="mb-0 align-self-center"><%= I18n.t('spree.dash.navigation.menu_items', menu_name: @menu.name) %></h5>
+            </div>
+            <div class="col d-flex justify-content-end">
+              <%= link_to_with_icon I18n.t('spree.dash.navigation.add_new_item', menu: @menu.name), spree.new_admin_menu_menu_item_path(@menu), icon: 'plus-square.svg', class: 'no-wrap btn btn-secondary btn-sm align-self-center' %>
+            </div>
+          </div>
+        </div>
+
+        <% if @menu.root.present? %>
+          <div class="card-body p-0 bg-light"
+               data-controller="sortable-tree"
+               data-sortable-response-kind-value="turbo_stream">
+
+            <div data-sortable-tree-parent-id-value="<%= @menu.root.id %>">
+              <% if @menu.root.children.present? %>
+                <% @menu.root.children.each do |root_children| %>
+                     <%= build_sortable_tree(@menu, root_children) %>
+                <% end %>
+              <% else %>
+                <div class="text-center no-objects-found m-5 m-5">
+                  <%= raw I18n.t('spree.dash.navigation.no_menu_items', menu: @menu.root.name) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

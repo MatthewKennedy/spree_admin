@@ -1,0 +1,40 @@
+<div class="table-responsive border rounded bg-white">
+  <table class="table table-condensed border rounded">
+    <thead data-hook="customer_return_header">
+      <tr>
+        <th><%= Spree.t(:number) %></th>
+        <th><%= Spree.t(:total) %></th>
+        <th><%= Spree.t(:status) %></th>
+        <th><%= "#{I18n.t('spree.dash.date')}/#{I18n.t('spree.dash.time')}" %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% reimbursements.each do |reimbursement| %>
+        <tr id="<%= dom_id(reimbursement) %>" data-hook="reimbursement_row">
+          <td>
+            <% if reimbursement.reimbursed? %>
+              <%= link_to reimbursement.number, spree.admin_order_reimbursements_path(@order, reimbursement) %>
+            <% else %>
+              <%= reimbursement.number %>
+            <% end %>
+          </td>
+          <td><%= reimbursement.display_total %></td>
+          <td>
+            <span class="state <%= reimbursement_status_color(reimbursement) %>">
+              <%= reimbursement.reimbursement_status %>
+            </span>
+          </td>
+          <td><%= pretty_time(reimbursement.created_at) %></td>
+          <td class="actions">
+            <span class="d-flex justify-content-end">
+              <% if !reimbursement.reimbursed? %>
+                <%= link_to_edit(reimbursement , url: spree.edit_admin_order_reimbursement_path(@order, reimbursement)) if can?(:edit, reimbursement) %>
+              <% end %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

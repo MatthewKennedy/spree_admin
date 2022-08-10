@@ -1,0 +1,21 @@
+<%= f.field_container :destination do %>
+  <%= f.text_field :destination, class: 'form-control', placeholder: I18n.t('spree.dash.navigation.url') %>
+  <%= f.label :destination, I18n.t('spree.dash.navigation.url') %>
+<% end %>
+
+<%= f.field_container :new_window, class: ["form-check"] do %>
+    <%= f.check_box :new_window, class: 'form-check-input' %>
+    <%= f.label :new_window, I18n.t('spree.dash.navigation.open_link_in_new_window'), class: 'form-check-label' %>
+<% end %>
+<div class="collapse" id="menuItemLinkInformation">
+  <div class="pb-3">
+    <div class="bs-callout bs-callout-info my-0">
+      <h6>
+        <%= I18n.t('spree.dash.navigation.url') %>
+      </h6>
+      <small class="text-muted">
+        <%= raw I18n.t('spree.dash.navigation.url_info') %>
+      </small>
+    </div>
+  </div>
+</div>

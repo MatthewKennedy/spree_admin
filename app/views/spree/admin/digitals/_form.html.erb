@@ -1,0 +1,45 @@
+  <%= f.hidden_field :variant_id, value: variant.id %>
+
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="flex-fill">
+        <h5 class="card-title">Digitals</h5>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="card-body">
+      <% if variant.digital? %>
+        <div class="row">
+          <% variant.digitals.each do |digital| %>
+            <div class="col-12 col-md-4 mb-3" id="<%= dom_id(digital) %>" data-stream-exit-class="animate__fadeOut">
+              <div class="d-flex flex-row align-items-center digital-container border rounded">
+                <div class="col p-0 delete-digital-icon-container">
+                  <%= asset_icon(digital) %>
+                </div>
+                <div class="col p-2 delete-digital-info-container">
+                  <span><%= I18n.t("spree.dash.name") %>:</span> <span class="text-secondary"><%= digital.attachment.filename %></span><br>
+                  <span><%= I18n.t("spree.dash.size") %>:</span> <span class="text-secondary"><%= number_to_human_size(digital.attachment.byte_size) %></span>
+                </div>
+                <div class="col-auto p-2 text-end">
+                  <%= link_to_delete(digital, url: admin_product_digital_url(@product, digital)) if can? :delete, digital %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="text-center no-objects-found m-5">
+          <%= I18n.t('spree.dash.digitals.no_digital_assets_added') %>
+        </div>
+      <% end %>
+
+      <hr>
+
+      <%= f.label :file, I18n.t('spree.dash.digitals.add_new_file'), id: "digital_attachment_#{variant.id}" %> <span class="required font-weight-bold text-danger">*</span><br>
+      <div class="input-group">
+        <%= f.file_field :attachment, id: "digital_attachment_#{variant.id}", required: true %>
+        <%= f.submit class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,12 @@
+<%= turbo_frame_tag :payments do %>
+  <%= render partial: "spree/admin/payments/source_views/#{@payment.payment_method.method_type}",
+             locals: {
+               payment: @payment.source.is_a?(Spree::Payment) ? @payment.source : @payment
+             } %>
+
+  <div class="alert alert-success" data-hook="amount">
+    <%= Spree.t(:amount) %>: <%= @payment.display_amount.to_html %>
+  </div>
+
+  <%= render 'spree/admin/payments/capture_events' %>
+<% end %>

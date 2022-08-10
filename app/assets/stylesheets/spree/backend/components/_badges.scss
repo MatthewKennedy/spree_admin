@@ -1,0 +1,75 @@
+// Green
+
+.bg-active,
+.bg-success,
+.bg-sold,
+.bg-open,
+.bg-authorized,
+.bg-published,
+.bg-live,
+.bg-approved,
+.text-bg-success {
+  color: #202223 !important;
+  background: #aee9d1 !important;
+}
+
+// Red
+.bg-failed,
+.bg-considered_risky,
+.bg-error,
+.bg-invalid,
+.bg-rejected,
+.bg-closed {
+  background: var(--bs-danger);
+}
+
+// Orange
+.bg-ready,
+.bg-processing,
+.bg-pending,
+.bg-awaiting_return,
+.bg-returned,
+.bg-credit_owed,
+.bg-balance_due,
+.bg-backorder,
+.bg-checkout,
+.bg-cart,
+.bg-address,
+.bg-delivery,
+.bg-payment,
+.bg-confirm,
+.bg-canceled,
+.bg-void,
+.bg-inactive,
+.bg-notice,
+.bg-suspended,
+.bg-partial {
+  color: #202223;
+  background: #ffd79d;
+}
+
+// light
+.bg-completed,
+.bg-complete,
+.bg-resumed,
+.bg-considered_safe,
+.bg-paid,
+.bg-shipped,
+.badge.bg-disabled,
+.badge.bg-invited
+.bg-light {
+  color: #202223;
+  background: var(--bs-body-bg);
+}
+
+// Info
+.bg-onboarding {
+  background: var(--bs-info);
+}
+
+.card-body > .card {
+  border-style: dashed;
+  border-width: 2px;
+}
+
+

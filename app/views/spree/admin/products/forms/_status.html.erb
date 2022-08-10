@@ -1,0 +1,30 @@
+<%= turbo_frame_tag :product_status do %>
+  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :prouct_status}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title"><%= I18n.t('spree.dash.status') %></h5>
+        </div>
+        <div>
+          <%= render partial: 'spree/admin/shared/submit_button' %>
+        </div>
+      </div>
+      <div class="card-body">
+        <%= f.field_container :status, data: { hook: "new_product_status", controller: "form-validation" } do %>
+          <% options = [ ['Draft', 'draft' ], ['Active', 'active' ], ['Archived', 'archived' ] ] %>
+
+          <% options.delete('active') if cannot? :activate, @product %>
+          <% select_html = { data: { controller: 'ts--select', action: 'change->form-validation#validate' } } %>
+
+          <%= f.select :status, options, { include_blank: false, selected: @product.status }, select_html %>
+          <%= f.label :status, Spree.t(:status) %>
+          <%= submit_tag "Update Product Status", formaction: spree.update_availability_admin_product_path(@product), formmethod: "post", data: { form_validation_target: "submitBtn" } %>
+        <% end %>
+
+        <div id="productStatusOptions">
+          <%= render partial: 'status' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

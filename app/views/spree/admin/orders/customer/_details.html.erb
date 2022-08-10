@@ -1,0 +1,128 @@
+<div class="d-flex justify-content-between">
+    <div>
+      <h6 class="text-uppercase">
+        <% if @order.user.first_name.present? || @order.user.last_name.present? %>
+          <%= @order.user.first_name %> <%= @order.user.last_name %>
+        <% else %>
+          <%= @order.email %>
+        <% end %>
+      </h6>
+      <%= pluralize( @order.user.order_count, I18n.t('spree.dash.order.order') ) %>
+    </div>
+
+    <% unless @order.completed? %>
+      <div>
+        <%= form_with model: @order, url: spree.admin_order_path(@order), method: :patch do |f| %>
+          <%= f.hidden_field :user_id, value: nil %>
+          <%= f.button (inline_svg_tag "x-lg.svg", size: '16px * 16px'), type: "submit", class: 'btn btn-light btn-sm' %>
+        <% end %>
+      </div>
+    <% end %>
+</div>
+<hr>
+
+<div>
+  <h6 class="text-uppercase">
+    Contact Information
+  </h6>
+  <%= @order.email %>
+  <hr>
+</div>
+
+<% if (@order.bill_address.present? && @order.ship_address.present?) && @order.bill_address == @order.ship_address %>
+  <div class="my-3">
+    <h6 class="text-uppercase">Shipping Address</h6>
+    <% if @order.ship_address.full_name.present? %>
+      <%= @order.ship_address.full_name %><br>
+    <% end %>
+    <% if @order.ship_address.address1.present? %>
+      <%= @order.ship_address.address1 %><br>
+    <% end %>
+    <% if @order.ship_address.address2.present? %>
+      <%= @order.ship_address.address2 %><br>
+    <% end %>
+    <% if @order.ship_address.city.present? %>
+      <%= @order.ship_address.city %><br>
+    <% end %>
+    <% if @order.ship_address.state.present? %>
+      <%= @order.ship_address.state %><br>
+    <% end %>
+    <% if @order.ship_address.zipcode.present? %>
+      <%= @order.ship_address.zipcode %><br>
+    <% end %>
+    <% if @order.ship_address.country.present? %>
+      <%= @order.ship_address.country.name %><br>
+    <% end %>
+
+    <%= link_to 'Edit', spree.edit_admin_order_address_path(@order, @order.ship_address), data: { turbo_frame: :modal } %>
+    <hr>
+  </div>
+
+  <div>
+    <h5>Billing Address</h5>
+    Same as Shipping Address
+  </div>
+
+<% else %>
+  <% if @order.bill_address.present? %>
+    <div class="d-flex justify-content-between">
+      <div>
+        <h6 class="text-uppercase">Billing Address</h6>
+        <% if @order.bill_address.full_name.present? %>
+          <%= @order.bill_address.full_name %><br>
+        <% end %>
+        <% if @order.bill_address.address1.present? %>
+          <%= @order.bill_address.address1 %><br>
+        <% end %>
+        <% if @order.bill_address.address2.present? %>
+          <%= @order.bill_address.address2 %><br>
+        <% end %>
+        <% if @order.bill_address.city.present? %>
+          <%= @order.bill_address.city %><br>
+        <% end %>
+        <% if @order.bill_address.state.present? %>
+          <%= @order.bill_address.state %><br>
+        <% end %>
+        <% if @order.bill_address.zipcode.present? %>
+          <%= @order.bill_address.zipcode %><br>
+        <% end %>
+        <% if @order.bill_address.country.present? %>
+          <%= @order.bill_address.country.name %><br>
+        <% end %>
+      </div>
+
+      <%= link_to 'Edit', spree.edit_modal_admin_address_path(@order.bill_address), data: { turbo_frame: :modal } %>
+    </div>
+    <hr>
+  <% end %>
+
+  <% if @order.ship_address.present? %>
+    <div class="d-flex justify-content-between">
+      <div>
+        <h6 class="text-uppercase">Shipping Address</h6>
+        <% if @order.ship_address.full_name.present? %>
+          <%= @order.ship_address.full_name %><br>
+        <% end %>
+        <% if @order.ship_address.address1.present? %>
+          <%= @order.ship_address.address1 %><br>
+        <% end %>
+        <% if @order.ship_address.address2.present? %>
+          <%= @order.ship_address.address2 %><br>
+        <% end %>
+        <% if @order.ship_address.city.present? %>
+          <%= @order.ship_address.city %><br>
+        <% end %>
+        <% if @order.ship_address.state.present? %>
+          <%= @order.ship_address.state %><br>
+        <% end %>
+        <% if @order.ship_address.zipcode.present? %>
+          <%= @order.ship_address.zipcode %><br>
+        <% end %>
+        <% if @order.ship_address.country.present? %>
+          <%= @order.ship_address.country.name %><br>
+        <% end %>
+      </div>
+      <%= link_to 'Edit', spree.edit_modal_admin_address_path(@order.ship_address), data: { turbo_frame: :modal } %>
+    </div>
+  <% end %>
+<% end %>

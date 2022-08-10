@@ -1,0 +1,14 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+require:
+  - rubocop-performance
+#   - standard
+
+# inherit_gem:
+#   standard: config/base.yml
+
+inherit_from:
+  - .rubocop/rails.yml
+  - .rubocop/custom.yml

@@ -1,0 +1,31 @@
+<div data-hook="admin_option_type_form_fields" class="row">
+  <div class="col-12 col-md-6">
+    <%= f.field_container :name do %>
+      <%= f.text_field :name, required: true %>
+      <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+    <% end %>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <%= f.field_container :presentation do %>
+      <%= f.text_field :presentation, required: true %>
+      <%= f.label :presentation, raw(Spree.t(:presentation) + required_span_tag) %>
+    <% end %>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <%= f.field_container :filterable, class: ['form-switch', 'mb-0'] do %>
+      <%= f.check_box :filterable %>
+      <%= f.label :filterable, Spree.t(:filterable), class: 'form-check-label' %>
+      <a data-bs-toggle="collapse" href="#optionTypeFilterInformation" role="button" aria-expanded="false" aria-controls="optionTypeFilterInformation" class="align-self-center">
+        <%= inline_svg_tag "info-circle.svg", size: '14px * 14px', class: 'ms-1 shim-bottom' %>
+      </a>
+    <% end %>
+
+    <div class="collapse" id="optionTypeFilterInformation">
+      <small class="form-text text-muted">
+        <%= raw I18n.t('spree.dash.option_type_filterable_info') %>
+      </small>
+    </div>
+  </div>
+</div>

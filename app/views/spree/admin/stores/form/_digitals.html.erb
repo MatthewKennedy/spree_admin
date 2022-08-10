@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= I18n.t('spree.dash.store.digital_settings.digital_asset_settings') %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <div class="row pb-0">
+      <div class="col-12 col-md-4">
+        <%= f.field_container :digital_asset_authorized_clicks do %>
+          <%= f.text_field :digital_asset_authorized_clicks, class: 'form-control', required: true, placeholder: (raw I18n.t('spree.dash.store.digital_settings.digital_asset_authorized_clicks.authorized_clicks') + required_span_tag) %>
+          <%= f.label :digital_asset_authorized_clicks, (raw I18n.t('spree.dash.store.digital_settings.digital_asset_authorized_clicks.authorized_clicks') + required_span_tag) %>
+        <% end %>
+        <small class="form-text text-muted">
+          <%= I18n.t('spree.dash.store.digital_settings.digital_asset_authorized_clicks.info') %>
+        </small>
+        <%= f.checkbox_container :limit_digital_download_count do %>
+          <%= f.check_box :limit_digital_download_count, class: 'form-check-input' %>
+          <%= f.label :limit_digital_download_count, I18n.t('spree.dash.store.digital_settings.limit_digital_download_count'), class: 'form-check-label' %>
+        <% end %>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <%= f.field_container :digital_asset_authorized_days do %>
+          <%= f.text_field :digital_asset_authorized_days, class: 'form-control', required: true, placeholder: (raw I18n.t('spree.dash.store.digital_settings.digital_asset_authorized_days.authorized_days') + required_span_tag) %>
+          <%= f.label :digital_asset_authorized_days, (raw I18n.t('spree.dash.store.digital_settings.digital_asset_authorized_days.authorized_days') + required_span_tag) %>
+        <% end %>
+        <small class="form-text text-muted">
+          <%= I18n.t('spree.dash.store.digital_settings.digital_asset_authorized_days.info') %>
+        </small>
+        <%= f.checkbox_container :limit_digital_download_days do %>
+          <%= f.check_box :limit_digital_download_days, class: 'form-check-input' %>
+          <%= f.label :limit_digital_download_days, I18n.t('spree.dash.store.digital_settings.limit_digital_download_days'), class: 'form-check-label' %>
+        <% end %>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <%= f.field_container :digital_asset_link_expire_time do %>
+          <%= f.text_field :digital_asset_link_expire_time, class: 'form-control', required: true, placeholder: (raw I18n.t('spree.dash.store.digital_settings.digital_asset_link_expire_time.download_link_expire_time') + required_span_tag) %>
+          <%= f.label :digital_asset_link_expire_time, (raw I18n.t('spree.dash.store.digital_settings.digital_asset_link_expire_time.download_link_expire_time') + required_span_tag) %>
+        <% end %>
+        <small class="form-text text-muted">
+          <%= I18n.t('spree.dash.store.digital_settings.digital_asset_link_expire_time.link_expire_time') %>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

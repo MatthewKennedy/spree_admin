@@ -1,0 +1,26 @@
+<%= search_form_for @search, url: spree.sales_total_admin_reports_path  do |s| %>
+  <div class="form-group date-range-filter">
+    <%= label_tag nil, Spree.t(:date_range) %>
+    <div class="date-range-filter row">
+      <div class="col-12 col-md-6 mb-3 mb-md-0">
+        <%= render partial: 'spree/admin/shared/date_picker_from',  locals: { f: s,
+                                                                              from_field: :created_at_gt,
+                                                                              to_field: :created_at_lt,
+                                                                              value: params[:q][:created_at_gt],
+                                                                              data_max_date: params[:q][:created_at_lt] } %>
+      </div>
+
+      <div class="col-12 col-md-6 mt-3 mt-md-0">
+        <%= render partial: 'spree/admin/shared/date_picker_to',    locals: { f: s,
+                                                                              to_field: :created_at_lt,
+                                                                              from_field: :created_at_gt,
+                                                                              value: params[:q][:created_at_lt],
+                                                                              data_min_date: params[:q][:created_at_gt] } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= button Spree.t(:search), 'search.svg' %>
+  </div>
+<% end %>

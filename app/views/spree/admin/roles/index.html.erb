@@ -1,0 +1,36 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:roles) %>
+<% end %>
+
+<% if @roles.any? %>
+  <div class="table-responsive border rounded bg-white">
+    <table class="table">
+      <thead class="text-muted">
+        <tr data-hook="admin_roles_index_headers">
+          <th><%= Spree.t(:role_id) %></th>
+          <th class="actions text-end">
+            <%= link_to_with_icon(Spree.t(:new_role), new_object_url, class: "btn-secondary btn btn-sm", icon: 'plus-square.svg', data: {turbo_frame: :modal}) if can? :create, Spree::Role %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @roles.each do |role| %>
+          <tr id="<%= dom_id(role) %>" data-hook="admin_roles_index_rows" data-stream-exit-class="animate__fadeOut">
+            <td><%= role.name %></td>
+            <td class="actions">
+              <span class="d-flex justify-content-end">
+                <%= link_to_edit(role, data: { turbo_frame: :modal }) if can? :edit, role %>
+                <%= link_to_delete(role) if can? :destroy, role %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="alert alert-warning">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Role)) %>,
+    <%= link_to(Spree.t(:add_one), new_object_url) if can? :create, Spree::Role %>!
+  </div>
+<% end %>

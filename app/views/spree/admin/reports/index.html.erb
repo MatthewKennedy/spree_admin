@@ -1,0 +1,21 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:reports) %> <%= I18n.t('spree.dash.reports.for', store_name: current_store.unique_name) %>
+<% end %>
+<div class="table-responsive border rounded bg-white">
+  <table class="table">
+    <thead class="text-muted">
+      <tr data-hook="reports_header">
+        <th><%= Spree.t(:name) %></th>
+        <th><%= Spree.t(:description) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.each do |key, value| %>
+      <tr data-hook="reports_row">
+        <td><%= link_to value[:name], send("#{key}_admin_reports_url".to_sym) %></td>
+        <td><%= value[:description] %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

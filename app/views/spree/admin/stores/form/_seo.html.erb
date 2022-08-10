@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= Spree.t(:seo) %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <%= f.field_container :seo_title do %>
+      <%= f.text_field :seo_title, class: 'form-control', placeholder: Spree.t(:seo_title) %>
+      <%= f.label :seo_title, Spree.t(:seo_title) %>
+    <% end %>
+    <%= f.field_container :meta_description do %>
+      <%= f.text_area :meta_description, class: 'form-control', placeholder: Spree.t(:meta_description), style: 'height:150px' %>
+      <%= f.label :meta_description, Spree.t(:meta_description) %>
+    <% end %>
+    <%= f.field_container :meta_keywords do %>
+      <%= f.text_field :meta_keywords, class: 'form-control', placeholder: Spree.t(:meta_keywords) %>
+      <%= f.label :meta_keywords, Spree.t(:meta_keywords) %>
+    <% end %>
+    <%= f.field_container :seo_robots do %>
+      <%= f.text_field :seo_robots, class: 'form-control', placeholder: Spree.t(:seo_robots) %>
+      <%= f.label :seo_robots, Spree.t(:seo_robots) %>
+      <small class="form-text text-muted">
+        <%= raw(I18n.t('spree.dash.store_form.seo_robots')) %>
+      </small>
+    <% end %>
+  </div>
+</div>

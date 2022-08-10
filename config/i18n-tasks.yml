@@ -1,0 +1,21 @@
+base_locale: en
+data:
+  yaml:
+    write:
+      line_width: -1
+
+search:
+  paths:
+    - 'app'
+    - 'lib'
+
+  exclude:
+    - 'app/assets/*'
+    - 'app/javascript/*'
+
+ignore_missing:
+  - 'activerecord*'
+  - 'aria*'
+  - 'date*'
+  - 'number*'
+  - 'views*'

@@ -1,0 +1,52 @@
+<% unless @product.has_variants? %>
+  <%= turbo_frame_tag :product_specifications do %>
+    <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_specifications}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+      <div class="card">
+        <div class="card-header d-flex">
+          <div class="flex-fill">
+            <h5 class="card-title"><%= I18n.t('spree.dash.specifications') %></h5>
+          </div>
+          <div>
+             <%= render partial: 'spree/admin/shared/submit_button' %>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="shipping_specs" class="row">
+            <div class="col-12 col-md-6">
+              <%= f.field_container :weight, data: { hook: "admin_product_form_weight" } do %>
+                <%= f.text_field :weight, value: number_with_precision(@product.weight, precision: 2), data: {controller: "input--format-decimal"} %>
+                <%= f.label :weight, Spree.t(:weight) %>
+              <% end %>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <%= f.field_container :height, data: { hook: "admin_product_form_height" } do %>
+                <%= f.text_field :height, value: number_with_precision(@product.height, precision: 2), data: {controller: "input--format-decimal"} %>
+                <%= f.label :height, Spree.t(:height) %>
+              <% end %>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <%= f.field_container :width, data: { hook: "admin_product_form_width" } do %>
+                <%= f.text_field :width, value: number_with_precision(@product.width, precision: 2), data: {controller: "input--format-decimal"} %>
+                <%= f.label :width, Spree.t(:width) %>
+              <% end %>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <%= f.field_container :depth, data: { hook: "admin_product_form_depth" } do %>
+                <%= f.text_field :depth, value: number_with_precision(@product.depth, precision: 2), data: {controller: "input--format-decimal"} %>
+                <%= f.label :depth, Spree.t(:depth) %>
+              <% end %>
+            </div>
+          </div>
+
+          <%= f.field_container :master_sku, data: { hook: "admin_product_form_sku" }  do %>
+            <%= f.text_field :sku %>
+            <%= f.label :master_sku, Spree.t(:master_sku) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

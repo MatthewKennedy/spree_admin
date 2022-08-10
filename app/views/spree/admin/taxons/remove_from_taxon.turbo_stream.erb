@@ -1,0 +1,9 @@
+<%= turbo_stream.remove dom_id(@object) %>
+
+<% if @taxon.products.empty? %>
+  <%= turbo_stream.append "taxons" do %>
+    <%= render partial: "spree/admin/taxons/instructions" %>
+  <% end %>
+<% end %>
+
+<%= stream_flash_alert(message: I18n.t("spree.dash.taxons.messages.product_removed")) %>

@@ -1,0 +1,54 @@
+<div data-hook="admin_tax_rate_form_fields">
+  <div class="card mb-3" data-hook="tax_rates">
+    <div class="card-header">
+      <h5 class="card-title">
+        <%= Spree.t(:general_settings) %>
+      </h5>
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+      <div class="col-12 col-lg-6">
+        <%= f.field_container :name do %>
+          <%= f.text_field :name, class: 'form-control', placeholder: Spree.t(:name), required: true %>
+          <%= f.label :name, Spree.t(:name) %>
+        <% end %>
+
+        <%= f.field_container :amount do %>
+          <%= f.text_field :amount, class: 'form-control', placeholder: Spree.t(:rate), required: true %>
+          <%= f.label :amount, Spree.t(:rate) %>
+
+          <small class="form-text text-muted">
+            <%= Spree.t(:tax_rate_amount_explanation) %>
+          </small>
+        <% end %>
+
+        <%= f.checkbox_container :show_rate_in_label do %>
+          <%= f.check_box :show_rate_in_label, class: 'form-check-input' %>
+          <%= f.label :show_rate_in_label, Spree.t(:show_rate_in_label), class: 'form-check-label' %>
+        <% end %>
+
+        <%= f.checkbox_container :included_in_price do %>
+          <%= f.check_box :included_in_price, class: 'form-check-input' %>
+          <%= f.label :included_in_price, Spree.t(:included_in_price), class: 'form-check-label' %>
+        <% end %>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <%= f.field_container :zone do %>
+          <%= f.collection_select(:zone_id, @available_zones, :id, :name, {}, {class: 'form-select',data: {controller: 'ts--select'}}) %>
+          <%= f.label :zone, Spree.t(:zone) %>
+        <% end %>
+
+        <%= f.field_container :tax_category_id do %>
+          <%= f.collection_select(:tax_category_id, @available_categories,:id, :name, {}, {class: 'form-select', data: {controller: 'ts--select'}}) %>
+          <%= f.label :tax_category_id, Spree.t(:tax_category) %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%= render 'spree/admin/shared/calculator_fields', f: f %>

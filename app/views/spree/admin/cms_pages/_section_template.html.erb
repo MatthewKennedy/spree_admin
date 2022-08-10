@@ -1,0 +1,16 @@
+<div id="<%= dom_id(section) %>" class="col-12 p-0"
+     data-sortable-update-url="<%= spree.update_position_admin_cms_page_cms_section_path(@cms_page, section) %>" data-stream-exit-class="animate__fadeOut">
+  <div class="row m-0 mb-1 pb-0 border border-secondary bg-white">
+    <div class="col handle d-flex pe-0 truncate align-items-center">
+      <div class="align-self-center overflow-hidden w-100">
+          <h6 class="m-0 truncate"><%= section.name %></h6>
+          <small class="form-text mt-0 text-muted"><%= spree_humanize_type(section.type) %></small>
+      </div>
+    </div>
+
+    <div class="col-auto h-100 d-flex flex-column align-self-sm-stretch p-0 justify-content-between actions cms_section_action_col">
+      <%= link_to_edit(section, url: spree.edit_admin_cms_page_cms_section_path(@cms_page, section)) %>
+      <%= link_to_delete(section, url: spree.admin_cms_page_cms_section_path(@cms_page, section)) if can?(:destroy, section) %>
+    </div>
+  </div>
+</div>

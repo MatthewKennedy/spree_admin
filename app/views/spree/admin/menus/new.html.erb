@@ -1,0 +1,22 @@
+<% content_for :page_title do %>
+  <%= link_to I18n.t('spree.dash.navigation.all_menus'), spree.admin_menus_path %> / <%= I18n.t('spree.dash.navigation.new_menu') %>
+<% end %>
+
+<div class="row">
+    <div class="col-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0"><%= I18n.t('spree.dash.settings') %></h5>
+        </div>
+        <div class="card-body">
+          <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @menu } %>
+          <%= form_with model: [:admin, @menu], builder: Spree::Dash::BootstrapBuilder do |f| %>
+            <%= render partial: 'form', locals: { f: f } %>
+            <div class="d-flex ">
+              <%= render partial: 'spree/admin/shared/new_resource_links' %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

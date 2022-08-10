@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+}
+
+#contentHeader {
+  a {
+    text-decoration: none;
+    margin: 0 5px;
+  }
+}
+
+.admin-img-holder {
+  max-width: 150px;
+  max-height: 150px;
+  border: 2px dashed var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  overflow: hidden;
+  display: inline-block;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+div.admin-product-image-container {
+  border: 1px solid var(--bs-border-color);
+  background-color: var(--bs-gray-100);
+  border-radius: var(--bs-border-radius);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+
+  a {
+    display: flex;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    align-self: center;
+    transform: scale(1.6);
+  }
+
+  svg {
+    color: var(--bs-gray-600);
+    align-self: center;
+  }
+
+  &.mini-img {
+    border-radius: calc(var(--bs-border-radius) / 2);
+    width: 30px;
+    height: 30px;
+  }
+
+  &.small-img {
+    border-radius: var(--bs-border-radius);
+    width: 50px;
+    height: 50px;
+  }
+
+  &.medium-img {
+    border-radius: var(--bs-border-radius);
+    width: 75px;
+    height: 75px;
+  }
+
+  &.product-img, .large-img {
+    border-width: 2px;
+    border-radius: calc(var(--bs-border-radius) * 2);
+    width: 100px;
+    height: 100px;
+  }
+
+  &.xl-img {
+    border-width: 3px;
+    border-radius: calc(var(--bs-border-radius) * 3);
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.js-remove-promo-rule-option-value {
+  color: var(--bs-primary) !important;
+}
+
+.button_to {
+  display: inline-block;
+}
+
+.move-handle {
+  width: 40px;
+  height: 40px;
+  cursor: grab;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-show-info] {
+  color: var(--bs-primary);
+  cursor: pointer;
+}
+
+#contentHeaderRow {
+  min-height: 51px;
+}
+
+[data-stream-exit-class] {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+dialog#customTurboConfirm {
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+}
+
+
+#formActionButtons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 990;
+  border-top: 1px solid rgb(235, 235, 235);
+  background: white;
+  width: 100%;
+  text-align: center;
+}

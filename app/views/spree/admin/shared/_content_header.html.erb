@@ -1,0 +1,46 @@
+<div id="contentHeader" class="row mb-3 position-fixed top-0 <%= "tabsAndActions" if content_for?(:page_tabs) %>">
+  <% if content_for?(:page_title) || content_for?(:page_actions) %>
+    <div class="contentHeader col <%= "d-flex align-items-center" unless content_for?(:page_tabs) %>">
+      <div class="container">
+        <div class="d-flex align-items-center my-2 w-100">
+
+          <% if content_for?(:page_title) %>
+            <h4 class="px-0 mb-0 col d-flex align-items-center">
+              <%= yield :page_title %>
+            </h4>
+          <% end %>
+
+          <!-- We are keeping the empty <div> tags in DOM for turbo stream target -->
+          <div id="pageActions" class="page-actions ps-0 pe-0 d-none d-lg-flex col-auto" data-hook="toolbar">
+            <% if content_for?(:page_actions) %>
+              <%= yield :page_actions %>
+            <% end %>
+          </div>
+        </div>
+
+        <% if content_for?(:page_tabs) %>
+          <div class="d-flex my-2 align-items-center" data-nav-x-wrapper>
+            <div data-nav-x-container class="w-100 p-0">
+              <ul id="spreePageTabs" class="nav nav-pills flex-nowrap" data-nav-x-content>
+                <%= yield :page_tabs %>
+              </ul>
+            </div>
+
+            <button class="nav-x_Advancer nav-x_Advancer_Left" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+              </svg>
+            </button>
+
+            <button class="nav-x_Advancer nav-x_Advancer_Right" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </button>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
+</div>

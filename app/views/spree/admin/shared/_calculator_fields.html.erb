@@ -1,0 +1,31 @@
+<div id="calculator_fields" data-hook class="card">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= Spree.t(:calculator) %>
+    </h5>
+  </div>
+
+  <div id="preference-settings" class="card-body" data-controller="input-disable">
+    <div class="form-group form-floating">
+      <%= f.select(:calculator_type, @calculators.map { |c| [c.description, c.name] }, {}, {class: 'form-select',id: 'calc_type', data: {controller: 'ts--select', form_state_target: "watch", action: "change->form-state#checkForChanges change->input-disable#checkForChanges" }}) %>
+      <%= f.label(:calculator_type, Spree.t(:calculator), for: 'calc_type') %>
+    </div>
+
+    <% if !@object.new_record? %>
+      <hr>
+      <div class="form-group">
+        <div class="calculator-settings" data-input-disable-target="container">
+          <%= f.fields_for :calculator do |calculator_form| %>
+            <%= preference_fields @object.calculator, calculator_form %>
+            <%= calculator_form.hidden_field(:id, value: @object.calculator.id, data: {form_state_target: "watch", input_disable_target: "disable" } ) %>
+          <% end %>
+        </div>
+        <% if @object.calculator.respond_to?(:preferences) %>
+          <span class="alert alert-info" role="alert" data-input-disable-target="notice" style="display: none;">
+            <%= I18n.t('spree.dash.calculators.if_you_change_the_calculator') %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

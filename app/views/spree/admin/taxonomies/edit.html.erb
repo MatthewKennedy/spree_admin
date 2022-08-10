@@ -1,0 +1,30 @@
+<% content_for :page_title do %>
+  <%= link_to I18n.t('spree.dash.taxonomies.categories'), spree.admin_taxonomies_path %> / <%= @taxonomy.name %>
+<% end %>
+
+<div id="sortableTreeArea">
+  <div class="row">
+    <div class="col-12">
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="row pb-0">
+            <div class="col d-flex my-1">
+              <%= link_to_with_icon I18n.t('spree.dash.taxonomies.edit_root_taxonomy', name: @taxonomy.root.name ), spree.edit_admin_taxonomy_taxon_path(@taxonomy, @taxonomy.root.id), icon: 'edit.svg', class: 'no-wrap btn btn-light btn-sm align-self-center' %>
+            </div>
+            <div class="col d-flex my-1 justify-content-end">
+              <%= link_to_with_icon I18n.t('spree.dash.taxonomies.add_new_taxon'), spree.new_admin_taxonomy_taxon_path(@taxonomy.id), icon: 'plus-square.svg', class: 'no-wrap btn btn-sm btn-success align-self-center' %>
+            </div>
+          </div>
+        </div>
+
+        <% if @taxonomy.root.present? %>
+        <div id="<%= dom_id(@taxonomy) %>_sortable_tree_area">
+          <%= render 'spree/admin/taxonomies/tree' %>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

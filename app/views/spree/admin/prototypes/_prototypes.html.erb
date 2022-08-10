@@ -1,0 +1,34 @@
+<div class="table-responsive border rounded bg-white">
+  <table class="table table-condensed border rounded">
+    <thead class="text-muted">
+      <tr data-hook="available_header">
+        <th><%= Spree.t(:name) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @prototypes.each do |prototype| %>
+        <tr id="row_<%= prototype.id %>" data-hook="available_row">
+          <td><%= prototype.name %></td>
+          <td class="actions">
+            <span class="d-flex justify-content-end">
+              <%= link_to_with_icon
+                Spree.t(:select),
+                select_admin_prototype_url(prototype),
+                class: 'btn btn-success  btn-sm ajax select_properties_from_prototype',
+                no_text: true,
+                icon: 'save.svg' %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+      <% if @prototypes.empty? %>
+        <tr data-hook="available_none">
+          <td colspan="2">
+            <% Spree.t(:none) %>.
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

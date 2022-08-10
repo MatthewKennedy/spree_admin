@@ -1,0 +1,17 @@
+@import 'global';
+
+// Imports From node_modules
+@import 'bootstrap';
+@import 'bootstrap-icons.scss';
+@import 'tom-select.bootstrap5';
+
+@import 'flatpickr';
+@import 'animate.css';
+@import 'skins/ui/oxide/content';
+@import 'skins/content/default/content';
+
+@import 'components';
+@import 'plugins';
+@import 'shared';
+@import 'views';
+@import 'theme';

@@ -1,0 +1,38 @@
+ <div class="row">
+    <div id="pageSectionsArea" class="col-12">
+      <div class="row g-0">
+        <div id="draggableSectionsHolder" class="col-12 col-md-3 bg-light">
+
+          <% if @cms_page.cms_sections.any? %>
+            <div id="cmsPagesectionsArea"
+                 class="card-body row m-0 p-1 g-0"
+                 data-controller="sortable"
+                 data-sortable-resource-name-value="cms_section"
+                 data-sortable-response-kind-value="turbo-stream">
+              <% @cms_page.cms_sections.each do |section| %>
+                <%= render 'spree/admin/cms_pages/section_template', section: section %>
+              <% end %>
+            </div>
+
+          <% else %>
+            <div class="row">
+              <div class="col-12">
+                <div class="text-center no-objects-found m-5 m-4">
+                  <%= raw I18n.t('spree.dash.cms.no_sections_found_please_add_one') %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="d-none d-md-block col bg-secondary overflow-hidden">
+          <div id="liveViewCont" class="desktopLiveView">
+            <div class="embed-responsive embed-responsive-4by3">
+               <%= render 'iframe_content' %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

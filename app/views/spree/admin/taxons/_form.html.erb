@@ -1,0 +1,146 @@
+<div data-hook="admin_inside_taxon_form">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="card">
+        <div class="card-header">
+           <h5 class="card-title"><%= I18n.t('spree.dash.details') %></h5>
+        </div>
+        <div class="card-body">
+          <%= f.field_container :name do %>
+            <%= f.text_field :name, required: true %>
+            <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+          <% end %>
+
+          <% unless @taxon.new_record? %>
+            <%= f.field_container :permalink do %>
+              <%= f.text_field :permalink_part, value: @permalink_part, required: true %>
+              <%= f.label :permalink, raw(I18n.t('spree.dash.taxons.permalink') + required_span_tag) %>
+              <small class="form-text text-muted">
+                <%= [Spree::Config[:storefront_taxons_path] , @parent_permalink].join('/') + @permalink_part %>
+              </small>
+            <% end %>
+          <% end %>
+
+          <%= f.field_container :description do %>
+            <%= f.text_area :description, data: { controller: "rte" } %>
+            <%= f.label :description, I18n.t('spree.dash.description') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="card">
+        <div class="card-header">
+           <h5 class="card-title"><%= I18n.t('spree.dash.settings') %></h5>
+        </div>
+        <div class="card-body">
+          <%= f.field_container :hide_from_nav, class: ['form-check'] do %>
+            <%= f.check_box :hide_from_nav %>
+            <%= f.label :hide_from_nav, I18n.t('spree.dash.taxons.hide_from_sub_navigation'), class: 'form-check-label' %>
+          <% end %>
+
+          <% if @taxon.new_record? %>
+            <% disabled = false %>
+          <% else %>
+            <% disabled = @taxon.root? %>
+          <% end %>
+
+          <%= f.field_container :parent_id do %>
+            <div class="form-floating">
+              <%= f.select :parent_id, nested_set_options(@taxonomy.taxons, @taxon) {|i| "#{'-' * i.level} #{i.name}" }, { include_blank: false }, { disabled: disabled  } %>
+              <%= f.label :parent_id, I18n.t('spree.dash.navigation.nested_under') %>
+            </div>
+            <small class="form-text text-muted">
+              <%= I18n.t('spree.dash.taxons.nested_under_info') %>
+            </small>
+          <% end %>
+
+          <%= render 'assets_form', f: f %>
+        </div>
+      </div>
+
+      <% unless @taxon.new_record? %>
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title"><%= I18n.t('spree.dash.seo') %></h5>
+          </div>
+          <div class="card-body">
+            <%= f.field_container :meta_title do %>
+              <%= f.text_field :meta_title %>
+              <%= f.label :meta_title, I18n.t('spree.dash.meta_title') %>
+            <% end %>
+
+            <%= f.field_container :meta_description do %>
+              <%= f.text_area :meta_description, style: 'height: 150px' %>
+              <%= f.label :meta_description, I18n.t('spree.dash.meta_description') %>
+            <% end %>
+
+            <%= f.field_container :meta_keywords do %>
+              <%= f.text_field :meta_keywords %>
+              <%= f.label :meta_keywords, I18n.t('spree.dash.meta_keywords') %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header d-flex">
+          <div class="flex-fill">
+            <h5 class="card-title"><%= I18n.t('spree.dash.products.products') %></h5>
+          </div>
+          <div>
+            Add A Product
+          </div>
+        </div>
+        <div class="pb-2">
+          <%= turbo_frame_tag :taxons do %>
+            <% if @taxon.products.empty? %>
+              <%= render 'instructions' %>
+            <% else %>
+              <ul id="taxon_products" class="list-group list-group-flush" data-controller="sortable" data-sortable-resource-name-value="classification">
+                <% @taxon.products.each do |product| %>
+                  <% classification = product.classifications.where(taxon_id: @taxon.id) %>
+
+                  <li id="<%= dom_id(product) %>"
+                      class="list-group-item d-flex flex-row align-items-center px-2"
+                      data-stream-exit-class="animate__fadeOut"
+                      data-sortable-update-url="<%= spree.admin_classification_path(@taxon.id, product.id) %>">
+
+                    <div class="justify-content-center">
+                      <%= render 'spree/admin/shared/drag_handle' %>
+                    </div>
+
+                    <div class="admin-product-image-container small-img m-0 flex-shrink-0">
+                      <% if product.images.any? %>
+                        <% image =  product.images[0] %>
+                        <%= image_tag(main_app.cdn_image_url(image.url(:product))) %>
+                      <% else %>
+                        <%= inline_svg_tag "image.svg", class: "noimage", size: "60% * 60%" %>
+                      <% end %>
+                    </div>
+
+                    <div class="mx-2 flex-fill text-truncate">
+                      <%= product.name %>
+                    </div>
+
+                    <div class="mx-2">
+                      <span class="badge bg-success"><%= product.status %></span>
+                    </div>
+
+                    <div>
+                      <%= link_to_with_icon(:product, spree.remove_from_taxon_admin_product_path(product, taxon_id: @taxon.id ), { class: 'btn btn-outline-danger btn-sm', icon: "x-lg.svg", no_text: true, data: { turbo_method: :patch, action: :remove_from_taxon } }) %>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

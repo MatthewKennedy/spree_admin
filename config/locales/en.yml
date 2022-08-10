@@ -1,0 +1,505 @@
+---
+en:
+  spree:
+    dash:
+      actions:
+        add: Add
+        cancel: Cancel
+        clone: Clone
+        continue: Continue
+        create: Create
+        delete: Delete
+        edit: Edit
+        save: Save
+        update: Update
+      active: Active
+      address:
+        emirate: Emirate
+        post_code: Post Code
+        state_territory: State / Territory
+        street: Street
+      amount: Amount
+      apis: API's
+      are_you_sure_you_want_to: Are you sure you want to %{action} this %{resource}
+      avs_responses:
+        street_address_matches_but_5-digit_and_9_digit_postal_code_do_not_match: Street address matches, but 5-digit and 9-digit postal code do not match.
+        street_address_matches_but_postal_code_not_verified: Street address matches, but postal code not verified.
+      calculators:
+        if_you_change_the_calculator: Click update to save the new calculator.
+      cms:
+        add_new_page: Add New Page
+        add_new_section: Add New Section
+        all_pages: All Pages
+        button_text: Button Text
+        click_create_to_load_new_link: Click the <b>Create</b> button below to save your new page section, and load the section settings.
+        click_update_to_load_new_link: Click the <b>Update</b> button below to load the new section settings.
+        content: Content
+        draft_mode: Draft Mode
+        fit: Fit To
+        full_screen_mode: <span class="exit">Exit </span>Full Screen Mode
+        gutters: Gutters
+        hero:
+          aspect_ratio: Please use an image with the aspect ratio of 12:5 (2400px x 1000px)
+        image_gallery:
+          display_labels: Display labels
+          image_a: Image A
+          image_b: Image B
+          image_c: Image C
+          layout_style: Layout Style
+          square_image: Please use an image with an aspect ratio of 18:13 (1080px x 780px).
+          tall_image: Please use an image with an aspect ratio of 27:40 (1080px x 1600px).
+        link_to_product: Link to Product
+        link_to_taxon: Link to Taxon
+        meta_description: Meta Description
+        meta_title: Meta Title
+        more_page_settings: <span class="more">More</span><span class="less">Less</span> Page Settings
+        new_page: New Page
+        new_section: New section
+        no_sections_found_please_add_one: Add your first section to this page by clicking the <b>+ Add New Section</b> button above.
+        page: Page
+        page_type: Page Type
+        section_type: Section Type
+        set_gutters: Set Gutters
+        side_by_side:
+          image_info: Please use an image with an aspect ratio of 54:35 (1468px x 952px).
+          left_image: Left Image
+          right_image: Right Image
+        subtitle: Subtitle
+        title: Title
+        visible: Visible
+        you_have_no_pages: You have no Pages, click the <b>+ Add New Page</b> button to get started.
+      cms_pages:
+        basic_deatils: Basic Deatils
+        errors:
+          could_not_update_page_visibility: Could not update page visibility
+        new_page_details: New Page Details
+        when_creating_a_new_page_first_give_the_page_a_title_and_select_the_page_type_you_will_then_be_offered_more_options: When creating a new page first give the page a Title, then select the page type, once created you will then be offered more options.
+      cms_sections:
+        errors:
+          position_could_not_be_updated: Position could not be updated
+        hero_image:
+          hero_image_info: Hero image info
+      copy_to_clipboard: Copy to clipboard
+      count_on_hand: Count on hand
+      countries:
+        add_new_state: Add new state
+        edit_state: Edit state
+        iso: ISO
+        iso3: ISO3
+        iso_name: ISO Name
+        states: States
+      country_rule:
+        label: Label
+      create_platform_application: Create platform application
+      create_webhook_subscriber: Create webhook subscriber
+      created_at: Created At
+      currency: Currency
+      customer: Customer
+      customer_details_updated: Customer details updated
+      dashboard: Dashboard
+      date: Date
+      default: Default
+      default_country: Default country
+      delete: Delete
+      description: Description
+      details: Details
+      digitals:
+        add_new_file: Add a new digital asset.
+        downloads_reset: Digital Download Links Reset
+        no_digital_assets_added: No digital assets.
+        reset_download_links: Reset Digital Download Links
+      display: Display
+      display_on:
+        back_end: Admin Panel
+        both: All
+        front_end: Storefront
+      download_sdk: Download SDK
+      ends_at: Ends at
+      errors:
+        error_reposition_failed: Error reposition failed
+        messages:
+          blank: Blank
+          cannot_remove_icon: Cannot remove icon
+      execution_time: Execution Time
+      filter: Filter
+      filters: Filters
+      kind: Kind
+      language: Language
+      learn_more: Learn more
+      limit_usage_to: Limit usage to
+      location: Location
+      make_sure_the_above_reimbursement_amount_is_correct: Make sure the above reimbursement amount is correct
+      match_choices:
+        all: All
+        none: None
+      meta_description: Meta description
+      meta_keywords: Meta keywords
+      meta_title: Meta title
+      name: Name
+      navigation:
+        add_new_item: Add New Item
+        add_new_menu: Add New Menu
+        all_menus: All Menus
+        click_create_to_load_new_link: Click the <b>Create</b> button below to change the link field.
+        click_update_to_load_new_link: Click the <b>Update</b> button below to change the link field.
+        code: Code
+        default_menus_info:
+          body: Default menus are menus whose language matches the associated store's default language.<br><br> <h5>Example</h5>If you have a store that uses Spanish as the default language but also offers the options of German and French; your default header menu for this store would be set to use <b>Español (es)</b> for the language and <b>Header</b> as the location.<br><br> <h5>Why Are Default Menus Important?</h5> Default menus are displayed to your visitor if no menu is available in the current language they are browsing. It is recommended that you create a default menu for each menu location within each store.<br><br> <h5>More Information</h5>To learn more about menus, view the official Spree user documentation by <a href='https://guides.spreecommerce.org/user/navigation/building_the_main_menu.html' target='_blank' class='alert-link'>clicking here</a>.
+          title: Default Menus
+        image_alt_text: Add alt text to your image
+        information:
+          item_type: 'Menu items with the Type: ''Link'' are used for linking to web pages. Menu items set to Type: ''Container'' are used to group links, giving structure to your menu.'
+        item_type: Item Type
+        link_settings: Link Settings
+        link_to: Link To
+        link_to_info: Link to Pages, Products, Taxons or external URL's.
+        menu_items: "%{menu_name} Items"
+        menus: Menus
+        move_could_not_be_saved: 'ERROR: This move could not be saved.'
+        nested_under: Nested Under
+        nested_under_info: Quickly nest your Menu Item if you already know where it needs to be.
+        new_menu: New Menu
+        new_menu_item: New Menu Item
+        no_menu_items: "<b>%{menu}</b> has no items. Click the <b>Add New Item</b> button to begin adding links to this menu."
+        open_link_in_new_window: Open this link in a new window
+        public_details: Public Details
+        search_for_a_page: Search for a page
+        search_for_a_product: Search for a Product
+        search_for_a_taxon: Search for a Taxon
+        search_taxons: Search taxons
+        set_a_code: Adding a code is optional but can be useful if you need to identify this menu item. When building the Spree main menu use the code <b>category</b> or <b>promo</b> to create the containers that organize links and promotions appropriately. To learn more view the documentation by <a href='https://guides.spreecommerce.org/user/navigation/add_menu_items.html' target='_blank' class='alert-link'>clicking here</a>.
+        settings: Settings
+        subtitle: Subtitle
+        this_link_takes_you_to_your_stores_home_page: This link takes you to your stores home page.
+        type: Type
+        url: URL
+        url_info: The URL field can link to an external website using <b>https://example.com</b>, link to an otherwise unreachable internal path using <b>/policies/privacy</b>, launch an email client using <b>mailto:sales@example.com</b> or used to create a clickable phone number with <b>tel:123456789</b>
+        you_have_no_menus: You have no Menus, click the Add New Menu button to create your first Menu.
+      no_message_set: No message set
+      no_payment_provider_settings_message: No payment provider settings message
+      not_applicable: Not applicable
+      note: Note
+      notice_messages:
+        icon_removed: Icon removed
+        prices_saved: Prices saved
+        product_cloned: Product cloned
+        product_not_cloned: Product not cloned
+      oauth_applications:
+        client_id: Client ID
+        client_secret: Client secret
+        list: oAuth applications
+        new: New oAuth application
+        scope: Scope
+      option_type_filterable_info: When an option type is filterable, your storefront visitors are presented with the option to filter a collection of products based on the option type. A typical example of this would be to filter clothing by size and color.<br><br><b>Please Note:</b> Filters will only be visible in the storefront taxons that contain products with this option type set.
+      option_types: Option types
+      options:
+        add_option_value: Add Option Value
+        values:
+          this_option_types: This Option Type has no values, click the Add Option Value button to begin adding values.
+      order:
+        add: Add
+        add_a_shipment_to_this_order_to_begin_adding_items: Add a new shipping location to this order, and then add products to the shipment. Ideally, choose the location nearest the delivery address for faster and cheaper delivery.
+        add_user_to_order: Add this User to the Order
+        currency: Currency
+        customer: Customer
+        email_copy_of_invoice_to_customer: Send Invoice
+        from: from
+        instructions:
+          cart: Add a customer or products to the order via the Shipment section.
+        mark_as_shipped: Mark as Shipped
+        order: order
+        products: Products
+        resend_shipping_confirmation_email: Resend Shipping Confirmation Email
+        search_for_a_product_or_variant: Search for products by name or SKU.
+        search_users_by_name_or_email: Search users by name or email.
+        set_order_currency: Set Order Currency
+        the_order_currency_is_locked_once_items_are_added: The currency of this order is locked.
+        tracking_number: Tracking Number
+      order_state:
+        address: Address
+        awaiting_return: Awaiting return
+        canceled: Cancelled
+        cart: Cart
+        complete: Complete
+        confirm: Confirm
+        delivery: Delivery
+        payment: Payment
+        resumed: Resumed
+        returned: Returned
+      orders:
+        abandoned_checkouts: Abandoned Checkouts
+        all_orders: All Orders
+        draft_orders: Draft Orders
+      organization: Organization
+      payment: Payment
+      payment_states:
+        balance_due: Balance due
+        credit_owed: Credit owed
+        failed: Failed
+        paid: Paid
+        void: Void
+      payments:
+        gateway:
+          cvc: CVC
+      platform_api: Platform API
+      presentation: Presentation
+      product:
+        has_variants: Has variants
+      product_kinds:
+        digital: Digital
+        physical: Physical
+      product_rule:
+        choose_products: Choose products
+        label: Label
+      products:
+        active: Active
+        add_a_new_option_value: Add a new option value
+        add_a_new_property: Add a new property
+        add_first_property: This product has no Properties, click the Add New Property button above to begin adding properies.
+        add_new_properties_from_prototype: Add new properties from prototype
+        add_new_property: Add new property
+        add_stock: Add stock
+        all: All
+        archived: Archived
+        cost_price: Cost price
+        create_your_first_variant_for_this_product: Create your first variant for this product
+        deleted: Deleted
+        draft: Draft
+        errors:
+          cost_currency_could_not_be_updated: Cost currency could not be updated. %{error}
+          could_not_remove_from_taxon: Could not remove from taxon
+          promotionable_could_not_be_updated: Promotionable could not be updated. %{error}
+          status_could_not_be_updated: 'Status could not be updated. Reason: %{error}'
+        images: Images
+        international_pricing: International pricing
+        messages:
+          product_cost_currency_updated_successfully: Product cost currency updated successfully
+          product_is_not_promotable: Product is not promotable
+          product_is_promotable: Product is promotable
+          product_status_updated_to: Product status updated to
+        new_product_details: New product details
+        new_product_master_price: 'Price: %{currency_iso} - (%{currency_symbol})'
+        overview: Overview
+        price_now: Price now
+        price_was: Price was
+        pricing: Pricing
+        products: Products
+        properties: Properties
+        select_from_prototype: Select from prototype
+        stock: Stock
+        variants: Variants
+      promotion_cloned: Promotion cloned
+      promotion_not_cloned: Promotion not cloned
+      promotions:
+        organizations: Organizations
+        promotions: Promotions
+      properties: Properties
+      quantity: Quantity
+      receive_stock: Receive stock
+      reports:
+        for: For %{store_name}
+      request_errors: Request Errors
+      response_code: Response Code
+      risk: Risk
+      risky: Risky
+      safe: Safe
+      search: Search
+      seo: SEO
+      settings: Settings
+      settings_menu:
+        countries: Countries
+        details: Details
+        refund_reasons: Refund Reasons
+        reimbursement_types: Reimbursement Types
+        return_reasons: Return Reasons
+        roles: Roles
+        shipping_categories: Shipping Categories
+        shipping_methods: Shipping methods
+        store_credit_categories: Store Credit
+        tax_categories: Tax Categories
+        tax_rates: Tax Rates
+        zones: Zones
+      shipment: Shipment
+      shipment_states:
+        backorder: Backorder
+        canceled: Cancelled
+        partial: Partial
+        pending: Pending
+        ready: Ready
+        shipped: Shipped
+        void: Void
+      shipments: Shipments
+      shipping_categories:
+        new_shipping_category: New shipping category
+      shipping_methods:
+        categories: Setting Categories
+        categories_info: Choose what categories this shipping method is used for.
+        code: Code
+        code_info: Adding a code to your shipping method helps integrations and other APIs identify the shipping method.
+        display: Display
+        display_info: Select where this shipping method is shown, on the storefront, admin or both.
+        internal_name: Internal name
+        internal_name_info: Set an internal name for this shipping method.
+        tracking_url: Tracking url
+        tracking_url_info: Set a tracking URL that will be sent along with the tracking number when a customer receives their shipping confirmation email.
+      size: Size
+      sku: Sku
+      slug: Slug
+      specifications: Specifications
+      spree_administration: Spree administration
+      starting_from: Starting from
+      status: Status
+      stock_transfer:
+        errors:
+          must_have_variant: Must have variant
+          variants_unavailable: Variants unavailable
+      store:
+        digital_settings:
+          digital_asset_authorized_clicks:
+            authorized_clicks: Authorized Download Count
+            info: Number of times a download link can be clicked.
+          digital_asset_authorized_days:
+            authorized_days: Authorized Download Days
+            info: The number of days a purchase can be downloaded after purchase.
+          digital_asset_link_expire_time:
+            download_link_expire_time: Download Link Expire Time
+            link_expire_time: Set the expire time of each download link. (seconds).
+          digital_asset_settings: Digital Asset Settings
+          limit_digital_download_count: Limit Download Count
+          limit_digital_download_days: Limit Download Days
+      store_credit:
+        errors:
+          cannot_change_used_store_credit: Cannot change used store credit
+          unable_to_create: Unable to create
+          unable_to_delete: Unable to delete
+          unable_to_update: Unable to update
+      store_errors:
+        unable_to_create: Unable to create
+        unable_to_delete: Unable to delete
+        unable_to_update: Unable to update
+      store_form:
+        checkout_zone_help: Selecting zone will limit to which Countries or States products are shipped. For more information <a href='https://guides.spreecommerce.org/user/configuration/configuring_geography.html#zones' target='_blank' class='alert-link'>please see documentation</a>
+        code_help: Store unique identifier, which is an abbreviated version of the store’s name (used as the layout directory name, and also helpful for separating templates by store)
+        currencies_help: You can accept payments in multiple currencies. Each product and product variant can have different price in different currency
+        customer_support_email_help: This email is visible to your Store visitors in the Footer section
+        default_country_help: This is the Country that will be pre-selected on the Checkout Address form
+        default_language: Default language
+        footer_help: This content is visible in the footer section of your Store
+        locales_help: Install <a href='https://github.com/spree-contrib/spree_i18n' target='_blank' class='alert-link'>Spree I18n extension</a> to add more locales
+        look_and_feel: Look and feel
+        mail_from_address_help: This is the email which will be the sender of all your Store emails (Order Confirmation, Shipment notification etc)
+        new_order_notifications_email_help: If you want to receive an email notification every time someone places an Order please provide an email address for that notification to be sent to
+        seo_robots: Please check <a href='https://developers.google.com/search/reference/robots_meta_tag' target='_blank'>this page for more help</a>
+        social_help: If you want to link to your social accounts in the footer part of your website please fill below fields
+        supported_languages: Supported languages
+      storefront_api: Storefront API
+      stores:
+        store: Store
+      successful: Successful
+      tab:
+        applications: Applications
+        apps: Apps
+        catalog: Catalog
+        categories: Categories
+        content: Content
+        customer_returns: Customer Returns
+        dashboard: Dashboard
+        home: Home
+        integrations: Integrations
+        logout: Logout
+        navigation: Navigation
+        orders: Orders
+        pages: Pages
+        returns: Returns
+        stock: Stock
+        tax_and_shipping: Tax & Shipping
+      tax_and_shipping: Tax & Shipping
+      taxon_rule:
+        choose_taxons: Choose taxons
+        label: Label
+      taxonomies:
+        add_new_taxon: Add a new Category
+        categories: Categories
+        edit_root_taxonomy: Edit %{name}
+        no_taxons: "<b>%{taxonomy}</b> has no Sub Categories. Click the <b>Add a new Category</b> button, to begin."
+      taxons:
+        hide_from_sub_navigation: Hide from sub navigation
+        messages:
+          product_removed: Product removed
+        nested_under_info: Nest this Taxon within the Taxonomy tree.
+        permalink: Permalink
+        taxons: Taxons
+        use_the_search_box_above_to_search_for_taxons: Use the search box above to search for a Taxon.
+      this_order_has_already_received_a_refund: This order has already received a refund
+      time: Time
+      total: Total
+      url: URL
+      user:
+        available_store_credit: User has %{amount} in Store Credit available.
+        no_store_credit: User has no Store Credit available.
+        store_credits: Store Credits
+      user_rule:
+        choose_users: Choose users
+      utilities:
+        preview: Preview %{name}
+      variant: Variant
+      webhooks:
+        subscribers:
+          addresses: Addresses
+          all_events: All Events
+          assets: Assets
+          cms_pages: CMS Pages
+          cms_section_images: CMS Section Images
+          credit_cards: Credit Cards
+          customer_returns: Customer Returns
+          digital_links: Digital Links
+          digitals: Digitals
+          events: Events
+          inventory_units: Inventory Units
+          line_items: Line Items
+          menu_items: Menu Items
+          menus: Menus
+          new_webhooks_subscriber: New Webhooks Subscriber
+          no_events: No Events
+          option_types: Option Types
+          option_values: Option Values
+          orders: Orders
+          payment_capture_events: Payment Capture Events
+          payments: Payments
+          prices: Prices
+          products: Products
+          promotions: Promotions
+          properties: Properties
+          prototypes: Prototypes
+          refunds: Refunds
+          reimbursements: Reimbursements
+          return_authorizations: Return Authorizations
+          return_items: Return Items
+          roles: Roles
+          select_events: Select events
+          shipments: Shipments
+          shipping_categories: Shipping Categories
+          shipping_methods: Shipping Methods
+          shipping_rates: Shipping Rates
+          stock_items: Stock Items
+          stock_locations: Stock Locations
+          stock_movements: Stock Movements
+          stock_transfers: Stock Transfers
+          store_credits: Store Credits
+          stores: Stores
+          subscribe_to_all_events: Subscribe to all events
+          subscribers: Webhooks Subscribers
+          subscription_details: Subscription details
+          subscription_settings: Subscription settings
+          subscriptions: Subscriptions
+          tax_categories: Tax Categories
+          tax_rates: Tax Rates
+          taxon_images: Taxon Images
+          taxonomies: Taxonomies
+          taxons: Taxons
+          time_of_last_event: Time of Last Event
+          variants: Variants
+          webhooks_events: Webhooks Events
+          wished_items: Wished Items
+          wishlists: Wishlists
+          zones: Zones

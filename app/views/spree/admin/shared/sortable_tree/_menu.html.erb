@@ -1,0 +1,31 @@
+<% menu = parent_resource %>
+<% item = child_resource %>
+
+<div id="<%= dom_id(item) %>" class="sortable-tree-item-row d-flex flex-nowrap p-1 align-items-center" data-stream-exit-class="animate__fadeOut">
+  <%= render 'spree/admin/shared/drag_handle' %>
+
+  <div class="d-flex align-items-center overflow-hidden w-100">
+    <div class="overflow-hidden">
+      <%= item.name %><br>
+      <% if item.link.present? %>
+        <span class="badge rounded-pill bg-light bg-light-muted-text">-> <%= item.link %></span>
+      <% end %>
+      <small class="form-text text-muted mt-0">
+        <%= "#{I18n.t('spree.dash.navigation.type')}: #{item.item_type}" %>
+        <%= "| #{I18n.t('spree.dash.navigation.code')}: #{item.code}" if item.code.present? %>
+      </small>
+    </div>
+    <% if item.icon.present? %>
+      <div class="ms-2">
+        <div class="item_image_holder">
+          <%= image_tag main_app.cdn_image_url(item.icon.attachment) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex align-items-center space-buttons px-2">
+    <%= link_to_edit(item, url: spree.edit_admin_menu_menu_item_path(menu, item)) %>
+    <%= link_to_delete(item, url: spree.admin_menu_menu_item_path(menu, item)) if can?(:destroy, item) %>
+  </div>
+</div>

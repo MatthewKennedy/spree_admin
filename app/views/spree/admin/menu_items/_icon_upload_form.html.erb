@@ -1,0 +1,14 @@
+<% unless @menu_item.icon.new_record? %>
+  <div>
+    <%= link_to Spree.t(:remove_image), remove_icon_admin_menu_menu_item_path(@menu, @menu_item), method: :delete %>
+  </div>
+   <div class="admin-img-holder m-auto">
+     <%= image_tag(main_app.cdn_image_url(@menu_item.icon.attachment)) %>
+   </div>
+<% end %>
+
+<%= f.field_container :icon_attachment do %>
+  <div id="<%= "MenuItemImageButton" unless @menu_item.icon.new_record? %>">
+    <%= ff.file_field :attachment %>
+  </div>
+<% end %>

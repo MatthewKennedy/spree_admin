@@ -1,0 +1,29 @@
+<%
+  @edit_url = spree.edit_admin_order_adjustment_path(@order, adjustment)
+  @delete_url = spree.admin_order_adjustment_path(@order, adjustment)
+%>
+
+<tr id="<%= dom_id(adjustment) %>" class="<%= adjustment.eligible? ? 'eligible' : 'ineligible' %>" data-hook="adjustment_row" data-stream-exit-class="animate__fadeOut">
+  <td>
+    <%= display_adjustable(adjustment.adjustable) %>
+  </td>
+  <td>
+    <%= adjustment.label %>
+  </td>
+  <td class="text-center">
+    <%= adjustment.display_amount.to_html %>
+  </td>
+  <td class="text-center">
+    <span class="text-lowercase badge rounded-pill bg-<%= adjustment.state %>">
+      <%= I18n.t("spree.dash.state_machine_states.#{adjustment.state}") %>
+    </span>
+  </td>
+  <td class="actions">
+    <span class="d-flex justify-content-center">
+      <% if adjustment.open? %>
+        <%= link_to_edit(adjustment) if can?(:edit, adjustment) %>
+        <%= link_to_delete(adjustment) if can?(:delete, adjustment) %>
+      <% end %>
+    </span>
+  </td>
+</tr>
