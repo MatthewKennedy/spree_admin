@@ -45,7 +45,7 @@ describe "Edit Homepage", type: :feature do
       expect(page).to have_text("English (US)")
     end
 
-    it "allows user to toggle visability" do
+    it "allows user to toggle visibility" do
       expect(page).to have_text("Visible")
 
       find(:xpath, '//*[@id="cms_page_visible"]/..').click

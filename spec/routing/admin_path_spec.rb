@@ -3,7 +3,7 @@ require "spec_helper"
 module Spree
   module Admin
     RSpec.describe "AdminPath", type: :routing do
-      it "shoud route to admin by default" do
+      it "should route to admin by default" do
         expect(spree.admin_path).to eq("/admin")
       end
 
