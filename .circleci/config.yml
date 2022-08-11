@@ -9,14 +9,13 @@ defaults: &defaults
     BUNDLE_PATH: ~/spree_admin/vendor/bundle
   working_directory: ~/spree_admin
   docker:
-    - image: &ruby_image circleci/ruby:2.7-node-browsers
+    - image: &ruby_image cimg/ruby:2.7-node-browsers
     - image: &redis_image circleci/redis:6.2-alpine
-    - image: &node_image cimg/node:18.7.0
 
 defaults_3_0: &defaults_3_0
   <<: *defaults
   docker:
-    - image: &ruby_3_0_image circleci/ruby:3.0-node-browsers
+    - image: &ruby_3_0_image cimg/ruby:3.0-node-browsers
     - image: *redis_image
 
 run_tests: &run_tests
@@ -148,7 +147,6 @@ jobs:
     docker:
       - image: *ruby_image
       - image: *redis_image
-      - image: *node_image
       - image: &postgres_image circleci/postgres:12-alpine
         environment:
           POSTGRES_USER: postgres
@@ -161,7 +159,6 @@ jobs:
       - image: *ruby_3_0_image
       - image: *ruby_3_0_image
       - image: *postgres_image
-      - image: *node_image
 
   tests_mysql: &tests_mysql
     <<: *run_tests
@@ -175,7 +172,6 @@ jobs:
     docker:
       - image: *ruby_image
       - image: *redis_image
-      - image: *node_image
       - image: &mysql_image circleci/mysql:8-ram
 
 workflows:
