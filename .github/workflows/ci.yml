@@ -15,14 +15,14 @@ jobs:
     strategy:
       matrix:
         ruby: ['3.0']
-        gemfile:
-          # - rails_6_0
-          # - rails_6_1
-          - rails_7
-          #- rails_main
-    env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
-      # BUNDLE_PATH_RELATIVE_TO_CWD: true
+    #     gemfile:
+    #       - rails_6_0
+    #       - rails_6_1
+    #       - rails_7
+    #       - rails_main
+    # env:
+    #   BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+    #   # BUNDLE_PATH_RELATIVE_TO_CWD: true
 
     services:
       postgres:
@@ -43,7 +43,7 @@ jobs:
       - name: Set up Node v14
         uses: actions/setup-node@v3
         with:
-            node-version: '14'
+            node-version: 16
 
       - name: Set up Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
