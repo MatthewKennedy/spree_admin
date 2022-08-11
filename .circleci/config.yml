@@ -97,8 +97,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - spree-admin-bundle-v10-ruby-2-7-{{ .Branch }}
-            - spree-admin-bundle-v10-ruby-2-7
+            - spree-admin-bundle-v11-ruby-2-7-{{ .Branch }}
+            - spree-admin-bundle-v11-ruby-2-7
       - run:
           name: Install libvips
           command: sudo apt update && sudo apt-get install libvips
@@ -112,7 +112,7 @@ jobs:
       - save_cache:
           paths:
             - vendor/bundle
-          key: spree-admin-bundle-v10-ruby-2-7-{{ checksum "Gemfile.lock" }}
+          key: spree-admin-bundle-v11-ruby-2-7-{{ checksum "Gemfile.lock" }}
 
   bundle_ruby_3_0:
     <<: *defaults_3_0
@@ -120,8 +120,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - spree-admin-bundle-v10-ruby-3-0-{{ .Branch }}
-            - spree-admin-bundle-v10-ruby-3-0
+            - spree-admin-bundle-v11-ruby-3-0-{{ .Branch }}
+            - spree-admin-bundle-v11-ruby-3-0
       - run:
           name: Install libvips
           command: sudo apt update && sudo apt-get install libvips
@@ -135,7 +135,7 @@ jobs:
       - save_cache:
           paths:
             - vendor/bundle
-          key: spree-admin-bundle-v10-ruby-3-0-{{ checksum "Gemfile.lock" }}
+          key: spree-admin-bundle-v11-ruby-3-0-{{ checksum "Gemfile.lock" }}
 
   tests_postgres: &tests_postgres
     <<: *run_tests
