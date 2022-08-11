@@ -45,13 +45,7 @@ namespace :spree_admin do
       if ENV["LIB_NAME"] == "spree/admin"
         $stdout.puts "Installing Spree Admin node dependencies..."
 
-        if ENV["CI_NAME"] == "CIRCLE_CI"
-          $stdout.puts "LOOOK OUTWARDS"
-          system("yarn add file:./../../spree_admin")
-          $stdout.puts "LOOOK OUTWARDS"
-        else
-          system("yarn add file:./../../spree_admin")
-        end
+        system("yarn add file:./../../../spree_admin")
 
         $stdout.puts "Adding Spree Admin assets after @Spree/admin is installed by yarn..."
         ENV["RAILS_ENV"] = "development"
