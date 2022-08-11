@@ -91,28 +91,28 @@ run_tests_3_0: &run_tests_3_0
           path: /tmp/test-artifacts
 
 jobs:
-  # bundle:
-  #   <<: *defaults
-  #   steps:
-  #     - checkout
-  #     - restore_cache:
-  #         keys:
-  #           - spree-admin-bundle-v10-ruby-2-7-{{ .Branch }}
-  #           - spree-admin-bundle-v10-ruby-2-7
-  #     - run:
-  #         name: Install libvips
-  #         command: sudo apt-get install libvips
-  #     - run:
-  #         name: Set bundle path
-  #         command: bundle config --local path vendor/bundle
-  #     - run:
-  #         name: Bundle Install
-  #         command: |
-  #           bundle check || bundle install
-  #     - save_cache:
-  #         paths:
-  #           - vendor/bundle
-  #         key: spree-admin-bundle-v10-ruby-2-7-{{ checksum "Gemfile.lock" }}
+  bundle:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - spree-admin-bundle-v10-ruby-2-7-{{ .Branch }}
+            - spree-admin-bundle-v10-ruby-2-7
+      - run:
+          name: Install libvips
+          command: sudo apt-get install libvips
+      - run:
+          name: Set bundle path
+          command: bundle config --local path vendor/bundle
+      - run:
+          name: Bundle Install
+          command: |
+            bundle check || bundle install
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: spree-admin-bundle-v10-ruby-2-7-{{ checksum "Gemfile.lock" }}
 
   bundle_ruby_3_0:
     <<: *defaults_3_0
@@ -178,7 +178,7 @@ workflows:
   version: 2
   main:
     jobs:
-      - bundle
+      # - bundle
       - bundle_ruby_3_0
       - tests_postgres_ruby_3_0:
           requires:
