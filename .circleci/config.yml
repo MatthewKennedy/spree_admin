@@ -15,7 +15,7 @@ defaults: &defaults
 defaults_3_0: &defaults_3_0
   <<: *defaults
   docker:
-    - image: &ruby_3_0_image cimg/ruby:3.0-node-browsers
+    - image: &ruby_3_0_image cimg/ruby:3.0.4-node-browsers
     - image: *redis_image
 
 run_tests: &run_tests
