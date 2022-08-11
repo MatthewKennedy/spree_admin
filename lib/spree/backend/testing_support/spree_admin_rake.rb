@@ -44,7 +44,7 @@ namespace :spree_admin do
     unless ["spree/api", "spree/core", "spree/sample"].include?(ENV["LIB_NAME"])
       if ENV["LIB_NAME"] == "spree/admin"
         $stdout.puts "Installing Spree Admin node dependencies..."
-        system("yarn add file:./spree_admin")
+        system("yarn add file:./../spree_admin")
         system("yarn link @spree/admin")
         system("yarn")
 
