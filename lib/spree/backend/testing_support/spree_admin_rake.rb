@@ -47,6 +47,7 @@ namespace :spree_admin do
 
         if ENV["CI_NAME"] == "CIRCLE_CI"
           system("ls")
+          system("cd ../../.. && ls")
           system("cd ../../spec/dummy && yarn add file:./spree_admin")
         else
           system("yarn add file:../../spree_admin")
