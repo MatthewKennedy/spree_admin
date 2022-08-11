@@ -1,58 +1,67 @@
-# ---
-# name: CI
+---
+name: CI
 
-# on:
-#   pull_request:
-#     branches:
-#       - '*'
-#   push:
-#     branches:
-#       - main
-# jobs:
-#   # POSTGRES
-#   postgres:
-#     runs-on: ubuntu-latest
-#     strategy:
-#       matrix:
-#         ruby: ['3.0']
-#         gemfile:
-#           # - rails_6_0
-#           # - rails_6_1
-#           - rails_7
-#           #- rails_main
-#     env:
-#       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
-#       # BUNDLE_PATH_RELATIVE_TO_CWD: true
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - main
+jobs:
+  # POSTGRES
+  postgres:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ['3.0']
+        gemfile:
+          # - rails_6_0
+          # - rails_6_1
+          - rails_7
+          #- rails_main
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+      # BUNDLE_PATH_RELATIVE_TO_CWD: true
 
-#     services:
-#       postgres:
-#         image: postgres:12
-#         env:
-#           POSTGRES_USER: postgres
-#           POSTGRES_PASSWORD: postgres
-#           POSTGRES_DB: spree_admin
-#         ports: ['5432:5432']
-#         options: >-
-#           --health-cmd pg_isready
-#           --health-interval 10s
-#           --health-timeout 5s
-#           --health-retries 5
-#     steps:
-#       - uses: actions/checkout@v3
-#       - name: Set up Ruby ${{ matrix.ruby }}
-#         uses: ruby/setup-ruby@v1
-#         with:
-#           ruby-version: ${{ matrix.ruby }}
-#           bundler-cache: true
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: spree_admin
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
 
-#       - name: Install libvips
-#         run: sudo apt-get install -y libvips
+      - name: Set up Node v14
+      - uses: actions/setup-node@v3
+        with:
+            node-version: '14'
 
-#       - name: Run tests
-#         env:
-#           DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/spree_admin
-#           RAILS_ENV: test
-#           DB: postgresql
-#         run: |
-#           bundle exec rake test_app
-#           bundle exec rspec spec/lib
+      - name: Set up Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: actions-setup-redis
+        uses: shogo82148/actions-setup-redis@v1.19.0
+
+      - name: Install libvips
+        run: sudo apt-get install -y libvips
+
+      - name: Run tests
+        env:
+          DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/spree_admin
+          RAILS_ENV: test
+          DB: postgresql
+        run: |
+          bundle exec rake test_app
+          bundle exec rspec spec/lib
