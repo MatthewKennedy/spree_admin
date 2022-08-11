@@ -47,7 +47,8 @@ namespace :spree_admin do
 
         if ENV["CI_NAME"] == "CIRCLE_CI"
           $stdout.puts "LOOOK OUTWARDS"
-          system("cd ../../../../ && ls")
+          system("cd ../../../ && ls")
+          $stdout.puts "LOOOK OUTWARDS"
           # system("cd ../../spec/dummy && yarn add file:./spree_admin")
         else
           system("yarn add file:../../spree_admin")
