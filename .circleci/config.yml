@@ -42,9 +42,9 @@ run_tests: &run_tests
         command: |
           bundle exec rake test_app
     - run:
-        name: Unlink NPM package
+        name: Link Local @spree/admin
         command: |
-          cd spec/dummy && yarn unlink @spree/admin
+          yarn add file:./../../../spree_admin
     - run:
           name: Run Rspec
           command: |
@@ -82,9 +82,9 @@ run_tests_3_0: &run_tests_3_0
         command: |
           bundle exec rake test_app
     - run:
-        name: Unlink NPM package
+        name: Link Local @spree/admin
         command: |
-          cd spec/dummy && yarn unlink @spree/admin
+           yarn add file:./../../../spree_admin
     - run:
           name: Run Rspec
           command: |
