@@ -2,8 +2,6 @@
 
 source "https://rubygems.org"
 
-gem "spree", github: "spree/spree", branch: "main"
-
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw]
 gem "actionmailer", "~> 7.0.0", require: false
 gem "actionpack", "~> 7.0.0", require: false
