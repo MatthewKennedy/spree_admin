@@ -37,20 +37,27 @@ namespace :spree_admin do
 
     unless ["spree/api", "spree/core", "spree/sample", "spree/emails"].include?(ENV["LIB_NAME"])
       $stdout.puts "Setting up node environment"
-      # system("bin/rails javascript:install:esbuild")
-      # system("bin/rails turbo:install")
+      system("bin/rails javascript:install:esbuild")
+      system("bin/rails turbo:install")
     end
 
     unless ["spree/api", "spree/core", "spree/sample"].include?(ENV["LIB_NAME"])
       if ENV["LIB_NAME"] == "spree/admin"
-        # $stdout.puts "Installing Spree Admin node dependencies..."
-        # system("yarn add file:./../../../spree_admin")
-        # system("yarn link @spree/admin")
-        # system("yarn")
+        $stdout.puts "Installing Spree Admin node dependencies..."
+        system("yarn add file:./../../../spree_admin")
+        system("yarn link @spree/admin")
+        system("yarn")
+
+        $stdout.puts "Adding Spree Admin assets after @Spree/admin is installed by yarn..."
+        ENV["RAILS_ENV"] = "development"
+
+        system("bin/rails g spree:backend:install")
+
+        ENV["RAILS_ENV"] = "test"
       end
 
       $stdout.puts "Precompiling assets..."
-      # system("bundle exec rake assets:precompile")
+      system("bundle exec rake assets:precompile")
     end
   end
 
