@@ -46,6 +46,7 @@ namespace :spree_admin do
         $stdout.puts "Installing Spree Admin node dependencies..."
 
         system("yarn add file:./../../../spree_admin")
+        system("yarn build")
 
         $stdout.puts "Adding Spree Admin assets after @Spree/admin is installed by yarn..."
         ENV["RAILS_ENV"] = "development"
