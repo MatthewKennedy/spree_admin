@@ -8,18 +8,18 @@ defaults: &defaults
     BUNDLE_RETRY: 3
     BUNDLE_PATH: ~/spree_admin/vendor/bundle
   working_directory: ~/spree_admin
-  docker:
-    - image: &redis_image circleci/redis:6.2-alpine
 
 defaults_2_7: &defaults_2_7
   <<: *defaults
   docker:
     - image: &ruby_2_7_image cimg/ruby:2.7-browsers
+    - image: *redis_image
 
 defaults_3_0: &defaults_3_0
   <<: *defaults
   docker:
     - image: &ruby_3_0_image cimg/ruby:3.0-browsers
+    - image: *redis_image
 
 run_tests_2_7: &run_tests_2_7
   <<: *defaults_2_7
@@ -147,6 +147,20 @@ jobs:
           paths:
             - vendor/bundle
           key: spree-admin-bundle-v12-ruby-3-0-{{ checksum "Gemfile.lock" }}
+
+  tests_postgres: &tests_postgres
+    <<: *run_tests_2_7
+    environment: &postgres_environment
+      <<: *environment
+      DB: postgres
+      DB_HOST: localhost
+      DB_USERNAME: postgres
+    docker:
+      - image: *ruby_2_7_image
+      - image: *redis_image
+      - image: &postgres_image circleci/postgres:12-alpine
+        environment:
+          POSTGRES_USER: postgres
 
   tests_postgres_ruby_3_0: &tests_postgres_ruby_3_0
     <<: *run_tests_3_0
