@@ -31,7 +31,6 @@ module Spree
           "A" => I18n.t("spree.dash.avs_responses.street_address_matches_but_5-digit_and_9_digit_postal_code_do_not_match"),
           "B" => I18n.t("spree.dash.avs_responses.street_address_matches_but_postal_code_not_verified"),
           # TODO MSK translate these
-          "B" => "Street address matches, but postal code not verified.",
           "C" => "Street address and postal code do not match.",
           "D" => "Street address and postal code match. ",
           "E" => "AVS data is invalid or AVS is not allowed for this card type.",

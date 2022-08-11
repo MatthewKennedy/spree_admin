@@ -15,7 +15,6 @@ namespace :spree_admin do
     Rails.env = "test"
 
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
-
     Spree::InstallGenerator.start [
       "--lib_name=#{ENV["LIB_NAME"]}",
       "--auto-accept",
