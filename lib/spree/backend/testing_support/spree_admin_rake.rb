@@ -49,13 +49,11 @@ namespace :spree_admin do
     end
 
     unless ["spree/api", "spree/core", "spree/sample"].include?(ENV["LIB_NAME"])
-      if ENV["LIB_NAME"] == "spree/backend"
-        $stdout.puts "Installing Spree Backend node dependencies..."
-        system("yarn add file:./../../../spree_backend")
-        system("yarn link @spree/dash")
-        system("yarn install")
-
-        File.write("config/initializers/assets.rb", "Rails.application.config.assets.paths << Rails.root.join('node_modules')", mode: "a+")
+      if ENV["LIB_NAME"] == "spree/admin"
+        $stdout.puts "Installing Spree Admin node dependencies..."
+        system("yarn add file:./../../../spree_admin")
+        # system("yarn link @spree/admin")
+        system("yarn")
       end
 
       $stdout.puts "Precompiling assets..."
