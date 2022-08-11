@@ -35,6 +35,8 @@ namespace :spree_admin do
     Spree::DummyModelGenerator.start
     system("bundle exec rake db:migrate")
 
+    system("bundle install")
+
     unless ["spree/api", "spree/core", "spree/sample", "spree/emails"].include?(ENV["LIB_NAME"])
       $stdout.puts "Setting up node environment"
       system("bin/rails javascript:install:esbuild")

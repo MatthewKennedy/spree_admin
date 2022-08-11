@@ -32,4 +32,6 @@ Gem::Specification.new do |s|
   s.add_dependency "spree", ">= 4.4.0"
   s.add_dependency "sprockets", "~> 4.0"
   s.add_dependency "turbo-rails"
+
+  s.add_development_dependency "appraisal"
 end
