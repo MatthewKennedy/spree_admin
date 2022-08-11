@@ -13,9 +13,11 @@ module Spree
         end
 
         def install
-          template "app/javascript/spree_admin.js"
-          template "vendor/assets/stylesheets/spree/backend/all.css"
-          template "app/assets/stylesheets/spree/backend/admin.scss"
+          unless ENV["RAILS_ENV"] == "test"
+            template "app/javascript/spree_admin.js"
+            template "vendor/assets/stylesheets/spree/backend/all.css"
+            template "app/assets/stylesheets/spree/backend/admin.scss"
+          end
         end
       end
     end

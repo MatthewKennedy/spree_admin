@@ -15,6 +15,7 @@ namespace :spree_admin do
     Rails.env = "test"
 
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
+
     Spree::InstallGenerator.start [
       "--lib_name=#{ENV["LIB_NAME"]}",
       "--auto-accept",
@@ -40,20 +41,19 @@ namespace :spree_admin do
       system("bin/rails turbo:install")
     end
 
-    begin
-      require "generators/#{ENV["LIB_NAME"]}/install/install_generator"
-      $stdout.puts "Running extension installation generator..."
-      "#{ENV["LIB_NAME"].camelize}::Generators::InstallGenerator".constantize.start(["--auto-run-migrations"])
-    rescue LoadError
-      $stdout.puts "Skipping installation no generator to run..."
-    end
-
     unless ["spree/api", "spree/core", "spree/sample"].include?(ENV["LIB_NAME"])
       if ENV["LIB_NAME"] == "spree/admin"
         $stdout.puts "Installing Spree Admin node dependencies..."
         system("yarn add file:./../../../spree_admin")
-        # system("yarn link @spree/admin")
+        system("yarn link @spree/admin")
         system("yarn")
+
+        $stdout.puts "Adding Spree Admin assets after @Spree/admin is installed by yarn..."
+        ENV["RAILS_ENV"] = "development"
+
+        system("bin/rails g spree:backend:install")
+
+        ENV["RAILS_ENV"] = "test"
       end
 
       $stdout.puts "Precompiling assets..."
