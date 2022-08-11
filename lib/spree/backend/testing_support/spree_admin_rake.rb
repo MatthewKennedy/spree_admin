@@ -46,7 +46,7 @@ namespace :spree_admin do
         $stdout.puts "Installing Spree Admin node dependencies..."
 
         if ENV["CI_NAME"] == "CIRCLE_CI"
-          $stdout.puts "LOOOK OUTWARDS"
+          $stdout.puts "LOOOK OUTWARDS!"
           system("cd ../../ && ls")
           $stdout.puts "LOOOK OUTWARDS"
           # system("cd ../../spec/dummy && yarn add file:./spree_admin")
