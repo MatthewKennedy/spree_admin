@@ -14,6 +14,13 @@ namespace :spree_admin do
     ENV["RAILS_ENV"] = "test"
     Rails.env = "test"
 
+    if ENV['LIB_NAME'] == 'spree/admin'
+      puts 'Preparing NPM package...'
+      system('yarn install')
+      system('yarn build')
+      system('yarn link')
+    end
+
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
     Spree::InstallGenerator.start [
       "--lib_name=#{ENV["LIB_NAME"]}",
