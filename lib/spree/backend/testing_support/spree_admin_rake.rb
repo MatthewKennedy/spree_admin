@@ -45,7 +45,9 @@ namespace :spree_admin do
       if ENV["LIB_NAME"] == "spree/admin"
         $stdout.puts "Installing Spree Admin node dependencies..."
 
-        unless ENV["CI_NAME"] == "CIRCLE_CI"
+        if ENV["CI_NAME"] == "CIRCLE_CI"
+          system("ls")
+        else
           system("yarn add file:../../spree_admin")
         end
 
