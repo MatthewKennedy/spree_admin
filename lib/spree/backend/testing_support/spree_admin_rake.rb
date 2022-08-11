@@ -36,6 +36,7 @@ namespace :spree_admin do
 
     unless ["spree/api", "spree/core", "spree/sample", "spree/emails"].include?(ENV["LIB_NAME"])
       $stdout.puts "Setting up node environment"
+      system("bundle exec install")
       system("bin/rails javascript:install:esbuild")
       system("bin/rails turbo:install")
     end
