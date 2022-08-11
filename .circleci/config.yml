@@ -44,7 +44,7 @@ run_tests: &run_tests
     - run:
         name: Link Local @spree/admin
         command: |
-          yarn add file:./../../spree/vendor/bundle/spree_admin
+          ls
     - run:
           name: Run Rspec
           command: |
