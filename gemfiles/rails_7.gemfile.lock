@@ -511,6 +511,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   actionmailer (~> 7.0.0)
