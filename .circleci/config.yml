@@ -12,10 +12,6 @@ base_defaults: &base_defaults
     BUNDLE_PATH: ~/spree_admin/vendor/bundle
   working_directory: ~/spree_admin
 
-defaults_redis_07: &defaults_redis_07
-  docker:
-    - image: cimg/redis:7.0
-
 defaults_2_7: &defaults_2_7
   <<: *base_defaults
   docker:
@@ -32,9 +28,9 @@ defaults_3_0: &defaults_3_0
 ##########################
 # Ruby 2.7
 run_tests_2_7: &run_tests_2_7
-  <<:
-    - *defaults_2_7
-    - *defaults_redis_07
+  <<: *defaults_2_7
+  docker:
+    - image: &redis_image cimg/redis:7.0
   parallelism: 8
   steps:
     - checkout
@@ -67,9 +63,9 @@ run_tests_2_7: &run_tests_2_7
 
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
-  <<:
-    - *defaults_3_0
-    - *defaults_redis_07
+  <<: *defaults_3_0
+  docker:
+    - image: *redis_image
   parallelism: 8
   steps:
     - checkout
