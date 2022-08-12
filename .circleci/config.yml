@@ -49,24 +49,25 @@ run_tests_2_7: &run_tests_2_7
         command: |
           bundle check || bundle install
     - run:
-        name: Create Test App
-        command: |
-          bundle exec rake test_app
-    - run:
         name: Specify Test Spliiter
         command: |
-          TESTFILES=$(circleci tests glob "/spec/!(dummy)/**/*_spec.rb" | circleci tests split --split-by=timings)
-    - run:
-        name: Run Tests
-        command: |
-          bundle exec rspec --format documentation \
-                            --format RspecJunitFormatter \
-                            -o ~/rspec/rspec.xml \
-                            -- ${TESTFILES}
-    - store_test_results:
-        path: ~/rspec
-    - store_artifacts:
-        path: /tmp/test-artifacts
+          TESTFILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+    # - run:
+    #     name: Create Test App
+    #     command: |
+    #       bundle exec rake test_app
+
+    # - run:
+    #     name: Run Tests
+    #     command: |
+    #       bundle exec rspec --format documentation \
+    #                         --format RspecJunitFormatter \
+    #                         -o ~/rspec/rspec.xml \
+    #                         -- ${TESTFILES}
+    # - store_test_results:
+    #     path: ~/rspec
+    # - store_artifacts:
+    #     path: /tmp/test-artifacts
 
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
