@@ -1,25 +1,37 @@
 version: 2.1
 
-defaults: &defaults
+############
+# Defaults #
+############
+base_defaults: &base_defaults
   environment: &environment
     CIRCLE_TEST_REPORTS: /tmp/test-results
     CIRCLE_ARTIFACTS: /tmp/test-artifacts
     BUNDLE_JOBS: 4
     BUNDLE_RETRY: 3
-    BUNDLE_PATH: ~/spree/vendor/bundle
-  working_directory: ~/spree
+    BUNDLE_PATH: ~/spree_admin/vendor/bundle
+  working_directory: ~/spree_admin
   docker:
-    - image: &ruby_image circleci/ruby:2.7-node-browsers
-    - image: &redis_image circleci/redis:6.2-alpine
+    - image: &redis_image cimg/redis:7.0
 
-defaults_3_0: &defaults_3_0
-  <<: *defaults
+defaults_2_7: &defaults_2_7
+  <<: *base_defaults
   docker:
-    - image: &ruby_3_0_image circleci/ruby:3.0-node-browsers
+    - image: &ruby_2_7_image cimg/ruby:2.7-browsers
     - image: *redis_image
 
-run_tests: &run_tests
-  <<: *defaults
+defaults_3_0: &defaults_3_0
+  <<: *base_defaults
+  docker:
+    - image: &ruby_3_0_image cimg/ruby:3.0-browsers
+    - image: *redis_image
+
+#############
+# Run Tests #
+#############
+# Ruby 2.7
+run_tests_2_7: &run_tests_2_7
+  <<: *defaults_2_7
   parallelism: 8
   steps:
     - checkout
@@ -29,35 +41,32 @@ run_tests: &run_tests
           - spree-admin-bundle-v10-ruby-2-7
     - run:
         name: Install libvips
-        command: sudo apt-get install libvips
+        command: sudo apt update && sudo apt-get install libvips
     - run:
-          name: Set bundle path
-          command: bundle config --local path vendor/bundle
+        name: Set bundle path
+        command: bundle config --local path vendor/bundle
     - run:
-          name: Ensure bundle Install
-          command: |
-            bundle check || bundle install
+        name: Ensure bundle Install
+        command: |
+          bundle check || bundle install
     - run:
-        name: Create test app
+        name: Create Test App
         command: |
           bundle exec rake test_app
     - run:
-        name: Unlink NPM package
+        name: Run Rspec
+        command: |
+          bundle exec rspec spec/lib
+    - run:
+        name: Unlink @spree/admin NPM package
         command: |
           cd spec/dummy && yarn unlink @spree/admin
-    - run:
-          name: Run Rspec
-          command: |
-            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            bundle exec rspec --format documentation \
-                              --format RspecJunitFormatter \
-                              -o ~/rspec/rspec.xml \
-                              -- ${TESTFILES}
     - store_test_results:
-          path: ~/rspec
+        path: ~/rspec
     - store_artifacts:
-          path: /tmp/test-artifacts
+        path: /tmp/test-artifacts
 
+# Ruby 3.0
 run_tests_3_0: &run_tests_3_0
   <<: *defaults_3_0
   parallelism: 8
@@ -69,47 +78,46 @@ run_tests_3_0: &run_tests_3_0
           - spree-admin-bundle-v10-ruby-3-0
     - run:
         name: Install libvips
-        command: sudo apt-get install libvips
+        command: sudo apt update && sudo apt-get install libvips
     - run:
-          name: Set bundle path
-          command: bundle config --local path vendor/bundle
+        name: Set bundle path
+        command: bundle config --local path vendor/bundle
     - run:
-          name: Ensure bundle Install
-          command: |
-            bundle check || bundle install
+        name: Ensure bundle Install
+        command: |
+          bundle check || bundle install
     - run:
-        name: Create test app
+        name: Create Test App
         command: |
           bundle exec rake test_app
     - run:
-        name: Unlink NPM package
+        name: Run Rspec
+        command: |
+          bundle exec rspec spec/lib
+    - run:
+        name: Unlink @spree/admin NPM package
         command: |
           cd spec/dummy && yarn unlink @spree/admin
-    - run:
-          name: Run Rspec
-          command: |
-            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            bundle exec rspec --format documentation \
-                              --format RspecJunitFormatter \
-                              -o ~/rspec/rspec.xml \
-                              -- ${TESTFILES}
     - store_test_results:
-          path: ~/rspec
+        path: ~/rspec
     - store_artifacts:
-          path: /tmp/test-artifacts
+        path: /tmp/test-artifacts
 
+########
+# Jobs #
+########
 jobs:
-  bundle:
-    <<: *defaults
+  bundle_ruby_2_7:
+    <<: *defaults_2_7
     steps:
       - checkout
       - restore_cache:
           keys:
-            - spree-admin-bundle-v10-ruby-2-7-{{ .Branch }}
-            - spree-admin-bundle-v10-ruby-2-7
+            - spree-admin-bundle-v12-ruby-2-7-{{ .Branch }}
+            - spree-admin-bundle-v12-ruby-2-7
       - run:
           name: Install libvips
-          command: sudo apt-get install libvips
+          command: sudo apt update && sudo apt-get install libvips
       - run:
           name: Set bundle path
           command: bundle config --local path vendor/bundle
@@ -120,7 +128,7 @@ jobs:
       - save_cache:
           paths:
             - vendor/bundle
-          key: spree-admin-bundle-v10-ruby-2-7-{{ checksum "Gemfile.lock" }}
+          key: spree-admin-bundle-v12-ruby-2-7-{{ checksum "Gemfile.lock" }}
 
   bundle_ruby_3_0:
     <<: *defaults_3_0
@@ -128,11 +136,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - spree-admin-bundle-v10-ruby-3-0-{{ .Branch }}
-            - spree-admin-bundle-v10-ruby-3-0
+            - spree-admin-bundle-v12-ruby-3-0-{{ .Branch }}
+            - spree-admin-bundle-v12-ruby-3-0
       - run:
           name: Install libvips
-          command: sudo apt-get install libvips
+          command: sudo apt update && sudo apt-get install libvips
       - run:
           name: Set bundle path
           command: bundle config --local path vendor/bundle
@@ -143,33 +151,38 @@ jobs:
       - save_cache:
           paths:
             - vendor/bundle
-          key: spree-admin-bundle-v10-ruby-3-0-{{ checksum "Gemfile.lock" }}
+          key: spree-admin-bundle-v12-ruby-3-0-{{ checksum "Gemfile.lock" }}
 
-  tests_postgres: &tests_postgres
-    <<: *run_tests
+  ####################
+  # Database Configs #
+  ####################
+  # PG Ruby 2.7
+  tests_postgres_ruby_2_7:
+    <<: *run_tests_2_7
     environment: &postgres_environment
       <<: *environment
       DB: postgres
       DB_HOST: localhost
       DB_USERNAME: postgres
     docker:
-      - image: *ruby_image
+      - image: *ruby_2_7_image
       - image: *redis_image
-      - image: &postgres_image circleci/postgres:12-alpine
+      - image: &postgres_image cimg/postgres:14.4
         environment:
           POSTGRES_USER: postgres
-
-  tests_postgres_ruby_3_0: &tests_postgres_ruby_3_0
+  # PG Ruby 3.0
+  tests_postgres_ruby_3_0:
     <<: *run_tests_3_0
     environment:
       <<: *postgres_environment
     docker:
       - image: *ruby_3_0_image
-      - image: *postgres_image
       - image: *redis_image
+      - image: *postgres_image
 
-  tests_mysql: &tests_mysql
-    <<: *run_tests
+  # MYSQL Ruby 2.7
+  tests_mysql_ruby_2_7:
+    <<: *run_tests_2_7
     environment: &mysql_environment
       <<: *environment
       DB: mysql
@@ -178,19 +191,31 @@ jobs:
       COVERAGE: true
       COVERAGE_DIR: /tmp/workspace/simplecov
     docker:
-      - image: *ruby_image
+      - image: *ruby_2_7_image
       - image: *redis_image
-      - image: &mysql_image circleci/mysql:8-ram
+      - image: &mysql_image cimg/mysql:8.0
+  # MYSQL Ruby 3.0
+  tests_mysql_ruby_3_0:
+    <<: *run_tests_3_0
+    environment:
+      <<: *mysql_environment
+    docker:
+      - image: *ruby_2_7_image
+      - image: *redis_image
+      - image: *mysql_image
 
+#################
+# Run Workflows #
+#################
 workflows:
   version: 2
   main:
     jobs:
-      - bundle
+      - bundle_ruby_2_7
       - bundle_ruby_3_0
       - tests_postgres_ruby_3_0:
           requires:
             - bundle_ruby_3_0
-      - tests_mysql:
+      - tests_mysql_ruby_2_7:
           requires:
-            - bundle
+            - bundle_ruby_2_7

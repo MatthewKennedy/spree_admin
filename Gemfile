@@ -56,7 +56,6 @@ end
 group :development do
   gem "solargraph"
   gem "erb_lint"
-  gem "appraisal"
 end
 
 spree_opts = {github: "spree/spree", branch: "main"}

@@ -14,8 +14,14 @@ namespace :spree_admin do
     ENV["RAILS_ENV"] = "test"
     Rails.env = "test"
 
-    Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
+    if ENV["LIB_NAME"] == "spree/admin"
+      puts "Preparing NPM package..."
+      system("yarn install")
+      system("yarn build")
+      system("yarn link")
+    end
 
+    Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
     Spree::InstallGenerator.start [
       "--lib_name=#{ENV["LIB_NAME"]}",
       "--auto-accept",
@@ -35,6 +41,8 @@ namespace :spree_admin do
     Spree::DummyModelGenerator.start
     system("bundle exec rake db:migrate")
 
+    system("bundle install")
+
     unless ["spree/api", "spree/core", "spree/sample", "spree/emails"].include?(ENV["LIB_NAME"])
       $stdout.puts "Setting up node environment"
       system("bin/rails javascript:install:esbuild")
@@ -44,11 +52,12 @@ namespace :spree_admin do
     unless ["spree/api", "spree/core", "spree/sample"].include?(ENV["LIB_NAME"])
       if ENV["LIB_NAME"] == "spree/admin"
         $stdout.puts "Installing Spree Admin node dependencies..."
+
         system("yarn add file:./../../../spree_admin")
         system("yarn link @spree/admin")
-        system("yarn")
+        system("yarn install")
 
-        $stdout.puts "Adding Spree Admin assets after @Spree/admin is installed by yarn..."
+        $stdout.puts "Adding Spree Admin assets after @spree/admin installed by yarn..."
         ENV["RAILS_ENV"] = "development"
 
         system("bin/rails g spree:backend:install")
