@@ -7,7 +7,7 @@
         </th>
         <th><%= Spree.t(:name) %></th>
         <th class="actions text-end">
-          <%= link_to_with_icon(I18n.t('spree.dash.taxonomies.add_new_taxon'), new_object_url, class: "btn-light btn btn-sm", icon: 'plus-square.svg', id: 'admin_new_taxonomy_link', data: {turbo_frame: :modal}) if can?(:create, Spree::Taxonomy) %>
+          <%= link_to_with_icon(I18n.t('spree.admin.taxonomies.add_new_taxon'), new_object_url, class: "btn-light btn btn-sm", icon: 'plus-square.svg', id: 'admin_new_taxonomy_link', data: {turbo_frame: :modal}) if can?(:create, Spree::Taxonomy) %>
         </th>
       </tr>
     </thead>

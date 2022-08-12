@@ -9,7 +9,7 @@ describe "Menus Index", type: :feature do
     end
 
     it "prompts the user to create a menu" do
-      expect(page).to have_text I18n.t("spree.dash.navigation.you_have_no_menus")
+      expect(page).to have_text I18n.t("spree.admin.navigation.you_have_no_menus")
     end
   end
 
@@ -45,7 +45,7 @@ describe "Menus Index", type: :feature do
     end
 
     it "does not prompt you to create your first menu" do
-      expect(page).not_to have_text I18n.t("spree.dash.navigation.you_have_no_menus")
+      expect(page).not_to have_text I18n.t("spree.admin.navigation.you_have_no_menus")
     end
 
     describe "when filtering", js: true do

@@ -4,7 +4,7 @@
       <%= spree_humanize_type(@cms_section.type) %>
     </h5>
     <p>
-      <%= I18n.t('spree.dash.cms_sections.hero_image.hero_image_info') %>
+      <%= I18n.t('spree.admin.cms_sections.hero_image.hero_image_info') %>
     </p>
   </div>
 </div>
@@ -13,26 +13,26 @@
   <div class="col-12 col-md-6">
     <%= f.field_container :title do %>
       <%= f.text_field :title %>
-      <%= f.label :title, I18n.t('spree.dash.cms.title') %>
+      <%= f.label :title, I18n.t('spree.admin.cms.title') %>
     <% end %>
 
     <%= f.field_container :button_text do %>
       <%= f.text_field :button_text %>
-      <%= f.label :button_text, I18n.t('spree.dash.cms.button_text') %>
+      <%= f.label :button_text, I18n.t('spree.admin.cms.button_text') %>
     <% end %>
 
     <div class="row">
       <div class="col-6">
         <%= f.field_container :fit do %>
           <%= f.select(:fit, @cms_section.boundaries, {include_blank: false}) %>
-          <%= f.label :fit, I18n.t('spree.dash.cms.fit') %>
+          <%= f.label :fit, I18n.t('spree.admin.cms.fit') %>
         <% end %>
       </div>
 
       <div class="col-6">
         <%= f.field_container :gutters do %>
           <%= f.select(:gutters, @cms_section.gutters_sizes, {include_blank: false}) %>
-          <%= f.label :gutters, I18n.t('spree.dash.cms.gutters') %>
+          <%= f.label :gutters, I18n.t('spree.admin.cms.gutters') %>
         <% end %>
       </div>
     </div>
@@ -40,7 +40,7 @@
   <div class="col-12 col-md-6 pt-4">
     <% @cms_section.build_image_one unless @cms_section.image_one %>
     <%= render partial: 'image_upload_form', locals: { f: f, image: :image_one } %>
-    <small class="form-text text-muted"><%= I18n.t('spree.dash.cms.hero.aspect_ratio') %></small>
+    <small class="form-text text-muted"><%= I18n.t('spree.admin.cms.hero.aspect_ratio') %></small>
   </div>
   <div class="col-12"><hr></div>
   <div class="col-12 col-md-6">
@@ -48,7 +48,7 @@
       <%= f.select(:linked_resource_type, spree_humanize_dropdown_values('Spree::Cms::Sections::HeroImage',
                                         { const: 'LINKED_RESOURCE_TYPE' }),
                                         {include_blank: false}) %>
-      <%= f.label :linked_resource_type, I18n.t('spree.dash.navigation.link_to') %>
+      <%= f.label :linked_resource_type, I18n.t('spree.admin.navigation.link_to') %>
     <% end %>
   </div>
   <div class="col-12 col-md-6">

@@ -51,7 +51,7 @@ describe "Taxonomies", type: :feature, js: true do
       within_row(1) { click_icon :edit }
       wait_for_turbo
 
-      click_link I18n.t("spree.dash.taxonomies.edit_root_taxonomy", name: tx.name)
+      click_link I18n.t("spree.admin.taxonomies.edit_root_taxonomy", name: tx.name)
       wait_for_turbo
 
       expect(page).not_to(have_selector("select2-hidden-accessible"))

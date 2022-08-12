@@ -38,15 +38,15 @@ module Spree
         @new = @product.duplicate
 
         if @new.persisted?
-          flash[:success] = I18n.t("spree.dash.notice_messages.product_cloned")
+          flash[:success] = I18n.t("spree.admin.notice_messages.product_cloned")
           redirect_to spree.edit_admin_product_url(@new)
         else
-          flash[:error] = I18n.t("spree.dash.notice_messages.product_not_cloned", error: @new.errors.full_messages.to_sentence)
+          flash[:error] = I18n.t("spree.admin.notice_messages.product_not_cloned", error: @new.errors.full_messages.to_sentence)
           redirect_to spree.admin_products_url
         end
       rescue ActiveRecord::RecordInvalid => e
         # Handle error on uniqueness validation on product fields
-        flash[:error] = I18n.t("spree.dash.notice_messages.product_not_cloned", error: e.message)
+        flash[:error] = I18n.t("spree.admin.notice_messages.product_not_cloned", error: e.message)
         redirect_to spree.admin_products_url
       end
 
@@ -67,28 +67,28 @@ module Spree
             format.turbo_stream { render "spree/admin/taxons/remove_from_taxon" }
           end
         else
-          stream_flash_alert(message: I18n.t("spree.dash.products.errors.could_not_remove_from_taxon"), kind: :error)
+          stream_flash_alert(message: I18n.t("spree.admin.products.errors.could_not_remove_from_taxon"), kind: :error)
         end
       end
 
       def update_availability
         if @object.update(status: permitted_resource_params[:status])
         else
-          stream_flash_alert(message: I18n.t("spree.dash.products.errors.status_could_not_be_updated"), kind: :error)
+          stream_flash_alert(message: I18n.t("spree.admin.products.errors.status_could_not_be_updated"), kind: :error)
         end
       end
 
       def update_cost_currency
         if @object.update(cost_currency: permitted_resource_params[:cost_currency])
         else
-          stream_flash_alert(message: I18n.t("spree.dash.products.errors.cost_currency_could_not_be_updated"), kind: :error)
+          stream_flash_alert(message: I18n.t("spree.admin.products.errors.cost_currency_could_not_be_updated"), kind: :error)
         end
       end
 
       def update_promotionable
         if @object.update(promotionable: permitted_resource_params[:promotionable])
         else
-          stream_flash_alert(message: I18n.t("spree.dash.products.errors.promotionable_could_not_be_updated"), kind: :error)
+          stream_flash_alert(message: I18n.t("spree.admin.products.errors.promotionable_could_not_be_updated"), kind: :error)
         end
       end
 

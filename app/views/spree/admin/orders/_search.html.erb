@@ -40,7 +40,7 @@
         <div class="form-group">
           <%= label_tag :q_state_eq, Spree.t(:status) %>
           <%= f.select :state_eq,
-            Spree::Order.state_machines[:state].states.map {|s| [I18n.t("spree.dash.order_state.#{s.name}"), s.value]},
+            Spree::Order.state_machines[:state].states.map {|s| [I18n.t("spree.admin.order_state.#{s.name}"), s.value]},
             { include_blank: true },
             class: 'js-filterable',
             data: {controller: 'ts--select'} %>
@@ -50,14 +50,14 @@
       <div class="col-12 col-lg-4">
         <div class="form-group">
           <%= label_tag :q_payment_state_eq, Spree.t(:payment_state) %>
-          <%= f.select :payment_state_eq, Spree::Order::PAYMENT_STATES.map {|s| [I18n.t("spree.dash.payment_states.#{s}"), s]}, { include_blank: true }, class: 'js-filterable', data: {controller: 'ts--select'} %>
+          <%= f.select :payment_state_eq, Spree::Order::PAYMENT_STATES.map {|s| [I18n.t("spree.admin.payment_states.#{s}"), s]}, { include_blank: true }, class: 'js-filterable', data: {controller: 'ts--select'} %>
         </div>
       </div>
 
       <div class="col-12 col-lg-4">
         <div class="form-group">
           <%= label_tag :q_shipment_state_eq, Spree.t(:shipment_state) %>
-          <%= f.select :shipment_state_eq, Spree::Order::SHIPMENT_STATES.map {|s| [I18n.t("spree.dash.shipment_states.#{s}"), s]}, { include_blank: true }, class: 'js-filterable', data: {controller: 'ts--select'} %>
+          <%= f.select :shipment_state_eq, Spree::Order::SHIPMENT_STATES.map {|s| [I18n.t("spree.admin.shipment_states.#{s}"), s]}, { include_blank: true }, class: 'js-filterable', data: {controller: 'ts--select'} %>
         </div>
       </div>
 

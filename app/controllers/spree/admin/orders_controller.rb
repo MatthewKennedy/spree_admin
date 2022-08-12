@@ -73,7 +73,7 @@ module Spree
 
           redirect_back fallback_location: spree.edit_admin_order_url(@order)
         elsif @order.line_items.empty?
-          @order.errors.add(:line_items, I18n.t("spree.dash.errors.messages.blank"))
+          @order.errors.add(:line_items, I18n.t("spree.admin.errors.messages.blank"))
         end
       end
 
@@ -104,7 +104,7 @@ module Spree
 
       def reset_digitals
         @order.digital_links.each(&:reset!)
-        flash[:notice] = I18n.t("spree.dash.digitals.downloads_reset")
+        flash[:notice] = I18n.t("spree.admin.digitals.downloads_reset")
 
         redirect_back fallback_location: spree.edit_admin_order_url(@order)
       end

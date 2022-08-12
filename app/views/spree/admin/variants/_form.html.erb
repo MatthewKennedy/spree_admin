@@ -35,7 +35,7 @@
       <% end %>
 
       <%= f.field_container :tax_category_id do %>
-        <%= f.collection_select(:tax_category_id, @tax_categories, :id, :name, { include_blank: I18n.t('spree.dash.match_choices.none') }) %>
+        <%= f.collection_select(:tax_category_id, @tax_categories, :id, :name, { include_blank: I18n.t('spree.admin.match_choices.none') }) %>
         <%= f.label :tax_category_id, Spree.t(:tax_category) %>
       <% end %>
 

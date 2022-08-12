@@ -1,8 +1,8 @@
 <%= f.field_container save_to do %>
-  <%= f.label save_to, I18n.t('spree.dash.cms.link_to_taxon') %>
+  <%= f.label save_to, I18n.t('spree.admin.cms.link_to_taxon') %>
   <%= f.select save_to, options_from_collection_for_select([resource], save_to, save_to, resource.send(save_to) || nil), { include_blank: true },
                           id: "cms_section_#{save_to}",
-                          data: { autocomplete_placeholder_value: I18n.t('spree.dash.navigation.search_for_a_taxon'),
+                          data: { autocomplete_placeholder_value: I18n.t('spree.admin.navigation.search_for_a_taxon'),
                                   autocomplete_clear_value: true,
                                   autocomplete_url_value: 'taxons_api_v2',
                                   autocomplete_return_attr_value: 'pretty_name',

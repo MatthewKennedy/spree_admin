@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.dash.navigation.all_menus'), spree.admin_menus_path %> /
+  <%= link_to I18n.t('spree.admin.navigation.all_menus'), spree.admin_menus_path %> /
   <%= link_to @menu.name, spree.edit_admin_menu_path(@menu) %> / <%= @menu_item.name %>
 <% end %>
 

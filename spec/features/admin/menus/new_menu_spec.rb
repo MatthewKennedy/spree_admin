@@ -43,7 +43,7 @@ describe "New Menu", type: :feature do
 
       assert_admin_flash_alert_success('Menu "Main Menu" has been successfully created!')
       expect(page).to have_text "Main Menu has no items. Click the Add New Item button to begin adding links to this menu."
-      expect(page).to have_selector("a", text: I18n.t("spree.dash.navigation.add_new_item"))
+      expect(page).to have_selector("a", text: I18n.t("spree.admin.navigation.add_new_item"))
 
       expect(page).not_to have_css(".translation_missing", visible: :all)
 

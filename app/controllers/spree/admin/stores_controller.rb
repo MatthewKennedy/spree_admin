@@ -17,7 +17,7 @@ module Spree
           flash[:success] = flash_message_for(@store, :successfully_created)
           redirect_to spree.admin_url(domain: @store.url), allow_other_host: true
         else
-          flash[:error] = "#{I18n.t("spree.dash.store_errors.unable_to_create")}: #{@store.errors.full_messages.join(", ")}"
+          flash[:error] = "#{I18n.t("spree.admin.store_errors.unable_to_create")}: #{@store.errors.full_messages.join(", ")}"
           render :new, status: :unprocessable_entity
         end
       end
@@ -28,7 +28,7 @@ module Spree
         if @store.save
           flash[:success] = flash_message_for(@store, :successfully_updated)
         else
-          flash[:error] = "#{I18n.t("spree.dash.store_errors.unable_to_update")}: #{@store.errors.full_messages.join(", ")}"
+          flash[:error] = "#{I18n.t("spree.admin.store_errors.unable_to_update")}: #{@store.errors.full_messages.join(", ")}"
         end
 
         redirect_to spree.edit_admin_store_path(@store)
@@ -41,7 +41,7 @@ module Spree
           flash[:success] = flash_message_for(@store, :successfully_removed)
           redirect_to spree.admin_url(domain: Spree::Store.default.url), allow_other_host: true
         else
-          render plain: "#{I18n.t("spree.dash.store_errors.unable_to_delete")}: #{@store.errors.full_messages.join(", ")}", status: :unprocessable_entity
+          render plain: "#{I18n.t("spree.admin.store_errors.unable_to_delete")}: #{@store.errors.full_messages.join(", ")}", status: :unprocessable_entity
         end
       end
 

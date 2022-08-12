@@ -244,7 +244,7 @@ module Spree
         resource_name = options[:name] || resource.class.name.demodulize
 
         link_to_with_icon(
-          I18n.t("spree.dash.utilities.preview", name: resource_name),
+          I18n.t("spree.admin.utilities.preview", name: resource_name),
           spree_storefront_resource_url(resource),
           class: "btn btn-light animate__animated animate__faster",
           icon: "eye.svg",

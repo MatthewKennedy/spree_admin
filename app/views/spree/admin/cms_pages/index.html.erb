@@ -1,9 +1,9 @@
 <% content_for :page_title do %>
-  <%= I18n.t('spree.dash.cms.all_pages') %>
+  <%= I18n.t('spree.admin.cms.all_pages') %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= link_to_with_icon(I18n.t('spree.dash.cms.add_new_page'), new_object_url, { class: "btn-success btn", icon: 'plus-square.svg', id: 'new_page' }) %>
+  <%= link_to_with_icon(I18n.t('spree.admin.cms.add_new_page'), new_object_url, { class: "btn-success btn", icon: 'plus-square.svg', id: 'new_page' }) %>
 <% end if can?(:create, Spree::CmsPage) %>
 
 <% content_for :table_filter do %>
@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-12 col-lg-4">
           <div class="form-group">
-            <%= f.label :title_cont, I18n.t('spree.dash.cms.title') %>
+            <%= f.label :title_cont, I18n.t('spree.admin.cms.title') %>
             <%= f.text_field :title_cont, size: 15, class: "form-control js-quick-search-target js-filterable" %>
           </div>
         </div>
@@ -44,10 +44,10 @@
 <div class="table-responsive border rounded bg-white">
   <table class="table" id="pagesTable">
     <thead class="text-muted">
-      <th scope="col"><%= I18n.t('spree.dash.cms.title') %></th>
-      <th scope="col"><%= I18n.t('spree.dash.cms.page_type') %></th>
-      <th scope="col"><%= I18n.t('spree.dash.language') %></th>
-      <th scope="col" class="text-center"><%= I18n.t('spree.dash.cms.visible') %></th>
+      <th scope="col"><%= I18n.t('spree.admin.cms.title') %></th>
+      <th scope="col"><%= I18n.t('spree.admin.cms.page_type') %></th>
+      <th scope="col"><%= I18n.t('spree.admin.language') %></th>
+      <th scope="col" class="text-center"><%= I18n.t('spree.admin.cms.visible') %></th>
       <th scope="col" class="text-center"></th>
     </thead>
     <tbody>
@@ -79,6 +79,6 @@
 <%= render 'spree/admin/shared/index_table_options', collection: @cms_pages, simple: true %>
 <% else %>
   <div class="text-center no-objects-found m-5">
-    <%= raw I18n.t('spree.dash.cms.you_have_no_pages') %>
+    <%= raw I18n.t('spree.admin.cms.you_have_no_pages') %>
   </div>
 <% end %>

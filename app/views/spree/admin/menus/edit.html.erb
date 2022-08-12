@@ -1,12 +1,12 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.dash.navigation.all_menus'), spree.admin_menus_path %> / <%= @menu.name %>
+  <%= link_to I18n.t('spree.admin.navigation.all_menus'), spree.admin_menus_path %> / <%= @menu.name %>
 <% end %>
 
 <div class="row">
   <div class="col-12">
     <div class="card mb-3">
       <div class="card-header">
-        <h5 class="mb-0"><%= I18n.t('spree.dash.settings') %></h5>
+        <h5 class="mb-0"><%= I18n.t('spree.admin.settings') %></h5>
       </div>
       <div class="card-body">
         <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @menu } %>
@@ -28,10 +28,10 @@
         <div class="card-header">
           <div class="row pb-0">
             <div class="col d-flex">
-             <h5 class="mb-0 align-self-center"><%= I18n.t('spree.dash.navigation.menu_items', menu_name: @menu.name) %></h5>
+             <h5 class="mb-0 align-self-center"><%= I18n.t('spree.admin.navigation.menu_items', menu_name: @menu.name) %></h5>
             </div>
             <div class="col d-flex justify-content-end">
-              <%= link_to_with_icon I18n.t('spree.dash.navigation.add_new_item', menu: @menu.name), spree.new_admin_menu_menu_item_path(@menu), icon: 'plus-square.svg', class: 'no-wrap btn btn-secondary btn-sm align-self-center' %>
+              <%= link_to_with_icon I18n.t('spree.admin.navigation.add_new_item', menu: @menu.name), spree.new_admin_menu_menu_item_path(@menu), icon: 'plus-square.svg', class: 'no-wrap btn btn-secondary btn-sm align-self-center' %>
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@
                 <% end %>
               <% else %>
                 <div class="text-center no-objects-found m-5 m-5">
-                  <%= raw I18n.t('spree.dash.navigation.no_menu_items', menu: @menu.root.name) %>
+                  <%= raw I18n.t('spree.admin.navigation.no_menu_items', menu: @menu.root.name) %>
                 </div>
               <% end %>
             </div>

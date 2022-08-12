@@ -1,30 +1,30 @@
 <% if can? :admin, current_store %>
   <ul class="nav nav-sidebar" id="sidebarConfiguration">
-    <%= main_menu_tree I18n.t('spree.dash.stores.store'), icon: "shop-window.svg", sub_menu: "configuration", url: "#sidebar-configuration" %>
+    <%= main_menu_tree I18n.t('spree.admin.stores.store'), icon: "shop-window.svg", sub_menu: "configuration", url: "#sidebar-configuration" %>
   </ul>
 <% elsif defined?(current_spree_vendor) && current_spree_vendor.present? %>
   <ul class="nav nav-sidebar" id="sidebarConfiguration">
-    <%= main_menu_tree I18n.t('spree.dash.settings'), icon: "gear-fill.svg", sub_menu: "vendor_configuration", url: "#sidebar-configuration" %>
+    <%= main_menu_tree I18n.t('spree.admin.settings'), icon: "gear-fill.svg", sub_menu: "vendor_configuration", url: "#sidebar-configuration" %>
   </ul>
 <% end %>
 
 <ul class="nav nav-sidebar" id="sidebarTaxAndShipping">
-  <%= main_menu_tree I18n.t('spree.dash.tab.tax_and_shipping'), icon: "truck.svg", sub_menu: "tax_and_shipping", url: "#sidebar-tax-and-shipping" %>
+  <%= main_menu_tree I18n.t('spree.admin.tab.tax_and_shipping'), icon: "truck.svg", sub_menu: "tax_and_shipping", url: "#sidebar-tax-and-shipping" %>
 </ul>
 
 <ul class="nav nav-sidebar" id="sidebarRefundsAndReturns">
-  <%= main_menu_tree I18n.t('spree.dash.tab.returns'), icon: "arrow-return-left.svg", sub_menu: "refunds_and_returns", url: "#sidebar-refunds-and-returns" %>
+  <%= main_menu_tree I18n.t('spree.admin.tab.returns'), icon: "arrow-return-left.svg", sub_menu: "refunds_and_returns", url: "#sidebar-refunds-and-returns" %>
 </ul>
 
 <hr>
 <% if can?(:admin, Spree::Webhooks::Subscriber) || can?(:admin, Spree::PaymentMethod) %>
   <ul class="nav nav-sidebar" id="sidebarIntegrations">
-    <%= main_menu_tree I18n.t('spree.dash.tab.integrations'), icon: "stack.svg", sub_menu: "integrations", url: "#sidebar-integrations" %>
+    <%= main_menu_tree I18n.t('spree.admin.tab.integrations'), icon: "stack.svg", sub_menu: "integrations", url: "#sidebar-integrations" %>
   </ul>
 <% end %>
 
 <% if can? :admin, Spree::OauthApplication %>
   <ul class="nav nav-sidebar" id="sidebarApps">
-    <%= main_menu_tree I18n.t('spree.dash.tab.apps'), icon: "terminal-fill.svg", sub_menu: "apps", url: "#sidebar-apps" %>
+    <%= main_menu_tree I18n.t('spree.admin.tab.apps'), icon: "terminal-fill.svg", sub_menu: "apps", url: "#sidebar-apps" %>
   </ul>
 <% end %>

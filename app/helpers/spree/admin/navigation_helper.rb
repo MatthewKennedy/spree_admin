@@ -49,7 +49,7 @@ module Spree
         titleized_label = if options[:do_not_titleize] == true
           options[:label]
         else
-          # i18n-tasks-use I18n.t('spree.dash.tab.applications')
+          # i18n-tasks-use I18n.t('spree.admin.tab.applications')
           I18n.t(options[:label], default: options[:label], scope: [:spree, :dash, :tab]).titleize
         end
 
@@ -133,7 +133,7 @@ module Spree
 
       def link_to_edit(resource, options = {})
         url = options[:url] || edit_object_url(resource)
-        name = options[:name] || I18n.t("spree.dash.actions.edit")
+        name = options[:name] || I18n.t("spree.admin.actions.edit")
 
         options[:no_text] ||= true
         options[:icon] = "pen.svg"
@@ -144,24 +144,24 @@ module Spree
 
       def link_to_clone(resource, options = {})
         url = options[:url] || clone_object_url(resource)
-        name = options[:name] || I18n.t("spree.dash.actions.clone")
+        name = options[:name] || I18n.t("spree.admin.actions.clone")
 
         options[:no_text] ||= true
         options[:class] ||= "btn btn-light btn-sm"
         options[:icon] = "clone.svg"
-        options[:data] = {turbo_method: :post, turbo_confirm: I18n.t("spree.dash.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
+        options[:data] = {turbo_method: :post, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
         link_to_with_icon(name, url, options)
       end
 
       def link_to_delete(resource, options = {})
         url = options[:url] || object_url(resource)
-        name = options[:name] || I18n.t("spree.dash.actions.delete")
+        name = options[:name] || I18n.t("spree.admin.actions.delete")
 
         options[:no_text] ||= true
         options[:class] ||= "btn btn-sm btn-outline-danger"
         options[:icon] = "delete.svg"
-        options[:data] = {turbo_method: :delete, turbo_confirm: I18n.t("spree.dash.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
+        options[:data] = {turbo_method: :delete, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
         link_to_with_icon(name, url, options)
       end
@@ -185,9 +185,9 @@ module Spree
 
         if button_text.nil?
           button_text = if resource.persisted?
-            I18n.t("spree.dash.actions.update")
+            I18n.t("spree.admin.actions.update")
           else
-            I18n.t("spree.dash.actions.create")
+            I18n.t("spree.admin.actions.create")
           end
         end
 

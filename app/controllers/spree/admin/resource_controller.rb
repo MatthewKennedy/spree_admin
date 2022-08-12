@@ -90,7 +90,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
       successful_reposition_actions
     else
       respond_with(@object) do |format|
-        stream_flash_alert(message: I18n.t("spree.dash.errors.error_reposition_failed"))
+        stream_flash_alert(message: I18n.t("spree.admin.errors.error_reposition_failed"))
       end
     end
   end

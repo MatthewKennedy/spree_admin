@@ -3,13 +3,13 @@
   <div class="card">
     <div class="card-header">
       <h5 class="card-title">
-        <%= I18n.t('spree.dash.details') %>
+        <%= I18n.t('spree.admin.details') %>
       </h5>
     </div>
     <div class="card-body">
       <%= f.field_container :url do %>
         <%= f.text_field :url, class: 'form-control', placeholder: 'https://example.com/endpoint' %>
-        <%= f.label :url, raw(I18n.t('spree.dash.url') + required_span_tag) %>
+        <%= f.label :url, raw(I18n.t('spree.admin.url') + required_span_tag) %>
       <% end %>
 
       <div class="form-check">
@@ -22,7 +22,7 @@
 
   <div class="card">
     <div class="card-header">
-      <h5 class="card-title"><%= I18n.t('spree.dash.webhooks.subscribers.events') %></h5>
+      <h5 class="card-title"><%= I18n.t('spree.admin.webhooks.subscribers.events') %></h5>
     </div>
 
     <div class="card-body" data-controller="panel-switcher">
@@ -32,14 +32,14 @@
                                subscribe_to_all_events?,
                                { class: 'form-check-input',
                                  data: { bs_toggle: "collapse", bs_target: ".allWebhooksPanel.show"} } %>
-          <%= label_tag :subscribe_to_all_events_true, I18n.t('spree.dash.webhooks.subscribers.subscribe_to_all_events'), class: 'form-check-label' %>
+          <%= label_tag :subscribe_to_all_events_true, I18n.t('spree.admin.webhooks.subscribers.subscribe_to_all_events'), class: 'form-check-label' %>
         </div>
         <div class="form-check">
           <%= radio_button_tag :subscribe_to_all_events, false,
                                !subscribe_to_all_events?,
                                { class: 'form-check-input',
                                  data: {bs_toggle: "collapse", bs_target: ".allWebhooksPanel:not(.show)"} } %>
-          <%= label_tag :subscribe_to_all_events_false, I18n.t('spree.dash.webhooks.subscribers.select_events'), class: 'form-check-label' %>
+          <%= label_tag :subscribe_to_all_events_false, I18n.t('spree.admin.webhooks.subscribers.select_events'), class: 'form-check-label' %>
         </div>
 
         <div class="collapse allWebhooksPanel <%= "show" if !subscribe_to_all_events? %>">

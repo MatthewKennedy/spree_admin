@@ -12,7 +12,7 @@
         <%= inline_svg_tag "spree-logo.svg", size: '100px * 35px' %>
       </div>
       <div>
-        <%= link_to_with_icon(I18n.t('spree.dash.search'), spree.new_admin_search_path, no_text: true, data: { turbo_frame: :modal }, class: 'btn btn-light d-none d-lg-inline m-1', icon: 'search.svg') %>
+        <%= link_to_with_icon(I18n.t('spree.admin.search'), spree.new_admin_search_path, no_text: true, data: { turbo_frame: :modal }, class: 'btn btn-light d-none d-lg-inline m-1', icon: 'search.svg') %>
 
         <button id="sidebar-close"
                 class="btn btn-light col-auto d-lg-none"

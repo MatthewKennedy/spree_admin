@@ -3,18 +3,18 @@
     <div class="col-12 col-md-8">
       <div class="card">
         <div class="card-header">
-           <h5 class="card-title"><%= I18n.t('spree.dash.details') %></h5>
+           <h5 class="card-title"><%= I18n.t('spree.admin.details') %></h5>
         </div>
         <div class="card-body">
           <%= f.field_container :name do %>
             <%= f.text_field :name, required: true %>
-            <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+            <%= f.label :name, raw(I18n.t('spree.admin.name') + required_span_tag) %>
           <% end %>
 
           <% unless @taxon.new_record? %>
             <%= f.field_container :permalink do %>
               <%= f.text_field :permalink_part, value: @permalink_part, required: true %>
-              <%= f.label :permalink, raw(I18n.t('spree.dash.taxons.permalink') + required_span_tag) %>
+              <%= f.label :permalink, raw(I18n.t('spree.admin.taxons.permalink') + required_span_tag) %>
               <small class="form-text text-muted">
                 <%= [Spree::Config[:storefront_taxons_path] , @parent_permalink].join('/') + @permalink_part %>
               </small>
@@ -23,7 +23,7 @@
 
           <%= f.field_container :description do %>
             <%= f.text_area :description, data: { controller: "rte" } %>
-            <%= f.label :description, I18n.t('spree.dash.description') %>
+            <%= f.label :description, I18n.t('spree.admin.description') %>
           <% end %>
         </div>
       </div>
@@ -32,12 +32,12 @@
     <div class="col-12 col-md-4">
       <div class="card">
         <div class="card-header">
-           <h5 class="card-title"><%= I18n.t('spree.dash.settings') %></h5>
+           <h5 class="card-title"><%= I18n.t('spree.admin.settings') %></h5>
         </div>
         <div class="card-body">
           <%= f.field_container :hide_from_nav, class: ['form-check'] do %>
             <%= f.check_box :hide_from_nav %>
-            <%= f.label :hide_from_nav, I18n.t('spree.dash.taxons.hide_from_sub_navigation'), class: 'form-check-label' %>
+            <%= f.label :hide_from_nav, I18n.t('spree.admin.taxons.hide_from_sub_navigation'), class: 'form-check-label' %>
           <% end %>
 
           <% if @taxon.new_record? %>
@@ -49,10 +49,10 @@
           <%= f.field_container :parent_id do %>
             <div class="form-floating">
               <%= f.select :parent_id, nested_set_options(@taxonomy.taxons, @taxon) {|i| "#{'-' * i.level} #{i.name}" }, { include_blank: false }, { disabled: disabled  } %>
-              <%= f.label :parent_id, I18n.t('spree.dash.navigation.nested_under') %>
+              <%= f.label :parent_id, I18n.t('spree.admin.navigation.nested_under') %>
             </div>
             <small class="form-text text-muted">
-              <%= I18n.t('spree.dash.taxons.nested_under_info') %>
+              <%= I18n.t('spree.admin.taxons.nested_under_info') %>
             </small>
           <% end %>
 
@@ -63,22 +63,22 @@
       <% unless @taxon.new_record? %>
         <div class="card">
           <div class="card-header">
-            <h5 class="card-title"><%= I18n.t('spree.dash.seo') %></h5>
+            <h5 class="card-title"><%= I18n.t('spree.admin.seo') %></h5>
           </div>
           <div class="card-body">
             <%= f.field_container :meta_title do %>
               <%= f.text_field :meta_title %>
-              <%= f.label :meta_title, I18n.t('spree.dash.meta_title') %>
+              <%= f.label :meta_title, I18n.t('spree.admin.meta_title') %>
             <% end %>
 
             <%= f.field_container :meta_description do %>
               <%= f.text_area :meta_description, style: 'height: 150px' %>
-              <%= f.label :meta_description, I18n.t('spree.dash.meta_description') %>
+              <%= f.label :meta_description, I18n.t('spree.admin.meta_description') %>
             <% end %>
 
             <%= f.field_container :meta_keywords do %>
               <%= f.text_field :meta_keywords %>
-              <%= f.label :meta_keywords, I18n.t('spree.dash.meta_keywords') %>
+              <%= f.label :meta_keywords, I18n.t('spree.admin.meta_keywords') %>
             <% end %>
           </div>
         </div>
@@ -89,7 +89,7 @@
       <div class="card">
         <div class="card-header d-flex">
           <div class="flex-fill">
-            <h5 class="card-title"><%= I18n.t('spree.dash.products.products') %></h5>
+            <h5 class="card-title"><%= I18n.t('spree.admin.products.products') %></h5>
           </div>
           <div>
             Add A Product

@@ -1,13 +1,13 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.dash.cms.all_pages'), spree.admin_cms_pages_path %> /
-  <%= link_to @cms_page.title, spree.edit_admin_cms_page_path(@cms_page) %> / <%= I18n.t('spree.dash.cms.new_section') %>
+  <%= link_to I18n.t('spree.admin.cms.all_pages'), spree.admin_cms_pages_path %> /
+  <%= link_to @cms_page.title, spree.edit_admin_cms_page_path(@cms_page) %> / <%= I18n.t('spree.admin.cms.new_section') %>
 <% end %>
 
 <%= form_with model: [:admin, @cms_page, @cms_section], url: spree.admin_cms_page_cms_sections_path do |f| %>
   <div class="card">
     <div class="card-header d-flex">
       <div class="flex-fill">
-        <h5 class="card-title"><%= I18n.t("spree.dash.cms.new_section") %></h5>
+        <h5 class="card-title"><%= I18n.t("spree.admin.cms.new_section") %></h5>
       </div>
       <div>
         <%= render partial: 'spree/admin/shared/new_resource_links' %>

@@ -7,7 +7,7 @@ module Spree
             format.turbo_stream
           end
         else
-          stream_flash_alert(message: I18n.t("spree.dash.cms_pages.errors.could_not_update_page_visibility"), kind: :error)
+          stream_flash_alert(message: I18n.t("spree.admin.cms_pages.errors.could_not_update_page_visibility"), kind: :error)
         end
       end
 

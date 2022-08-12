@@ -21,10 +21,10 @@ module Spree
 
       def create
         if params[:variant].nil?
-          flash.now[:error] = I18n.t("spree.dash.stock_transfer.errors.must_have_variant")
+          flash.now[:error] = I18n.t("spree.admin.stock_transfer.errors.must_have_variant")
           render :new, status: :unprocessable_entity
         elsif any_missing_variants?(params[:variant])
-          flash.now[:error] = I18n.t("spree.dash.stock_transfer.errors.variants_unavailable", stock: source_location.name)
+          flash.now[:error] = I18n.t("spree.admin.stock_transfer.errors.variants_unavailable", stock: source_location.name)
           render :new, status: :unprocessable_entity
         else
           variants = Hash.new(0)

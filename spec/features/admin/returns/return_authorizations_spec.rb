@@ -25,7 +25,7 @@ describe "Return Authorizations", type: :feature do
     end
 
     it "displays state" do
-      return_authorization_state = I18n.t("spree.dash.return_authorization_states.#{return_authorization.state}")
+      return_authorization_state = I18n.t("spree.admin.return_authorization_states.#{return_authorization.state}")
       within_row(1) { expect(page).to have_content(return_authorization_state) }
     end
 
@@ -60,14 +60,14 @@ describe "Return Authorizations", type: :feature do
 
     it "searches on status" do
       click_on "Filters"
-      select I18n.t("spree.dash.return_authorization_states.#{return_authorization.state}"), from: "Status"
+      select I18n.t("spree.admin.return_authorization_states.#{return_authorization.state}"), from: "Status"
       click_on "Search"
 
       expect(page).to have_content(return_authorization.number)
       expect(page).not_to have_content(return_authorization_2.number)
 
       click_on "Filters"
-      select I18n.t("spree.dash.return_authorization_states.#{return_authorization_2.state}"), from: "Status"
+      select I18n.t("spree.admin.return_authorization_states.#{return_authorization_2.state}"), from: "Status"
       click_on "Search"
 
       expect(page).to have_content(return_authorization_2.number)
@@ -115,7 +115,7 @@ describe "Return Authorizations", type: :feature do
         end
 
         within("#table-filter") do
-          return_authorization_state = I18n.t("spree.dash.return_authorization_states.#{return_authorization.state}")
+          return_authorization_state = I18n.t("spree.admin.return_authorization_states.#{return_authorization.state}")
           expect(page).to have_select("Status", selected: return_authorization_state)
         end
       end
@@ -142,7 +142,7 @@ describe "Return Authorizations", type: :feature do
         end
 
         within("#table-filter") do
-          return_authorization_state = I18n.t("spree.dash.return_authorization_states.#{return_authorization.state}")
+          return_authorization_state = I18n.t("spree.admin.return_authorization_states.#{return_authorization.state}")
           expect(page).to have_select("Status", selected: return_authorization_state)
         end
       end

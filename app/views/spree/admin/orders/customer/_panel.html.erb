@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-header">
-    <h5 class="card-title"><%= I18n.t('spree.dash.order.customer') %></h5>
+    <h5 class="card-title"><%= I18n.t('spree.admin.order.customer') %></h5>
   </div>
   <div class="card-body">
     <% unless @order.user.present? %>
       <%= form_with model: @order, url: spree.admin_order_path(@order), method: :patch, data: { turbo_frame: dom_id(@order), controller: "form-validation" } do |f| %>
         <div class="form-group form-floating">
           <%= f.select :user_id, [], { include_blank: true }, class: 'form-select',
-                                                              placeholder: I18n.t('spree.dash.order.search_users_by_name_or_email'),
+                                                              placeholder: I18n.t('spree.admin.order.search_users_by_name_or_email'),
                                                               data: { action: 'change->form-validation#validate',
                                                                       controller: 'ts--search-user',
                                                                       ts__search_user_plugins_value: ['clear_button'],
@@ -19,7 +19,7 @@
           <%= f.label :user_id, Spree.t(:user_id), class: 'form-label' %>
         </div>
 
-        <%= f.submit I18n.t('spree.dash.order.add_user_to_order'), class: 'btn btn-light', data: { form_validation_target: "submitBtn" } %>
+        <%= f.submit I18n.t('spree.admin.order.add_user_to_order'), class: 'btn btn-light', data: { form_validation_target: "submitBtn" } %>
       <% end %>
     <% end %>
 

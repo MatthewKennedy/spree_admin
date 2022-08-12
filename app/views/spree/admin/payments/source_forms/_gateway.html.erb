@@ -49,8 +49,8 @@
 
     <div class="col-6">
       <%= field_container('card_code', nil, data: { hook: 'card_code' }) do %>
-        <%= text_field_tag "#{param_prefix}[verification_value]", '', id: "card_code#{payment_method.id}", class: 'form-control', placeholder: I18n.t('spree.dash.payments.gateway.cvc'), required: true, size: 5, data: { card_formatting_target: 'code' } %>
-        <%= label_tag "card_code#{payment_method.id}", raw(I18n.t('spree.dash.payments.gateway.cvc') + required_span_tag), class: 'form-label' %>
+        <%= text_field_tag "#{param_prefix}[verification_value]", '', id: "card_code#{payment_method.id}", class: 'form-control', placeholder: I18n.t('spree.admin.payments.gateway.cvc'), required: true, size: 5, data: { card_formatting_target: 'code' } %>
+        <%= label_tag "card_code#{payment_method.id}", raw(I18n.t('spree.admin.payments.gateway.cvc') + required_span_tag), class: 'form-label' %>
       <% end %>
     </div>
 

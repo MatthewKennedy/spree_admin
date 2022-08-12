@@ -11,8 +11,8 @@
         <span class="badge rounded-pill bg-light bg-light-muted-text">-> <%= item.link %></span>
       <% end %>
       <small class="form-text text-muted mt-0">
-        <%= "#{I18n.t('spree.dash.navigation.type')}: #{item.item_type}" %>
-        <%= "| #{I18n.t('spree.dash.navigation.code')}: #{item.code}" if item.code.present? %>
+        <%= "#{I18n.t('spree.admin.navigation.type')}: #{item.item_type}" %>
+        <%= "| #{I18n.t('spree.admin.navigation.code')}: #{item.code}" if item.code.present? %>
       </small>
     </div>
     <% if item.icon.present? %>

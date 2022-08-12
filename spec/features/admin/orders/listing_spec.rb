@@ -190,7 +190,7 @@ describe "Orders Listing", type: :feature do
 
     context "filter on shipment state" do
       it "only shows the orders with the selected shipment state" do
-        select I18n.t("spree.dash.payment_states.#{order1.shipment_state}"), from: "Shipment State"
+        select I18n.t("spree.admin.payment_states.#{order1.shipment_state}"), from: "Shipment State"
         click_on "Filter Results"
         within_row(1) { expect(page).to have_content("R100") }
         within("table#listing_orders") { expect(page).not_to have_content("R200") }
@@ -199,7 +199,7 @@ describe "Orders Listing", type: :feature do
 
     context "filter on payment state" do
       it "only shows the orders with the selected payment state" do
-        select I18n.t("spree.dash.payment_states.#{order1.payment_state}"), from: "Payment State"
+        select I18n.t("spree.admin.payment_states.#{order1.payment_state}"), from: "Payment State"
         click_on "Filter Results"
         within_row(1) { expect(page).to have_content("R100") }
         within("table#listing_orders") { expect(page).not_to have_content("R200") }

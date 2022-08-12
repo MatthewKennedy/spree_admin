@@ -7,7 +7,7 @@
           <%= @order.email %>
         <% end %>
       </h6>
-      <%= pluralize( @order.user.order_count, I18n.t('spree.dash.order.order') ) %>
+      <%= pluralize( @order.user.order_count, I18n.t('spree.admin.order.order') ) %>
     </div>
 
     <% unless @order.completed? %>

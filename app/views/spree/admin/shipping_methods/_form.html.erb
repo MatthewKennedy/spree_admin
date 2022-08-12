@@ -1,7 +1,7 @@
 <div class="card" data-hook="admin_shipping_method_form_fields">
   <div class="card-header d-flex">
     <div class="flex-fill">
-      <h5 class="card-title"><%= I18n.t('spree.dash.details') %></h5>
+      <h5 class="card-title"><%= I18n.t('spree.admin.details') %></h5>
     </div>
 
     <div class="d-flex align-items-center">
@@ -15,13 +15,13 @@
       <div data-hook="admin_shipping_method_form_name_field" class="col-12 col-lg-6">
         <%= f.field_container :name do %>
           <%= f.text_field :name %>
-          <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+          <%= f.label :name, raw(I18n.t('spree.admin.name') + required_span_tag) %>
         <% end %>
       </div>
 
       <div data-hook="admin_shipping_method_form_display_field" class="col-12 col-lg-6">
         <%= f.field_container :display_on do %>
-          <%= f.select(:display_on, Spree::ShippingMethod::DISPLAY.collect { |display| [I18n.t("spree.dash.display_on.#{display}"), display.to_s] }, { selected: :both, include_blank: false }) %>
+          <%= f.select(:display_on, Spree::ShippingMethod::DISPLAY.collect { |display| [I18n.t("spree.admin.display_on.#{display}"), display.to_s] }, { selected: :both, include_blank: false }) %>
           <%= f.label :display_on, Spree.t(:display) %>
         <% end %>
       </div>
@@ -53,36 +53,36 @@
     <div class="collapse" id="shippingMethodDetailsInfo">
         <div class="bs-callout bs-callout-info my-0">
           <h6>
-             <%= I18n.t('spree.dash.shipping_methods.display') %>
+             <%= I18n.t('spree.admin.shipping_methods.display') %>
           </h6>
           <small class="text-muted">
-            <%= raw I18n.t('spree.dash.shipping_methods.display_info') %>
+            <%= raw I18n.t('spree.admin.shipping_methods.display_info') %>
           </small>
           <hr>
 
           <h6>
-             <%= I18n.t('spree.dash.shipping_methods.internal_name') %>
+             <%= I18n.t('spree.admin.shipping_methods.internal_name') %>
           </h6>
           <small class="text-muted">
-            <%= raw I18n.t('spree.dash.shipping_methods.internal_name_info') %>
-          </small>
-
-          <hr>
-
-          <h6>
-             <%= I18n.t('spree.dash.shipping_methods.code') %>
-          </h6>
-          <small class="text-muted">
-            <%= raw I18n.t('spree.dash.shipping_methods.code_info') %>
+            <%= raw I18n.t('spree.admin.shipping_methods.internal_name_info') %>
           </small>
 
           <hr>
 
           <h6>
-             <%= I18n.t('spree.dash.shipping_methods.tracking_url') %>
+             <%= I18n.t('spree.admin.shipping_methods.code') %>
           </h6>
           <small class="text-muted">
-            <%= raw I18n.t('spree.dash.shipping_methods.tracking_url_info') %>
+            <%= raw I18n.t('spree.admin.shipping_methods.code_info') %>
+          </small>
+
+          <hr>
+
+          <h6>
+             <%= I18n.t('spree.admin.shipping_methods.tracking_url') %>
+          </h6>
+          <small class="text-muted">
+            <%= raw I18n.t('spree.admin.shipping_methods.tracking_url_info') %>
           </small>
         </div>
     </div>
@@ -119,10 +119,10 @@
           <div>
             <div class="bs-callout bs-callout-info my-0">
               <h6>
-                 <%= I18n.t('spree.dash.shipping_methods.categories') %>
+                 <%= I18n.t('spree.admin.shipping_methods.categories') %>
               </h6>
               <small class="text-muted">
-                <%= raw I18n.t('spree.dash.shipping_methods.categories_info') %>
+                <%= raw I18n.t('spree.admin.shipping_methods.categories_info') %>
               </small>
             </div>
           </div>

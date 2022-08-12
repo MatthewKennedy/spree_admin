@@ -9,7 +9,7 @@ describe Spree::Admin::ProductsHelper, type: :helper do
 
     context "product is available" do
       it "has available status" do
-        expect(status).to eq(I18n.t("spree.dash.products.active"))
+        expect(status).to eq(I18n.t("spree.admin.products.active"))
       end
     end
 
@@ -19,7 +19,7 @@ describe Spree::Admin::ProductsHelper, type: :helper do
       end
 
       it "has deleted status" do
-        expect(status).to eq(I18n.t("spree.dash.products.deleted"))
+        expect(status).to eq(I18n.t("spree.admin.products.deleted"))
       end
     end
 
@@ -29,7 +29,7 @@ describe Spree::Admin::ProductsHelper, type: :helper do
       end
 
       it "has discontinued status" do
-        expect(status).to eq(I18n.t("spree.dash.products.archived"))
+        expect(status).to eq(I18n.t("spree.admin.products.archived"))
       end
     end
 
@@ -39,7 +39,7 @@ describe Spree::Admin::ProductsHelper, type: :helper do
       end
 
       it "has draft status" do
-        expect(status).to eq(I18n.t("spree.dash.products.draft"))
+        expect(status).to eq(I18n.t("spree.admin.products.draft"))
       end
     end
   end

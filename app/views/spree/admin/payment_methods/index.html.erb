@@ -8,7 +8,7 @@
       <%- locals = {f: f} %>
       <div data-hook="admin_payment_methods_index_search" class="row">
         <div class="form-group">
-          <%= f.label :name_cont, I18n.t('spree.dash.name') %>
+          <%= f.label :name_cont, I18n.t('spree.admin.name') %>
           <%= f.text_field :name_cont, size: 15, class: "form-control js-quick-search-target js-filterable" %>
         </div>
       </div>
@@ -44,7 +44,7 @@
           </td>
           <td><%= method.name %></td>
           <td><%= method.type %></td>
-          <td class="text-center"><%= I18n.t("spree.dash.display_on.#{method.display_on}") %></td>
+          <td class="text-center"><%= I18n.t("spree.admin.display_on.#{method.display_on}") %></td>
           <td class="text-center"><%= active_badge(method.active) %></td>
           <td data-hook="admin_payment_methods_index_row_actions" class="actions">
             <span class="d-flex justify-content-end">
