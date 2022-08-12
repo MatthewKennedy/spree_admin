@@ -55,7 +55,7 @@ run_tests_2_7: &run_tests_2_7
     - run:
         name: Run Rspec
         command: |
-          TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          TESTFILES=$(circleci tests glob "/spree_admin/spec/**/*_spec.rb" | circleci tests split --split-by=timings)
           bundle exec rspec --format documentation \
                             --format RspecJunitFormatter \
                             -o ~/rspec/rspec.xml \
@@ -94,7 +94,7 @@ run_tests_3_0: &run_tests_3_0
     - run:
         name: Run Rspec
         command: |
-          TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          TESTFILES=$(circleci tests glob "/spree_admin/spec/**/*_spec.rb" | circleci tests split --split-by=timings)
           bundle exec rspec --format documentation \
                             --format RspecJunitFormatter \
                             -o ~/rspec/rspec.xml \
