@@ -9,8 +9,8 @@ base_defaults: &base_defaults
     CIRCLE_ARTIFACTS: /tmp/test-artifacts
     BUNDLE_JOBS: 4
     BUNDLE_RETRY: 3
-    BUNDLE_PATH: ~/spree_admin/vendor/bundle
-  working_directory: ~/spree_admin
+    BUNDLE_PATH: ~/spree/vendor/bundle
+  working_directory: ~/spree
 
 defaults_2_7: &defaults_2_7
   <<: *base_defaults
