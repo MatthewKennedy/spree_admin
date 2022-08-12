@@ -167,7 +167,7 @@ jobs:
     docker:
       - image: *ruby_2_7_image
       - image: *redis_image
-      - image: &postgres_image circleci/postgres:12-alpine
+      - image: &postgres_image cimg/postgres:14.4
         environment:
           POSTGRES_USER: postgres
   # PG Ruby 3.0
@@ -193,7 +193,7 @@ jobs:
     docker:
       - image: *ruby_2_7_image
       - image: *redis_image
-      - image: &mysql_image circleci/mysql:8-ram
+      - image: &mysql_image cimg/mysql:8.0
   # MYSQL Ruby 3.0
   tests_mysql_ruby_3_0:
     <<: *run_tests_3_0
