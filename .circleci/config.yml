@@ -124,10 +124,10 @@ jobs:
       - run:
           name: Set bundle path
           command: bundle config --local path vendor/bundle
-      - run:
-          name: Bundle Install
-          command: |
-            bundle check || bundle install
+      # - run:
+      #     name: Bundle Install
+      #     command: |
+      #       bundle check || bundle install
       - save_cache:
           paths:
             - vendor/bundle
