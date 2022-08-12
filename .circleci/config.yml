@@ -59,7 +59,7 @@ run_tests_2_7: &run_tests_2_7
     - run:
         name: Run Tests
         command: |
-          bundle exec rspec $TESTFILES
+          bundle exec rspec spec
     - store_test_results:
         path: ~/rspec
     - store_artifacts:
