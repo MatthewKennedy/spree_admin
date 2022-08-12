@@ -41,6 +41,10 @@ run_tests_2_7: &run_tests_2_7
           - spree-admin-bundle-v01-ruby-2-7-{{ .Branch }}
           - spree-admin-bundle-v01-ruby-2-7
     - run:
+        name: Ensure bundle Install
+        command: |
+          bundle check || bundle install
+    - run:
         name: Create Test App
         command: |
           bundle exec rake test_app
@@ -63,6 +67,10 @@ run_tests_3_0: &run_tests_3_0
         keys:
           - spree-admin-bundle-v01-ruby-3-0-{{ .Branch }}
           - spree-admin-bundle-v01-ruby-3-0
+    - run:
+        name: Ensure bundle Install
+        command: |
+          bundle check || bundle install
     - run:
         name: Create Test App
         command: |
