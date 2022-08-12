@@ -7,6 +7,6 @@
   <%= remote_form_submit_button(@object) %>
 <% end %>
 
-<%= form_with model: [:admin, @oauth_application], builder: Spree::Dash::BootstrapBuilder, data: {controller: "form-state"} do |f| %>
+<%= form_with model: [:admin, @oauth_application], data: {controller: "form-state"} do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
 <% end %>

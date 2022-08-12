@@ -1,6 +1,6 @@
 <% unless @product.has_variants? %>
   <%= turbo_frame_tag :product_specifications do %>
-    <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_specifications}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_specifications} do |f| %>
       <div class="card">
         <div class="card-header d-flex">
           <div class="flex-fill">

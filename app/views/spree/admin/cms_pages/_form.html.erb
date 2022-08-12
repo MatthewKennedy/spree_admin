@@ -14,7 +14,7 @@
           </div>
         </div>
 
-        <%= form_with model: [:admin, @cms_page], scope: :cms_page, url: spree.admin_cms_page_path(@cms_page), builder: Spree::Dash::BootstrapBuilder, data: {controller: "form-state"}, id: "mainForm" do |f| %>
+        <%= form_with model: [:admin, @cms_page], scope: :cms_page, url: spree.admin_cms_page_path(@cms_page), data: {controller: "form-state"}, id: "mainForm" do |f| %>
           <div class="card-body pb-2">
             <div class="row pb-0">
 

@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
           <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @menu } %>
-          <%= form_with model: [:admin, @menu], builder: Spree::Dash::BootstrapBuilder do |f| %>
+          <%= form_with model: [:admin, @menu] do |f| %>
             <%= render partial: 'form', locals: { f: f } %>
             <div class="d-flex ">
               <%= render partial: 'spree/admin/shared/new_resource_links' %>

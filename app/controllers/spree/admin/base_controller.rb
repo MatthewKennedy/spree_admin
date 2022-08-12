@@ -22,6 +22,8 @@ module Spree
 
       protected
 
+      default_form_builder(Spree::Dash::BootstrapBuilder)
+
       def action
         params[:action].to_sym
       end

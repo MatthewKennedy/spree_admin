@@ -3,7 +3,7 @@
   <%= link_to @taxonomy.root.name, spree.edit_admin_taxonomy_url(@taxonomy) %> / New
 <% end %>
 
-<%= form_with model: [:admin, @taxonomy, @taxon], builder: Spree::Dash::BootstrapBuilder do |f| %>
+<%= form_with model: [:admin, @taxonomy, @taxon] do |f| %>
   <%= render 'form', f: f %>
 
   <div class="form-actions" data-hook="buttons">

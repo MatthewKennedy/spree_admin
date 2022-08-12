@@ -8,7 +8,7 @@
     <h5 class="card-title"><%= I18n.t("spree.dash.settings") %></h5>
   </div>
   <div class="card-body">
-    <%= form_with scope: :cms_section, url: spree.admin_cms_page_cms_section_path(@cms_page, @cms_section), class: "row", data: {controller: "form-validation", turbo_frame: :cms_section_settings}, method: :patch, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <%= form_with scope: :cms_section, url: spree.admin_cms_page_cms_section_path(@cms_page, @cms_section), class: "row", data: {controller: "form-validation", turbo_frame: :cms_section_settings}, method: :patch do |f| %>
       <div class="col-12 col-md-6">
         <%= f.field_container :name do %>
           <%= f.text_field :name, required: true %>
@@ -27,7 +27,7 @@
 </div>
 
 <%= turbo_frame_tag :cms_section_settings do %>
-  <%= form_with scope: :cms_section, url: spree.admin_cms_page_cms_section_path(@cms_page, @cms_section), data: {turbo_frame: "_top"}, method: :patch, builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <%= form_with scope: :cms_section, url: spree.admin_cms_page_cms_section_path(@cms_page, @cms_section), data: {turbo_frame: "_top"}, method: :patch do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
   <% end %>
 <% end %>

@@ -5,7 +5,7 @@
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @option_type], url: spree.admin_option_type_path(@option_type), builder: Spree::Dash::BootstrapBuilder, id: 'newOptionTypeValue', data: { turbo: true, turbo_frame: "_top" }, method: :put do |f| %>
+    <%= form_with model: [:admin, @option_type], url: spree.admin_option_type_path(@option_type), id: 'newOptionTypeValue', data: { turbo: true, turbo_frame: "_top" }, method: :put do |f| %>
       <%= f.fields_for :option_values do |pp_form| %>
         <% unless pp_form.object.persisted? %>
           <%= f.field_container :name do %>

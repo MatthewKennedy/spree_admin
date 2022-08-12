@@ -6,6 +6,6 @@
   <%= remote_form_submit_button(@object) %>
 <% end %>
 
-<%= form_with model: @payment_method, url: collection_url, builder: Spree::Dash::BootstrapBuilder, id: "mainForm" do |f| %>
+<%= form_with model: @payment_method, url: collection_url, id: "mainForm" do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
 <% end %>

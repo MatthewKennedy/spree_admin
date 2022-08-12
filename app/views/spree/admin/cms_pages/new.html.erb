@@ -2,7 +2,7 @@
   <%= link_to I18n.t('spree.dash.cms.all_pages'), spree.admin_cms_pages_path %> / <%= I18n.t('spree.dash.cms.new_page') %>
 <% end %>
 
-<%= form_with model: [:admin, @cms_page], builder: Spree::Dash::BootstrapBuilder do |f| %>
+<%= form_with model: [:admin, @cms_page] do |f| %>
   <div id="<%= dom_id(@cms_page) %>" class="card">
     <div class="card-header d-flex">
       <div class="flex-fill">

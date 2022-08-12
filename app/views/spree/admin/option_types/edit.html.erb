@@ -3,7 +3,7 @@
   <%= @option_type.name %>
 <% end %>
 
-<%= form_with model: [:admin, @option_type], builder: Spree::Dash::BootstrapBuilder, data: {controller: "form-state"} do |f| %>
+<%= form_with model: [:admin, @option_type], data: {controller: "form-state"} do |f| %>
   <div class="card mb-3">
     <div class="card-header d-flex">
       <div class="flex-fill">

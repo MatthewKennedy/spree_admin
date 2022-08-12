@@ -6,7 +6,7 @@
 <% content_for :modal_body do %>
   <div class="container">
 
-    <%= form_with model: [:admin, Spree::StockMovement.new], url: spree.admin_stock_items_path, builder: Spree::Dash::BootstrapBuilder, id: "addStockForm", data: {turbo_frame: :product_stock} do |f| %>
+    <%= form_with model: [:admin, Spree::StockMovement.new], url: spree.admin_stock_items_path, id: "addStockForm", data: {turbo_frame: :product_stock} do |f| %>
       <%= f.hidden_field :variant_id, value: @variant.id %>
 
       <div data-hook="admin_stock_movements_form_fields" class="row">

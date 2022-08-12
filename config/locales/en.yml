@@ -1,7 +1,7 @@
 ---
 en:
   spree:
-    dash:
+    admin:
       actions:
         add: Add
         cancel: Cancel

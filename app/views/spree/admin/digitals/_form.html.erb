@@ -39,7 +39,7 @@
       <%= f.label :file, I18n.t('spree.dash.digitals.add_new_file'), id: "digital_attachment_#{variant.id}" %> <span class="required font-weight-bold text-danger">*</span><br>
       <div class="input-group">
         <%= f.file_field :attachment, id: "digital_attachment_#{variant.id}", required: true %>
-        <%= f.submit class: "btn btn-outline-secondary" %>
+        <%= f.submit I18n.t('spree.dash.actions.upload'), class: "btn btn-outline-secondary" %>
       </div>
     </div>
   </div>
