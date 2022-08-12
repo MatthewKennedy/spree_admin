@@ -15,7 +15,7 @@ base_defaults: &base_defaults
 defaults_2_7: &defaults_2_7
   <<: *base_defaults
   docker:
-    - image: &ruby_2_7_image cimg/ruby:2.7-browsers
+    - image: &ruby_2_7_image circleci/ruby:2.7-node-browsers
 
 defaults_3_0: &defaults_3_0
   <<: *base_defaults
