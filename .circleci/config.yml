@@ -56,15 +56,15 @@ run_tests_2_7: &run_tests_2_7
     - run:
         name: Run Rspec
         command: |
-          TESTFILES=$(circleci tests glob "spec/lib/*_spec.rb" | circleci tests split --split-by=timings) bundle exec rspec --format documentation \ --format RspecJunitFormatter \ -o ~/rspec/rspec.xml \ -- ${TESTFILES}
+          TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings) bundle exec rspec --format documentation \ --format RspecJunitFormatter \ -o ~/rspec/rspec.xml \ -- ${TESTFILES}
     - run:
         name: Unlink @spree/admin NPM package
         command: |
           cd spec/dummy && yarn unlink @spree/admin
     - store_test_results:
-          path: ~/rspec
+        path: ~/rspec
     - store_artifacts:
-          path: /tmp/test-artifacts
+        path: /tmp/test-artifacts
 
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
@@ -87,21 +87,21 @@ run_tests_3_0: &run_tests_3_0
         command: |
           bundle check || bundle install
     - run:
-        name: Create test app
+        name: Create Test App
         command: |
           bundle exec rake test_app
     - run:
         name: Run Rspec
         command: |
-          TESTFILES=$(circleci tests glob "spec/lib/*_spec.rb" | circleci tests split --split-by=timings) bundle exec rspec --format documentation \ --format RspecJunitFormatter \ -o ~/rspec/rspec.xml \ -- ${TESTFILES}
+          TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings) bundle exec rspec --format documentation \ --format RspecJunitFormatter \ -o ~/rspec/rspec.xml \ -- ${TESTFILES}
     - run:
         name: Unlink @spree/admin NPM package
         command: |
           cd spec/dummy && yarn unlink @spree/admin
     - store_test_results:
-          path: ~/rspec
+        path: ~/rspec
     - store_artifacts:
-          path: /tmp/test-artifacts
+        path: /tmp/test-artifacts
 ########
 # Jobs #
 ########
@@ -152,7 +152,6 @@ jobs:
             - vendor/bundle
           key: spree-admin-bundle-v12-ruby-3-0-{{ checksum "Gemfile.lock" }}
 
-
   ####################
   # Database Configs #
   ####################
@@ -180,7 +179,6 @@ jobs:
       - image: *redis_image
       - image: *postgres_image
 
-
   # MYSQL Ruby 2.7
   tests_mysql_ruby_2_7:
     <<: *run_tests_2_7
@@ -204,7 +202,6 @@ jobs:
       - image: *ruby_2_7_image
       - image: *redis_image
       - image: *mysql_image
-
 
 #################
 # Run Workflows #
