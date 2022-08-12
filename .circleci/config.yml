@@ -51,7 +51,7 @@ run_tests_2_7: &run_tests_2_7
     - run:
         name: Specify Test Spliiter
         command: |
-          $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          $(sudo circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
     # - run:
     #     name: Create Test App
     #     command: |
