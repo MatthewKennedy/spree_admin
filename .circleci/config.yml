@@ -18,13 +18,11 @@ defaults_2_7: &defaults_2_7
   <<: *base_defaults
   docker:
     - image: &ruby_2_7_image cimg/ruby:2.7-browsers
-    - image: *redis_image
 
 defaults_3_0: &defaults_3_0
   <<: *base_defaults
   docker:
     - image: &ruby_3_0_image cimg/ruby:3.0-browsers
-    - image: *redis_image
 
 
 ##########################
@@ -33,6 +31,8 @@ defaults_3_0: &defaults_3_0
 # Ruby 2.7
 run_tests_2_7: &run_tests_2_7
   <<: *defaults_2_7
+  docker:
+    - image: &redis_image cimg/redis:7.0
   parallelism: 8
   steps:
     - checkout
@@ -66,6 +66,8 @@ run_tests_2_7: &run_tests_2_7
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
   <<: *defaults_3_0
+  docker:
+    - image: *redis_image
   parallelism: 8
   steps:
     - checkout
