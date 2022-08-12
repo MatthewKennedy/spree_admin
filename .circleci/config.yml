@@ -55,11 +55,14 @@ run_tests_2_7: &run_tests_2_7
     - run:
         name: Specify Test Spliiter
         command: |
-          TESTFILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+          TESTFILES=$(circleci tests glob "/spec/!(dummy)/**/*_spec.rb" | circleci tests split --split-by=timings)
     - run:
         name: Run Tests
         command: |
-          bundle exec rspec spec
+          bundle exec rspec --format documentation \
+                            --format RspecJunitFormatter \
+                            -o ~/rspec/rspec.xml \
+                            -- ${TESTFILES}
     - store_test_results:
         path: ~/rspec
     - store_artifacts:
@@ -210,10 +213,10 @@ workflows:
   main:
     jobs:
       - bundle_ruby_2_7
-      - bundle_ruby_3_0
-      - tests_postgres_ruby_3_0:
-          requires:
-            - bundle_ruby_3_0
+      # - bundle_ruby_3_0
+      # - tests_postgres_ruby_3_0:
+          # requires:
+            #- bundle_ruby_3_0
       - tests_mysql_ruby_2_7:
           requires:
             - bundle_ruby_2_7
