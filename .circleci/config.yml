@@ -15,7 +15,7 @@ base_defaults: &base_defaults
 defaults_2_7: &defaults_2_7
   <<: *base_defaults
   docker:
-    - image: &ruby_2_7_image circleci/ruby:2.7-node-browsers
+    - image: &ruby_2_7_image cimg/ruby:2.7-browsers
 
 defaults_3_0: &defaults_3_0
   <<: *base_defaults
@@ -41,22 +41,17 @@ run_tests_2_7: &run_tests_2_7
     # - run:
     #     name: Install libvips
     #     command: sudo apt update && sudo apt-get install libvips
-    - run:
-        name: Set bundle path
-        command: bundle config --local path vendor/bundle
-    - run:
-        name: Ensure bundle Install
-        command: |
-          bundle check || bundle install
+    # - run:
+    #     name: Set bundle path
+    #     command: bundle config --local path vendor/bundle
+    # - run:
+    #     name: Ensure bundle Install
+    #     command: |
+    #       bundle check || bundle install
     - run:
         name: Specify Test Spliiter
         command: |
-          TESTFILES=$(circleci tests glob "spec/lib/spree/core_spec.rb" | circleci tests split --split-by=timings)
-          echo $TESTFILES
-    - run:
-        name: echo
-        command: |
-          echo $CIRCLE_PROJECT_REPONAME
+          TESTFILES=$(circleci tests glob "/spec/**/*_spec.rb" | circleci tests split --split-by=timings)
     # - run:
     #     name: Create Test App
     #     command: |
