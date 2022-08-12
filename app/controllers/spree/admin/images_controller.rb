@@ -13,7 +13,6 @@ module Spree
         spree.admin_product_images_url(@product)
       end
 
-
       def load_edit_data
         @variants = @product.variants.map do |variant|
           [variant.sku_and_options_text, variant.id]

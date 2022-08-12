@@ -92,7 +92,7 @@ module Spree
 
     describe "#destroy" do
       subject(:send_request) do
-        delete :destroy, params: {id: payment_method, format: :js}
+        delete :destroy, params: {id: payment_method, format: :turbo_stream}
       end
 
       let(:payment_method) { create(:payment_method, stores: [store], name: "Test") }
@@ -107,7 +107,7 @@ module Spree
           before { send_request }
 
           it_behaves_like "correct response"
-          it { expect(flash[:success]).to eq('Payment Method "Test" has been successfully removed!') }
+          it { expect(flash[:success]).to be_nil }
         end
       end
 

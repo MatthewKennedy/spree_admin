@@ -48,7 +48,7 @@
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.1.0.tgz#20215251e5afe6e0a3787285181ba1bfc9097df0"
   integrity sha512-iDMHUhiEJ1xFeicyHcZQQgBzhtk5mPR0QZO3L6wtqzMsJEk2TKECuCQTGKjm+KJTHVY0dKq1dOOAWvODjpd2Mg==
 
-"@hotwired/turbo-rails@^7.2.0-beta.1":
+"@hotwired/turbo-rails@^7.2.0-beta.2":
   version "7.2.0-beta.2"
   resolved "https://registry.yarnpkg.com/@hotwired/turbo-rails/-/turbo-rails-7.2.0-beta.2.tgz#e4a268f282e0d88410556ac1729ba70f7dd0a6b0"
   integrity sha512-KlBSQoT36/Ys8iP5L2aW9qLwlIATQiIB63T81/6EsL+UkkJQYrrb2oNyxnO/mdDseDoqKaaYFBrUnd5FqefzbA==

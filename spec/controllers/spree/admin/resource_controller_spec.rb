@@ -23,7 +23,7 @@ describe Spree::Admin::DummyModelsController, type: :controller do
     Spree::Core::Engine.routes.draw do
       namespace :admin do
         resources :dummy_models do
-          post :update_positions, on: :member
+          post :reposition, on: :member
         end
       end
     end
@@ -100,36 +100,10 @@ describe Spree::Admin::DummyModelsController, type: :controller do
     end
 
     let!(:dummy_model) { Spree::DummyModel.create!(name: "a dummy_model") }
-    let(:params) { {id: dummy_model.id} }
+    let(:params) { {id: dummy_model.id, format: :turbo_stream} }
 
     it "destroys the resource" do
       expect { subject }.to change { Spree::DummyModel.count }.from(1).to(0)
-    end
-  end
-
-  describe "#update_positions" do
-    subject do
-      post :update_positions, params: {
-        id: dummy_model_1.to_param,
-        positions: {dummy_model_1.id => "2", dummy_model_2.id => "1"}, format: "js"
-      }
-    end
-
-    let(:dummy_model_1) { Spree::DummyModel.create!(name: "dummy_model 1", position: 1) }
-    let(:dummy_model_2) { Spree::DummyModel.create!(name: "dummy_model 2", position: 2) }
-
-    it "updates the position of dummy_model 1" do
-      expect { subject }.to change { dummy_model_1.reload.position }.from(1).to(2)
-    end
-
-    it "updates the position of dummy_model 2" do
-      expect { subject }.to change { dummy_model_2.reload.position }.from(2).to(1)
-    end
-
-    it "touches updated_at" do
-      Timecop.scale(3600) do
-        expect { subject }.to change { dummy_model_1.reload.updated_at }
-      end
     end
   end
 end

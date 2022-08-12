@@ -68,25 +68,6 @@ describe Spree::Admin::OrdersController, type: :controller do
       end
     end
 
-    describe "#channel" do
-      subject do
-        get :channel, params: {id: order.number}
-      end
-
-      it "displays a page with channel input" do
-        expect(subject).to render_template :channel
-      end
-    end
-
-    context "#set_channel" do
-      it "sets channel on an order" do
-        put :set_channel, params: {id: order.number, channel: "POS"}
-        expect(order.reload.channel).to eq "POS"
-
-        expect(flash[:success]).to eq Spree.t(:successfully_updated, resource: "Order")
-      end
-    end
-
     describe "#resume" do
       let(:order) { create(:order, state: "canceled", store: store) }
 
@@ -129,9 +110,6 @@ describe Spree::Admin::OrdersController, type: :controller do
       it_behaves_like "refreshes shipping rates conditionally", :edit
     end
 
-    describe "#cart" do
-      it_behaves_like "refreshes shipping rates conditionally", :cart
-    end
 
     # Test for #3919
     context "search" do

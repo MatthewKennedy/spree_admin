@@ -51,11 +51,12 @@ module Spree
 
         if @store_credit.destroy
           flash[:success] = flash_message_for(@store_credit, :successfully_removed)
-          respond_with(@store_credit) do |format|
-            format.html { redirect_to spree.admin_user_store_credits_path(@user) }
-          end
         else
           render plain: I18n.t("spree.admin.store_credit.errors.unable_to_delete"), status: :unprocessable_entity
+        end
+
+        respond_with(@store_credit) do |format|
+          format.html { redirect_to spree.admin_user_store_credits_path(@user) }
         end
       end
 

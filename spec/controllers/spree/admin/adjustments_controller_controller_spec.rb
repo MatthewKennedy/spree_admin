@@ -33,7 +33,7 @@ module Spree
 
       describe "#destroy" do
         subject(:destroy) do
-          delete :destroy, params: {order_id: order.to_param, id: adjustment.id, format: :js}
+          delete :destroy, params: {order_id: order.to_param, id: adjustment.id, format: :turbo_stream}
         end
 
         shared_examples "adjustment destroyed" do
@@ -56,7 +56,7 @@ module Spree
           it "returns success flash response" do
             destroy
 
-            expect(flash[:success]).to eq(Spree.t(:successfully_removed, resource: "Adjustment"))
+            expect(flash[:success]).to be_nil
           end
 
           it "leaves error flash empty" do

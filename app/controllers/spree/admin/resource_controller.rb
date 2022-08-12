@@ -31,7 +31,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
       respond_with(@object) do |format|
         format.turbo_stream if update_turbo_stream_enabled?
         format.html do
-          flash[:success] = flash_message_for(@object, :successfully_updated) unless request.xhr?
+          flash[:success] = flash_message_for(@object, :successfully_updated) unless params[:format] == "turbo_stream"
           redirect_to location_after_save unless request.xhr?
         end
       end
@@ -51,7 +51,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
     if @object.save
       invoke_callbacks(:create, :after)
 
-      flash[:success] = flash_message_for(@object, :successfully_created)
+      flash[:success] = flash_message_for(@object, :successfully_created) unless params[:format] == "turbo_stream"
 
       respond_with(@object) do |format|
         format.turbo_stream if create_turbo_stream_enabled?
@@ -71,14 +71,16 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
 
     if @object.destroy
       invoke_callbacks(:destroy, :after)
-
-      respond_with(@object) do |format|
-        format.turbo_stream { render "spree/admin/shared/stream_templates/destroy" }
-      end
+      flash[:success] = flash_message_for(@object, :successfully_removed) unless params[:format] == "turbo_stream"
     else
       invoke_callbacks(:destroy, :fails)
 
-      flash[:error] = @object.errors.full_messages.join(", ")
+      flash[:error] = @object.errors.full_messages.join(", ") unless params[:format] == "turbo_stream"
+    end
+
+    respond_with(@object) do |format|
+      format.turbo_stream
+      format.html { redirect_to location_after_destroy }
     end
   end
 

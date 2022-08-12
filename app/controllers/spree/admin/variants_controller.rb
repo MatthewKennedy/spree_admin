@@ -46,7 +46,7 @@ module Spree
       end
 
       def collection_url
-        spree.edit_admin_product_path(@product)
+        spree.edit_admin_product_path(params[:product_id])
       end
 
       def redirect_on_empty_option_values
