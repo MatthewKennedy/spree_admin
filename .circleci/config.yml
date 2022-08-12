@@ -43,28 +43,24 @@ run_tests_2_7: &run_tests_2_7
         name: Install libvips
         command: sudo apt update && sudo apt-get install libvips
     - run:
-          name: Set bundle path
-          command: bundle config --local path vendor/bundle
+        name: Set bundle path
+        command: bundle config --local path vendor/bundle
     - run:
-          name: Ensure bundle Install
-          command: |
-            bundle check || bundle install
+        name: Ensure bundle Install
+        command: |
+          bundle check || bundle install
     - run:
         name: Create Test App
         command: |
           bundle exec rake test_app
     - run:
+        name: Run Rspec
+        command: |
+          TESTFILES=$(circleci tests glob "spec/lib/*_spec.rb" | circleci tests split --split-by=timings) bundle exec rspec --format documentation \ --format RspecJunitFormatter \ -o ~/rspec/rspec.xml \ -- ${TESTFILES}
+    - run:
         name: Unlink @spree/admin NPM package
         command: |
           cd spec/dummy && yarn unlink @spree/admin
-    - run:
-          name: Run Rspec
-          command: |
-            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            bundle exec rspec --format documentation \
-                              --format RspecJunitFormatter \
-                              -o ~/rspec/rspec.xml \
-                              -- ${TESTFILES}
     - store_test_results:
           path: ~/rspec
     - store_artifacts:
@@ -84,28 +80,24 @@ run_tests_3_0: &run_tests_3_0
         name: Install libvips
         command: sudo apt update && sudo apt-get install libvips
     - run:
-          name: Set bundle path
-          command: bundle config --local path vendor/bundle
+        name: Set bundle path
+        command: bundle config --local path vendor/bundle
     - run:
-          name: Ensure bundle Install
-          command: |
-            bundle check || bundle install
+        name: Ensure bundle Install
+        command: |
+          bundle check || bundle install
     - run:
         name: Create test app
         command: |
           bundle exec rake test_app
     - run:
+        name: Run Rspec
+        command: |
+          TESTFILES=$(circleci tests glob "spec/lib/*_spec.rb" | circleci tests split --split-by=timings) bundle exec rspec --format documentation \ --format RspecJunitFormatter \ -o ~/rspec/rspec.xml \ -- ${TESTFILES}
+    - run:
         name: Unlink @spree/admin NPM package
         command: |
           cd spec/dummy && yarn unlink @spree/admin
-    - run:
-          name: Run Rspec
-          command: |
-            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            bundle exec rspec --format documentation \
-                              --format RspecJunitFormatter \
-                              -o ~/rspec/rspec.xml \
-                              -- ${TESTFILES}
     - store_test_results:
           path: ~/rspec
     - store_artifacts:
