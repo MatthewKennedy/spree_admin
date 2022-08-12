@@ -18,7 +18,6 @@ namespace :spree_admin do
       puts "Preparing NPM package..."
       system("yarn install")
       system("yarn build")
-      system("yarn link")
     end
 
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
@@ -54,7 +53,6 @@ namespace :spree_admin do
         $stdout.puts "Installing Spree Admin node dependencies..."
 
         system("yarn add file:./../../../spree_admin")
-        system("yarn link @spree/admin")
         system("yarn install")
 
         $stdout.puts "Adding Spree Admin assets after @spree/admin installed by yarn..."
