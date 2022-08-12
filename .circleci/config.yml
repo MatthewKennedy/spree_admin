@@ -38,8 +38,8 @@ run_tests_2_7: &run_tests_2_7
     - checkout
     - restore_cache:
         keys:
-          - spree-admin-bundle-v02-ruby-2-7-{{ .Branch }}
-          - spree-admin-bundle-v02-ruby-2-7
+          - spree-admin-bundle-v01-ruby-2-7-{{ .Branch }}
+          - spree-admin-bundle-v01-ruby-2-7
     - run:
         name: Install libvips
         command: sudo apt update && sudo apt-get install libvips
@@ -71,8 +71,8 @@ run_tests_3_0: &run_tests_3_0
     - checkout
     - restore_cache:
         keys:
-          - spree-admin-bundle-v02-ruby-3-0-{{ .Branch }}
-          - spree-admin-bundle-v02-ruby-3-0
+          - spree-admin-bundle-v01-ruby-3-0-{{ .Branch }}
+          - spree-admin-bundle-v01-ruby-3-0
     - run:
         name: Install libvips
         command: sudo apt update && sudo apt-get install libvips
@@ -107,12 +107,19 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - spree-admin-bundle-v02-ruby-2-7-{{ .Branch }}
-            - spree-admin-bundle-v02-ruby-2-7
+            - spree-admin-bundle-v01-ruby-2-7-{{ .Branch }}
+            - spree-admin-bundle-v01-ruby-2-7
+      - run:
+          name: Set bundle path
+          command: bundle config --local path vendor/bundle
+      - run:
+          name: Bundle Install
+          command: |
+            bundle check || bundle install
       - save_cache:
           paths:
             - vendor/bundle
-          key: spree-admin-bundle-v02-ruby-2-7-{{ checksum "Gemfile.lock" }}
+          key: spree-admin-bundle-v01-ruby-2-7-{{ checksum "Gemfile.lock" }}
 
   bundle_ruby_3_0:
     <<: *defaults_3_0
@@ -120,12 +127,19 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - spree-admin-bundle-v02-ruby-3-0-{{ .Branch }}
-            - spree-admin-bundle-v02-ruby-3-0
+            - spree-admin-bundle-v01-ruby-3-0-{{ .Branch }}
+            - spree-admin-bundle-v01-ruby-3-0
+      - run:
+          name: Set bundle path
+          command: bundle config --local path vendor/bundle
+      - run:
+          name: Bundle Install
+          command: |
+            bundle check || bundle install
       - save_cache:
           paths:
             - vendor/bundle
-          key: spree-admin-bundle-v02-ruby-3-0-{{ checksum "Gemfile.lock" }}
+          key: spree-admin-bundle-v01-ruby-3-0-{{ checksum "Gemfile.lock" }}
 
 
   ####################
