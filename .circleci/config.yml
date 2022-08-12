@@ -32,7 +32,9 @@ defaults_3_0: &defaults_3_0
 ##########################
 # Ruby 2.7
 run_tests_2_7: &run_tests_2_7
-  <<: [*defaults_2_7, *defaults_redis_07]
+  <<:
+    - *defaults_2_7
+    - *defaults_redis_07
   parallelism: 8
   steps:
     - checkout
@@ -65,7 +67,9 @@ run_tests_2_7: &run_tests_2_7
 
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
-  <<: [*defaults_3_0, *defaults_redis_07]
+  <<:
+    - *defaults_3_0
+    - *defaults_redis_07
   parallelism: 8
   steps:
     - checkout
