@@ -26,9 +26,10 @@ defaults_3_0: &defaults_3_0
     - image: &ruby_3_0_image cimg/ruby:3.0-browsers
     - image: *redis_image
 
-#############
-# Run Tests #
-#############
+
+##########################
+# Environment Installers #
+##########################
 # Ruby 2.7
 run_tests_2_7: &run_tests_2_7
   <<: *defaults_2_7
@@ -95,6 +96,7 @@ run_tests_3_0: &run_tests_3_0
     - store_artifacts:
         path: /tmp/test-artifacts
 
+
 ########
 # Jobs #
 ########
@@ -144,6 +146,7 @@ jobs:
           paths:
             - vendor/bundle
           key: spree-admin-bundle-v01-ruby-3-0-{{ checksum "Gemfile.lock" }}
+
 
   ####################
   # Database Configs #
@@ -196,9 +199,10 @@ jobs:
       - image: *redis_image
       - image: *mysql_image
 
-#################
-# Run Workflows #
-#################
+
+#############
+# Workflows #
+#############
 workflows:
   version: 2
   main:
