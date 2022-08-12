@@ -2,27 +2,27 @@
   <div class="col-12 col-md-6 mb-3">
     <div id="left_image_details" class="card p-3">
       <div class="text-center">
-        <h4 class="pb-2"><%= I18n.t('spree.dash.cms.side_by_side.left_image') %></h4>
+        <h4 class="pb-2"><%= I18n.t('spree.admin.cms.side_by_side.left_image') %></h4>
         <% @cms_section.build_image_one unless @cms_section.image_one %>
         <%= render partial: 'image_upload_form', locals: { f: f, image: :image_one } %>
-        <small class="text-muted"><%= I18n.t('spree.dash.cms.side_by_side.image_info') %></small>
+        <small class="text-muted"><%= I18n.t('spree.admin.cms.side_by_side.image_info') %></small>
       </div>
 
       <%= f.field_container :title_one do %>
         <%= f.text_field :title_one %>
-        <%= f.label :title_one, I18n.t('spree.dash.cms.title') %>
+        <%= f.label :title_one, I18n.t('spree.admin.cms.title') %>
       <% end %>
 
       <%= f.field_container :subtitle_one do %>
         <%= f.text_field :subtitle_one %>
-        <%= f.label :subtitle_one, I18n.t('spree.dash.cms.subtitle') %>
+        <%= f.label :subtitle_one, I18n.t('spree.admin.cms.subtitle') %>
       <% end %>
 
       <div class="col-12"><hr></div>
 
       <%= f.field_container :link_type_one do %>
         <%= f.select(:link_type_one, spree_humanize_dropdown_values('Spree::Cms::Sections::SideBySideImages', { const: 'LINKED_RESOURCE_TYPE' }), { include_blank: false }) %>
-        <%= f.label :link_type_one, I18n.t('spree.dash.navigation.link_to') %>
+        <%= f.label :link_type_one, I18n.t('spree.admin.navigation.link_to') %>
       <% end %>
 
       <%= render "spree/admin/shared/link_fields", resource: @cms_section, linked_type: @cms_section.link_type_one, save_to: :link_one, f: f %>
@@ -32,26 +32,26 @@
   <div class="col-12 col-md-6 mb-3">
     <div id="right_image_details" class="card p-3">
       <div class="text-center">
-        <h4 class="pb-2"><%= I18n.t('spree.dash.cms.side_by_side.right_image') %></h4>
+        <h4 class="pb-2"><%= I18n.t('spree.admin.cms.side_by_side.right_image') %></h4>
         <% @cms_section.build_image_two unless @cms_section.image_two %>
         <%= render partial: 'image_upload_form', locals: { f: f, image: :image_two } %>
-        <small class="text-muted"><%= I18n.t('spree.dash.cms.side_by_side.image_info') %></small>
+        <small class="text-muted"><%= I18n.t('spree.admin.cms.side_by_side.image_info') %></small>
       </div>
 
       <%= f.field_container :title_two do %>
         <%= f.text_field :title_two %>
-        <%= f.label :title_two, I18n.t('spree.dash.cms.title') %>
+        <%= f.label :title_two, I18n.t('spree.admin.cms.title') %>
       <% end %>
 
       <%= f.field_container :subtitle_two do %>
         <%= f.text_field :subtitle_two %>
-        <%= f.label :subtitle_two, I18n.t('spree.dash.cms.subtitle') %>
+        <%= f.label :subtitle_two, I18n.t('spree.admin.cms.subtitle') %>
       <% end %>
 
       <div class="col-12"><hr></div>
       <%= f.field_container :link_type_two do %>
         <%= f.select(:link_type_two, spree_humanize_dropdown_values('Spree::Cms::Sections::SideBySideImages', { const: 'LINKED_RESOURCE_TYPE' }), { include_blank: false }) %>
-        <%= f.label :link_type_two, I18n.t('spree.dash.navigation.link_to') %>
+        <%= f.label :link_type_two, I18n.t('spree.admin.navigation.link_to') %>
       <% end %>
 
       <%= render "spree/admin/shared/link_fields", resource: @cms_section, linked_type: @cms_section.link_type_two, save_to: :link_two, f: f %>
@@ -62,14 +62,14 @@
   <div class="col-6">
     <%= f.field_container :fit do %>
       <%= f.select(:fit, @cms_section.boundaries, {include_blank: false}) %>
-      <%= f.label :fit, I18n.t('spree.dash.cms.fit') %>
+      <%= f.label :fit, I18n.t('spree.admin.cms.fit') %>
     <% end %>
   </div>
 
   <div class="col-6">
     <%= f.field_container :gutters do %>
       <%= f.select(:gutters, @cms_section.gutters_sizes, {include_blank: false}) %>
-      <%= f.label :gutters, I18n.t('spree.dash.cms.set_gutters') %>
+      <%= f.label :gutters, I18n.t('spree.admin.cms.set_gutters') %>
     <% end %>
   </div>
 </div>

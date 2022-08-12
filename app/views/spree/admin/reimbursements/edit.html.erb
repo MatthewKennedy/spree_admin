@@ -62,7 +62,7 @@
   </fieldset>
 
   <div class="form-actions filter-actions actions" data-hook="buttons">
-    <%= button I18n.t('spree.dash.actions.update'), 'update' %>
+    <%= button I18n.t('spree.admin.actions.update'), 'update' %>
   </div>
 <% end %>
 
@@ -90,7 +90,7 @@
   </div>
   <% if @order.has_non_reimbursement_related_refunds? %>
     <div class="alert alert-danger">
-      <%= "#{I18n.t('spree.dash.note')}: #{I18n.t('spree.dash.this_order_has_already_received_a_refund')}. #{I18n.t('spree.dash.make_sure_the_above_reimbursement_amount_is_correct')}." %>
+      <%= "#{I18n.t('spree.admin.note')}: #{I18n.t('spree.admin.this_order_has_already_received_a_refund')}. #{I18n.t('spree.admin.make_sure_the_above_reimbursement_amount_is_correct')}." %>
     </div>
   <% end %>
   <div class="form-actions" data-hook="reimburse-buttons">
@@ -100,7 +100,7 @@
         <%= Spree.t(:reimburse) %>
       <% end %>
       <span class="or"><%= Spree.t(:or) %></span>
-      <%= link_to_with_icon I18n.t('spree.dash.actions.cancel'), spree.edit_admin_order_customer_return_path(@order, @reimbursement.customer_return), icon: 'cancel' %>
+      <%= link_to_with_icon I18n.t('spree.admin.actions.cancel'), spree.edit_admin_order_customer_return_path(@order, @reimbursement.customer_return), icon: 'cancel' %>
     <% end %>
   </div>
 </fieldset>

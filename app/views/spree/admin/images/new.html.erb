@@ -5,7 +5,7 @@
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @product, @image], builder: Spree::Dash::BootstrapBuilder, id: "newImageForm", data: { turbo_frame: :product_images, action: "turbo:submit-end->modal#submitEnd"} do |f| %>
+    <%= form_with model: [:admin, @product, @image], id: "newImageForm", data: { turbo_frame: :product_images, action: "turbo:submit-end->modal#submitEnd"} do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>

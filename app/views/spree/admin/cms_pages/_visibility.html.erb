@@ -2,12 +2,12 @@
   <%= f.check_box :visible, class: 'btn-check', data: {action: 'change->form-validation#validate'} %>
   <% if @cms_page.visible? %>
     <%= f.label :visible, class: 'rounded-pill badge text-bg-primary' do %>
-      <%= inline_svg_tag "eye.svg", size: '18px * 18px', class: 'mb-0' %> <%= I18n.t('spree.dash.cms.visible') %>
+      <%= inline_svg_tag "eye.svg", size: '18px * 18px', class: 'mb-0' %> <%= I18n.t('spree.admin.cms.visible') %>
     <% end %>
   <% else %>
     <%= f.label :visible, class: 'rounded-pill badge text-bg-secondary' do %>
-      <%= inline_svg_tag "eye-slash-fill.svg", size: '18px *18px', class: 'mb-0' %> <%= I18n.t('spree.dash.cms.draft_mode') %>
+      <%= inline_svg_tag "eye-slash-fill.svg", size: '18px *18px', class: 'mb-0' %> <%= I18n.t('spree.admin.cms.draft_mode') %>
     <% end %>
   <% end %>
-  <%= f.submit I18n.t('spree.dash.actions.update'), data: {form_validation_target: "submitBtn"} %>
+  <%= f.submit I18n.t('spree.admin.actions.update'), data: {form_validation_target: "submitBtn"} %>
 <% end %>

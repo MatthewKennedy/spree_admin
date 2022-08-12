@@ -106,7 +106,7 @@ describe Spree::Admin::ProductsController, type: :controller do
         before { send_request }
 
         it { expect(response).to have_http_status(:ok) }
-        it { expect(flash[:success]).to eq(I18n.t("spree.dash.notice_messages.product_deleted")) }
+        it { expect(flash[:success]).to eq(I18n.t("spree.admin.notice_messages.product_deleted")) }
       end
     end
 
@@ -140,7 +140,7 @@ describe Spree::Admin::ProductsController, type: :controller do
         it { expect(response).to have_http_status(:ok) }
 
         it "set flash error" do
-          expected_error = I18n.t("spree.dash.notice_messages.product_not_deleted", error: error_msg)
+          expected_error = I18n.t("spree.admin.notice_messages.product_not_deleted", error: error_msg)
           expect(flash[:error]).to eq(expected_error)
         end
       end
@@ -181,7 +181,7 @@ describe Spree::Admin::ProductsController, type: :controller do
       describe "response" do
         it { expect(response).to have_http_status(:found) }
         it { expect(response).to be_redirect }
-        it { expect(flash[:success]).to eq(I18n.t("spree.dash.notice_messages.product_cloned")) }
+        it { expect(flash[:success]).to eq(I18n.t("spree.admin.notice_messages.product_cloned")) }
       end
     end
 
@@ -197,7 +197,7 @@ describe Spree::Admin::ProductsController, type: :controller do
         it { expect(response).to be_redirect }
 
         it "set flash error" do
-          expected_error = I18n.t("spree.dash.notice_messages.product_not_cloned", error: "Validation failed: Sku has already been taken")
+          expected_error = I18n.t("spree.admin.notice_messages.product_not_cloned", error: "Validation failed: Sku has already been taken")
           expect(flash[:error]).to eq(expected_error)
         end
       end

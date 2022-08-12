@@ -19,7 +19,7 @@
 
         <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#tableFilter" aria-expanded="false" aria-controls="tableFilter">
           <%= inline_svg_tag "filter.svg", size: '16px * 16px' %>
-          <span class="d-none d-sm-inline"><%= I18n.t('spree.dash.filter') %></span>
+          <span class="d-none d-sm-inline"><%= I18n.t('spree.admin.filter') %></span>
         </button>
       </div>
       <% unless defined?(simple) %>
@@ -39,12 +39,12 @@
       <thead class="text-muted">
         <tr data-hook="admin_orders_index_headers">
           <th><%= I18n.t(:number, scope: 'activerecord.attributes.spree/order') %></th>
-          <th><%= I18n.t('spree.dash.date') %></th>
-          <th><%= I18n.t('spree.dash.risk') %></th>
-          <th><%= I18n.t('spree.dash.payment') %></th>
-          <th><%= I18n.t('spree.dash.shipment') %></th>
-          <th><%= I18n.t('spree.dash.customer') %></th>
-          <th><%= I18n.t('spree.dash.total') %></th>
+          <th><%= I18n.t('spree.admin.date') %></th>
+          <th><%= I18n.t('spree.admin.risk') %></th>
+          <th><%= I18n.t('spree.admin.payment') %></th>
+          <th><%= I18n.t('spree.admin.shipment') %></th>
+          <th><%= I18n.t('spree.admin.customer') %></th>
+          <th><%= I18n.t('spree.admin.total') %></th>
         </tr>
       </thead>
       <tbody>
@@ -60,14 +60,14 @@
 
             <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="no-wrap">
               <span class="badge rounded-pill bg-<%= order.considered_risky ? 'considered_risky' : 'considered_safe' %>">
-                <%= order.considered_risky ? I18n.t("spree.dash.risky") : I18n.t("spree.dash.safe") %>
+                <%= order.considered_risky ? I18n.t("spree.admin.risky") : I18n.t("spree.admin.safe") %>
               </span>
             </td>
 
             <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="no-wrap">
               <% if order.payment_state %>
                 <span class="badge rounded-pill bg-<%= order.payment_state %>">
-                  <%= I18n.t("spree.dash.payment_states.#{order.payment_state}") %>
+                  <%= I18n.t("spree.admin.payment_states.#{order.payment_state}") %>
                 </span>
               <% end %>
             </td>
@@ -76,7 +76,7 @@
               <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="no-wrap">
                 <% if order.shipment_state %>
                   <span class="badge rounded-pill bg-<%= order.shipment_state %>">
-                    <%= I18n.t("spree.dash.shipment_states.#{order.shipment_state}") %>
+                    <%= I18n.t("spree.admin.shipment_states.#{order.shipment_state}") %>
                   </span>
                 <% end %>
               </td>

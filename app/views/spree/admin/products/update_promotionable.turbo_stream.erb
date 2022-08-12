@@ -1,5 +1,5 @@
 <% if @product.promotionable %>
-  <%= stream_flash_alert(message: raw(I18n.t("spree.dash.products.messages.product_is_promotable", name: @product.name)) ) %>
+  <%= stream_flash_alert(message: raw(I18n.t("spree.admin.products.messages.product_is_promotable", name: @product.name)) ) %>
 <% else %>
-  <%= stream_flash_alert(message: raw(I18n.t("spree.dash.products.messages.product_is_not_promotable", name: @product.name)) ) %>
+  <%= stream_flash_alert(message: raw(I18n.t("spree.admin.products.messages.product_is_not_promotable", name: @product.name)) ) %>
 <% end %>

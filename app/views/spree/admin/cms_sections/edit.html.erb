@@ -1,14 +1,14 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.dash.cms.all_pages'), spree.admin_cms_pages_path %> /
+  <%= link_to I18n.t('spree.admin.cms.all_pages'), spree.admin_cms_pages_path %> /
   <%= link_to @cms_page.title, spree.edit_admin_cms_page_path(@cms_page) %> / <%= @cms_section.name %>
 <% end %>
 
 <div class="card">
   <div class="card-header">
-    <h5 class="card-title"><%= I18n.t("spree.dash.settings") %></h5>
+    <h5 class="card-title"><%= I18n.t("spree.admin.settings") %></h5>
   </div>
   <div class="card-body">
-    <%= form_with scope: :cms_section, url: spree.admin_cms_page_cms_section_path(@cms_page, @cms_section), class: "row", data: {controller: "form-validation", turbo_frame: :cms_section_settings}, method: :patch, builder: Spree::Dash::BootstrapBuilder do |f| %>
+    <%= form_with scope: :cms_section, url: spree.admin_cms_page_cms_section_path(@cms_page, @cms_section), class: "row", data: {controller: "form-validation", turbo_frame: :cms_section_settings}, method: :patch do |f| %>
       <div class="col-12 col-md-6">
         <%= f.field_container :name do %>
           <%= f.text_field :name, required: true %>
@@ -18,16 +18,16 @@
       <div class="col-12 col-md-6">
         <%= f.field_container :type do %>
           <%= f.select(:type, spree_humanize_cms(Rails.application.config.spree.cms.sections), {include_blank: false}, data: {controller: "ts--select", action: 'change->form-validation#validate' }) %>
-          <%= f.label :type, I18n.t('spree.dash.cms.section_type') %>
+          <%= f.label :type, I18n.t('spree.admin.cms.section_type') %>
         <% end %>
       </div>
-      <%= f.submit I18n.t('spree.dash.actions.update'), data: {form_validation_target: "submitBtn"} %>
+      <%= f.submit I18n.t('spree.admin.actions.update'), data: {form_validation_target: "submitBtn"} %>
     <% end %>
   </div>
 </div>
 
 <%= turbo_frame_tag :cms_section_settings do %>
-  <%= form_with scope: :cms_section, url: spree.admin_cms_page_cms_section_path(@cms_page, @cms_section), data: {turbo_frame: "_top"}, method: :patch, builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <%= form_with scope: :cms_section, url: spree.admin_cms_page_cms_section_path(@cms_page, @cms_section), data: {turbo_frame: "_top"}, method: :patch do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
   <% end %>
 <% end %>

@@ -14,8 +14,8 @@
   </div>
 
   <div class="form-actions" data-hook="buttons">
-    <%= button I18n.t('spree.dash.actions.update'), 'save.svg' %>
+    <%= button I18n.t('spree.admin.actions.update'), 'save.svg' %>
     <span class="or"><%= Spree.t(:or) %></span>
-    <%= link_to_with_icon I18n.t('spree.dash.actions.cancel'), admin_product_path(@product), icon: 'delete.svg' %>
+    <%= link_to_with_icon I18n.t('spree.admin.actions.cancel'), admin_product_path(@product), icon: 'delete.svg' %>
   </div>
 <% end %>

@@ -8,6 +8,6 @@
 
 <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @payment_method } %>
 
-<%= form_with model: @payment_method, scope: :payment_method, url: admin_payment_method_path(@payment_method), builder: Spree::Dash::BootstrapBuilder, data: {controller: "form-state"}, id: "mainForm" do |f| %>
+<%= form_with model: @payment_method, scope: :payment_method, url: admin_payment_method_path(@payment_method), data: {controller: "form-state"}, id: "mainForm" do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
 <% end %>

@@ -1,5 +1,5 @@
 <% content_for :modal_header do %>
-  <h5 class="modal-title"><%= I18n.t('spree.dash.products.new_product_details') %></h5>
+  <h5 class="modal-title"><%= I18n.t('spree.admin.products.new_product_details') %></h5>
   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 <% end %>
 
@@ -15,8 +15,8 @@
 
       <div class="col-12 col-md-3">
         <%= f.field_container :price, data: { hook: "new_product_price" } do %>
-          <%= f.text_field :price, value: number_to_currency(@product.price, unit: ''), class: 'form-control', required: :required, placeholder: raw(I18n.t('spree.dash.products.new_product_master_price', currency_symbol: currency_symbol(current_currency) ,currency_iso: current_currency ) + required_span_tag) %>
-          <%= f.label :price, raw(I18n.t('spree.dash.products.new_product_master_price', currency_symbol: currency_symbol(current_currency) ,currency_iso: current_currency ) + required_span_tag) %>
+          <%= f.text_field :price, value: number_to_currency(@product.price, unit: ''), class: 'form-control', required: :required, placeholder: raw(I18n.t('spree.admin.products.new_product_master_price', currency_symbol: currency_symbol(current_currency) ,currency_iso: current_currency ) + required_span_tag) %>
+          <%= f.label :price, raw(I18n.t('spree.admin.products.new_product_master_price', currency_symbol: currency_symbol(current_currency) ,currency_iso: current_currency ) + required_span_tag) %>
         <% end %>
       </div>
 

@@ -1,10 +1,10 @@
 <div class="card-body">
   <div class="form-group taxons_rule_taxons">
-    <%= label_tag "#{param_prefix}_taxon_ids", I18n.t('spree.dash.taxon_rule.choose_taxons') %>
+    <%= label_tag "#{param_prefix}_taxon_ids", I18n.t('spree.admin.taxon_rule.choose_taxons') %>
     <%= select_tag "#{param_prefix}[taxon_ids]", options_from_collection_for_select(promotion_rule.taxons, :id, :pretty_name, promotion_rule.taxon_ids), class: 'taxon_picker d-block w-100', multiple: true, id: :product_taxon_ids %>
   </div>
   <div class="form-group mb-0">
-    <%= label_tag I18n.t('spree.dash.taxon_rule.label') %>
-    <%= select_tag("#{param_prefix}[preferred_match_policy]", options_for_select(Spree::Promotion::Rules::Taxon::MATCH_POLICIES.map{|s| [I18n.t("spree.dash.taxon_rule.match_#{s}"),s] }, promotion_rule.preferred_match_policy), {class: 'select_taxon form-control form-select'}) %>
+    <%= label_tag I18n.t('spree.admin.taxon_rule.label') %>
+    <%= select_tag("#{param_prefix}[preferred_match_policy]", options_for_select(Spree::Promotion::Rules::Taxon::MATCH_POLICIES.map{|s| [I18n.t("spree.admin.taxon_rule.match_#{s}"),s] }, promotion_rule.preferred_match_policy), {class: 'select_taxon form-control form-select'}) %>
   </div>
 </div>

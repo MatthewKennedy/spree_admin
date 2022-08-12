@@ -1,12 +1,12 @@
 <div class="card">
   <div class="card-header d-flex">
     <div class="flex-fill">
-      <h5 class="card-title"><%= I18n.t('spree.dash.shipments') %></h5>
+      <h5 class="card-title"><%= I18n.t('spree.admin.shipments') %></h5>
     </div>
     <div>
       <h5 class="card-title">
         <% if @order.shipment_state %>
-          <span class="badge bg-<%= @order.shipment_state %>"><%= I18n.t("spree.dash.shipment_states.#{@order.shipment_state}") %></span>
+          <span class="badge bg-<%= @order.shipment_state %>"><%= I18n.t("spree.admin.shipment_states.#{@order.shipment_state}") %></span>
         <% end %>
       </h5>
     </div>
@@ -22,7 +22,7 @@
         <% end %>
 
         <%= f.field_container :stock_location_id, class: ['col-auto'] do %>
-          <%= f.submit I18n.t('spree.dash.order.add'), class: 'btn btn-outline-secondary w-100 h-100 rounded-end rounded-0' %>
+          <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-outline-secondary w-100 h-100 rounded-end rounded-0' %>
         <% end %>
       <% end %>
       <hr>
@@ -38,7 +38,7 @@
                  <%= shipment.number %>
               </h6>
               <h6 class="card-title text-muted">
-               <span class="text-capitalize"><%= shipment.state %></span> <%= I18n.t('spree.dash.order.from') %>: <%= link_to shipment.stock_location.name, spree.edit_admin_stock_location_url(shipment.stock_location) %>
+               <span class="text-capitalize"><%= shipment.state %></span> <%= I18n.t('spree.admin.order.from') %>: <%= link_to shipment.stock_location.name, spree.edit_admin_stock_location_url(shipment.stock_location) %>
               </h6>
             </div>
 
@@ -50,7 +50,7 @@
 
             <% if shipment.ready? and can? :update, shipment %>
               <div>
-                <%= link_to I18n.t('spree.dash.order.mark_as_shipped'), spree.ship_admin_shipment_path(shipment.id), class: 'btn btn-light btn-sm', data: { turbo_method: :patch } , title: I18n.t('spree.dash.order.mark_as_shipped') %>
+                <%= link_to I18n.t('spree.admin.order.mark_as_shipped'), spree.ship_admin_shipment_path(shipment.id), class: 'btn btn-light btn-sm', data: { turbo_method: :patch } , title: I18n.t('spree.admin.order.mark_as_shipped') %>
               </div>
             <% end %>
           </div>
@@ -60,7 +60,7 @@
               <%= form_with model: shipment, url: spree.add_item_admin_shipment_path(shipment.id), method: :patch, class: 'input-group' do |f| %>
                   <div class="form-group form-floating">
                     <%= f.number_field :quantity, class: 'form-control rounded-start rounded-0',
-                                                  placeholder: I18n.t('spree.dash.quantity'),
+                                                  placeholder: I18n.t('spree.admin.quantity'),
                                                   required: true,
 
                                                   data: { controller: 'input-formatting',
@@ -71,7 +71,7 @@
 
                   <div class="form-group form-floating" style="width: 60%">
                     <%= f.select :variant_id, [], {}, class: 'form-select rounded-0', required: true,
-                                                      placeholder: I18n.t('spree.dash.order.search_for_a_product_or_variant'),
+                                                      placeholder: I18n.t('spree.admin.order.search_for_a_product_or_variant'),
                                                       data: { action: 'change->form-validation#validate',
                                                       controller: 'ts--search-variant',
                                                       ts__search_variant_debug_value: true,
@@ -81,11 +81,11 @@
                                                       ts__search_variant_custom_params_value: [ ['[image_transformation]size', '100x100'] ],
                                                       ts__search_variant_include_value: 'images,stock_items.stock_location' } %>
 
-                    <%= label_tag :variant_id, I18n.t('spree.dash.order.products'), class: 'form-label' %>
+                    <%= label_tag :variant_id, I18n.t('spree.admin.order.products'), class: 'form-label' %>
                   </div>
 
                   <div class="form-group">
-                    <%= f.submit I18n.t('spree.dash.order.add'), class: 'btn btn-outline-secondary rounded-0 rounded-end w-100 h-100', data: { form_validation_target: "submitBtn" } %>
+                    <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-outline-secondary rounded-0 rounded-end w-100 h-100', data: { form_validation_target: "submitBtn" } %>
                   </div>
               <% end %>
             <% end %>
@@ -123,7 +123,7 @@
                   <div class="row">
                     <div class="col">
                       <%= field_container :tracking, nil do %>
-                        <%= text_field_tag :tracking, shipment.tracking, class: "form-control", placeholder: I18n.t('spree.dash.order.tracking_number'), readonly: true, autocomplete: false %>
+                        <%= text_field_tag :tracking, shipment.tracking, class: "form-control", placeholder: I18n.t('spree.admin.order.tracking_number'), readonly: true, autocomplete: false %>
                       <% end %>
                     </div>
                     <div class="col-auto">
@@ -135,7 +135,7 @@
                     <div class="row">
                       <div class="col">
                         <%= f.field_container :tracking do %>
-                          <%= f.text_field :tracking, class: "form-control", placeholder: I18n.t('spree.dash.order.tracking_number') %>
+                          <%= f.text_field :tracking, class: "form-control", placeholder: I18n.t('spree.admin.order.tracking_number') %>
                         <% end %>
                       </div>
                       <div class="col-auto">
@@ -154,12 +154,12 @@
 
     <% else %>
       <div class="alert alert-warning mb-0">
-        <%= I18n.t('spree.dash.order.add_a_shipment_to_this_order_to_begin_adding_items').html_safe %>
+        <%= I18n.t('spree.admin.order.add_a_shipment_to_this_order_to_begin_adding_items').html_safe %>
       </div>
     <% end %>
 
     <% if @order.shipped? and can?(:resend, @order) %>
-      <%= link_to_with_icon I18n.t('spree.dash.order.resend_shipping_confirmation_email'), resend_admin_order_url(@order), method: :post, icon: 'envelope.svg', class: 'btn btn-light' %>
+      <%= link_to_with_icon I18n.t('spree.admin.order.resend_shipping_confirmation_email'), resend_admin_order_url(@order), method: :post, icon: 'envelope.svg', class: 'btn btn-light' %>
     <% end %>
 
     <% if @order.special_instructions.present? %>

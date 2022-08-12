@@ -1,11 +1,11 @@
 <% if spree.respond_to? :root_path %>
   <ul class="nav nav-sidebar" id="sidebarDashboard">
-    <%= tab I18n.t('spree.dash.tab.home'), url: spree.root_path, match_path: nil, icon: 'shop.svg' %>
+    <%= tab I18n.t('spree.admin.tab.home'), url: spree.root_path, match_path: nil, icon: 'shop.svg' %>
   </ul>
 <% end %>
 
 <% if admin_logout_link %>
   <ul class="nav nav-sidebar" id="logout">
-    <%= tab I18n.t('spree.dash.tab.logout'), url: admin_logout_link, match_path: nil, icon: 'box-arrow-right.svg' %>
+    <%= tab I18n.t('spree.admin.tab.logout'), url: admin_logout_link, match_path: nil, icon: 'box-arrow-right.svg' %>
   </ul>
 <% end %>

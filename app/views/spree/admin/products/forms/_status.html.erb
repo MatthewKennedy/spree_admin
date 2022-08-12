@@ -1,9 +1,9 @@
 <%= turbo_frame_tag :product_status do %>
-  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :prouct_status}, builder: Spree::Dash::BootstrapBuilder do |f| %>
+  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :prouct_status} do |f| %>
     <div class="card">
       <div class="card-header d-flex">
         <div class="flex-fill">
-          <h5 class="card-title"><%= I18n.t('spree.dash.status') %></h5>
+          <h5 class="card-title"><%= I18n.t('spree.admin.status') %></h5>
         </div>
         <div>
           <%= render partial: 'spree/admin/shared/submit_button' %>

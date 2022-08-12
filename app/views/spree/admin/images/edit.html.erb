@@ -5,7 +5,7 @@
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @product, @image], builder: Spree::Dash::BootstrapBuilder, id: "editImageForm", data: { turbo_frame: :product_images, action: "turbo:submit-end->modal#submitEnd"} do |f| %>
+    <%= form_with model: [:admin, @product, @image], id: "editImageForm", data: { turbo_frame: :product_images, action: "turbo:submit-end->modal#submitEnd"} do |f| %>
       <div data-hook="thumbnail" class="col-12 text-center">
         <div class="admin-product-image-container product-img">
            <%= link_to image_tag(main_app.cdn_image_url(@image.url(:product))), main_app.cdn_image_url(@image.attachment) %>

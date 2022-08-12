@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.dash.oauth_applications.list'), spree.admin_oauth_applications_url %> /
+  <%= link_to I18n.t('spree.admin.oauth_applications.list'), spree.admin_oauth_applications_url %> /
   <%= @oauth_application.name.capitalize %>
 <% end %>
 
@@ -7,6 +7,6 @@
   <%= remote_form_submit_button(@object) %>
 <% end %>
 
-<%= form_with model: [:admin, @oauth_application], builder: Spree::Dash::BootstrapBuilder, data: {controller: "form-state"} do |f| %>
+<%= form_with model: [:admin, @oauth_application], data: {controller: "form-state"} do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
 <% end %>

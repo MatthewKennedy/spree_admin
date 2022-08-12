@@ -1,45 +1,45 @@
 <div class="card">
   <div class="card-header">
-    <h5 class="card-title"><%= I18n.t('spree.dash.apis') %></h5>
+    <h5 class="card-title"><%= I18n.t('spree.admin.apis') %></h5>
   </div>
 
   <ul class="list-group list-group-flush">
     <li class="list-group-item d-flex align-items-center">
       <div class="flex-fill">
-        <%= I18n.t('spree.dash.storefront_api') %>
+        <%= I18n.t('spree.admin.storefront_api') %>
         <br>
         <small class="text-muted">
-          <%= link_to I18n.t('spree.dash.learn_more'), 'https://api.spreecommerce.org/docs/api-v2/api/docs/v2/storefront/index.yaml', target: :blank %>
+          <%= link_to I18n.t('spree.admin.learn_more'), 'https://api.spreecommerce.org/docs/api-v2/api/docs/v2/storefront/index.yaml', target: :blank %>
         </small>
       </div>
 
       <div>
         <small class="text-muted">
-          <%= link_to I18n.t('spree.dash.download_sdk'), 'https://github.com/spree/spree-storefront-api-v2-js-sdk', class: 'btn btn-sm btn-light', target: :blank %>
+          <%= link_to I18n.t('spree.admin.download_sdk'), 'https://github.com/spree/spree-storefront-api-v2-js-sdk', class: 'btn btn-sm btn-light', target: :blank %>
         </small>
       </div>
     </li>
     <li class="list-group-item d-flex align-items-center">
       <div class="flex-fill">
-        <%= I18n.t('spree.dash.platform_api') %>
+        <%= I18n.t('spree.admin.platform_api') %>
         <br>
         <small class="text-muted">
-          <%= link_to I18n.t('spree.dash.learn_more'), 'https://api.spreecommerce.org/docs/api-v2/YXBpOjg3MzkxODk-platform-api', target: :blank %>
+          <%= link_to I18n.t('spree.admin.learn_more'), 'https://api.spreecommerce.org/docs/api-v2/YXBpOjg3MzkxODk-platform-api', target: :blank %>
         </small>
       </div>
       <div>
         <small class="text-muted float-end">
-          <%= link_to I18n.t('spree.dash.create_platform_application'), spree.admin_oauth_applications_path, class: 'btn btn-sm btn-light' %>
+          <%= link_to I18n.t('spree.admin.create_platform_application'), spree.admin_oauth_applications_path, class: 'btn btn-sm btn-light' %>
         </small>
       </div>
     </li>
     <li class="list-group-item d-flex align-items-center">
       <div class="flex-fill">
-        <%= I18n.t('spree.dash.webhooks.subscribers.subscriptions') %>
+        <%= I18n.t('spree.admin.webhooks.subscribers.subscriptions') %>
       </div>
       <div>
         <small class="text-muted float-end">
-          <%= link_to I18n.t('spree.dash.create_webhook_subscriber'), spree.admin_webhooks_subscribers_path, class: 'btn btn-sm btn-light' %>
+          <%= link_to I18n.t('spree.admin.create_webhook_subscriber'), spree.admin_webhooks_subscribers_path, class: 'btn btn-sm btn-light' %>
         </small>
       </div>
     </li>

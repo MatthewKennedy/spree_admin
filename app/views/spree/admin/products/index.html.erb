@@ -8,22 +8,22 @@
 
 <% content_for :page_tabs do %>
   <li class="nav-item">
-    <%= link_to t('spree.dash.products.all'),
+    <%= link_to t('spree.admin.products.all'),
                 spree.admin_products_path,
                 class: "nav-link #{'active' if params[:q][:status_eq].blank?}" %>
   </li>
   <li class="nav-item">
-    <%= link_to I18n.t('spree.dash.products.active'),
+    <%= link_to I18n.t('spree.admin.products.active'),
                 params.merge({q: {status_eq: :active}}).permit!,
                 class: "nav-link #{'active' if params[:q][:status_eq] == 'active'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to I18n.t('spree.dash.products.draft'),
+    <%= link_to I18n.t('spree.admin.products.draft'),
                 params.merge({q: {status_eq: :draft}}).permit!,
                 class: "nav-link #{'active' if params[:q][:status_eq] == 'draft'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to I18n.t('spree.dash.products.archived'),
+    <%= link_to I18n.t('spree.admin.products.archived'),
                 params.merge({q: {status_eq: :archived}}).permit!,
                 class: "nav-link #{'active' if params[:q][:status_eq] == 'archived'}" %>
   </li>
@@ -44,7 +44,7 @@
         <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
           <th scope="col" class="text-center"><%= Spree.t(:vendor) %></th>
         <% end %>
-        <th scope="col" class="text-center"><%= I18n.t('spree.dash.kind') %></th>
+        <th scope="col" class="text-center"><%= I18n.t('spree.admin.kind') %></th>
         <th scope="col" class="text-center"><%= Spree.t(:status) %></th>
         <th scope="col" class="text-center" class="text-center">
           <%= Spree.t(:price) %>
@@ -76,15 +76,15 @@
             <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">
               <span class="badge rounded-pill text-bg-light">
                 <% if product.digital? %>
-                  <%= I18n.t('spree.dash.product_kinds.digital') %>
+                  <%= I18n.t('spree.admin.product_kinds.digital') %>
                 <% else %>
-                  <%= I18n.t('spree.dash.product_kinds.physical') %>
+                  <%= I18n.t('spree.admin.product_kinds.physical') %>
                 <% end %>
               </span>
             </td>
 
             <td class="status text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">
-              <%= active_badge(available_status == I18n.t('spree.dash.products.active'), label: available_status) %>
+              <%= active_badge(available_status == I18n.t('spree.admin.products.active'), label: available_status) %>
             </td>
 
             <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">

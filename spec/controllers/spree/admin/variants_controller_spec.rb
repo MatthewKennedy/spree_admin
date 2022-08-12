@@ -50,7 +50,7 @@ module Spree
             before { send_request }
 
             it_behaves_like "correct response"
-            it { expect(flash[:success]).to eq(I18n.t("spree.dash.notice_messages.variant_deleted")) }
+            it { expect(flash[:success]).to eq(I18n.t("spree.admin.notice_messages.variant_deleted")) }
           end
         end
 

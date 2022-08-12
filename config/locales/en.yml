@@ -1,7 +1,7 @@
 ---
 en:
   spree:
-    dash:
+    admin:
       actions:
         add: Add
         cancel: Cancel
@@ -12,6 +12,7 @@ en:
         edit: Edit
         save: Save
         update: Update
+        upload: Upload
       active: Active
       address:
         emirate: Emirate

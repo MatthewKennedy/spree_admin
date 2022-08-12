@@ -9,7 +9,7 @@ module Spree
             format.turbo_stream
           end
         else
-          stream_flash_alert(message: I18n.t("spree.dash.cms_sections.errors.position_could_not_be_updated"), kind: :error)
+          stream_flash_alert(message: I18n.t("spree.admin.cms_sections.errors.position_could_not_be_updated"), kind: :error)
         end
       end
 

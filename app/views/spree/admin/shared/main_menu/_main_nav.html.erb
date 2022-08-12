@@ -1,28 +1,28 @@
 <ul class="nav nav-sidebar" id="sidebarDashboard">
-  <%= tab I18n.t('spree.dash.tab.dashboard'), url: spree.admin_path, match_path: '/dashboard', icon: 'card-heading.svg' %>
+  <%= tab I18n.t('spree.admin.tab.dashboard'), url: spree.admin_path, match_path: '/dashboard', icon: 'card-heading.svg' %>
 </ul>
 
 <% if can? :admin, Spree::Order %>
   <ul class="nav nav-sidebar" id="sidebarOrder">
-    <%= main_menu_tree I18n.t('spree.dash.tab.orders'), icon: "inbox-fill.svg", sub_menu: "orders", url: "#sidebar-orders" %>
+    <%= main_menu_tree I18n.t('spree.admin.tab.orders'), icon: "inbox-fill.svg", sub_menu: "orders", url: "#sidebar-orders" %>
   </ul>
 <% end %>
 
 <% if can?(:admin, Spree::ReturnAuthorization) || can?(:admin, Spree::CustomerReturn) %>
   <ul class="nav nav-sidebar" id="sidebarReturn">
-    <%= main_menu_tree I18n.t('spree.dash.tab.returns'), icon: "reply-fill.svg", sub_menu: "returns", url: "#sidebar-returns" %>
+    <%= main_menu_tree I18n.t('spree.admin.tab.returns'), icon: "reply-fill.svg", sub_menu: "returns", url: "#sidebar-returns" %>
   </ul>
 <% end %>
 
 <% if can? :admin, Spree::Product %>
   <ul class="nav nav-sidebar" id="sidebarProduct">
-    <%= main_menu_tree I18n.t('spree.dash.tab.catalog'), icon: "tags-fill.svg", sub_menu: "product", url: "#sidebar-product" %>
+    <%= main_menu_tree I18n.t('spree.admin.tab.catalog'), icon: "tags-fill.svg", sub_menu: "product", url: "#sidebar-product" %>
   </ul>
 <% end %>
 
 <% if can?(:admin, Spree::StockLocation) || can?(:admin, Spree::StockTransfer) %>
   <ul class="nav nav-sidebar" id="sidebarStock">
-    <%= main_menu_tree I18n.t('spree.dash.tab.stock'), icon: "box-seam.svg", sub_menu: "stock", url: "#sidebar-stock" %>
+    <%= main_menu_tree I18n.t('spree.admin.tab.stock'), icon: "box-seam.svg", sub_menu: "stock", url: "#sidebar-stock" %>
   </ul>
 <% end %>
 
@@ -34,13 +34,13 @@
 
 <% if can? :admin, Spree::Promotion %>
   <ul class="nav nav-sidebar" id="sidebarPromotion">
-    <%= main_menu_tree I18n.t('spree.dash.promotions.promotions'), icon: "percent.svg", sub_menu: "promotion", url: "#sidebar-promotions" %>
+    <%= main_menu_tree I18n.t('spree.admin.promotions.promotions'), icon: "percent.svg", sub_menu: "promotion", url: "#sidebar-promotions" %>
   </ul>
 <% end %>
 
 <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) && can?(:index, Spree::Vendor) %>
   <ul class="nav nav-sidebar" id="sidebarOrganizations">
-    <%= main_menu_tree I18n.t('spree.dash.promotions.organizations'), icon: "building.svg", sub_menu: "organizations", url: "#sidebar-organizations" %>
+    <%= main_menu_tree I18n.t('spree.admin.promotions.organizations'), icon: "building.svg", sub_menu: "organizations", url: "#sidebar-organizations" %>
   </ul>
 <% end %>
 
@@ -52,7 +52,7 @@
 
 <% if can? :admin, Spree::Menu %>
   <ul class="nav nav-sidebar" id="sidebarMenu">
-    <%= main_menu_tree I18n.t('spree.dash.tab.content'), icon: "card-heading.svg", sub_menu: "content", url: "#sidebar-content" %>
+    <%= main_menu_tree I18n.t('spree.admin.tab.content'), icon: "card-heading.svg", sub_menu: "content", url: "#sidebar-content" %>
   </ul>
 <% end %>
 

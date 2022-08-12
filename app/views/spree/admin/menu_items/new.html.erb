@@ -1,11 +1,11 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.dash.navigation.all_menus'), spree.admin_menus_path %> /
-  <%= link_to @menu.name, spree.edit_admin_menu_path(@menu) %> / <%= I18n.t('spree.dash.navigation.new_menu_item') %>
+  <%= link_to I18n.t('spree.admin.navigation.all_menus'), spree.admin_menus_path %> /
+  <%= link_to @menu.name, spree.edit_admin_menu_path(@menu) %> / <%= I18n.t('spree.admin.navigation.new_menu_item') %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @menu_item } %>
 
-<%= form_with model: [:admin, @menu, @menu_item], builder: Spree::Dash::BootstrapBuilder do |f| %>
+<%= form_with model: [:admin, @menu, @menu_item] do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
   <%= render partial: 'spree/admin/shared/new_resource_links' %>
 <% end %>

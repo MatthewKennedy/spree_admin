@@ -1,35 +1,35 @@
 <div class="card" data-hook="admin_country_form_fields">
   <div class="card-header d-flex">
     <div class="flex-fill">
-      <h5 class="card-title"><%= I18n.t('spree.dash.details') %></h5>
+      <h5 class="card-title"><%= I18n.t('spree.admin.details') %></h5>
     </div>
   </div>
   <div class="card-body row">
     <div class="col-12">
       <%= f.field_container :name, data_hook: 'name' do %>
         <%= f.text_field :name, required: true %>
-        <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+        <%= f.label :name, raw(I18n.t('spree.admin.name') + required_span_tag) %>
       <% end %>
     </div>
 
     <div class="col-12 col-md-4">
       <%= f.field_container :iso_name, data_hook: 'iso_name' do %>
         <%= f.text_field :iso_name, required: true %>
-        <%= f.label :iso_name, raw(I18n.t('spree.dash.countries.iso_name') + required_span_tag) %>
+        <%= f.label :iso_name, raw(I18n.t('spree.admin.countries.iso_name') + required_span_tag) %>
       <% end %>
     </div>
 
     <div class="col-12 col-md-4">
       <%= f.field_container :iso, data_hook: 'iso' do %>
         <%= f.text_field :iso %>
-        <%= f.label :iso, raw(I18n.t('spree.dash.countries.iso') + required_span_tag) %>
+        <%= f.label :iso, raw(I18n.t('spree.admin.countries.iso') + required_span_tag) %>
       <% end %>
     </div>
 
     <div class="col-12 col-md-4">
       <%= f.field_container :iso3, data_hook: 'iso3' do %>
         <%= f.text_field :iso3, required: true %>
-        <%= f.label :iso3, raw(I18n.t('spree.dash.countries.iso3') + required_span_tag) %>
+        <%= f.label :iso3, raw(I18n.t('spree.admin.countries.iso3') + required_span_tag) %>
       <% end %>
     </div>
 

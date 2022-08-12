@@ -14,21 +14,21 @@
           </div>
         </div>
 
-        <%= form_with model: [:admin, @cms_page], scope: :cms_page, url: spree.admin_cms_page_path(@cms_page), builder: Spree::Dash::BootstrapBuilder, data: {controller: "form-state"}, id: "mainForm" do |f| %>
+        <%= form_with model: [:admin, @cms_page], scope: :cms_page, url: spree.admin_cms_page_path(@cms_page), data: {controller: "form-state"}, id: "mainForm" do |f| %>
           <div class="card-body pb-2">
             <div class="row pb-0">
 
               <div class="col-12 col-md-6">
                 <%= f.field_container :title do %>
                   <%= f.text_field :title, required: true %>
-                  <%= f.label :title, raw(I18n.t('spree.dash.cms.title') + required_span_tag) %>
+                  <%= f.label :title, raw(I18n.t('spree.admin.cms.title') + required_span_tag) %>
                 <% end %>
               </div>
 
               <div class="col-12 col-md-6">
                 <%= f.field_container :type do %>
                   <%= f.select(:type, spree_humanize_dropdown_values('Spree::CmsPage', {const: 'TYPES'}), {include_blank: false}) %>
-                  <%= f.label :type, I18n.t('spree.dash.cms.page_type') %>
+                  <%= f.label :type, I18n.t('spree.admin.cms.page_type') %>
                 <% end %>
               </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="col-12 col-md-4">
                   <%= f.field_container :meta_title do %>
                     <%= f.text_field :meta_title %>
-                    <%= f.label :meta_title, I18n.t('spree.dash.cms.meta_title') %>
+                    <%= f.label :meta_title, I18n.t('spree.admin.cms.meta_title') %>
                   <% end %>
                 </div>
 
@@ -49,9 +49,9 @@
                     <%= f.text_field :slug, disabled: @cms_page.homepage? %>
 
                     <% if @cms_page.homepage? %>
-                      <%= f.label :slug, I18n.t('spree.dash.not_applicable') %>
+                      <%= f.label :slug, I18n.t('spree.admin.not_applicable') %>
                     <% else %>
-                      <%= f.label :slug, I18n.t('spree.dash.slug') %>
+                      <%= f.label :slug, I18n.t('spree.admin.slug') %>
                     <% end %>
                   <% end %>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="col-12">
                 <%= f.field_container :meta_description do %>
                   <%= f.text_area :meta_description, {style: 'height: 200px;'} %>
-                  <%= f.label :meta_description, I18n.t('spree.dash.cms.meta_description') %>
+                  <%= f.label :meta_description, I18n.t('spree.admin.cms.meta_description') %>
                 <% end %>
                 </div>
               </div>
@@ -75,7 +75,7 @@
             <div class="row pb-0">
               <div class="col-12 col-sm text-end">
                 <button id="toggleMorePageSettingsButton" class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#cmsPageSettings" aria-expanded="false" aria-controls="collapsePageSettings">
-                  <%= raw I18n.t('spree.dash.cms.more_page_settings') %>
+                  <%= raw I18n.t('spree.admin.cms.more_page_settings') %>
                 </button>
               </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="card-body">
               <%= f.field_container :content  do %>
                 <%= f.text_area :content, { data: { controller: 'rte', form_state_target: "watch"}, style: "height: 283px;" } %>
-                <%= f.label :content, I18n.t('spree.dash.cms.content') %>
+                <%= f.label :content, I18n.t('spree.admin.cms.content') %>
               <% end %>
             </div>
           <% end %>

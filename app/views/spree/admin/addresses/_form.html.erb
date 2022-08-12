@@ -33,7 +33,7 @@
       <% next if dynamic_fields.include?(field) %>
 
       <% if field == 'address1' %>
-        <% label_name = I18n.t('spree.dash.address.street') %>
+        <% label_name = I18n.t('spree.admin.address.street') %>
       <% else %>
         <% label_name = Spree.t(field) %>
       <% end %>
@@ -53,9 +53,9 @@
 
     <% state_lable = case f.object.country.iso3
        when 'ARE'
-           I18n.t('spree.dash.address.emirate')
+           I18n.t('spree.admin.address.emirate')
        when 'AUS'
-        I18n.t('spree.dash.address.state_territory')
+        I18n.t('spree.admin.address.state_territory')
        else
           Spree.t(field)
        end %>
@@ -93,11 +93,11 @@
 
     <% zip_lable = case f.object.country.iso3
       when 'GBR'
-        I18n.t('spree.dash.address.post_code')
+        I18n.t('spree.admin.address.post_code')
       when 'CAN'
-        I18n.t('spree.dash.address.post_code')
+        I18n.t('spree.admin.address.post_code')
       when 'AUS'
-        I18n.t('spree.dash.address.post_code')
+        I18n.t('spree.admin.address.post_code')
       else
         Spree.t(field)
       end %>

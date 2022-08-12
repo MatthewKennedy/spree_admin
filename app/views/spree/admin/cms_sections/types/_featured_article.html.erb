@@ -2,29 +2,29 @@
   <div class="col-12 col-md-4">
     <%= f.field_container :title do %>
       <%= f.text_field :title %>
-      <%= f.label :title, I18n.t('spree.dash.cms.title') %>
+      <%= f.label :title, I18n.t('spree.admin.cms.title') %>
     <% end %>
 
     <%= f.field_container :subtitle do %>
       <%= f.text_field :subtitle %>
-      <%= f.label :subtitle, I18n.t('spree.dash.cms.subtitle') %>
+      <%= f.label :subtitle, I18n.t('spree.admin.cms.subtitle') %>
     <% end %>
 
     <%= f.field_container :button_text do %>
       <%= f.text_field :button_text %>
-      <%= f.label :button_text, I18n.t('spree.dash.cms.button_text') %>
+      <%= f.label :button_text, I18n.t('spree.admin.cms.button_text') %>
     <% end %>
 
     <%= f.field_container :gutters do %>
       <%= f.select(:gutters, @cms_section.gutters_sizes, {include_blank: false}) %>
-      <%= f.label :gutters, I18n.t('spree.dash.cms.gutters') %>
+      <%= f.label :gutters, I18n.t('spree.admin.cms.gutters') %>
     <% end %>
 
   </div>
   <div class="col-12 col-md-8">
     <%= f.field_container :rte_content do %>
       <%= f.text_area :rte_content, { data: { controller: 'rte'}, style: "height: 283px;" } %>
-      <%= f.label :rte_content, I18n.t('spree.dash.cms.content') %>
+      <%= f.label :rte_content, I18n.t('spree.admin.cms.content') %>
     <% end %>
   </div>
   <div class="col-12"><hr></div>
@@ -33,7 +33,7 @@
         <%= f.select(:linked_resource_type, spree_humanize_dropdown_values('Spree::Cms::Sections::FeaturedArticle',
                                           { const: 'LINKED_RESOURCE_TYPE' }),
                                           {include_blank: false}) %>
-        <%= f.label :linked_resource_type, I18n.t('spree.dash.navigation.link_to') %>
+        <%= f.label :linked_resource_type, I18n.t('spree.admin.navigation.link_to') %>
       <% end %>
     </div>
     <div class="col-12 col-md-6">

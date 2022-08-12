@@ -14,10 +14,10 @@ describe "Reset Digital Download Link", type: :feature, js: true do
       visit spree.edit_admin_order_path(order)
 
       within("#contentHeaderRow") do
-        click_link I18n.t("spree.dash.digitals.reset_download_links")
+        click_link I18n.t("spree.admin.digitals.reset_download_links")
       end
 
-      assert_admin_flash_alert_notice(I18n.t("spree.dash.digitals.downloads_reset"))
+      assert_admin_flash_alert_notice(I18n.t("spree.admin.digitals.downloads_reset"))
     end
   end
 
@@ -25,7 +25,7 @@ describe "Reset Digital Download Link", type: :feature, js: true do
     it "does not display the reset digital download links button" do
       visit spree.edit_admin_order_path(order)
 
-      expect(page).not_to have_content(I18n.t("spree.dash.digitals.reset_download_links"))
+      expect(page).not_to have_content(I18n.t("spree.admin.digitals.reset_download_links"))
     end
   end
 end

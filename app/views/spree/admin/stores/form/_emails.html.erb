@@ -9,7 +9,7 @@
       <%= f.text_field :mail_from_address, class: 'form-control', required: true, placeholder: raw(Spree.t(:mail_from_address)  + required_span_tag) %>
       <%= f.label :mail_from_address, raw(Spree.t(:mail_from_address)  + required_span_tag) %>
       <small class="form-text text-muted">
-        <%= I18n.t('spree.dash.store_form.mail_from_address_help') %>
+        <%= I18n.t('spree.admin.store_form.mail_from_address_help') %>
       </small>
     <% end %>
 
@@ -19,7 +19,7 @@
         <%= f.label :customer_support_email, Spree.t(:customer_support_email) %>
 
         <small class="form-text text-muted">
-          <%= I18n.t('spree.dash.store_form.customer_support_email_help') %>
+          <%= I18n.t('spree.admin.store_form.customer_support_email_help') %>
         </small>
       <% end %>
 
@@ -28,7 +28,7 @@
         <%= f.label :new_order_notifications_email, Spree.t(:new_order_notifications_email) %>
 
         <small class="form-text text-muted">
-          <%= I18n.t('spree.dash.store_form.new_order_notifications_email_help') %>
+          <%= I18n.t('spree.admin.store_form.new_order_notifications_email_help') %>
         </small>
       <% end %>
     <% end %>

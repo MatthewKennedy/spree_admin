@@ -1,6 +1,6 @@
 <ul id="sidebar-refunds-and-returns" class="collapse nav nav-pills nav-stacked" data-hook="admin_refunds_and_returns">
-  <%= tab :refund_reasons, url: spree.admin_refund_reasons_path, label: I18n.t('spree.dash.settings_menu.refund_reasons') if can? :manage, Spree::RefundReason %>
-  <%= tab :reimbursement_types, url: spree.admin_reimbursement_types_path, label: I18n.t('spree.dash.settings_menu.reimbursement_types') if can? :manage, Spree::ReimbursementType %>
-  <%= tab :return_authorization_reasons, url: spree.admin_return_authorization_reasons_path, label: I18n.t('spree.dash.settings_menu.return_reasons') if can? :manage, Spree::ReturnAuthorizationReason %>
-  <%= tab :store_credit_categories, url: spree.admin_store_credit_categories_path, label: I18n.t('spree.dash.settings_menu.store_credit_categories') if can? :manage, Spree::StoreCreditCategory %>
+  <%= tab :refund_reasons, url: spree.admin_refund_reasons_path, label: I18n.t('spree.admin.settings_menu.refund_reasons') if can? :manage, Spree::RefundReason %>
+  <%= tab :reimbursement_types, url: spree.admin_reimbursement_types_path, label: I18n.t('spree.admin.settings_menu.reimbursement_types') if can? :manage, Spree::ReimbursementType %>
+  <%= tab :return_authorization_reasons, url: spree.admin_return_authorization_reasons_path, label: I18n.t('spree.admin.settings_menu.return_reasons') if can? :manage, Spree::ReturnAuthorizationReason %>
+  <%= tab :store_credit_categories, url: spree.admin_store_credit_categories_path, label: I18n.t('spree.admin.settings_menu.store_credit_categories') if can? :manage, Spree::StoreCreditCategory %>
 </ul>

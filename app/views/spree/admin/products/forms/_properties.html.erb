@@ -3,12 +3,12 @@
     <div class="card">
       <div class="card-header d-flex">
         <div class="flex-fill">
-          <h5 class="card-title"><%= I18n.t('spree.dash.products.properties') %></h5>
+          <h5 class="card-title"><%= I18n.t('spree.admin.products.properties') %></h5>
         </div>
         <div>
           <% if can? :create, Spree::ProductProperty %>
-            <%= link_to_with_icon I18n.t('spree.dash.products.select_from_prototype'), spree.prototypes_admin_product_product_properties_path(@product), icon: 'list.svg', class: 'btn btn-light btn-sm', data: { turbo_frame: :modal} %>
-            <%= link_to_with_icon I18n.t('spree.dash.products.add_new_property'), spree.new_admin_product_product_property_path(@product), icon: 'plus-square.svg', class: 'btn btn-light btn-sm', data: { turbo_frame: :modal } %>
+            <%= link_to_with_icon I18n.t('spree.admin.products.select_from_prototype'), spree.prototypes_admin_product_product_properties_path(@product), icon: 'list.svg', class: 'btn btn-light btn-sm', data: { turbo_frame: :modal} %>
+            <%= link_to_with_icon I18n.t('spree.admin.products.add_new_property'), spree.new_admin_product_product_property_path(@product), icon: 'plus-square.svg', class: 'btn btn-light btn-sm', data: { turbo_frame: :modal } %>
           <% end %>
         </div>
       </div>
@@ -35,7 +35,7 @@
       <% else %>
         <% if can? :create, Spree::ProductProperty %>
           <div class="alert alert-light text-center mx-5" role="alert">
-            <%= I18n.t('spree.dash.products.add_first_property') %>
+            <%= I18n.t('spree.admin.products.add_first_property') %>
           </div>
         <% end %>
       <% end %>

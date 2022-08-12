@@ -1,5 +1,5 @@
 <% content_for :modal_header do %>
-  <h5 class="modal-title"><%= I18n.t('spree.dash.products.add_a_new_property') %></h5>
+  <h5 class="modal-title"><%= I18n.t('spree.admin.products.add_a_new_property') %></h5>
   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 <% end %>
 
@@ -35,7 +35,7 @@
 <% end %>
 
 <% content_for :modal_footer do %>
-  <%= button_tag(I18n.t('spree.dash.actions.add'), class: "btn btn-success", form: "newProductProperty") %>
+  <%= button_tag(I18n.t('spree.admin.actions.add'), class: "btn btn-success", form: "newProductProperty") %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog-centered modal-lg' } %>

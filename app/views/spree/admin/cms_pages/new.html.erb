@@ -1,12 +1,12 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.dash.cms.all_pages'), spree.admin_cms_pages_path %> / <%= I18n.t('spree.dash.cms.new_page') %>
+  <%= link_to I18n.t('spree.admin.cms.all_pages'), spree.admin_cms_pages_path %> / <%= I18n.t('spree.admin.cms.new_page') %>
 <% end %>
 
-<%= form_with model: [:admin, @cms_page], builder: Spree::Dash::BootstrapBuilder do |f| %>
+<%= form_with model: [:admin, @cms_page] do |f| %>
   <div id="<%= dom_id(@cms_page) %>" class="card">
     <div class="card-header d-flex">
       <div class="flex-fill">
-        <h5 class="card-title"><%= I18n.t('spree.dash.cms_pages.new_page_details') %></h5>
+        <h5 class="card-title"><%= I18n.t('spree.admin.cms_pages.new_page_details') %></h5>
       </div>
       <div>
         <a data-bs-toggle="collapse" href="#cmsPageInformation" role="button" aria-expanded="false" aria-controls="cmsPageInformation" class="align-self-center">
@@ -19,14 +19,14 @@
         <div class="col-12 col-md-4">
           <%= f.field_container :title do %>
             <%= f.text_field :title, required: true %>
-            <%= f.label :title, raw(I18n.t('spree.dash.cms.title') + required_span_tag) %>
+            <%= f.label :title, raw(I18n.t('spree.admin.cms.title') + required_span_tag) %>
           <% end %>
         </div>
 
         <div class="col-12 col-md-4">
           <%= f.field_container :type do %>
             <%= f.select(:type, spree_humanize_dropdown_values('Spree::CmsPage', {const: 'TYPES'}), {include_blank: false}) %>
-            <%= f.label :type, I18n.t('spree.dash.cms.page_type') %>
+            <%= f.label :type, I18n.t('spree.admin.cms.page_type') %>
           <% end %>
         </div>
 
@@ -48,10 +48,10 @@
         <div class="collapse" id="cmsPageInformation">
           <div class="bs-callout bs-callout-info">
             <h5>
-              <%= I18n.t('spree.dash.cms_pages.basic_details') %>
+              <%= I18n.t('spree.admin.cms_pages.basic_details') %>
             </h5>
             <p>
-              <%= I18n.t('spree.dash.cms_pages.when_creating_a_new_page_first_give_the_page_a_title_and_select_the_page_type_you_will_then_be_offered_more_options') %>
+              <%= I18n.t('spree.admin.cms_pages.when_creating_a_new_page_first_give_the_page_a_title_and_select_the_page_type_you_will_then_be_offered_more_options') %>
             </p>
           </div>
         </div>

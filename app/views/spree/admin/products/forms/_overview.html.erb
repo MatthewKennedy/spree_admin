@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h5><%= I18n.t("spree.dash.products.overview") %></h5>
+    <h5><%= I18n.t("spree.admin.products.overview") %></h5>
   </div>
   <div class="card-body">
     <h5>
@@ -8,14 +8,14 @@
 
     <span class="badge text-bg-success">
       <% if @product.digital? %>
-        <%= I18n.t('spree.dash.product_kinds.digital') %>
+        <%= I18n.t('spree.admin.product_kinds.digital') %>
       <% else %>
-        <%= I18n.t('spree.dash.product_kinds.physical') %>
+        <%= I18n.t('spree.admin.product_kinds.physical') %>
       <% end %>
     </span>
 
     <% if @product.has_variants? %>
-      <span class="badge text-bg-success"><%= I18n.t("spree.dash.product.has_variants") %></span>
+      <span class="badge text-bg-success"><%= I18n.t("spree.admin.product.has_variants") %></span>
     <% end %>
     </h5>
   </div>

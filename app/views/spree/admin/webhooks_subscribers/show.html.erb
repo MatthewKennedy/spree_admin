@@ -1,21 +1,21 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.dash.webhooks.subscribers.subscribers'), spree.admin_webhooks_subscribers_path %> /
-  <%= I18n.t('spree.dash.webhooks.subscribers.webhooks_events') %>
+  <%= link_to I18n.t('spree.admin.webhooks.subscribers.subscribers'), spree.admin_webhooks_subscribers_path %> /
+  <%= I18n.t('spree.admin.webhooks.subscribers.webhooks_events') %>
 <% end %>
 
 <fieldset>
   <div class="table-responsive border rounded bg-white">
     <table class="table border rounded">
       <tr>
-        <td><strong><%= I18n.t('spree.dash.url') %></strong></td>
+        <td><strong><%= I18n.t('spree.admin.url') %></strong></td>
         <td><%= @webhooks_subscriber.url %></td>
       </tr>
       <tr>
-        <td><strong><%= I18n.t('spree.dash.active') %></strong></td>
+        <td><strong><%= I18n.t('spree.admin.active') %></strong></td>
         <td><%= active_badge(@webhooks_subscriber.active) %></td>
       </tr>
       <tr>
-        <td><strong><%= I18n.t('spree.dash.webhooks.subscribers.subscriptions') %></strong></td>
+        <td><strong><%= I18n.t('spree.admin.webhooks.subscribers.subscriptions') %></strong></td>
         <td><%= @webhooks_subscriber.subscriptions&.join(', ') %></td>
       </tr>
     </table>
@@ -27,12 +27,12 @@
     <table class="table">
       <thead class="text-muted">
       <tr>
-        <th><%= I18n.t('spree.dash.name') %></th>
-        <th><%= I18n.t('spree.dash.successful') %></th>
-        <th><%= I18n.t('spree.dash.created_at') %></th>
-        <th><%= I18n.t('spree.dash.response_code') %></th>
-        <th><%= I18n.t('spree.dash.execution_time') %></th>
-        <th><%= I18n.t('spree.dash.request_errors') %></th>
+        <th><%= I18n.t('spree.admin.name') %></th>
+        <th><%= I18n.t('spree.admin.successful') %></th>
+        <th><%= I18n.t('spree.admin.created_at') %></th>
+        <th><%= I18n.t('spree.admin.response_code') %></th>
+        <th><%= I18n.t('spree.admin.execution_time') %></th>
+        <th><%= I18n.t('spree.admin.request_errors') %></th>
         <th></th>
       </tr>
       </thead>
@@ -54,6 +54,6 @@
 
 <% else %>
   <div class="text-center no-objects-found m-5">
-    <%= I18n.t('spree.dash.webhooks.subscribers.no_events') %>
+    <%= I18n.t('spree.admin.webhooks.subscribers.no_events') %>
   </div>
 <% end %>

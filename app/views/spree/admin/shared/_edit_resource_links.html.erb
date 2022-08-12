@@ -1,7 +1,7 @@
 <div class="form-actions" data-hook="edit_form_action_buttons">
-  <%= button(I18n.t('spree.dash.actions.update'), 'check-lg.svg', 'submit', {class: 'btn-success', data: {form_state_target: "submitButton"}}) %>
+  <%= button(I18n.t('spree.admin.actions.update'), 'check-lg.svg', 'submit', {class: 'btn-success', data: {form_state_target: "submitButton"}}) %>
   <span class="or">
     <%= Spree.t(:or) %>
   </span>
-  <%= link_to_with_icon(I18n.t('spree.dash.actions.cancel'), collection_url, {class: 'btn btn-light', icon: 'x-lg.svg'}) %>
+  <%= link_to_with_icon(I18n.t('spree.admin.actions.cancel'), collection_url, {class: 'btn btn-light', icon: 'x-lg.svg'}) %>
 </div>

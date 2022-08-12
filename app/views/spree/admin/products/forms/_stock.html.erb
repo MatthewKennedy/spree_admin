@@ -3,10 +3,10 @@
   <div class="card">
     <div class="card-header d-flex">
       <div class="flex-fill">
-        <h5 class="card-title"><%= I18n.t('spree.dash.products.stock') %></h5>
+        <h5 class="card-title"><%= I18n.t('spree.admin.products.stock') %></h5>
       </div>
       <div>
-        <%= link_to_with_icon(I18n.t('spree.dash.products.add_stock'), spree.add_stock_admin_product_path(@product, variant.id), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: :modal}}) %>
+        <%= link_to_with_icon(I18n.t('spree.admin.products.add_stock'), spree.add_stock_admin_product_path(@product, variant.id), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: :modal}}) %>
       </div>
     </div>
 

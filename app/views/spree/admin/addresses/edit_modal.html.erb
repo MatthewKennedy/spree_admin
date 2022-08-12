@@ -10,8 +10,8 @@
 <% end %>
 
 <% content_for :modal_footer do %>
-  <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.dash.actions.cancel') %></button>
-  <%= submit_tag(I18n.t('spree.dash.actions.save'), class: "btn btn-success", form: "edit_address_#{@address.id}" ) %>
+  <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.admin.actions.cancel') %></button>
+  <%= submit_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-success", form: "edit_address_#{@address.id}" ) %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/modal' %>

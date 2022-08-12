@@ -1,21 +1,21 @@
 <% content_for :modal_header do %>
-  <h5 class="modal-title"><%= I18n.t('spree.dash.products.add_a_new_option_value') %></h5>
+  <h5 class="modal-title"><%= I18n.t('spree.admin.products.add_a_new_option_value') %></h5>
   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 <% end %>
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @option_type], url: spree.admin_option_type_path(@option_type), builder: Spree::Dash::BootstrapBuilder, id: 'newOptionTypeValue', data: { turbo: true, turbo_frame: "_top" }, method: :put do |f| %>
+    <%= form_with model: [:admin, @option_type], url: spree.admin_option_type_path(@option_type), id: 'newOptionTypeValue', data: { turbo: true, turbo_frame: "_top" }, method: :put do |f| %>
       <%= f.fields_for :option_values do |pp_form| %>
         <% unless pp_form.object.persisted? %>
           <%= f.field_container :name do %>
             <%= pp_form.text_field :name, required: true %>
-            <%= pp_form.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+            <%= pp_form.label :name, raw(I18n.t('spree.admin.name') + required_span_tag) %>
           <% end %>
 
           <%= f.field_container :presentation do %>
             <%= pp_form.text_field :presentation, required: true %>
-            <%= pp_form.label :presentation, raw(I18n.t('spree.dash.presentation') + required_span_tag) %>
+            <%= pp_form.label :presentation, raw(I18n.t('spree.admin.presentation') + required_span_tag) %>
           <% end %>
         <% end %>
       <% end %>
@@ -24,8 +24,8 @@
 <% end %>
 
 <% content_for :modal_footer do %>
-  <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.dash.actions.cancel') %></button>
-  <%= button_tag(I18n.t('spree.dash.actions.save'), class: "btn btn-success", form: "newOptionTypeValue") %>
+  <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.admin.actions.cancel') %></button>
+  <%= button_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-success", form: "newOptionTypeValue") %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable' } %>

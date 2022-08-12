@@ -16,7 +16,7 @@ describe "Add New Digital Asset", type: :feature, js: true do
       it "displays no digitals" do
         visit spree.admin_product_digitals_path(product)
 
-        expect(page).to have_content(I18n.t("spree.dash.digitals.no_digital_assets_added"), count: 1)
+        expect(page).to have_content(I18n.t("spree.admin.digitals.no_digital_assets_added"), count: 1)
       end
     end
 
@@ -26,7 +26,7 @@ describe "Add New Digital Asset", type: :feature, js: true do
         visit spree.admin_product_digitals_path(product)
 
         expect(page).to have_content(digital.attachment.filename)
-        expect(page).not_to have_content(I18n.t("spree.dash.digitals.no_digital_assets_added"))
+        expect(page).not_to have_content(I18n.t("spree.admin.digitals.no_digital_assets_added"))
       end
     end
   end
@@ -44,7 +44,7 @@ describe "Add New Digital Asset", type: :feature, js: true do
       it "show no digital assets message" do
         visit spree.admin_product_digitals_path(product)
 
-        expect(page).to have_content(I18n.t("spree.dash.digitals.no_digital_assets_added"))
+        expect(page).to have_content(I18n.t("spree.admin.digitals.no_digital_assets_added"))
       end
     end
 

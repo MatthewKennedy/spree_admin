@@ -52,7 +52,7 @@ module Spree
             end
 
             if @order.errors.empty?
-              flash[:success] = I18n.t("spree.dash.customer_details_updated")
+              flash[:success] = I18n.t("spree.admin.customer_details_updated")
               render action: :edit
             else
               render action: :edit, status: :unprocessable_entity
@@ -68,7 +68,7 @@ module Spree
             @order.refresh_shipment_rates(Spree::ShippingMethod::DISPLAY_ON_BACK_END)
 
             if @order.errors.empty?
-              flash[:success] = I18n.t("spree.dash.customer_details_updated")
+              flash[:success] = I18n.t("spree.admin.customer_details_updated")
               redirect_to spree.edit_admin_order_url(@order)
             else
               render action: :edit, status: :unprocessable_entity

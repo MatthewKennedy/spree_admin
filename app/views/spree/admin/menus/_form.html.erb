@@ -8,7 +8,7 @@
   <div class='col-12 col-md-4'>
     <%= f.field_container :location do %>
       <%= f.select(:location, spree_humanize_dropdown_values('Spree::Menu', { const: 'MENU_LOCATIONS', paramterize_values: true }), {include_blank: false}) %>
-      <%= f.label :location, I18n.t('spree.dash.location') %>
+      <%= f.label :location, I18n.t('spree.admin.location') %>
     <% end %>
   </div>
   <div class='col-12 col-md-4'>

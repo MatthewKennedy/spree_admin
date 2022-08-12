@@ -6,7 +6,7 @@
   <% end %>
 
   <% if (can? :update, @order) && @order.some_digital? %>
-    <%= link_to_with_icon I18n.t('spree.dash.digitals.reset_download_links'),
+    <%= link_to_with_icon I18n.t('spree.admin.digitals.reset_download_links'),
         reset_digitals_admin_order_url(@order),
         icon: 'hdd.svg' %>
   <% end %>

@@ -12,7 +12,7 @@
 </div>
 
 <div data-hook="admin_shipping_method_edit_form">
-  <%= form_with model: [:admin, @shipping_method], builder: Spree::Dash::BootstrapBuilder, data: { controller: 'form-state'} do |f| %>
+  <%= form_with model: [:admin, @shipping_method], data: { controller: 'form-state'} do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
   <% end %>
 </div>

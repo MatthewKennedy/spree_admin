@@ -1,14 +1,14 @@
 <div class="row" data-hook="admin_prototype_form_fields">
   <div class="col-12">
     <%= f.field_container :name do %>
-      <%= f.text_field :name, class: 'form-control', required: true, placeholder: raw(I18n.t('spree.dash.name') + required_span_tag) %>
-      <%= f.label :name, raw(I18n.t('spree.dash.name') + required_span_tag) %>
+      <%= f.text_field :name, class: 'form-control', required: true, placeholder: raw(I18n.t('spree.admin.name') + required_span_tag) %>
+      <%= f.label :name, raw(I18n.t('spree.admin.name') + required_span_tag) %>
     <% end %>
   </div>
 
   <div class="col-12 col-md-4">
     <%= f.field_container :property_ids do %>
-      <%= f.select :property_ids, Spree::Property.all.map { |p| ["#{p.presentation} (#{p.name})", p.id] }, {}, { class:'form-select', placeholder: I18n.t('spree.dash.properties'), multiple: true, data: { controller: 'ts--select' } } %>
+      <%= f.select :property_ids, Spree::Property.all.map { |p| ["#{p.presentation} (#{p.name})", p.id] }, {}, { class:'form-select', placeholder: I18n.t('spree.admin.properties'), multiple: true, data: { controller: 'ts--select' } } %>
       <%#= f.select :property_ids, options_from_collection_for_select(f.object.properties, :id, :name, f.object.property_ids),
                                 { include_hidden: true },
                                   multiple: true,
@@ -37,7 +37,7 @@
                                           ts__search_fields_value: ['name'],
                                           ts__search_ransack_value: ['name_i_cont']
                                          } %>
-      <%= f.label :option_type_ids, I18n.t('spree.dash.option_types') %>
+      <%= f.label :option_type_ids, I18n.t('spree.admin.option_types') %>
     <% end %>
   </div>
 
@@ -54,7 +54,7 @@
                                           ts__search_fields_value: ['pretty_name'],
                                           ts__search_ransack_value: ['pretty_name_i_cont']
                                          } %>
-      <%= f.label :taxon_ids, I18n.t('spree.dash.taxons.taxons') %>
+      <%= f.label :taxon_ids, I18n.t('spree.admin.taxons.taxons') %>
     <% end %>
   </div>
 </div>

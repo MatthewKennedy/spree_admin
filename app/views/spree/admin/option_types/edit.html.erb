@@ -3,11 +3,11 @@
   <%= @option_type.name %>
 <% end %>
 
-<%= form_with model: [:admin, @option_type], builder: Spree::Dash::BootstrapBuilder, data: {controller: "form-state"} do |f| %>
+<%= form_with model: [:admin, @option_type], data: {controller: "form-state"} do |f| %>
   <div class="card mb-3">
     <div class="card-header d-flex">
       <div class="flex-fill">
-        <h5 class="card-title"><%= I18n.t("spree.dash.settings") %></h5>
+        <h5 class="card-title"><%= I18n.t("spree.admin.settings") %></h5>
       </div>
       <div id="inputStateSubmitButton">
         <%= render partial: 'spree/admin/shared/submit_button', locals: { kind: :edit, form_id: "edit_option_type_#{@option_type.id}" } %>
@@ -25,10 +25,10 @@
             <thead data-hook="option_header">
               <tr>
                 <th><%= inline_svg_tag("arrow-down-up.svg", style: "margin-left: 0.7rem") %></th>
-                <th><%= raw(I18n.t('spree.dash.name') + required_span_tag) %></th>
-                <th><%= raw(I18n.t('spree.dash.display') + required_span_tag) %></th>
+                <th><%= raw(I18n.t('spree.admin.name') + required_span_tag) %></th>
+                <th><%= raw(I18n.t('spree.admin.display') + required_span_tag) %></th>
                 <th class="actions text-end">
-                  <%= link_to_with_icon I18n.t('spree.dash.options.add_option_value'), spree.new_admin_option_type_option_value_path(@option_type), { icon: 'plus-square.svg', class: 'btn btn-sm btn-secondary', data: { turbo_frame: :modal } } %>
+                  <%= link_to_with_icon I18n.t('spree.admin.options.add_option_value'), spree.new_admin_option_type_option_value_path(@option_type), { icon: 'plus-square.svg', class: 'btn btn-sm btn-secondary', data: { turbo_frame: :modal } } %>
                 </th>
               </tr>
             </thead>
@@ -41,8 +41,8 @@
         </div>
       <% else %>
         <div class="alert alert-info text-center" role="alert">
-          <span><%= I18n.t('spree.dash.options.values.this_option_types') %></span><br>
-          <%= link_to_with_icon I18n.t('spree.dash.options.add_option_value'), spree.new_admin_option_type_option_value_path(@option_type), { icon: 'plus-square.svg', class: 'btn btn-sm btn-secondary', data: { turbo_frame: :modal } } %>
+          <span><%= I18n.t('spree.admin.options.values.this_option_types') %></span><br>
+          <%= link_to_with_icon I18n.t('spree.admin.options.add_option_value'), spree.new_admin_option_type_option_value_path(@option_type), { icon: 'plus-square.svg', class: 'btn btn-sm btn-secondary', data: { turbo_frame: :modal } } %>
         </div>
       <% end %>
     </div>

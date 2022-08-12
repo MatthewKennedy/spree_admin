@@ -2,7 +2,7 @@
   <% type_name = promotion_action.class.name.demodulize.underscore %>
   <div class="card-header d-flex justify-content-between">
     <%= link_to_with_icon 'FIXME', spree.admin_promotion_promotion_action_path(@promotion, promotion_action), class: 'delete order-2', icon: 'delete.svg' %>
-    <h5 class="card-title h5 mb-0 promotion-title"><%= I18n.t("spree.dash.promotion_action_types.#{type_name}.description") %></h5>
+    <h5 class="card-title h5 mb-0 promotion-title"><%= I18n.t("spree.admin.promotion_action_types.#{type_name}.description") %></h5>
   </div>
   <% param_prefix = "promotion[promotion_actions_attributes][#{promotion_action.id}]" %>
   <%= hidden_field_tag "#{param_prefix}[id]", promotion_action.id %>
