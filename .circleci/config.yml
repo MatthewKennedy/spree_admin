@@ -40,34 +40,34 @@ run_tests_2_7: &run_tests_2_7
           - spree-admin-bundle-v05-ruby-2-7
     - run:
         name: Install libvips
-        command: bash sudo apt update && sudo apt-get install libvips
+        command: sudo apt update && sudo apt-get install libvips
     - run:
         name: Set bundle path
-        command: bash bundle config --local path vendor/bundle
+        command: bundle config --local path vendor/bundle
     - run:
         name: Ensure bundle Install
         command: |
-          bash bundle check || bash bundle install
+          bundle check || bundle install
     - run:
         name: whoami
         command: |
-          bash whoami
+          circleci tests glob "spec/**/*_spec.rb"
     - run:
         name: Specify Test Spliiter
         command: |
           TESTFILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-    - run:
-        name: Create Test App
-        command: |
-          bundle exec rake test_app
+    # - run:
+    #     name: Create Test App
+    #     command: |
+    #       bundle exec rake test_app
 
-    - run:
-        name: Run Tests
-        command: bundle exec rspec spec/lib
-    - store_test_results:
-        path: ~/rspec
-    - store_artifacts:
-        path: ${CIRCLE_ARTIFACTS}
+    # - run:
+    #     name: Run Tests
+    #     command: bundle exec rspec spec/lib
+    # - store_test_results:
+    #     path: ~/rspec
+    # - store_artifacts:
+    #     path: ${CIRCLE_ARTIFACTS}
 
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
@@ -123,10 +123,11 @@ jobs:
             - spree-admin-bundle-v05-ruby-2-7
       - run:
           name: Set bundle path
-          command: bash bundle config --local path vendor/bundle
+          command: bundle config --local path vendor/bundle
       - run:
           name: Bundle Install
-          command: bash bundle check || bash bundle install
+          command: |
+            bundle check || bundle install
       - save_cache:
           paths:
             - vendor/bundle
