@@ -63,3 +63,4 @@ app/assets/javascripts/spree_admin.js.map
 app/assets/javascripts/spree_admin.*.js.map
 src
 *.gem
+gemfiles/**/*.lock
