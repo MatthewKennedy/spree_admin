@@ -10,7 +10,7 @@ base_defaults: &base_defaults
     BUNDLE_JOBS: 4
     BUNDLE_RETRY: 3
     BUNDLE_PATH: ~/spree/vendor/bundle
-  working_directory: ~/spree_admin
+  working_directory: ~/spree
 
 defaults_2_7: &defaults_2_7
   <<: *base_defaults
