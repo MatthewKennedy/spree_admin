@@ -49,29 +49,16 @@ run_tests_2_7: &run_tests_2_7
         command: |
           bundle check || bundle install
     - run:
-        name: whoami
+        name: Create Test App
         command: |
-          circleci tests glob "spec/**/*_spec.rb"
+          bundle exec rake test_app
     - run:
-        name: chown
-        command: |
-          chown -R circleci:circleci *
-    - run:
-        name: Specify Test Spliiter
-        command: |
-          $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-    # - run:
-    #     name: Create Test App
-    #     command: |
-    #       bundle exec rake test_app
-
-    # - run:
-    #     name: Run Tests
-    #     command: bundle exec rspec spec/lib
-    # - store_test_results:
-    #     path: ~/rspec
-    # - store_artifacts:
-    #     path: ${CIRCLE_ARTIFACTS}
+        name: Run Tests
+        command: bundle exec rspec spec/controllers
+    - store_test_results:
+        path: ${CIRCLE_TEST_REPORTS}
+    - store_artifacts:
+        path: ${CIRCLE_ARTIFACTS}
 
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
