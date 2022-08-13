@@ -44,7 +44,8 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-            node-version: 16
+          node-version: 16
+          cache: 'npm'
 
       - name: Set up Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
@@ -61,15 +62,12 @@ jobs:
       - name: Make bin/ci executable
         run: chmod +x ./bin/ci
 
-      - name: Build Test App
+      - name: Run Tests
         env:
           DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/spree_admin
           RAILS_ENV: test
           DB: postgresql
-          # Specifies how many jobs you would like to run in parallel,
-          # used for partitioning
           CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
-          # Use the index from matrix as an environment variable
           CI_NODE_INDEX: ${{ matrix.ci_node_index }}
         continue-on-error: true
         run: |
