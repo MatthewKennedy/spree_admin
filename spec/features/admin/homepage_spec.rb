@@ -4,6 +4,16 @@ describe "Homepage", type: :feature do
   context "as admin user" do
     stub_authorization!
 
+    context "test JavaScript", js: true do
+      before do
+        visit spree.admin_path
+      end
+
+      it "not show products link" do
+        expect(page).not_to have_link("Products", href: "/admin/products")
+      end
+    end
+
     context "visiting the homepage" do
       before do
         visit spree.admin_path

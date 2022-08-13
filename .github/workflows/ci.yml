@@ -62,6 +62,17 @@ jobs:
       - name: Make bin/ci executable
         run: chmod +x ./bin/ci
 
+      - name: Setup chromedriver
+        uses: nanasess/setup-chromedriver@master
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get -yqq install libpq-dev
+          sudo apt-get install -y --no-install-recommends wget xvfb xauth unzip libpq-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev
+          sudo apt-get -y install g++ qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x libxml2-dev libxslt1-dev
+          sudo apt-get update -y
+          sudo apt-get install yarn
+
       - name: Run Tests
         env:
           DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/spree_admin
