@@ -9,8 +9,8 @@ base_defaults: &base_defaults
     CIRCLE_ARTIFACTS: /tmp/test-artifacts
     BUNDLE_JOBS: 4
     BUNDLE_RETRY: 3
-    BUNDLE_PATH: ~/spree/vendor/bundle
-  working_directory: ~/spree
+    BUNDLE_PATH: ~/vendor/bundle
+  working_directory: ~/spree_admin
 
 defaults_2_7: &defaults_2_7
   <<: *base_defaults
@@ -48,6 +48,10 @@ run_tests_2_7: &run_tests_2_7
         name: Ensure bundle Install
         command: |
           bundle check || bundle install
+    - run:
+        name: whoami
+        command: |
+          whoami
     - run:
         name: Specify Test Spliiter
         command: |
@@ -117,13 +121,6 @@ jobs:
           keys:
             - spree-admin-bundle-v05-ruby-2-7-{{ .Branch }}
             - spree-admin-bundle-v05-ruby-2-7
-      - run:
-          name: Set bundle path
-          command: bundle config --local path vendor/bundle
-      - run:
-          name: Bundle Install
-          command: |
-            bundle check || bundle install
       - save_cache:
           paths:
             - vendor/bundle
