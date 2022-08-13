@@ -9,8 +9,8 @@ base_defaults: &base_defaults
     CIRCLE_ARTIFACTS: /tmp/test-artifacts
     BUNDLE_JOBS: 4
     BUNDLE_RETRY: 3
-    BUNDLE_PATH: ~/spree/vendor/bundle
-  working_directory: ~/spree
+    BUNDLE_PATH: ~/spree_admin/vendor/bundle
+  working_directory: ~/spree_admin
 
 defaults_2_7: &defaults_2_7
   <<: *base_defaults
@@ -38,37 +38,32 @@ run_tests_2_7: &run_tests_2_7
         keys:
           - spree-admin-bundle-v04-ruby-2-7-{{ .Branch }}
           - spree-admin-bundle-v04-ruby-2-7
-    # - run:
-    #     name: Install libvips
-    #     command: sudo apt update && sudo apt-get install libvips
-    # - run:
-    #     name: Set bundle path
-    #     command: bundle config --local path vendor/bundle
-    # - run:
-    #     name: Ensure bundle Install
-    #     command: |
-    #       bundle check || bundle install
+    - run:
+        name: Install libvips
+        command: sudo apt update && sudo apt-get install libvips
+    - run:
+        name: Set bundle path
+        command: bundle config --local path vendor/bundle
+    - run:
+        name: Ensure bundle Install
+        command: |
+          bundle check || bundle install
     - run:
         name: Specify Test Spliiter
         command: |
-          $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=name)
-    # - run:
-    #     name: Create Test App
-    #     command: |
-    #       bundle exec rake test_app
+          TESTFILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+    - run:
+        name: Create Test App
+        command: |
+          bundle exec rake test_app
 
-    # - run:
-    #     name: Run Tests
-    #     command: |
-    #       bundle exec rspec --format documentation \
-    #                         --format RspecJunitFormatter \
-    #                         -o ~/rspec/rspec.xml \
-    #                         -- ${TESTFILES}
+    - run:
+        name: Run Tests
+        command: bundle exec rspec spec/*/*_spec.rb
     - store_test_results:
-        path: /tmp/test-results
+        path: ~/rspec
     - store_artifacts:
-        path: /tmp/test-results
-        destination: test-results
+        path: ${CIRCLE_ARTIFACTS}
 
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
@@ -107,7 +102,7 @@ run_tests_3_0: &run_tests_3_0
     - store_test_results:
         path: ~/rspec
     - store_artifacts:
-        path: /tmp/test-artifacts
+        path: ${CIRCLE_ARTIFACTS}
 
 
 ########
@@ -118,21 +113,21 @@ jobs:
     <<: *defaults_2_7
     steps:
       - checkout
-      # - restore_cache:
-      #     keys:
-      #       - spree-admin-bundle-v04-ruby-2-7-{{ .Branch }}
-      #       - spree-admin-bundle-v04-ruby-2-7
-      # - run:
-      #     name: Set bundle path
-      #     command: bundle config --local path vendor/bundle
-      # - run:
-      #     name: Bundle Install
-      #     command: |
-      #       bundle check || bundle install
-      # - save_cache:
-      #     paths:
-      #       - vendor/bundle
-      #     key: spree-admin-bundle-v04-ruby-2-7-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          keys:
+            - spree-admin-bundle-v04-ruby-2-7-{{ .Branch }}
+            - spree-admin-bundle-v04-ruby-2-7
+      - run:
+          name: Set bundle path
+          command: bundle config --local path vendor/bundle
+      - run:
+          name: Bundle Install
+          command: |
+            bundle check || bundle install
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: spree-admin-bundle-v04-ruby-2-7-{{ checksum "Gemfile.lock" }}
 
   bundle_ruby_3_0:
     <<: *defaults_3_0
