@@ -118,21 +118,21 @@ jobs:
     <<: *defaults_2_7
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - spree-admin-bundle-v04-ruby-2-7-{{ .Branch }}
-            - spree-admin-bundle-v04-ruby-2-7
-      - run:
-          name: Set bundle path
-          command: bundle config --local path vendor/bundle
+      # - restore_cache:
+      #     keys:
+      #       - spree-admin-bundle-v04-ruby-2-7-{{ .Branch }}
+      #       - spree-admin-bundle-v04-ruby-2-7
+      # - run:
+      #     name: Set bundle path
+      #     command: bundle config --local path vendor/bundle
       # - run:
       #     name: Bundle Install
       #     command: |
       #       bundle check || bundle install
-      - save_cache:
-          paths:
-            - vendor/bundle
-          key: spree-admin-bundle-v04-ruby-2-7-{{ checksum "Gemfile.lock" }}
+      # - save_cache:
+      #     paths:
+      #       - vendor/bundle
+      #     key: spree-admin-bundle-v04-ruby-2-7-{{ checksum "Gemfile.lock" }}
 
   bundle_ruby_3_0:
     <<: *defaults_3_0
