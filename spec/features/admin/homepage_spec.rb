@@ -21,31 +21,12 @@ describe "Homepage", type: :feature do
         expect(page).to have_link("Reports", href: "/admin/reports")
       end
 
-      it "has a link to settings" do
-        expect(page).to have_link("Settings", href: "#sidebar-configuration")
-      end
-
       it "has a link to return authorizations" do
         within(".sidebar") { expect(page).to have_link("Return Authorizations", href: "/admin/return_authorizations") }
       end
 
       it "has a link to customer returns" do
         within(".sidebar") { expect(page).to have_link("Customer Returns", href: "/admin/customer_returns") }
-      end
-
-      context "version number" do
-        it "is displayed" do
-          within(".sidebar") { expect(page).to have_content(Spree.version) }
-        end
-
-        context "if turned off" do
-          before { Spree::Backend::Config[:admin_show_version] = false }
-
-          it "is not displayed" do
-            visit spree.admin_path
-            within(".sidebar") { expect(page).not_to have_content(Spree.version) }
-          end
-        end
       end
     end
 
