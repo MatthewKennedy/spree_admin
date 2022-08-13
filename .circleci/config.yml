@@ -54,7 +54,7 @@ run_tests_2_7: &run_tests_2_7
           bundle exec rake test_app
     - run:
         name: Run Tests
-        command: bundle exec rspec spec/controllers
+        command: bundle exec rspec spec/helpers
     - store_test_results:
         path: ${CIRCLE_TEST_REPORTS}
     - store_artifacts:
