@@ -10,7 +10,7 @@ describe "Homepage", type: :feature do
       end
 
       it "not show products link" do
-        expect(page).to have_link("Products", href: "/admin/products")
+        expect(page).not_to have_link("Products", href: "/admin/products")
       end
     end
 
