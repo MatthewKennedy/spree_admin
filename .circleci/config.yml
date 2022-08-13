@@ -51,14 +51,18 @@ run_tests_2_7: &run_tests_2_7
     - run:
         name: whoami
         command: |
-          circleci tests glob "spec/**/*_spec.rb"
-          echo $USER
-          chown -R $USER:$USER *
+          TESTFILES="$(circleci tests glob "spec/**/*_spec.rb")"
+          echo TESTFILES
 
     - run:
-        name: Specify Test Spliiter
+        name: cccc
         command: |
-          TESTFILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+          circleci tests split --split-by=timings
+
+    # - run:
+    #     name: Specify Test Spliiter
+    #     command: |
+    #       TESTFILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
     # - run:
     #     name: Create Test App
     #     command: |
