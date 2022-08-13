@@ -59,7 +59,7 @@ run_tests_2_7: &run_tests_2_7
 
     - run:
         name: Run Tests
-        command: bundle exec rspec spec/*/*_spec.rb
+        command: bundle exec --pattern "spec/**/*_spec.rb" --exclude-pattern "spec/dummy"
     - store_test_results:
         path: ~/rspec
     - store_artifacts:
