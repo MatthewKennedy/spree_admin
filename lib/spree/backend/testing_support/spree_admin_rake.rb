@@ -12,6 +12,8 @@ namespace :spree_admin do
     require ENV["LIB_NAME"].to_s
 
     ENV["RAILS_ENV"] = "test"
+    ENV["DUMMY_PATH"] = "tmp/dummy"
+
     Rails.env = "test"
 
     if ENV["LIB_NAME"] == "spree/admin"

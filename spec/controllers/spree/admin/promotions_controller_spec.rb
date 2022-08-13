@@ -65,7 +65,7 @@ describe Spree::Admin::PromotionsController, type: :controller do
 
   describe "#destroy" do
     subject(:send_request) do
-      delete :destroy, params: {id: promotion, format: :js}
+      delete :destroy, params: {id: promotion, format: :turbo_stream}
     end
 
     context "will successfully destroy promotion" do
@@ -76,7 +76,7 @@ describe Spree::Admin::PromotionsController, type: :controller do
 
         it { expect(assigns(:promotion)).to eq(promotion) }
         it { expect(response).to have_http_status(:ok) }
-        it { expect(flash[:success]).to eq("Promotion \"#{promotion.name}\" has been successfully removed!") }
+        it { expect(flash[:success]).to be_nil }
       end
     end
 
