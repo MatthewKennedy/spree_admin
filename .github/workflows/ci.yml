@@ -82,7 +82,8 @@ jobs:
           CI_NODE_INDEX: ${{ matrix.ci_node_index }}
         run: |
           bundle exec rake test_app
-          ./bin/ci
+          bundle exec rspec spec/features
+
       - name: Upload failed screenshots
         uses: actions/upload-artifact@v3
         if: failure()
