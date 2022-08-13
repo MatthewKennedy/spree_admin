@@ -28,10 +28,9 @@ end
 require "rspec/rails"
 
 # Requires supporting files with custom matchers and macros, etc,
-# in ./support/ and its subdirectories.
+# in ./support/ and its sub-directories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
-require "capybara-select-2"
 require "database_cleaner"
 require "ffaker"
 
@@ -108,8 +107,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.include CapybaraSelect2
-  config.include CapybaraSelect2::Helpers
   config.include FactoryBot::Syntax::Methods
 
   config.include Spree::Backend::TestingSupport::CapybaraUtils
