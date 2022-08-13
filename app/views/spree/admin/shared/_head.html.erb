@@ -24,4 +24,6 @@
   <%== "SpreeAdmin.OAUTH_TOKEN = '#{admin_oauth_token}'" if defined?(admin_oauth_token) %>
 </script>
 
+<meta name="turbo-root" content="<%= Spree::Backend::Config[:admin_path] %>">
+
 <%= yield :head %>
