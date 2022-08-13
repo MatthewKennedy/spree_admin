@@ -89,4 +89,4 @@ jobs:
         if: failure()
         with:
           name: failed-screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
+          path: ${{ github.workspace }}/tmp/dummy/tmp/capybara
