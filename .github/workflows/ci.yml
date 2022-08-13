@@ -1,0 +1,86 @@
+---
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - main
+jobs:
+  # POSTGRES
+  postgres:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ['2.7','3.0']
+
+        # Set N number of parallel jobs you want to run tests on.
+        # Use higher number if you have slow tests to split them on more parallel jobs.
+        # Remember to update ci_node_index below to 0..N-1
+        ci_node_total: [4]
+
+        # set N-1 indexes for parallel jobs
+        # When you run 2 parallel jobs then first job will have index 0, the second job will have index 1 etc
+        ci_node_index: [0, 1, 2, 3]
+
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: spree_admin
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Set up Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Set up Redis
+        uses: shogo82148/actions-setup-redis@v1.19.0
+
+      - name: Install libvips
+        run: sudo apt-get install -y libvips
+
+      - name: Make bin/ci executable
+        run: chmod +x ./bin/ci
+
+      - name: Setup chromedriver
+        uses: nanasess/setup-chromedriver@master
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get -yqq install libpq-dev
+          sudo apt-get install -y --no-install-recommends wget xvfb xauth unzip libpq-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev
+          sudo apt-get -y install g++ qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x libxml2-dev libxslt1-dev
+          sudo apt-get update -y
+          sudo apt-get install yarn
+
+      - name: Run Tests
+        env:
+          DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/spree_admin
+          RAILS_ENV: test
+          DB: postgresql
+          CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
+          CI_NODE_INDEX: ${{ matrix.ci_node_index }}
+        continue-on-error: true
+        run: |
+          bundle exec rake test_app
+          ./bin/ci
