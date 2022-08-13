@@ -1,16 +1,12 @@
+[![CI](https://github.com/MatthewKennedy/spree_admin/actions/workflows/ci.yml/badge.svg)](https://github.com/MatthewKennedy/spree_admin/actions/workflows/ci.yml)
+
 # Spree Admin
 
 An alternative Admin UI for Spree
 
 ## Key Features
 
-- Mobile-first - works great on any device!
-- Manage Product Catalog, Orders, Customers, Returns, Shipments and all other eCommerce crucial activities
-- Multi-Store support out of the box
-- Built-in CMS for Pages and Navigation
-- Easily add 3rd party integrations such as Payments, Tax calculation services and Shipping couriers
-- Easy customization to suit your needs
-- Modern tech-stack based on [Hotwire](https://hotwired.dev/) (Stimulus & Turbo)
+- jQuery Free
 
 ### What Is The Difference Between Spree Admin and Spree Backend?
 
