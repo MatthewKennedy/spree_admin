@@ -84,3 +84,9 @@ jobs:
         run: |
           bundle exec rake test_app
           ./bin/ci
+      - name: Upload failed screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: failed-screenshots
+          path: ${{ github.workspace }}/tmp/screenshots
