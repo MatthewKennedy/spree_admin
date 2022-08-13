@@ -40,18 +40,18 @@ run_tests_2_7: &run_tests_2_7
           - spree-admin-bundle-v05-ruby-2-7
     - run:
         name: Install libvips
-        command: sudo apt update && sudo apt-get install libvips
+        command: bash sudo apt update && sudo apt-get install libvips
     - run:
         name: Set bundle path
-        command: bundle config --local path vendor/bundle
+        command: bash bundle config --local path vendor/bundle
     - run:
         name: Ensure bundle Install
         command: |
-          bundle check || bundle install
+          bash bundle check || bash bundle install
     - run:
         name: whoami
         command: |
-          whoami
+          bash whoami
     - run:
         name: Specify Test Spliiter
         command: |
@@ -121,6 +121,12 @@ jobs:
           keys:
             - spree-admin-bundle-v05-ruby-2-7-{{ .Branch }}
             - spree-admin-bundle-v05-ruby-2-7
+      - run:
+          name: Set bundle path
+          command: bash bundle config --local path vendor/bundle
+      - run:
+          name: Bundle Install
+          command: bash bundle check || bash bundle install
       - save_cache:
           paths:
             - vendor/bundle
