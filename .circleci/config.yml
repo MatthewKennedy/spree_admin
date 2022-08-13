@@ -55,10 +55,10 @@ run_tests_2_7: &run_tests_2_7
     - run:
         name: Run Tests
         command: bundle exec rspec spec
-    - store_test_results:
-        path: ${CIRCLE_TEST_REPORTS}
-    - store_artifacts:
-        path: ${CIRCLE_ARTIFACTS}
+    # - store_test_results:
+    #     path: ${CIRCLE_TEST_REPORTS}
+    # - store_artifacts:
+    #     path: ${CIRCLE_ARTIFACTS}
 
 # Ruby 3.0
 run_tests_3_0: &run_tests_3_0
@@ -94,10 +94,10 @@ run_tests_3_0: &run_tests_3_0
                             --format RspecJunitFormatter \
                             -o ~/rspec/rspec.xml \
                             -- ${TESTFILES}
-    - store_test_results:
-        path: ~/rspec
-    - store_artifacts:
-        path: ${CIRCLE_ARTIFACTS}
+    # - store_test_results:
+    #     path: ~/rspec
+    # - store_artifacts:
+    #     path: ${CIRCLE_ARTIFACTS}
 
 
 ########
@@ -205,10 +205,10 @@ workflows:
   main:
     jobs:
       - bundle_ruby_2_7
-      # - bundle_ruby_3_0
-      # - tests_postgres_ruby_3_0:
-          # requires:
-            #- bundle_ruby_3_0
+      - bundle_ruby_3_0
+      - tests_postgres_ruby_3_0:
+          requires:
+            - bundle_ruby_3_0
       - tests_mysql_ruby_2_7:
           requires:
             - bundle_ruby_2_7
