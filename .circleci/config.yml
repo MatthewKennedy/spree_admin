@@ -52,7 +52,7 @@ run_tests_2_7: &run_tests_2_7
         name: whoami
         command: |
           circleci tests glob "spec/**/*_spec.rb"
-          chown -R $USER:$USER spec
+          chown -R $USER:$USER *
 
     - run:
         name: Specify Test Spliiter
