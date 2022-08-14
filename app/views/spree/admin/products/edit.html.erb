@@ -1,12 +1,11 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:all_products), spree.admin_products_path %> / <%= @product.name %>
+<% end %>
+
 <% content_for :page_actions do %>
   <% if @product.available? %>
     <%= external_page_preview_link(@product) %>
   <% end %>
-<% end %>
-
-<% content_for :page_title do %>
-  <%= page_header_back_button spree.admin_products_path %>
-  <%= @product.name %>
 <% end %>
 
 <div data-hook="admin_product_form_fields">

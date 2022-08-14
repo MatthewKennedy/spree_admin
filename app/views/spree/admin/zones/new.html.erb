@@ -7,5 +7,5 @@
 
 <%= form_with model: [:admin, @zone] do |zone_form| %>
   <%= render partial: 'form', locals: { zone_form: zone_form } %>
-  <%= render partial: 'spree/admin/shared/new_resource_links' %>
+  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

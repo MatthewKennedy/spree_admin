@@ -14,6 +14,7 @@ en:
         update: Update
         upload: Upload
       active: Active
+      add_option_types_to_this_product_to_begin_creating_variants: Add option types to this product to begin creating variants
       address:
         emirate: Emirate
         post_code: Post Code
@@ -261,6 +262,7 @@ en:
         add_new_property: Add new property
         add_stock: Add stock
         all: All
+        all_products: All Products
         archived: Archived
         cost_price: Cost price
         create_your_first_variant_for_this_product: Create your first variant for this product
@@ -280,6 +282,7 @@ en:
           product_status_updated_to: Product status updated to
         new_product_details: New product details
         new_product_master_price: 'Price: %{currency_iso} - (%{currency_symbol})'
+        new_variant: New variant
         overview: Overview
         price_now: Price now
         price_was: Price was

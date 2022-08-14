@@ -1,20 +1,19 @@
 <div id="contentHeader" class="row mb-3 position-fixed top-0 <%= "tabsAndActions" if content_for?(:page_tabs) %>">
   <% if content_for?(:page_title) || content_for?(:page_actions) %>
-    <div class="contentHeader col <%= "d-flex align-items-center" unless content_for?(:page_tabs) %>">
+    <div class="d-flex align-items-center">
       <div class="container">
-        <div class="d-flex align-items-center my-2 w-100">
-
+        <div class="d-flex align-items-center">
           <% if content_for?(:page_title) %>
-            <h4 class="px-0 mb-0 col d-flex align-items-center">
+          <div class="flex-fill align-items-center">
+            <h4 class="p-0 mb-0">
               <%= yield :page_title %>
             </h4>
+          </div>
           <% end %>
 
           <!-- We are keeping the empty <div> tags in DOM for turbo stream target -->
-          <div id="pageActions" class="page-actions ps-0 pe-0 d-none d-lg-flex col-auto" data-hook="toolbar">
-            <% if content_for?(:page_actions) %>
-              <%= yield :page_actions %>
-            <% end %>
+          <div id="pageActions" class="page-actions" data-hook="page_actions">
+            <%= yield :page_actions if content_for?(:page_actions) %>
           </div>
         </div>
 

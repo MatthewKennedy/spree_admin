@@ -13,8 +13,7 @@
 <% end %>
 
 <% content_for :page_title do %>
-  <%= page_header_back_button spree.admin_orders_path %>
-  <%= @order.number %>
+  <%= link_to Spree.t(:all_products), spree.admin_orders_path %> / <%= @order.number %>
 <% end %>
 
 <div data-hook="admin_order_edit_header">

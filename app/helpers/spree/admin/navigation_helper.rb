@@ -184,14 +184,10 @@ module Spree
         form_id ||= "mainForm"
 
         if button_text.nil?
-          button_text = if resource.persisted?
-            I18n.t("spree.admin.actions.update")
-          else
-            I18n.t("spree.admin.actions.create")
-          end
+          button_text = I18n.t("spree.admin.actions.save")
         end
 
-        button(button_text, "check-lg.svg", "submit", {form: form_id, class: "btn btn-success animate__fadeIn animate__animated animate__faster", id: "globalFormSubmitButton"})
+        button_tag(button_text, {form: form_id, class: "btn btn-success animate__fadeIn animate__animated animate__faster", id: "globalFormSubmitButton"})
       end
 
       # Override: Add disable_with option to prevent multiple request on consecutive clicks
@@ -213,12 +209,6 @@ module Spree
 
         content_tag(:small, class: "badge rounded-pill #{css_class}") do
           label
-        end
-      end
-
-      def page_header_back_button(url)
-        link_to url, class: "btn btn-outline-secondary me-3" do
-          inline_svg_tag "chevron-left.svg", size: "15px * 15px"
         end
       end
     end

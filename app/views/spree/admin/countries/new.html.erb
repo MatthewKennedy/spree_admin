@@ -1,11 +1,9 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:countries), spree.admin_countries_url %> / <%= Spree.t(:new_country) %>
+  <%= link_to Spree.t(:all_countries), spree.admin_countries_url %> / <%= Spree.t(:new_country) %>
 <% end %>
 
-<% content_for :page_actions do %>
-  <%= remote_form_submit_button(@country) %>
-<% end %>
-
-<%= form_with model: [:admin, @country], id: "mainForm" do |f| %>
+<%= form_with model: [:admin, @country], data: {controller: "input--required"} do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
+
+  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

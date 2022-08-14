@@ -8,6 +8,6 @@
 <%= form_with model: [:admin, @webhooks_subscriber] do |f| %>
   <fieldset>
     <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/new_resource_links' %>
+    <%= render partial: 'spree/admin/shared/resource_actions' %>
   </fieldset>
 <% end %>

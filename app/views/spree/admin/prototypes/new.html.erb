@@ -8,6 +8,6 @@
 <%= form_with model: [:admin, @prototype] do |f| %>
   <fieldset data-hook="new_prototype">
     <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/new_resource_links' %>
+    <%= render partial: 'spree/admin/shared/resource_actions' %>
   </fieldset>
 <% end %>

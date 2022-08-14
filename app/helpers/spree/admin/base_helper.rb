@@ -246,7 +246,7 @@ module Spree
         link_to_with_icon(
           I18n.t("spree.admin.utilities.preview", name: resource_name),
           spree_storefront_resource_url(resource),
-          class: "btn btn-light animate__animated animate__faster",
+          class: "btn btn-outline-secondary animate__animated animate__faster",
           icon: "eye.svg",
           id: "adminPreview#{resource_name}",
           target: :blank,

@@ -7,5 +7,5 @@
 
 <%= form_with model: [:admin, @reimbursement_type] do |reimbursement_form| %>
   <%= render partial: 'form', locals: { f: reimbursement_form } %>
-  <%= render partial: 'spree/admin/shared/new_resource_links' %>
+  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>
