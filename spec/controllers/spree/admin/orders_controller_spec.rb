@@ -110,7 +110,6 @@ describe Spree::Admin::OrdersController, type: :controller do
       it_behaves_like "refreshes shipping rates conditionally", :edit
     end
 
-
     # Test for #3919
     context "search" do
       before do

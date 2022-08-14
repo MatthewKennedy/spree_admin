@@ -49,7 +49,8 @@ group :test, :development do
   gem "pry-byebug"
   gem "puma"
   gem "redis"
-  gem "rubocop"
+  gem "rubocop", "1.26.0"
+  gem "standard", "1.9.0"
   gem "webdrivers", "~> 5.0"
 end
 

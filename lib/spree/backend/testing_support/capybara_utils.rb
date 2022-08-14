@@ -10,7 +10,7 @@ module Spree
           if RSpec.current_example.metadata[:js]
             within("table.table tbody tr:nth-child(#{num})", match: :first, &block)
           else
-            within(all('table.table tbody tr')[num - 1], &block)
+            within(all("table.table tbody tr")[num - 1], &block)
           end
         end
 
@@ -18,7 +18,7 @@ module Spree
           if RSpec.current_example.metadata[:js]
             find("td:nth-child(#{num})").text
           else
-            all('td')[num - 1].text
+            all("td")[num - 1].text
           end
         end
 
@@ -31,12 +31,12 @@ module Spree
         end
 
         def wait_for_turbo(timeout = nil)
-          if has_css?('.turbo-progress-bar', visible: true, wait: 1.seconds)
-            has_no_css?('.turbo-progress-bar', wait: timeout.presence || 5.seconds)
+          if has_css?(".turbo-progress-bar", visible: true, wait: 1.seconds)
+            has_no_css?(".turbo-progress-bar", wait: timeout.presence || 5.seconds)
           end
         end
 
-        def wait_for_turbo_frame(selector = 'turbo-frame', timeout = nil)
+        def wait_for_turbo_frame(selector = "turbo-frame", timeout = nil)
           if has_selector?("#{selector}[busy]", visible: true, wait: 1.seconds)
             has_no_selector?("#{selector}[busy]", wait: timeout.presence || 5.seconds)
           end
@@ -47,7 +47,7 @@ module Spree
         end
 
         def wait_for(options = {}, &block)
-          default_options = { error: nil, seconds: 5 }.merge(options)
+          default_options = {error: nil, seconds: 5}.merge(options)
 
           Selenium::WebDriver::Wait.new(timeout: default_options[:seconds]).until(&block)
         rescue Selenium::WebDriver::Error::TimeoutError
