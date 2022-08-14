@@ -4,7 +4,8 @@
   <div data-controller="modal"
        class="modal fade"
        tabindex="-1"
-       aria-hidden="true">
+       aria-hidden="true"
+       data-turbo-cache="false">
     <div class="modal-dialog <%= modal_dialog_settings %>">
       <div class="modal-content">
         <% if content_for?(:modal_header) %>
