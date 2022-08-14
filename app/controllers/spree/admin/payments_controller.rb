@@ -64,7 +64,7 @@ module Spree
       end
 
       def fire
-        return unless event = params[:e] and @payment.payment_source
+        return unless (event = params[:e]) && @payment.payment_source
 
         # Because we have a transition method also called void, we do this to avoid conflicts.
         event = "void_transaction" if event == "void"

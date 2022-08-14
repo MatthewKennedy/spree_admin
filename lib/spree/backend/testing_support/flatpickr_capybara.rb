@@ -61,7 +61,7 @@ module Spree
         def with_open_flatpickr(label_text)
           field_label = find_field(id: label_text, type: :hidden)
 
-          date_field = field_label.sibling('.flatpickr-alt-input')
+          date_field = field_label.sibling(".flatpickr-alt-input")
           date_field.click # Open the flatpickr cal.
           sleep(0.25) # Pause to let JavaScript populate DOM with an open flatpickr cal.
 
@@ -73,16 +73,16 @@ module Spree
 
         def within_open_flatpickr(label_text, &block)
           with_open_flatpickr(label_text) do
-            within find('.flatpickr-calendar.open', &block)
+            within find(".flatpickr-calendar.open", &block)
           end
         end
 
         def within_flatpickr_months(&block)
-          within find('.flatpickr-months > .flatpickr-month > .flatpickr-current-month', &block)
+          within find(".flatpickr-months > .flatpickr-month > .flatpickr-current-month", &block)
         end
 
         def within_flatpickr_time(&block)
-          within find('.flatpickr-time', &block)
+          within find(".flatpickr-time", &block)
         end
 
         def select_flatpickr_month(month)
@@ -92,25 +92,25 @@ module Spree
         end
 
         def fill_in_flatpickr_year(year)
-          find('input.cur-year').set(year)
+          find("input.cur-year").set(year)
         end
 
         def click_on_flatpickr_day(day)
           within_flatpickr_days do
-            find('.flatpickr-day:not(.prevMonthDay):not(.nextMonthDay)', text: day, exact_text: true).click
+            find(".flatpickr-day:not(.prevMonthDay):not(.nextMonthDay)", text: day, exact_text: true).click
           end
         end
 
         def within_flatpickr_days(&block)
-          within find('.flatpickr-innerContainer > .flatpickr-rContainer > .flatpickr-days > .dayContainer', &block)
+          within find(".flatpickr-innerContainer > .flatpickr-rContainer > .flatpickr-days > .dayContainer", &block)
         end
 
         def select_flatpickr_hour(hour)
-          find('input.flatpickr-hour').set(hour)
+          find("input.flatpickr-hour").set(hour)
         end
 
         def select_flatpickr_min(min)
-          find('input.flatpickr-minute').set(min)
+          find("input.flatpickr-minute").set(min)
         end
 
         def string_date(options)

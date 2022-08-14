@@ -4,11 +4,18 @@ inherit_mode:
 
 require:
   - rubocop-performance
-#   - standard
+  - standard
 
-# inherit_gem:
-#   standard: config/base.yml
+inherit_gem:
+  standard: config/base.yml
 
-inherit_from:
-  - .rubocop/rails.yml
-  - .rubocop/custom.yml
+AllCops:
+  NewCops: enable
+  Exclude:
+    - '**/sandbox/**/*'
+    - '**/db/migrate/*'
+    - '**/Gemfile.lock'
+    - '**/rails'
+    - '**/dummy/**/*'
+    - '**/vendor/**/*'
+    - '**/templates/**/*'

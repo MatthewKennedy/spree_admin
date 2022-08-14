@@ -16,10 +16,8 @@ module Spree
         if stock_movement.save
           flash[:success] = flash_message_for(stock_movement, :successfully_created)
           if variant.is_master?
-            redirect_to spree.edit_admin_product_path(variant.product)
-          else
-            redirect_to spree.edit_admin_product_path(variant.product)
           end
+          redirect_to spree.edit_admin_product_path(variant.product)
         else
           flash[:error] = Spree.t(:could_not_create_stock_movement)
         end
