@@ -11,7 +11,9 @@ namespace :spree_admin do
     args.with_defaults(user_class: "Spree::LegacyUser", install_storefront: "false", install_admin: "false")
     require ENV["LIB_NAME"].to_s
 
+    ENV["SPREE_ADMIN_INSTALL_NODE_JS_FILES"] = "false"
     ENV["RAILS_ENV"] = "test"
+
     ENV["DUMMY_PATH"] = "tmp/dummy"
 
     Rails.env = "test"
@@ -58,11 +60,8 @@ namespace :spree_admin do
         system("yarn install")
 
         $stdout.puts "Adding Spree Admin assets after @spree/admin installed by yarn..."
-        ENV["RAILS_ENV"] = "development"
-
+        ENV["SPREE_ADMIN_INSTALL_NODE_JS_FILES"] = "true"
         system("bin/rails g spree:backend:install")
-
-        ENV["RAILS_ENV"] = "test"
       end
 
       $stdout.puts "Precompiling assets..."

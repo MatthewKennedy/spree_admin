@@ -13,11 +13,9 @@ module Spree
         end
 
         def install
-          unless ENV["RAILS_ENV"] == "test"
-            template "app/javascript/spree_admin.js"
-            template "vendor/assets/stylesheets/spree/backend/all.css"
-            template "app/assets/stylesheets/spree/backend/admin.scss"
-          end
+          template "app/javascript/spree_admin.js"
+          template "app/assets/stylesheets/spree/backend/admin.scss"
+          template "vendor/assets/stylesheets/spree/backend/all.css" unless ENV["RAILS_ENV"] == "test"
         end
       end
     end
