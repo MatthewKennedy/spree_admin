@@ -1,8 +1,5 @@
-<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @property } %>
-
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:properties), admin_properties_url %> /
-  <%= Spree.t(:new_property) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_properties_path, link_one_text: Spree.t(:all_properties), current_page_name: Spree.t(:new_property)) %>
 <% end %>
 
 <%= form_with model: [:admin, @property] do |f| %>

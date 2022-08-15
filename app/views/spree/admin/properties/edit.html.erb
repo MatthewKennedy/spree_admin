@@ -1,11 +1,8 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:properties), admin_properties_url %> /
-  <%= @property.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_properties_path, link_one_text: Spree.t(:all_properties), current_page_name: @property.name) %>
 <% end %>
 
 <%= form_with model: [:admin, @property] do |f| %>
-  <fieldset>
-    <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/resource_actions' %>
-  </fieldset>
+  <%= render partial: 'form', locals: { f: f } %>
+  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

@@ -1,5 +1,3 @@
-<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: :payments } %>
-
 <% content_for :page_title do %>
   / <%= link_to "#{Spree.t(:payment)} #{@refund.payment.id}", spree.admin_order_payment_path(@refund.payment.order, @refund.payment) %>
   / <%= Spree.t(:refund) %> <%= @refund.id %>

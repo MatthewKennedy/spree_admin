@@ -1,6 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:prototypes), spree.admin_prototypes_url %> /
-  <%= @prototype.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_prototypes_path, link_one_text: Spree.t(:all_prototypes), current_page_name: @prototype.name) %>
 <% end %>
 
 <div class="card">
