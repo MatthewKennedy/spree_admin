@@ -8,8 +8,8 @@ export default class extends Controller {
     turboAction: { type: String, default: 'advance' }
   }
 
-  initialize () {
-    this.element.setAttribute('data-action', 'click->linkable-td#visit')
+  connect () {
+    this.element.setAttribute('data-action', 'click->linkable-td#visit:once')
   }
 
   visit () {

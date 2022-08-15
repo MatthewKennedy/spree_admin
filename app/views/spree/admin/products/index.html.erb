@@ -32,13 +32,11 @@
         <% available_status = available_status(product) %>
           <tr <%== "style='color: red;'" if product.deleted? %> id="<%= dom_id(product) %>" data-hook="admin_products_index_rows" data-stream-exit-class="animate__fadeOut">
             <td style="width:50px;" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="mini-img">
-              <%= link_to spree.edit_admin_product_path(product) do %>
-                <%= small_image product %>
-              <% end %>
+              <%= small_image(product) %>
             </td>
 
             <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="no-wrap">
-              <%= link_to product.name, spree.edit_admin_product_path(product), class: 'text-reset text-decoration-none' %>
+              <%= product.name %>
               <br>
               <small>SKU: <span class="text-secondary"><%= product.sku rescue '' %></span></small>
             </td>
