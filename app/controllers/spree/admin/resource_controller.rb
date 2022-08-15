@@ -60,6 +60,8 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
     else
       invoke_callbacks(:create, :fails)
 
+      flash[:error] = @object.errors.full_messages.join(", ") unless params[:format] == "turbo_stream"
+
       respond_with(@object) do |format|
         format.html { render action: :new, status: :unprocessable_entity }
       end

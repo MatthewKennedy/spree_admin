@@ -168,10 +168,10 @@ module Spree
 
       def link_to_with_icon(name, url, html_options = {})
         html_options[:class] ||= ""
-        name = html_options[:no_text] ? "" : content_tag(:span, name)
+        name = html_options[:no_text] ? "" : content_tag(:span, name, class: "d-none d-md-inline")
 
         if html_options[:icon]
-          icon_class = html_options[:no_text] ? "" : "me-1"
+          icon_class = html_options[:no_text] ? "" : "me-md-1"
           html_options[:icon_size] ||= "#{ICON_SIZE}px * #{ICON_SIZE}px"
           icon = inline_svg_tag(html_options[:icon], class: "#{icon_class} #{html_options[:icon_class]}", size: html_options[:icon_size])
           name = "#{icon} #{name}"
@@ -187,7 +187,7 @@ module Spree
           button_text = I18n.t("spree.admin.actions.save")
         end
 
-        button_tag(button_text, {form: form_id, class: "btn btn-success animate__fadeIn animate__animated animate__faster", id: "globalFormSubmitButton"})
+        button_tag(button_text, {form: form_id, class: "btn btn-primary animate__fadeIn animate__animated animate__faster", id: "globalFormSubmitButton"})
       end
 
       # Override: Add disable_with option to prevent multiple request on consecutive clicks
@@ -197,9 +197,21 @@ module Spree
           text = "#{icon} #{text}"
         end
 
-        css_classes = html_options[:class] || "btn-success "
+        css_classes = html_options[:class] || "btn-primary "
 
         button_tag(text.html_safe, html_options.merge(type: button_type, class: "btn #{css_classes}"))
+      end
+
+      def breadcrumb_builder(options = {})
+        divider = content_tag(:span, "/", class: "text-mid-light mx-1 pb-1")
+
+        if options[:link_one_uri] && options[:link_two_text]
+          link_to(options[:link_one_text], options[:link_one_uri]) + divider + link_to(options[:link_two_text], options[:link_two_uri]) + divider + options[:current_page_name]
+        elsif options[:link_one_uri]
+          link_to(options[:link_one_text], options[:link_one_uri]) + divider + options[:current_page_name]
+        else
+          options[:current_page_name]
+        end
       end
 
       def active_badge(condition, options = {})

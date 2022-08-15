@@ -1,8 +1,8 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.cms.all_pages'), spree.admin_cms_pages_path %> / <%= I18n.t('spree.admin.cms.new_page') %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_cms_pages_path, link_one_text: I18n.t('spree.admin.cms.all_pages'), current_page_name: I18n.t('spree.admin.cms.new_page')) %>
 <% end %>
 
-<%= form_with model: [:admin, @cms_page] do |f| %>
+<%= form_with model: [:admin, @cms_page], data: {controller: "input--required"} do |f| %>
   <div id="<%= dom_id(@cms_page) %>" class="card">
     <div class="card-header d-flex">
       <div class="flex-fill">
@@ -35,25 +35,6 @@
             <%= f.select :locale, options_from_collection_for_select(supported_locales_options, :last, :first, @cms_page.locale || I18n.locale), {} %>
             <%= f.label :language %>
           <% end %>
-        </div>
-      </div>
-
-      <div class="row pb-0">
-        <div class="col-12 text-center">
-          <%= render partial: 'spree/admin/shared/resource_actions' %>
-        </div>
-      </div>
-
-      <div class="card-body">
-        <div class="collapse" id="cmsPageInformation">
-          <div class="bs-callout bs-callout-info">
-            <h5>
-              <%= I18n.t('spree.admin.cms_pages.basic_details') %>
-            </h5>
-            <p>
-              <%= I18n.t('spree.admin.cms_pages.when_creating_a_new_page_first_give_the_page_a_title_and_select_the_page_type_you_will_then_be_offered_more_options') %>
-            </p>
-          </div>
         </div>
       </div>
     </div>

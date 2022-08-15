@@ -1,7 +1,7 @@
 <%= render partial: 'spree/admin/users/tabs', locals: { current: :store_credits } %>
 
 <% content_for :page_actions do %>
-  <%= link_to_with_icon Spree.t(:add_store_credit), spree.new_admin_user_store_credit_path(@user), class: "btn-success btn", icon: 'plus-square.svg' if can?(:create, Spree::StoreCredit) %>
+  <%= link_to_with_icon Spree.t(:add_store_credit), spree.new_admin_user_store_credit_path(@user), class: "btn-primary btn", icon: 'plus-square.svg' if can?(:create, Spree::StoreCredit) %>
 <% end %>
 
 <% if @store_credits.any? %>

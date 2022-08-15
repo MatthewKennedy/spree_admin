@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:all_countries), spree.admin_countries_url %> / <%= @country.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_countries_path, link_one_text: Spree.t(:all_countries), current_page_name: @country.name) %>
 <% end %>
 
 <% content_for :page_actions do %>

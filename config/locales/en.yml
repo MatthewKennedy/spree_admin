@@ -196,6 +196,8 @@ en:
       option_types: Option types
       options:
         add_option_value: Add Option Value
+        all_option_types: All Option Types
+        new_option_type: New Option Type
         values:
           this_option_types: This Option Type has no values, click the Add Option Value button to begin adding values.
       order:
@@ -268,6 +270,8 @@ en:
         create_your_first_variant_for_this_product: Create your first variant for this product
         deleted: Deleted
         draft: Draft
+        edit_variant: Edit variant
+        editing_variant: Editing Variant
         errors:
           cost_currency_could_not_be_updated: Cost currency could not be updated. %{error}
           could_not_remove_from_taxon: Could not remove from taxon
@@ -282,7 +286,7 @@ en:
           product_status_updated_to: Product status updated to
         new_product_details: New product details
         new_product_master_price: 'Price: %{currency_iso} - (%{currency_symbol})'
-        new_variant: New variant
+        new_variant: New Variant
         overview: Overview
         price_now: Price now
         price_was: Price was

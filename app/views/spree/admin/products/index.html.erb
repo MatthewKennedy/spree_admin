@@ -2,33 +2,6 @@
   <%= plural_resource_name(Spree::Product) %>
 <% end %>
 
-<% content_for :page_actions do %>
-  <%= link_to_with_icon Spree.t(:new_product), new_object_url, { class: "btn-success btn", icon: 'plus-square.svg', id: 'admin_new_product', data: {turbo_frame: :modal} } %>
-<% end if can?(:create, Spree::Product) %>
-
-<% content_for :page_tabs do %>
-  <li class="nav-item">
-    <%= link_to t('spree.admin.products.all'),
-                spree.admin_products_path,
-                class: "nav-link #{'active' if params[:q][:status_eq].blank?}" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to I18n.t('spree.admin.products.active'),
-                params.merge({q: {status_eq: :active}}).permit!,
-                class: "nav-link #{'active' if params[:q][:status_eq] == 'active'}" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to I18n.t('spree.admin.products.draft'),
-                params.merge({q: {status_eq: :draft}}).permit!,
-                class: "nav-link #{'active' if params[:q][:status_eq] == 'draft'}" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to I18n.t('spree.admin.products.archived'),
-                params.merge({q: {status_eq: :archived}}).permit!,
-                class: "nav-link #{'active' if params[:q][:status_eq] == 'archived'}" %>
-  </li>
-<% end %>
-
 <% content_for :table_filter do %>
   <%= render partial: 'filters' %>
 <% end %>
@@ -49,7 +22,9 @@
         <th scope="col" class="text-center" class="text-center">
           <%= Spree.t(:price) %>
         </th>
-        <th scope="col" class="text-center" data-hook="admin_products_index_header_actions" class="actions"></th>
+        <th scope="col" class="actions text-end" data-hook="admin_products_index_header_actions">
+          <%= link_to_with_icon Spree.t(:new_product), new_object_url, { class: "btn-primary btn btn-sm", icon: 'plus-square.svg', id: 'admin_new_product', data: {turbo_frame: :modal} } if can?(:create, Spree::Product) %>
+        </th>
       </tr>
     </thead>
     <tbody>

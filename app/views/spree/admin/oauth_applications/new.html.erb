@@ -1,14 +1,9 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.oauth_applications.list'), spree.admin_oauth_applications_url %> /
-  <%= I18n.t('spree.admin.oauth_applications.new') %>
-<% end %>
-
-<% content_for :page_actions do %>
-  <%= remote_form_submit_button(@object) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_oauth_applications_url, link_one_text: I18n.t('spree.admin.oauth_applications.list'), current_page_name: I18n.t('spree.admin.oauth_applications.new')) %>
 <% end %>
 
 <%= turbo_frame_tag 'new_oauth_application' do %>
-  <%= form_with model: [:admin, @oauth_application] do |f| %>
+  <%= form_with model: [:admin, @oauth_application], data: { controller: "input--required"} do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
       <%= render partial: 'spree/admin/shared/resource_actions' %>
   <% end %>

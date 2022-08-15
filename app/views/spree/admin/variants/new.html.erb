@@ -1,5 +1,7 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.products.all_products'), spree.edit_admin_product_path(@product) %> / <%= link_to @product.name, spree.edit_admin_product_path(@product) %> / <%= I18n.t('spree.admin.products.new_variant')%>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_products_path, link_one_text:I18n.t('spree.admin.products.all_products'),
+                         link_two_uri: spree.edit_admin_product_path(@product), link_two_text: @product.name,
+                         current_page_name: I18n.t('spree.admin.products.new_variant')) %>
 <% end %>
 
 <%= form_with model: [:admin, @product, @variant] do |f| %>

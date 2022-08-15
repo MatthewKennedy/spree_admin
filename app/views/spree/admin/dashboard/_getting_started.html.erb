@@ -47,7 +47,7 @@
           <p>
             You can add products manually through API or import from a CSV file.
           </p>
-          <%= link_to_with_icon 'Add products', spree.admin_products_path, class: 'btn btn-success btn-sm mb-2', icon: 'plus-square.svg' %>
+          <%= link_to_with_icon 'Add products', spree.admin_products_path, class: 'btn btn-primary btn-sm mb-2', icon: 'plus-square.svg' %>
         <% end %>
       </div>
       <div class="tab-pane fade <% if @active_tab == 'shipping' %>show active<% end %>" id="list-shipping" role="tabpanel" aria-labelledby="list-shipping-list">
@@ -65,7 +65,7 @@
           <p>
             You can add multiple shipping methods, different for each country, continent or region.
           </p>
-          <%= link_to_with_icon 'Setup shipping', spree.admin_shipping_methods_path, class: 'btn btn-success btn-sm mb-2', icon: 'gear.svg' %>
+          <%= link_to_with_icon 'Setup shipping', spree.admin_shipping_methods_path, class: 'btn btn-primary btn-sm mb-2', icon: 'gear.svg' %>
         <% end %>
       </div>
       <div class="tab-pane fade <% if @active_tab == 'payments' %>show active<% end %>" id="list-payments" role="tabpanel" aria-labelledby="list-payments-list">
@@ -77,7 +77,7 @@
           <p>
             You can setup multiple payment methods such as Stripe, PayPal, ApplePay, etc.
           </p>
-          <%= link_to_with_icon 'Setup payment methods', spree.admin_payment_methods_path, class: 'btn btn-success btn-sm mb-2', icon: 'gear.svg' %>
+          <%= link_to_with_icon 'Setup payment methods', spree.admin_payment_methods_path, class: 'btn btn-primary btn-sm mb-2', icon: 'gear.svg' %>
         <% end %>
       </div>
       <div class="tab-pane fade <% if @active_tab == 'taxes' %>show active<% end %>" id="list-taxes" role="tabpanel" aria-labelledby="list-taxes-list">
@@ -89,7 +89,7 @@
           <p>
             You can use tax services such as TaxJar or setup tax calculation manually
           </p>
-          <%= link_to_with_icon 'Setup tax calculation', spree.admin_tax_rates_path, { class: 'btn btn-success btn-sm mb-2', icon: 'gear.svg' } %>
+          <%= link_to_with_icon 'Setup tax calculation', spree.admin_tax_rates_path, { class: 'btn btn-primary btn-sm mb-2', icon: 'gear.svg' } %>
         <% end %>
 
       </div>

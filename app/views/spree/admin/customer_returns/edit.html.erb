@@ -44,7 +44,7 @@
     <% if @customer_return.completely_decided? %>
       <%= form_with model: [:admin, @order, Spree::Reimbursement.new] do |f| %>
         <%= hidden_field_tag :build_from_customer_return_id, @customer_return.id %>
-        <%= f.button class: 'btn btn-success ' do %>
+        <%= f.button class: 'btn btn-primary ' do %>
           <%= Spree.t(:create_reimbursement) %>
         <% end %>
       <% end %>

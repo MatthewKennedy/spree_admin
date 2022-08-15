@@ -6,16 +6,16 @@ export default class extends StimulusFormState {
 
     super.enableChangeControles()
 
-    if (this.hasSaveButtonTarget) this.saveButtonTarget.style.display = 'inline'
-    if (globalSubmitButton) globalSubmitButton.style.display = 'inline'
+    if (this.hasSaveButtonTarget) this.saveButtonTarget.disabled = false
+    if (globalSubmitButton) globalSubmitButton.disabled = false
   }
 
   disableChangeControles () {
     const globalSubmitButton = document.getElementById('globalFormSubmitButton')
     super.disableChangeControles()
 
-    if (this.hasSaveButtonTarget) this.saveButtonTarget.style.display = 'none'
+    if (this.hasSaveButtonTarget) this.saveButtonTarget.disabled = true
 
-    if (globalSubmitButton) globalSubmitButton.style.display = 'none'
+    if (globalSubmitButton) globalSubmitButton.disabled = true
   }
 }

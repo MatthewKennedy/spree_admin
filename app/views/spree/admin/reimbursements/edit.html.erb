@@ -95,7 +95,7 @@
   <% end %>
   <div class="form-actions" data-hook="reimburse-buttons">
     <% if !@reimbursement.reimbursed? %>
-      <%= button_to [:perform, :admin, @order, @reimbursement], { class: 'btn btn-success ', method: 'post' } do %>
+      <%= button_to [:perform, :admin, @order, @reimbursement], { class: 'btn btn-primary ', method: 'post' } do %>
         <span class="icon icon-save"></span>
         <%= Spree.t(:reimburse) %>
       <% end %>

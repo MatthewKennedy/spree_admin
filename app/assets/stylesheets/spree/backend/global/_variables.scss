@@ -257,13 +257,14 @@ $border-radius: 3px;
     --bs-btn-disabled-border-color: rgba(var(--bs-dark-rgb));
   }
 
+
   // Universal disabled on link or button element
   // All disabled buttons might as well look the same.
   .btn[disabled] {
-    color: rgb(224, 224, 224);
+    color: black;
     background-color: transparent;
-    border-color: rgb(224, 224, 224);
-    opacity: var(--bs-btn-disabled-opacity);
+    border-color: black;
+    opacity: 0.25;
     pointer-events: none;
   }
 

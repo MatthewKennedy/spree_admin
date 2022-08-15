@@ -1,6 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.oauth_applications.list'), spree.admin_oauth_applications_url %> /
-  <%= @oauth_application.name.capitalize %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_oauth_applications_url, link_one_text: I18n.t('spree.admin.oauth_applications.list'), current_page_name: @oauth_application.name) %>
 <% end %>
 
 <% content_for :page_actions do %>
