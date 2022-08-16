@@ -9,3 +9,11 @@
     margin-bottom: 1px;
   }
 }
+
+
+input[type="file"]::file-selector-button {
+  margin-top: 0.1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: transparent !important;
+}

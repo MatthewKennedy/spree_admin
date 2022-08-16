@@ -1,25 +1,6 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:stock_transfers), spree.admin_stock_transfers_url %> /
-  <%= Spree.t(:new_stock_transfer) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_stock_transfers_path, link_one_text: Spree.t(:stock_transfers), current_page_name: Spree.t(:new_stock_transfer)) %>
 <% end %>
-
-<script type='text/template' id='transfer_variant_template'>
-  {{#each variants}}
-    <tr>
-      <td>{{name}}</td>
-      <td class='text-center'>{{quantity}}</td>
-      <td class='actions'>
-        <span class='d-flex justify-content-center'>
-          <button class='icon_link btn btn-danger btn-sm transfer_remove_variant' data-variant-id='{{id}}'>
-            <span class='icon icon-delete' data-variant-id='{{id}}'></span>
-          </button>
-          <input type='hidden' id='variant[]' name='variant[]' value='{{id}}'>
-          <input type='hidden' id='quantity[]' name='quantity[]' value='{{quantity}}'>
-        </span>
-      </td>
-    </tr>
-  {{/each}}
-</script>
 
 <%= form_tag admin_stock_transfers_path, method: :post do %>
   <div class="card mb-3">

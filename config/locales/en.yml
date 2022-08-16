@@ -153,6 +153,7 @@ en:
         link_settings: Link Settings
         link_to: Link To
         link_to_info: Link to Pages, Products, Taxons or external URL's.
+        menu_item_icon: Menu item icon
         menu_items: "%{menu_name} Items"
         menus: Menus
         move_could_not_be_saved: 'ERROR: This move could not be saved.'
@@ -250,6 +251,8 @@ en:
       product_kinds:
         digital: Digital
         physical: Physical
+      product_properties:
+        property_details: Property details
       product_rule:
         choose_products: Choose products
         label: Label
@@ -330,6 +333,8 @@ en:
       properties: Properties
       quantity: Quantity
       receive_stock: Receive stock
+      reimbursement_types:
+        reimbursement_type: Reimbursement Type
       reports:
         for: For %{store_name}
       request_errors: Request Errors

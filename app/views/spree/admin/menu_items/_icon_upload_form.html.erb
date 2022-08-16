@@ -8,7 +8,8 @@
 <% end %>
 
 <%= f.field_container :icon_attachment do %>
-  <div id="<%= "MenuItemImageButton" unless @menu_item.icon.new_record? %>">
+  <div class="form-floating">
     <%= ff.file_field :attachment %>
+    <%= ff.label :attachment, I18n.t('spree.admin.navigation.menu_item_icon') %>
   </div>
 <% end %>

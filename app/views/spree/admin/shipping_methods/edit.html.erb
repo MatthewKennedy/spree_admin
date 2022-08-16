@@ -1,6 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:shipping_methods), spree.admin_shipping_methods_url %> /
-  <%= @shipping_method.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_shipping_methods_path, link_one_text: Spree.t(:shipping_methods), current_page_name: @shipping_method.name) %>
 <% end %>
 
 <% content_for :page_actions do %>

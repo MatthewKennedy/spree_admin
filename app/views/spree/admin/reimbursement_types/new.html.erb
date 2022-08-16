@@ -1,11 +1,15 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:reimbursement_types), spree.admin_reimbursement_types_url %> /
-  <%= Spree.t(:new_reimbursement_type) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_reimbursement_types_path, link_one_text: Spree.t(:reimbursement_types), current_page_name: Spree.t(:new_reimbursement_type)) %>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @reimbursement_type } %>
-
-<%= form_with model: [:admin, @reimbursement_type] do |reimbursement_form| %>
-  <%= render partial: 'form', locals: { f: reimbursement_form } %>
+<%= form_with model: [:admin, @reimbursement_type], data: { controller: "input--required"} do |reimbursement_form| %>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title"><%= I18n.t('spree.admin.reimbursement_types.reimbursement_type') %></h5>
+    </div>
+    <div class="card-body">
+      <%= render partial: 'form', locals: { f: reimbursement_form } %>
+    </div>
+  </div>
   <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

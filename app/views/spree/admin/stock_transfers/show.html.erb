@@ -1,6 +1,5 @@
 <% content_for :page_title do %>
-    <%= link_to Spree.t(:stock_transfers), spree.admin_stock_transfers_url %> /
-    <%= @stock_transfer.number %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_stock_transfers_path, link_one_text: Spree.t(:stock_transfers), current_page_name: @stock_transfer.number) %>
 <% end %>
 
 <% content_for :page_actions do %>

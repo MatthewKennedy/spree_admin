@@ -14,16 +14,16 @@
 
   <div class="card-body">
     <% unless @order.shipped? %>
-      <%= form_with model: @order.shipments, url: spree.admin_shipments_path, method: :post, class: 'input-group' do |f| %>
+      <%= form_with model: @order.shipments, url: spree.admin_shipments_path, method: :post do |f| %>
         <%= f.hidden_field :order_id, value: @order.id %>
-        <%= f.field_container :stock_location_id, class: ['col'] do %>
-          <%= select(:shipment, :stock_location_id, Spree::StockLocation.all.collect {|s| [ s.name, s.id ] }, { include_blank: false }, class: 'form-select rounded-start rounded-0') %>
-          <%= f.label :shipping_location %>
-        <% end %>
 
-        <%= f.field_container :stock_location_id, class: ['col-auto'] do %>
-          <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-outline-secondary w-100 h-100 rounded-end rounded-0' %>
-        <% end %>
+        <div class="input-group">
+         <%= f.field_container :stock_location_id, class: ['form-floating'] do %>
+           <%= f.select(:stock_location_id, Spree::StockLocation.all.collect {|s| [ s.name, s.id ] }, { include_blank: false }) %>
+           <%= f.label :shipping_location %>
+         <% end %>
+         <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-outline-secondary input-group-text' %>
+        </div>
       <% end %>
       <hr>
     <% end %>
@@ -57,35 +57,33 @@
 
           <div class="card-body">
             <% unless shipment.ready? || shipment.shipped? and can?(:update, shipment) %>
-              <%= form_with model: shipment, url: spree.add_item_admin_shipment_path(shipment.id), method: :patch, class: 'input-group' do |f| %>
-                  <div class="form-group form-floating">
-                    <%= f.number_field :quantity, class: 'form-control rounded-start rounded-0',
-                                                  placeholder: I18n.t('spree.admin.quantity'),
-                                                  required: true,
+              <%= form_with model: shipment, url: spree.add_item_admin_shipment_path(shipment.id), method: :patch do |f| %>
+                  <div class="input-group">
+                    <div class="form-floating">
+                      <%= f.number_field :quantity, class: 'form-control',
+                                                    placeholder: I18n.t('spree.admin.quantity'),
+                                                    required: true,
 
-                                                  data: { controller: 'input-formatting',
-                                                          input_formatting_options_value: { numericOnly: true,
-                                                                                            blocks: [4] } } %>
-                    <%= f.label :quantity %>
-                  </div>
+                                                    data: { controller: 'input-formatting',
+                                                            input_formatting_options_value: { numericOnly: true,
+                                                                                              blocks: [4] } } %>
+                      <%= f.label :quantity %>
+                    </div>
+                    <div class="form-floating" style="width: 60%">
+                      <%= f.select :variant_id, [], {}, class: 'form-select', required: true,
+                                                        placeholder: I18n.t('spree.admin.order.search_for_a_product_or_variant'),
+                                                        data: { action: 'change->form-validation#validate',
+                                                        controller: 'ts--search-variant',
+                                                        ts__search_variant_debug_value: true,
+                                                        ts__search_variant_uri_value: '/api/v2/platform/variants',
+                                                        ts__search_variant_fields_value: ['name', 'sku'],
+                                                        ts__search_variant_ransack_value: ['search_by_product_name_or_sku_returning_eligible_variants_only'],
+                                                        ts__search_variant_custom_params_value: [ ['[image_transformation]size', '100x100'] ],
+                                                        ts__search_variant_include_value: 'images,stock_items.stock_location' } %>
 
-                  <div class="form-group form-floating" style="width: 60%">
-                    <%= f.select :variant_id, [], {}, class: 'form-select rounded-0', required: true,
-                                                      placeholder: I18n.t('spree.admin.order.search_for_a_product_or_variant'),
-                                                      data: { action: 'change->form-validation#validate',
-                                                      controller: 'ts--search-variant',
-                                                      ts__search_variant_debug_value: true,
-                                                      ts__search_variant_uri_value: '/api/v2/platform/variants',
-                                                      ts__search_variant_fields_value: ['name', 'sku'],
-                                                      ts__search_variant_ransack_value: ['search_by_product_name_or_sku_returning_eligible_variants_only'],
-                                                      ts__search_variant_custom_params_value: [ ['[image_transformation]size', '100x100'] ],
-                                                      ts__search_variant_include_value: 'images,stock_items.stock_location' } %>
-
-                    <%= label_tag :variant_id, I18n.t('spree.admin.order.products'), class: 'form-label' %>
-                  </div>
-
-                  <div class="form-group">
-                    <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-outline-secondary rounded-0 rounded-end w-100 h-100', data: { form_validation_target: "submitBtn" } %>
+                      <%= label_tag :variant_id, I18n.t('spree.admin.order.products'), class: 'form-label' %>
+                    </div>
+                    <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-outline-secondary input-group-text', data: { form_validation_target: "submitBtn" } %>
                   </div>
               <% end %>
             <% end %>
