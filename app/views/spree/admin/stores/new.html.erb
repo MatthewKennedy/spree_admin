@@ -2,7 +2,7 @@
   <%= breadcrumb_builder(link_one_uri: spree.admin_stores_path(@store), link_one_text: Spree.t(:stores), current_page_name: Spree.t(:add_store)) %>
 <% end %>
 
-<%= form_with model: @store, url: spree.admin_stores_path(@store), data: { turbo: false } do |f| %>
+<%= form_with model: [:admin, @store], data: { turbo: false } do |f| %>
   <fieldset>
     <%= render partial: 'form', locals: { f: f } %>
     <%= render partial: 'spree/admin/shared/resource_actions', locals: { collection_url: spree.admin_stores_path(@store) } %>

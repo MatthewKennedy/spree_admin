@@ -1,5 +1,5 @@
 <%= turbo_frame_tag :product_seo do %>
-  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_seo} do |f| %>
+  <%= form_with model: [:admin, @product], data: {controller: "form-state", turbo_frame: :product_seo} do |f| %>
     <div class="card">
       <div class="card-header d-flex">
         <div class="flex-fill">

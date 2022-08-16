@@ -1,12 +1,12 @@
 <%= turbo_frame_tag :product_cost_price do %>
-  <%= form_with model: [:admin, @product], method: :patch, data: {controller: "form-state", turbo_frame: :product_cost_price} do |f| %>
+  <%= form_with model: [:admin, @product], data: {controller: "form-state", turbo_frame: :product_cost_price} do |f| %>
     <div class="card">
       <div class="card-header d-flex">
         <div class="flex-fill">
           <h5 class="card-title"><%= I18n.t('spree.admin.products.cost_price') %></h5>
         </div>
         <div>
-          <%= render partial: 'spree/admin/shared/submit_button' %>
+          <%#= render partial: 'spree/admin/shared/submit_button' %>
         </div>
       </div>
       <div class="card-body">
@@ -28,6 +28,7 @@
             <span id="costPriceCurrencyIso" class="input-group-text"><%= @product.cost_currency %></span>
           </div>
         <% end %>
+        <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
   <% end %>

@@ -4,5 +4,4 @@
 
 <%= form_with model: [:admin, @country], data: {controller: "input--required"} do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
-  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>
