@@ -1,5 +1,10 @@
-<%= render partial: 'spree/admin/users/tabs', locals: { current: :account } %>
-<%= render partial: 'spree/admin/users/user_page_actions' %>
+<% content_for :page_title do %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_users_path, link_one_text: I18n.t('spree.admin.users.users'), current_page_name: @user.email) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to_with_icon Spree.t(:create_new_order), spree.new_admin_order_path(user_id: @user.id), class: "btn-primary btn", icon: 'plus-square.svg' if can?(:create, Spree::Order) %>
+<% end %>
 
 <div data-hook="admin_user_edit_general_settings" class="card mb-3">
   <div class="card-header">

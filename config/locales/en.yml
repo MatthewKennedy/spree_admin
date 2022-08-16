@@ -453,6 +453,8 @@ en:
         stock: Stock
         tax_and_shipping: Tax & Shipping
       tax_and_shipping: Tax & Shipping
+      tax_rates:
+        rate: Rate
       taxon_rule:
         choose_taxons: Choose taxons
         label: Label
@@ -479,6 +481,8 @@ en:
         store_credits: Store Credits
       user_rule:
         choose_users: Choose users
+      users:
+        users: Users
       utilities:
         preview: Preview %{name}
       variant: Variant

@@ -9,7 +9,7 @@
       <div class="col-12 col-md-8">
         <%= f.field_container :name, data: { hook: "admin_product_form_name" } do %>
           <%= f.text_field :name, class: 'form-control title', placeholder: raw(Spree.t(:name) + required_span_tag), required: true %>
-          <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+          <%= f.label :name, raw(I18n.t('spree.admin.name') + required_span_tag) %>
         <% end %>
       </div>
 

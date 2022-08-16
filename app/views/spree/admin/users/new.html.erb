@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:all_products), spree.admin_users_path %> / <%= Spree.t(:new_user) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_users_path, link_one_text: I18n.t('spree.admin.users.users'), current_page_name: Spree.t(:new_user)) %>
 <% end %>
 
 <div data-hook="admin_user_new_form_header">

@@ -1,11 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:zones), spree.admin_zones_url %> /
-  <%= Spree.t(:new_zone) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_zones_path, link_one_text: Spree.t(:zones), current_page_name: Spree.t(:new_zone)) %>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @zone } %>
-
-<%= form_with model: [:admin, @zone] do |zone_form| %>
-  <%= render partial: 'form', locals: { zone_form: zone_form } %>
-  <%= render partial: 'spree/admin/shared/resource_actions' %>
-<% end %>
+<%= render partial: 'form' %>

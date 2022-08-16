@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.taxonomies.categories'), spree.admin_taxonomies_path %> / <%= @taxonomy.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_taxonomies_path, link_one_text: I18n.t('spree.admin.taxonomies.categories'), current_page_name: @object.name) %>
 <% end %>
 
 <div id="sortableTreeArea">

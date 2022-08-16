@@ -1,13 +1,8 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:tax_categories), spree.admin_tax_categories_url %> /
-  <%= @tax_category.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_tax_categories_path, link_one_text: Spree.t(:tax_categories), current_page_name: @tax_category.name) %>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @tax_category } %>
-
-<%= form_with model: [:admin, @tax_category] do |f| %>
-  <fieldset>
+<%= form_with model: [:admin, @tax_category], data: {controller: "form-state"} do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
     <%= render partial: 'spree/admin/shared/resource_actions' %>
-  </fieldset>
 <% end %>

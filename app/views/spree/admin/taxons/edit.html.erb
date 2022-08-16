@@ -1,9 +1,10 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.taxonomies.categories'), spree.admin_taxonomies_url %> /
-  <%= link_to @taxonomy.root.name, spree.edit_admin_taxonomy_url(@taxonomy) %>
-  <% unless @taxon.root? %>
-   / <%= @taxon.name %>
-   <% end %>
+  <% if @taxon.root? %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_taxonomies_path, link_one_text: I18n.t('spree.admin.taxonomies.categories'), current_page_name: @taxon.name) %>
+  <% else %>
+    <%= breadcrumb_builder(link_one_uri: spree.admin_taxonomies_path, link_one_text: I18n.t('spree.admin.taxonomies.categories'),
+                           link_two_uri: spree.edit_admin_taxonomy_url(@taxonomy), link_two_text: @taxonomy.root.name + "...", current_page_name: @taxon.name) %>
+  <% end %>
 <% end %>
 
 <% content_for :page_actions do %>
