@@ -1,21 +1,20 @@
+<div id="contentHeader" class="d-flex align-items-center mb-3 position-fixed top-0">
+  <div class="container">
+    <div class="d-flex align-items-center">
 
-  <div id="contentHeader" class="d-flex align-items-center mb-3 position-fixed top-0">
-    <div class="container">
-      <div class="d-flex align-items-center">
+      <!-- We are keeping the empty <div> tags in DOM for turbo stream target -->
+      <div id="pageTitle" class="flex-fill align-items-center" data-hook="page_title">
+        <% if content_for?(:page_title) %>
+          <h4 class="p-0 mb-0 sm-h6 d-flex align-items-center">
+            <%= yield :page_title %>
+          </h4>
+        <% end %>
+      </div>
 
-        <!-- We are keeping the empty <div> tags in DOM for turbo stream target -->
-        <div id="pageTitle" class="flex-fill align-items-center" data-hook="page_title">
-          <% if content_for?(:page_title) %>
-            <h4 class="p-0 mb-0 sm-h6 d-flex align-items-center">
-              <%= yield :page_title %>
-            </h4>
-          <% end %>
-        </div>
-
-        <!-- We are keeping the empty <div> tags in DOM for turbo stream target -->
-        <div id="pageActions" class="page-actions" data-hook="page_actions">
-          <%= yield :page_actions if content_for?(:page_actions) %>
-        </div>
+      <!-- We are keeping the empty <div> tags in DOM for turbo stream target -->
+      <div id="pageActions" class="page-actions" data-hook="page_actions">
+        <%= yield :page_actions if content_for?(:page_actions) %>
       </div>
     </div>
   </div>
+</div>
