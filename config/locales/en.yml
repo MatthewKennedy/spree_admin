@@ -1,5 +1,11 @@
 ---
 en:
+  admin:
+    product:
+      active: Active
+      all: All
+      archived: Archived
+      draft: Draft
   spree:
     admin:
       actions:

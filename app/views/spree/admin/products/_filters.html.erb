@@ -1,9 +1,9 @@
 <div class="border-bottom overflow-hidden">
   <div class="btn-group show-active-bar overflow-hidden rounded-0 rounded-top" role="group" aria-label="Default button group">
-    <%= link_to Spree.t('admin.product.all'), spree.admin_products_path, class: "btn btn-link rounded-0 rounded-top text-decoration-none p-3 text-truncate #{'active' if params[:q][:status_eq].blank?}" %>
-    <%= link_to Spree.t('admin.product.active'), params.merge({q: {status_eq: :active}}).permit!, class: "btn btn-link rounded-0 rounded-top text-decoration-none p-3 text-truncate #{'active' if params[:q][:status_eq] == 'active'}" %>
-    <%= link_to Spree.t('admin.product.draft'), params.merge({q: {status_eq: :draft}}).permit!, class: "btn btn-link rounded-0 rounded-top text-decoration-none p-3 text-truncate #{'active' if params[:q][:status_eq] == 'draft'}" %>
-    <%= link_to Spree.t('admin.product.archived'), params.merge({q: {status_eq: :archived}}).permit!, class: "btn btn-link rounded-0 rounded-top text-decoration-none p-3 text-truncate #{'active' if params[:q][:status_eq] == 'archived'}" %>
+    <%= link_to I18n.t('admin.product.all'), spree.admin_products_path, class: "btn btn-link rounded-0 rounded-top text-decoration-none p-3 text-truncate #{'active' if params[:q][:status_eq].blank?}" %>
+    <%= link_to I18n.t('admin.product.active'), params.merge({q: {status_eq: :active}}).permit!, class: "btn btn-link rounded-0 rounded-top text-decoration-none p-3 text-truncate #{'active' if params[:q][:status_eq] == 'active'}" %>
+    <%= link_to I18n.t('admin.product.draft'), params.merge({q: {status_eq: :draft}}).permit!, class: "btn btn-link rounded-0 rounded-top text-decoration-none p-3 text-truncate #{'active' if params[:q][:status_eq] == 'draft'}" %>
+    <%= link_to I18n.t('admin.product.archived'), params.merge({q: {status_eq: :archived}}).permit!, class: "btn btn-link rounded-0 rounded-top text-decoration-none p-3 text-truncate #{'active' if params[:q][:status_eq] == 'archived'}" %>
   </div>
 </div>
 
