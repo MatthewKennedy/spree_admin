@@ -1,4 +1,4 @@
-<% show_pagnation ||= true %>
+<% show_pagnation =  pagnation ||= false %>
 
 <div class="border rounded bg-white">
    <%= render partial: 'spree/admin/shared/index_table_filters' %>
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <% if show_pagnation %>
+  <% unless @pagy.nil? %>
     <div class="border-top pt-3">
       <%== pagy_bootstrap_nav(@pagy) %>
     </div>

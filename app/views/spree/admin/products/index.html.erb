@@ -20,7 +20,7 @@
 
   <% content_for :index_table_filter_search do %>
     <%= search_form_for [:admin, @search] do |f| %>
-      <%= f.search_field :search_by_name, placeholder: "Search by Product Name or SKU", class: "form-control js-quick-search-target js-filterable my-1" %>
+      <%= f.search_field :search_by_name, placeholder: "Search by Product Name or SKU", class: "form-control" %>
     <% end %>
   <% end %>
 

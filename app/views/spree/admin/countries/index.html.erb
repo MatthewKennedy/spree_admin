@@ -2,21 +2,30 @@
   <%= plural_resource_name(Spree::Country) %>
 <% end %>
 
-<div class="table-responsive border rounded bg-white">
+<% content_for :page_actions do %>
+  <%= link_to_with_icon(Spree.t(:new_country), new_object_url, { class: "btn-primary btn", icon: 'plus-square.svg', id: 'admin_new_country' }) %>
+<% end if can? :create, Spree::Country %>
+
+<% content_for :index_table_filter_search do %>
+  <%= search_form_for [:admin, @search] do |f| %>
+    <%= f.search_field :name_i_cont, placeholder: "Search by Country Name", class: "form-control" %>
+  <% end %>
+<% end %>
+
+<% content_for :index_table do %>
   <table class="table" id='listing_countries' data-hook>
-    <thead class="text-muted">
+    <thead>
       <tr data-hook="tax_header">
         <th><%= Spree.t(:country_name) %></th>
         <th class="text-center"><%= Spree.t(:iso3) %></th>
         <th class="text-center"><%= Spree.t(:states_required) %></th>
         <th class="text-center"><%= Spree.t(:zipcode_required) %></th>
         <th class="actions text-end">
-          <%= link_to_with_icon(Spree.t(:new_country), new_object_url, { class: "btn-primary btn btn-sm", icon: 'plus-square.svg', id: 'admin_new_country' }) if can? :create, Spree::Country %>
         </th>
       </tr>
     </thead>
-    <tbody>
-      <% @countries.each do |country| %>
+    <tbody id="indexTableBody">
+      <% @collection.each do |country| %>
         <tr id="<%= dom_id(country) %>" data-hook="country_row" data-stream-exit-class="animate__fadeOut">
           <td><%= country.name %></td>
           <td class="text-center"><%= country.iso3 %></td>
@@ -32,4 +41,5 @@
       <% end %>
     </tbody>
   </table>
-</div>
+<% end %>
+<%= render partial: "spree/admin/shared/index_table" %>
