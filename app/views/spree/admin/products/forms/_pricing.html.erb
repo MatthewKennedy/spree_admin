@@ -3,10 +3,9 @@
     <div class="card">
       <div class="card-header d-flex">
         <div class="flex-fill">
-          <h5 class="card-title"><%= I18n.t('spree.admin.products.cost_price') %></h5>
+          <h5 class="card-title"><%= I18n.t('spree.admin.products.pricing') %></h5>
         </div>
         <div>
-          <%#= render partial: 'spree/admin/shared/submit_button' %>
         </div>
       </div>
       <div class="card-body">
@@ -28,25 +27,15 @@
             <span id="costPriceCurrencyIso" class="input-group-text"><%= @product.cost_currency %></span>
           </div>
         <% end %>
+      </div>
+
+      <div>
+        <%= render 'spree/admin/prices/variant_prices', variant: @product.master unless @product.has_variants? %>
+      </div>
+
+      <div class="card-footer">
         <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
   <% end %>
-<% end %>
-
-<%= form_with model: [:admin, @product], scope: :prices, url: spree.admin_product_prices_path(@product), method: :post, data: {controller: "form-state", turbo_frame: :product_variants} do |f| %>
-  <div class="card">
-    <div class="card-header d-flex">
-      <div class="flex-fill">
-        <h5 class="card-title"><%= I18n.t('spree.admin.products.pricing') %></h5>
-      </div>
-      <%= render partial: 'spree/admin/shared/submit_button' %>
-    </div>
-
-    <div>
-      <div class="my-3">
-        <%= render 'spree/admin/prices/variant_prices', variant: @product.master %>
-      </div>
-    </div>
-  </div>
 <% end if can?(:admin, Spree::Price) && !@product.deleted? %>

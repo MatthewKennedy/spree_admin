@@ -1,6 +1,8 @@
 module Spree
   module Admin
     class BaseController < ApplicationController
+      include Pagy::Backend
+
       include Spree::Core::ControllerHelpers::Auth
       include Spree::Core::ControllerHelpers::Search
       include Spree::Core::ControllerHelpers::Store

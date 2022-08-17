@@ -7,7 +7,6 @@
         </div>
 
         <div>
-          <%= render partial: 'spree/admin/shared/submit_button' %>
         </div>
       </div>
       <div class="card-body">
@@ -25,6 +24,8 @@
           <%= f.label :description, Spree.t(:description) %>
           <%= f.text_area :description, {rows: 15, data: { controller: "#{'rte' if product_wysiwyg_editor_enabled?}", form_state_target: "watch" }} %>
         <% end %>
+
+        <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
   <% end %>

@@ -7,7 +7,7 @@
             <h5 class="card-title"><%= I18n.t('spree.admin.specifications') %></h5>
           </div>
           <div>
-             <%= render partial: 'spree/admin/shared/submit_button' %>
+             <%#= render partial: 'spree/admin/shared/submit_button' %>
           </div>
         </div>
         <div class="card-body">
@@ -45,6 +45,8 @@
             <%= f.text_field :sku %>
             <%= f.label :master_sku, Spree.t(:master_sku) %>
           <% end %>
+
+          <%= render partial: 'spree/admin/shared/resource_actions' %>
         </div>
       </div>
     <% end %>

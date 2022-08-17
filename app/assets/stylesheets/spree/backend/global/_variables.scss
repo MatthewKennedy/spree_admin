@@ -177,6 +177,12 @@ $border-radius: 3px;
     --bs-btn-disabled-border-color: rgba(var(--bs-danger-rgb));
   }
 
+  .btn-outline-danger {
+    --bs-btn-hover-color: #dc3545;
+    --bs-btn-hover-bg: rgba(255, 0, 25, 0.12);
+    --bs-btn-hover-border-color: rgba(var(--bs-danger-hover-rgb));
+  }
+
   .btn-warning {
     --bs-btn-color: rgba(var(--bs-white-rgb));
     --bs-btn-bg: rgba(var(--bs-warning-rgb));

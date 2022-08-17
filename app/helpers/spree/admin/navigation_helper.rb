@@ -95,28 +95,6 @@ module Spree
         end
       end
 
-      # the per_page_dropdown is used on index pages like orders, products, promotions etc.
-      # this method generates the select_tag
-      def per_page_dropdown
-        per_page_default = Spree::Backend::Config.admin_orders_per_page
-        per_page_options = %w[25 50 75]
-
-        selected_option = params[:per_page].try(:to_i) || per_page_default
-
-        select_tag(:per_page,
-          options_for_select(per_page_options, selected_option),
-          class: "w-auto form-control js-per-page-select per-page-selected-#{selected_option} form-select form-select-sm")
-      end
-
-      # helper method to create proper url to apply per page ing
-      # fixes https://github.com/spree/spree/issues/6888
-      def per_page_dropdown_params
-        args = params.permit!.to_h.clone
-        args.delete(:page)
-        args.delete(:per_page)
-        args
-      end
-
       # Finds class for a given symbol / string
       #
       # Example :
@@ -178,16 +156,6 @@ module Spree
         end
 
         link_to name.html_safe, url, html_options.except(:icon, :icon_class, :icon_size, :no_text)
-      end
-
-      def remote_form_submit_button(resource, form_id = nil, button_text = nil)
-        form_id ||= "mainForm"
-
-        if button_text.nil?
-          button_text = I18n.t("spree.admin.actions.save")
-        end
-
-        button_tag(button_text, {form: form_id, class: "btn btn-primary animate__fadeIn animate__animated animate__faster", id: "globalFormSubmitButton"})
       end
 
       # Override: Add disable_with option to prevent multiple request on consecutive clicks

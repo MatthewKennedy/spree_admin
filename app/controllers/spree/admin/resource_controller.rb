@@ -31,7 +31,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
       respond_with(@object) do |format|
         format.turbo_stream if update_turbo_stream_enabled?
         format.html do
-          flash[:success] = flash_message_for(@object, :successfully_updated) unless params[:format] == "turbo_stream"
+          flash[:success] = flash_message_for(@object, :successfully_updated) unless params[:format] == "turbo_stream" || request.xhr?
           redirect_to location_after_save unless request.xhr?
         end
       end
@@ -51,7 +51,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
     if @object.save
       invoke_callbacks(:create, :after)
 
-      flash[:success] = flash_message_for(@object, :successfully_created) unless params[:format] == "turbo_stream"
+      flash[:success] = flash_message_for(@object, :successfully_created) unless params[:format] == "turbo_stream" || request.xhr?
 
       respond_with(@object) do |format|
         format.turbo_stream if create_turbo_stream_enabled?
@@ -60,7 +60,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
     else
       invoke_callbacks(:create, :fails)
 
-      flash[:error] = @object.errors.full_messages.join(", ") unless params[:format] == "turbo_stream"
+      flash[:error] = @object.errors.full_messages.join(", ") unless params[:format] == "turbo_stream" || request.xhr?
 
       respond_with(@object) do |format|
         format.html { render action: :new, status: :unprocessable_entity }
@@ -73,11 +73,11 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
 
     if @object.destroy
       invoke_callbacks(:destroy, :after)
-      flash[:success] = flash_message_for(@object, :successfully_removed) unless params[:format] == "turbo_stream"
+      flash[:success] = flash_message_for(@object, :successfully_removed) unless params[:format] == "turbo_stream" || request.xhr?
     else
       invoke_callbacks(:destroy, :fails)
 
-      flash[:error] = @object.errors.full_messages.join(", ") unless params[:format] == "turbo_stream"
+      flash[:error] = @object.errors.full_messages.join(", ") unless params[:format] == "turbo_stream" || request.xhr?
     end
 
     respond_with(@object) do |format|

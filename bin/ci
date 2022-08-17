@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 tests = Dir["spec/**/*_spec.rb"]
   .sort.
   # Add randomization seed based on SHA of each commit

@@ -1,16 +1,12 @@
 <% content_for :page_title do %>
-  <%= Spree.t(:store) %>
+  <%= @store.name %>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @store } %>
+<% content_for :additional_form_buttons do %>
+  <%= link_to_with_icon Spree.t(:delete), spree.admin_store_url(@store), { class: 'btn btn-outline-danger', data: { confirm: Spree.t(:are_you_sure), method: :delete }, icon: 'delete.svg' } if can?(:delete, @store) && @store.can_be_deleted? %>
+<% end %>
 
-<%= form_with model: [:admin, @store] do |f| %>
-  <fieldset>
-    <%= render partial: 'form', locals: { f: f } %>
-    <div class="form-actions" data-hook="buttons">
-      <%= button I18n.t('spree.admin.actions.update'), 'save.svg', 'submit', {class: 'btn-primary ', data: { disable_with: "#{ Spree.t(:saving) }..." }} %>
-
-      <%= link_to_with_icon Spree.t(:delete), spree.admin_store_url(@store), { class: 'btn btn-danger float-end', data: { confirm: Spree.t(:are_you_sure), method: :delete }, icon: 'delete.svg' } if can?(:delete, @store) && @store.can_be_deleted? %>
-    </div>
-  </fieldset>
+<%= form_with model: [:admin, @store], data: {controller: "form-state"} do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

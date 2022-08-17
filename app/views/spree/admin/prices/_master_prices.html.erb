@@ -14,7 +14,9 @@
           <% @product.variants_including_master.each do |variant| %>
             <% price = variant.price_in(code) %>
             <tr id="variant_prices_row" data-hook="variant_prices_row">
-              <td><%= label_tag "variant_price[#{variant.id}][#{code}]", code %></td>
+              <td class="text-center">
+                <%= code %>
+              </td>
               <td>
                 <%= text_field_tag "variant_price[#{variant.id}][#{code}][price]", (price && price.price ? price.display_amount.money : ''), class: 'form-control', autocomplete: false, data: {controller: "input-formatting", form_state_target: "watch", input_disable_target: "disable", input_formatting_options_value: {numeral: true, numeralThousandsGroupStyle: "none"}} %>
               </td>

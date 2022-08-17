@@ -2,7 +2,6 @@ module Spree
   module Admin
     class ProductsController < ResourceController
       include Spree::Admin::ProductConcern
-
       helper "spree/admin/products"
 
       before_action :load_data, except: :index
@@ -133,6 +132,8 @@ module Spree
 
         params[:q][:s] ||= "name asc"
 
+        per_page_limit = params[:per_page] || Spree::Backend::Config[:admin_products_per_page]
+
         @collection = product_scope
 
         # Don't delete params[:q][:deleted_at_null] here because it is used in view to check the
@@ -144,10 +145,9 @@ module Spree
         # Temporarily remove params[:q][:deleted_at_null] from params[:q] to ransack products.
         # This is to include all products and not just deleted products.
         @search = @collection.ransack(params[:q].reject { |k, _v| k.to_s == "deleted_at_null" })
-        @collection = @search.result
-          .includes(product_includes)
-          .page(params[:page])
-          .per(params[:per_page] || Spree::Backend::Config[:admin_products_per_page])
+        @collection = @search.result.includes(product_includes)
+
+        @pagy, @collection = pagy(@collection, items: per_page_limit)
 
         @collection
       end

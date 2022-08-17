@@ -7,7 +7,6 @@
         </div>
 
         <div>
-          <%= render partial: 'spree/admin/shared/submit_button' %>
         </div>
       </div>
 
@@ -26,6 +25,8 @@
           <%= f.text_area :meta_description, style: "height: 100px" %>
           <%= f.label :meta_description, Spree.t(:meta_description) %>
         <% end %>
+
+        <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
   <% end %>

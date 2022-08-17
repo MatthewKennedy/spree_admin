@@ -6,7 +6,6 @@
           <h5><%= I18n.t('spree.admin.products.variants') %></h5>
         </div>
         <div>
-          <%= render partial: 'spree/admin/shared/submit_button' %>
         </div>
       </div>
 
@@ -90,6 +89,8 @@
             <div class="alert alert-info"><%= Spree.t(:no_resource_found, resource: :option_types) %></div>
           <% end %>
         <% end %>
+
+        <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
   <% end %>

@@ -17,3 +17,18 @@ input[type="file"]::file-selector-button {
   padding-bottom: 0;
   background-color: transparent !important;
 }
+
+  .show-active-bar button,
+  .show-active-bar a {
+    border: 0 !important;
+
+    &.active::before {
+      content: '';
+      height: 4px;
+      width: 100%;
+      background: var(--bs-primary);
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+    }
+  }

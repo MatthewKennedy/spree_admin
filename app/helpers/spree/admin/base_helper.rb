@@ -1,6 +1,8 @@
 module Spree
   module Admin
     module BaseHelper
+      include Pagy::Frontend
+
       FLATPICKR_SUPPORTED_LOCALES = %w[
         ar at az be bg bn bs cs cy da de eo es et fa fi fo fr ga gr he
         hi hr hu id is it ja ka km ko kz lv mk mn ms my nl no pa pl pt ro ru

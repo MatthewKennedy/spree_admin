@@ -1,12 +1,29 @@
-<div data-hook="admin_store_form_fields">
-  <%= render partial: 'spree/admin/stores/form/basic', locals: { f: f } %>
-  <%= render partial: 'spree/admin/stores/form/emails', locals: { f: f } %>
-  <%= render partial: 'spree/admin/stores/form/internationalization', locals: { f: f } %>
-  <% if @store.persisted? %>
-    <%= render partial: 'spree/admin/stores/form/digitals', locals: { f: f } %>
-    <%= render partial: 'spree/admin/stores/form/layout', locals: { f: f } %>
-    <%= render partial: 'spree/admin/stores/form/seo', locals: { f: f } %>
-    <%= render partial: 'spree/admin/stores/form/social', locals: { f: f } %>
-    <%= render partial: 'spree/admin/stores/form/footer', locals: { f: f } %>
+<div class="row" data-hook="admin_store_form_fields">
+  <div class="col-12 col-md-6">
+    <%= render partial: 'spree/admin/stores/form/basic', locals: { f: f } %>
   </div>
-<% end %>
+  <div class="col-12 col-md-6">
+    <%= render partial: 'spree/admin/stores/form/emails', locals: { f: f } %>
+  </div>
+  <div class="col-12">
+    <%= render partial: 'spree/admin/stores/form/internationalization', locals: { f: f } %>
+  </div>
+
+  <% if @store.persisted? %>
+    <div class="col-12">
+      <%= render partial: 'spree/admin/stores/form/digitals', locals: { f: f } %>
+    </div>
+    <div class="col-12">
+      <%= render partial: 'spree/admin/stores/form/layout', locals: { f: f } %>
+    </div>
+    <div class="col-12">
+     <%= render partial: 'spree/admin/stores/form/seo', locals: { f: f } %>
+    </div>
+    <div class="col-12 col-md-6">
+      <%= render partial: 'spree/admin/stores/form/social', locals: { f: f } %>
+    </div>
+    <div class="col-12 col-md-6">
+      <%= render partial: 'spree/admin/stores/form/footer', locals: { f: f } %>
+    </div>
+  <% end %>
+</div>
