@@ -7,21 +7,22 @@
   </div>
 </div>
 
-<div class="row p-2" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="col-12 col-sm mb-2">
-    <%= search_form_for [:admin, @search] do |f| %>
-      <%= f.search_field :search_by_name, size: 15, class: "form-control js-quick-search-target js-filterable" %>
-    <% end %>
-  </div>
+<div class="py-2" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="row">
+    <div class="col-12 col-sm">
+      <%= search_form_for [:admin, @search] do |f| %>
+        <%= f.search_field :search_by_name, placeholder: "Search by Product Name or SKU", class: "form-control js-quick-search-target js-filterable my-1" %>
+      <% end %>
+    </div>
 
-  <div class="col-12 col-sm-auto">
-    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Kind</button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Physical</a></li>
-      <li><a class="dropdown-item" href="#">Digital</a></li>
-    </ul>
-
-    <button type="button" class="btn btn-outline-secondary">More Filters</button>
-    <button type="button" class="btn btn-outline-secondary">Sort</button>
+    <div class="col-12 col-sm-auto">
+      <button type="button" class="btn btn-outline-secondary dropdown-toggle my-1" data-bs-toggle="dropdown" aria-expanded="false">Kind</button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Physical</a></li>
+        <li><a class="dropdown-item" href="#">Digital</a></li>
+      </ul>
+      <button type="button" class="btn btn-outline-secondary my-1">More Filters</button>
+      <button type="button" class="btn btn-outline-secondary my-1">Sort</button>
+    </div>
   </div>
 </div>
