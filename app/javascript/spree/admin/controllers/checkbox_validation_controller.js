@@ -8,7 +8,6 @@ export default class extends Controller {
 
     const container = this.element
     const el = container.querySelectorAll('input[type="checkbox"]')
-    const msg = document.getElementById('msg')
     const onChange = function (ev) {
       ev.preventDefault()
       const _this = this

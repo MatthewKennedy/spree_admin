@@ -71,6 +71,7 @@
       "clearTimeout",
       "setTimeout",
       "jQuery",
+      "FormData",
       "$",
       "document",
       "window",

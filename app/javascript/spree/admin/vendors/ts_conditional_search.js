@@ -1,4 +1,4 @@
-export default function (plugin_options) {
+export default function (pluginOptions) {
   this.hook('after', 'setup', function () {
     const optionsCount = Object.keys(this.options).length
 
