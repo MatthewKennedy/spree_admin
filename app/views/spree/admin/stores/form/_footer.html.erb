@@ -5,21 +5,18 @@
     </h5>
   </div>
   <div class="card-body">
-    <div class="alert alert-info">
-      <%= I18n.t('spree.admin.store_form.footer_help') %>
-    </div>
     <%= f.field_container :description do %>
-      <%= f.text_area :description, class: 'form-control', placeholder: Spree.t(:description) %>
+      <%= f.text_area :description %>
       <%= f.label :description, Spree.t(:description) %>
     <% end %>
 
     <%= f.field_container :address do %>
-      <%= f.text_area :address, class: 'form-control', placeholder: Spree.t(:address) %>
+      <%= f.text_area :address %>
       <%= f.label :address, Spree.t(:address) %>
     <% end %>
 
     <%= f.field_container :contact_phone do %>
-      <%= f.text_field :contact_phone, class: 'form-control', placeholder: Spree.t(:contact_phone) %>
+      <%= f.text_field :contact_phone %>
       <%= f.label :contact_phone, Spree.t(:contact_phone) %>
     <% end %>
   </div>

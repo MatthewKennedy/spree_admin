@@ -1,9 +1,8 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
-  <%= Spree.t(:sales_totals) %> <%= I18n.t('spree.admin.reports.for', store_name: current_store.unique_name) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_reports_path, link_one_text: Spree.t(:reports), current_page_name: Spree.t(:sales_totals)) %>
 <% end %>
 
-<div class="card bg-light mb-3">
+<div class="card">
   <div class="card-body">
     <%= render partial: 'spree/admin/shared/report_order_criteria' %>
   </div>

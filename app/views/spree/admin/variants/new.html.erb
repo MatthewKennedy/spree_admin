@@ -1,6 +1,7 @@
 <% content_for :page_title do %>
-  <%= page_header_back_button spree.edit_admin_product_path(@product) %>
-  <%= @product.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_products_path, link_one_text:I18n.t('spree.admin.products.all_products'),
+                         link_two_uri: spree.edit_admin_product_path(@product), link_two_text: @product.name,
+                         current_page_name: I18n.t('spree.admin.products.new_variant')) %>
 <% end %>
 
 <%= form_with model: [:admin, @product, @variant] do |f| %>
@@ -11,7 +12,7 @@
     <div class="card-body">
       <div data-hook="admin_variant_new_form">
         <%= render partial: 'form', locals: { f: f } %>
-        <%= render partial: 'spree/admin/shared/new_resource_links' %>
+        <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
   </div>

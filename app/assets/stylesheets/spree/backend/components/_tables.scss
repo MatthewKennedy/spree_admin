@@ -14,6 +14,10 @@ table.table {
     }
 }
 
+table > thead {
+  color: grey;
+}
+
 /* Apply a default padding if legacy cellpadding attribute is missing */
 table:not([cellpadding]) th,
 table:not([cellpadding]) td {

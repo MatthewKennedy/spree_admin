@@ -95,28 +95,6 @@ module Spree
         end
       end
 
-      # the per_page_dropdown is used on index pages like orders, products, promotions etc.
-      # this method generates the select_tag
-      def per_page_dropdown
-        per_page_default = Spree::Backend::Config.admin_orders_per_page
-        per_page_options = %w[25 50 75]
-
-        selected_option = params[:per_page].try(:to_i) || per_page_default
-
-        select_tag(:per_page,
-          options_for_select(per_page_options, selected_option),
-          class: "w-auto form-control js-per-page-select per-page-selected-#{selected_option} form-select form-select-sm")
-      end
-
-      # helper method to create proper url to apply per page ing
-      # fixes https://github.com/spree/spree/issues/6888
-      def per_page_dropdown_params
-        args = params.permit!.to_h.clone
-        args.delete(:page)
-        args.delete(:per_page)
-        args
-      end
-
       # Finds class for a given symbol / string
       #
       # Example :
@@ -168,16 +146,40 @@ module Spree
 
       def link_to_with_icon(name, url, html_options = {})
         html_options[:class] ||= ""
-        name = html_options[:no_text] ? "" : content_tag(:span, name)
+        name = html_options[:no_text] ? "" : content_tag(:span, name, class: "d-none d-md-inline")
 
         if html_options[:icon]
-          icon_class = html_options[:no_text] ? "" : "me-1"
+          icon_class = html_options[:no_text] ? "" : "me-md-1"
           html_options[:icon_size] ||= "#{ICON_SIZE}px * #{ICON_SIZE}px"
           icon = inline_svg_tag(html_options[:icon], class: "#{icon_class} #{html_options[:icon_class]}", size: html_options[:icon_size])
           name = "#{icon} #{name}"
         end
 
         link_to name.html_safe, url, html_options.except(:icon, :icon_class, :icon_size, :no_text)
+      end
+
+      # Override: Add disable_with option to prevent multiple request on consecutive clicks
+      def button(text, icon_name = nil, button_type = "submit", html_options = {})
+        if icon_name
+          icon = inline_svg_tag(icon_name, class: "svg-icon icon-#{icon_name}", size: "#{ICON_SIZE}px * #{ICON_SIZE}px")
+          text = "#{icon} #{text}"
+        end
+
+        css_classes = html_options[:class] || "btn-primary "
+
+        button_tag(text.html_safe, html_options.merge(type: button_type, class: "btn #{css_classes}"))
+      end
+
+      def breadcrumb_builder(options = {})
+        divider = content_tag(:span, "/", class: "text-mid-light mx-1 pb-1")
+
+        if options[:link_one_uri] && options[:link_two_text]
+          link_to(options[:link_one_text], options[:link_one_uri]) + divider + link_to(options[:link_two_text], options[:link_two_uri]) + divider + options[:current_page_name]
+        elsif options[:link_one_uri]
+          link_to(options[:link_one_text], options[:link_one_uri]) + divider + options[:current_page_name]
+        else
+          options[:current_page_name]
+        end
       end
 
       def remote_form_submit_button(resource, form_id = nil, button_text = nil)
@@ -194,18 +196,6 @@ module Spree
         button(button_text, "check-lg.svg", "submit", {form: form_id, class: "btn btn-success animate__fadeIn animate__animated animate__faster", id: "globalFormSubmitButton"})
       end
 
-      # Override: Add disable_with option to prevent multiple request on consecutive clicks
-      def button(text, icon_name = nil, button_type = "submit", html_options = {})
-        if icon_name
-          icon = inline_svg_tag(icon_name, class: "svg-icon icon-#{icon_name}", size: "#{ICON_SIZE}px * #{ICON_SIZE}px")
-          text = "#{icon} #{text}"
-        end
-
-        css_classes = html_options[:class] || "btn-success "
-
-        button_tag(text.html_safe, html_options.merge(type: button_type, class: "btn #{css_classes}"))
-      end
-
       def active_badge(condition, options = {})
         label = options[:label]
         label ||= condition ? Spree.t(:say_yes) : Spree.t(:say_no)
@@ -213,12 +203,6 @@ module Spree
 
         content_tag(:small, class: "badge rounded-pill #{css_class}") do
           label
-        end
-      end
-
-      def page_header_back_button(url)
-        link_to url, class: "btn btn-outline-secondary me-3" do
-          inline_svg_tag "chevron-left.svg", size: "15px * 15px"
         end
       end
     end

@@ -2,10 +2,13 @@ body {
   margin: 0;
 }
 
+.form-select {
+  min-width: 150px;
+}
+
 #contentHeader {
   a {
     text-decoration: none;
-    margin: 0 5px;
   }
 }
 
@@ -135,4 +138,10 @@ dialog#customTurboConfirm {
   background: white;
   width: 100%;
   text-align: center;
+}
+
+@include media-breakpoint-down(sm) {
+  .sm-h6 {
+    font-size: 1rem;
+  }
 }

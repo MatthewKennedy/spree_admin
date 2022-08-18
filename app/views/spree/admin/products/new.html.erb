@@ -5,41 +5,25 @@
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @product], method: :post, class: 'row', data: { hook: 'new_product_form', turbo_frame: :_top }, id: "newProductForm" do |f| %>
-      <div class="col-12 col-md-6">
+    <%= form_with model: [:admin, @product], method: :post, class: 'row', data: { hook: 'new_product_form', turbo_frame: :_top, controller: "input--required", input__required_save_button_id_value: "globalFormSubmitButton"}, id: "mainForm" do |f| %>
+      <div class="col-12 col-md-8">
         <%= f.field_container :name, data: { hook: "admin_product_form_name" } do %>
           <%= f.text_field :name, class: 'form-control title', placeholder: raw(Spree.t(:name) + required_span_tag), required: true %>
-          <%= f.label :name, raw(Spree.t(:name) + required_span_tag) %>
+          <%= f.label :name, raw(I18n.t('spree.admin.name') + required_span_tag) %>
         <% end %>
       </div>
 
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-4">
         <%= f.field_container :price, data: { hook: "new_product_price" } do %>
           <%= f.text_field :price, value: number_to_currency(@product.price, unit: ''), class: 'form-control', required: :required, placeholder: raw(I18n.t('spree.admin.products.new_product_master_price', currency_symbol: currency_symbol(current_currency) ,currency_iso: current_currency ) + required_span_tag) %>
           <%= f.label :price, raw(I18n.t('spree.admin.products.new_product_master_price', currency_symbol: currency_symbol(current_currency) ,currency_iso: current_currency ) + required_span_tag) %>
         <% end %>
       </div>
 
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-6 d-none">
         <%= f.field_container :shipping_category, data: { hook: "new_product_shipping_category" } do %>
-          <%= f.collection_select(:shipping_category_id, @shipping_categories, :id, :name, { selected: @product.shipping_category_id }, { class: 'form-control', data: {controller: 'ts--select'} }) %>
+          <%= f.collection_select(:shipping_category_id, @shipping_categories, :id, :name, { selected: @product.shipping_category_id }, { }) %>
           <%= f.label :shipping_category_id, raw(Spree.t(:shipping_categories) + required_span_tag) %>
-        <% end %>
-      </div>
-
-      <% unless @product.has_variants? %>
-        <div class="col-12 col-md-6">
-          <%= f.field_container :sku, data: { hook: "new_product_sku" } do %>
-            <%= f.text_field :sku, size: 16, class: 'form-control', placeholder: Spree.t(:sku) %>
-            <%= f.label :sku, Spree.t(:sku) %>
-          <% end %>
-        </div>
-      <% end %>
-
-      <div class="col-12 col-md-6">
-        <%= f.field_container :prototype, data: { hook: "new_product_prototype" } do %>
-          <%= f.collection_select :prototype_id, Spree::Prototype.all, :id, :name, { include_blank: true }, { class: 'form-select', data: { controller: 'ts--select' } } %>
-          <%= f.label :prototype_id, Spree.t(:prototype) %>
         <% end %>
       </div>
     <% end %>
@@ -47,7 +31,7 @@
 <% end %>
 
 <% content_for :modal_footer do %>
-  <%= remote_form_submit_button(@object, "newProductForm") %>
+  <%= remote_form_submit_button(@object) %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog modal-dialog-centered modal-lg' } %>

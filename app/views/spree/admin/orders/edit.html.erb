@@ -13,8 +13,7 @@
 <% end %>
 
 <% content_for :page_title do %>
-  <%= page_header_back_button spree.admin_orders_path %>
-  <%= @order.number %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_orders_path, link_one_text: I18n.t("spree.admin.orders.all_orders"), current_page_name: @order.number) %>
 <% end %>
 
 <div data-hook="admin_order_edit_header">

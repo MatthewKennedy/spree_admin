@@ -1,11 +1,8 @@
 <% content_for :page_title do %>
-  <%= link_to plural_resource_name(Spree::PromotionCategory), spree.admin_promotion_categories_url %> /
-  <%= Spree.t(:new_promotion_category) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_promotion_categories_path, link_one_text: Spree.t(:all_promotion_categories), current_page_name: I18n.t('spree.admin.promotions.new_promotion_category')) %>
 <% end %>
 
-<%= form_with model: :promotion_category, url: collection_url do |f| %>
-  <fieldset>
-    <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/new_resource_links' %>
-  </fieldset>
+<%= form_with model: [:admin, @promotion_category], data: {controller: "input--required"}  do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

@@ -2,7 +2,7 @@
 
 <% content_for :page_actions do %>
   <% if @order.shipments.any?(&:shipped?) && can?(:create, Spree::CustomerReturn) %>
-    <%= link_to_with_icon(Spree.t(:new_customer_return), spree.new_admin_order_customer_return_path(@order), icon: 'plus-square.svg', class: 'btn-success btn') %>
+    <%= link_to_with_icon(Spree.t(:new_customer_return), spree.new_admin_order_customer_return_path(@order), icon: 'plus-square.svg', class: 'btn-primary btn') %>
   <% end %>
 <% end %>
 

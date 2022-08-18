@@ -1,17 +1,16 @@
+<% content_for :page_title do %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_products_path, link_one_text:I18n.t('spree.admin.products.all_products'), current_page_name: @product.name) %>
+<% end %>
+
 <% content_for :page_actions do %>
   <% if @product.available? %>
     <%= external_page_preview_link(@product) %>
   <% end %>
 <% end %>
 
-<% content_for :page_title do %>
-  <%= page_header_back_button spree.admin_products_path %>
-  <%= @product.name %>
-<% end %>
-
 <div data-hook="admin_product_form_fields">
   <div class="row">
-    <div class="col-12 col-md-8" data-hook="admin_product_form_left">
+    <div class="col-12 col-xl-8" data-hook="admin_product_form_left">
       <%= render "spree/admin/products/forms/details" %>
       <%= render "spree/admin/products/forms/properties" if can?(:admin, Spree::ProductProperty) && !@product.deleted? %>
       <%= render "spree/admin/products/forms/images" %>
@@ -20,7 +19,7 @@
       <%= render "spree/admin/products/forms/stock" unless @product.has_variants? %>
     </div>
 
-    <div class="col-12 col-md-4" data-hook="admin_product_form_right">
+    <div class="col-12 col-xl-4" data-hook="admin_product_form_right">
       <%= render "spree/admin/products/forms/overview" %>
       <%= render "spree/admin/products/forms/status" %>
       <%= render "spree/admin/products/forms/pricing" %>

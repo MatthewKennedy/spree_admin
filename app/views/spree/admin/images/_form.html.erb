@@ -1,9 +1,9 @@
 <div data-hook="admin_image_form_fields" class="row">
   <div class="col-12">
-    <div data-hook="file" class="form-group">
-      <%= f.label :attachment, Spree.t(:filename) %>
+    <%= f.field_container :attachment do %>
       <%= f.file_field :attachment %>
-    </div>
+      <%= f.label :attachment, Spree.t(:product_image) %>
+    <% end %>
 
     <%= f.field_container :viewable_id do %>
       <%= f.select :viewable_id, @variants, {} %>

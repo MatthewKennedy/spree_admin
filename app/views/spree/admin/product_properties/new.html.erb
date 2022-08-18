@@ -35,7 +35,7 @@
 <% end %>
 
 <% content_for :modal_footer do %>
-  <%= button_tag(I18n.t('spree.admin.actions.add'), class: "btn btn-success", form: "newProductProperty") %>
+  <%= button_tag(I18n.t('spree.admin.actions.add'), class: "btn btn-primary", form: "newProductProperty") %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog-centered modal-lg' } %>

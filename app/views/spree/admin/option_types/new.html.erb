@@ -1,14 +1,14 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:option_types), spree.admin_option_types_url %> / <%= Spree.t(:new_option_type) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_option_types_url, link_one_text: I18n.t('spree.admin.options.all_option_types'), current_page_name: I18n.t('spree.admin.options.new_option_type')) %>
 <% end %>
 
-<%= form_with model: [:admin, @option_type] do |f| %>
+<%= form_with model: [:admin, @option_type], data: { controller: "input--required"} do |f| %>
   <div class="card mb-3">
     <div class="card-body">
        <%= render partial: 'form', locals: { f: f } %>
     </div>
-    <div class="card-footer text-center">
-       <%= render partial: 'spree/admin/shared/new_resource_links' %>
+    <div class="card-footer">
+       <%= render partial: 'spree/admin/shared/resource_actions' %>
     </div>
   </div>
 <% end %>

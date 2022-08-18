@@ -1,11 +1,8 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:payment_methods), spree.admin_payment_methods_path %> / <%= Spree.t(:new_payment_method) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_payment_methods_path, link_one_text: Spree.t(:all_payment_methods), current_page_name:  Spree.t(:new_payment_method)) %>
 <% end %>
 
-<% content_for :page_actions do %>
-  <%= remote_form_submit_button(@object) %>
-<% end %>
-
-<%= form_with model: @payment_method, url: collection_url, id: "mainForm" do |f| %>
+<%= form_with model: @payment_method, url: collection_url, data: {controller: "input--required"} do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
+    <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

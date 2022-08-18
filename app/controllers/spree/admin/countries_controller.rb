@@ -4,7 +4,19 @@ module Spree
       private
 
       def collection
-        super.order(:name)
+        return @collection if @collection.present?
+
+        per_page_limit = params[:per_page] || 50
+
+        params[:q] ||= {}
+        params[:q][:s] ||= "name asc"
+
+        @collection = Spree::Country.all.order(:name)
+        @search = @collection.ransack(params[:q])
+        @collection = @search.result
+        @pagy, @collection = pagy(@collection, items: per_page_limit)
+
+        @collection
       end
 
       def load_main_menu_panel

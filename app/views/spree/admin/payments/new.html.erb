@@ -17,7 +17,7 @@
   <div class="form-actions" data-hook="buttons">
     <% payment_button_text = @order.cart? ? I18n.t('spree.admin.actions.continue') : I18n.t('spree.admin.actions.update') %>
     <% payment_button_icon = @order.cart? ? 'arrow-right.svg' : 'save.svg' %>
-    <%= button_tag(payment_button_text, class: "btn btn-success", form: "new_payment") %>
+    <%= button_tag(payment_button_text, class: "btn btn-primary", form: "new_payment") %>
   </div>
 <% end %>
 

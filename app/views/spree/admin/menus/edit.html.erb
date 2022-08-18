@@ -1,23 +1,22 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.navigation.all_menus'), spree.admin_menus_path %> / <%= @menu.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_menus_path, link_one_text: I18n.t('spree.admin.navigation.all_menus'), current_page_name: @menu.name) %>
 <% end %>
 
 <div class="row">
   <div class="col-12">
-    <div class="card mb-3">
-      <div class="card-header">
-        <h5 class="mb-0"><%= I18n.t('spree.admin.settings') %></h5>
-      </div>
-      <div class="card-body">
-        <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @menu } %>
-        <%= form_with model: [:admin, @menu] do |f| %>
+    <%= form_with model: [:admin, @menu], data: {controller: "form-state"} do |f| %>
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0"><%= I18n.t('spree.admin.settings') %></h5>
+        </div>
+        <div class="card-body">
           <%= render partial: 'form', locals: { f: f } %>
-          <div class="d-flex ">
-            <%= render partial: 'spree/admin/shared/edit_resource_links' %>
-          </div>
-        <% end %>
+        </div>
+        <div class="card-footer">
+          <%= render partial: 'spree/admin/shared/resource_actions' %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
@@ -31,7 +30,7 @@
              <h5 class="mb-0 align-self-center"><%= I18n.t('spree.admin.navigation.menu_items', menu_name: @menu.name) %></h5>
             </div>
             <div class="col d-flex justify-content-end">
-              <%= link_to_with_icon I18n.t('spree.admin.navigation.add_new_item', menu: @menu.name), spree.new_admin_menu_menu_item_path(@menu), icon: 'plus-square.svg', class: 'no-wrap btn btn-secondary btn-sm align-self-center' %>
+              <%= link_to_with_icon I18n.t('spree.admin.navigation.add_new_item', menu: @menu.name), spree.new_admin_menu_menu_item_path(@menu), icon: 'plus-square.svg', class: 'no-wrap btn btn-light btn-sm align-self-center' %>
             </div>
           </div>
         </div>

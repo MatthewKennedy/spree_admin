@@ -1,11 +1,10 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.navigation.all_menus'), spree.admin_menus_path %> /
-  <%= link_to @menu.name, spree.edit_admin_menu_path(@menu) %> / <%= @menu_item.name %>
+<%= breadcrumb_builder(link_one_uri: spree.admin_menus_path, link_one_text: I18n.t('spree.admin.navigation.all_menus'), link_two_uri: spree.edit_admin_menu_path(@menu), link_two_text: @menu.name, current_page_name: @menu_item.name) %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @menu_item } %>
 
-<%= form_with model: [:admin, @menu, @menu_item] do |f| %>
+<%= form_with model: [:admin, @menu, @menu_item], data:{ controller: "form-state"} do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
-  <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

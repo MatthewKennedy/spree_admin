@@ -7,16 +7,9 @@ label {
   margin-bottom: 3px;
 }
 
-#content {
+#contentBody {
   margin-top: 75px;
 }
-
-.tabsAndActionsShim {
-  #content {
-    margin-top: calc(100px + 20px);
-  }
-}
-
 
 #multi-backdrop {
   z-index: 0;

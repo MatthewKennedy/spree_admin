@@ -26,7 +26,7 @@
   <td class="actions">
     <span class="d-flex justify-content-end">
       <% if can?(:destroy, f.object) %>
-        <%= link_to_with_icon(I18n.t('spree.admin.delete'), spree.admin_product_product_property_path(@product, f.object), class: 'btn btn-danger btn-sm', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , title: I18n.t('spree.admin.delete'), no_text: true, icon: 'delete.svg') %>
+        <%= link_to_delete(f.object, url: spree.admin_product_product_property_path(@product, f.object)) %>
       <% else %>
       <span class="btn btn-danger btn-sm icon-link disabled" style="opacity:0.2;">
         <%= inline_svg_tag "delete.svg", size: '16px * 16px' %>
@@ -35,9 +35,10 @@
     </span>
   </td>
 
-  <!--
-    Add <%#= f.hidden_field :id %> inside the <tr> to stop f.fields_for
-    inserting one outside the <tr> and confusing sortable ordering.
-  -->
-  <%= f.hidden_field :id %>
+  <!-- !!! IMPORTANT !!! -->
+    <!-- Manually add <%#= f.hidden_field :id %> inside the <tr> to stop f.fields_for
+         inserting one outside the <tr> and confusing sortable ordering. -->
+
+    <%= f.hidden_field :id %>
+  <!-- !!! IMPORTANT !!! -->
 </tr>

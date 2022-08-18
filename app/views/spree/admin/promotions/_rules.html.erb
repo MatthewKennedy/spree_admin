@@ -1,15 +1,17 @@
 <div class="card-header">
-  <h5 class="card-title mb-0 h6">
+  <h5 class="card-title">
     <%= Spree.t(:rules) %>
   </h5>
 </div>
 <div id="rule_fields" class="card-body">
 
   <%= form_tag spree.admin_promotion_promotion_rules_path(@promotion), remote: true, id: 'new_product_rule_form', class: 'mb-3' do %>
-    <%= label_tag :promotion_rule_type, Spree.t(:add_rule_of_type) %>
-    <div class="input-group mb-3">
-      <%= select_tag('promotion_rule[type]', options_for_promotion_rule_types(@promotion), data: {controller: 'ts--select'}) %>
-      <%= button Spree.t(:add), 'plus-square.svg', 'submit', class: "btn btn-light" %>
+    <div class="input-group">
+      <div class="form-floating">
+        <%= select_tag('promotion_rule[type]', options_for_promotion_rule_types(@promotion), class: "form-select", data: {controller: 'ts--select'}) %>
+        <%= label_tag :promotion_rule_type, Spree.t(:add_rule_of_type) %>
+      </div>
+      <%= button '', 'plus-square.svg', 'submit', class: "btn btn-outline-secondary input-group-text" %>
     </div>
   <% end %>
 
@@ -17,10 +19,8 @@
     <div id="promotion-policy-select">
       <% Spree::Promotion::MATCH_POLICIES.each do |policy| %>
         <div class="form-check">
-          <%= f.label "match_policy_#{policy}" do %>
-            <%= f.radio_button :match_policy, policy, class: "form-check-input" %>
-            <%= Spree.t "promotion_form.match_policies.#{policy}" %>
-          <% end %>
+          <%= f.radio_button :match_policy, policy %>
+          <%= f.label "match_policy_#{policy}", Spree.t("promotion_form.match_policies.#{policy}") %>
         </div>
       <% end %>
     </div>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="promotion-update actions">
-      <%= button I18n.t('spree.admin.actions.update'), 'save.svg' %>
+      <%= render partial: 'spree/admin/shared/resource_actions' %>
     </div>
   <% end %>
 </div>

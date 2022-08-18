@@ -10,38 +10,37 @@
       <div class="row">
       <div class="col-12 col-lg-6">
         <%= f.field_container :name do %>
-          <%= f.text_field :name, class: 'form-control', placeholder: Spree.t(:name), required: true %>
-          <%= f.label :name, Spree.t(:name) %>
+          <%= f.text_field :name, required: true %>
+          <%= f.label :name, raw(I18n.t('spree.admin.name') + required_span_tag) %>
         <% end %>
 
         <%= f.field_container :amount do %>
-          <%= f.text_field :amount, class: 'form-control', placeholder: Spree.t(:rate), required: true %>
-          <%= f.label :amount, Spree.t(:rate) %>
-
+          <%= f.text_field :amount, required: true %>
+          <%= f.label :name, raw(I18n.t('spree.admin.tax_rates.rate') + required_span_tag) %>
           <small class="form-text text-muted">
             <%= Spree.t(:tax_rate_amount_explanation) %>
           </small>
         <% end %>
 
         <%= f.checkbox_container :show_rate_in_label do %>
-          <%= f.check_box :show_rate_in_label, class: 'form-check-input' %>
+          <%= f.check_box :show_rate_in_label %>
           <%= f.label :show_rate_in_label, Spree.t(:show_rate_in_label), class: 'form-check-label' %>
         <% end %>
 
         <%= f.checkbox_container :included_in_price do %>
-          <%= f.check_box :included_in_price, class: 'form-check-input' %>
+          <%= f.check_box :included_in_price %>
           <%= f.label :included_in_price, Spree.t(:included_in_price), class: 'form-check-label' %>
         <% end %>
       </div>
 
       <div class="col-12 col-lg-6">
         <%= f.field_container :zone do %>
-          <%= f.collection_select(:zone_id, @available_zones, :id, :name, {}, {class: 'form-select',data: {controller: 'ts--select'}}) %>
+          <%= f.collection_select(:zone_id, @available_zones, :id, :name, {}) %>
           <%= f.label :zone, Spree.t(:zone) %>
         <% end %>
 
         <%= f.field_container :tax_category_id do %>
-          <%= f.collection_select(:tax_category_id, @available_categories,:id, :name, {}, {class: 'form-select', data: {controller: 'ts--select'}}) %>
+          <%= f.collection_select(:tax_category_id, @available_categories,:id, :name, {}) %>
           <%= f.label :tax_category_id, Spree.t(:tax_category) %>
         <% end %>
       </div>

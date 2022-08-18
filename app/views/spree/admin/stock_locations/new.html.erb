@@ -1,6 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:stock_locations), spree.admin_stock_locations_url %> /
-  <%= Spree.t(:new_stock_location) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_stock_locations_path, link_one_text: Spree.t(:stock_locations), current_page_name: Spree.t(:new_stock_location)) %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @stock_location } %>
@@ -8,6 +7,6 @@
 <%= form_with model: [:admin, @stock_location] do |f| %>
   <fieldset>
     <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/new_resource_links' %>
+    <%= render partial: 'spree/admin/shared/resource_actions' %>
   </fieldset>
 <% end %>

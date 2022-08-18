@@ -1,11 +1,10 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.webhooks.subscribers.subscribers'), spree.admin_webhooks_subscribers_path %> /
-  <%= @webhooks_subscriber.url %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_webhooks_subscribers_path, link_one_text: I18n.t('spree.admin.webhooks.subscribers.subscribers'), current_page_name: @webhooks_subscriber.url) %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @webhooks_subscriber } %>
 
 <%= form_with model: [:admin, @webhooks_subscriber] do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+    <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

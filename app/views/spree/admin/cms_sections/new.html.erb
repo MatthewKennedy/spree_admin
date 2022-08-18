@@ -1,16 +1,14 @@
 <% content_for :page_title do %>
-  <%= link_to I18n.t('spree.admin.cms.all_pages'), spree.admin_cms_pages_path %> /
-  <%= link_to @cms_page.title, spree.edit_admin_cms_page_path(@cms_page) %> / <%= I18n.t('spree.admin.cms.new_section') %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_cms_pages_path, link_one_text: I18n.t('spree.admin.cms.all_pages'),
+                         link_two_uri: spree.edit_admin_cms_page_path(@cms_page), link_two_text: @cms_page.title,
+                         current_page_name: I18n.t('spree.admin.cms.new_section')) %>
 <% end %>
 
-<%= form_with model: [:admin, @cms_page, @cms_section], url: spree.admin_cms_page_cms_sections_path do |f| %>
+<%= form_with model: [:admin, @cms_page, @cms_section], url: spree.admin_cms_page_cms_sections_path, data: {controller: "input--required"} do |f| %>
   <div class="card">
     <div class="card-header d-flex">
       <div class="flex-fill">
         <h5 class="card-title"><%= I18n.t("spree.admin.cms.new_section") %></h5>
-      </div>
-      <div>
-        <%= render partial: 'spree/admin/shared/new_resource_links' %>
       </div>
     </div>
     <div class="card-body">
@@ -30,4 +28,5 @@
       </div>
     </div>
   </div>
+  <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

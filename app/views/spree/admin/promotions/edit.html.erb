@@ -1,16 +1,9 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:promotions), admin_promotions_url %> /
-  <%= @promotion.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_promotions_path, link_one_text: Spree.t(:all_promotions), current_page_name: @promotion.name) %>
 <% end %>
 
-<%= form_with model: @promotion, url: object_url, method: :put do |f| %>
-<div class="card mb-4">
-  <div class="card-body">
-      <%= render partial: 'form', locals: { f: f } %>
-      <%= render partial: 'spree/admin/shared/edit_resource_links' %>
-    </div>
-  </div>
-
+<%= form_with model: [:admin, @promotion], data: { controller: "form-state"} do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
 <% end %>
 
 <div id="promotion-filters" class="row">
@@ -27,4 +20,4 @@
   </div>
 </div>
 
-<%= render partial: "spree/admin/variants/autocomplete", formats: [:js] %>
+<%#= render partial: "spree/admin/variants/autocomplete", formats: [:js] %>

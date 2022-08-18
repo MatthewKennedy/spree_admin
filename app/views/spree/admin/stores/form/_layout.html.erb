@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header">
     <h5 class="card-title">
-      <%= I18n.t('spree.admin.store_form.look_and_feel') %>
+      <%= I18n.t('spree.admin.store_form.branding') %>
     </h5>
   </div>
   <div class="card-body">
@@ -12,9 +12,9 @@
           <% if @store.logo.attachment&.attached? && @store.logo.attachment&.variable? %>
             <%= image_tag main_app.cdn_image_url(@store.logo.attachment.variant(resize_to_limit: [244, 104])) %>
           <% end %>
-          <%= f.field_container :logo, class: ['form-group'] do %>
+          <%= f.field_container :logo do %>
+            <%= ff.file_field :attachment %>
             <%= f.label :logo, Spree.t(:logo) %>
-            <%= ff.file_field :attachment, class: 'form-control' %>
           <% end %>
         <% end %>
       </div>
@@ -25,9 +25,9 @@
           <% if @store.mailer_logo.attachment&.attached? && @store.mailer_logo.attachment&.variable? %>
             <%= image_tag main_app.cdn_image_url(@store.mailer_logo.attachment.variant(resize_to_limit: [244, 104])) %>
           <% end %>
-          <%= f.field_container :mailer_logo, class: ['form-group'] do %>
-            <%= f.label :mailer_logo, Spree.t(:mailer_logo) %><br>
-            <%= ff.file_field :attachment, accept: Spree::StoreMailerLogo::VALID_CONTENT_TYPES.join(','), class: 'form-control' %>
+          <%= f.field_container :mailer_logo do %>
+            <%= ff.file_field :attachment, accept: Spree::StoreMailerLogo::VALID_CONTENT_TYPES.join(',') %>
+            <%= f.label :mailer_logo, Spree.t(:mailer_logo) %>
           <% end %>
         <% end %>
       </div>
@@ -38,10 +38,12 @@
           <% if @store.favicon_image.attachment&.attached? && @store.favicon_image.attachment&.variable? %>
             <%= image_tag main_app.cdn_image_url(@store.favicon_image.attachment.variant(resize_to_limit: [104, 104])) %>
           <% end %>
-          <%= f.field_container :logo, class: ['form-group'] do %>
-            <%= f.label :favicon_image, "#{Spree.t(:favicon)} (#{Spree.t(:favicon_upload_info)})" %><br>
-            <%= ff.file_field :attachment, accept: Spree::StoreFaviconImage::VALID_CONTENT_TYPES.join(','), class: 'form-control' %>
-            <%= f.error_message_on :favicon_image %>
+          <%= f.field_container :favicon_image do %>
+            <%= ff.file_field :attachment, accept: Spree::StoreFaviconImage::VALID_CONTENT_TYPES.join(',') %>
+            <%= f.label :favicon_image, Spree.t(:favicon) %>
+            <small class="form-text text-muted">
+              <%= Spree.t(:favicon_upload_info) %>
+            </small>
           <% end %>
         <% end %>
       </div>

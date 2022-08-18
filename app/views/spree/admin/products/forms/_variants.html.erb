@@ -6,7 +6,6 @@
           <h5><%= I18n.t('spree.admin.products.variants') %></h5>
         </div>
         <div>
-          <%= render partial: 'spree/admin/shared/submit_button' %>
         </div>
       </div>
 
@@ -61,7 +60,11 @@
         </div>
       <% else %>
         <div class="text-center no-objects-found mb-4">
-          <%= link_to_with_icon(I18n.t('spree.admin.products.create_your_first_variant_for_this_product'), spree.new_admin_product_variant_url(@product), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: "_top"}}) if !@product.empty_option_values? and can? :create, Spree::Variant %>
+          <% if @product.empty_option_values? %>
+            <%= I18n.t('spree.admin.add_option_types_to_this_product_to_begin_creating_variants') %>
+          <% else %>
+            <%= link_to_with_icon(I18n.t('spree.admin.products.create_your_first_variant_for_this_product'), spree.new_admin_product_variant_url(@product), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: "_top"}}) if can? :create, Spree::Variant %>
+          <% end %>
         </div>
       <% end %>
 
@@ -86,6 +89,8 @@
             <div class="alert alert-info"><%= Spree.t(:no_resource_found, resource: :option_types) %></div>
           <% end %>
         <% end %>
+
+        <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
   <% end %>

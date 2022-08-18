@@ -1,5 +1,11 @@
 ---
 en:
+  admin:
+    product:
+      active: Active
+      all: All
+      archived: Archived
+      draft: Draft
   spree:
     admin:
       actions:
@@ -14,6 +20,7 @@ en:
         update: Update
         upload: Upload
       active: Active
+      add_option_types_to_this_product_to_begin_creating_variants: Add option types to this product to begin creating variants
       address:
         emirate: Emirate
         post_code: Post Code
@@ -70,11 +77,9 @@ en:
         visible: Visible
         you_have_no_pages: You have no Pages, click the <b>+ Add New Page</b> button to get started.
       cms_pages:
-        basic_details: Basic Details
         errors:
           could_not_update_page_visibility: Could not update page visibility
         new_page_details: New Page Details
-        when_creating_a_new_page_first_give_the_page_a_title_and_select_the_page_type_you_will_then_be_offered_more_options: When creating a new page first give the page a Title, then select the page type, once created you will then be offered more options.
       cms_sections:
         errors:
           position_could_not_be_updated: Position could not be updated
@@ -101,7 +106,6 @@ en:
       date: Date
       default: Default
       default_country: Default country
-      delete: Delete
       description: Description
       details: Details
       digitals:
@@ -115,15 +119,14 @@ en:
         both: All
         front_end: Storefront
       download_sdk: Download SDK
-      ends_at: Ends at
       errors:
         error_reposition_failed: Error reposition failed
         messages:
           blank: Blank
           cannot_remove_icon: Cannot remove icon
       execution_time: Execution Time
+      expires_at: Expires at
       filter: Filter
-      filters: Filters
       kind: Kind
       language: Language
       learn_more: Learn more
@@ -154,6 +157,7 @@ en:
         link_settings: Link Settings
         link_to: Link To
         link_to_info: Link to Pages, Products, Taxons or external URL's.
+        menu_item_icon: Menu item icon
         menu_items: "%{menu_name} Items"
         menus: Menus
         move_could_not_be_saved: 'ERROR: This move could not be saved.'
@@ -195,6 +199,8 @@ en:
       option_types: Option types
       options:
         add_option_value: Add Option Value
+        all_option_types: All Option Types
+        new_option_type: New Option Type
         values:
           this_option_types: This Option Type has no values, click the Add Option Value button to begin adding values.
       order:
@@ -249,6 +255,8 @@ en:
       product_kinds:
         digital: Digital
         physical: Physical
+      product_properties:
+        property_details: Property details
       product_rule:
         choose_products: Choose products
         label: Label
@@ -260,12 +268,12 @@ en:
         add_new_properties_from_prototype: Add new properties from prototype
         add_new_property: Add new property
         add_stock: Add stock
-        all: All
+        all_products: All Products
         archived: Archived
-        cost_price: Cost price
         create_your_first_variant_for_this_product: Create your first variant for this product
         deleted: Deleted
         draft: Draft
+        editing_variant: Editing Variant
         errors:
           cost_currency_could_not_be_updated: Cost currency could not be updated. %{error}
           could_not_remove_from_taxon: Could not remove from taxon
@@ -280,6 +288,7 @@ en:
           product_status_updated_to: Product status updated to
         new_product_details: New product details
         new_product_master_price: 'Price: %{currency_iso} - (%{currency_symbol})'
+        new_variant: New Variant
         overview: Overview
         price_now: Price now
         price_was: Price was
@@ -289,14 +298,46 @@ en:
         select_from_prototype: Select from prototype
         stock: Stock
         variants: Variants
+      promotion: Promotion
+      promotion_action_types:
+        create_adjustment:
+          name: Create Adjustment
+        create_item_adjustments:
+          name: Create Line Item Adjustment
+        create_line_items:
+          name: Create Line Items
+        free_shipping:
+          name: Free Shipping
       promotion_cloned: Promotion cloned
       promotion_not_cloned: Promotion not cloned
+      promotion_rule_types:
+        country:
+          name: Country
+        first_order:
+          name: First Order
+        item_total:
+          name: Item Total
+        one_use_per_user:
+          name: One Use Per User
+        option_value:
+          name: Option Value
+        product:
+          name: Product
+        taxon:
+          name: Category
+        user:
+          name: User
+        user_logged_in:
+          name: User Signed-in
       promotions:
+        new_promotion_category: New Promotion Category
         organizations: Organizations
         promotions: Promotions
       properties: Properties
       quantity: Quantity
       receive_stock: Receive stock
+      reimbursement_types:
+        reimbursement_type: Reimbursement Type
       reports:
         for: For %{store_name}
       request_errors: Request Errors
@@ -348,7 +389,7 @@ en:
       slug: Slug
       specifications: Specifications
       spree_administration: Spree administration
-      starting_from: Starting from
+      starts_at: Starts at
       status: Status
       stock_transfer:
         errors:
@@ -379,22 +420,16 @@ en:
         unable_to_delete: Unable to delete
         unable_to_update: Unable to update
       store_form:
-        checkout_zone_help: Selecting zone will limit to which Countries or States products are shipped. For more information <a href='https://guides.spreecommerce.org/user/configuration/configuring_geography.html#zones' target='_blank' class='alert-link'>please see documentation</a>
-        code_help: Store unique identifier, which is an abbreviated version of the store’s name (used as the layout directory name, and also helpful for separating templates by store)
-        currencies_help: You can accept payments in multiple currencies. Each product and product variant can have different price in different currency
-        customer_support_email_help: This email is visible to your Store visitors in the Footer section
-        default_country_help: This is the Country that will be pre-selected on the Checkout Address form
+        branding: Branding
         default_language: Default language
-        footer_help: This content is visible in the footer section of your Store
-        locales_help: Install <a href='https://github.com/spree-contrib/spree_i18n' target='_blank' class='alert-link'>Spree I18n extension</a> to add more locales
-        look_and_feel: Look and feel
-        mail_from_address_help: This is the email which will be the sender of all your Store emails (Order Confirmation, Shipment notification etc)
-        new_order_notifications_email_help: If you want to receive an email notification every time someone places an Order please provide an email address for that notification to be sent to
         seo_robots: Please check <a href='https://developers.google.com/search/reference/robots_meta_tag' target='_blank'>this page for more help</a>
-        social_help: If you want to link to your social accounts in the footer part of your website please fill below fields
         supported_languages: Supported languages
       storefront_api: Storefront API
       stores:
+        checkout: Checkout
+        currency: Currency
+        language: Language
+        not_limited_to_any_zone: Not limited to any zone
         store: Store
       successful: Successful
       tab:
@@ -415,6 +450,8 @@ en:
         stock: Stock
         tax_and_shipping: Tax & Shipping
       tax_and_shipping: Tax & Shipping
+      tax_rates:
+        rate: Rate
       taxon_rule:
         choose_taxons: Choose taxons
         label: Label
@@ -441,6 +478,8 @@ en:
         store_credits: Store Credits
       user_rule:
         choose_users: Choose users
+      users:
+        users: Users
       utilities:
         preview: Preview %{name}
       variant: Variant

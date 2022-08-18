@@ -1,0 +1,11 @@
+.pagy-bootstrap-nav {
+  display: flex;
+
+  ul.pagination {
+    margin-left: auto;
+    margin-right: auto;
+    li {
+      padding: 0.25rem;
+    }
+  }
+}

@@ -1,10 +1,9 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:stock_locations), spree.admin_stock_locations_path %> /
-  <%= Spree.t(:stock_movements_for_stock_location, stock_location_name: @stock_location.name) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_stock_locations_path, link_one_text: Spree.t(:stock_locations), current_page_name: Spree.t(:stock_movements_for_stock_location, stock_location_name: @stock_location.name)) %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= link_to_with_icon Spree.t(:new_stock_movement), new_admin_stock_location_stock_movement_path(@stock_location), icon: 'plus-square.svg', class: 'btn-success ', id: 'admin_new_stock_movement_link' %>
+  <%= link_to_with_icon Spree.t(:new_stock_movement), new_admin_stock_location_stock_movement_path(@stock_location), icon: 'plus-square.svg', class: 'btn-primary ', id: 'admin_new_stock_movement_link' %>
 <% end %>
 
 <% if @stock_movements.any? %>
@@ -42,4 +41,4 @@
   </div>
 <% end %>
 
-<%= paginate @stock_movements, theme: 'admin-twitter-bootstrap-4' %>
+<%= paginate @stock_movements %>

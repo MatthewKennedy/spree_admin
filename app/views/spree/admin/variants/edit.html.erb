@@ -1,6 +1,7 @@
 <% content_for :page_title do %>
-  <%= page_header_back_button spree.edit_admin_product_path(@product) %>
-  <%= @product.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_products_path, link_one_text:I18n.t('spree.admin.products.all_products'),
+                         link_two_uri: spree.edit_admin_product_path(@product), link_two_text: @product.name,
+                         current_page_name: I18n.t('spree.admin.products.editing_variant')) %>
 <% end %>
 
 <%= form_with model: [:admin, @product, @variant], data: {controller: "form-state", turbo_frame: :product_variants} do |f| %>

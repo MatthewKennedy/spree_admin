@@ -7,6 +7,7 @@ require "jsbundling-rails"
 require "turbo-rails"
 require "inline_svg"
 require "responders"
+require "pagy"
 
 require "spree/backend/action_callbacks"
 require "spree/backend/callbacks"

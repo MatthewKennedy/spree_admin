@@ -1,6 +1,8 @@
 module Spree
   module Admin
     module BaseHelper
+      include Pagy::Frontend
+
       FLATPICKR_SUPPORTED_LOCALES = %w[
         ar at az be bg bn bs cs cy da de eo es et fa fi fo fr ga gr he
         hi hr hu id is it ja ka km ko kz lv mk mn ms my nl no pa pl pt ro ru
@@ -246,7 +248,7 @@ module Spree
         link_to_with_icon(
           I18n.t("spree.admin.utilities.preview", name: resource_name),
           spree_storefront_resource_url(resource),
-          class: "btn btn-light animate__animated animate__faster",
+          class: "btn btn-outline-secondary animate__animated animate__faster",
           icon: "eye.svg",
           id: "adminPreview#{resource_name}",
           target: :blank,

@@ -1,17 +1,8 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:tax_categories), spree.admin_tax_categories_url %> /
-  <%= Spree.t(:new_tax_category) %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_tax_categories_path, link_one_text: Spree.t(:tax_categories), current_page_name: Spree.t(:new_tax_category)) %>
 <% end %>
 
-<% content_for :page_actions do %>
-  <%= link_to_with_icon Spree.t(:create), new_object_url, class: "btn-success btn", icon: 'plus-square.svg', id: 'admin_new_tax_categories_link' %>
-<% end %>
-
-<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @tax_category } %>
-
-<%= form_with model: [:admin, @tax_category] do |f| %>
-  <fieldset>
+<%= form_with model: [:admin, @tax_category], data: {controller: "input--required"} do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
-    <%#= render partial: 'spree/admin/shared/new_resource_links' %>
-  </fieldset>
+    <%= render partial: 'spree/admin/shared/resource_actions' %>
 <% end %>

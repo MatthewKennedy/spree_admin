@@ -20,6 +20,7 @@ import ModalController from './modal_controller'
 import NumberIncrementController from './number_increment_controller'
 import PasswordToggleController from './password_toggle_controller'
 import RteController from './rte_controller'
+import RequiredController from './input/required_controller'
 import Sortable from './sortable_controller'
 import SortableTreeController from './sortable_tree_controller'
 import ToastController from './toast_controller'
@@ -42,6 +43,7 @@ Stimulus.register('input-disable', InputDisableController)
 Stimulus.register('input-formatting', InputFormattingController)
 Stimulus.register('input--format-decimal', InputFormatDecimalController)
 Stimulus.register('input--format-integer', InputFormatIntegerController)
+Stimulus.register('input--required', RequiredController)
 Stimulus.register('linkable-td', LinkableTd)
 Stimulus.register('menu', MenuController)
 Stimulus.register('modal', ModalController)

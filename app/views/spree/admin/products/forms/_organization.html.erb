@@ -6,7 +6,6 @@
           <h5 class="card-title"><%= I18n.t('spree.admin.organization') %></h5>
         </div>
         <div>
-           <%= render partial: 'spree/admin/shared/submit_button' %>
         </div>
       </div>
       <div class="card-body">
@@ -44,6 +43,7 @@
             <%= f.label :product_stores, Spree.t(:stores) %>
           <% end %>
         <% end %>
+        <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
   <% end %>

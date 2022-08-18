@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:zones), spree.admin_zones_url %> / <%= @zone.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_zones_path, link_one_text: Spree.t(:zones), current_page_name: @zone.name) %>
 <% end %>
 
 <%= render partial: 'form' %>

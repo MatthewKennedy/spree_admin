@@ -1,6 +1,5 @@
 <% content_for :page_title do %>
-  <%= link_to Spree.t(:option_types), spree.admin_option_types_url %> /
-  <%= @option_type.name %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_option_types_url, link_one_text: I18n.t('spree.admin.options.all_option_types'), current_page_name: @option_type.name) %>
 <% end %>
 
 <%= form_with model: [:admin, @option_type], data: {controller: "form-state"} do |f| %>

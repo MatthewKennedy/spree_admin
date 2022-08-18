@@ -1,13 +1,18 @@
+<% if @zone.persisted? %>
+  <% validation_kind = "form-state" %>
+<% else %>
+  <% validation_kind = "input--required" %>
+<% end %>
+
 <div class="row">
   <div class="col-12 col-lg-6" data-hook="admin_zone_form_fields">
-    <%= form_with model: [:admin, @zone], data: {controller: "form-state"} do |zone_form| %>
+    <%= form_with model: [:admin, @zone], data: {controller: validation_kind} do |zone_form| %>
       <div class="card">
         <div class="card-header d-flex">
           <div class="flex-fill">
             <h5 class="card-title"><%= Spree.t(:general_settings) %></h5>
           </div>
           <div>
-            <%= render partial: 'spree/admin/shared/submit_button' %>
           </div>
         </div>
 
@@ -42,10 +47,8 @@
             <% end %>
           </div>
         </div>
-        <div class="card-footer text-end">
-          <a data-bs-toggle="collapse" href="#menuItemSettingsInformation" role="button" aria-expanded="false" aria-controls="menuItemSettingsInformation" class="align-self-center">
-              <%= inline_svg_tag "info-circle.svg", size: '20px*20px', class: "ms-1" %>
-          </a>
+        <div class="card-footer">
+           <%= render partial: 'spree/admin/shared/resource_actions' %>
         </div>
       </div>
     <% end %>

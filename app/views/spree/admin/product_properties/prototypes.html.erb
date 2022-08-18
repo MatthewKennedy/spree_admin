@@ -26,7 +26,7 @@
                   </td>
                   <td>
                     <span class="d-flex justify-content-end">
-                      <%= link_to_with_icon(Spree.t(:select), spree.prototype_properties_admin_product_product_properties_path(@product, prototype_id: prototype), class: 'btn btn-success btn-sm', no_text: true, icon: 'save.svg', data: { turbo_method: :post, turbo_frame: :modal }) %>
+                      <%= link_to_with_icon(Spree.t(:select), spree.prototype_properties_admin_product_product_properties_path(@product, prototype_id: prototype), class: 'btn btn-primary btn-sm', no_text: true, icon: 'save.svg', data: { turbo_method: :post, turbo_frame: :modal }) %>
                     </span>
                   </td>
                 </tr>
@@ -50,7 +50,7 @@
 
 <% content_for :modal_footer do %>
   <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.admin.actions.cancel') %></button>
-  <%= button_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-success", form: "newProductProperty") %>
+  <%= button_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: "newProductProperty") %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/modal' %>

@@ -1,0 +1,17 @@
+<% show_pagnation =  pagnation ||= false %>
+
+<div class="border rounded bg-white">
+   <%= render partial: 'spree/admin/shared/index_table_filters' %>
+
+  <div class="col-12 p-0">
+    <div class="table-responsive">
+      <%= yield :index_table if content_for?(:index_table) %>
+    </div>
+  </div>
+
+  <% unless @pagy.nil? %>
+    <div class="border-top pt-3">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  <% end %>
+</div>

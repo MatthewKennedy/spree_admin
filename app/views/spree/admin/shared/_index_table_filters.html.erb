@@ -1,0 +1,27 @@
+<% if content_for?(:index_table_filter_tabs) || content_for?(:index_table_filter_search) || content_for?(:index_table_filter_buttons) %>
+  <% if content_for?(:index_table_filter_tabs) %>
+    <div class="border-bottom overflow-hidden">
+      <div class="btn-group show-active-bar overflow-hidden rounded-0 rounded-top" role="group" aria-label="Default button group">
+        <%= yield :index_table_filter_tabs %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if content_for?(:index_table_filter_search) || content_for?(:index_table_filter_buttons) %>
+    <div class="p-2" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="row">
+        <% if content_for?(:index_table_filter_search) %>
+          <div class="col-12 col-sm">
+            <%= yield :index_table_filter_search %>
+          </div>
+        <% end %>
+
+        <% if content_for?(:index_table_filter_buttons) %>
+          <div class="col-12 col-sm-auto">
+            <%= yield :index_table_filter_buttons %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
