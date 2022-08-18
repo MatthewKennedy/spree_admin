@@ -182,6 +182,20 @@ module Spree
         end
       end
 
+      def remote_form_submit_button(resource, form_id = nil, button_text = nil)
+         form_id ||= "mainForm"
+
+         if button_text.nil?
+           button_text = if resource.persisted?
+             I18n.t("spree.admin.actions.update")
+           else
+             I18n.t("spree.admin.actions.create")
+           end
+         end
+
+         button(button_text, "check-lg.svg", "submit", {form: form_id, class: "btn btn-success animate__fadeIn animate__animated animate__faster", id: "globalFormSubmitButton"})
+       end
+
       def active_badge(condition, options = {})
         label = options[:label]
         label ||= condition ? Spree.t(:say_yes) : Spree.t(:say_no)

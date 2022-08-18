@@ -6,7 +6,7 @@ module Spree
       def collection
         return @collection if @collection.present?
 
-        per_page_limit = params[:per_page] || 20
+        per_page_limit = params[:per_page] || 50
 
         params[:q] ||= {}
         params[:q][:s] ||= "name asc"
