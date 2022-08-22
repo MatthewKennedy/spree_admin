@@ -1,19 +1,5 @@
-label {
-  font-size: var(--bs-body-font-size);
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 .form-floating > label, .form-floating > span.or {
   opacity: 0.4;
-}
-
-span.or {
-  @extend label;
-
-  padding: 0 10px;
 }
 
 .form-group {
@@ -45,7 +31,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 
 .pad-as-btn {
   padding: 16px;

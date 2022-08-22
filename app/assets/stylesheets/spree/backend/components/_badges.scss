@@ -1,5 +1,4 @@
-// Green
-
+// Success
 .bg-active,
 .bg-success,
 .bg-sold,
@@ -9,21 +8,21 @@
 .bg-live,
 .bg-approved,
 .text-bg-success {
-  color: #202223 !important;
-  background: #aee9d1 !important;
+  color: var(--bs-gray-900) !important;
+  background: var(--bs-success) !important;
 }
 
-// Red
+// Danger
 .bg-failed,
 .bg-considered_risky,
 .bg-error,
 .bg-invalid,
 .bg-rejected,
 .bg-closed {
-  background: var(--bs-danger);
+  background: var(--bs-danger) !important;
 }
 
-// Orange
+// Warning
 .bg-ready,
 .bg-processing,
 .bg-pending,
@@ -44,8 +43,8 @@
 .bg-notice,
 .bg-suspended,
 .bg-partial {
-  color: #202223;
-  background: #ffd79d;
+  color: var(--bs-gray-900) !important;
+  background: var(--bs-warning) !important;
 }
 
 // light
@@ -58,18 +57,11 @@
 .badge.bg-disabled,
 .badge.bg-invited
 .bg-light {
-  color: #202223;
-  background: var(--bs-body-bg);
+  color: var(--bs-gray-900) !important;
+  background: var(--bs-light) !important;
 }
 
 // Info
 .bg-onboarding {
-  background: var(--bs-info);
+  background: var(--bs-info) !important;
 }
-
-.card-body > .card {
-  border-style: dashed;
-  border-width: 2px;
-}
-
-

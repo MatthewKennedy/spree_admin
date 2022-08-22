@@ -12,6 +12,10 @@ module Spree
       update.before :skip_updating_status
       update.after :update_status
 
+      def filter
+        collection
+      end
+
       def show
         session[:return_to] ||= request.referer
         redirect_to action: :edit

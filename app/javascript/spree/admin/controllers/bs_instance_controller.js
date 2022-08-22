@@ -12,12 +12,24 @@ import { Controller } from '@hotwired/stimulus'
 // data-controller="bs-instance"
 // data-action="resize@window->bs-instance#manipulate"
 // data-bs-instance-class-value='Offcanvas'
-// data-bs-instance-method-value='hide"
+// data-bs-instance-method-value='hide'
+
+// If you want to trigger an action on connect use
+// data-bs-instance-connection-value='show'
 
 export default class extends Controller {
   static values = {
     class: String,
+    connection: String,
     method: String
+  }
+
+  connect () {
+    if (this.hasConnectionValue) {
+      const obj = bootstrap[this.classValue].getOrCreateInstance(this.element)
+      if (obj == null) return
+      obj[this.connectionValue]()
+    }
   }
 
   manipulate () {

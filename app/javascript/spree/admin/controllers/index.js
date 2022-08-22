@@ -8,8 +8,11 @@ import CardFormattingController from './card_formatting_controller'
 import CheckboxValidationController from './checkbox_validation_controller'
 import ClipboardController from './clipboard_controller'
 import DatePickerController from './datepicker_controller'
+import FormAutoSaveController from './form/autosave_controller'
 import FormStateController from './form_state_controller'
 import FormValidationController from './form_validation_controller'
+import FormResetController from './form/reset_controller'
+import InputCheckboxState from './input/checkbox_state_controller'
 import InputDisableController from './input_disable_controller'
 import InputFormatDecimalController from './input/format_decimal_controller'
 import InputFormatIntegerController from './input/format_integer_controller'
@@ -39,6 +42,9 @@ Stimulus.register('clipboard', ClipboardController)
 Stimulus.register('datepicker', DatePickerController)
 Stimulus.register('form-state', FormStateController)
 Stimulus.register('form-validation', FormValidationController)
+Stimulus.register('form--autosave', FormAutoSaveController)
+Stimulus.register('form--reset', FormResetController)
+Stimulus.register('input--checkbox-state', InputCheckboxState)
 Stimulus.register('input-disable', InputDisableController)
 Stimulus.register('input-formatting', InputFormattingController)
 Stimulus.register('input--format-decimal', InputFormatDecimalController)

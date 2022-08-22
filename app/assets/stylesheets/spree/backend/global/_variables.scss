@@ -1,89 +1,102 @@
 // Bootstrap SCSS Vars ### START ###
-$table-cell-padding-x: .5rem;
-$table-cell-padding-y: .5rem;
-$table-cell-vertical-align: middle;
-$table-hover-bg-factor: .02;
-$table-hover-color: inherit;
-$badge-font-weight: 300;
-$border-radius: 3px;
+  $table-cell-padding-x: .5rem;
+  $table-cell-padding-y: .5rem;
+  $table-cell-vertical-align: middle;
+  $table-hover-bg-factor: .02;
+  $table-hover-color: inherit;
+  $border-radius: 3px;
 // Bootstrap SCSS Vars ### END ###
 
 :root body.admin {
-
   ////////////
   // COLORS //
   ////////////
-  --bs-white-rgb: 255, 255, 255;
+  --bs-primary-rgb: 0, 128, 96;
+  --bs-primary-hover-rgb: 0, 110, 82;
+  --bs-secondary-rgb: 108, 117, 125;
+  --bs-secondary-hover-rgb: 92, 99, 106;
+  --bs-success-rgb: 174, 233, 209;
+  --bs-success-hover-rgb: 21, 115, 71;
+  --bs-info-rgb: 13, 202, 240;
+  --bs-info-hover-rgb: 49, 210, 242;
+  --bs-warning-rgb: 255, 215, 157;
+  --bs-warning-hover-rgb: 255, 202, 44;
+  --bs-danger-rgb: 220, 53, 69;
+  --bs-danger-hover-rgb: 187, 45, 59;
+  --bs-light-rgb: 241, 241, 241;
+  --bs-light-hover-rgb: 249, 250, 251;
   --bs-dark-rgb: 33, 37, 41;
-  --bs-black-rgb: 0, 0, 0;
+  --bs-dark-hover-rgb: 28, 31, 35;
 
-  // BODY
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 246, 246, 247;
 
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-black: rgb(var(--bs-black-rgb));
+    --bs-white: rgb(var(--bs-white-rgb));
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
 
-
-  // PRIMARY
-  --bs-primary-rgb: 0, 128, 96;
-  --bs-primary-hover-rgb: 0, 110, 82;
   --bs-primary: rgb(var(--bs-primary-rgb));
-
-  --bs-primary-btn-color-rgb: var(--bs-white-rgb);
-  --bs-primary-btn-bg-rgb: var(--bs-primary-rgb);
-  --bs-primary-btn-border-color-rgb: var(--bs-primary-rgb);
-
-  --bs-primary-btn-hover-color-rgb: var(--bs-white-rgb);
-  --bs-primary-btn-hover-bg-rgb: var(--bs-primary-hover-rgb);
-  --bs-primary-btn-hover-border-color-rgb: var(--bs-primary-hover-rgb);
-
-  // SECONDARY
-  --bs-secondary-rgb: 108, 117, 125;
-  --bs-secondary-hover-rgb: 92, 99, 106;
   --bs-secondary: rgb(var(--bs-secondary-rgb));
-
-  // SUCCESS
-  --bs-success-rgb: 25, 135, 84;
-  --bs-success-hover-rgb: 21, 115, 71;
   --bs-success: rgb(var(--bs-success-rgb));
-
-  // DANGER
-  --bs-danger-rgb: 220, 53, 69;
-  --bs-danger-hover-rgb: 187, 45, 59;
-  --bs-danger: rgb(var(--bs-danger-rgb));
-
-  // WARNING
-  --bs-warning-rgb: 255, 193, 7;
-  --bs-warning-hover-rgb: 255, 202, 44;
-  --bs-warning: rgb(var(--bs-warning-rgb));
-
-  // INFO
-  --bs-info-rgb: 13, 202, 240;
-  --bs-info-hover-rgb: 49, 210, 242;
   --bs-info: rgb(var(--bs-info-rgb));
-
-  // LIGHT
-  --bs-light-rgb: 241, 241, 241;
-  --bs-light-hover-rgb: 249, 250, 251;
+  --bs-warning: rgb(var(--bs-warning-rgb));
+  --bs-danger: rgb(var(--bs-danger-rgb));
   --bs-light: rgb(var(--bs-light-rgb));
-
-  // DARK
-  --bs-dark-rgb: 33, 37, 41;
-  --bs-dark-hover-rgb: 28, 31, 35;
   --bs-dark: rgb(var(--bs-dark-rgb));
 
-  // Theming Override
-  --bs-link-color: rgb(var(--bs-primary-rgb));
-  --bs-link-hover-color: rgb(var(--bs-primary-hover-rgb));
-  --bs-nav-pills-link-active-bg: var(--bs-primary);
-  --bs-body-bg: rgb(var(--bs-body-bg-rgb));
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: rgb(var(--bs-body-color-rgb));
+    --bs-body-bg: rgb(var(--bs-body-bg-rgb));
+    --bs-border-width: 1px;
+    --bs-border-style: solid;
+    --bs-border-color: #dee2e6;
+    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-sm: 0.25rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-xl: 1rem;
+    --bs-border-radius-2xl: 2rem;
+    --bs-border-radius-pill: 50rem;
+    --bs-link-color: var(--bs-primary-rgb);
+    --bs-link-hover-color: rgb(var(--bs-primary-hover-rgb));
+    --bs-code-color: #d63384;
+    --bs-highlight-bg: #fff3cd;
 
   .btn-primary {
-    --bs-btn-color: rgba(var(--bs-primary-btn-color-rgb));
-    --bs-btn-bg: rgba(var(--bs-primary-btn-bg-rgb));
-    --bs-btn-border-color: rgba(var(--bs-primary-btn-border-color-rgb));
+    --bs-btn-color: rgba(var(--bs-white-rgb));
+    --bs-btn-bg: rgba(var(--bs-primary-rgb));
+    --bs-btn-border-color: rgba(var(--bs-primary-rgb));
 
-    --bs-btn-hover-color: rgba(var(--bs-primary-btn-hover-color-rgb));
-    --bs-btn-hover-bg: rgba(var(--bs-primary-btn-hover-bg-rgb));
+    --bs-btn-hover-color: rgba(var(--bs-white-rgb));
+    --bs-btn-hover-bg: rgba(var(--bs-primary-hover-rgb));
     --bs-btn-hover-border-color: rgba(var(--bs-primary-hover-rgb));
 
     --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
@@ -262,25 +275,6 @@ $border-radius: 3px;
     --bs-btn-disabled-bg: rgba(var(--bs-dark-rgb));
     --bs-btn-disabled-border-color: rgba(var(--bs-dark-rgb));
   }
-
-
-  // Universal disabled on link or button element
-  // All disabled buttons might as well look the same.
-  .btn[disabled] {
-    color: black;
-    background-color: transparent;
-    border-color: black;
-    opacity: 0.25;
-    pointer-events: none;
-  }
-
-  // Fix override not working
-  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    background-color: var(--bs-primary);
-  }
-
-  --nav-bar-height: 54px;
-  --bs-modal-footer-gap: 0.5rem;
 }
 
 

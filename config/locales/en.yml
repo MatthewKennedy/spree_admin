@@ -8,6 +8,9 @@ en:
       draft: Draft
   spree:
     admin:
+      ransack:
+        descending: (descending)
+        ascending: (ascending)
       actions:
         add: Add
         cancel: Cancel
@@ -15,8 +18,10 @@ en:
         continue: Continue
         create: Create
         delete: Delete
+        done: Done
         edit: Edit
         save: Save
+        submit: Submit
         update: Update
         upload: Upload
       active: Active
@@ -139,6 +144,7 @@ en:
       meta_description: Meta description
       meta_keywords: Meta keywords
       meta_title: Meta title
+      more_filters: More Filters
       name: Name
       navigation:
         add_new_item: Add New Item
@@ -295,6 +301,7 @@ en:
         pricing: Pricing
         products: Products
         properties: Properties
+        search: Search
         select_from_prototype: Select from prototype
         stock: Stock
         variants: Variants

@@ -102,6 +102,9 @@ Spree::Core::Engine.add_routes do
 
     # Products
     resources :products do
+      collection do
+        get :filter
+      end
       member do
         post :update_availability
         post :update_cost_currency

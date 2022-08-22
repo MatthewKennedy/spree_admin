@@ -5,7 +5,6 @@
   </head>
 
   <body class="admin">
-
     <%#-------------------------------------------------%>
     <%# Main content                                    %>
     <%#-------------------------------------------------%>
@@ -30,9 +29,10 @@
             <%#-------------------------------------------------%>
             <%# Main content                                    %>
             <%#-------------------------------------------------%>
-
-            <div id="contentBody" class="container mb-5">
-              <%= yield %>
+            <div>
+              <div id="contentBody" class="container mb-5 p-0">
+                <%= yield %>
+              </div>
             </div>
           </div>
         </main>
@@ -60,6 +60,8 @@
     <%# Universal Modal                                 %>
     <%#-------------------------------------------------%>
     <%= turbo_frame_tag :modal %>
+
+    <%= turbo_frame_tag :offcanvas_right %>
 
     <%#-------------------------------------------------%>
     <%# Custom Confirm Dialog                           %>

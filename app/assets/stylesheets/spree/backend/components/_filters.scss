@@ -1,36 +1,7 @@
-#table-filter {
-  display: none;
-}
-
-.index-filter-button .icon-chevron-right {
-  transform: rotate(0);
-  transition: 0.3s ease-in-out;
-  margin-bottom: 0;
-}
-
-.collapsed .icon-chevron-right {
-  transform: rotate(90deg);
-  transition: 0.3s ease-in-out;
-}
-
-.default-filter-icon {
-  opacity: 0.1;
-}
-
-i.js-delete-filter {
-  margin-bottom: 0;
-}
-
-.sort_link {
-  .icon,
-  svg {
-    margin-left: 5px;
-    margin-bottom: 2px;
-    width: 0.8rem;
-    height: 0.8rem;
-  }
-
-  svg.default-filter-arrow {
-    opacity: 0.5;
+#additionalFilterControls {
+  input,
+  a.btn,
+  button.btn {
+    margin-top: 0.2rem;
   }
 }

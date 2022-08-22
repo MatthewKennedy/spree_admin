@@ -1,0 +1,18 @@
+<%= turbo_frame_tag :offcanvas_right do %>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
+       data-controller="bs-instance form--reset"
+       data-bs-instance-class-value='Offcanvas'
+       data-bs-instance-connection-value='show'
+       data-turbo-cache="false">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel"><%= yield :offcanvas_right_title %></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <%= yield :offcanvas_right_content %>
+    </div>
+    <div class="offcanvas-footer border-top p-2 d-flex">
+      <%= yield :offcanvas_right_footer %>
+    </div>
+  </div>
+<% end %>
