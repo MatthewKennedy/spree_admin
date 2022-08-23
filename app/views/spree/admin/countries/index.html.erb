@@ -6,12 +6,6 @@
   <%= link_to_with_icon(Spree.t(:new_country), new_object_url, { class: "btn-primary btn", icon: 'plus-square.svg', id: 'admin_new_country' }) %>
 <% end if can? :create, Spree::Country %>
 
-<% content_for :index_table_filter_search do %>
-  <%= search_form_for [:admin, @search] do |f| %>
-    <%= f.search_field :name_i_cont, placeholder: "Search by Country Name", class: "form-control" %>
-  <% end %>
-<% end %>
-
 <% content_for :index_table do %>
   <table class="table" id='listing_countries' data-hook>
     <thead>
@@ -42,4 +36,12 @@
     </tbody>
   </table>
 <% end %>
-<%= render partial: "spree/admin/shared/index_table" %>
+
+<%#-------------------------------------------------%>
+<%# Render the index_table partial passing a        %>
+<%# search_field_value and search_field_placeholder %>
+<%# text if you want to add a search bar            %>
+<%#-------------------------------------------------%>
+  <%= render partial: "spree/admin/shared/index_table",
+             locals: { search_field_value: :name_i_cont,
+                       search_field_placeholder: I18n.t('spree.admin.countries.search_by_country_name') } %>

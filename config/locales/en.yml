@@ -96,6 +96,7 @@ en:
         iso: ISO
         iso3: ISO3
         iso_name: ISO Name
+        search_by_country_name: Search by country name
         states: States
       country_rule:
         label: Label

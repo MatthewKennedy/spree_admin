@@ -1,30 +1,28 @@
-<% if content_for?(:index_table_filter_tabs) || content_for?(:index_table_filter_buttons) %>
-  <% if content_for?(:index_table_filter_tabs) %>
-    <div class="border-bottom overflow-hidden">
-      <div id="filterButtonTabs" class="btn-group show-active-bar overflow-hidden rounded-0 rounded-top" role="group" aria-label="Default button group">
-        <%= yield :index_table_filter_tabs %>
-      </div>
+<% if content_for?(:index_table_filter_tabs) %>
+  <div class="border-bottom overflow-hidden">
+    <div id="filterButtonTabs" class="btn-group show-active-bar overflow-hidden rounded-0 rounded-top" role="group" aria-label="Default button group">
+      <%= yield :index_table_filter_tabs %>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
-  <% if content_for?(:index_table_filter_buttons) %>
-    <div class="p-2" role="toolbar" aria-label="Toolbar with button groups">
-      <div class="row" id="additionalFilterControls">
-        <% if search_field_value.present? && search_field_placeholder.present? %>
-          <div class="col-12 col-sm">
-           <%= search_form_for [:admin, @search], data: {controller: "form--autosave", turbo_frame: :index_table} do |f| %>
-             <%= f.search_field search_field_value, placeholder: search_field_placeholder, class: "form-control", data: { action: 'form--autosave#save', turbo_permanent: true } %>
-             <%= f.submit I18n.t('spree.admin.actions.submit'), class: 'd-none', data: {form__autosave_target: "submitButton"} %>
-           <% end %>
-          </div>
-        <% end %>
+<% if content_for?(:index_table_filter_buttons) || (!search_field_value.nil? && !search_field_placeholder.nil?) %>
+  <div class="p-2" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="row" id="additionalFilterControls">
+      <% if search_field_value.present? && search_field_placeholder.present? %>
+        <div class="col-12 col-sm">
+         <%= search_form_for [:admin, @search], data: {controller: "form--autosave", turbo_frame: :index_table} do |f| %>
+           <%= f.search_field search_field_value, placeholder: search_field_placeholder, class: "form-control", data: { action: 'form--autosave#save', turbo_permanent: true } %>
+           <%= f.submit I18n.t('spree.admin.actions.submit'), class: 'd-none', data: {form__autosave_target: "submitButton"} %>
+         <% end %>
+        </div>
+      <% end %>
 
-        <% if content_for?(:index_table_filter_buttons) %>
-          <div class="col-12 col-sm-auto">
-            <%= yield :index_table_filter_buttons %>
-          </div>
-        <% end %>
-      </div>
+      <% if content_for?(:index_table_filter_buttons) %>
+        <div class="col-12 col-sm-auto">
+          <%= yield :index_table_filter_buttons %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 <% end %>
