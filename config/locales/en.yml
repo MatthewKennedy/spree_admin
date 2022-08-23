@@ -11,6 +11,7 @@ en:
       actions:
         add: Add
         cancel: Cancel
+        clear_filters: Clear Filters
         clone: Clone
         continue: Continue
         create: Create
@@ -300,6 +301,7 @@ en:
         products_marked_as: Products marked as
         properties: Properties
         search: Search
+        search_all_products_by_name_or_sku: Search all products by name or sku
         select_from_prototype: Select from prototype
         stock: Stock
         variants: Variants

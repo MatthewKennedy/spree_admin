@@ -22,17 +22,16 @@
         <%#-------------------------------------------------%>
         <main class="col-12 col-lg-9 col-xl-10 offset-lg-3 offset-xl-2 main <%= "tabsAndActionsShim" if content_for?(:page_tabs) %>" id="main-part">
           <div class="row">
+            <div class="p-0">
+              <%#-------------------------------------------------%>
+              <%# Content Header (page title/actions)             %>
+              <%#-------------------------------------------------%>
+              <%= render partial: 'spree/admin/shared/content_header' %>
 
-            <%#-------------------------------------------------%>
-            <%# Content Header (page title/actions)             %>
-            <%#-------------------------------------------------%>
-            <%= render partial: 'spree/admin/shared/content_header' %>
-
-            <%#-------------------------------------------------%>
-            <%# Main content                                    %>
-            <%#-------------------------------------------------%>
-            <div>
-              <div id="contentBody" class="container mb-5 p-0">
+              <%#-------------------------------------------------%>
+              <%# Main content                                    %>
+              <%#-------------------------------------------------%>
+              <div id="contentBody" class="container mb-5">
                 <%= yield %>
               </div>
             </div>
