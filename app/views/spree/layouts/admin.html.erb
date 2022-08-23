@@ -5,6 +5,7 @@
   </head>
 
   <body class="admin">
+
     <%#-------------------------------------------------%>
     <%# Main content                                    %>
     <%#-------------------------------------------------%>
@@ -21,6 +22,7 @@
         <%#-------------------------------------------------%>
         <main class="col-12 col-lg-9 col-xl-10 offset-lg-3 offset-xl-2 main <%= "tabsAndActionsShim" if content_for?(:page_tabs) %>" id="main-part">
           <div class="row">
+
             <%#-------------------------------------------------%>
             <%# Content Header (page title/actions)             %>
             <%#-------------------------------------------------%>
@@ -38,6 +40,7 @@
         </main>
       </div>
     </div>
+
     <%#-------------------------------------------------%>
     <%# Alerts                                          %>
     <%#-------------------------------------------------%>
@@ -52,10 +55,7 @@
     <%# Universal Modal & OffCanvas                     %>
     <%#-------------------------------------------------%>
     <%= turbo_frame_tag :modal %>
-    <%= turbo_frame_tag :offcanvas_top %>
-    <%= turbo_frame_tag :offcanvas_right %>
-    <%= turbo_frame_tag :offcanvas_bottom %>
-    <%= turbo_frame_tag :offcanvas_left %>
+    <%= turbo_frame_tag :offcanvas %>
 
     <%#-------------------------------------------------%>
     <%# Custom Confirm Dialog                           %>

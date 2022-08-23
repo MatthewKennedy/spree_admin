@@ -1,8 +1,8 @@
-<%= content_for :offcanvas_right_title do %>
+<%= content_for :offcanvas_title do %>
   <%= I18n.t('spree.admin.more_filters') %>
 <% end %>
 
-<%= content_for :offcanvas_right_content do %>
+<%= content_for :offcanvas_content do %>
   <%= search_form_for [:admin, @search], id: "moreFilterForm", data: {controller: "form--autosave", turbo_frame: :index_table, form__reset_target: "resetable"} do |f| %>
     <div class="accordion" id="accordionPanelsStayOpenExample">
       <div class="accordion-item">
@@ -42,7 +42,7 @@
     <%= f.submit I18n.t('spree.admin.actions.submit'), data: {form__autosave_target: "submitButton"} %>
   <% end %>
 
-  <%= content_for :offcanvas_right_footer do %>
+  <%= content_for :offcanvas_footer do %>
     <div class="flex-fill">
       <%= link_to "Clear Filters", spree.admin_products_path, class: "btn btn-outline-secondary", data: {turbo_frame: :index_table, action: "form--reset#clearForm"} %>
     </div>
@@ -51,4 +51,4 @@
     </div>
   <% end %>
 <% end %>
-<%= render partial: "spree/admin/shared/offcanvas_right" %>
+<%= render partial: "spree/admin/shared/offcanvas", locals: { settings: 'offcanvas-end'} %>

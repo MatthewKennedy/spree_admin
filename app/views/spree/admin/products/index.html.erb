@@ -24,7 +24,7 @@
     <li><%= sort_link @search, :master_default_price_amount, Spree.t(:price), {}, {title: 'admin_products_listing_price_title', class: 'dropdown-item'} %>
     <li><%= sort_link @search, :status, Spree.t(:status), {default_order: :asc}, {title: 'Sort by Status', class: 'dropdown-item'} %></li>
   </ul>
-  <%= link_to I18n.t('spree.admin.more_filters'), spree.filter_admin_products_path(request.query_parameters), class: "btn btn-outline-secondary", data: {turbo_frame: :offcanvas_right} %>
+  <%= link_to I18n.t('spree.admin.more_filters'), spree.filter_admin_products_path(request.query_parameters), class: "btn btn-outline-secondary", data: {turbo_frame: :offcanvas} %>
 <% end %>
 
   <% content_for :index_table do %>
