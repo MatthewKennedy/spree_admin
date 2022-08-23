@@ -273,6 +273,7 @@ en:
         add_new_properties_from_prototype: Add new properties from prototype
         add_new_property: Add new property
         add_stock: Add stock
+        address: Address
         all_products: All Products
         archived: Archived
         create_your_first_variant_for_this_product: Create your first variant for this product
@@ -487,6 +488,11 @@ en:
       user_rule:
         choose_users: Choose users
       users:
+        company: Company
+        email: Email
+        first_name: First name
+        last_name: Last name
+        name_and_email: Name and email
         users: Users
       utilities:
         preview: Preview %{name}

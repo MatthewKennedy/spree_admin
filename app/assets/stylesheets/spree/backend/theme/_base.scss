@@ -10,10 +10,6 @@
     --bs-accordion-border-color: transparent;
   }
 
-  .card {
-
-  }
-
   .badge {
     --bs-badge-font-weight: 300;
   }
@@ -27,6 +23,10 @@
 
   .modal {
     --bs-modal-footer-gap: 0.5rem;
+  }
+
+  .offcanvas {
+    --bs-offcanvas-height: 90vh;
   }
 
   // Universal disabled on link or button element

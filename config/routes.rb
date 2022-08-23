@@ -237,6 +237,10 @@ Spree::Core::Engine.add_routes do
 
     # Users
     resources :users do
+      collection do
+        get :filter
+      end
+
       member do
         get :addresses
         put :addresses

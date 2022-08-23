@@ -5,6 +5,10 @@ module Spree
 
       after_action :sign_in_if_change_own_password, only: :update
 
+      def filter
+        collection
+      end
+
       def show
         redirect_to spree.edit_admin_user_path(@user)
       end
@@ -59,18 +63,24 @@ module Spree
         @orders = @search.result.page(params[:page])
       end
 
+      protected
+
       def model_class
         Spree.user_class
       end
-
-      protected
 
       def collection
         return @collection if @collection.present?
 
         @collection = super
+
+        per_page_limit = params[:per_page] || Spree::Backend::Config[:admin_users_per_page]
+
         @search = @collection.ransack(params[:q])
-        @collection = @search.result.page(params[:page]).per(Spree::Backend::Config[:admin_users_per_page])
+        @collection = @search.result
+        @pagy, @collection = pagy(@collection, items: per_page_limit)
+
+        @collection
       end
 
       private

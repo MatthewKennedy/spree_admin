@@ -6,46 +6,17 @@
   <%= link_to_with_icon Spree.t(:new_user), spree.new_admin_user_url, class: "btn-primary btn", icon: 'plus-square.svg', id: 'admin_new_user_link' %>
 <% end if can? :create, Spree::user_class %>
 
-<% content_for :table_filter_title do %>
-  <%= Spree.t(:search) %>
+<% content_for :index_table_filter_tabs do %>
+  <%#= link_to I18n.t('admin.product.all'), spree.admin_users_path, class: "#{'active' if params[:q][:spree_admin_eq] == 'admin' }" %>
+  <%#= link_to I18n.t('admin.product.admin'), params.merge({q: {role_eq: :admin}}).permit!, class: "#{'active' if params[:q][:role_eq] == 'draft'}" %>
 <% end %>
 
-<% content_for :table_filter do %>
-  <div data-hook="admin_users_index_search">
-    <%= search_form_for [:admin, @search], url: spree.admin_users_url do |f| %>
-      <div class="form-group">
-        <%= f.label :email_cont, Spree.t(:email) %>
-        <%= f.email_field :email_cont, class: "form-control js-quick-search-target js-filterable" %>
-      </div>
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="form-group">
-            <%= f.label :bill_address_firstname_cont, Spree.t(:first_name) %>
-            <%= f.text_field :bill_address_firstname_cont, class: 'form-control js-filterable' %>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="form-group">
-            <%= f.label :bill_address_lastname_cont, Spree.t(:last_name) %>
-            <%= f.text_field :bill_address_lastname_cont, class: 'form-control js-filterable' %>
-          </div>
-        </div>
-      </div>
-      <% if Spree::Config[:company] %>
-        <div class="form-group">
-          <%= f.label :bill_address_company_cont, Spree.t(:company) %>
-          <%= f.text_field :bill_address_company_cont, class: 'form-control js-filterable' %>
-        </div>
-      <% end %>
-      <div data-hook="admin_users_index_search_buttons" class="form-actions">
-        <%= button Spree.t(:search), 'search.svg' %>
-      </div>
-    <% end %>
-  </div>
+<% content_for :index_table_filter_buttons do %>
+  <%= link_to I18n.t('spree.admin.more_filters'), spree.filter_admin_users_path(request.query_parameters), class: "btn btn-outline-secondary", data: {turbo_frame: :offcanvas} %>
 <% end %>
 
-<% if @users.any? %>
-  <div class="table-responsive border rounded bg-white">
+<% content_for :index_table do %>
+  <% if @users.any? %>
     <table class="table" id="listing_users" data-hook>
       <thead class="text-muted">
         <tr data-hook="admin_users_index_headers">
@@ -69,12 +40,19 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-<% else %>
-  <div class="text-center no-objects-found m-5">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree.user_class)) %>,
-    <%= link_to Spree.t(:add_one), new_object_url %>!
-  </div>
+  <% else %>
+    <div class="text-center no-objects-found m-5">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree.user_class)) %>,
+      <%= link_to Spree.t(:add_one), new_object_url %>!
+    </div>
+  <% end %>
 <% end %>
 
-<%= paginate @users %>
+<%#-------------------------------------------------%>
+<%# Render the index_table partial passing a        %>
+<%# search_field_value and search_field_placeholder %>
+<%# text if you want to add a search bar            %>
+<%#-------------------------------------------------%>
+  <%= render partial: "spree/admin/shared/index_table",
+             locals: { search_field_value: :email_cont,
+                       search_field_placeholder: I18n.t('spree.admin.products.search_all_products_by_name_or_sku') } %>
