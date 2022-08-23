@@ -4,7 +4,7 @@ module Spree
       include Spree::Admin::ProductConcern
       helper "spree/admin/products"
 
-      before_action :load_data, except: :index
+      before_action :load_data, except: [:index, :bulk_update_status]
       before_action :set_product_defaults, only: :new
 
       create.before :create_before
@@ -14,6 +14,21 @@ module Spree
 
       def filter
         collection
+      end
+
+      def bulk_update_status
+        @selected_products = Product.where(id: params.fetch(:product_ids, []).compact)
+
+        if params[:button] == "active"
+          @selected_products.update_all(status: :active)
+        elsif params[:button] == "draft"
+          @selected_products.update_all(status: :draft)
+        elsif params[:button] == "archive"
+          @selected_products.update_all(status: :archived)
+        end
+
+        flash[:success] = "#{@selected_products.count} #{I18n.t("spree.admin.products.products_marked_as")} #{params[:button].capitalize}"
+        redirect_to action: :index
       end
 
       def show

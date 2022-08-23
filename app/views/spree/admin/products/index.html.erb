@@ -42,13 +42,14 @@
              <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                Bulk Actions
              </a>
-
-             <ul class="dropdown-menu">
-               <li><a class="dropdown-item" href="#">Set to Active</a></li>
-               <li><a class="dropdown-item" href="#">Set to Draft</a></li>
+             <div class="dropdown-menu">
+               <%= form_with url: spree.bulk_update_status_admin_products_path, method: :patch, id: :bulk_actions_form, data: {turbo_frame: :index_table} do |form| %>
+                 <%= form.button "Active", value: "active",class: "dropdown-item" %>
+                 <%= form.button "Draft", value: "draft",class: "dropdown-item" %>
+                 <%= form.button "Archive", value: "archive",class: "dropdown-item" %>
+               <% end %>
                <hr>
-               <li><a class="dropdown-item" href="#">Something else here</a></li>
-             </ul>
+             </div>
            </div>
           </th>
           <th scope="col" colspan="2" data-input--checkbox-state-target="initialPanel">
@@ -76,7 +77,7 @@
             <tr <%== "style='color: red;'" if product.deleted? %> id="<%= dom_id(product) %>" data-stream-exit-class="animate__fadeOut">
               <td>
                 <div class="form-check d-flex justify-content-center m-0 ms-2">
-                  <%= check_box_tag "product_ids[]", product.id, nil, {class: "form-check-input", multiple: true, form: :bulk_actions_form, data: { input__checkbox_state_target: "checkbox"} } %>
+                  <%= check_box_tag "product_ids[]", product.id, nil, {multiple: true, form: :bulk_actions_form,class: "form-check-input", multiple: true, form: :bulk_actions_form, data: { input__checkbox_state_target: "checkbox"} } %>
                 </div>
               </td>
               <td style="width:50px;" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="mini-img">

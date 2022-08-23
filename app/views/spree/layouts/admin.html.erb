@@ -38,18 +38,10 @@
         </main>
       </div>
     </div>
-
-    <%#-------------------------------------------------%>
-    <%# Insert footer scripts here                      %>
-    <%#-------------------------------------------------%>
-    <div data-hook="admin_footer_scripts"></div>
-
     <%#-------------------------------------------------%>
     <%# Alerts                                          %>
     <%#-------------------------------------------------%>
-    <div id="FlashAlertsContainer" class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-5">
-      <%= flash_alert(flash) %>
-    </div>
+    <%= flash_alert(flash) %>
 
     <%#-------------------------------------------------%>
     <%# Mobile Buttons                                  %>
@@ -57,11 +49,13 @@
     <%= render partial: 'spree/admin/shared/mobile_only_controles' %>
 
     <%#-------------------------------------------------%>
-    <%# Universal Modal                                 %>
+    <%# Universal Modal & OffCanvas                     %>
     <%#-------------------------------------------------%>
     <%= turbo_frame_tag :modal %>
-
+    <%= turbo_frame_tag :offcanvas_top %>
     <%= turbo_frame_tag :offcanvas_right %>
+    <%= turbo_frame_tag :offcanvas_bottom %>
+    <%= turbo_frame_tag :offcanvas_left %>
 
     <%#-------------------------------------------------%>
     <%# Custom Confirm Dialog                           %>
@@ -72,5 +66,10 @@
     <%# Store Switcher                                  %>
     <%#-------------------------------------------------%>
     <%= render partial: 'spree/admin/shared/store_switcher' %>
+
+    <%#-------------------------------------------------%>
+    <%# Insert Footer JavaScript                      %>
+    <%#-------------------------------------------------%>
+    <div data-hook="admin_footer_scripts"></div>
   </body>
 </html>

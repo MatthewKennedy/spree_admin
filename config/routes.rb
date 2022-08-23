@@ -104,6 +104,7 @@ Spree::Core::Engine.add_routes do
     resources :products do
       collection do
         get :filter
+        patch :bulk_update_status
       end
       member do
         post :update_availability

@@ -1,18 +1,20 @@
 <% show_pagnation =  pagnation ||= false %>
 <%= turbo_frame_tag :index_table do %>
-<div class="border rounded bg-white">
-   <%= render partial: 'spree/admin/shared/index_table_filters', locals: {search_field_value: search_field_value, search_field_placeholder: search_field_placeholder} %>
+  <div class="border rounded bg-white">
+     <%= render partial: 'spree/admin/shared/index_table_filters', locals: {search_field_value: search_field_value, search_field_placeholder: search_field_placeholder} %>
 
-  <div class="col-12 p-0">
-    <div class="table-responsive">
-      <%= yield :index_table if content_for?(:index_table) %>
+    <div class="col-12 p-0">
+      <div class="table-responsive">
+        <%= yield :index_table if content_for?(:index_table) %>
+      </div>
     </div>
+
+    <% unless @pagy.nil? %>
+      <div class="border-top pt-3">
+        <%== render partial: 'spree/admin/shared/pagination', locals: {pagy: @pagy} %>
+      </div>
+    <% end %>
   </div>
 
-  <% unless @pagy.nil? %>
-    <div class="border-top pt-3">
-      <%== render partial: 'spree/admin/shared/pagination', locals: {pagy: @pagy} %>
-    </div>
-  <% end %>
-</div>
+  <%= flash_alert(flash) %>
 <% end %>

@@ -8,9 +8,6 @@ en:
       draft: Draft
   spree:
     admin:
-      ransack:
-        descending: (descending)
-        ascending: (ascending)
       actions:
         add: Add
         cancel: Cancel
@@ -300,6 +297,7 @@ en:
         price_was: Price was
         pricing: Pricing
         products: Products
+        products_marked_as: Products marked as
         properties: Properties
         search: Search
         select_from_prototype: Select from prototype
