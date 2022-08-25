@@ -242,6 +242,7 @@ en:
         abandoned_checkouts: Abandoned Checkouts
         all_orders: All Orders
         draft_orders: Draft Orders
+        state: State
       organization: Organization
       payment: Payment
       payment_states:
@@ -303,6 +304,7 @@ en:
         products_marked_as: Products marked as
         properties: Properties
         search: Search
+        search_all_orders_by_number: Search all orders by number
         search_all_products_by_name_or_sku: Search all products by name or sku
         select_from_prototype: Select from prototype
         stock: Stock
@@ -482,7 +484,9 @@ en:
       total: Total
       url: URL
       user:
+        add_new_address: Add new address
         available_store_credit: User has %{amount} in Store Credit available.
+        manage_addresses: Manage addresses
         no_store_credit: User has no Store Credit available.
         store_credits: Store Credits
       user_rule:

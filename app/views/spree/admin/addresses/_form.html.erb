@@ -3,6 +3,15 @@
 <% requireds = ['firstname', 'lastname', 'address1', 'city'] %>
 
 <div data-hook="address_fields">
+  <% if @user %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+  <% end %>
+
+  <%= f.field_container :label do %>
+    <%= f.text_field :label %>
+    <%= f.label :label , Spree.t(:label) %>
+  <% end %>
+
   <h6 class="text-muted">International Location</h6>
   <!-- COUNTRY -->
   <%= field_container :country, nil do %>

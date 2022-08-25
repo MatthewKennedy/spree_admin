@@ -6,24 +6,116 @@
   <%= link_to_with_icon Spree.t(:create_new_order), spree.new_admin_order_path(user_id: @user.id), class: "btn-primary btn", icon: 'plus-square.svg' if can?(:create, Spree::Order) %>
 <% end %>
 
-<div data-hook="admin_user_edit_general_settings" class="card mb-3">
-  <div class="card-header">
-    <h5 class="card-title mb-0 h6">
-      <%= Spree.t(:general_settings) %>
-    </h5>
+<div class="row">
+  <div class="col-12 col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title"> Stats</h5>
+      </div>
+      <div class="card-body">
+        <%= render 'lifetime_stats' %>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">
+          <%= Spree.t(:general_settings) %>
+        </h5>
+      </div>
+
+      <div class="card-body">
+        <div data-hook="admin_user_edit_form">
+          <%= form_with model: [:admin, @user] do |f| %>
+            <%= render partial: 'form', locals: { f: f } %>
+
+            <div data-hook="admin_user_edit_form_button">
+              <%= render partial: 'spree/admin/shared/resource_actions', locals: { collection_url: spree.admin_users_url } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="card-body">
-    <div data-hook="admin_user_edit_form">
-      <%= form_with model: [:admin, @user], as: :user, url: spree.admin_user_url(@user), method: :put do |f| %>
-        <%= render partial: 'form', locals: { f: f } %>
-
-        <div data-hook="admin_user_edit_form_button">
-          <%= render partial: 'spree/admin/shared/resource_actions', locals: { collection_url: spree.admin_users_url } %>
+  <div class="col-12 col-md-4">
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="flex-fill">
+          <h5 class="card-title">
+            <%= Spree.t(:addresses) %>
+          </h5>
         </div>
-      <% end %>
+        <div>
+          <%= link_to "Manage", spree.addresses_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary", data: {turbo_frame: :modal} %>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="flex-fill">
+            <h6>Billing Address</h6>
+          </div>
+        </div>
+
+        <% if @user.bill_address.present? %>
+          <div>
+            <%= @user.bill_address.full_name %><br>
+            <% if @user.bill_address.company.present? %>
+              <%= @user.bill_address.company %><br>
+            <% end %>
+            <%= @user.bill_address.address1 %><br>
+            <% if @user.bill_address.address2.present? %>
+              <%= @user.bill_address.address2 %><br>
+            <% end %>
+            <%= @user.bill_address.city %><br>
+            <% if @user.bill_address.state.present? %>
+              <%= @user.bill_address.state %><br>
+            <% end %>
+            <% if @user.bill_address.zipcode.present? %>
+              <%= @user.bill_address.zipcode %><br>
+            <% end %>
+            <%= @user.bill_address.country %>
+          </div>
+        <% else %>
+         <div class="text-center alert alert-info">
+           No default Billing addresses set. Add a new address and then open the address manager to select a default Billing address
+         </div>
+        <% end %>
+
+        <hr>
+
+        <div class="d-flex">
+          <div class="flex-fill">
+            <h6>Shipping Address</h6>
+          </div>
+        </div>
+
+        <% if @user.ship_address.present? %>
+          <div>
+            <%= @user.ship_address.full_name %><br>
+            <% if @user.ship_address.company.present? %>
+              <%= @user.ship_address.company %><br>
+            <% end %>
+            <%= @user.ship_address.address1 %><br>
+            <% if @user.ship_address.address2.present? %>
+              <%= @user.ship_address.address2 %><br>
+            <% end %>
+            <%= @user.ship_address.city %><br>
+            <% if @user.ship_address.state.present? %>
+              <%= @user.ship_address.state %><br>
+            <% end %>
+            <% if @user.ship_address.zipcode.present? %>
+              <%= @user.ship_address.zipcode %><br>
+            <% end %>
+            <%= @user.ship_address.country %>
+          </div>
+        <% else %>
+         <div class="text-center alert alert-info">
+           No default Shipping addresses set. Add a new address and then open the address manager to select a default Shipping address.
+         </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-<%= render 'spree/admin/users/lifetime_stats' %>

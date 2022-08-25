@@ -3,11 +3,7 @@ Spree::Core::Engine.add_routes do
     root to: "dashboard#show"
 
     # Addresses
-    resources :addresses do
-      member do
-        get :edit_modal
-      end
-    end
+    resources :addresses
 
     # Authentication
     resources :oauth_applications
@@ -56,6 +52,10 @@ Spree::Core::Engine.add_routes do
 
     # Orders
     resources :orders, except: [:show] do
+      collection do
+        get :filter
+      end
+
       member do
         post :resend
         put :open_adjustments

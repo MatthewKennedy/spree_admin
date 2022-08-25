@@ -1,0 +1,75 @@
+<%= content_for :offcanvas_title do %>
+  <%= I18n.t('spree.admin.more_filters') %>
+<% end %>
+
+<%= content_for :offcanvas_content do %>
+  <%= search_form_for [:admin, @search], id: "moreFilterForm", data: {controller: "form--autosave", turbo_frame: :index_table, form__reset_target: "resetable"} do |f| %>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+          <button class="accordion-button btn btn-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#orderDateRangeFilterPanel" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Date Range
+          </button>
+        </h2>
+        <div id="orderDateRangeFilterPanel" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+          <div class="accordion-body">
+            <%= render partial: 'spree/admin/shared/date_picker_from',  locals: { f: f,
+                                                                                  from_field: :created_at_gt,
+                                                                                  to_field: :created_at_lt,
+                                                                                  value: params[:q][:created_at_gt],
+                                                                                  data_max_date: params[:q][:created_at_lt] } %>
+            <%= render partial: 'spree/admin/shared/date_picker_to',    locals: { f: f,
+                                                                                  to_field: :created_at_lt,
+                                                                                  from_field: :created_at_gt,
+                                                                                  value: params[:q][:created_at_lt],
+                                                                                  data_min_date: params[:q][:created_at_gt] } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+          <button class="accordion-button btn btn-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#orderSearchFilterPanel" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            <%= I18n.t('spree.admin.products.search') %>
+          </button>
+        </h2>
+        <div id="orderSearchFilterPanel" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+          <div class="accordion-body">
+            <%= f.label :number_cont, Spree.t(:order_number) %>
+            <%= f.text_field :number_cont, class: "form-control", data: { action: 'form--autosave#save' } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+          <button class="accordion-button btn btn-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#orderStateFilterPanel" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            <%= I18n.t('spree.admin.orders.state') %>
+          </button>
+        </h2>
+        <div id="orderStateFilterPanel" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+          <div class="accordion-body">
+            <%= f.select :state_eq,
+              Spree::Order.state_machines[:state].states.map {|s| [I18n.t("spree.admin.order_state.#{s.name}"), s.value]},
+              { include_blank: true },
+              class: 'js-filterable',
+              data: {controller: 'ts--select'} %>
+            <%= f.select :payment_state_eq, Spree::Order::PAYMENT_STATES.map {|s| [I18n.t("spree.admin.payment_states.#{s}"), s]}, { include_blank: true }, class: 'js-filterable', data: {controller: 'ts--select'} %>
+            <%= f.select :shipment_state_eq, Spree::Order::SHIPMENT_STATES.map {|s| [I18n.t("spree.admin.shipment_states.#{s}"), s]}, { include_blank: true }, class: 'js-filterable', data: {controller: 'ts--select'} %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= f.submit I18n.t('spree.admin.actions.submit'), data: {form__autosave_target: "submitButton"} %>
+  <% end %>
+
+  <%= content_for :offcanvas_footer do %>
+    <div class="flex-fill">
+      <%= link_to I18n.t('spree.admin.actions.clear_filters'), spree.admin_products_path, class: "btn btn-outline-secondary", data: {turbo_frame: :index_table, action: "form--reset#clearForm"} %>
+    </div>
+    <div data-hook="admin_products_index_search_buttons" class="form-actions">
+      <button type="button" class="btn-primary btn" data-bs-dismiss="offcanvas" aria-label="Close"><%= I18n.t('spree.admin.actions.done') %></button>
+    </div>
+  <% end %>
+<% end %>
+<%= render partial: "spree/admin/shared/offcanvas", locals: {settings: 'offcanvas-end'} %>
