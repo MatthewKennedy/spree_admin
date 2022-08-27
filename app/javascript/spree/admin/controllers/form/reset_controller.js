@@ -1,16 +1,16 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['resetable']
+  static targets = ['resettable']
 
   resetForm () {
-    if (this.hasResetableTarget) this.resetableTarget.reset()
+    if (this.hasResettableTarget) this.resettableTarget.reset()
   }
 
   clearForm () {
-    const elements = this.resetableTarget.elements
+    const elements = this.resettableTarget.elements
 
-    this.resetableTarget.reset()
+    this.resettableTarget.reset()
 
     for (let i = 0; i < elements.length; i++) {
       const fieldType = elements[i].type.toLowerCase()

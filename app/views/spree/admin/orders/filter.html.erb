@@ -3,7 +3,7 @@
 <% end %>
 
 <%= content_for :offcanvas_content do %>
-  <%= search_form_for [:admin, @search], id: "moreFilterForm", data: {controller: "form--autosave", turbo_frame: :index_table, form__reset_target: "resetable"} do |f| %>
+  <%= search_form_for [:admin, @search], id: "moreFilterForm", data: {controller: "form--autosave", turbo_frame: :index_table, form__reset_target: "resettable"} do |f| %>
     <div class="accordion" id="accordionPanelsStayOpenExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
