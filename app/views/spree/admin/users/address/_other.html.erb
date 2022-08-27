@@ -1,0 +1,56 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">Other Addresses</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+      <% @user.addresses.each do |address| %>
+        <% next if address == @user.bill_address || address == @user.ship_address %>
+          <div class="col-12 col-md-4">
+            <div class="mb-4" id="<%= dom_id(address) %>">
+              <div class="mb-2">
+                <% if address.label.present? %>
+                  <h6><span class="badge bg-secondary"><%= address.label %></span></h6>
+                <% end %>
+                <span class="text-muted">Name:</span> <%= address.full_name %><br>
+                <% if address.company.present? %>
+                  <span class="text-muted">Company:</span> <%= address.company %><br>
+                <% end %>
+                <span class="text-muted">Street:</span> <%= address.address1 %><br>
+                <% if address.address2.present? %>
+                  <span class="text-muted">Address Cont:</span> <%= address.address2 %><br>
+                <% end %>
+                <span class="text-muted">City:</span> <%= address.city %><br>
+                <% if address.state.present? %>
+                  <span class="text-muted">State:</span> <%= address.state %><br>
+                <% end %>
+                <% if address.zipcode.present? %>
+                  <span class="text-muted">Zip Code:</span> <%= address.zipcode %><br>
+                <% end %>
+                <span class="text-muted">Country:</span> <%= address.country %>
+                <% if address.phone.present? %>
+                  <br>
+                  <span class="text-muted">Phone:</span> <%= address.phone %><br>
+                <% end %>
+              </div>
+              <div>
+                <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_for_billing_form do |f| %>
+                  <%= f.hidden_field :bill_address_id, value: address.id %>
+                <% end unless address == @user.bill_address %>
+                <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_for_shipping_form do |f| %>
+                  <%= f.hidden_field :ship_address_id, value: address.id %>
+                <% end unless address == @user.ship_address %>
+
+                <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_for_billing_form"}) %>
+                <%= button(nil, "truck.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_for_shipping_form"}) %>
+                <%= link_to_edit(address, url: spree.edit_admin_address_path(address, user_id: @user.id), data: {turbo_frame: :modal}) %>
+                <%= link_to_delete(address, url: spree.admin_address_path(address)) %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

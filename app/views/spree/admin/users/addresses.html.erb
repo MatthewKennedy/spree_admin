@@ -1,56 +1,14 @@
-<% content_for :modal_header do %>
-  <h5 class="modal-title"><%= I18n.t('spree.admin.user.manage_addresses') %></h5>
-  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% content_for :page_title do %>
+  <%= breadcrumb_builder(link_one_uri: spree.admin_users_path, link_one_text: I18n.t('spree.admin.users.users'), link_two_uri: spree.edit_admin_user_path(@user), link_two_text: @user.first_name, current_page_name: I18n.t('spree.admin.user.addresses')) %>
 <% end %>
 
-<% content_for :modal_body do %>
-  <div class="container">
-    <% @user.addresses.each do |address| %>
-      <div class="mb-3 border-bottom pb-3 d-flex" id="<%= dom_id(address) %>">
-        <div class="flex-fill">
-          <% if address.label.present? %>
-            <strong><%= address.label %></strong><br>
-          <% end %>
-          <%= address.full_name %><br>
-          <% if address.company.present? %>
-            <%= address.company %><br>
-          <% end %>
-          <%= address.address1 %><br>
-          <% if address.address2.present? %>
-            <%= address.address2 %><br>
-          <% end %>
-          <%= address.city %><br>
-          <% if address.state.present? %>
-            <%= address.state %><br>
-          <% end %>
-          <% if address.zipcode.present? %>
-            <%= address.zipcode %><br>
-          <% end %>
-          <%= address.country %><br>
-        </div>
-        <div>
-          <%#= link_to I18n.t('spree.admin.actions.edit'), spree.edit_admin_address_path(address, user_id: @user.id), class: "btn btn-sm btn-outline-secondary w-100 my-1", data: {turbo_frame: :modal} %>
-
-          <%= form_with model: [:admin, @user], data: {turbo_frame: :_top} do |f| %>
-            <%= f.hidden_field :bill_address_id, value: address.id %>
-            <%= f.submit "Use for Billing", class: "btn btn-sm btn-outline-secondary w-100 my-1" %>
-          <% end unless address == @user.bill_address %>
-
-          <%= form_with model: [:admin, @user], data: {turbo_frame: :_top} do |f| %>
-            <%= f.hidden_field :ship_address_id, value: address.id %>
-            <%= f.submit "Use for Shipping", class: "btn btn-sm btn-outline-secondary w-100 my-1" %>
-          <% end unless address == @user.ship_address %>
-          <%= link_to_edit(address, url: spree.edit_admin_address_path(address, user_id: @user.id)) %>
-          <%= link_to_delete(address, url: spree.admin_address_path(address)) %>
-          <%#= link_to I18n.t('spree.admin.actions.delete'), spree.edit_admin_address_path(address, user_id: @user.id), class: "btn btn-sm btn-outline-danger w-100 my-1", data: {turbo_frame: :modal} %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+<% content_for :page_actions do %>
+  <%= link_to_with_icon Spree.t(:add_new_address), spree.new_admin_address_path(address: {user_id: @user.id}), class: "btn btn-secondary", icon: 'plus-square.svg', data: {turbo_frame: :modal} %>
 <% end %>
 
-<% content_for :modal_footer do %>
-  <%= link_to_with_icon Spree.t(:add_new_address), spree.new_admin_address_path(user_id: @user.id), class: "btn btn-secondary", icon: 'plus-square.svg', data: {turbo_frame: :modal} %>
-<% end %>
-
-<%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog modal-dialog-centered modal-lg' } %>
+<div class="row" id="defaultAddresses">
+  <%= render partial: 'spree/admin/users/address/default' %>
+</div>
+<div class="row" id="otherAddresses">
+  <%= render partial: 'spree/admin/users/address/other' %>
+</div>

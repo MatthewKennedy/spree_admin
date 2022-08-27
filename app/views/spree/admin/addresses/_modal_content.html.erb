@@ -1,0 +1,15 @@
+<% content_for :modal_body do %>
+  <div class="container" data-controller="form-validation">
+    <%= form_with model: [:admin, @address], data: {turbo_frame: :main_content_area, modal_target: "mainForm", action: "turbo:submit-end->form-validation#submitEnd"}, id: :address_form do |form| %>
+      <%= render partial: 'form', locals: { f: form } %>
+
+      <%= button_tag :update_country, formaction: spree.update_country_admin_addresses_path, formmethod: :post, style: 'display: none;', data: { form_validation_target: "submitBtn" } %>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :modal_footer do %>
+  <%= submit_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: :address_form, data: {action: "modal#closeOnSubmit"}) %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal' %>

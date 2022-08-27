@@ -1,17 +1,6 @@
-<% content_for :modal_body do %>
-  <div class="container">
-    <%= turbo_frame_tag :address_fields, data: { controller: "form-validation" } do %>
-      <%= form_with model: [:admin, @address], data: {turbo: true, turbo_frame: '_top'}, id: :address_form do |form| %>
-        <%= render partial: 'form', locals: { f: form } %>
-      <% end %>
-      <%#= button_tag "Update Address", formaction: spree.admin_address_path(@address), formmethod: "patch", data: { form_validation_target: "submitBtn", turbo_frame: :address_fields } %>
-    <% end %>
-  </div>
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= I18n.t('spree.admin.address.new_address') %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 <% end %>
 
-<% content_for :modal_footer do %>
-  <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.admin.actions.cancel') %></button>
-  <%= submit_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: "address_form" ) %>
-<% end %>
-
-<%= render partial: 'spree/admin/shared/modal' %>
+<%= render partial: 'modal_content' %>

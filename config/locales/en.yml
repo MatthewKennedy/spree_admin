@@ -25,7 +25,16 @@ en:
       active: Active
       add_option_types_to_this_product_to_begin_creating_variants: Add option types to this product to begin creating variants
       address:
+        address_label: Address Label
+        contact_details: Contact Details
+        edit_address: Edit Address
         emirate: Emirate
+        first_name: First name
+        label_info: Identify this address with a label e.g.; Work, Home...
+        last_name: Last name
+        location: Location
+        new_address: New Address
+        phone: Phone
         post_code: Post Code
         state_territory: State / Territory
         street: Street
@@ -130,8 +139,8 @@ en:
           cannot_remove_icon: Cannot remove icon
       execution_time: Execution Time
       expires_at: Expires at
-      filter: Filter
       kind: Kind
+      label: Label
       language: Language
       learn_more: Learn more
       limit_usage_to: Limit usage to
@@ -484,10 +493,15 @@ en:
       total: Total
       url: URL
       user:
-        add_new_address: Add new address
+        addresses: Addresses
         available_store_credit: User has %{amount} in Store Credit available.
-        manage_addresses: Manage addresses
+        billing_address: Billing address
+        billing_addresses: Billing addresses
+        default_address: Default Address
         no_store_credit: User has no Store Credit available.
+        shipping_address: Shipping address
+        shipping_addresses: Shipping addresses
+        stats: Stats
         store_credits: Store Credits
       user_rule:
         choose_users: Choose users
@@ -496,6 +510,7 @@ en:
         email: Email
         first_name: First name
         last_name: Last name
+        manage: Manage
         name_and_email: Name and email
         users: Users
       utilities:

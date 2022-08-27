@@ -10,7 +10,7 @@
   <div class="col-12 col-md-8">
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title"> Stats</h5>
+        <h5 class="card-title"><%= I18n.t('spree.admin.user.stats') %></h5>
       </div>
       <div class="card-body">
         <%= render 'lifetime_stats' %>
@@ -47,14 +47,14 @@
           </h5>
         </div>
         <div>
-          <%= link_to "Manage", spree.addresses_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary", data: {turbo_frame: :modal} %>
+          <%= link_to I18n.t('spree.admin.users.manage'), spree.addresses_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary" %>
         </div>
       </div>
 
       <div class="card-body">
         <div class="d-flex">
           <div class="flex-fill">
-            <h6>Billing Address</h6>
+            <h6><%= I18n.t('spree.admin.user.billing_address') %></h6>
           </div>
         </div>
 
@@ -77,17 +77,13 @@
             <% end %>
             <%= @user.bill_address.country %>
           </div>
-        <% else %>
-         <div class="text-center alert alert-info">
-           No default Billing addresses set. Add a new address and then open the address manager to select a default Billing address
-         </div>
         <% end %>
 
         <hr>
 
         <div class="d-flex">
           <div class="flex-fill">
-            <h6>Shipping Address</h6>
+            <h6><%= I18n.t('spree.admin.user.shipping_address') %></h6>
           </div>
         </div>
 
@@ -110,10 +106,6 @@
             <% end %>
             <%= @user.ship_address.country %>
           </div>
-        <% else %>
-         <div class="text-center alert alert-info">
-           No default Shipping addresses set. Add a new address and then open the address manager to select a default Shipping address.
-         </div>
         <% end %>
       </div>
     </div>

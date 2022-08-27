@@ -34,6 +34,13 @@ module Spree
       def addresses
       end
 
+      def update_address
+        if @user.update(permitted_resource_params)
+        else
+          stream_flash_alert(message: I18n.t("spree.admin.products.errors.status_could_not_be_updated"), kind: :error)
+        end
+      end
+
       def orders
         params[:q] ||= {}
         @search = current_store.orders.reverse_chronological.ransack(params[:q].merge(user_id_eq: @user.id))

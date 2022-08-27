@@ -1,4 +1,0 @@
-<%= f.fields_for :bill_address, @user.bill_address || @user.addresses.new(country: current_store.default_country) do |form| %>
-  <%= render partial: 'spree/admin/shared/address_form', locals: { f: form, type: "billing" } %>
-  <%= form.button "Validate", formaction: spree.addresses_admin_user_path(@user), formmethod: "get", data: { turbo_frame: :billing_country_select, form_validation_target: "submitBtn" } %>
-<% end %>
