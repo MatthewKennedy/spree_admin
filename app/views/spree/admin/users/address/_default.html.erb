@@ -18,25 +18,25 @@
           <% if @user.bill_address.label.present? %>
             <h6><span class="badge bg-secondary"><%= @user.bill_address.label %></span></h6>
           <% end %>
-          <span class="text-muted">Name:</span> <%= @user.bill_address.full_name %><br>
+          <span class="text-muted"><%= I18n.t('spree.admin.user.name') %>:</span> <%= @user.bill_address.full_name %><br>
           <% if @user.bill_address.company.present? %>
-            <span class="text-muted">Company:</span> <%= @user.bill_address.company %><br>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.company') %>:</span> <%= @user.bill_address.company %><br>
           <% end %>
-          <span class="text-muted">Street:</span> <%= @user.bill_address.address1 %><br>
+          <span class="text-muted"><%= I18n.t('spree.admin.user.street') %>:</span> <%= @user.bill_address.address1 %><br>
           <% if @user.bill_address.address2.present? %>
-            <span class="text-muted">Address Cont:</span> <%= @user.bill_address.address2 %><br>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.address2') %>:</span> <%= @user.bill_address.address2 %><br>
           <% end %>
-          <span class="text-muted">City:</span> <%= @user.bill_address.city %><br>
+          <span class="text-muted"><%= I18n.t('spree.admin.user.city') %>:</span> <%= @user.bill_address.city %><br>
           <% if @user.bill_address.state.present? %>
-            <span class="text-muted">State:</span> <%= @user.bill_address.state %><br>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.state') %>:</span> <%= @user.bill_address.state %><br>
           <% end %>
           <% if @user.bill_address.zipcode.present? %>
-            <span class="text-muted">Zip Code:</span> <%= @user.bill_address.zipcode %><br>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.zip_code') %>:</span> <%= @user.bill_address.zipcode %><br>
           <% end %>
-          <span class="text-muted">Country:</span> <%= @user.bill_address.country %>
+          <span class="text-muted"><%= I18n.t('spree.admin.user.country') %>:</span> <%= @user.bill_address.country %>
           <% if @user.bill_address.phone.present? %>
             <br>
-            <span class="text-muted">Phone:</span> <%= @user.bill_address.phone %><br>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.phone') %>:</span> <%= @user.bill_address.phone %><br>
           <% end %>
 
           <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_billing_for_both_form do |f| %>
@@ -58,25 +58,25 @@
             <% if @user.ship_address.label.present? %>
               <h6><span class="badge bg-secondary"><%= @user.ship_address.label %></span></h6>
             <% end %>
-            <span class="text-muted">Name:</span> <%= @user.ship_address.full_name %><br>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.name') %>:</span> <%= @user.ship_address.full_name %><br>
             <% if @user.ship_address.company.present? %>
-              <span class="text-muted">Company:</span> <%= @user.ship_address.company %><br>
+              <span class="text-muted"><%= I18n.t('spree.admin.user.company') %>:</span> <%= @user.ship_address.company %><br>
             <% end %>
-            <span class="text-muted">Street:</span> <%= @user.ship_address.address1 %><br>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.street') %>:</span> <%= @user.ship_address.address1 %><br>
             <% if @user.ship_address.address2.present? %>
-              <span class="text-muted">Address Cont:</span> <%= @user.ship_address.address2 %><br>
+              <span class="text-muted"><%= I18n.t('spree.admin.user.address2') %>:</span> <%= @user.ship_address.address2 %><br>
             <% end %>
-            <span class="text-muted">City:</span> <%= @user.ship_address.city %><br>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.city') %>:</span> <%= @user.ship_address.city %><br>
             <% if @user.ship_address.state.present? %>
-              <span class="text-muted">State:</span> <%= @user.ship_address.state %><br>
+              <span class="text-muted"><%= I18n.t('spree.admin.user.state') %>:</span> <%= @user.ship_address.state %><br>
             <% end %>
             <% if @user.ship_address.zipcode.present? %>
-              <span class="text-muted">Zip Code:</span> <%= @user.ship_address.zipcode %><br>
+              <span class="text-muted"><%= I18n.t('spree.admin.user.zip_code') %>:</span> <%= @user.ship_address.zipcode %><br>
             <% end %>
-            <span class="text-muted">Country:</span> <%= @user.ship_address.country %>
+            <span class="text-muted"><%= I18n.t('spree.admin.user.country') %>:</span> <%= @user.ship_address.country %>
             <% if @user.ship_address.phone.present? %>
               <br>
-              <span class="text-muted">Phone:</span> <%= @user.ship_address.phone %><br>
+              <span class="text-muted"><%= I18n.t('spree.admin.user.phone') %>:</span> <%= @user.ship_address.phone %><br>
             <% end %>
 
             <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_shipping_for_both_form do |f| %>

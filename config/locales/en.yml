@@ -493,17 +493,26 @@ en:
       total: Total
       url: URL
       user:
+        address2: Address (Cont)
         addresses: Addresses
         available_store_credit: User has %{amount} in Store Credit available.
         billing_addresses: Billing Addresses
+        city: City
+        company: Company
+        country: Country
         customer: Customer
         default_address: Default Address
         default_addresses: Default Addresses
+        name: Name
         no_store_credit: User has no Store Credit available.
         other_addresses: Other Addresses
+        phone: Phone
         shipping_addresses: Shipping Addresses
+        state: State
         stats: Stats
         store_credits: Store Credits
+        street: Street
+        zip_code: Zip Code
       user_rule:
         choose_users: Choose users
       users:

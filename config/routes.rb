@@ -247,6 +247,7 @@ Spree::Core::Engine.add_routes do
 
       member do
         get :addresses
+        get :customer_details
         put :update_address
         get :items
         get :orders
