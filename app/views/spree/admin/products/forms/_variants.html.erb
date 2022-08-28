@@ -19,7 +19,7 @@
                 <th><%= Spree.t(:options) %></th>
                 <th><%= Spree.t(:kind) %></th>
                 <th class="actions text-end">
-                  <%= link_to_with_icon(Spree.t(:new_variant), spree.new_admin_product_variant_url(@product), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: "_top"}}) if !@product.empty_option_values? and can? :create, Spree::Variant %>
+                  <%= link_to_with_icon(Spree.t(:new_variant), spree.new_admin_product_variant_url(@product), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: :_top}}) if !@product.empty_option_values? and can? :create, Spree::Variant %>
                 </th>
               </tr>
             </thead>
@@ -44,7 +44,7 @@
                 </td>
                 <td class="actions">
                   <span class="d-flex justify-content-end">
-                    <%= link_to_edit(variant, url: spree.edit_admin_product_variant_path(@product, variant), data: {turbo_frame: "_top"}) if can?(:edit, variant) && !variant.deleted? %>
+                    <%= link_to_edit(variant, url: spree.edit_admin_product_variant_path(@product, variant), data: {turbo_frame: :_top}) if can?(:edit, variant) && !variant.deleted? %>
                     <%= link_to_delete(variant, url: spree.admin_product_variant_path(@product, variant)) if can?(:destroy, variant) && !variant.deleted? %>
                   </span>
                 </td>
@@ -63,7 +63,7 @@
           <% if @product.empty_option_values? %>
             <%= I18n.t('spree.admin.add_option_types_to_this_product_to_begin_creating_variants') %>
           <% else %>
-            <%= link_to_with_icon(I18n.t('spree.admin.products.create_your_first_variant_for_this_product'), spree.new_admin_product_variant_url(@product), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: "_top"}}) if can? :create, Spree::Variant %>
+            <%= link_to_with_icon(I18n.t('spree.admin.products.create_your_first_variant_for_this_product'), spree.new_admin_product_variant_url(@product), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: :_top}}) if can? :create, Spree::Variant %>
           <% end %>
         </div>
       <% end %>

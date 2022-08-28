@@ -7,7 +7,7 @@
   <div class="container">
     <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @payment } %>
 
-    <%= form_with model: @payment, url: admin_order_payments_path(@order), data: { turbo: true, turbo_frame: '_top' } do |f| %>
+    <%= form_with model: @payment, url: admin_order_payments_path(@order), data: {turbo_frame: :_top } do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>

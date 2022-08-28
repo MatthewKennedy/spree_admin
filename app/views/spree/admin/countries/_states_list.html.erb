@@ -24,7 +24,7 @@
             <td class="text-center"><%= state.abbr %></td>
             <td class="actions">
               <span class="d-flex justify-content-end">
-                <%= link_to_edit(I18n.t('spree.admin.countries.edit_state'), url: spree.edit_admin_country_state_path(@country, state), data: { turbo: true, turbo_frame: :modal}) if can? :edit, state %>
+                <%= link_to_edit(I18n.t('spree.admin.countries.edit_state'), url: spree.edit_admin_country_state_path(@country, state), data: {turbo_frame: :modal}) if can? :edit, state %>
                 <%= link_to_delete(state, url: spree.admin_country_state_path(@country, state)) if can? :delete, state %>
               </span>
             </td>
