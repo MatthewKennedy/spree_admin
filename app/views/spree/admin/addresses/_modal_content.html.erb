@@ -1,6 +1,6 @@
 <% content_for :modal_body do %>
   <div class="container" data-controller="form-validation">
-    <%= form_with model: [:admin, @address], data: {turbo_frame: :main_content_area, modal_target: "mainForm", action: "turbo:submit-end->form-validation#submitEnd"}, id: :address_form do |form| %>
+    <%= form_with model: [:admin, @address], data: {turbo_frame: :modal_inner, modal_target: "mainForm", action: "turbo:submit-end->form-validation#submitEnd"}, id: :address_form do |form| %>
       <%= render partial: 'form', locals: { f: form } %>
 
       <%= button_tag :update_country, formaction: spree.update_country_admin_addresses_path, formmethod: :post, style: 'display: none;', data: { form_validation_target: "submitBtn" } %>

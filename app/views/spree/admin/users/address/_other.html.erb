@@ -1,13 +1,13 @@
-<div class="col-12">
+<div class="col-12 col-md-8">
   <div class="card">
     <div class="card-header">
-      <h5 class="card-title">Other Addresses</h5>
+      <h5 class="card-title"><%= I18n.t('spree.admin.user.other_addresses') %></h5>
     </div>
     <div class="card-body">
       <div class="row">
       <% @user.addresses.each do |address| %>
-        <% next if address == @user.bill_address || address == @user.ship_address %>
-          <div class="col-12 col-md-4">
+        <% next if address.id == @user.bill_address.id || address.id == @user.ship_address.id %>
+          <div class="col-12 col-md-6">
             <div class="mb-4" id="<%= dom_id(address) %>">
               <div class="mb-2">
                 <% if address.label.present? %>

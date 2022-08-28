@@ -1,15 +1,19 @@
-<div class="col-6">
+<div class="col-12 col-md-4">
   <div class="card">
     <div class="card-header">
       <% if @user.bill_address == @user.ship_address %>
         <h5 class="card-title"><%= I18n.t('spree.admin.user.default_address') %></h5>
         <small class="text-muted">Used for Billing and Shipping</small>
       <% else %>
-        <h5 class="card-title"><%= I18n.t('spree.admin.user.billing_addresses') %></h5>
+        <h5 class="card-title"><%= I18n.t('spree.admin.user.default_addresses') %></h5>
       <% end %>
     </div>
+
     <div class="card-body">
       <% if @user.bill_address.present? %>
+        <% unless @user.bill_address == @user.ship_address %>
+          <h6><%= I18n.t('spree.admin.user.billing_addresses') %></h6>
+        <% end %>
         <div>
           <% if @user.bill_address.label.present? %>
             <h6><span class="badge bg-secondary"><%= @user.bill_address.label %></span></h6>
@@ -41,59 +45,48 @@
           <%= button(nil, "truck.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_billing_for_both_form"}) unless @user.bill_address == @user.ship_address %>
           <%= link_to_edit(@user.bill_address, url: spree.edit_admin_address_path(@user.bill_address, user_id: @user.id), data: {turbo_frame: :modal}) %>
         </div>
-      <% else %>
-       <div class="text-center alert alert-info">
-         No default Billing addresses set. Add a new address and then open the address manager to select a default Billing address
-       </div>
+      <% end %>
+
+      <% unless @user.bill_address == @user.ship_address %>
+        <hr>
+      <% end %>
+
+      <% unless @user.bill_address == @user.ship_address %>
+        <% if @user.ship_address.present? %>
+        <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
+          <div>
+            <% if @user.ship_address.label.present? %>
+              <h6><span class="badge bg-secondary"><%= @user.ship_address.label %></span></h6>
+            <% end %>
+            <span class="text-muted">Name:</span> <%= @user.ship_address.full_name %><br>
+            <% if @user.ship_address.company.present? %>
+              <span class="text-muted">Company:</span> <%= @user.ship_address.company %><br>
+            <% end %>
+            <span class="text-muted">Street:</span> <%= @user.ship_address.address1 %><br>
+            <% if @user.ship_address.address2.present? %>
+              <span class="text-muted">Address Cont:</span> <%= @user.ship_address.address2 %><br>
+            <% end %>
+            <span class="text-muted">City:</span> <%= @user.ship_address.city %><br>
+            <% if @user.ship_address.state.present? %>
+              <span class="text-muted">State:</span> <%= @user.ship_address.state %><br>
+            <% end %>
+            <% if @user.ship_address.zipcode.present? %>
+              <span class="text-muted">Zip Code:</span> <%= @user.ship_address.zipcode %><br>
+            <% end %>
+            <span class="text-muted">Country:</span> <%= @user.ship_address.country %>
+            <% if @user.ship_address.phone.present? %>
+              <br>
+              <span class="text-muted">Phone:</span> <%= @user.ship_address.phone %><br>
+            <% end %>
+
+            <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_shipping_for_both_form do |f| %>
+              <%= f.hidden_field :bill_address_id, value: @user.ship_address.id %>
+            <% end unless @user.ship_address == @user.bill_address %>
+            <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_shipping_for_both_form"}) unless @user.bill_address == @user.ship_address %>
+            <%= link_to_edit(@user.ship_address, url: spree.edit_admin_address_path(@user.ship_address, user_id: @user.id), data: {turbo_frame: :modal}) %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
-<% unless @user.bill_address == @user.ship_address %>
-  <div class="col-6">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title"><%= I18n.t('spree.admin.user.shipping_addresses') %></h5>
-      </div>
-      <div class="card-body">
-        <% if @user.ship_address.present? %>
-        <div>
-          <% if @user.ship_address.label.present? %>
-            <h6><span class="badge bg-secondary"><%= @user.ship_address.label %></span></h6>
-          <% end %>
-          <span class="text-muted">Name:</span> <%= @user.ship_address.full_name %><br>
-          <% if @user.ship_address.company.present? %>
-            <span class="text-muted">Company:</span> <%= @user.ship_address.company %><br>
-          <% end %>
-          <span class="text-muted">Street:</span> <%= @user.ship_address.address1 %><br>
-          <% if @user.ship_address.address2.present? %>
-            <span class="text-muted">Address Cont:</span> <%= @user.ship_address.address2 %><br>
-          <% end %>
-          <span class="text-muted">City:</span> <%= @user.ship_address.city %><br>
-          <% if @user.ship_address.state.present? %>
-            <span class="text-muted">State:</span> <%= @user.ship_address.state %><br>
-          <% end %>
-          <% if @user.ship_address.zipcode.present? %>
-            <span class="text-muted">Zip Code:</span> <%= @user.ship_address.zipcode %><br>
-          <% end %>
-          <span class="text-muted">Country:</span> <%= @user.ship_address.country %>
-          <% if @user.ship_address.phone.present? %>
-            <br>
-            <span class="text-muted">Phone:</span> <%= @user.ship_address.phone %><br>
-          <% end %>
-
-          <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_shipping_for_both_form do |f| %>
-            <%= f.hidden_field :bill_address_id, value: @user.ship_address.id %>
-          <% end unless @user.ship_address == @user.bill_address %>
-          <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_shipping_for_both_form"}) unless @user.bill_address == @user.ship_address %>
-          <%= link_to_edit(@user.ship_address, url: spree.edit_admin_address_path(@user.ship_address, user_id: @user.id), data: {turbo_frame: :modal}) %>
-        </div>
-        <% else %>
-         <div class="text-center alert alert-info">
-           No default Billing addresses set. Add a new address and then open the address manager to select a default Billing address
-         </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>

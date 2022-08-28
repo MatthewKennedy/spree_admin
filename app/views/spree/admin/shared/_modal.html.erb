@@ -1,31 +1,33 @@
 <% modal_dialog_settings ||= 'modal-dialog-centered modal-dialog-scrollable' %>
 
-<%= turbo_frame_tag :modal, target: :_top do %>
+<%= turbo_frame_tag :modal do %>
   <div data-controller="modal"
        class="modal fade"
        tabindex="-1"
        aria-hidden="true"
        data-turbo-cache="false">
-    <div class="modal-dialog <%= modal_dialog_settings %>">
-      <div class="modal-content">
-        <% if content_for?(:modal_header) %>
-          <div class="modal-header">
-            <%= yield :modal_header %>
-          </div>
-        <% end %>
+    <%= turbo_frame_tag :modal_inner do %>
+      <div class="modal-dialog <%= modal_dialog_settings %>">
+        <div class="modal-content">
+          <% if content_for?(:modal_header) %>
+            <div class="modal-header">
+              <%= yield :modal_header %>
+            </div>
+          <% end %>
 
-        <% if content_for?(:modal_body) %>
-          <div class="modal-body">
-            <%= yield :modal_body %>
-          </div>
-        <% end %>
+          <% if content_for?(:modal_body) %>
+            <div class="modal-body">
+              <%= yield :modal_body %>
+            </div>
+          <% end %>
 
-        <% if content_for?(:modal_footer) %>
-          <div class="modal-footer">
-              <%= yield :modal_footer %>
-          </div>
-        <% end %>
+          <% if content_for?(:modal_footer) %>
+            <div class="modal-footer">
+                <%= yield :modal_footer %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 <% end %>

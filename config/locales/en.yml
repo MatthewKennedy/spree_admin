@@ -495,12 +495,15 @@ en:
       user:
         addresses: Addresses
         available_store_credit: User has %{amount} in Store Credit available.
-        billing_address: Billing address
-        billing_addresses: Billing addresses
+        billing_address: Billing Address
+        billing_addresses: Billing Addresses
+        customer: Customer
         default_address: Default Address
+        default_addresses: Default Addresses
         no_store_credit: User has no Store Credit available.
-        shipping_address: Shipping address
-        shipping_addresses: Shipping addresses
+        other_addresses: Other Addresses
+        shipping_address: Shipping Address
+        shipping_addresses: Shipping Addresses
         stats: Stats
         store_credits: Store Credits
       user_rule:

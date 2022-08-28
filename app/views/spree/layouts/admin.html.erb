@@ -5,43 +5,39 @@
   </head>
 
   <body class="admin">
-
     <%#-------------------------------------------------%>
     <%# Main content                                    %>
     <%#-------------------------------------------------%>
-    <%= turbo_frame_tag :main_content_area do %>
-      <div id="mainWrapper" class="container-fluid">
-        <div class="row">
+    <div id="mainWrapper" class="container-fluid">
+      <div class="row">
 
-          <%#-------------------------------------------------%>
-          <%# Menu                                            %>
-          <%#-------------------------------------------------%>
-          <%= render partial: 'spree/admin/shared/menu' %>
+        <%#-------------------------------------------------%>
+        <%# Menu                                            %>
+        <%#-------------------------------------------------%>
+        <%= render partial: 'spree/admin/shared/menu' %>
 
-          <%#-------------------------------------------------%>
-          <%# Main                                            %>
-          <%#-------------------------------------------------%>
-          <main class="col-12 col-lg-9 col-xl-10 offset-lg-3 offset-xl-2 main <%= "tabsAndActionsShim" if content_for?(:page_tabs) %>" id="main-part">
-            <div class="row">
-              <div class="p-0">
-                <%#-------------------------------------------------%>
-                <%# Content Header (page title/actions)             %>
-                <%#-------------------------------------------------%>
-                <%= render partial: 'spree/admin/shared/content_header' %>
+        <%#-------------------------------------------------%>
+        <%# Main                                            %>
+        <%#-------------------------------------------------%>
+        <main class="col-12 col-lg-9 col-xl-10 offset-lg-3 offset-xl-2 main <%= "tabsAndActionsShim" if content_for?(:page_tabs) %>" id="main-part">
+          <div class="row">
+            <div class="p-0">
+              <%#-------------------------------------------------%>
+              <%# Content Header (page title/actions)             %>
+              <%#-------------------------------------------------%>
+              <%= render partial: 'spree/admin/shared/content_header' %>
 
-                <%#-------------------------------------------------%>
-                <%# Main content                                    %>
-                <%#-------------------------------------------------%>
-                <div id="contentBody" class="container mb-5">
-                  <%= yield %>
-                </div>
+              <%#-------------------------------------------------%>
+              <%# Main content                                    %>
+              <%#-------------------------------------------------%>
+              <div id="contentBody" class="container mb-5">
+                <%= yield %>
               </div>
             </div>
-          </main>
-        </div>
+          </div>
+        </main>
       </div>
-      <%= flash_alert(flash) %>
-    <% end %>
+    </div>
 
     <%#-------------------------------------------------%>
     <%# Alerts                                          %>
@@ -54,12 +50,6 @@
     <%= render partial: 'spree/admin/shared/mobile_only_controles' %>
 
     <%#-------------------------------------------------%>
-    <%# Universal Modal & OffCanvas                     %>
-    <%#-------------------------------------------------%>
-    <%= turbo_frame_tag :modal %>
-    <%= turbo_frame_tag :offcanvas %>
-
-    <%#-------------------------------------------------%>
     <%# Custom Confirm Dialog                           %>
     <%#-------------------------------------------------%>
     <%= render partial: 'spree/admin/shared/custom_dialog' %>
@@ -68,6 +58,12 @@
     <%# Store Switcher                                  %>
     <%#-------------------------------------------------%>
     <%= render partial: 'spree/admin/shared/store_switcher' %>
+
+    <%#-------------------------------------------------%>
+    <%# Universal Modal & OffCanvas                     %>
+    <%#-------------------------------------------------%>
+    <%= turbo_frame_tag :modal %>
+    <%= turbo_frame_tag :offcanvas %>
 
     <%#-------------------------------------------------%>
     <%# Insert Footer JavaScript                      %>

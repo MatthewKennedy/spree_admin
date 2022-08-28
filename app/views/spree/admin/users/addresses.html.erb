@@ -6,9 +6,7 @@
   <%= link_to_with_icon Spree.t(:add_new_address), spree.new_admin_address_path(address: {user_id: @user.id}), class: "btn btn-secondary", icon: 'plus-square.svg', data: {turbo_frame: :modal} %>
 <% end %>
 
-<div class="row" id="defaultAddresses">
+<div class="row" id="customerAddresses">
   <%= render partial: 'spree/admin/users/address/default' %>
-</div>
-<div class="row" id="otherAddresses">
   <%= render partial: 'spree/admin/users/address/other' %>
 </div>
