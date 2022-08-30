@@ -14,31 +14,9 @@
         <% unless @user.bill_address == @user.ship_address %>
           <h6><%= I18n.t('spree.admin.user.billing_addresses') %></h6>
         <% end %>
-        <div>
-          <% if @user.bill_address.label.present? %>
-            <h6><span class="badge bg-secondary"><%= @user.bill_address.label %></span></h6>
-          <% end %>
-          <span class="text-muted"><%= I18n.t('spree.admin.user.name') %>:</span> <%= @user.bill_address.full_name %><br>
-          <% if @user.bill_address.company.present? %>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.company') %>:</span> <%= @user.bill_address.company %><br>
-          <% end %>
-          <span class="text-muted"><%= I18n.t('spree.admin.user.street') %>:</span> <%= @user.bill_address.address1 %><br>
-          <% if @user.bill_address.address2.present? %>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.address2') %>:</span> <%= @user.bill_address.address2 %><br>
-          <% end %>
-          <span class="text-muted"><%= I18n.t('spree.admin.user.city') %>:</span> <%= @user.bill_address.city %><br>
-          <% if @user.bill_address.state.present? %>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.state') %>:</span> <%= @user.bill_address.state %><br>
-          <% end %>
-          <% if @user.bill_address.zipcode.present? %>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.zip_code') %>:</span> <%= @user.bill_address.zipcode %><br>
-          <% end %>
-          <span class="text-muted"><%= I18n.t('spree.admin.user.country') %>:</span> <%= @user.bill_address.country %>
-          <% if @user.bill_address.phone.present? %>
-            <br>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.phone') %>:</span> <%= @user.bill_address.phone %><br>
-          <% end %>
 
+        <%= render partial: 'spree/admin/shared/address', locals: {address: @user.bill_address} %>
+        <div>
           <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_billing_for_both_form do |f| %>
             <%= f.hidden_field :ship_address_id, value: @user.bill_address.id %>
           <% end unless @user.bill_address == @user.ship_address %>
@@ -53,32 +31,10 @@
 
       <% unless @user.bill_address == @user.ship_address %>
         <% if @user.ship_address.present? %>
-        <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
-          <div>
-            <% if @user.ship_address.label.present? %>
-              <h6><span class="badge bg-secondary"><%= @user.ship_address.label %></span></h6>
-            <% end %>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.name') %>:</span> <%= @user.ship_address.full_name %><br>
-            <% if @user.ship_address.company.present? %>
-              <span class="text-muted"><%= I18n.t('spree.admin.user.company') %>:</span> <%= @user.ship_address.company %><br>
-            <% end %>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.street') %>:</span> <%= @user.ship_address.address1 %><br>
-            <% if @user.ship_address.address2.present? %>
-              <span class="text-muted"><%= I18n.t('spree.admin.user.address2') %>:</span> <%= @user.ship_address.address2 %><br>
-            <% end %>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.city') %>:</span> <%= @user.ship_address.city %><br>
-            <% if @user.ship_address.state.present? %>
-              <span class="text-muted"><%= I18n.t('spree.admin.user.state') %>:</span> <%= @user.ship_address.state %><br>
-            <% end %>
-            <% if @user.ship_address.zipcode.present? %>
-              <span class="text-muted"><%= I18n.t('spree.admin.user.zip_code') %>:</span> <%= @user.ship_address.zipcode %><br>
-            <% end %>
-            <span class="text-muted"><%= I18n.t('spree.admin.user.country') %>:</span> <%= @user.ship_address.country %>
-            <% if @user.ship_address.phone.present? %>
-              <br>
-              <span class="text-muted"><%= I18n.t('spree.admin.user.phone') %>:</span> <%= @user.ship_address.phone %><br>
-            <% end %>
+          <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
+          <%= render partial: 'spree/admin/shared/address', locals: {address: @user.ship_address} %>
 
+          <div>
             <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_shipping_for_both_form do |f| %>
               <%= f.hidden_field :bill_address_id, value: @user.ship_address.id %>
             <% end unless @user.ship_address == @user.bill_address %>

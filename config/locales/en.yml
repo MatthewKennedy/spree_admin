@@ -38,12 +38,14 @@ en:
         post_code: Post Code
         state_territory: State / Territory
         street: Street
+        used_for_billing_and_shipping: Used for billing and shipping
       amount: Amount
       apis: API's
       are_you_sure_you_want_to: Are you sure you want to %{action} this %{resource}
       avs_responses:
         street_address_matches_but_5-digit_and_9_digit_postal_code_do_not_match: Street address matches, but 5-digit and 9-digit postal code do not match.
         street_address_matches_but_postal_code_not_verified: Street address matches, but postal code not verified.
+      billing_address: Billing address
       calculators:
         if_you_change_the_calculator: Click update to save the new calculator.
       cms:
@@ -194,8 +196,10 @@ en:
         url: URL
         url_info: The URL field can link to an external website using <b>https://example.com</b>, link to an otherwise unreachable internal path using <b>/policies/privacy</b>, launch an email client using <b>mailto:sales@example.com</b> or used to create a clickable phone number with <b>tel:123456789</b>
         you_have_no_menus: You have no Menus, click the Add New Menu button to create your first Menu.
+      no_billing_address_has_been_added_to_this_order: No billing address has been added to this order
       no_message_set: No message set
       no_payment_provider_settings_message: No payment provider settings message
+      no_shipping_address_has_been_added_to_this_order: No shipping address has been added to this order
       not_applicable: Not applicable
       note: Note
       notice_messages:
@@ -221,19 +225,24 @@ en:
         add: Add
         add_a_shipment_to_this_order_to_begin_adding_items: Add a new shipping location to this order, and then add products to the shipment. Ideally, choose the location nearest the delivery address for faster and cheaper delivery.
         add_user_to_order: Add this User to the Order
+        address: Address
+        addresses: Addresses
         currency: Currency
         customer: Customer
         email_copy_of_invoice_to_customer: Send Invoice
         from: from
         instructions:
           cart: Add a customer or products to the order via the Shipment section.
+          currency: Set the currency for this order.
         mark_as_shipped: Mark as Shipped
         order: order
         products: Products
         resend_shipping_confirmation_email: Resend Shipping Confirmation Email
+        same_as_billing_address: Same as billing address
         search_for_a_product_or_variant: Search for products by name or SKU.
         search_users_by_name_or_email: Search users by name or email.
         set_order_currency: Set Order Currency
+        shipping_locations: Shipping locations
         the_order_currency_is_locked_once_items_are_added: The currency of this order is locked.
         tracking_number: Tracking Number
       order_state:
@@ -249,8 +258,12 @@ en:
         returned: Returned
       orders:
         abandoned_checkouts: Abandoned Checkouts
+        add_shipping_locations: Add shipping locations
         all_orders: All Orders
+        contact_information: Contact information
         draft_orders: Draft Orders
+        getting_started: Getting Started
+        set_the_order_currency: Set the order currency
         state: State
       organization: Organization
       payment: Payment
@@ -391,6 +404,7 @@ en:
         shipped: Shipped
         void: Void
       shipments: Shipments
+      shipping_address: Shipping address
       shipping_categories:
         new_shipping_category: New shipping category
       shipping_methods:
@@ -493,26 +507,20 @@ en:
       total: Total
       url: URL
       user:
-        address2: Address (Cont)
         addresses: Addresses
         available_store_credit: User has %{amount} in Store Credit available.
         billing_addresses: Billing Addresses
-        city: City
-        company: Company
-        country: Country
         customer: Customer
+        customer_details: Customer details
         default_address: Default Address
         default_addresses: Default Addresses
-        name: Name
         no_store_credit: User has no Store Credit available.
         other_addresses: Other Addresses
-        phone: Phone
+        password: Password
+        roles: Roles
         shipping_addresses: Shipping Addresses
-        state: State
         stats: Stats
         store_credits: Store Credits
-        street: Street
-        zip_code: Zip Code
       user_rule:
         choose_users: Choose users
       users:

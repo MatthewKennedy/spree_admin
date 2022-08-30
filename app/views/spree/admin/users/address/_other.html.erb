@@ -9,31 +9,8 @@
         <% next if address.id == @user.bill_address.id || address.id == @user.ship_address.id %>
           <div class="col-12 col-md-6">
             <div class="mb-4" id="<%= dom_id(address) %>">
-              <div class="mb-2">
-                <% if address.label.present? %>
-                  <h6><span class="badge bg-secondary"><%= address.label %></span></h6>
-                <% end %>
-                <span class="text-muted"><%= I18n.t('spree.admin.user.name') %>:</span> <%= address.full_name %><br>
-                <% if address.company.present? %>
-                  <span class="text-muted"><%= I18n.t('spree.admin.user.company') %>:</span> <%= address.company %><br>
-                <% end %>
-                <span class="text-muted"><%= I18n.t('spree.admin.user.street') %>:</span> <%= address.address1 %><br>
-                <% if address.address2.present? %>
-                  <span class="text-muted"><%= I18n.t('spree.admin.user.address2') %>:</span> <%= address.address2 %><br>
-                <% end %>
-                <span class="text-muted"><%= I18n.t('spree.admin.user.city') %>:</span> <%= address.city %><br>
-                <% if address.state.present? %>
-                  <span class="text-muted"><%= I18n.t('spree.admin.user.state') %>:</span> <%= address.state %><br>
-                <% end %>
-                <% if address.zipcode.present? %>
-                  <span class="text-muted"><%= I18n.t('spree.admin.user.zip_code') %>:</span> <%= address.zipcode %><br>
-                <% end %>
-                <span class="text-muted"><%= I18n.t('spree.admin.user.country') %>:</span> <%= address.country %>
-                <% if address.phone.present? %>
-                  <br>
-                  <span class="text-muted"><%= I18n.t('spree.admin.user.phone') %>:</span> <%= address.phone %><br>
-                <% end %>
-              </div>
+              <%= render partial: 'spree/admin/shared/address', locals: {address: address} %>
+
               <div>
                 <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_for_billing_form do |f| %>
                   <%= f.hidden_field :bill_address_id, value: address.id %>

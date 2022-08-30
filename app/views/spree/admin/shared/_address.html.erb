@@ -1,5 +1,10 @@
 <div class="address vcard">
-  <div class="fn"><%= address.full_name %></div>
+  <% unless address.label.blank? %>
+   <h6><span class="badge bg-secondary"><%= address.label %></span></h6>
+  <% end %>
+  <div class="full-name">
+    <%= address.full_name %>
+  </div>
   <% unless address.company.blank? %>
     <div class="org">
       <%= address.company %>
@@ -16,16 +21,21 @@
         </div>
       <% end %>
     </div>
-    <div class="local">
+    <div class="city">
       <span class="locality"><%= address.city %></span>
-      <span class="region"><%= address.state_text %></span>
-      <span class="postal-code"><%= address.zipcode %></span>
+    </div>
+    <div class="local">
+      <% unless address.state.blank? %>
+        <span class="region"><%= address.state_text %></span>
+      <% end %>
+      <% unless address.zipcode.blank? %>
+        <span class="postal-code"><%= address.zipcode %></span>
+      <% end %>
       <div class="country-name"><%= address.country.try(:name) %></div>
     </div>
   </div>
   <% unless address.phone.blank? %>
     <div class="tel">
-      <span class="type"><%= Spree.t(:phone) %></span>
       <%= address.phone %>
     </div>
   <% end %>

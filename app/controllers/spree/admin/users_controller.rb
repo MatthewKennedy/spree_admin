@@ -34,6 +34,9 @@ module Spree
       def addresses
       end
 
+      def customer_details
+      end
+
       def update_address
         if @user.update(permitted_resource_params)
         else
@@ -43,8 +46,20 @@ module Spree
 
       def orders
         params[:q] ||= {}
+        params[:q][:completed_at_not_null] ||= "1"
+
+        if params[:q][:number_i_cont].present?
+          params[:q].delete(:completed_at_not_null)
+        end
+
         @search = current_store.orders.reverse_chronological.ransack(params[:q].merge(user_id_eq: @user.id))
-        @orders = @search.result.page(params[:page])
+
+        @orders = @search.result
+        @pagy, @orders = pagy(@orders, items: 5)
+
+        respond_with(@orders) do |format|
+          format.html
+        end
       end
 
       def items
