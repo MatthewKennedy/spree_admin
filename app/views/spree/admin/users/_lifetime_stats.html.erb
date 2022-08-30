@@ -1,43 +1,34 @@
-<div data-hook="admin_user_lifetime_stats" class="card">
-  <div class="card-header">
-    <h5 class="card-title">
-      <%= Spree.t(:lifetime_stats) %>
-    </h5>
-  </div>
-  <div class="table-responsive">
-    <table class="table" id="user-lifetime-stats" data-hook>
-      <tr>
-        <td width="30%"><%= Spree.t(:total_sales) %>:</td>
-        <td>
+<div class="card p-3">
+  <div class="row">
+    <div class="col-4 text-center">
+      <h3 class="fw-light">
+        <% if @user.report_values_for(:lifetime_value, current_store).any? %>
           <% @user.report_values_for(:lifetime_value, current_store).each do |value| %>
-            <div><%= value %></div>
+            <%= value %>
           <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= Spree.t(:num_orders) %>:</td>
-        <td><%= @user.order_count(current_store) %></td>
-      </tr>
-      <tr>
-        <td><%= Spree.t(:average_order_value) %>:</td>
-        <td>
+        <% else %>
+        0
+        <% end %>
+      </h3>
+      <small class="text-muted fw-light"><%= Spree.t(:total_sales) %></small>
+    </div>
+    <div class="col-4 text-center">
+      <h3 class="fw-light">
+        <%= @user.order_count(current_store) %>
+      </h3>
+      <small class="text-muted fw-light"><%= Spree.t(:orders) %></small>
+    </div>
+    <div class="col-4 text-center">
+      <h3 class="fw-light">
+        <% if @user.report_values_for(:average_order_value, current_store).any? %>
           <% @user.report_values_for(:average_order_value, current_store).each do |value| %>
-            <div><%= value %></div>
+            <%= value %>
           <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= I18n.t('spree.admin.user.store_credits') %>:</td>
-        <td id="store_credit">
-          <% @user.available_store_credits(current_store).each do |value| %>
-            <div><%= value %></div>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= Spree.t(:member_since) %>:</td>
-        <td><%= pretty_time(@user.created_at) %></td>
-      </tr>
-    </table>
+        <% else %>
+        0
+        <% end %>
+      </h3>
+      <small class="text-muted fw-light"><%= Spree.t(:average_order_value) %></small>
+    </div>
   </div>
 </div>

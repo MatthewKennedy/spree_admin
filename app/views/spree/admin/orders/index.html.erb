@@ -99,5 +99,5 @@
 <%# text if you want to add a search bar            %>
 <%#-------------------------------------------------%>
   <%= render partial: "spree/admin/shared/index_table",
-             locals: { search_field_value: :number_i_cont,
-                       search_field_placeholder: I18n.t('spree.admin.products.search_all_orders_by_number') } %>
+             locals: { search_record: :number_i_cont,
+                       search_placeholder: I18n.t('spree.admin.products.search_all_orders_by_number') } %>

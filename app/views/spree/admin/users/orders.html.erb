@@ -1,12 +1,4 @@
 <%= turbo_frame_tag :user_orders do %>
-
-  <% content_for :index_table_custom_search do %>
-    <%= search_form_for @search, url: spree.orders_admin_user_path(@user), data: {controller: "form--autosave", turbo_frame: :index_table} do |f| %>
-      <%= f.search_field :number_i_cont, placeholder: I18n.t('spree.admin.products.search_all_orders_by_number'), class: "form-control", data: { action: 'form--autosave#save', turbo_permanent: true } %>
-      <%= f.submit I18n.t('spree.admin.actions.submit'), class: 'd-none', data: {form__autosave_target: "submitButton"} %>
-    <% end %>
-  <% end %>
-
   <% content_for :index_table_filter_tabs do %>
     <%= link_to Spree.t('admin.orders.complete'), spree.orders_admin_user_path(@user), class: "#{'active' unless params[:q][:payment_state_not_eq] == 'paid' || params[:q][:shipment_state_not_eq] == 'shipped' || params[:q][:state_eq] == 'cart' || params[:q][:number_i_cont].present? }" %>
     <%= link_to Spree.t('admin.orders.draft'), params.merge({q: { completed_at_not_null: false, state_eq: 'cart' }}).permit!, class: "#{'active' unless params[:q][:payment_state_not_eq] == 'paid' || params[:q][:shipment_state_not_eq] == 'shipped' || params[:q][:completed_at_not_null] == '1' || params[:q][:number_i_cont].present? }" %>
@@ -45,5 +37,8 @@
       <% end %>
   <% end %>
 
-  <%= render partial: "spree/admin/shared/index_table" %>
+  <%= render partial: "spree/admin/shared/index_table",
+             locals: { search_record: :number_i_cont,
+                       search_placeholder: I18n.t('spree.admin.users.search_by_order_number'),
+                       search_url: spree.orders_admin_user_path(@user)} %>
 <% end %>

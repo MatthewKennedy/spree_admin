@@ -225,7 +225,6 @@ en:
         add: Add
         add_a_shipment_to_this_order_to_begin_adding_items: Add a new shipping location to this order, and then add products to the shipment. Ideally, choose the location nearest the delivery address for faster and cheaper delivery.
         add_user_to_order: Add this User to the Order
-        address: Address
         addresses: Addresses
         currency: Currency
         customer: Customer
@@ -258,7 +257,6 @@ en:
         returned: Returned
       orders:
         abandoned_checkouts: Abandoned Checkouts
-        add_shipping_locations: Add shipping locations
         all_orders: All Orders
         contact_information: Contact information
         draft_orders: Draft Orders
@@ -507,6 +505,8 @@ en:
       total: Total
       url: URL
       user:
+        add_store_credit: Add store credit
+        address: Address
         addresses: Addresses
         available_store_credit: User has %{amount} in Store Credit available.
         billing_addresses: Billing Addresses
@@ -514,13 +514,15 @@ en:
         customer_details: Customer details
         default_address: Default Address
         default_addresses: Default Addresses
+        edit_store_credit: Edit store credit
         no_store_credit: User has no Store Credit available.
+        orders: Orders
         other_addresses: Other Addresses
         password: Password
         roles: Roles
         shipping_addresses: Shipping Addresses
-        stats: Stats
         store_credits: Store Credits
+        user_since: User since
       user_rule:
         choose_users: Choose users
       users:
@@ -530,6 +532,8 @@ en:
         last_name: Last name
         manage: Manage
         name_and_email: Name and email
+        search_by_order_number: Search by order number
+        search_for_users_by_email: Search for users by email
         users: Users
       utilities:
         preview: Preview %{name}

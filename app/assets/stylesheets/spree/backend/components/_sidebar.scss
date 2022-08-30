@@ -16,6 +16,25 @@ aside#main-sidebar {
     margin-bottom: var(--nav-bar-height);
     margin-top: 90px;
   }
+
+  li.selected {
+    position: relative;
+
+    a {
+      color: var(--bs-primary) !important;
+    }
+
+    &::before {
+      display: block;
+      position: absolute;
+      content: "";
+      width:5px;
+      height: 100%;
+      background-color: var(--bs-primary);
+      top: 0;
+      left: 0;
+    }
+  }
 }
 
 body.sidebar-open {

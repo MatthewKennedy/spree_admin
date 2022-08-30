@@ -14,6 +14,13 @@
     --bs-badge-font-weight: 300;
   }
 
+  .card {
+    --#{$prefix}card-spacer-x: 0.75rem;
+  }
+  .card-header {
+    --#{$prefix}card-cap-padding-x: var(--#{$prefix}card-spacer-x);
+  }
+
   .dropdown-menu {
     --bs-dropdown-item-padding-x: .5rem;
     --bs-dropdown-item-padding-y: .5rem;
@@ -44,7 +51,9 @@
     border: none !important;
     box-shadow: 0 0 0.3125rem #1718180d,0 0.0625rem 0.125rem #00000026;
 
-
+    .no_shadow_if_nested {
+      box-shadow: none !important;
+    }
   }
 
   .card-body > .card {

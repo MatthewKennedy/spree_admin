@@ -6,26 +6,15 @@
   </div>
 <% end %>
 
-<% if content_for?(:index_table_filter_buttons) || content_for?(:index_table_custom_search) || (!search_field_value.nil? && !search_field_placeholder.nil?) %>
+<% if content_for?(:index_table_filter_buttons) || (show_search) %>
   <div class="p-2" role="toolbar" aria-label="Toolbar with button groups">
     <div class="row" id="additionalFilterControls">
-      <% if search_field_value.present? && search_field_placeholder.present? %>
+      <% if search_record.present? && search_placeholder.present? %>
         <div class="col-12 col-sm">
-         <%= search_form_for [:admin, @search], data: {controller: "form--autosave", turbo_frame: :index_table} do |f| %>
-           <%= f.search_field search_field_value, placeholder: search_field_placeholder, class: "form-control", data: { action: 'form--autosave#save', turbo_permanent: true } %>
+         <%= search_form_for [:admin, @search], url: search_url, data: {controller: "form--autosave", turbo_frame: :index_table} do |f| %>
+           <%= f.search_field search_record, placeholder: search_placeholder, class: "form-control", data: { action: 'form--autosave#save', turbo_permanent: true } %>
            <%= f.submit I18n.t('spree.admin.actions.submit'), class: 'd-none', data: {form__autosave_target: "submitButton"} %>
          <% end %>
-        </div>
-      <% elsif content_for?(:index_table_custom_search) %>
-
-        <%#---------------------------------------------------%>
-        <%# If you need to use a custom search                %>
-        <%# use content for and manually add the search form. %>
-        <%# Example see: users/orders.html.erb                %>
-        <%#---------------------------------------------------%>
-
-        <div class="col-12 col-sm">
-          <%= yield :index_table_custom_search %>
         </div>
       <% end %>
 

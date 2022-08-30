@@ -2,6 +2,12 @@ body {
   margin: 0;
 }
 
+turbo-frame[complete] {
+  .turbo_frame_loading_placeholder {
+    display: none;
+  }
+}
+
 .form-select {
   min-width: 150px;
 }
@@ -36,12 +42,6 @@ body {
 
 .sort-handle {
   cursor: grab;
-}
-
-@include media-breakpoint-up(sm) {
-  .card-body {
-    padding: 1.25rem;
-  }
 }
 
 .rounded-bottom-only {
