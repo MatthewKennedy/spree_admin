@@ -1,17 +1,18 @@
-<% content_for :page_title do %>
-  <%= breadcrumb_builder(link_one_uri: spree.admin_users_path, link_one_text: I18n.t('spree.admin.users.users'), current_page_name: Spree.t(:new_user)) %>
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= I18n.t('spree.admin.user.create_a_new_user') %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 <% end %>
 
-<div data-hook="admin_user_new_form_header">
-  <%= render partial: 'spree/admin/shared/error_messages', locals: { target: @user } %>
-</div>
+<% content_for :modal_body do %>
+  <div class="container">
+    <%= form_with model: [:admin, @user], data: {modal_target: "mainForm", turbo_frame: :inner_main_content}, id: :modal_form do |form| %>
+      <%= render partial: 'form', locals: { f: form } %>
+    <% end %>
+  </div>
+<% end %>
 
-<div data-hook="admin_user_new_form">
-  <%= form_with model: [:admin, @user], url: spree.admin_users_url, method: :post do |f| %>
-    <%= render partial: 'form', locals: { f: f } %>
+<% content_for :modal_footer do %>
+  <%= submit_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: :modal_form, data: {action: "modal#closeOnSubmit"}) %>
+<% end %>
 
-    <div data-hook="admin_user_new_form_buttons">
-      <%= render partial: 'spree/admin/shared/resource_actions' %>
-    </div>
-  <% end %>
-</div>
+<%= render partial: 'spree/admin/shared/modal' %>

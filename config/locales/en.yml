@@ -510,6 +510,7 @@ en:
         addresses: Addresses
         available_store_credit: User has %{amount} in Store Credit available.
         billing_addresses: Billing Addresses
+        create_a_new_user: Create a new user
         customer: Customer
         customer_details: Customer details
         default_address: Default Address

@@ -19,6 +19,7 @@ aside#main-sidebar {
 
   li.selected {
     position: relative;
+    background: var(--bs-gray-100);
 
     a {
       color: var(--bs-primary) !important;
@@ -31,8 +32,15 @@ aside#main-sidebar {
       width:5px;
       height: 100%;
       background-color: var(--bs-primary);
+      border-radius: var(--#{$prefix}border-radius) 0 0 var(--#{$prefix}border-radius);
       top: 0;
       left: 0;
+    }
+  }
+
+  ul.nav {
+    li {
+      border-radius: var(--#{$prefix}border-radius);
     }
   }
 }

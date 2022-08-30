@@ -26,10 +26,8 @@
       <h6 class="text-muted"><%= I18n.t('spree.admin.user.roles') %></h6>
       <%= f.collection_check_boxes :spree_role_ids, Spree::Role.all, :id, :name do |role_form| %>
         <div class="form-check">
-          <%= role_form.label for: "user_spree_role_#{role_form.object.name}" do %>
-            <%= role_form.check_box id: "user_spree_role_#{role_form.object.name}", class: 'form-check-input' %>
-            <%= role_form.object.name %>
-          <% end %>
+          <%= role_form.check_box id: "user_spree_role_#{role_form.object.name}", class: 'form-check-input' %>
+          <%= role_form.label for: "user_spree_role_#{role_form.object.name}" %>
         </div>
       <% end %>
     </div>

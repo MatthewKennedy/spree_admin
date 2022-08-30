@@ -1,5 +1,6 @@
 :root body.admin {
   --nav-bar-height: 54px;
+  --#{$prefix}border-radius: 3px;
 
   .accordion {
     --bs-accordion-btn-bg: inherit;
