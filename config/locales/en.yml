@@ -523,6 +523,7 @@ en:
         roles: Roles
         shipping_addresses: Shipping Addresses
         store_credits: Store Credits
+        user_email: User email
         user_since: User since
       user_rule:
         choose_users: Choose users

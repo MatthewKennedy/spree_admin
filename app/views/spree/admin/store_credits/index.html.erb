@@ -17,7 +17,7 @@
               <td><%= store_credit.display_amount_used.to_html %></td>
               <td><%= store_credit.category_name %></td>
               <td><%= store_credit.created_by_email %></td>
-              <td><%= l store_credit.created_at.to_date %></td>
+              <td><%= pretty_date(store_credit.created_at.to_date) %></td>
               <td class="actions" data-hook="admin_store_credits_index_row_actions">
                 <span class="d-flex justify-content-end">
                   <% if store_credit.amount_used.zero? %>

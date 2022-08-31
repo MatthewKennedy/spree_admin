@@ -53,7 +53,17 @@
         <% if @user.first_name || @user.last_name %>
           <%= @user.first_name %> <%= @user.last_name %><br>
         <% end %>
-        <%= @user.email %><br>
+        <div class="d-flex" data-controller="clipboard">
+          <div class="flex-fill">
+            <%= hidden_field :user, :email, value: @user.email, placeholder: I18n.t("spree.admin.user.user_email"), data: {clipboard_target: "source"} %>
+            <%= @user.email %>
+          </div>
+          <div>
+            <button data-action="clipboard#copy" class="btn btn-sm btn-link">
+              <%= inline_svg_tag 'clipboard2.svg', size: '16px * 16px' %>
+            </button>
+          </div>
+        </div>
         <span class="text-muted"><%= I18n.t('spree.admin.user.user_since') %>:</span> <%= pretty_date(@user.created_at) %>
         <div class="mt-2">
           <% @user.spree_roles.each do |role| %>
