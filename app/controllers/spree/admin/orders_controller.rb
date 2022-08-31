@@ -123,12 +123,12 @@ module Spree
 
         @search = scope.preload(:user).accessible_by(current_ability, :index).ransack(params[:q])
 
+        per_page_limit = params[:per_page] || Spree::Backend::Config[:admin_orders_per_page]
         # lazy loading other models here (via includes) may result in an invalid query
         # e.g. SELECT  DISTINCT DISTINCT "spree_orders".id, "spree_orders"."created_at" AS alias_0 FROM "spree_orders"
         # see https://github.com/spree/spree/pull/3919
         @orders = @search.result(distinct: true)
-          .page(params[:page])
-          .per(params[:per_page] || Spree::Backend::Config[:admin_orders_per_page])
+        @pagy, @orders = pagy(@orders, items: per_page_limit)
 
         # Restore dates
         params[:q][:created_at_gt] = created_at_gt

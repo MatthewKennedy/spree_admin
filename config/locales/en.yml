@@ -228,6 +228,7 @@ en:
         addresses: Addresses
         currency: Currency
         customer: Customer
+        date_range: Date range
         email_copy_of_invoice_to_customer: Send Invoice
         from: from
         instructions:
@@ -260,8 +261,13 @@ en:
         all_orders: All Orders
         contact_information: Contact information
         draft_orders: Draft Orders
+        email_address: Email address
         getting_started: Getting Started
+        order_number: Order number
+        order_state: Order state
+        payment_state: Payment state
         set_the_order_currency: Set the order currency
+        shipment_state: Shipment state
         state: State
       organization: Organization
       payment: Payment
