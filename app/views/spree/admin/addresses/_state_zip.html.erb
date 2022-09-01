@@ -1,67 +1,29 @@
-<% Spree::Address::ADDRESS_FIELDS.each do |field| %>
-  <%= fields_for :address, @address do |f| %>
-    <% if field == "state" %>
-      <!-- STATE -->
-      <% state_lable = case @address.country.iso3
-         when 'ARE'
-             I18n.t('spree.admin.address.emirate')
-         when 'AUS'
-          I18n.t('spree.admin.address.state_territory')
-         else
-            Spree.t(field)
-         end %>
+<%= fields_for :address, @address do |f| %>
+  <%= f.field_container :state do %>
+    <% if !@address.country.states.present? && @address.country.states_required? %>
+      <%= f.text_field :state_name, style: "display: #{ @address.country.states.empty? && @address.country.states_required? ? 'block' : 'none' };", required: true %>
+    <% end %>
 
-      <%= f.field_container (field) do %>
-        <% if @address.country.try(:states) %>
-          <% if !@address.country.states.present? && @address.country.states_required? %>
-            <%= f.text_field :state_name, style: "display: #{ @address.country.states.empty? && @address.country.states_required? ? 'block' : 'none' };", required: true %>
-          <% end %>
+    <% if @address.country.states.present? %>
+      <%= f.collection_select :state_id, @address.country.states.sort, :id, :name, { include_blank: true }, {class: 'form-select', required: @address.country.states_required?, data: { controller: @address.country.states.empty? ? '' : 'ts--select'}} %>
+    <% end %>
 
-          <% if @address.country.states.present? %>
-            <%= f.collection_select :state_id, @address.country.states.sort, :id, :name, { include_blank: true }, {class: 'form-select', required: @address.country.states_required?, data: { controller: @address.country.states.empty? ? '' : 'ts--select'}} %>
-          <% end %>
-
-          <% if @address.country.states_required? || @address.country.states.present? %>
-            <% if @address.country.states_required? %>
-              <%= f.label :state_id, raw(state_lable + required_span_tag) %>
-            <% else %>
-              <%= f.label :state_id, state_lable %>
-            <% end %>
-          <% end %>
-
-        <% else %>
-          <div>
-            <em><%= Spree.t(:no_country) %></em>
-          </div>
-        <% end %>
+    <% if @address.country.states_required? || @address.country.states.present? %>
+      <% if @address.country.states_required? %>
+        <%= f.label :state_id, raw(state_label(@address.country) + required_span_tag) %>
+      <% else %>
+        <%= f.label :state_id, state_label(@address.country) %>
       <% end %>
-      <!-- STATE -->
+    <% end %>
+  <% end %>
 
-    <% elsif field == "zipcode" %>
+  <%= f.field_container :zipcode do %>
+    <%= f.text_field :zipcode, required: @address.country.zipcode_required? %>
 
-      <!-- ZIPCODE -->
-      <% zip_lable = case @address.country.iso3
-        when 'GBR'
-          I18n.t('spree.admin.address.post_code')
-        when 'CAN'
-          I18n.t('spree.admin.address.post_code')
-        when 'AUS'
-          I18n.t('spree.admin.address.post_code')
-        else
-          Spree.t(field)
-        end %>
-
-        <%= f.field_container (field) do %>
-          <%= f.text_field field, required: @address.country.zipcode_required? %>
-
-          <% if @address.country.zipcode_required? %>
-            <%= f.label field, (raw(zip_lable) + required_span_tag) %>
-          <% else %>
-            <%= f.label field, zip_lable %>
-          <% end %>
-        <% end %>
-        <!-- ZIPCODE -->
-
+    <% if @address.country.zipcode_required? %>
+      <%= f.label :zipcode, (raw(zipcode_label(@address.country)) + required_span_tag) %>
+    <% else %>
+      <%= f.label :zipcode, zipcode_label(@address.country) %>
     <% end %>
   <% end %>
 <% end %>

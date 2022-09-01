@@ -1,7 +1,7 @@
 module Spree
   module Admin
     class AddressesController < ResourceController
-      before_action :find_user
+      before_action :find_user, :set_base_fields
 
       def new
         @address = Spree::Address.new(country: current_store.default_country, user_id: params[:user_id])
@@ -33,6 +33,10 @@ module Spree
 
       def location_after_save
         spree.addresses_admin_user_path(@address.user)
+      end
+
+      def set_base_fields
+        @base_fields ||= ["company", "address1", "address2", "city", "state", "zipcode", "country", "phone", "firstname", "lastname"]
       end
     end
   end

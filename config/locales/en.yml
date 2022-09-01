@@ -25,7 +25,10 @@ en:
       active: Active
       add_option_types_to_this_product_to_begin_creating_variants: Add option types to this product to begin creating variants
       address:
+        address_cont: Address cont
         address_label: Address Label
+        city: City
+        company: Company
         contact_details: Contact Details
         edit_address: Edit Address
         emirate: Emirate
@@ -36,9 +39,11 @@ en:
         new_address: New Address
         phone: Phone
         post_code: Post Code
+        state: State
         state_territory: State / Territory
         street: Street
         used_for_billing_and_shipping: Used for billing and shipping
+        zipcode: Zipcode
       amount: Amount
       apis: API's
       are_you_sure_you_want_to: Are you sure you want to %{action} this %{resource}
