@@ -1,14 +1,12 @@
 <%= fields_for :address, @address do |f| %>
-  <%= f.field_container :state do %>
-    <% if !@address.country.states.present? && @address.country.states_required? %>
-      <%= f.text_field :state_name, style: "display: #{ @address.country.states.empty? && @address.country.states_required? ? 'block' : 'none' };", required: true %>
-    <% end %>
+  <% if @address.country.states_required? || @address.country.states.present? %>
+    <%= f.field_container :state do %>
+      <% if !@address.country.states.present? && @address.country.states_required? %>
+        <%= f.text_field :state_name, required: true %>
+      <% elsif @address.country.states.present? %>
+        <%= f.collection_select :state_id, @address.country.states.sort, :id, :name, {include_blank: true}, {class: 'form-select', required: @address.country.states_required?, data: { controller: 'ts--select'}} %>
+      <% end %>
 
-    <% if @address.country.states.present? %>
-      <%= f.collection_select :state_id, @address.country.states.sort, :id, :name, { include_blank: true }, {class: 'form-select', required: @address.country.states_required?, data: { controller: @address.country.states.empty? ? '' : 'ts--select'}} %>
-    <% end %>
-
-    <% if @address.country.states_required? || @address.country.states.present? %>
       <% if @address.country.states_required? %>
         <%= f.label :state_id, raw(state_label(@address.country) + required_span_tag) %>
       <% else %>
