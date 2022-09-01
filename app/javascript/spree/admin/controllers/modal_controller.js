@@ -3,8 +3,6 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['mainForm']
-
   connect () {
     this.modal = new bootstrap.Modal(this.element, {
       keyboard: false
@@ -17,14 +15,10 @@ export default class extends Controller {
   }
 
   submitEnd (event) {
-    if (event.detail.success) this.modal.hide()
-  }
+    // If the form submission is a validation check, don't close the modal.
+    if (event.detail.formSubmission.submitter.formNoValidate === true) return
 
-  closeOnSubmit () {
-    if (this.mainFormTarget.hasAttribute('data-action')) {
-      this.mainFormTarget.setAttribute('data-action', `turbo:submit-end->modal#submitEnd ${this.mainFormTarget.dataset.action}`)
-    } else {
-      this.mainFormTarget.setAttribute('data-action', 'turbo:submit-end->modal#submitEnd')
-    }
+    // When the form submission is successful and not a validation check, hide the modal.
+    if (event.detail.success) this.modal.hide()
   }
 }

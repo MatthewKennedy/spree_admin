@@ -14,11 +14,11 @@
       <%= f.field_container (field) do %>
         <% if @address.country.try(:states) %>
           <% if !@address.country.states.present? && @address.country.states_required? %>
-            <%= f.text_field :state_name, style: "display: #{ @address.country.states.empty? && @address.country.states_required? ? 'block' : 'none' };", required: true, data: { form_validation_target: "skipRequiredOnValidate" } %>
+            <%= f.text_field :state_name, style: "display: #{ @address.country.states.empty? && @address.country.states_required? ? 'block' : 'none' };", required: true %>
           <% end %>
 
           <% if @address.country.states.present? %>
-            <%= f.collection_select :state_id, @address.country.states.sort, :id, :name, { include_blank: true }, {class: 'form-select', required: @address.country.states_required?, data: { controller: @address.country.states.empty? ? '' : 'ts--select', form_validation_target: "skipRequiredOnValidate" }} %>
+            <%= f.collection_select :state_id, @address.country.states.sort, :id, :name, { include_blank: true }, {class: 'form-select', required: @address.country.states_required?, data: { controller: @address.country.states.empty? ? '' : 'ts--select'}} %>
           <% end %>
 
           <% if @address.country.states_required? || @address.country.states.present? %>
@@ -52,7 +52,7 @@
         end %>
 
         <%= f.field_container (field) do %>
-          <%= f.text_field field, required: @address.country.zipcode_required?, data: { form_validation_target: "skipRequiredOnValidate" } %>
+          <%= f.text_field field, required: @address.country.zipcode_required? %>
 
           <% if @address.country.zipcode_required? %>
             <%= f.label field, (raw(zip_lable) + required_span_tag) %>
