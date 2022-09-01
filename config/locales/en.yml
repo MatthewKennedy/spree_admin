@@ -25,16 +25,16 @@ en:
       active: Active
       add_option_types_to_this_product_to_begin_creating_variants: Add option types to this product to begin creating variants
       address:
-        address_cont: Address cont
+        address_cont: Address (Cont.)
         address_label: Address Label
         city: City
         company: Company
         contact_details: Contact Details
         edit_address: Edit Address
         emirate: Emirate
-        first_name: First name
+        first_name: First Name
         label_info: Identify this address with a label e.g.; Work, Home...
-        last_name: Last name
+        last_name: Last Name
         location: Location
         new_address: New Address
         phone: Phone

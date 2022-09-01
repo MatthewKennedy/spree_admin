@@ -4,24 +4,15 @@
       <% if !@address.country.states.present? && @address.country.states_required? %>
         <%= f.text_field :state_name, required: true %>
       <% elsif @address.country.states.present? %>
-        <%= f.collection_select :state_id, @address.country.states.sort, :id, :name, {include_blank: true}, {class: 'form-select', required: @address.country.states_required?, data: { controller: 'ts--select'}} %>
+        <%= f.collection_select :state_id, @address.country.states.sort, :id, :name, {include_blank: true}, {required: @address.country.states_required?} %>
       <% end %>
 
-      <% if @address.country.states_required? %>
-        <%= f.label :state_id, raw(state_label(@address.country) + required_span_tag) %>
-      <% else %>
-        <%= f.label :state_id, state_label(@address.country) %>
-      <% end %>
+      <%= f.label :state_id, raw(state_label(@address.country) + required_span_tag(@address.country.states_required?)) %>
     <% end %>
   <% end %>
 
   <%= f.field_container :zipcode do %>
     <%= f.text_field :zipcode, required: @address.country.zipcode_required? %>
-
-    <% if @address.country.zipcode_required? %>
-      <%= f.label :zipcode, (raw(zipcode_label(@address.country)) + required_span_tag) %>
-    <% else %>
-      <%= f.label :zipcode, zipcode_label(@address.country) %>
-    <% end %>
+    <%= f.label :zipcode, (raw(zipcode_label(@address.country)) + required_span_tag(@address.country.zipcode_required?)) %>
   <% end %>
 <% end %>

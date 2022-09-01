@@ -28,8 +28,8 @@
     </div>
     <div class="col-12">
       <%= f.field_container :phone do %>
-        <%= f.text_field :phone, required: true %>
-        <%= f.label :phone, raw(I18n.t('spree.admin.address.phone') + required_span_tag) %>
+        <%= f.text_field :phone, required: @address.require_phone? %>
+        <%= f.label :phone, raw(I18n.t('spree.admin.address.phone') + required_span_tag(@address.require_phone?)) %>
       <% end %>
     </div>
   </div>
