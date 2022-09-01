@@ -6,36 +6,22 @@
   <%= link_to_with_icon Spree.t(:new_order), new_admin_order_path, class: "btn-primary btn", icon: 'plus-square.svg', id: 'admin_new_order' %>
 <% end if can? :create, Spree::Order %>
 
-<%= render "search" if @orders.any? || params[:q].present? %>
+<%#-------------------------------------------------%>
+<%# Index Table                                     %>
+<%#-------------------------------------------------%>
+<% content_for :index_table_filter_tabs do %>
+  <%= link_to Spree.t('admin.orders.all'), spree.admin_orders_path(q: { completed_at_not_null: 1 }), class: "#{'active' if params[:q][:payment_state_not_eq].blank? && params[:q][:shipment_state_not_eq].blank?}" %>
+  <%= link_to Spree.t('admin.orders.unpaid'), params.merge({q: {payment_state_not_eq: :paid, completed_at_not_null: 1}}).permit!, class: "#{'active' if params[:q][:payment_state_not_eq] == 'paid'}" %>
+  <%= link_to Spree.t('admin.orders.unfulfilled'), params.merge({q: {shipment_state_not_eq: :shipped, completed_at_not_null: 1}}).permit!, class: "#{'active' if params[:q][:shipment_state_not_eq] == 'shipped'}" %>
+<% end %>
 
-<% if @orders.any? %>
-  <div class="border border-bottom-0 rounded-top bg-white p-2 pb-3">
+<% content_for :index_table_filter_buttons do %>
+  <%= link_to I18n.t('spree.admin.more_filters'), spree.filter_admin_orders_path(request.query_parameters), class: "btn btn-outline-secondary", data: {turbo_frame: :offcanvas} %>
+<% end %>
 
-    <div class="filter-wrap">
-      <div class="index-filter-button d-flex">
-        <%= form_tag request.fullpath, id: "quick-search", class: 'flex-grow-1 me-3' do %>
-          <%= text_field_tag :quick_search, nil, class: "form-control js-quick-search", placeholder: Spree.t(:search_by), autocomplete: false %>
-        <% end %>
-
-        <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#tableFilter" aria-expanded="false" aria-controls="tableFilter">
-          <%= inline_svg_tag "filter.svg", size: '16px * 16px' %>
-          <span class="d-none d-sm-inline"><%= I18n.t('spree.admin.filter') %></span>
-        </button>
-      </div>
-      <% unless defined?(simple) %>
-        <div id="tableFilter" class="collapse">
-          <div class="pb-0 mb-0">
-            <div class="">
-              <%= yield :table_filter %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-  </div>
-  <div class="table-responsive border border-top-0 rounded-bottom bg-white">
-    <table class="table table-hover rounded" id="listing_orders">
+<% content_for :index_table do %>
+  <% if @orders.any? %>
+    <table class="table table-hover" id="listing_orders">
       <thead class="text-muted">
         <tr data-hook="admin_orders_index_headers">
           <th><%= I18n.t(:number, scope: 'activerecord.attributes.spree/order') %></th>
@@ -100,13 +86,18 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-
-<% else %>
-  <div class="text-center no-objects-found m-5">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %><% if can? :create, Spree::Order %>,
-    <%= link_to(Spree.t(:add_one), new_admin_order_url) %>!<% end %>
-  </div>
+  <% else %>
+    <div class="text-center no-objects-found m-5">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %>
+    </div>
+  <% end %>
 <% end %>
 
-<%= render 'spree/admin/shared/index_table_options', collection: @orders, simple: true if @orders.any? %>
+<%#-------------------------------------------------%>
+<%# Render the index_table partial passing a        %>
+<%# search_field_value and search_field_placeholder %>
+<%# text if you want to add a search bar            %>
+<%#-------------------------------------------------%>
+  <%= render partial: "spree/admin/shared/index_table",
+             locals: { search_record: :number_i_cont,
+                       search_placeholder: I18n.t('spree.admin.products.search_all_orders_by_number') } %>

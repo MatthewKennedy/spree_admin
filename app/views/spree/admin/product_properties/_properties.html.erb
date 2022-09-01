@@ -3,7 +3,7 @@
     <h5 class="card-title">Properties From: <%= @prototype.name %> </h5>
   </div>
   <div class="card-body">
-    <%= form_with model: [:admin, @product], url: spree.admin_product_path(@product), id: 'newProductProperty', data: { turbo_frame: "_top"}, method: :patch do |pp| %>
+    <%= form_with model: [:admin, @product], url: spree.admin_product_path(@product), id: 'newProductProperty', data: { turbo_frame: :_top}, method: :patch do |pp| %>
       <% @prototype_properties.each_with_index do |prop, index| %>
         <div id="<%= dom_id(prop) %>" class="row">
           <div class="col-6">

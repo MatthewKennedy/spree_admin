@@ -19,110 +19,67 @@
       </div>
     <% end %>
 </div>
+
 <hr>
 
 <div>
   <h6 class="text-uppercase">
-    Contact Information
+    <%= I18n.t('spree.admin.orders.contact_information') %>
   </h6>
   <%= @order.email %>
   <hr>
 </div>
 
-<% if (@order.bill_address.present? && @order.ship_address.present?) && @order.bill_address == @order.ship_address %>
+<% if (@order.bill_address.present? && @order.ship_address.present?) && (@order.bill_address == @order.ship_address) %>
   <div class="my-3">
-    <h6 class="text-uppercase">Shipping Address</h6>
-    <% if @order.ship_address.full_name.present? %>
-      <%= @order.ship_address.full_name %><br>
-    <% end %>
-    <% if @order.ship_address.address1.present? %>
-      <%= @order.ship_address.address1 %><br>
-    <% end %>
-    <% if @order.ship_address.address2.present? %>
-      <%= @order.ship_address.address2 %><br>
-    <% end %>
-    <% if @order.ship_address.city.present? %>
-      <%= @order.ship_address.city %><br>
-    <% end %>
-    <% if @order.ship_address.state.present? %>
-      <%= @order.ship_address.state %><br>
-    <% end %>
-    <% if @order.ship_address.zipcode.present? %>
-      <%= @order.ship_address.zipcode %><br>
-    <% end %>
-    <% if @order.ship_address.country.present? %>
-      <%= @order.ship_address.country.name %><br>
-    <% end %>
-
-    <%= link_to 'Edit', spree.edit_admin_order_address_path(@order, @order.ship_address), data: { turbo_frame: :modal } %>
+    <h6 class="text-uppercase"> <%= I18n.t('spree.admin.order.addresses') %></h6>
+    <h6><%= I18n.t('spree.admin.billing_address') %></h6>
+    <div>
+      <%= render partial: 'spree/admin/shared/address', locals: { address: @order.bill_address } %>
+    </div>
+    <%#= link_to 'Edit', spree.edit_admin_order_address_path(@order, @order.ship_address), data: { turbo_frame: :modal } %>
     <hr>
   </div>
 
   <div>
-    <h5>Billing Address</h5>
-    Same as Shipping Address
+    <h6><%= I18n.t('spree.admin.shipping_address') %></h6>
+    <span class="text-muted"><%= I18n.t('spree.admin.order.same_as_billing_address') %></span>
   </div>
-
 <% else %>
   <% if @order.bill_address.present? %>
-    <div class="d-flex justify-content-between">
-      <div>
-        <h6 class="text-uppercase">Billing Address</h6>
-        <% if @order.bill_address.full_name.present? %>
-          <%= @order.bill_address.full_name %><br>
-        <% end %>
-        <% if @order.bill_address.address1.present? %>
-          <%= @order.bill_address.address1 %><br>
-        <% end %>
-        <% if @order.bill_address.address2.present? %>
-          <%= @order.bill_address.address2 %><br>
-        <% end %>
-        <% if @order.bill_address.city.present? %>
-          <%= @order.bill_address.city %><br>
-        <% end %>
-        <% if @order.bill_address.state.present? %>
-          <%= @order.bill_address.state %><br>
-        <% end %>
-        <% if @order.bill_address.zipcode.present? %>
-          <%= @order.bill_address.zipcode %><br>
-        <% end %>
-        <% if @order.bill_address.country.present? %>
-          <%= @order.bill_address.country.name %><br>
-        <% end %>
-      </div>
+    <h6><%= I18n.t('spree.admin.billing_address') %></h6>
+    <div>
+      <%= render partial: 'spree/admin/shared/address', locals: { address: @order.bill_address } %>
 
-      <%= link_to 'Edit', spree.edit_modal_admin_address_path(@order.bill_address), data: { turbo_frame: :modal } %>
+      <%#= link_to 'Edit', spree.edit_modal_admin_address_path(@order.bill_address), data: { turbo_frame: :modal } %>
     </div>
     <hr>
+  <% else %>
+    <div class="bs-callout bs-callout-info my-3">
+      <h6>
+        <%= I18n.t('spree.admin.billing_address') %>
+      </h6>
+      <small class="text-muted">
+       <%= I18n.t('spree.admin.no_billing_address_has_been_added_to_this_order') %>
+      </small>
+    </div>
   <% end %>
 
   <% if @order.ship_address.present? %>
-    <div class="d-flex justify-content-between">
-      <div>
-        <h6 class="text-uppercase">Shipping Address</h6>
-        <% if @order.ship_address.full_name.present? %>
-          <%= @order.ship_address.full_name %><br>
-        <% end %>
-        <% if @order.ship_address.address1.present? %>
-          <%= @order.ship_address.address1 %><br>
-        <% end %>
-        <% if @order.ship_address.address2.present? %>
-          <%= @order.ship_address.address2 %><br>
-        <% end %>
-        <% if @order.ship_address.city.present? %>
-          <%= @order.ship_address.city %><br>
-        <% end %>
-        <% if @order.ship_address.state.present? %>
-          <%= @order.ship_address.state %><br>
-        <% end %>
-        <% if @order.ship_address.zipcode.present? %>
-          <%= @order.ship_address.zipcode %><br>
-        <% end %>
-        <% if @order.ship_address.country.present? %>
-          <%= @order.ship_address.country.name %><br>
-        <% end %>
-      </div>
-      <%= link_to 'Edit', spree.edit_modal_admin_address_path(@order.ship_address), data: { turbo_frame: :modal } %>
+    <h6><%= I18n.t('spree.admin.shipping_address') %></h6>
+    <div>
+      <%= render partial: 'spree/admin/shared/address', locals: {address: @order.ship_address} %>
+
+      <%#= link_to 'Edit', spree.edit_modal_admin_address_path(@order.ship_address), data: { turbo_frame: :modal } %>
+    </div>
+  <% else %>
+    <div class="bs-callout bs-callout-info my-3">
+      <h6>
+        <%= I18n.t('spree.admin.shipping_address') %>
+      </h6>
+      <small class="text-muted">
+        <%= I18n.t('spree.admin.no_shipping_address_has_been_added_to_this_order') %>
+      </small>
     </div>
   <% end %>
 <% end %>

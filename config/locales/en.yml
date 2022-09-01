@@ -25,16 +25,32 @@ en:
       active: Active
       add_option_types_to_this_product_to_begin_creating_variants: Add option types to this product to begin creating variants
       address:
+        address_cont: Address (Cont.)
+        address_label: Address Label
+        city: City
+        company: Company
+        contact_details: Contact Details
+        edit_address: Edit Address
         emirate: Emirate
+        first_name: First Name
+        label_info: Identify this address with a label e.g.; Work, Home...
+        last_name: Last Name
+        location: Location
+        new_address: New Address
+        phone: Phone
         post_code: Post Code
+        state: State
         state_territory: State / Territory
         street: Street
+        used_for_billing_and_shipping: Used for billing and shipping
+        zipcode: Zipcode
       amount: Amount
       apis: API's
       are_you_sure_you_want_to: Are you sure you want to %{action} this %{resource}
       avs_responses:
         street_address_matches_but_5-digit_and_9_digit_postal_code_do_not_match: Street address matches, but 5-digit and 9-digit postal code do not match.
         street_address_matches_but_postal_code_not_verified: Street address matches, but postal code not verified.
+      billing_address: Billing address
       calculators:
         if_you_change_the_calculator: Click update to save the new calculator.
       cms:
@@ -130,8 +146,8 @@ en:
           cannot_remove_icon: Cannot remove icon
       execution_time: Execution Time
       expires_at: Expires at
-      filter: Filter
       kind: Kind
+      label: Label
       language: Language
       learn_more: Learn more
       limit_usage_to: Limit usage to
@@ -185,8 +201,10 @@ en:
         url: URL
         url_info: The URL field can link to an external website using <b>https://example.com</b>, link to an otherwise unreachable internal path using <b>/policies/privacy</b>, launch an email client using <b>mailto:sales@example.com</b> or used to create a clickable phone number with <b>tel:123456789</b>
         you_have_no_menus: You have no Menus, click the Add New Menu button to create your first Menu.
+      no_billing_address_has_been_added_to_this_order: No billing address has been added to this order
       no_message_set: No message set
       no_payment_provider_settings_message: No payment provider settings message
+      no_shipping_address_has_been_added_to_this_order: No shipping address has been added to this order
       not_applicable: Not applicable
       note: Note
       notice_messages:
@@ -212,19 +230,24 @@ en:
         add: Add
         add_a_shipment_to_this_order_to_begin_adding_items: Add a new shipping location to this order, and then add products to the shipment. Ideally, choose the location nearest the delivery address for faster and cheaper delivery.
         add_user_to_order: Add this User to the Order
+        addresses: Addresses
         currency: Currency
         customer: Customer
+        date_range: Date range
         email_copy_of_invoice_to_customer: Send Invoice
         from: from
         instructions:
           cart: Add a customer or products to the order via the Shipment section.
+          currency: Set the currency for this order.
         mark_as_shipped: Mark as Shipped
         order: order
         products: Products
         resend_shipping_confirmation_email: Resend Shipping Confirmation Email
+        same_as_billing_address: Same as billing address
         search_for_a_product_or_variant: Search for products by name or SKU.
         search_users_by_name_or_email: Search users by name or email.
         set_order_currency: Set Order Currency
+        shipping_locations: Shipping locations
         the_order_currency_is_locked_once_items_are_added: The currency of this order is locked.
         tracking_number: Tracking Number
       order_state:
@@ -241,7 +264,16 @@ en:
       orders:
         abandoned_checkouts: Abandoned Checkouts
         all_orders: All Orders
+        contact_information: Contact information
         draft_orders: Draft Orders
+        email_address: Email address
+        getting_started: Getting Started
+        order_number: Order number
+        order_state: Order state
+        payment_state: Payment state
+        set_the_order_currency: Set the order currency
+        shipment_state: Shipment state
+        state: State
       organization: Organization
       payment: Payment
       payment_states:
@@ -303,6 +335,7 @@ en:
         products_marked_as: Products marked as
         properties: Properties
         search: Search
+        search_all_orders_by_number: Search all orders by number
         search_all_products_by_name_or_sku: Search all products by name or sku
         select_from_prototype: Select from prototype
         stock: Stock
@@ -380,6 +413,7 @@ en:
         shipped: Shipped
         void: Void
       shipments: Shipments
+      shipping_address: Shipping address
       shipping_categories:
         new_shipping_category: New shipping category
       shipping_methods:
@@ -482,9 +516,26 @@ en:
       total: Total
       url: URL
       user:
+        add_store_credit: Add store credit
+        address: Address
+        addresses: Addresses
         available_store_credit: User has %{amount} in Store Credit available.
+        billing_addresses: Billing Addresses
+        create_a_new_user: Create a new user
+        customer: Customer
+        customer_details: Customer details
+        default_address: Default Address
+        default_addresses: Default Addresses
+        edit_store_credit: Edit store credit
         no_store_credit: User has no Store Credit available.
+        orders: Orders
+        other_addresses: Other Addresses
+        password: Password
+        roles: Roles
+        shipping_addresses: Shipping Addresses
         store_credits: Store Credits
+        user_email: User email
+        user_since: User since
       user_rule:
         choose_users: Choose users
       users:
@@ -492,7 +543,10 @@ en:
         email: Email
         first_name: First name
         last_name: Last name
+        manage: Manage
         name_and_email: Name and email
+        search_by_order_number: Search by order number
+        search_for_users_by_email: Search for users by email
         users: Users
       utilities:
         preview: Preview %{name}

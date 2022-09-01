@@ -16,6 +16,33 @@ aside#main-sidebar {
     margin-bottom: var(--nav-bar-height);
     margin-top: 90px;
   }
+
+  li.selected {
+    position: relative;
+    background: var(--bs-gray-100);
+
+    a {
+      color: var(--bs-primary) !important;
+    }
+
+    &::before {
+      display: block;
+      position: absolute;
+      content: "";
+      width:5px;
+      height: 100%;
+      background-color: var(--bs-primary);
+      border-radius: var(--#{$prefix}border-radius) 0 0 var(--#{$prefix}border-radius);
+      top: 0;
+      left: 0;
+    }
+  }
+
+  ul.nav {
+    li {
+      border-radius: var(--#{$prefix}border-radius);
+    }
+  }
 }
 
 body.sidebar-open {

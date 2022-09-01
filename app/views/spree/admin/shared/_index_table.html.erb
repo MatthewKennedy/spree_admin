@@ -1,9 +1,11 @@
-<% search_field_value ||= nil %>
-<% search_field_placeholder ||= nil %>
+<% search_record ||= nil %>
+<% search_record ||= nil %>
+<% search_url ||= nil %>
+<% show_search = true if (!search_record.nil? && !search_placeholder.nil?) %>
 
 <%= turbo_frame_tag :index_table do %>
-  <div class="border rounded bg-white">
-     <%= render partial: 'spree/admin/shared/index_table_filters', locals: {search_field_value: search_field_value, search_field_placeholder: search_field_placeholder} %>
+  <div class="card no_shadow_if_nested">
+     <%= render partial: 'spree/admin/shared/index_table_filters', locals: {show_search: show_search, search_record: search_record, search_placeholder: search_placeholder, search_url:  search_url} %>
 
     <div class="col-12 p-0">
       <div class="table-responsive">

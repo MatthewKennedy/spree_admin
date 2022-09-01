@@ -23,7 +23,7 @@ module Spree
 
         if @store_credit.save
           flash[:success] = flash_message_for(@store_credit, :successfully_created)
-          redirect_to spree.admin_user_store_credits_path(@user)
+          redirect_to spree.edit_admin_user_path(@user)
         else
           load_categories
           flash[:error] = I18n.t("spree.admin.store_credit.errors.unable_to_create")
@@ -37,7 +37,7 @@ module Spree
 
         if @store_credit.save
           flash[:success] = flash_message_for(@store_credit, :successfully_updated)
-          redirect_to spree.admin_user_store_credits_path(@user)
+          redirect_to spree.edit_admin_user_path(@user)
         else
           load_categories
           flash[:error] = I18n.t("spree.admin.store_credit.errors.unable_to_update")
@@ -56,7 +56,7 @@ module Spree
         end
 
         respond_with(@store_credit) do |format|
-          format.html { redirect_to spree.admin_user_store_credits_path(@user) }
+          format.html { redirect_to spree.edit_admin_user_path(@user) }
         end
       end
 

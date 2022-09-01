@@ -15,6 +15,10 @@ export default class extends Controller {
   }
 
   submitEnd (event) {
+    // If the form submission is a validation check, don't close the modal.
+    if (event.detail.formSubmission.submitter.formNoValidate === true) return
+
+    // When the form submission is successful and not a validation check, hide the modal.
     if (event.detail.success) this.modal.hide()
   }
 }

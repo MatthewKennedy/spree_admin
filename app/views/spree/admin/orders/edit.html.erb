@@ -29,9 +29,9 @@
 
   </div>
   <div class="col-12 col-md-4">
+    <%= render 'summary' %>
     <%= render 'currency' if can?(:update, @order) %>
     <%= render 'spree/admin/orders/customer/panel' if can?(:update, @order) %>
-    <%= render 'summary' %>
   </div>
 </div>
 

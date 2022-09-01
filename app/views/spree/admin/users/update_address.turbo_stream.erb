@@ -1,0 +1,4 @@
+<%= turbo_stream.update "customerAddresses" do %>
+  <%= render partial: 'spree/admin/users/address/default' %>
+  <%= render partial: 'spree/admin/users/address/other' %>
+<% end %>

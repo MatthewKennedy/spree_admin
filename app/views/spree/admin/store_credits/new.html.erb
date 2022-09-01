@@ -1,13 +1,18 @@
-<%= render partial: 'spree/admin/users/tabs', locals: { current: :store_credits } %>
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= I18n.t('spree.admin.user.add_store_credit') %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% end %>
 
-<%= form_with model: @store_credit, url: spree.admin_user_store_credits_path(@user, @store_credit) do |f| %>
-  <div class="card">
-    <div class="card-header">
-      <%= Spree.t(:add_store_credit) %>
-    </div>
-    <div class="card-body">
+<% content_for :modal_body do %>
+  <div class="container">
+    <%= form_with model: [:admin, @user, @store_credit], id: 'modalForm', data: { turbo_frame: :user_store_credits_wrapper, action: "turbo:submit-end->modal#submitEnd" } do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
-      <%= render partial: 'spree/admin/shared/resource_actions', locals: { collection_url: spree.admin_user_store_credits_path(@user) } %>
-    </div>
+    <% end %>
   </div>
 <% end %>
+
+<% content_for :modal_footer do %>
+  <%= button_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: "modalForm") %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog modal-dialog-centered modal-lg' } %>

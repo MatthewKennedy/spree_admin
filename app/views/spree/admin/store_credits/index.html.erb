@@ -1,45 +1,39 @@
-<%= render partial: 'spree/admin/users/tabs', locals: { current: :store_credits } %>
-
-<% content_for :page_actions do %>
-  <%= link_to_with_icon Spree.t(:add_store_credit), spree.new_admin_user_store_credit_path(@user), class: "btn-primary btn", icon: 'plus-square.svg' if can?(:create, Spree::StoreCredit) %>
+<%= turbo_frame_tag :user_store_credits do %>
+  <% if @store_credits.any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="text-muted">
+          <th><%= Spree.t(:credited) %></th>
+          <th><%= Spree.t(:used) %></th>
+          <th><%= Spree.t(:category) %></th>
+          <th><%= Spree.t(:created_by) %></th>
+          <th><%= Spree.t(:issued_on) %></th>
+          <th class="actions text-end"></th>
+        </thead>
+        <tbody>
+          <% @store_credits.each do |store_credit| %>
+            <tr id="<%= dom_id(store_credit) %>" data-stream-exit-class="animate__fadeOut">
+              <td><%= store_credit.display_amount.to_html %></td>
+              <td><%= store_credit.display_amount_used.to_html %></td>
+              <td><%= store_credit.category_name %></td>
+              <td><%= store_credit.created_by_email %></td>
+              <td><%= pretty_date(store_credit.created_at.to_date) %></td>
+              <td class="actions" data-hook="admin_store_credits_index_row_actions">
+                <span class="d-flex justify-content-end">
+                  <% if store_credit.amount_used.zero? %>
+                    <%= link_to_edit(store_credit, url: spree.edit_admin_user_store_credit_path(@user, store_credit), data: {turbo_frame: :modal}) if can?(:edit, store_credit) %>
+                    <%= link_to_delete(store_credit, url: spree.admin_user_store_credit_path(@user, store_credit)) if can?(:destroy, store_credit) %>
+                  <% end %>
+                </span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="text-center no-objects-found m-5">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::StoreCredit)) %>
+    </div>
+  <% end %>
 <% end %>
-
-<% if @store_credits.any? %>
-<div class="table-responsive border rounded bg-white">
-  <table class="table">
-    <thead class="text-muted">
-      <th><%= Spree.t(:credited) %></th>
-      <th><%= Spree.t(:used) %></th>
-      <th><%= Spree.t(:category) %></th>
-      <th><%= Spree.t(:created_by) %></th>
-      <th><%= Spree.t(:issued_on) %></th>
-      <th data-hook="admin_store_credits_index_header_actions" class="actions"></th>
-    <thead class="text-muted">
-    <tbody>
-      <% @store_credits.each do |store_credit| %>
-        <tr id="<%= dom_id(store_credit) %>" data-stream-exit-class="animate__fadeOut">
-          <td><%= store_credit.display_amount.to_html %></td>
-          <td><%= store_credit.display_amount_used.to_html %></td>
-          <td><%= store_credit.category_name %></td>
-          <td><%= store_credit.created_by_email %></td>
-          <td><%= l store_credit.created_at.to_date %></td>
-          <td class="actions" data-hook="admin_store_credits_index_row_actions">
-            <span class="d-flex justify-content-end">
-              <% if store_credit.amount_used.zero? %>
-                <%= link_to_edit(store_credit, url: spree.edit_admin_user_store_credit_path(@user, store_credit)) if can?(:edit, store_credit) %>
-                <%= link_to_delete(store_credit, url: spree.admin_user_store_credit_path(@user, store_credit)) if can?(:destroy, store_credit) %>
-              <% end %>
-            </span>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<% else %>
-  <div class="text-center no-objects-found m-5">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::StoreCredit)) %>
-  </div>
-<% end %>
-
-<%= render 'spree/admin/users/lifetime_stats' %>

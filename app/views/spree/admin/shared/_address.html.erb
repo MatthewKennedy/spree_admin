@@ -1,38 +1,52 @@
-<div class="address vcard">
-  <div class="fn"><%= address.full_name %></div>
-  <% unless address.company.blank? %>
-    <div class="org">
-      <%= address.company %>
+<div class="d-flex my-2">
+  <div class="address vcard flex-fill">
+    <div class="full-name">
+      <%= address.full_name %>
     </div>
-  <% end %>
-  <div class="adr">
-    <div class="street-address">
-      <div class="street-address-line">
-        <%= address.address1 %>
+    <% unless address.company.blank? %>
+      <div class="org">
+        <%= address.company %>
       </div>
-      <% unless address.address2.blank? %>
+    <% end %>
+    <div class="adr">
+      <div class="street-address">
         <div class="street-address-line">
-          <%= address.address2 %>
+          <%= address.address1 %>
         </div>
-      <% end %>
+        <% unless address.address2.blank? %>
+          <div class="street-address-line">
+            <%= address.address2 %>
+          </div>
+        <% end %>
+      </div>
+      <div class="city">
+        <span class="locality"><%= address.city %></span>
+      </div>
+      <div class="local">
+        <% unless address.state.blank? %>
+          <span class="region"><%= address.state_text %></span>
+        <% end %>
+        <% unless address.zipcode.blank? %>
+          <span class="postal-code"><%= address.zipcode %></span>
+        <% end %>
+        <div class="country-name"><%= address.country.try(:name) %></div>
+      </div>
     </div>
-    <div class="local">
-      <span class="locality"><%= address.city %></span>
-      <span class="region"><%= address.state_text %></span>
-      <span class="postal-code"><%= address.zipcode %></span>
-      <div class="country-name"><%= address.country.try(:name) %></div>
-    </div>
+    <% unless address.phone.blank? %>
+      <div class="tel">
+        <%= address.phone %>
+      </div>
+    <% end %>
+    <% unless address.alternative_phone.blank? %>
+      <div class="alternative-phone tel">
+        <span class="type"><%= Spree.t(:alternative_phone) %></span>
+        <%= address.alternative_phone %>
+      </div>
+    <% end %>
   </div>
-  <% unless address.phone.blank? %>
-    <div class="tel">
-      <span class="type"><%= Spree.t(:phone) %></span>
-      <%= address.phone %>
-    </div>
-  <% end %>
-  <% unless address.alternative_phone.blank? %>
-    <div class="alternative-phone tel">
-      <span class="type"><%= Spree.t(:alternative_phone) %></span>
-      <%= address.alternative_phone %>
-    </div>
-  <% end %>
+  <div>
+    <% unless address.label.blank? %>
+      <h6 class="mb-0"><span class="badge bg-secondary"><%= address.label %></span></h6>
+    <% end %>
+  </div>
 </div>

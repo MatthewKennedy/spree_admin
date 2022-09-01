@@ -2,7 +2,6 @@ module Spree
   module Admin
     class UsersController < ResourceController
       rescue_from Spree::Core::DestroyWithOrdersError, with: :user_destroy_with_orders_error
-
       after_action :sign_in_if_change_own_password, only: :update
 
       def filter
@@ -33,24 +32,34 @@ module Spree
       end
 
       def addresses
-        if request.put?
-          params[:user][:bill_address_attributes][:user_id] = @user.id if params[:user][:bill_address_attributes].present?
-          params[:user][:ship_address_attributes][:user_id] = @user.id if params[:user][:ship_address_attributes].present?
-          if @user.update(user_params)
-            flash.now[:success] = Spree.t(:account_updated)
-            redirect_to spree.addresses_admin_user_path(@user)
-          else
-            render :addresses, status: :unprocessable_entity
-          end
-        elsif request.get?
-          @user.assign_attributes(user_params)
+      end
+
+      def customer_details
+      end
+
+      def update_address
+        if @user.update(permitted_resource_params)
+        else
+          stream_flash_alert(message: I18n.t("spree.admin.products.errors.status_could_not_be_updated"), kind: :error)
         end
       end
 
       def orders
         params[:q] ||= {}
+        params[:q][:completed_at_not_null] ||= "1"
+
+        if params[:q][:number_i_cont].present?
+          params[:q].delete(:completed_at_not_null)
+        end
+
         @search = current_store.orders.reverse_chronological.ransack(params[:q].merge(user_id_eq: @user.id))
-        @orders = @search.result.page(params[:page])
+
+        @orders = @search.result
+        @pagy, @orders = pagy(@orders, items: 5)
+
+        respond_with(@orders) do |format|
+          format.html
+        end
       end
 
       def items
@@ -81,6 +90,10 @@ module Spree
         @pagy, @collection = pagy(@collection, items: per_page_limit)
 
         @collection
+      end
+
+      def location_after_save
+        spree.edit_admin_user_path(@user)
       end
 
       private

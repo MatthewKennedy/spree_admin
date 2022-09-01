@@ -1,133 +1,84 @@
-<% dynamic_fields = ['state', 'zipcode', 'country', 'phone', 'firstname', 'lastname', 'company'] %>
-<% naming_fields = ['firstname', 'lastname', 'company'] %>
-<% requireds = ['firstname', 'lastname', 'address1', 'city'] %>
-
 <div data-hook="address_fields">
-  <h6 class="text-muted">International Location</h6>
-  <!-- COUNTRY -->
-  <%= field_container :country, nil do %>
-    <%= f.collection_select :country_id, all_countries, :id, :name, {  }, { class: 'form-select', data: { controller: 'ts--select', action: 'change->form-validation#validate' } } %>
-    <%= f.label :country, raw(Spree.t(:country) + required_span_tag) %>
+  <% if @user %>
+    <%= f.hidden_field :user_id, value: @user.id %>
   <% end %>
-  <!-- COUNTRY -->
 
-  <hr class="my-4">
-  <h6 class="text-muted">Name</h6>
-
-  <% Spree::Address::ADDRESS_FIELDS.each do |field| %>
-    <% next unless naming_fields.include?(field) %>
-
-    <%= field_container (field), nil do %>
-      <%= f.text_field field, required: requireds.include?(field) %>
-      <% if requireds.include?(field) %>
-        <%= f.label field, raw(Spree.t(field) + required_span_tag) %>
-      <% else %>
-        <%= f.label field, Spree.t(field) %>
-      <% end %>
-    <% end %>
+  <h6 class="text-muted"><%= I18n.t('spree.admin.address.address_label') %></h6>
+  <%= f.field_container :label do %>
+    <%= f.text_field :label %>
+    <%= f.label :address_name, I18n.t('spree.admin.label') %>
+    <small class="text-muted"><%= I18n.t('spree.admin.address.label_info') %></small>
   <% end %>
 
   <hr class="my-4">
-  <h6 class="text-muted">Address Location</h6>
-    <% Spree::Address::ADDRESS_FIELDS.each do |field| %>
-      <% next if dynamic_fields.include?(field) %>
+  <h6 class="text-muted"><%= I18n.t('spree.admin.address.contact_details') %></h6>
 
-      <% if field == 'address1' %>
-        <% label_name = I18n.t('spree.admin.address.street') %>
-      <% else %>
-        <% label_name = Spree.t(field) %>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <%= f.field_container :firstname do %>
+        <%= f.text_field :firstname, required: true %>
+        <%= f.label :firstname, raw(I18n.t('spree.admin.address.first_name') + required_span_tag) %>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-6">
+      <%= f.field_container :lastname do %>
+        <%= f.text_field :lastname, required: true %>
+        <%= f.label :lastname, raw(I18n.t('spree.admin.address.last_name') + required_span_tag) %>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <%= f.field_container :phone do %>
+        <%= f.text_field :phone, required: @address.require_phone? %>
+        <%= f.label :phone, raw(I18n.t('spree.admin.address.phone') + required_span_tag(@address.require_phone?)) %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="my-4">
+  <h6 class="text-muted"><%= I18n.t('spree.admin.address.location') %></h6>
+
+  <div class="row">
+    <div class="col-12">
+      <%= f.field_container :company do %>
+        <%= f.text_field :company %>
+        <%= f.label :company, I18n.t('spree.admin.address.company') %>
       <% end %>
 
-      <%= field_container (field), nil do %>
-        <%= f.text_field field, required: requireds.include?(field) %>
-        <% if requireds.include?(field) %>
-          <%= f.label field, raw(label_name + required_span_tag) %>
-        <% else %>
-          <%= f.label field, label_name %>
-        <% end %>
+      <%= f.field_container :address1 do %>
+        <%= f.text_field :address1, required: true %>
+        <%= f.label :address1, raw(I18n.t('spree.admin.address.street') + required_span_tag) %>
       <% end %>
-    <% end %>
 
-  <% Spree::Address::ADDRESS_FIELDS.each do |field| %>
-    <% if field == "state" %>
-
-    <% state_lable = case f.object.country.iso3
-       when 'ARE'
-           I18n.t('spree.admin.address.emirate')
-       when 'AUS'
-        I18n.t('spree.admin.address.state_territory')
-       else
-          Spree.t(field)
-       end %>
-
-      <!-- STATE -->
-      <%= field_container (field), :state, data: { form_validation_target: "hideOnSubmit" } do %>
-        <% if f.object.country.try(:states) %>
-          <% if !f.object.country.states.present? && f.object.country.states_required? %>
-            <%= f.text_field :state_name, style: "display: #{ f.object.country.states.empty? && f.object.country.states_required? ? 'block' : 'none' };",
-                                          required: true,
-                                          data: { form_validation_target: "disableOnSubmit emptyOnSubmit removeRequiredOnSubmit" } %>
-          <% end %>
-
-          <% if f.object.country.states.present? %>
-            <%= f.collection_select :state_id, f.object.country.states.sort, :id, :name, { include_blank: true }, {class: 'form-select', required: f.object.country.states_required?, data: { controller: f.object.country.states.empty? ? '' : 'ts--select',
-                                                                                                                                                                                              form_validation_target: "disableOnSubmit removeRequiredOnSubmit" }} %>
-          <% end %>
-
-          <% if f.object.country.states_required? || f.object.country.states.present? %>
-            <% if f.object.country.states_required? %>
-              <%= f.label :state_id, raw(state_lable + required_span_tag) %>
-            <% else %>
-              <%= f.label :state_id, state_lable %>
-            <% end %>
-          <% end %>
-
-        <% else %>
-          <div>
-            <em><%= Spree.t(:no_country) %></em>
-          </div>
-        <% end %>
+      <%= f.field_container :address2 do %>
+        <%= f.text_field :address2 %>
+        <%= f.label :address2, I18n.t('spree.admin.address.address_cont') %>
       <% end %>
-      <!-- STATE -->
-    <% elsif field == "zipcode" %>
 
-    <% zip_lable = case f.object.country.iso3
-      when 'GBR'
-        I18n.t('spree.admin.address.post_code')
-      when 'CAN'
-        I18n.t('spree.admin.address.post_code')
-      when 'AUS'
-        I18n.t('spree.admin.address.post_code')
-      else
-        Spree.t(field)
-      end %>
-
-      <!-- ZIPCODE -->
-      <%= field_container (field), nil, data: { form_validation_target: "hideOnSubmit" } do %>
-        <%= f.text_field field, data: { form_validation_target: "disableOnSubmit emptyOnSubmit removeRequiredOnSubmit" } %>
-
-        <% if f.object.country.zipcode_required? %>
-          <%= f.label field, (raw(zip_lable) + required_span_tag) %>
-        <% else %>
-          <%= f.label field, zip_lable %>
-        <% end %>
+      <%= f.field_container :city do %>
+        <%= f.text_field :city, required: true %>
+        <%= f.label :city, raw(I18n.t('spree.admin.address.city') + required_span_tag) %>
       <% end %>
-      <!-- ZIPCODE -->
-    <% end %>
-  <% end %>
 
-  <% Spree::Address::ADDRESS_FIELDS.each do |field| %>
-    <% if field == 'phone' %>
-    <hr class="mt-4">
-    <h6 class="text-muted">Contact Details</h6>
-      <%= field_container (field), nil do %>
-        <%= f.text_field field, required: requireds.include?(field) %>
-        <% if requireds.include?(field) %>
-          <%= f.label field, raw(Spree.t(field) + required_span_tag) %>
-        <% else %>
+      <%= f.field_container :country do %>
+        <%= f.collection_select :country_id, all_countries, :id, :name, {}, { class: 'form-select', data: { controller: 'ts--select', action: 'change->form-validation#validate' } } %>
+        <%= f.label :country, raw(Spree.t(:country) + required_span_tag) %>
+      <% end %>
+
+      <div id="stateAndZipcode">
+        <%= render partial: "state_zip" %>
+      </div>
+
+      <%# ----------------- %>
+      <%# Additional Fields %>
+      <%# ----------------- %>
+      <% Spree::Address::ADDRESS_FIELDS.each do |field| %>
+        <% next if @base_fields.include?(field) %>
+
+        <%= f.field_container (field) do %>
+          <%= f.text_field field %>
           <%= f.label field, Spree.t(field) %>
         <% end %>
       <% end %>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
