@@ -132,40 +132,20 @@ describe Spree::Admin::UsersController, type: :controller do
   describe "#orders" do
     let!(:order) { create(:order, user: user, store: store) }
     let!(:order_2) { create(:order, user: user, store: create(:store)) }
+    let!(:order_3) { create(:completed_order_with_totals, user: user, store: store) }
 
     before do
       user.spree_roles << Spree::Role.find_or_create_by(name: "admin")
     end
 
-    it "assigns a list of the users orders" do
+    it "assigns a list of the users completed orders" do
       get :orders, params: {id: user.id}
       expect(assigns[:orders].count).to eq 1
-      expect(assigns[:orders].first).to eq order
+      expect(assigns[:orders].first).to eq order_3
     end
 
     it "assigns a ransack search for Spree::Order" do
       get :orders, params: {id: user.id}
-      expect(assigns[:search]).to be_a Ransack::Search
-      expect(assigns[:search].klass).to eq Spree::Order
-    end
-  end
-
-  describe "#items" do
-    let!(:order) { create(:order, user: user, store: store) }
-    let!(:order_2) { create(:order, user: user, store: create(:store)) }
-
-    before do
-      user.spree_roles << Spree::Role.find_or_create_by(name: "admin")
-    end
-
-    it "assigns a list of the users orders" do
-      get :items, params: {id: user.id}
-      expect(assigns[:orders].count).to eq 1
-      expect(assigns[:orders].first).to eq order
-    end
-
-    it "assigns a ransack search for Spree::Order" do
-      get :items, params: {id: user.id}
       expect(assigns[:search]).to be_a Ransack::Search
       expect(assigns[:search].klass).to eq Spree::Order
     end
