@@ -117,7 +117,7 @@ module Spree
         options[:icon] = "pen.svg"
         options[:class] ||= "btn btn-light btn-sm"
 
-        link_to_with_icon(name, url, options)
+        link_to_with_icon(name, url, options.except(:url))
       end
 
       def link_to_clone(resource, options = {})
@@ -141,7 +141,7 @@ module Spree
         options[:icon] = "x-lg.svg"
         options[:data] = {turbo_method: :delete, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
-        link_to_with_icon(name, url, options)
+        link_to_with_icon(name, url, options.except(:url))
       end
 
       def link_to_with_icon(name, url, html_options = {})

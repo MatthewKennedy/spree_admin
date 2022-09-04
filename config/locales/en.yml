@@ -25,6 +25,9 @@ en:
       active: Active
       add_option_types_to_this_product_to_begin_creating_variants: Add option types to this product to begin creating variants
       address:
+        add_a_new_billing_address: Add a new billing address
+        add_a_new_delivery_address: Add a new delivery address
+        add_a_new_shipping_address: Add a new shipping address
         address_cont: Address (Cont.)
         address_label: Address Label
         city: City
@@ -233,6 +236,7 @@ en:
         addresses: Addresses
         currency: Currency
         customer: Customer
+        customer_email: Customer email
         date_range: Date range
         email_copy_of_invoice_to_customer: Send Invoice
         from: from
@@ -266,8 +270,12 @@ en:
         all_orders: All Orders
         contact_information: Contact information
         draft_orders: Draft Orders
+        email: Email
         email_address: Email address
+        existing: Existing
         getting_started: Getting Started
+        new: New
+        no_email_address_has_been_added_to_this_order: No email address has been added to this order
         order_number: Order number
         order_state: Order state
         payment_state: Payment state

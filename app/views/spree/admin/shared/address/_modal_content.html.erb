@@ -1,7 +1,16 @@
+<% skip_label_field ||= false %>
+<% modal_title ||= '' %>
+<% address_kind ||= nil %>
+
+<% content_for :modal_header do %>
+  <h5 class="modal-title"><%= modal_title %></h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<% end %>
+
 <% content_for :modal_body do %>
   <div class="container" data-controller="form-validation">
     <%= form_with model: [:admin, @address], data: {turbo_frame: :inner_main_content, action: "turbo:submit-end->modal#submitEnd"}, id: :address_form do |form| %>
-      <%= render partial: 'form', locals: { f: form } %>
+      <%= render partial: 'spree/admin/shared/address/form', locals: { f: form, skip_label_field: skip_label_field, address_kind: address_kind} %>
 
       <%= button_tag :update_country, formaction: spree.update_country_admin_addresses_path, formmethod: :post, formnovalidate: true, style: 'display: none;', data: { turbo_frame: :modal, form_validation_target: "submitBtn" } %>
     <% end %>

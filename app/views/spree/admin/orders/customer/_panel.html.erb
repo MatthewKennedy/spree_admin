@@ -1,30 +1,18 @@
-<div class="card">
-  <div class="card-header">
-    <h5 class="card-title"><%= I18n.t('spree.admin.order.customer') %></h5>
-  </div>
-  <div class="card-body">
-    <% unless @order.user.present? %>
-      <%= form_with model: @order, url: spree.admin_order_path(@order), method: :patch, data: { controller: "form-validation" } do |f| %>
-        <div class="form-group form-floating">
-          <%= f.select :user_id, [], { include_blank: true }, class: 'form-select',
-                                                              placeholder: I18n.t('spree.admin.order.search_users_by_name_or_email'),
-                                                              data: { action: 'change->form-validation#validate',
-                                                                      controller: 'ts--search-user',
-                                                                      ts__search_user_plugins_value: ['clear_button'],
-                                                                      ts__search_user_fields_value: ['email', 'first_name', 'last_name'],
-                                                                      ts__search_user_uri_value: spree.api_v2_platform_users_path,
-                                                                      ts__search_user_ransack_value: ['email_i_cont', 'addresses_firstname', 'addresses_lastname'],
-                                                                      ts__search_user_include_value: 'ship_address.country,bill_address.country' } %>
-
-          <%= f.label :user_id, Spree.t(:user_id), class: 'form-label' %>
-        </div>
-
-        <%= f.submit I18n.t('spree.admin.order.add_user_to_order'), class: 'btn btn-light', data: { form_validation_target: "submitBtn" } %>
+<sa-card>
+  <%= turbo_frame_tag :customer do %>
+    <sa-header>
+      <h5><%= I18n.t('spree.admin.order.customer') %></h5>
+      <nav-pills>
+        <%= link_to(I18n.t('spree.admin.orders.new'), spree.new_customer_admin_order_path(@order), class: "#{'active' if @customer_status == 'new'}") unless @order.user.present? %>
+        <%= link_to(I18n.t('spree.admin.orders.existing'), spree.existing_customer_admin_order_path(@order), class: "#{'active' if @customer_status == 'existing'}") %>
+      </nav-pills>
+    </sa-header>
+    <sa-body>
+      <% if @customer_status == 'new' %>
+        <%= render partial: 'spree/admin/orders/customer/new' %>
+      <% else %>
+        <%= render partial: 'spree/admin/orders/customer/existing' %>
       <% end %>
-    <% end %>
-
-    <% if @order.user.present? %>
-      <%= render partial: "spree/admin/orders/customer/details" %>
-    <% end %>
-  </div>
-</div>
+    </sa-body>
+  <% end %>
+</sa-card>

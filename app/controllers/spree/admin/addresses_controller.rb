@@ -1,7 +1,10 @@
 module Spree
   module Admin
     class AddressesController < ResourceController
-      before_action :find_user, :set_base_fields
+      include Spree::Admin::OrderConcern
+
+      before_action :find_resources
+      create.after :persist_order
 
       def new
         @address = Spree::Address.new(country: current_store.default_country, user_id: params[:user_id])
@@ -21,9 +24,25 @@ module Spree
 
       private
 
-      def find_user
-        if params[:address]
-          @user ||= Spree::User.find(params[:address][:user_id]) if params[:address][:user_id]
+      def find_resources
+        if params[:address].present?
+          @user ||= Spree::User.find(params[:address][:user_id]) if params[:address][:user_id].present?
+        end
+
+        load_order if params[:order_id].present?
+      end
+
+      def persist_order
+        if params[:address_kind].present?
+          if params[:address_kind] == "bill_address"
+            if @order.update(bill_address: @address)
+              sync_order
+            end
+          elsif params[:address_kind] == "ship_address"
+            if @order.update(ship_address: @address)
+              sync_order
+            end
+          end
         end
       end
 
@@ -32,11 +51,11 @@ module Spree
       end
 
       def location_after_save
-        spree.addresses_admin_user_path(@address.user)
-      end
-
-      def set_base_fields
-        @base_fields ||= ["company", "address1", "address2", "city", "state", "zipcode", "country", "phone", "firstname", "lastname"]
+        if params[:address][:user_id].present?
+          spree.addresses_admin_user_path(@address.user)
+        elsif params[:order_id].present?
+          spree.edit_admin_order_url(@order)
+        end
       end
     end
   end

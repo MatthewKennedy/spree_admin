@@ -18,6 +18,7 @@
   .card {
     --#{$prefix}card-spacer-x: 0.75rem;
   }
+
   .card-header {
     --#{$prefix}card-cap-padding-x: var(--#{$prefix}card-spacer-x);
   }

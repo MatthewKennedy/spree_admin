@@ -3,8 +3,8 @@ module Spree
     class OrdersController < Spree::Admin::BaseController
       include Spree::Admin::OrderConcern
 
-      before_action :initialize_order_events
-      before_action :load_order, only: %i[reset_digitals edit update cancel resume approve resend open_adjustments close_adjustments]
+      before_action :load_order, except: %i[index new]
+      before_action :initialize_order_events, :set_customer_status
       before_action :load_user, only: %i[update]
 
       def filter
@@ -83,69 +83,41 @@ module Spree
         redirect_back fallback_location: spree.admin_order_adjustments_url(@order)
       end
 
-      private
-
-      def collection
-        params[:q] ||= {}
-        params[:q][:completed_at_not_null] ||= "1" if Spree::Backend::Config[:show_only_complete_orders_by_default]
-        @show_only_completed = params[:q][:completed_at_not_null] == "1"
-        params[:q][:s] ||= @show_only_completed ? "completed_at desc" : "created_at desc"
-        params[:q][:completed_at_not_null] = "" unless @show_only_completed
-
-        # As date params are deleted if @show_only_completed, store
-        # the original date so we can restore them into the params
-        # after the search
-        created_at_gt = params[:q][:created_at_gt]
-        created_at_lt = params[:q][:created_at_lt]
-
-        params[:q].delete(:inventory_units_shipment_id_null) if params[:q][:inventory_units_shipment_id_null] == "0"
-
-        if params[:q][:created_at_gt].present?
-          params[:q][:created_at_gt] = begin
-            Time.zone.parse(params[:q][:created_at_gt]).beginning_of_day
-          rescue
-            ""
-          end
-        end
-
-        if params[:q][:created_at_lt].present?
-          params[:q][:created_at_lt] = begin
-            Time.zone.parse(params[:q][:created_at_lt]).end_of_day
-          rescue
-            ""
-          end
-        end
-
-        if @show_only_completed
-          params[:q][:completed_at_gt] = params[:q].delete(:created_at_gt)
-          params[:q][:completed_at_lt] = params[:q].delete(:created_at_lt)
-        end
-
-        @search = scope.preload(:user).accessible_by(current_ability, :index).ransack(params[:q])
-
-        per_page_limit = params[:per_page] || Spree::Backend::Config[:admin_orders_per_page]
-        # lazy loading other models here (via includes) may result in an invalid query
-        # e.g. SELECT  DISTINCT DISTINCT "spree_orders".id, "spree_orders"."created_at" AS alias_0 FROM "spree_orders"
-        # see https://github.com/spree/spree/pull/3919
-        @orders = @search.result(distinct: true)
-        @pagy, @orders = pagy(@orders, items: per_page_limit)
-
-        # Restore dates
-        params[:q][:created_at_gt] = created_at_gt
-        params[:q][:created_at_lt] = created_at_lt
+      def new_bill_address
+        @address = @order.build_bill_address(country: current_store.default_country)
       end
 
-      def sync_order
-        @order.associate_user!(@user)
-        @order.update_with_updater!
-        @order.create_proposed_shipments
-        @order.next
-        @order.reload
+      def new_ship_address
+        @address = @order.build_ship_address(country: current_store.default_country)
+      end
+
+      def new_customer
+        @customer_status = "new"
+        render :edit
+      end
+
+      def existing_customer
+        @customer_status = "existing"
+        render :edit
+      end
+
+      def reset_customer_details
+        @order.update(email: nil, billing_address: nil, shipping_address: nil, user: nil)
+        redirect_back fallback_location: spree.edit_admin_order_path(@order)
+      end
+
+      private
+
+      def set_customer_status
+        if @order
+          @customer_status = "existing" if @order.user.present?
+        end
+
+        @customer_status ||= "new"
       end
 
       def load_user
-        return if params[:order][:user_id].blank?
-        @user = Spree.user_class.find(params[:order][:user_id])
+        @user = Spree.user_class.find(params[:order][:user_id]) if params[:order][:user_id].present?
       end
 
       def scope

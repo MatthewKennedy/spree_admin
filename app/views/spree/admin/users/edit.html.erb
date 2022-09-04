@@ -93,7 +93,7 @@
             <h6><%= I18n.t('spree.admin.user.billing_addresses') %></h6>
           <% end %>
 
-          <%= render partial: 'spree/admin/shared/address', locals: {address: @user.bill_address} %>
+          <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.bill_address} %>
           <% if @user.bill_address == @user.ship_address %>
             <small class="text-muted"><%= I18n.t('spree.admin.address.used_for_billing_and_shipping') %></small>
           <% end %>
@@ -104,7 +104,7 @@
           <% if @user.ship_address.present? %>
             <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
 
-            <%= render partial: 'spree/admin/shared/address', locals: {address: @user.ship_address} %>
+            <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.ship_address} %>
           <% end %>
         <% end %>
       </div>

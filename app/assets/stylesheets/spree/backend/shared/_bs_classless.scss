@@ -1,0 +1,63 @@
+sa-card {
+  display: block;
+  @extend .card;
+
+  sa-header {
+    display: flex;
+    @extend .card-header;
+
+    h5:first-of-type {
+      flex: 1 1 auto !important;
+      margin-bottom: 0;
+    }
+
+    nav-pills {
+      display: flex;
+      @extend .card-header-pills;
+      @extend .nav-pills;
+      @extend .nav;
+
+      a {
+        border: 0 !important;
+        position: relative;
+        background: transparent !important;
+        color: var(--bs-dark);
+        padding: 0.75rem;
+        text-decoration: none;
+
+        &.active::before {
+          content: '';
+          height: 4px;
+          width: 100%;
+          background: var(--bs-primary);
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+        }
+      }
+    }
+  }
+
+  sa-body {
+    display: block;
+    @extend .card-body;
+  }
+
+  sa-footer {
+    display: block;
+    @extend .card-footer;
+  }
+}
+
+table-responsive {
+  display: block;
+  @extend .table-responsive;
+
+  table {
+    @extend .table;
+
+    thead {
+      @extend .text-muted;
+    }
+  }
+}

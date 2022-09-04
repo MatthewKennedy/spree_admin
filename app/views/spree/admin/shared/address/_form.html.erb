@@ -1,16 +1,21 @@
 <div data-hook="address_fields">
   <% if @user %>
     <%= f.hidden_field :user_id, value: @user.id %>
+  <% elsif @order %>
+    <%= hidden_field_tag :order_id, nil, value: @order.number %>
+    <%= hidden_field_tag :address_kind, nil, value: address_kind %>
   <% end %>
 
-  <h6 class="text-muted"><%= I18n.t('spree.admin.address.address_label') %></h6>
-  <%= f.field_container :label do %>
-    <%= f.text_field :label %>
-    <%= f.label :address_name, I18n.t('spree.admin.label') %>
-    <small class="text-muted"><%= I18n.t('spree.admin.address.label_info') %></small>
-  <% end %>
+  <% unless skip_label_field %>
+    <h6 class="text-muted"><%= I18n.t('spree.admin.address.address_label') %></h6>
+    <%= f.field_container :label do %>
+      <%= f.text_field :label %>
+      <%= f.label :address_name, I18n.t('spree.admin.label') %>
+      <small class="text-muted"><%= I18n.t('spree.admin.address.label_info') %></small>
+    <% end %>
 
-  <hr class="my-4">
+    <hr class="my-4">
+  <% end %>
   <h6 class="text-muted"><%= I18n.t('spree.admin.address.contact_details') %></h6>
 
   <div class="row">
@@ -65,14 +70,16 @@
       <% end %>
 
       <div id="stateAndZipcode">
-        <%= render partial: "state_zip" %>
+        <%= render partial: "spree/admin/shared/address/state_zip" %>
       </div>
 
       <%# ----------------- %>
       <%# Additional Fields %>
       <%# ----------------- %>
+      <% base_fields = %w[company address1 address2 city state zipcode country phone firstname lastname] %>
+
       <% Spree::Address::ADDRESS_FIELDS.each do |field| %>
-        <% next if @base_fields.include?(field) %>
+        <% next if base_fields.include?(field) %>
 
         <%= f.field_container (field) do %>
           <%= f.text_field field %>

@@ -15,7 +15,7 @@
           <h6><%= I18n.t('spree.admin.user.billing_addresses') %></h6>
         <% end %>
 
-        <%= render partial: 'spree/admin/shared/address', locals: {address: @user.bill_address} %>
+        <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.bill_address} %>
         <div>
           <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_billing_for_both_form do |f| %>
             <%= f.hidden_field :ship_address_id, value: @user.bill_address.id %>
@@ -32,7 +32,7 @@
       <% unless @user.bill_address == @user.ship_address %>
         <% if @user.ship_address.present? %>
           <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
-          <%= render partial: 'spree/admin/shared/address', locals: {address: @user.ship_address} %>
+          <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.ship_address} %>
 
           <div>
             <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_shipping_for_both_form do |f| %>
