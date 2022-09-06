@@ -49,7 +49,6 @@ describe "Users", type: :feature do
     context "lifetime stats" do
       shared_examples_for "has lifetime stats" do
         it "has lifetime stats" do
-
         end
       end
 
@@ -89,7 +88,7 @@ describe "Users", type: :feature do
   end
 
   shared_examples_for "a usable address from" do
-    it "loads required zipcode field and does not have a sate select or input for United Kingdom" do
+    it "loads required zipcode field and does not have a state select or input for United Kingdom" do
       within("#customerAddresses") do
         click_link "Manage"
       end
