@@ -17,8 +17,15 @@ module Spree
 
       def new
         @order = scope.create(order_params)
+        @user = Spree.user_class.find(params[:user_id]) if params[:user_id].present?
 
-        redirect_to spree.edit_admin_order_url(@order)
+        if @order.save
+          sync_order
+
+          redirect_to spree.edit_admin_order_url(@order)
+        elsif @order.line_items.empty?
+          @order.errors.add(:line_items, I18n.t("spree.admin.errors.messages.blank"))
+        end
       end
 
       def edit

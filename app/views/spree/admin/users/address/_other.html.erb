@@ -8,7 +8,7 @@
         <% if @other_addresses.any? %>
           <% @other_addresses.each do |address| %>
             <div class="col-12 col-md-6">
-              <div class="mb-4" id="<%= dom_id(address) %>">
+              <div class="mb-3" id="<%= dom_id(address) %>">
                 <%= render partial: 'spree/admin/shared/address/card', locals: {address: address} %>
                 <div>
                   <%= form_with model: [:admin, @user],scope: :user, url: spree.update_address_admin_user_path(@user), method: :put, id: :use_for_billing_form do |f| %>

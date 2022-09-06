@@ -1,12 +1,7 @@
 <div class="col-12 col-md-4">
   <div class="card">
     <div class="card-header">
-      <% if @user.bill_address == @user.ship_address %>
-        <h5 class="card-title"><%= I18n.t('spree.admin.user.default_address') %></h5>
-        <small class="text-muted">Used for Billing and Shipping</small>
-      <% else %>
-        <h5 class="card-title"><%= I18n.t('spree.admin.user.default_addresses') %></h5>
-      <% end %>
+      <h5 class="card-title"><%= I18n.t('spree.admin.user.default_addresses') %></h5>
     </div>
 
     <div class="card-body">
@@ -30,11 +25,13 @@
         </callout>
       <% end %>
 
-      <% unless @user.bill_address == @user.ship_address %>
+      <% if @user.bill_address == @user.ship_address &&  @user.ship_address.present? %>
+        <small class="text-muted">Used for Billing and Shipping</small>
+      <% else %>
         <hr>
       <% end %>
 
-      <% unless @user.bill_address == @user.ship_address %>
+      <% unless @user.bill_address == @user.ship_address && @user.ship_address.present? %>
         <% if @user.ship_address.present? %>
           <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
           <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.ship_address} %>
