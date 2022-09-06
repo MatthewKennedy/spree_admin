@@ -1,3 +1,40 @@
+container-fluid {
+  display: block;
+  @extend .container-fluid;
+}
+
+content-body {
+  margin-top: 75px;
+  display: block;
+
+  @extend .container;
+  @extend .mb-5;
+}
+
+content-header {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  top: 0;
+  position: fixed;
+}
+
+row {
+  @extend .row;
+}
+
+main {
+  padding-left: 0;
+  padding-right: 0;
+
+  @extend .offset-xl-2;
+  @extend .col-xl-10;
+  @extend .offset-lg-3;
+  @extend .col-lg-9;
+  @extend .col-12;
+}
+
 sa-card {
   display: block;
   @extend .card;

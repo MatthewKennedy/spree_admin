@@ -3,6 +3,7 @@ module Spree
     class UsersController < ResourceController
       rescue_from Spree::Core::DestroyWithOrdersError, with: :user_destroy_with_orders_error
       after_action :sign_in_if_change_own_password, only: :update
+      before_action :other_addresses, only: [:addresses, :update_address]
 
       def filter
         collection
@@ -116,6 +117,10 @@ module Spree
         if try_spree_current_user == @user && @user.password.present?
           sign_in(@user, event: :authentication, bypass: true)
         end
+      end
+
+      def other_addresses
+        @other_addresses ||= @user.addresses.where.not(id: [@user.bill_address.try(:id), @user.ship_address.try(:id)])
       end
     end
   end

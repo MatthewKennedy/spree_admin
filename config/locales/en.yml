@@ -19,6 +19,7 @@ en:
         done: Done
         edit: Edit
         save: Save
+        search: Search
         submit: Submit
         update: Update
         upload: Upload
@@ -149,6 +150,11 @@ en:
           cannot_remove_icon: Cannot remove icon
       execution_time: Execution Time
       expires_at: Expires at
+      filters:
+        bill_address_company_cont: Company
+        bill_address_firstname_cont: First Name
+        bill_address_lastname_cont: Last Name
+        email_cont: Email
       kind: Kind
       label: Label
       language: Language
@@ -547,6 +553,13 @@ en:
       user_rule:
         choose_users: Choose users
       users:
+        addresses:
+          billing_address: Billing address
+          other_addresses: Other addresses
+          shipping_address: Shipping address
+          you_have_no_default_billing_addresses_set: You have no default billing addresses set
+          you_have_no_default_shipping_addresses_set: You have no default shipping addresses set
+          you_have_no_unused_addresses: You have no unused addresses
         company: Company
         email: Email
         first_name: First name

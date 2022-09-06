@@ -16,13 +16,18 @@
         <% end %>
 
         <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.bill_address} %>
-        <div>
-          <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_billing_for_both_form do |f| %>
+        <div id="billingAddressActions">
+          <%= form_with model: [:admin, @user],scope: :user, url: spree.update_address_admin_user_path(@user), method: :put, id: :use_billing_for_both_form do |f| %>
             <%= f.hidden_field :ship_address_id, value: @user.bill_address.id %>
           <% end unless @user.bill_address == @user.ship_address %>
-          <%= button(nil, "truck.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_billing_for_both_form"}) unless @user.bill_address == @user.ship_address %>
-          <%= link_to_edit(@user.bill_address, url: spree.edit_admin_address_path(@user.bill_address, user_id: @user.id), data: {turbo_frame: :modal}) %>
+          <%= button(nil, "truck.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_billing_for_both_form", id: "use_billing_for_shipping"}) unless @user.bill_address == @user.ship_address %>
+          <%= link_to_edit(@user.bill_address, url: spree.edit_admin_address_path(@user.bill_address, address: {user_id: @user.id}), data: {turbo_frame: :modal}) %>
         </div>
+      <% else %>
+        <callout class="callout-info">
+          <h6><%= I18n.t('spree.admin.users.addresses.billing_address') %></h6>
+          <small class="text-muted"><%= I18n.t('spree.admin.users.addresses.you_have_no_default_billing_addresses_set') %></small>
+        </callout>
       <% end %>
 
       <% unless @user.bill_address == @user.ship_address %>
@@ -34,13 +39,18 @@
           <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
           <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.ship_address} %>
 
-          <div>
-            <%= form_with model: [:admin, @user], url: spree.update_address_admin_user_path(@user), method: :put, id: :use_shipping_for_both_form do |f| %>
+          <div id="shippingAddressActions">
+            <%= form_with model: [:admin, @user],scope: :user, url: spree.update_address_admin_user_path(@user), method: :put, id: :use_shipping_for_both_form do |f| %>
               <%= f.hidden_field :bill_address_id, value: @user.ship_address.id %>
             <% end unless @user.ship_address == @user.bill_address %>
-            <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_shipping_for_both_form"}) unless @user.bill_address == @user.ship_address %>
-            <%= link_to_edit(@user.ship_address, url: spree.edit_admin_address_path(@user.ship_address, user_id: @user.id), data: {turbo_frame: :modal}) %>
+            <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_shipping_for_both_form", id: "use_shipping_for_both"}) unless @user.bill_address == @user.ship_address %>
+            <%= link_to_edit(@user.ship_address, url: spree.edit_admin_address_path(@user.ship_address, address: {user_id: @user.id}), data: {turbo_frame: :modal}) %>
           </div>
+        <% else %>
+          <callout class="callout-info">
+            <h6><%= I18n.t('spree.admin.users.addresses.shipping_address') %></h6>
+            <small class="text-muted"><%= I18n.t('spree.admin.users.addresses.you_have_no_default_shipping_addresses_set') %></small>
+          </callout>
         <% end %>
       <% end %>
     </div>

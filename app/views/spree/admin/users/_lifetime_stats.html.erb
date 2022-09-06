@@ -1,10 +1,12 @@
-<div class="card p-3">
+<div class="card p-3" id="user-lifetime-stats">
   <div class="row">
     <div class="col-4 text-center">
       <h3 class="fw-light">
         <% if @user.report_values_for(:lifetime_value, current_store).any? %>
           <% @user.report_values_for(:lifetime_value, current_store).each do |value| %>
-            <%= value %>
+            <div>
+              <%= value %>
+            </div>
           <% end %>
         <% else %>
         0
@@ -22,7 +24,9 @@
       <h3 class="fw-light">
         <% if @user.report_values_for(:average_order_value, current_store).any? %>
           <% @user.report_values_for(:average_order_value, current_store).each do |value| %>
-            <%= value %>
+            <div>
+              <%= value %>
+            </div>
           <% end %>
         <% else %>
         0

@@ -9,6 +9,18 @@ module Spree
         si sk sl sq sr sv th tr uk uz vn zh
       ].freeze
 
+      def filters_in_use(filter)
+        return if filter[1].blank?
+
+        formatted_params = request.query_parameters[:q].except(filter[0].to_sym)
+        params_hash = {q: formatted_params.to_hash}
+        remove_filter_url = request.base_url + request.path + "?" + params_hash.to_query
+
+        link_to remove_filter_url, class: "badge bg-secondary", id: "removeFilter-#{filter[0]}" do
+          (content_tag :span, I18n.t("spree.admin.filters.#{filter[0]}") + ": #{filter[1]} ") + inline_svg_tag("x-lg.svg", size: "16px*16px")
+        end
+      end
+
       def flash_alert(flash)
         if flash.present?
           render "spree/admin/shared/toast", message: flash.first[1]

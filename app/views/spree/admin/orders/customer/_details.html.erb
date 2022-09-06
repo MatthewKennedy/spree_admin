@@ -12,7 +12,7 @@
 
     <% unless @order.completed? %>
       <div>
-        <%= form_with model: @order, url: spree.reset_customer_details_admin_order_path(@order), method: :put do |f| %>
+        <%= form_with model: [:admin, @order], url: spree.reset_customer_details_admin_order_path(@order), method: :put do |f| %>
           <%= f.button (inline_svg_tag "x-lg.svg", size: '16px * 16px'), type: "submit", class: 'btn btn-light btn-sm' %>
         <% end %>
       </div>

@@ -7,7 +7,7 @@ module Spree
       create.after :persist_order
 
       def new
-        @address = Spree::Address.new(country: current_store.default_country, user_id: params[:user_id])
+        @address = Spree::Address.new(country: current_store.default_country, user_id: params[:address][:user_id])
       end
 
       def update_country
@@ -25,11 +25,12 @@ module Spree
       private
 
       def find_resources
-        if params[:address].present?
+        if params[:order_id]
+          load_order
+        else
           @user ||= Spree::User.find(params[:address][:user_id]) if params[:address][:user_id].present?
+          @user ||= @address.user
         end
-
-        load_order if params[:order_id].present?
       end
 
       def persist_order

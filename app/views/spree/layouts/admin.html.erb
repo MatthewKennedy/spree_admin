@@ -2,43 +2,56 @@
 <html lang="<%= I18n.locale %>">
   <head data-hook="admin_inside_head">
     <%= render partial: 'spree/admin/shared/head' %>
+
+    <% if Rails.env.test? %>
+     <style>
+        .modal.fade, .fade {
+          -webkit-transition: opacity 0.01s;
+          -moz-transition: opacity 0.01s;
+          -ms-transition: opacity 0.01s;
+          -o-transition: opacity 0.01s;
+          transition: opacity 0.01s;
+        }
+        .ts-hidden-accessible {
+          padding: 1px solid gray;
+          clip-path: none !important;
+          position: relative !important;
+          width: 100% !important;
+          padding: 1rem;
+        }
+     </style>
+    <% end %>
   </head>
 
-  <body class="admin">
+  <body class="admin" id="spreeAdmin">
     <%= turbo_frame_tag :inner_main_content, target: :_top do %>
       <%#-------------------------------------------------%>
       <%# Main content                                    %>
       <%#-------------------------------------------------%>
-      <div id="mainWrapper" class="container-fluid">
-        <div class="row">
-
+      <container-fluid>
+        <row>
           <%#-------------------------------------------------%>
           <%# Menu                                            %>
           <%#-------------------------------------------------%>
           <%= render partial: 'spree/admin/shared/menu' %>
 
-          <%#-------------------------------------------------%>
-          <%# Main                                            %>
-          <%#-------------------------------------------------%>
-          <main class="col-12 col-lg-9 col-xl-10 offset-lg-3 offset-xl-2 main <%= "tabsAndActionsShim" if content_for?(:page_tabs) %>" id="main-part">
-            <div class="row">
-              <div class="p-0">
-                <%#-------------------------------------------------%>
-                <%# Content Header (page title/actions)             %>
-                <%#-------------------------------------------------%>
+          <main>
+              <%#-------------------------------------------------%>
+              <%# Content Header                                  %>
+              <%#-------------------------------------------------%>
+              <content-header>
                 <%= render partial: 'spree/admin/shared/content_header' %>
+              </content-header>
 
-                <%#-------------------------------------------------%>
-                <%# Main content                                    %>
-                <%#-------------------------------------------------%>
-                <div id="contentBody" class="container mb-5">
-                  <%= yield %>
-                </div>
-              </div>
-            </div>
+              <%#-------------------------------------------------%>
+              <%# Main Content Area                               %>
+              <%#-------------------------------------------------%>
+              <content-body>
+                <%= yield %>
+              </content-body>
           </main>
-        </div>
-      </div>
+        </row>
+      </container-fluid>
 
       <%#-------------------------------------------------%>
       <%# Alerts                                          %>
