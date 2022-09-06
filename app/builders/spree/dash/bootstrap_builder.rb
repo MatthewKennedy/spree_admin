@@ -25,7 +25,7 @@ module Spree
       end
 
       def text_field(method, options = {})
-        super(method, options.reverse_merge(placeholder: method.to_s.capitalize, class: "form-control", data: {form_state_target: "watch"}, autocomplete: false))
+        super(method, options.reverse_merge(placeholder: method.to_s.capitalize, class: "form-control", data: {form_state_target: "watch"}, autocomplete: "off"))
       end
 
       def text_area(method, options = {})

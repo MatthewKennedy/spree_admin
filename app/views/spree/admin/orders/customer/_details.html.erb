@@ -12,8 +12,7 @@
 
     <% unless @order.completed? %>
       <div>
-        <%= form_with model: @order, url: spree.admin_order_path(@order), method: :patch do |f| %>
-          <%= f.hidden_field :user_id, value: nil %>
+        <%= form_with model: [:admin, @order], url: spree.reset_customer_details_admin_order_path(@order), method: :put do |f| %>
           <%= f.button (inline_svg_tag "x-lg.svg", size: '16px * 16px'), type: "submit", class: 'btn btn-light btn-sm' %>
         <% end %>
       </div>
@@ -35,9 +34,9 @@
     <h6 class="text-uppercase"> <%= I18n.t('spree.admin.order.addresses') %></h6>
     <h6><%= I18n.t('spree.admin.billing_address') %></h6>
     <div>
-      <%= render partial: 'spree/admin/shared/address', locals: { address: @order.bill_address } %>
+      <%= render partial: 'spree/admin/shared/address/card', locals: { address: @order.bill_address } %>
     </div>
-    <%#= link_to 'Edit', spree.edit_admin_order_address_path(@order, @order.ship_address), data: { turbo_frame: :modal } %>
+    <%= link_to 'Edit', spree.edit_admin_address_path(@order.bill_address), data: { turbo_frame: :modal } %>
     <hr>
   </div>
 
@@ -49,7 +48,7 @@
   <% if @order.bill_address.present? %>
     <h6><%= I18n.t('spree.admin.billing_address') %></h6>
     <div>
-      <%= render partial: 'spree/admin/shared/address', locals: { address: @order.bill_address } %>
+      <%= render partial: 'spree/admin/shared/address/card', locals: { address: @order.bill_address } %>
 
       <%#= link_to 'Edit', spree.edit_modal_admin_address_path(@order.bill_address), data: { turbo_frame: :modal } %>
     </div>
@@ -68,7 +67,7 @@
   <% if @order.ship_address.present? %>
     <h6><%= I18n.t('spree.admin.shipping_address') %></h6>
     <div>
-      <%= render partial: 'spree/admin/shared/address', locals: {address: @order.ship_address} %>
+      <%= render partial: 'spree/admin/shared/address/card', locals: {address: @order.ship_address} %>
 
       <%#= link_to 'Edit', spree.edit_modal_admin_address_path(@order.ship_address), data: { turbo_frame: :modal } %>
     </div>

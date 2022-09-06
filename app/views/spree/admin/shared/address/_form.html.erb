@@ -1,0 +1,91 @@
+<div data-hook="address_fields">
+  <% if @user %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+  <% elsif @order %>
+    <%= hidden_field_tag :order_id, nil, value: @order.number %>
+    <%= hidden_field_tag :address_kind, nil, value: address_kind %>
+  <% end %>
+
+  <% unless skip_label_field %>
+    <h6 class="text-muted"><%= I18n.t('spree.admin.address.address_label') %></h6>
+    <%= f.field_container :label do %>
+      <%= f.text_field :label %>
+      <%= f.label :address_name, I18n.t('spree.admin.label') %>
+      <small class="text-muted"><%= I18n.t('spree.admin.address.label_info') %></small>
+    <% end %>
+
+    <hr class="my-4">
+  <% end %>
+  <h6 class="text-muted"><%= I18n.t('spree.admin.address.contact_details') %></h6>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <%= f.field_container :firstname do %>
+        <%= f.text_field :firstname, required: true %>
+        <%= f.label :firstname, raw(I18n.t('spree.admin.address.first_name') + required_span_tag) %>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-6">
+      <%= f.field_container :lastname do %>
+        <%= f.text_field :lastname, required: true %>
+        <%= f.label :lastname, raw(I18n.t('spree.admin.address.last_name') + required_span_tag) %>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <%= f.field_container :phone do %>
+        <%= f.text_field :phone, required: @address.require_phone? %>
+        <%= f.label :phone, raw(I18n.t('spree.admin.address.phone') + required_span_tag(@address.require_phone?)) %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="my-4">
+  <h6 class="text-muted"><%= I18n.t('spree.admin.address.location') %></h6>
+
+  <div class="row">
+    <div class="col-12">
+      <%= f.field_container :company do %>
+        <%= f.text_field :company %>
+        <%= f.label :company, I18n.t('spree.admin.address.company') %>
+      <% end %>
+
+      <%= f.field_container :address1 do %>
+        <%= f.text_field :address1, required: true %>
+        <%= f.label :address1, raw(I18n.t('spree.admin.address.street') + required_span_tag) %>
+      <% end %>
+
+      <%= f.field_container :address2 do %>
+        <%= f.text_field :address2 %>
+        <%= f.label :address2, I18n.t('spree.admin.address.address_cont') %>
+      <% end %>
+
+      <%= f.field_container :city do %>
+        <%= f.text_field :city, required: true %>
+        <%= f.label :city, raw(I18n.t('spree.admin.address.city') + required_span_tag) %>
+      <% end %>
+
+      <%= f.field_container :country do %>
+        <%= f.collection_select :country_id, all_countries, :id, :name, {}, { class: 'form-select', data: { controller: 'ts--select', action: 'change->form-validation#validate' } } %>
+        <%= f.label :country, raw(Spree.t(:country) + required_span_tag) %>
+      <% end %>
+
+      <div id="stateAndZipcode">
+        <%= render partial: "spree/admin/shared/address/state_zip" %>
+      </div>
+
+      <%# ----------------- %>
+      <%# Additional Fields %>
+      <%# ----------------- %>
+      <% base_fields = %w[company address1 address2 city state zipcode country phone firstname lastname] %>
+
+      <% Spree::Address::ADDRESS_FIELDS.each do |field| %>
+        <% next if base_fields.include?(field) %>
+
+        <%= f.field_container (field) do %>
+          <%= f.text_field field %>
+          <%= f.label field, Spree.t(field) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

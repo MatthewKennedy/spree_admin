@@ -33,3 +33,14 @@ table:not([cellpadding]) td {
   width: 1rem;
   height: 1rem;
 }
+
+.filters-in-use-container {
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      color: var(--bs-white)
+    }
+  }
+}

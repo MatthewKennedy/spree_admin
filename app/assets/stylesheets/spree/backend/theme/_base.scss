@@ -18,6 +18,7 @@
   .card {
     --#{$prefix}card-spacer-x: 0.75rem;
   }
+
   .card-header {
     --#{$prefix}card-cap-padding-x: var(--#{$prefix}card-spacer-x);
   }
@@ -96,6 +97,11 @@
     -webkit-animation-name: fadeOutDown;
     animation-name: fadeOutDown;
     display: block !important;
+    bottom: -200px;
+  }
+
+  .toast-container {
+    min-height:80px;
   }
 
   table.table tr:last-child td {
@@ -106,12 +112,24 @@
     margin-bottom: 2px;
   }
 
-  .bs-callout-info {
+
+
+  .bs-callout-info,
+  .callout-info {
     --bd-callout-bg: rgba(var(--bs-info-rgb), .075);
     --bd-callout-border: rgba(var(--bs-info-rgb), .5);
   }
 
   .bs-callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    background-color: var(--bd-callout-bg, var(--bs-gray-100));
+    border-left: 0.25rem solid var(--bd-callout-border, var(--bs-gray-300));
+  }
+
+  callout {
+    display: block;
     padding: 1.25rem;
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;

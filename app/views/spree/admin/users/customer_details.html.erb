@@ -5,14 +5,15 @@
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @user], data: {modal_target: "mainForm", turbo_frame: :inner_main_content}, id: :modal_form do |form| %>
+    <%# Must specify scope: and url: on all user forms to avoid spree.legacy_user_path issue in testing %>
+    <%= form_with model: [:admin, @user], scope: "user", url: spree.admin_user_path, data: {action: "turbo:submit-end->modal#submitEnd", turbo_frame: :inner_main_content}, id: :modal_form do |form| %>
       <%= render partial: 'form', locals: { f: form } %>
     <% end %>
   </div>
 <% end %>
 
 <% content_for :modal_footer do %>
-  <%= submit_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: :modal_form, data: {action: "modal#closeOnSubmit"}) %>
+  <%= submit_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: :modal_form) %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/modal' %>

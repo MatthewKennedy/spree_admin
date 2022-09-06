@@ -1,0 +1,22 @@
+<% unless @order.user.present? %>
+  <%= form_with model: [:admin, @order], data: { controller: "form-validation" } do |f| %>
+    <div class="form-group form-floating">
+      <%= f.select :user_id, [], { include_blank: true }, class: 'form-select',
+                                                          placeholder: I18n.t('spree.admin.order.search_users_by_name_or_email'),
+                                                          data: { action: 'change->form-validation#validate',
+                                                                  controller: 'ts--search-user',
+                                                                  ts__search_user_plugins_value: ['clear_button'],
+                                                                  ts__search_user_fields_value: ['email', 'first_name', 'last_name'],
+                                                                  ts__search_user_uri_value: spree.api_v2_platform_users_path,
+                                                                  ts__search_user_ransack_value: ['email_i_cont', 'addresses_firstname', 'addresses_lastname'],
+                                                                  ts__search_user_include_value: 'ship_address.country,bill_address.country' } %>
+
+      <%= f.label :user_id, Spree.t(:user_id), class: 'form-label' %>
+    </div>
+
+    <%= f.submit I18n.t('spree.admin.order.add_user_to_order'), class: 'btn btn-light', data: { form_validation_target: "submitBtn" } %>
+  <% end %>
+<% end %>
+<% if @order.user.present? %>
+  <%= render partial: "spree/admin/orders/customer/details" %>
+<% end %>

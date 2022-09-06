@@ -19,12 +19,15 @@ en:
         done: Done
         edit: Edit
         save: Save
+        search: Search
         submit: Submit
         update: Update
         upload: Upload
       active: Active
       add_option_types_to_this_product_to_begin_creating_variants: Add option types to this product to begin creating variants
       address:
+        add_a_new_billing_address: Add a new billing address
+        add_a_new_shipping_address: Add a new shipping address
         address_cont: Address (Cont.)
         address_label: Address Label
         city: City
@@ -121,7 +124,6 @@ en:
       created_at: Created At
       currency: Currency
       customer: Customer
-      customer_details_updated: Customer details updated
       dashboard: Dashboard
       date: Date
       default: Default
@@ -146,6 +148,11 @@ en:
           cannot_remove_icon: Cannot remove icon
       execution_time: Execution Time
       expires_at: Expires at
+      filters:
+        bill_address_company_cont: Company
+        bill_address_firstname_cont: First Name
+        bill_address_lastname_cont: Last Name
+        email_cont: Email
       kind: Kind
       label: Label
       language: Language
@@ -266,8 +273,11 @@ en:
         all_orders: All Orders
         contact_information: Contact information
         draft_orders: Draft Orders
+        email: Email
         email_address: Email address
+        existing: Existing
         getting_started: Getting Started
+        new: New
         order_number: Order number
         order_state: Order state
         payment_state: Payment state
@@ -539,6 +549,13 @@ en:
       user_rule:
         choose_users: Choose users
       users:
+        addresses:
+          billing_address: Billing address
+          other_addresses: Other addresses
+          shipping_address: Shipping address
+          you_have_no_default_billing_addresses_set: You have no default billing addresses set
+          you_have_no_default_shipping_addresses_set: You have no default shipping addresses set
+          you_have_no_unused_addresses: You have no unused addresses
         company: Company
         email: Email
         first_name: First name

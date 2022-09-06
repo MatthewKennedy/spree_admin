@@ -37,19 +37,13 @@
   </div>
 
   <div class="col-12 col-md-4">
-    <div class="card">
-      <div class="card-header d-flex">
-        <div class="flex-fill">
-          <h5 class="card-title">
-            <%= I18n.t('spree.admin.user.customer') %>
-          </h5>
-        </div>
-        <div>
-          <%= link_to I18n.t('spree.admin.actions.edit'), spree.customer_details_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary", data: {turbo_frame: :modal} %>
-        </div>
-      </div>
+    <sa-card id="customerDetails">
+      <sa-header>
+        <h5><%= I18n.t('spree.admin.user.customer') %></h5>
+        <%= link_to I18n.t('spree.admin.actions.edit'), spree.customer_details_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary", data: {turbo_frame: :modal} %>
+      </sa-header>
 
-      <div class="card-body">
+      <sa-body>
         <% if @user.first_name || @user.last_name %>
           <%= @user.first_name %> <%= @user.last_name %><br>
         <% end %>
@@ -70,30 +64,27 @@
             <span class="badge bg-secondary"><%= role.name %></span>
           <% end %>
         </div>
-      </div>
+      </sa-body>
 
       <hr>
 
-      <div class="card-body">
-        <div class="d-flex">
-          <div class="flex-fill">
-            <% if @user.bill_address == @user.ship_address %>
-              <h5 class="card-title"><%= I18n.t('spree.admin.user.address') %></h5>
-            <% else %>
-              <h5 class="card-title"><%= I18n.t('spree.admin.user.addresses') %></h5>
-            <% end %>
-          </div>
-          <div>
-            <%= link_to I18n.t('spree.admin.users.manage'), spree.addresses_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary" %>
-          </div>
-        </div>
+      <sa-header id="customerAddresses">
+        <% if @user.bill_address == @user.ship_address %>
+          <h5 class="card-title"><%= I18n.t('spree.admin.user.address') %></h5>
+        <% else %>
+          <h5 class="card-title"><%= I18n.t('spree.admin.user.addresses') %></h5>
+        <% end %>
 
+        <%= link_to I18n.t('spree.admin.users.manage'), spree.addresses_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary" %>
+      </sa-header>
+
+      <sa-body>
         <% if @user.bill_address.present? %>
           <% unless @user.bill_address == @user.ship_address %>
             <h6><%= I18n.t('spree.admin.user.billing_addresses') %></h6>
           <% end %>
 
-          <%= render partial: 'spree/admin/shared/address', locals: {address: @user.bill_address} %>
+          <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.bill_address} %>
           <% if @user.bill_address == @user.ship_address %>
             <small class="text-muted"><%= I18n.t('spree.admin.address.used_for_billing_and_shipping') %></small>
           <% end %>
@@ -104,10 +95,10 @@
           <% if @user.ship_address.present? %>
             <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
 
-            <%= render partial: 'spree/admin/shared/address', locals: {address: @user.ship_address} %>
+            <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.ship_address} %>
           <% end %>
         <% end %>
-      </div>
-    </div>
+      </sa-body>
+    </sa-card>
   </div>
 </div>

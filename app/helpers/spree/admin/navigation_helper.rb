@@ -115,9 +115,9 @@ module Spree
 
         options[:no_text] ||= true
         options[:icon] = "pen.svg"
-        options[:class] ||= "btn btn-light btn-sm"
+        options[:class] ||= "btn btn-light btn-sm icon-edit"
 
-        link_to_with_icon(name, url, options)
+        link_to_with_icon(name, url, options.except(:url))
       end
 
       def link_to_clone(resource, options = {})
@@ -125,7 +125,7 @@ module Spree
         name = options[:name] || I18n.t("spree.admin.actions.clone")
 
         options[:no_text] ||= true
-        options[:class] ||= "btn btn-light btn-sm"
+        options[:class] ||= "btn btn-light btn-sm icon-clone"
         options[:icon] = "clone.svg"
         options[:data] = {turbo_method: :post, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
@@ -137,11 +137,11 @@ module Spree
         name = options[:name] || I18n.t("spree.admin.actions.delete")
 
         options[:no_text] ||= true
-        options[:class] ||= "btn btn-sm btn-outline-danger"
+        options[:class] ||= "btn btn-sm btn-outline-danger icon-delete"
         options[:icon] = "x-lg.svg"
         options[:data] = {turbo_method: :delete, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
-        link_to_with_icon(name, url, options)
+        link_to_with_icon(name, url, options.except(:url))
       end
 
       def link_to_with_icon(name, url, html_options = {})

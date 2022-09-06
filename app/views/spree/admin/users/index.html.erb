@@ -54,5 +54,6 @@
 <%# text if you want to add a search bar            %>
 <%#-------------------------------------------------%>
   <%= render partial: "spree/admin/shared/index_table",
-             locals: { search_record: :email_cont,
-                       search_placeholder: I18n.t('spree.admin.users.search_for_users_by_email') } %>
+             locals: { search_url: spree.admin_users_path,
+                       search_record: :email_cont,
+                       search_placeholder: I18n.t('spree.admin.users.search_for_users_by_email')} %>

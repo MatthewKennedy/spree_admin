@@ -18,17 +18,22 @@ input[type="file"]::file-selector-button {
   background-color: transparent !important;
 }
 
-  .show-active-bar button,
-  .show-active-bar a {
-    border: 0 !important;
+.show-active-bar button,
+.show-active-bar a {
+  border: 0 !important;
+  position: relative;
+  background: transparent !important;
+  color: var(--bs-dark);
+  padding: 0.75rem;
+  text-decoration: none;
 
-    &.active::before {
-      content: '';
-      height: 4px;
-      width: 100%;
-      background: var(--bs-primary);
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-    }
+  &.active::before {
+    content: '';
+    height: 4px;
+    width: 100%;
+    background: var(--bs-primary);
+    position: absolute;
+    left: 0;
+    bottom: -1px;
   }
+}

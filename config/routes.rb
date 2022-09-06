@@ -61,15 +61,21 @@ Spree::Core::Engine.add_routes do
       end
 
       member do
+        get :channel
+        get :new_bill_address
+        get :new_ship_address
+        get :add_customer_email
+        get :new_customer
+        get :existing_customer
         post :resend
         put :open_adjustments
         put :close_adjustments
         put :approve
         put :cancel
         put :resume
-        get :channel
         put :set_channel
         put :reset_digitals
+        put :reset_customer_details
       end
 
       resources :customer_returns, only: [:index, :new, :edit, :create, :update] do
