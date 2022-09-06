@@ -534,7 +534,6 @@ en:
         create_a_new_user: Create a new user
         customer: Customer
         customer_details: Customer details
-        default_address: Default Address
         default_addresses: Default Addresses
         edit_store_credit: Edit store credit
         no_default_billing_address_set: No default billing address set
