@@ -46,7 +46,7 @@ describe "Homepage", type: :feature do
       end
 
       it "has a link to all orders" do
-        within(".sidebar") { expect(page).to have_link("All Orders", href: "/admin/orders?q%5Bcompleted_at_not_null%5D=1") }
+        within(".sidebar") { expect(page).to have_link("All Orders", href: "/admin/orders") }
       end
 
       it "has a link to draft orders" do

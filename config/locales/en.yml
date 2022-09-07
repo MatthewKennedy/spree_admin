@@ -18,6 +18,7 @@ en:
         delete: Delete
         done: Done
         edit: Edit
+        filter: Filter
         save: Save
         search: Search
         submit: Submit
@@ -153,6 +154,9 @@ en:
         bill_address_firstname_cont: First Name
         bill_address_lastname_cont: Last Name
         email_cont: Email
+        number_cont: Order Number
+        payment_state_not_eq: Payment State Not Equal
+        shipment_state_not_eq: Shipment State Not Equal
       kind: Kind
       label: Label
       language: Language
@@ -527,21 +531,23 @@ en:
       url: URL
       user:
         add_store_credit: Add store credit
-        address: Address
         addresses: Addresses
         available_store_credit: User has %{amount} in Store Credit available.
+        billing_address: Billing address
         billing_addresses: Billing Addresses
         create_a_new_user: Create a new user
         customer: Customer
         customer_details: Customer details
-        default_address: Default Address
         default_addresses: Default Addresses
         edit_store_credit: Edit store credit
+        no_default_billing_address_set: No default billing address set
+        no_default_shipping_address_set: No default shipping address set
         no_store_credit: User has no Store Credit available.
         orders: Orders
         other_addresses: Other Addresses
         password: Password
         roles: Roles
+        shipping_address: Shipping address
         shipping_addresses: Shipping Addresses
         store_credits: Store Credits
         user_email: User email
@@ -551,8 +557,10 @@ en:
       users:
         addresses:
           billing_address: Billing address
+          no_addresses_set: No addresses set
           other_addresses: Other addresses
           shipping_address: Shipping address
+          this_user_has_no_addresses_click_add_new_address_to_add_a_new_address: This user has no addresses, click Add New Address to create a new address.
           you_have_no_default_billing_addresses_set: You have no default billing addresses set
           you_have_no_default_shipping_addresses_set: You have no default shipping addresses set
           you_have_no_unused_addresses: You have no unused addresses

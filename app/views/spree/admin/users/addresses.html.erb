@@ -3,10 +3,19 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= link_to_with_icon Spree.t(:add_new_address), spree.new_admin_address_path(address: {user_id: @user.id}), class: "btn btn-secondary", icon: 'plus-square.svg', data: {turbo_frame: :modal} %>
+  <%= link_to_with_icon Spree.t(:add_new_address), spree.new_admin_address_path(address: {user_id: @user.id}), class: "btn btn-outline-secondary", icon: 'plus-square.svg', data: {turbo_frame: :modal} %>
 <% end %>
 
 <div class="row" id="customerAddresses">
-  <%= render partial: 'spree/admin/users/address/default' %>
-  <%= render partial: 'spree/admin/users/address/other' %>
+  <% if @user.addresses.any? %>
+    <%= render partial: 'spree/admin/users/address/default' %>
+    <%= render partial: 'spree/admin/users/address/other' %>
+  <% else %>
+    <div class="col-12 col-md-6 offset-md-3">
+      <callout class="callout-info">
+        <h6><%= I18n.t('spree.admin.users.addresses.no_addresses_set') %></h6>
+        <small class="text-muted"><%= I18n.t('spree.admin.users.addresses.this_user_has_no_addresses_click_add_new_address_to_add_a_new_address') %></small>
+      </callout>
+    </div>
+  <% end %>
 </div>

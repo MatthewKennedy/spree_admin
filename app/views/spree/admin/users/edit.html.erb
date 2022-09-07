@@ -69,12 +69,7 @@
       <hr>
 
       <sa-header id="customerAddresses">
-        <% if @user.bill_address == @user.ship_address %>
-          <h5 class="card-title"><%= I18n.t('spree.admin.user.address') %></h5>
-        <% else %>
-          <h5 class="card-title"><%= I18n.t('spree.admin.user.addresses') %></h5>
-        <% end %>
-
+        <h5 class="card-title"><%= I18n.t('spree.admin.user.addresses') %></h5>
         <%= link_to I18n.t('spree.admin.users.manage'), spree.addresses_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary" %>
       </sa-header>
 
@@ -88,14 +83,32 @@
           <% if @user.bill_address == @user.ship_address %>
             <small class="text-muted"><%= I18n.t('spree.admin.address.used_for_billing_and_shipping') %></small>
           <% end %>
+        <% else %>
+          <div class="bs-callout bs-callout-info my-3">
+            <h6>
+              <%= I18n.t('spree.admin.user.billing_address') %>
+            </h6>
+            <small class="text-muted">
+             <%= I18n.t('spree.admin.user.no_default_billing_address_set') %>
+            </small>
+          </div>
         <% end %>
 
-        <% unless @user.bill_address == @user.ship_address %>
+        <% unless @user.bill_address == @user.ship_address && @user.ship_address.present? %>
           <hr>
           <% if @user.ship_address.present? %>
             <h6><%= I18n.t('spree.admin.user.shipping_addresses') %></h6>
 
             <%= render partial: 'spree/admin/shared/address/card', locals: {address: @user.ship_address} %>
+          <% else %>
+            <div class="bs-callout bs-callout-info my-3">
+              <h6>
+                <%= I18n.t('spree.admin.user.shipping_address') %>
+              </h6>
+              <small class="text-muted">
+               <%= I18n.t('spree.admin.user.no_default_shipping_address_set') %>
+              </small>
+            </div>
           <% end %>
         <% end %>
       </sa-body>

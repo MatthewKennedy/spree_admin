@@ -25,9 +25,9 @@
       <% end %>
 
       <div class="mt-2 filters-in-use-container">
-        <% request.query_parameters[:q].each do |filter| %>
+        <% request.query_parameters[:q].sort.each do |filter| %>
           <%= filters_in_use(filter) %>
-        <% end if request.query_parameters[:q] %>
+        <% end if request.query_parameters[:q] && request.parameters[:commit] == I18n.t('spree.admin.actions.filter') %>
       </div>
     </div>
   </div>

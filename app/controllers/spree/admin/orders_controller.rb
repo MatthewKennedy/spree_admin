@@ -3,7 +3,7 @@ module Spree
     class OrdersController < Spree::Admin::BaseController
       include Spree::Admin::OrderConcern
 
-      before_action :load_order, except: %i[index new]
+      before_action :load_order, except: %i[index filter new]
       before_action :initialize_order_events, :set_customer_status
       before_action :load_user, only: %i[update]
 
@@ -17,8 +17,15 @@ module Spree
 
       def new
         @order = scope.create(order_params)
+        @user = Spree.user_class.find(params[:user_id]) if params[:user_id].present?
 
-        redirect_to spree.edit_admin_order_url(@order)
+        if @order.save
+          sync_order
+
+          redirect_to spree.edit_admin_order_url(@order)
+        elsif @order.line_items.empty?
+          @order.errors.add(:line_items, I18n.t("spree.admin.errors.messages.blank"))
+        end
       end
 
       def edit
