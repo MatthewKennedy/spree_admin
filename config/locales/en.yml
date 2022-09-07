@@ -18,6 +18,7 @@ en:
         delete: Delete
         done: Done
         edit: Edit
+        filter: Filter
         save: Save
         search: Search
         submit: Submit
@@ -153,6 +154,9 @@ en:
         bill_address_firstname_cont: First Name
         bill_address_lastname_cont: Last Name
         email_cont: Email
+        number_cont: Order Number
+        payment_state_not_eq: Payment State Not Equal
+        shipment_state_not_eq: Shipment State Not Equal
       kind: Kind
       label: Label
       language: Language

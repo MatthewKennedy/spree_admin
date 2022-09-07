@@ -3,7 +3,7 @@ module Spree
     class OrdersController < Spree::Admin::BaseController
       include Spree::Admin::OrderConcern
 
-      before_action :load_order, except: %i[index new]
+      before_action :load_order, except: %i[index filter new]
       before_action :initialize_order_events, :set_customer_status
       before_action :load_user, only: %i[update]
 
