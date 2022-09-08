@@ -5,7 +5,7 @@
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @product], method: :post, class: 'row', data: { hook: 'new_product_form', turbo_frame: :_top, controller: "input--required", input__required_save_button_id_value: "globalFormSubmitButton"}, id: "mainForm" do |f| %>
+    <%= form_with model: [:admin, @product], method: :post, class: 'row', data: { hook: 'new_product_form', action: "turbo:submit-end->modal#submitEnd", turbo_frame: :inner_main_content, controller: "input--required", input__required_save_button_id_value: "globalFormSubmitButton"}, id: "mainForm" do |f| %>
       <div class="col-12 col-md-8">
         <%= f.field_container :name, data: { hook: "admin_product_form_name" } do %>
           <%= f.text_field :name, class: 'form-control title', placeholder: raw(Spree.t(:name) + required_span_tag), required: true %>

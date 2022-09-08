@@ -4,6 +4,8 @@ import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
   connect () {
+    if (document.documentElement.hasAttribute('data-turbo-preview')) return
+
     this.modal = new bootstrap.Modal(this.element, {
       keyboard: false
     })
@@ -11,7 +13,7 @@ export default class extends Controller {
   }
 
   disconnect () {
-    this.modal.dispose()
+    if (this.modal) this.modal.dispose()
   }
 
   submitEnd (event) {

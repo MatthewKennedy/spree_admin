@@ -5,7 +5,7 @@
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @user], data: {action: "turbo:submit-end->modal#submitEnd", turbo_frame: :inner_main_content}, id: :modal_form do |form| %>
+    <%= form_with model: [:admin, @user], data: {action: "turbo:submit-end->modal#submitEnd", turbo_frame: :inner_main_content, turbo_action: "advance"}, id: :modal_form do |form| %>
       <%= render partial: 'form', locals: { f: form } %>
     <% end %>
   </div>
