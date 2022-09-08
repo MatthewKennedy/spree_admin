@@ -1,17 +1,3 @@
-html[data-turbo-preview] {
-  &#universalModal {
-    display: none !important;
-  }
-
-  &.modal-backdrop {
-    display: none !important;
-    opacity: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
-    z-index: 0 !important;
-  }
-}
-
 body {
   margin: 0;
 }

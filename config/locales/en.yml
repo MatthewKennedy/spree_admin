@@ -153,6 +153,7 @@ en:
         bill_address_company_cont: Company
         bill_address_firstname_cont: First Name
         bill_address_lastname_cont: Last Name
+        deleted_at_null: Show Deleted
         email_cont: Email
         number_cont: Order Number
         payment_state_not_eq: Payment State Not Equal
