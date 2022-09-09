@@ -13,10 +13,10 @@
       <% end if request.query_parameters[:q] && request.parameters[:commit] == I18n.t('spree.admin.actions.filter') %>
     </div>
     <div class="col-12 p-0">
-      <div class="table-responsive">
+      <table-responsive>
         <%= yield :index_table if content_for?(:index_table) %>
       </div>
-    </div>
+    </table-responsive>
 
     <% unless @pagy.nil? %>
       <div class="border-top pt-3">

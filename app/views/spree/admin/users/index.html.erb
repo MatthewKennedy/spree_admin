@@ -17,7 +17,7 @@
 
 <% content_for :index_table do %>
   <% if @users.any? %>
-    <table class="table" id="listing_users" data-hook>
+    <table id="listing_users">
       <thead class="text-muted">
         <tr data-hook="admin_users_index_headers">
           <th>
@@ -26,7 +26,7 @@
           <th data-hook="admin_users_index_header_actions" class="actions"></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="index_table_body">
         <% @users.each do |user| %>
           <tr id="<%= dom_id(user) %>" data-hook="admin_users_index_rows" data-stream-exit-class="animate__fadeOut">
             <td class='user_email'><%= link_to user.email, spree.edit_admin_user_url(user) %></td>
