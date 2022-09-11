@@ -99,6 +99,15 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
     end
   end
 
+  def load_more
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
+  def filter
+  end
+
   protected
 
   class << self
@@ -283,7 +292,7 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
   end
 
   def collection_actions
-    [:index]
+    [:index, :filter, :load_more]
   end
 
   def member_action?

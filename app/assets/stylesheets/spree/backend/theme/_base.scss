@@ -143,3 +143,15 @@
     border-color: #ccc !important;
   }
 }
+
+
+g-table {
+  turbo-frame {
+    display: block;
+  }
+}
+
+g-thead {
+  @extend .text-muted;
+  font-weight: 700;
+}

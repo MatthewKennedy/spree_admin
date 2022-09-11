@@ -1,0 +1,21 @@
+<%= turbo_frame_tag "users-page-#{@pagy.page}" do %>
+  <% @collection.each do |user| %>
+    <g-tr style="--bs-columns: 5;" id="<%= dom_id(user) %>" data-stream-exit-class="animate__fadeOut">
+      <g-td style="grid-column: span 2;">
+        <%= link_to user.email, spree.edit_admin_user_url(user) %>
+      </g-td>
+
+      <g-td style="grid-column: span 2;">
+        <%= user.created_at %>
+      </g-td>
+
+      <g-td class="justify-content-end">
+        <div>
+          <%= link_to_edit(user) if can?(:edit, user) %>
+          <%= link_to_delete(user) if can?(:delete, user) %>
+        </div>
+      </g-td>
+    </g-tr>
+  <% end %>
+  <%= render "next_page" %>
+<% end %>
