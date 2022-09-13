@@ -21,7 +21,6 @@ en:
         filter: Filter
         save: Save
         search: Search
-        submit: Submit
         update: Update
         upload: Upload
       active: Active
@@ -48,6 +47,7 @@ en:
         street: Street
         used_for_billing_and_shipping: Used for billing and shipping
         zipcode: Zipcode
+      all_loaded: All loaded
       amount: Amount
       apis: API's
       are_you_sure_you_want_to: Are you sure you want to %{action} this %{resource}
@@ -153,6 +153,7 @@ en:
         bill_address_company_cont: Company
         bill_address_firstname_cont: First Name
         bill_address_lastname_cont: Last Name
+        deleted_at_null: Show Deleted
         email_cont: Email
         number_cont: Order Number
         payment_state_not_eq: Payment State Not Equal
@@ -162,6 +163,7 @@ en:
       language: Language
       learn_more: Learn more
       limit_usage_to: Limit usage to
+      load_more: Load more
       location: Location
       make_sure_the_above_reimbursement_amount_is_correct: Make sure the above reimbursement amount is correct
       match_choices:

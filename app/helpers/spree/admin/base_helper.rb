@@ -16,8 +16,16 @@ module Spree
         params_hash = {q: formatted_params.to_hash}
         remove_filter_url = request.base_url + request.path + "?" + params_hash.to_query + "&commit=Filter"
 
-        link_to remove_filter_url, class: "badge bg-secondary", id: "removeFilter-#{filter[0]}" do
-          (content_tag :span, I18n.t("spree.admin.filters.#{filter[0]}") + ": #{filter[1]} ") + inline_svg_tag("x-lg.svg", size: "16px*16px")
+        # Case through those query params that don't read human like and amend as needed.
+        filter_value_text = case filter[0]
+        when "deleted_at_null"
+          " "
+        else
+          ": #{filter[1]} "
+        end
+
+        link_to remove_filter_url, class: "badge bg-secondary", id: "removeFilter-#{filter[0]}", data: {turbo_cache: "false"} do
+          (content_tag :span, I18n.t("spree.admin.filters.#{filter[0]}") + filter_value_text) + inline_svg_tag("x-lg.svg", size: "16px*16px")
         end
       end
 

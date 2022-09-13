@@ -1,6 +1,6 @@
 {
-  "name": "@spree/admin",
-  "version": "0.0.1",
+  "name": "@omes/admin",
+  "version": "0.0.2",
   "description": "Admin UI for Spree",
   "main": "app/assets/javascripts/spree_admin.js",
   "type": "module",
@@ -9,7 +9,7 @@
     "app/assets/javascripts/*.js",
     "src/*.js"
   ],
-  "homepage": "https://spreecommerce.org/",
+  "homepage": "https://github.com/matthewkennedy/spree_admin.git",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matthewkennedy/spree_admin.git"
@@ -17,10 +17,10 @@
   "bugs": {
     "url": "https://github.com/matthewkennedy/spree_admin/issues"
   },
-  "author": "Spark Solutions <hi@sparksolutions.co>",
+  "author": "Matthew Kennedy <m.kennedy@me.com>",
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/turbo-rails": "^7.2.0-beta.2",
+    "@hotwired/turbo-rails": "7.2.0-rc.1",
     "@popperjs/core": "^2.11.5",
     "@rails/request.js": "^0.0.6",
     "animate.css": "^4.1.1",

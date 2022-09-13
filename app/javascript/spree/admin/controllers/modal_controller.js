@@ -4,14 +4,23 @@ import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
   connect () {
+    // Avoid a modal opening on cache preview.
+    if (document.documentElement.hasAttribute('data-turbo-preview')) {
+      const modalBackdrop = document.querySelector('.modal-backdrop')
+      if (modalBackdrop) modalBackdrop.remove()
+
+      return
+    }
+
     this.modal = new bootstrap.Modal(this.element, {
       keyboard: false
     })
+
     this.modal.show()
   }
 
   disconnect () {
-    this.modal.dispose()
+    if (this.modal) this.modal.dispose()
   }
 
   submitEnd (event) {

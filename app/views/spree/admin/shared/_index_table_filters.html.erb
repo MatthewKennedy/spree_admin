@@ -12,7 +12,7 @@
       <% if search_record.present? && search_placeholder.present? %>
         <div class="col-12 col-sm">
          <%= search_form_for [:admin, @search], url: search_url, data: {controller: "form--autosave", turbo_frame: :index_table} do |f| %>
-           <%= f.search_field search_record, placeholder: search_placeholder, class: "form-control", data: { action: 'form--autosave#save', turbo_permanent: true } %>
+           <%= f.search_field search_record, placeholder: search_placeholder, class: "form-control", data: { action: 'form--autosave#save'} %>
            <%= f.submit I18n.t('spree.admin.actions.search'), class: 'd-none', data: {form__autosave_target: "submitButton"} %>
          <% end %>
         </div>
@@ -23,12 +23,6 @@
           <%= yield :index_table_filter_buttons %>
         </div>
       <% end %>
-
-      <div class="mt-2 filters-in-use-container">
-        <% request.query_parameters[:q].sort.each do |filter| %>
-          <%= filters_in_use(filter) %>
-        <% end if request.query_parameters[:q] && request.parameters[:commit] == I18n.t('spree.admin.actions.filter') %>
-      </div>
     </div>
   </div>
 <% end %>

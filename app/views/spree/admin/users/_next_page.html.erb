@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "users-page-#{@pagy.next}", class: "text-center" do %>
+  <div class="text-center position-absolute start-0 w-100">
+    <% if @pagy.next %>
+      <%= link_to(I18n.t("spree.admin.load_more"), pagy_url_for(@pagy, @pagy.next), data: {turbo_frame: "users-page-#{@pagy.next}"}, class: "btn btn-outline-secondary my-2") %>
+    <% else %>
+      <%= link_to(I18n.t("spree.admin.all_loaded"), "#", data: {turbo_frame: "users-page-#{@pagy.next}"}, class: "btn btn-outline-secondary my-2", disabled: true) %>
+    <% end %>
+  </div>
+<% end %>

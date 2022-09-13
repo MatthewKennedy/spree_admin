@@ -5,30 +5,28 @@
        class="modal fade"
        tabindex="-1"
        aria-hidden="true"
-       data-turbo-cache="false"
        id="universalModal">
-    <%= turbo_frame_tag :modal_inner do %>
-      <div class="modal-dialog <%= modal_dialog_settings %>">
-        <div class="modal-content">
-          <% if content_for?(:modal_header) %>
-            <div class="modal-header">
-              <%= yield :modal_header %>
-            </div>
-          <% end %>
 
-          <% if content_for?(:modal_body) %>
-            <div class="modal-body">
-              <%= yield :modal_body %>
-            </div>
-          <% end %>
+    <div class="modal-dialog <%= modal_dialog_settings %>">
+      <div class="modal-content">
+        <% if content_for?(:modal_header) %>
+          <div class="modal-header">
+            <%= yield :modal_header %>
+          </div>
+        <% end %>
 
-          <% if content_for?(:modal_footer) %>
-            <div class="modal-footer">
-                <%= yield :modal_footer %>
-            </div>
-          <% end %>
-        </div>
+        <% if content_for?(:modal_body) %>
+          <div class="modal-body">
+            <%= yield :modal_body %>
+          </div>
+        <% end %>
+
+        <% if content_for?(:modal_footer) %>
+          <div class="modal-footer">
+              <%= yield :modal_footer %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 <% end %>

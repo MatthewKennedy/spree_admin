@@ -24,7 +24,7 @@
   </head>
 
   <body class="admin" id="spreeAdmin">
-    <%= turbo_frame_tag :inner_main_content, target: :_top do %>
+    <%= turbo_frame_tag :inner_main_content, target: :_top, data: {turbo_action: "advance"} do %>
       <%#-------------------------------------------------%>
       <%# Main content                                    %>
       <%#-------------------------------------------------%>

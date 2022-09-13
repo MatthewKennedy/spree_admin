@@ -85,16 +85,3 @@ sa-card {
     @extend .card-footer;
   }
 }
-
-table-responsive {
-  display: block;
-  @extend .table-responsive;
-
-  table {
-    @extend .table;
-
-    thead {
-      @extend .text-muted;
-    }
-  }
-}

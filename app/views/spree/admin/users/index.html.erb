@@ -17,29 +17,44 @@
 
 <% content_for :index_table do %>
   <% if @users.any? %>
-    <table class="table" id="listing_users" data-hook>
-      <thead class="text-muted">
-        <tr data-hook="admin_users_index_headers">
-          <th>
-            <%= sort_link @search,:email, Spree.t(:user), {}, {title: 'users_email_title'} %>
-          </th>
-          <th data-hook="admin_users_index_header_actions" class="actions"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr id="<%= dom_id(user) %>" data-hook="admin_users_index_rows" data-stream-exit-class="animate__fadeOut">
-            <td class='user_email'><%= link_to user.email, spree.edit_admin_user_url(user) %></td>
-            <td data-hook="admin_users_index_row_actions" class="actions">
-              <span class="d-flex justify-content-end">
-                <%= link_to_edit(user) if can?(:edit, user) %>
-                <%= link_to_delete(user) if can?(:delete, user) %>
-              </span>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <table-responsive>
+      <g-table id="listing_users" class="table-striped">
+        <g-thead>
+          <g-tr style="--bs-columns: 5;">
+            <g-th style="grid-column: span 2;">
+              <%= sort_link @search,:email, Spree.t(:user), {}, {title: 'users_email'} %>
+            </g-th>
+            <g-th style="grid-column: span 3;">
+              <%= sort_link @search,:created_at, Spree.t(:created_at), {}, {title: 'account_created'} %>
+            </g-th>
+          </g-tr>
+        </g-thead>
+        <g-tbody>
+          <% @collection.each do |user| %>
+            <g-tr style="--bs-columns: 5;" id="<%= dom_id(user) %>" data-stream-exit-class="animate__fadeOut">
+              <g-td style="grid-column: span 2;">
+                <%= link_to user.email, spree.edit_admin_user_url(user) %>
+              </g-td>
+
+              <g-td style="grid-column: span 2;">
+                <%= user.created_at %>
+              </g-td>
+
+              <g-td class="justify-content-end">
+                <div>
+                  <%= link_to_edit(user) if can?(:edit, user) %>
+                  <%= link_to_delete(user) if can?(:delete, user) %>
+                </div>
+              </g-td>
+            </g-tr>
+          <% end %>
+          <% unless @pagy.nil? %>
+            <%= render "next_page" %>
+          <% end %>
+
+        </g-tbody>
+      </g-table>
+    <table-responsive>
   <% else %>
     <div class="text-center no-objects-found m-5">
       <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree.user_class)) %>,

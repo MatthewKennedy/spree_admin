@@ -5,7 +5,7 @@
 
 <% content_for :modal_body do %>
   <div class="container">
-    <%= form_with model: [:admin, @country, @state], url: spree.admin_country_states_path(@country), id: 'countryStateNewForm', method: :post, data: { turbo_frame: :country_states, action: "turbo:submit-end->modal#submitEnd" } do |f| %>
+    <%= form_with model: [:admin, @country, @state], id: :modal_form, data: { turbo_frame: :country_states, action: "turbo:submit-end->modal#submitEnd" } do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
     <% end %>
   </div>
@@ -13,7 +13,7 @@
 
 <% content_for :modal_footer do %>
   <button type="button" class="btn btn-light" data-bs-dismiss="modal"><%= I18n.t('spree.admin.actions.cancel') %></button>
-  <%= button_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: "countryStateNewForm") %>
+  <%= button_tag(I18n.t('spree.admin.actions.save'), class: "btn btn-primary", form: :modal_form) %>
 <% end %>
 
 <%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable modal-dialog modal-dialog-centered modal-lg' } %>
