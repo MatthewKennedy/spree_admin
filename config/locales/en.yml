@@ -21,7 +21,6 @@ en:
         filter: Filter
         save: Save
         search: Search
-        submit: Submit
         update: Update
         upload: Upload
       active: Active
