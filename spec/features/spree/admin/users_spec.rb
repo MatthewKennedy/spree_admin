@@ -69,7 +69,7 @@ describe "Users", type: :feature do
     before { click_link sort_link }
 
     it "can sort asc" do
-      within_table(table_id) do
+      within(table_id) do
         expect(page).to have_text text_match_1
         expect(page).to have_text text_match_2
         expect(text_match_1).to appear_before text_match_2
@@ -77,7 +77,7 @@ describe "Users", type: :feature do
     end
 
     it "can sort desc" do
-      within_table(table_id) do
+      within(table_id) do
         click_link sort_link
 
         expect(page).to have_text text_match_1
@@ -144,15 +144,15 @@ describe "Users", type: :feature do
       it_behaves_like "a sortable attribute" do
         let(:text_match_1) { user_a.email }
         let(:text_match_2) { user_b.email }
-        let(:table_id) { "listing_users" }
-        let(:sort_link) { "users_email_title" }
+        let(:table_id) { "#listing_users" }
+        let(:sort_link) { "users_email" }
       end
     end
 
     it "displays the correct results for a user search" do
       fill_in "q_email_cont", with: user_a.email, visible: false
       click_button "Search", visible: false
-      within_table("listing_users") do
+      within("#listing_users") do
         expect(page).to have_text user_a.email
         expect(page).not_to have_text user_b.email
       end
@@ -431,7 +431,7 @@ describe "Users", type: :feature do
       it_behaves_like "a sortable attribute" do
         let(:text_match_1) { order_time(order.completed_at) }
         let(:text_match_2) { order_time(order_2.completed_at) }
-        let(:table_id) { "listing_orders" }
+        let(:table_id) { "#listing_orders" }
         let(:sort_link) { "orders_completed_at_title" }
       end
     end
@@ -441,7 +441,7 @@ describe "Users", type: :feature do
         it_behaves_like "a sortable attribute" do
           let(:text_match_1) { order.send(attr).to_s }
           let(:text_match_2) { order_2.send(attr).to_s }
-          let(:table_id) { "listing_orders" }
+          let(:table_id) { "#listing_orders" }
           let(:sort_link) { "orders_#{attr}_title" }
         end
       end
