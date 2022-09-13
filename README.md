@@ -52,7 +52,7 @@ Install Spree Admin
 
 Install the Spree Admin javascript bundle
 ```bash
-   yarn add "@spree/admin"
+   yarn add "@omes/admin"
 ```
 
 
@@ -69,7 +69,7 @@ yarn link
 Next, from the root of the Rails app you are using to develop run:
 
 ```bash
-yarn link "@spree/admin"
+yarn link "@omes/admin"
 ```
 
 Once your local Spree Dashboard is linked with the Rails app you are using for development you will need two terminal tabs open,
