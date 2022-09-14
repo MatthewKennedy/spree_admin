@@ -28,9 +28,10 @@ All new JavaScript is written in Stimulus controllers so it is all Hotwire/Turbo
 
 Starting with a freshly generated Rails 7 app using esbuild simply add the following gems to your gem file:
 ```ruby
-   gem "spree"
-   gem "spree_admin"
-   gem "spree_auth_devise"
+# USE THESE TEMP
+gem 'spree', github: 'MatthewKennedy/spree', branch: 'custom/spree_admin'
+gem 'spree_admin', github: 'MatthewKennedy/spree_admin'
+gem 'spree_auth_devise', github: 'MatthewKennedy/spree_auth_devise', branch: 'custom/spree_admin'
 ```
 
 From the command line run the following commands to:
@@ -53,6 +54,14 @@ Install Spree Admin
 Install the Spree Admin javascript bundle
 ```bash
    yarn add "@omes/admin"
+```
+
+Add to your project the path to load bootstrap SVG icons from node_modules
+
+```javascript
+//In -> app/assets/config/manifest.js
+
+//= link_tree ../../../node_modules/bootstrap-icons/icons .svg
 ```
 
 
