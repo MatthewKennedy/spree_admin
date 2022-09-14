@@ -8,6 +8,8 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules/flatpickr
 Rails.application.config.assets.paths << Rails.root.join("node_modules/tinymce")
 Rails.application.config.assets.paths << Rails.root.join("node_modules/tom-select/dist/scss")
 
+Rails.application.config.assets.precompile += %w[*.svg]
+
 Rails.application.config.assets.configure do |env|
   env.export_concurrent = false
   Rails.application.config.active_record.yaml_column_permitted_classes = [Symbol, BigDecimal, ActiveSupport::HashWithIndifferentAccess]
