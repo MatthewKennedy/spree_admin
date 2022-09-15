@@ -51,7 +51,7 @@ g-th {
 g-th,
 g-td {
   display: flex;
-  overflow: hidden;
+  overflow: visible;
   align-items: center;
 
   padding: $table-cell-padding-y $table-cell-padding-x;
@@ -107,7 +107,7 @@ g-td {
 // Placed here since it has to come after the potential zebra striping
 
 .table-hover {
-  g-tr:hover > * {
+  g-tbody g-tr:hover > * {
     background-color: var(--#{$prefix}table-hover-bg);
     color: var(--#{$prefix}table-hover-color);
   }
