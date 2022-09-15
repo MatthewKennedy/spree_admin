@@ -67,7 +67,7 @@ Add to your project the path to load bootstrap SVG icons from node_modules
 
 ### Development Setup (JavaScript)
 
-When working locally on the JavaScript in Spree Admin, you will need to yarn link your local development copy of `@spree/admin`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
+When working locally on the JavaScript in Spree Admin, you will need to yarn link your local development copy of `@omes/admin`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
 
 From the root of `spree_admin` run:
 
