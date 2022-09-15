@@ -1,8 +1,3 @@
-table-responsive {
-  display: block;
-  @extend .table-responsive;
-}
-
 g-table {
   --#{$prefix}table-color: #{$table-color};
   --#{$prefix}table-bg: #{$table-bg};
@@ -20,6 +15,15 @@ g-table {
   border-style: solid;
   border-width: 0;
 
+  display: block;
+  padding: 0;
+  margin: 0;
+  // min-width: fit-content;
+}
+
+g-thead,
+g-tbody,
+g-tfoot {
   display: block;
   padding: 0;
   margin: 0;
@@ -55,6 +59,7 @@ g-td {
   overflow: visible;
   align-items: center;
   min-height: 50px;
+  text-overflow: nowrap;
 
   padding: $table-cell-padding-y $table-cell-padding-x;
   background-color: var(--#{$prefix}table-bg);
