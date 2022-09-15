@@ -13,7 +13,7 @@
       </g-td>
 
       <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>">
-        <div>
+        <div class="text-start">
           <%= product.name %>
           <% if product.sku.present? %>
             <br>
@@ -23,12 +23,12 @@
       </g-td>
 
       <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
-        <g-td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+        <g-td class="text-start" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
           <%= link_to product.vendor.name, spree.admin_vendor_path(product.vendor_id) if product.vendor.present? %>
         </g-td>
       <% end %>
 
-      <g-td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
         <span class="badge rounded-pill text-bg-light">
           <% if product.digital? %>
             <%= I18n.t('spree.admin.product_kinds.digital') %>
@@ -38,11 +38,11 @@
         </span>
       </g-td>
 
-      <g-td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
         <%= active_badge(available_status == I18n.t('spree.admin.products.active'), label: available_status) %>
       </g-td>
 
-      <g-td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
         <%= display_price(product) %>
       </g-td>
 

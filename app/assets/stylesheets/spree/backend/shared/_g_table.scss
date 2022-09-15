@@ -23,7 +23,7 @@ g-table {
   display: block;
   padding: 0;
   margin: 0;
-  min-width: max-content;
+  min-width: fit-content;
 }
 
 g-thead,
@@ -53,6 +53,7 @@ g-td {
   display: flex;
   overflow: visible;
   align-items: center;
+  min-height: 50px;
 
   padding: $table-cell-padding-y $table-cell-padding-x;
   background-color: var(--#{$prefix}table-bg);

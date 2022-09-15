@@ -51,8 +51,8 @@ module Spree
         # lazy loading other models here (via includes) may result in an invalid query
         # e.g. SELECT  DISTINCT DISTINCT "spree_orders".id, "spree_orders"."created_at" AS alias_0 FROM "spree_orders"
         # see https://github.com/spree/spree/pull/3919
-        @orders = @search.result(distinct: true)
-        @pagy, @orders = pagy(@orders, items: per_page_limit)
+        @collection = @search.result(distinct: true)
+        @pagy, @collection = pagy(@collection, items: per_page_limit)
 
         # Restore dates
         params[:q][:created_at_gt] = created_at_gt

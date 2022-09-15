@@ -20,72 +20,26 @@
 <% end %>
 
 <% content_for :index_table do %>
-  <% if @orders.any? %>
-    <table class="table table-hover" id="listing_orders">
-      <thead class="text-muted">
-        <tr data-hook="admin_orders_index_headers">
-          <th><%= I18n.t(:number, scope: 'activerecord.attributes.spree/order') %></th>
-          <th><%= I18n.t('spree.admin.date') %></th>
-          <th><%= I18n.t('spree.admin.risk') %></th>
-          <th><%= I18n.t('spree.admin.payment') %></th>
-          <th><%= I18n.t('spree.admin.shipment') %></th>
-          <th><%= I18n.t('spree.admin.customer') %></th>
-          <th><%= I18n.t('spree.admin.total') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |order| %>
-          <tr data-hook="admin_orders_index_rows" class="state-<%= order.state.downcase %> <%= "text-muted" if order.shipment_state == 'shipped' %>">
-            <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="text-nowrap">
-              <%= order.number %>
-            </td>
+  <% if @collection.any? %>
+    <table-responsive>
+      <g-table class="table-hover" id="listing_orders">
+        <g-thead>
+          <g-tr style=" grid-template-columns: 1fr 3fr 2fr 1fr 1fr 1fr 1fr; ">
+            <g-th><%= I18n.t(:number, scope: 'activerecord.attributes.spree/order') %></g-th>
+            <g-th><%= I18n.t('spree.admin.date') %></g-th>
+            <g-th><%= I18n.t('spree.admin.customer') %></g-th>
+            <g-th><%= I18n.t('spree.admin.risk') %></g-th>
+            <g-th><%= I18n.t('spree.admin.payment') %></g-th>
+            <g-th><%= I18n.t('spree.admin.shipment') %></g-th>
+            <g-th><%= I18n.t('spree.admin.total') %></g-th>
+          </g-tr>
+        </g-thead>
 
-            <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="text-nowrap">
-              <%= order_time(@show_only_completed ? order.completed_at : order.created_at) %>
-            </td>
-
-            <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="text-nowrap">
-              <span class="badge rounded-pill bg-<%= order.considered_risky ? 'considered_risky' : 'considered_safe' %>">
-                <%= order.considered_risky ? I18n.t("spree.admin.risky") : I18n.t("spree.admin.safe") %>
-              </span>
-            </td>
-
-            <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="text-nowrap">
-              <% if order.payment_state %>
-                <span class="badge rounded-pill bg-<%= order.payment_state %>">
-                  <%= I18n.t("spree.admin.payment_states.#{order.payment_state}") %>
-                </span>
-              <% end %>
-            </td>
-
-            <% if Spree::Order.checkout_step_names.include?(:delivery) %>
-              <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="text-nowrap">
-                <% if order.shipment_state %>
-                  <span class="badge rounded-pill bg-<%= order.shipment_state %>">
-                    <%= I18n.t("spree.admin.shipment_states.#{order.shipment_state}") %>
-                  </span>
-                <% end %>
-              </td>
-            <% end %>
-            <td class="text-nowrap dropdown">
-              <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <%= order.email %>
-                </button>
-                <% if order.user %>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to order.email, spree.edit_admin_user_path(order.user), class: 'dropdown-item' %></li>
-                  </ul>
-                <% else %>
-                  <%= mail_to order.email %>
-                <% end %>
-            </td>
-            <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
-              <%= order.display_total.to_html %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+        <g-tbody>
+          <%= render partial: "orders_list" %>
+        </g-tbody>
+      </g-table>
+    </table-responsive>
   <% else %>
     <div class="text-center no-objects-found m-5">
       <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %>
