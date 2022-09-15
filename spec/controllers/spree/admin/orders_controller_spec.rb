@@ -91,8 +91,8 @@ describe Spree::Admin::OrdersController, type: :controller do
     xcontext "pagination" do
       it "can page through the orders" do
         get :index, params: {page: 2, per_page: 10}
-        expect(assigns[:orders].offset_value).to eq(10)
-        expect(assigns[:orders].limit_value).to eq(10)
+        expect(assigns[:collection].offset_value).to eq(10)
+        expect(assigns[:collection].limit_value).to eq(10)
       end
     end
 
@@ -127,7 +127,7 @@ describe Spree::Admin::OrdersController, type: :controller do
 
       it "does not display duplicate results" do
         send_request
-        expect(assigns[:orders].map(&:number).count).to eq 1
+        expect(assigns[:collection].map(&:number).count).to eq 1
       end
 
       it "preloads users" do
@@ -297,8 +297,8 @@ describe Spree::Admin::OrdersController, type: :controller do
         allow(user).to receive_messages has_spree_role?: false
         get :index
         expect(response).to render_template :index
-        expect(assigns["orders"].distinct(false).size).to eq 1
-        expect(assigns["orders"].first.number).to eq number
+        expect(assigns["collection"].distinct(false).size).to eq 1
+        expect(assigns["collection"].first.number).to eq number
         expect(Spree::Order.accessible_by(Spree::Ability.new(user), :index).pluck(:number)).to eq [number]
       end
     end
