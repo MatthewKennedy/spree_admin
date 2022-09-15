@@ -158,7 +158,9 @@ en:
         email_cont: Email
         number_cont: Order Number
         payment_state_not_eq: Payment State Not Equal
+        search_by_name: Product Name
         shipment_state_not_eq: Shipment State Not Equal
+        variants_including_master_sku_cont: SKU
       kind: Kind
       label: Label
       language: Language

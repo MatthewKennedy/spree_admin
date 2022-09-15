@@ -1,0 +1,19 @@
+<%= turbo_frame_tag "#{plural_resource_name(@collection).downcase}-page-#{@pagy.page}" do %>
+  <% @collection.each do |country| %>
+    <g-tr style="grid-template-columns: 2fr 1fr 1fr 1fr 1fr ;" id="<%= dom_id(country) %>" data-stream-exit-class="animate__fadeOut">
+      <g-td><%= country.name %></g-td>
+      <g-td class="text-center"><%= country.iso3 %></g-td>
+      <g-td class="text-center"><%= active_badge(country.states_required?) %></g-td>
+      <g-td class="text-center"><%= active_badge(country.zipcode_required?) %></g-td>
+      <g-td class="d-flex justify-content-end">
+        <div>
+          <%= link_to_edit(country) if can? :edit, country %>
+          <%= link_to_delete(country) if can? :delete, country %>
+        </div>
+      </g-td>
+    </g-tr>
+  <% end %>
+  <% unless @pagy.nil? %>
+    <%= render "spree/admin/shared/next_page" %>
+  <% end %>
+<% end %>

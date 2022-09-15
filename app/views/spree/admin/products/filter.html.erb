@@ -30,11 +30,15 @@
         </h2>
         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
           <div class="accordion-body">
-            <%= f.label :variants_including_master_sku_cont, Spree.t(:sku) %>
-            <%= f.text_field :variants_including_master_sku_cont, size: 15, class: "form-control", data: { action: 'form--autosave#save' } %>
+            <%= f.field_container :variants_including_master_sku_cont do %>
+              <%= f.text_field :variants_including_master_sku_cont, placeholder: Spree.t(:sku), class: "form-control", data: { action: 'form--autosave#save' } %>
+              <%= f.label :variants_including_master_sku_cont, Spree.t(:sku) %>
+            <% end %>
 
-            <%= f.label :search_by_name, Spree.t(:product_name) %>
-            <%= f.text_field :search_by_name, size: 15, class: "form-control", data: { action: 'form--autosave#save' } %>
+            <%= f.field_container :search_by_name do %>
+              <%= f.text_field :search_by_name, placeholder: Spree.t(:product_name), class: "form-control", data: { action: 'form--autosave#save' } %>
+              <%= f.label :search_by_name, Spree.t(:product_name) %>
+            <% end %>
           </div>
         </div>
       </div>
