@@ -13,9 +13,13 @@
       </g-td>
 
       <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>">
-        <%= product.name %>
-        <br>
-        <small>SKU: <span class="text-secondary"><%= product.sku rescue '' %></span></small>
+        <div>
+          <%= product.name %>
+          <% if product.sku.present? %>
+            <br>
+            <small>SKU: <span class="text-secondary"><%= product.sku %></span></small>
+          <% end %>
+        </div>
       </g-td>
 
       <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>

@@ -31,62 +31,63 @@
 
   <% content_for :index_table do %>
     <% if @collection.any? %>
-      <g-table class="table-hover" id="listing_products" data-controller="input--checkbox-state">
+      <table-responsive>
+        <g-table class="table-hover" id="listing_products" data-controller="input--checkbox-state">
+          <g-thead>
+            <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr ;" data-hook="admin_products_index_headers">
 
-        <g-thead>
-          <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr ;" data-hook="admin_products_index_headers">
+              <g-th>
+                <div class="form-check d-flex justify-content-center m-0 ms-2">
+                   <%= check_box_tag "select all", nil, nil, { class: "form-check-input", data: { input__checkbox_state_target: "checkboxAll"} } %>
+                </div>
+              </g-th>
 
-            <g-th>
-              <div class="form-check d-flex justify-content-center m-0 ms-2">
-                 <%= check_box_tag "select all", nil, nil, { class: "form-check-input", data: { input__checkbox_state_target: "checkboxAll"} } %>
-              </div>
-            </g-th>
+              <g-th>
+              </g-th>
 
-            <g-th>
-            </g-th>
-
-            <g-th style="display: none;" data-input--checkbox-state-target="actionPanel">
-             <div class="dropdown">
-               <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                 Bulk Actions
-               </a>
-               <div class="dropdown-menu">
-                 <%= form_with url: spree.bulk_update_status_admin_products_path, method: :patch, id: :bulk_actions_form, data: {turbo_frame: :index_table} do |form| %>
-                   <%= form.button "Active", value: "active",class: "dropdown-item" %>
-                   <%= form.button "Draft", value: "draft",class: "dropdown-item" %>
-                   <%= form.button "Archive", value: "archive",class: "dropdown-item" %>
-                 <% end %>
-                 <hr>
+              <g-th style="display: none;" data-input--checkbox-state-target="actionPanel">
+               <div class="dropdown">
+                 <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   Bulk Actions
+                 </a>
+                 <div class="dropdown-menu">
+                   <%= form_with url: spree.bulk_update_status_admin_products_path, method: :patch, id: :bulk_actions_form, data: {turbo_frame: :index_table} do |form| %>
+                     <%= form.button "Active", value: "active",class: "dropdown-item" %>
+                     <%= form.button "Draft", value: "draft",class: "dropdown-item" %>
+                     <%= form.button "Archive", value: "archive",class: "dropdown-item" %>
+                   <% end %>
+                   <hr>
+                 </div>
                </div>
-             </div>
-            </g-th>
+              </g-th>
 
-            <g-th data-input--checkbox-state-target="initialPanel">
-              <%= Spree.t(:name) %>
-            </g-th>
+              <g-th data-input--checkbox-state-target="initialPanel">
+                <%= Spree.t(:name) %>
+              </g-th>
 
-            <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
-              <g-th class="text-center"><%= Spree.t(:vendor) %></g-g-th>
-            <% end %>
+              <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
+                <g-th class="text-center"><%= Spree.t(:vendor) %></g-g-th>
+              <% end %>
 
-            <g-th class="text-center" data-input--checkbox-state-target="initialPanel">
-              <%= I18n.t('spree.admin.kind') %>
-            </g-th>
+              <g-th class="text-center" data-input--checkbox-state-target="initialPanel">
+                <%= I18n.t('spree.admin.kind') %>
+              </g-th>
 
-            <g-th class="text-center" data-input--checkbox-state-target="initialPanel">
-              <%= Spree.t(:status) %>
-            </g-th>
+              <g-th class="text-center" data-input--checkbox-state-target="initialPanel">
+                <%= Spree.t(:status) %>
+              </g-th>
 
-            <g-th style="grid-column: span 2;" class="text-center" data-input--checkbox-state-target="initialPanel">
-              <%= Spree.t(:price) %>
-            </g-th>
-          </g-tr>
-        </g-thead>
+              <g-th style="grid-column: span 2;" class="text-center" data-input--checkbox-state-target="initialPanel">
+                <%= Spree.t(:price) %>
+              </g-th>
+            </g-tr>
+          </g-thead>
 
-        <g-tbody>
-          <%= render partial: "products_list" %>
-        </g-tbody>
-      </g-table>
+          <g-tbody>
+            <%= render partial: "products_list" %>
+          </g-tbody>
+        </g-table>
+      </table-responsive>
     <% else %>
       <div class="text-center no-objects-found m-5">
         <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Product)) %>
