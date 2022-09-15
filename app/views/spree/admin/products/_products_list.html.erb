@@ -1,0 +1,56 @@
+<%= turbo_frame_tag "#{plural_resource_name(@collection).downcase}-page-#{@pagy.page}" do %>
+  <% @collection.each do |product| %>
+    <% available_status = available_status(product) %>
+    <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr ;" <%== "style='color: red;'" if product.deleted? %> id="<%= dom_id(product) %>" data-stream-exit-class="animate__fadeOut">
+      <g-td>
+        <div class="form-check d-flex justify-content-center m-0 ms-2">
+          <%= check_box_tag "product_ids[]", product.id, nil, {multiple: true, form: :bulk_actions_form,class: "form-check-input", multiple: true, form: :bulk_actions_form, data: { input__checkbox_state_target: "checkbox"} } %>
+        </div>
+      </g-td>
+
+      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="mini-img">
+        <%= small_image(product) %>
+      </g-td>
+
+      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>">
+        <%= product.name %>
+        <br>
+        <small>SKU: <span class="text-secondary"><%= product.sku rescue '' %></span></small>
+      </g-td>
+
+      <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
+        <g-td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+          <%= link_to product.vendor.name, spree.admin_vendor_path(product.vendor_id) if product.vendor.present? %>
+        </g-td>
+      <% end %>
+
+      <g-td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+        <span class="badge rounded-pill text-bg-light">
+          <% if product.digital? %>
+            <%= I18n.t('spree.admin.product_kinds.digital') %>
+          <% else %>
+            <%= I18n.t('spree.admin.product_kinds.physical') %>
+          <% end %>
+        </span>
+      </g-td>
+
+      <g-td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+        <%= active_badge(available_status == I18n.t('spree.admin.products.active'), label: available_status) %>
+      </g-td>
+
+      <g-td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+        <%= display_price(product) %>
+      </g-td>
+
+      <g-td class="justify-content-end" data-hook="admin_products_index_row_actions">
+        <div>
+          <%= link_to_clone(product) if can?(:clone, product) %>
+          <%= link_to_delete(product) if can?(:delete, product) && !product.deleted? %>
+        </div>
+      </g-td>
+    </g-tr>
+  <% end %>
+  <% unless @pagy.nil? %>
+    <%= render "spree/admin/shared/next_page" %>
+  <% end %>
+<% end %>

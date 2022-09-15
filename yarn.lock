@@ -10,9 +10,9 @@
     "@babel/highlight" "^7.18.6"
 
 "@babel/helper-validator-identifier@^7.18.6":
-  version "7.18.6"
-  resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.18.6.tgz#9c97e30d31b2b8c72a1d08984f2ca9b574d7a076"
-  integrity sha512-MmetCkz9ej86nJQV+sFCxoGGrUbU3q02kgLciwkrt9QqEB7cP39oKEY0PakknEO0Gu20SskMRi+AYZ3b1TpN9g==
+  version "7.19.1"
+  resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.19.1.tgz#7eea834cf32901ffdc1a7ee555e2f9c27e249ca2"
+  integrity sha512-awrNfaMtnHUr653GgGEs++LlAvW6w+DcPrOliSMXWCKo597CwL5Acf/wWdNkf/tfEQE3mjkeD1YOVZOUV/od1w==
 
 "@babel/highlight@^7.18.6":
   version "7.18.6"
@@ -48,18 +48,18 @@
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.1.0.tgz#20215251e5afe6e0a3787285181ba1bfc9097df0"
   integrity sha512-iDMHUhiEJ1xFeicyHcZQQgBzhtk5mPR0QZO3L6wtqzMsJEk2TKECuCQTGKjm+KJTHVY0dKq1dOOAWvODjpd2Mg==
 
-"@hotwired/turbo-rails@7.2.0-rc.1":
-  version "7.2.0-rc.1"
-  resolved "https://registry.yarnpkg.com/@hotwired/turbo-rails/-/turbo-rails-7.2.0-rc.1.tgz#a9e8f0befde92a731e93881f73ce18d2942ecf36"
-  integrity sha512-YgcUt9ivjcc2xsjfkadmoqlhH+ogea8og8v4Et1EjDRIWUxZwySQPYVpxmJEe+lEpd8teO0yOmbTVZx82CIVFQ==
+"@hotwired/turbo-rails@7.2.0-rc.2":
+  version "7.2.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo-rails/-/turbo-rails-7.2.0-rc.2.tgz#ac5dda549eda57fd438ebeb5426fa3a3c10d2a23"
+  integrity sha512-G5d0HZNcsBzEOun4TO2diy0CZ4VKU3ZDc+cdStmVXT6nqgp450DqDOVx7f8yybMabwnJDZnBDqC4OXV2IDvaBA==
   dependencies:
-    "@hotwired/turbo" "^7.2.0-rc.1"
+    "@hotwired/turbo" "^7.2.0-rc.2"
     "@rails/actioncable" "^7.0"
 
-"@hotwired/turbo@^7.2.0-rc.1":
-  version "7.2.0-rc.1"
-  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.2.0-rc.1.tgz#a68eedb0e05e56aa001bd47abc5341b161086168"
-  integrity sha512-ba16MrRG8+FHOf8TAWUwSeFe9c4pUgTYpcTg2Dqp08DygALZ8Y+nExercce1hvO7dR9uSmb8U7sSZKTUddFU6w==
+"@hotwired/turbo@^7.2.0-rc.2":
+  version "7.2.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.2.0-rc.2.tgz#cc16d3ea50c80d9368b58eb0e7e1a5bffd45f476"
+  integrity sha512-tGzPqBN7EDnLC1OH4k0PmJKOEEBn+1bpb0D2Oj0KMnnJYGFOaeeUgnyKdFgeT2X+rAAnfWlUcaoYCuOKJ2awAQ==
 
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
@@ -221,9 +221,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "18.7.17"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.17.tgz#52438111ea98f77475470fc62d79b9eb96bb2c92"
-  integrity sha512-0UyfUnt02zIuqp7yC8RYtDkp/vo8bFaQ13KkSEvUAohPOAlnVNbj5Fi3fgPSuwzakS+EvvnnZ4x9y7i6ASaSPQ==
+  version "18.7.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.18.tgz#633184f55c322e4fb08612307c274ee6d5ed3154"
+  integrity sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -1252,9 +1252,9 @@ is-boolean-object@^1.1.0:
     has-tostringtag "^1.0.0"
 
 is-callable@^1.1.4, is-callable@^1.2.4:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.5.tgz#6123e0b1fef5d7591514b371bb018204892f1a2b"
-  integrity sha512-ZIWRujF6MvYGkEuHMYtFRkL2wAtFw89EHfKlXrkPkjQZZRWeh9L1q3SV13NIfHnqxugjLvAOkEHx9mb1zcMnEw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.6.tgz#fd6170b0b8c7e2cc73de342ef8284a2202023c44"
+  integrity sha512-krO72EO2NptOGAX2KYyqbP9vYMlNAXdB53rq6f8LXY6RY7JdSR/3BD6wLUlPHSAesmY9vstNrjvqGaCiRK/91Q==
 
 is-core-module@^2.10.0, is-core-module@^2.5.0, is-core-module@^2.8.1, is-core-module@^2.9.0:
   version "2.10.0"

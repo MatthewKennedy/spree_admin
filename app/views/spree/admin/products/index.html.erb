@@ -31,15 +31,21 @@
 
   <% content_for :index_table do %>
     <% if @collection.any? %>
-      <table class="table table-hover" id="listing_products" data-controller="input--checkbox-state">
-        <thead>
-          <tr data-hook="admin_products_index_headers">
-            <th scope="col" style="width: 20px; height: 48px">
+      <g-table class="table-hover" id="listing_products" data-controller="input--checkbox-state">
+
+        <g-thead>
+          <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr ;" data-hook="admin_products_index_headers">
+
+            <g-th>
               <div class="form-check d-flex justify-content-center m-0 ms-2">
                  <%= check_box_tag "select all", nil, nil, { class: "form-check-input", data: { input__checkbox_state_target: "checkboxAll"} } %>
               </div>
-            </th>
-            <th scope="col" colspan="6" style="display: none;" data-input--checkbox-state-target="actionPanel">
+            </g-th>
+
+            <g-th>
+            </g-th>
+
+            <g-th style="display: none;" data-input--checkbox-state-target="actionPanel">
              <div class="dropdown">
                <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                  Bulk Actions
@@ -53,78 +59,34 @@
                  <hr>
                </div>
              </div>
-            </th>
-            <th scope="col" colspan="2" data-input--checkbox-state-target="initialPanel">
+            </g-th>
+
+            <g-th data-input--checkbox-state-target="initialPanel">
               <%= Spree.t(:name) %>
-            </th>
+            </g-th>
+
             <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
-              <th scope="col" class="text-center"><%= Spree.t(:vendor) %></th>
+              <g-th class="text-center"><%= Spree.t(:vendor) %></g-g-th>
             <% end %>
-            <th scope="col" class="text-center" data-input--checkbox-state-target="initialPanel">
+
+            <g-th class="text-center" data-input--checkbox-state-target="initialPanel">
               <%= I18n.t('spree.admin.kind') %>
-            </th>
-            <th scope="col" class="text-center" data-input--checkbox-state-target="initialPanel">
+            </g-th>
+
+            <g-th class="text-center" data-input--checkbox-state-target="initialPanel">
               <%= Spree.t(:status) %>
-            </th>
-            <th scope="col" class="text-center" data-input--checkbox-state-target="initialPanel">
+            </g-th>
+
+            <g-th style="grid-column: span 2;" class="text-center" data-input--checkbox-state-target="initialPanel">
               <%= Spree.t(:price) %>
-            </th>
-            <th scope="col" class="actions text-end" data-hook="admin_products_index_header_actions" data-input--checkbox-state-target="initialPanel">
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @collection.each do |product| %>
-            <% available_status = available_status(product) %>
-              <tr <%== "style='color: red;'" if product.deleted? %> id="<%= dom_id(product) %>" data-stream-exit-class="animate__fadeOut">
-                <td>
-                  <div class="form-check d-flex justify-content-center m-0 ms-2">
-                    <%= check_box_tag "product_ids[]", product.id, nil, {multiple: true, form: :bulk_actions_form,class: "form-check-input", multiple: true, form: :bulk_actions_form, data: { input__checkbox_state_target: "checkbox"} } %>
-                  </div>
-                </td>
-                <td style="width:50px;" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="mini-img">
-                  <%= small_image(product) %>
-                </td>
+            </g-th>
+          </g-tr>
+        </g-thead>
 
-                <td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
-                  <%= product.name %>
-                  <br>
-                  <small>SKU: <span class="text-secondary"><%= product.sku rescue '' %></span></small>
-                </td>
-
-                <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
-                  <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
-                    <%= link_to product.vendor.name, spree.admin_vendor_path(product.vendor_id) if product.vendor.present? %>
-                  </td>
-                <% end %>
-                <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
-                  <span class="badge rounded-pill text-bg-light">
-                    <% if product.digital? %>
-                      <%= I18n.t('spree.admin.product_kinds.digital') %>
-                    <% else %>
-                      <%= I18n.t('spree.admin.product_kinds.physical') %>
-                    <% end %>
-                  </span>
-                </td>
-
-                <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
-                  <%= active_badge(available_status == I18n.t('spree.admin.products.active'), label: available_status) %>
-                </td>
-
-                <td class="text-center" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
-                  <%= display_price(product) %>
-                </td>
-
-                <td class="actions " data-hook="admin_products_index_row_actions">
-                  <span class="d-flex justify-content-end">
-                    <%= link_to_clone(product) if can?(:clone, product) %>
-                    <%= link_to_delete(product) if can?(:delete, product) && !product.deleted? %>
-                  </span>
-                </td>
-              </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <g-tbody>
+          <%= render partial: "products_list" %>
+        </g-tbody>
+      </g-table>
     <% else %>
       <div class="text-center no-objects-found m-5">
         <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Product)) %>

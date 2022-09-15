@@ -37,8 +37,7 @@ module Spree
       end
 
       def index
-        session[:return_to] = request.url
-        respond_with(@collection)
+        render "list" if params[:page]
       end
 
       def update
