@@ -1,4 +1,12 @@
+g-responsive {
+  display: block;
+
+  @extend .table-responsive;
+}
+
 g-table {
+  display: block;
+
   --#{$prefix}table-color: #{$table-color};
   --#{$prefix}table-bg: #{$table-bg};
   --#{$prefix}table-border-color: #{$table-border-color};
@@ -15,19 +23,18 @@ g-table {
   border-style: solid;
   border-width: 0;
 
-  display: block;
   padding: 0;
   margin: 0;
-  // min-width: fit-content;
+  min-width: fit-content;
 }
 
 g-thead,
 g-tbody,
 g-tfoot {
   display: block;
+
   padding: 0;
   margin: 0;
-  min-width: fit-content;
 }
 
 g-thead,
@@ -49,17 +56,13 @@ g-tr {
   border-bottom-width: 1px;
 }
 
-g-th {
-  font-weight: bold;
-}
-
 g-th,
 g-td {
   display: flex;
   overflow: visible;
   align-items: center;
   min-height: 50px;
-  text-overflow: nowrap;
+  white-space: nowrap;
 
   padding: $table-cell-padding-y $table-cell-padding-x;
   background-color: var(--#{$prefix}table-bg);

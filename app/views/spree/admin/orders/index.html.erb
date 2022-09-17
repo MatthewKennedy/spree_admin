@@ -21,9 +21,10 @@
 
 <% content_for :index_table do %>
   <% if @collection.any? %>
-      <g-table class="table-hover table-responsive" id="listing_orders">
+    <g-responsive>
+      <g-table class="table-hover" id="listing_orders">
         <g-thead>
-          <g-tr style=" grid-template-columns: 1fr 3fr 2fr 1fr 1fr 1fr 1fr; ">
+          <g-tr style=" grid-template-columns: 2fr 3fr 2fr 1fr 1fr 1fr 1fr; ">
             <g-th><%= I18n.t(:number, scope: 'activerecord.attributes.spree/order') %></g-th>
             <g-th><%= I18n.t('spree.admin.date') %></g-th>
             <g-th><%= I18n.t('spree.admin.customer') %></g-th>
@@ -38,6 +39,7 @@
           <%= render partial: "orders_list" %>
         </g-tbody>
       </g-table>
+    </g-responsive>
   <% else %>
     <div class="text-center no-objects-found m-5">
       <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Order)) %>

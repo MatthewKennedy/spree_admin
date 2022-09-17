@@ -1,11 +1,11 @@
 <%= turbo_frame_tag "#{plural_resource_name(@collection).downcase}-page-#{@pagy.page}" do %>
   <% @collection.each do |order| %>
-    <g-tr style=" grid-template-columns: 1fr 3fr 2fr 1fr 1fr 1fr 1fr; " class="<%= "text-muted" if order.shipment_state == 'shipped' %>">
+    <g-tr style=" grid-template-columns: 2fr 3fr 2fr 1fr 1fr 1fr 1fr; " class="<%= "text-muted" if order.shipment_state == 'shipped' %>">
       <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
         <%= order.number %>
       </g-td>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>" class="text-nowrap">
+      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
         <%= order_time(@show_only_completed ? order.completed_at : order.created_at) %>
       </g-td>
 
