@@ -90,6 +90,7 @@ en:
         no_sections_found_please_add_one: Add your first section to this page by clicking the <b>+ Add New Section</b> button above.
         page: Page
         page_type: Page Type
+        search_by_menu_name: Search by menu name
         search_by_page_title: Search by page title
         section_type: Section Type
         set_gutters: Set Gutters
