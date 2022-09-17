@@ -146,7 +146,7 @@ module Spree
 
       def link_to_with_icon(name, url, html_options = {})
         html_options[:class] ||= ""
-        name = html_options[:no_text] ? "" : content_tag(:span, name, class: "d-none d-md-inline")
+        name = html_options[:no_text] ? "" : content_tag(:span, name)
 
         if html_options[:icon]
           icon_class = html_options[:no_text] ? "" : "me-md-1"

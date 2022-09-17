@@ -31,7 +31,8 @@
 
   <% content_for :index_table do %>
     <% if @collection.any? %>
-        <g-table class="table-hover table-responsive" id="listing_products" data-controller="input--checkbox-state">
+      <g-responsive>
+        <g-table class="table-hover" id="listing_products" data-controller="input--checkbox-state">
           <g-thead>
             <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr ;" data-hook="admin_products_index_headers">
 
@@ -81,6 +82,7 @@
             <%= render partial: "products_list" %>
           </g-tbody>
         </g-table>
+      </g-responsive>
     <% else %>
       <div class="text-center no-objects-found m-5">
         <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Product)) %>
