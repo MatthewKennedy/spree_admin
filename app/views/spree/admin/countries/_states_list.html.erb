@@ -3,38 +3,39 @@
     <h5><%= I18n.t('spree.admin.countries.states') %></h5>
     <%= link_to I18n.t('spree.admin.countries.add_new_state'), spree.new_admin_country_state_path(@country), class: 'btn btn-sm btn-light', data: { turbo_frame: :modal } %>
   </sa-header>
-  <table-responsive>
-    <table>
-      <thead>
-        <tr>
-          <th>
+  <g-responsive>
+    <g-table>
+      <g-thead>
+        <g-tr style="grid-template-columns: 1fr 2fr;">
+          <g-th>
             <%= Spree.t(:name) %>
-          </th>
-          <th class="text-center">
+          </g-th>
+          <g-th>
             <%= Spree.t(:abbreviation) %>
-          </th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
+          </g-th>
+        </g-tr>
+      </g-thead>
+      <g-tbody>
         <% @country.states.each do |state| %>
-          <tr id="<%= dom_id(state) %>" data-stream-exit-class="animate__fadeOut">
-            <td><%= state.name %></td>
-            <td class="text-center"><%= state.abbr %></td>
-            <td class="text-end">
-              <%= link_to_edit(I18n.t('spree.admin.countries.edit_state'), url: spree.edit_admin_country_state_path(@country, state), data: {turbo_frame: :modal}) if can? :edit, state %>
-              <%= link_to_delete(state, url: spree.admin_country_state_path(@country, state)) if can? :delete, state %>
-            </td>
-          </tr>
+          <g-tr style="grid-template-columns: 1fr 1fr 1fr;" id="<%= dom_id(state) %>" data-stream-exit-class="animate__fadeOut">
+            <g-td><%= state.name %></g-td>
+            <g-td><%= state.abbr %></g-td>
+            <g-td class="justify-content-end">
+              <div>
+                <%= link_to_edit(I18n.t('spree.admin.countries.edit_state'), url: spree.edit_admin_country_state_path(@country, state), data: {turbo_frame: :modal}) if can? :edit, state %>
+                <%= link_to_delete(state, url: spree.admin_country_state_path(@country, state)) if can? :delete, state %>
+              </div>
+            </g-td>
+          </g-tr>
         <% end %>
         <% if @country.states.empty? %>
-          <tr>
-            <td colspan="3">
+          <g-tr>
+            <g-td>
               <%= Spree.t(:none) %>
-            </td>
-          </tr>
+            </g-td>
+          </g-tr>
         <% end %>
-      </tbody>
-    </table>
-  </table-responsive>
+      </g-tbody>
+    </g-table>
+  </g-responsive>
 </sa-card>
