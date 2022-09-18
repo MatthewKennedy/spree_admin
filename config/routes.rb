@@ -22,6 +22,9 @@ Spree::Core::Engine.add_routes do
 
     # CMS Pages
     resources :cms_pages do
+      collection do
+        get :filter
+      end
       member do
         patch :update_visibility
       end

@@ -1,11 +1,11 @@
 <%= turbo_frame_tag "#{plural_resource_name(@collection).downcase}-page-#{@pagy.page}" do %>
   <% @collection.each do |user| %>
-    <g-tr style="--bs-columns: 5;" id="<%= dom_id(user) %>" data-stream-exit-class="animate__fadeOut">
-      <g-td style="grid-column: span 2;">
+    <g-tr id="<%= dom_id(user) %>" data-stream-exit-class="animate__fadeOut">
+      <g-td>
         <%= link_to user.email, spree.edit_admin_user_url(user) %>
       </g-td>
 
-      <g-td style="grid-column: span 2;">
+      <g-td>
         <%= user.created_at %>
       </g-td>
 

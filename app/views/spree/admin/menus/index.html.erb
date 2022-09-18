@@ -15,7 +15,7 @@
         <div class="col-12 col-lg-4">
           <div class="form-group">
             <%= f.label :name_cont, I18n.t('spree.admin.name') %>
-            <%= f.text_field :name_cont, size: 15, class: "form-control js-quick-search-target js-filterable" %>
+            <%= f.text_field :name_cont, size: 15, class: "form-control" %>
           </div>
         </div>
         <div class="col-12 col-lg-4">
@@ -39,52 +39,60 @@
   </div>
 <% end %>
 
-<% if @menus.any? %>
-<div class="table-responsive border rounded bg-white">
-  <table class="table" id="menusTable">
-    <thead class="text-muted">
-      <th scope="col"><%= Spree.t(:name) %></th>
-      <th scope="col"><%= I18n.t('spree.admin.location') %></th>
-      <th scope="col"><%= I18n.t('spree.admin.language') %></th>
-      <th class="text-center" scope="col" class="text-center"><%= I18n.t('spree.admin.default') %>
-        <span data-show-info
-              data-alert-kind="info"
-              data-alert-title="<%= I18n.t('spree.admin.navigation.default_menus_info.title') %>"
-              data-alert-html="<%= I18n.t('spree.admin.navigation.default_menus_info.body') %>">
-          <%= inline_svg_tag "info.svg", size: '15px * 15px' %>
-        </span>
-      </th>
-      <th scope="col" class="text-center"></th>
-    </thead>
-    <tbody>
-      <% @menus.each do |menu| %>
-        <tr id="<%= dom_id(menu) %>" data-stream-exit-class="animate__fadeOut">
-          <td>
-            <%= menu.name %>
-          </td>
-          <td>
-            <%= menu.location.titleize %>
-          </td>
-          <td>
-            <%= locale_full_name(menu.locale) %>
-          </td>
-          <td class="text-center">
-            <%= active_badge(default_menu_for_store?(menu)) %>
-          </td>
-          <td class="actions" data-hook="admin_menus_index_row_actions">
-             <span class="d-flex justify-content-end">
-             <%= link_to_edit(menu, no_text: true) %>
-             <%= link_to_delete(menu) if can?(:destroy, menu) %>
-            </span>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<%= render 'spree/admin/shared/index_table_options', collection: @menus, simple: true %>
-<% else %>
-  <div class="text-center no-objects-found m-5">
-    <%= I18n.t('spree.admin.navigation.you_have_no_menus') %>
-  </div>
+<% content_for :index_table do %>
+  <% if @menus.any? %>
+    <g-responsive>
+      <g-table id="menusTable">
+
+        <g-thead>
+          <g-tr style="grid-template-columns: 1fr 1fr 1fr 2fr;">
+            <g-th><%= Spree.t(:name) %></g-th>
+            <g-th><%= I18n.t('spree.admin.location') %></g-th>
+            <g-th><%= I18n.t('spree.admin.language') %></g-th>
+            <g-th><%= I18n.t('spree.admin.default') %></g-th>
+          </g-tr>
+        </g-thead>
+
+        <g-tbody>
+          <% @menus.each do |menu| %>
+            <g-tr style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;"
+                  data-stream-exit-class="animate__fadeOut">
+              <g-td>
+                <%= menu.name %>
+              </g-td>
+              <g-td>
+                <%= menu.location.titleize %>
+              </g-td>
+              <g-td>
+                <%= locale_full_name(menu.locale) %>
+              </g-td>
+              <g-td>
+                <%= active_badge(default_menu_for_store?(menu)) %>
+              </g-td>
+              <g-td class="justify-content-end">
+                 <div>
+                  <%= link_to_edit(menu, no_text: true) %>
+                  <%= link_to_delete(menu) if can?(:destroy, menu) %>
+                </div>
+              </g-td>
+            </g-tr>
+          <% end %>
+        </g-tbody>
+
+      </g-table>
+    </g-responsive>
+  <% else %>
+    <div class="text-center no-objects-found m-5">
+      <%= I18n.t('spree.admin.navigation.you_have_no_menus') %>
+    </div>
+  <% end %>
 <% end %>
+
+<%#-------------------------------------------------%>
+<%# Render the index_table partial passing a        %>
+<%# search_field_value and search_field_placeholder %>
+<%# text if you want to add a search bar            %>
+<%#-------------------------------------------------%>
+<%= render partial: "spree/admin/shared/index_table",
+           locals: { search_record: :name_i_cont,
+                     search_placeholder: I18n.t('spree.admin.cms.search_by_menu_name') } %>
