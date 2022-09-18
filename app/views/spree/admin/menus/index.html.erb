@@ -15,7 +15,7 @@
         <div class="col-12 col-lg-4">
           <div class="form-group">
             <%= f.label :name_cont, I18n.t('spree.admin.name') %>
-            <%= f.text_field :name_cont, size: 15, class: "form-control js-quick-search-target js-filterable" %>
+            <%= f.text_field :name_cont, size: 15, class: "form-control" %>
           </div>
         </div>
         <div class="col-12 col-lg-4">
@@ -71,8 +71,8 @@
               </g-td>
               <g-td class="justify-content-end">
                  <div>
-                 <%= link_to_edit(menu, no_text: true) %>
-                 <%= link_to_delete(menu) if can?(:destroy, menu) %>
+                  <%= link_to_edit(menu, no_text: true) %>
+                  <%= link_to_delete(menu) if can?(:destroy, menu) %>
                 </div>
               </g-td>
             </g-tr>

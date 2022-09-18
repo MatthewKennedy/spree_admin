@@ -144,10 +144,10 @@
   }
 }
 
-
 g-table {
   turbo-frame {
     display: block;
+    grid-template-columns: inherit;
   }
 }
 

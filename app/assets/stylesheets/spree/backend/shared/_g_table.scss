@@ -31,6 +31,7 @@ g-table {
 g-thead,
 g-tbody,
 g-tfoot {
+  grid-template-columns: inherit;
   display: block;
 
   padding: 0;
@@ -53,6 +54,7 @@ g-tr {
   border-width: 0;
   --bs-gap: 0rem;
   @extend .grid;
+  grid-template-columns: inherit;
   border-bottom-width: 1px;
 }
 

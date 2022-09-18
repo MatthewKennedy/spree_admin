@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "#{plural_resource_name(@collection).downcase}-page-#{@pagy.page}" do %>
   <% @collection.each do |product| %>
     <% available_status = available_status(product) %>
-    <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr ;" <%== "style='color: red;'" if product.deleted? %> id="<%= dom_id(product) %>" data-stream-exit-class="animate__fadeOut">
+    <g-tr <%== "style='color: red;'" if product.deleted? %> id="<%= dom_id(product) %>" data-stream-exit-class="animate__fadeOut">
       <g-td>
         <div class="form-check d-flex justify-content-center m-0 ms-2">
           <%= check_box_tag "product_ids[]", product.id, nil, {multiple: true, form: :bulk_actions_form,class: "form-check-input", multiple: true, form: :bulk_actions_form, data: { input__checkbox_state_target: "checkbox"} } %>

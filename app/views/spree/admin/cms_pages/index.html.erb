@@ -14,17 +14,17 @@
   <% if @cms_pages.any? %>
     <g-responsive>
       <g-table id="pagesTable">
-        <g-thead>
-          <g-tr style="grid-template-columns: 1fr 1fr 1fr 2fr ;">
+        <g-thead style="grid-template-columns: 1fr 1fr 1fr 2fr;">
+          <g-tr>
             <g-th><%= I18n.t('spree.admin.cms.title') %></g-th>
             <g-th><%= I18n.t('spree.admin.cms.page_type') %></g-th>
             <g-th><%= I18n.t('spree.admin.language') %></g-th>
             <g-th><%= I18n.t('spree.admin.cms.visible') %></g-th>
           </g-tr>
         </g-thead>
-        <g-tbody>
+        <g-tbody style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
           <% @cms_pages.each do |page| %>
-            <g-tr style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;" id="<%= dom_id(page) %>" data-stream-exit-class="animate__fadeOut">
+            <g-tr id="<%= dom_id(page) %>" data-stream-exit-class="animate__fadeOut">
               <g-td>
                 <%= page.title %>
               </g-td>
