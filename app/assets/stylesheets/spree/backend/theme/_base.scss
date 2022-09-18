@@ -30,6 +30,19 @@
     --bs-dropdown-padding-y: .5rem;
   }
 
+  g-table {
+    --g-table-color:          #{$table-color};
+    --g-table-bg:             #{$table-bg};
+    --g-table-border-color:   #{$table-border-color};
+    --g-table-accent-bg:      #{$table-accent-bg};
+    --g-table-active-color:   #{$table-active-color};
+    --g-table-active-bg:      #{$table-active-bg};
+    --g-table-hover-color:    #{$table-hover-color};
+    --g-table-hover-bg:       #{$table-hover-bg};
+    --g-table-cell-padding-x: #{$table-cell-padding-x};
+    --g-table-cell-padding-y: #{$table-cell-padding-y};
+  }
+
   .modal {
     --bs-modal-footer-gap: 0.5rem;
   }
@@ -141,13 +154,6 @@
 
   .card .border-adaptive-to-card {
     border-color: #ccc !important;
-  }
-}
-
-g-table {
-  turbo-frame {
-    display: block;
-    grid-template-columns: inherit;
   }
 }
 
