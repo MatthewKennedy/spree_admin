@@ -8,11 +8,11 @@
         </div>
       </g-td>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="mini-img">
+      <%= link_to spree.edit_admin_product_path(product), class: "mini-img" do %>
         <%= small_image(product) %>
-      </g-td>
+      <% end %>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>">
+      <%= link_to spree.edit_admin_product_path(product) do %>
         <div class="text-start">
           <%= product.name %>
           <% if product.sku.present? %>
@@ -20,15 +20,15 @@
             <small>SKU: <span class="text-secondary"><%= product.sku %></span></small>
           <% end %>
         </div>
-      </g-td>
-
-      <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
-        <g-td class="text-start" data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
-          <%= link_to product.vendor.name, spree.admin_vendor_path(product.vendor_id) if product.vendor.present? %>
-        </g-td>
       <% end %>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+      <% if defined?(Spree::Vendor) && can?(:manage, Spree::Vendor) %>
+        <%= link_to spree.edit_admin_product_path(product) do %>
+          <%= link_to product.vendor.name, spree.admin_vendor_path(product.vendor_id) if product.vendor.present? %>
+        <% end %>
+      <% end %>
+
+      <%= link_to spree.edit_admin_product_path(product) do %>
         <span class="badge rounded-pill text-bg-light">
           <% if product.digital? %>
             <%= I18n.t('spree.admin.product_kinds.digital') %>
@@ -36,17 +36,17 @@
             <%= I18n.t('spree.admin.product_kinds.physical') %>
           <% end %>
         </span>
-      </g-td>
+      <% end %>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+      <%= link_to spree.edit_admin_product_path(product) do %>
         <%= active_badge(available_status == I18n.t('spree.admin.products.active'), label: available_status) %>
-      </g-td>
+      <% end %>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_product_path(product) %>" class="text-nowrap">
+      <%= link_to spree.edit_admin_product_path(product) do %>
         <%= display_price(product) %>
-      </g-td>
+      <% end %>
 
-      <g-td class="justify-content-end" data-hook="admin_products_index_row_actions">
+      <g-td class="justify-content-end">
         <div>
           <%= link_to_clone(product) if can?(:clone, product) %>
           <%= link_to_delete(product) if can?(:delete, product) && !product.deleted? %>

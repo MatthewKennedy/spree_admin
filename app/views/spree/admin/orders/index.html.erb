@@ -22,7 +22,7 @@
 <% content_for :index_table do %>
   <% if @collection.any? %>
     <g-responsive>
-      <g-table class="table-hover" id="listing_orders">
+      <g-table class="gridtable-hover" id="listing_orders">
         <g-thead>
           <g-tr style=" grid-template-columns: 2fr 3fr 2fr 1fr 1fr 1fr 1fr; ">
             <g-th><%= I18n.t(:number, scope: 'activerecord.attributes.spree/order') %></g-th>

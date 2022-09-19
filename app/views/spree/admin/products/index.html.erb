@@ -32,9 +32,9 @@
   <% content_for :index_table do %>
     <% if @collection.any? %>
       <g-responsive>
-        <g-table class="table-hover" id="listing_products" data-controller="input--checkbox-state">
+        <g-table class="gridtable-hover" id="listing_products" data-controller="input--checkbox-state">
           <g-thead>
-            <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr ;" data-hook="admin_products_index_headers">
+            <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr;">
 
               <g-th>
                 <div class="form-check d-flex justify-content-center m-0 ms-2">

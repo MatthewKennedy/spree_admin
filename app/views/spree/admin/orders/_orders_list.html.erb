@@ -1,13 +1,13 @@
 <%= turbo_frame_tag "#{plural_resource_name(@collection).downcase}-page-#{@pagy.page}" do %>
   <% @collection.each do |order| %>
     <g-tr style=" grid-template-columns: 2fr 3fr 2fr 1fr 1fr 1fr 1fr; " class="<%= "text-muted" if order.shipment_state == 'shipped' %>">
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
+      <%= link_to spree.edit_admin_order_path(order) do %>
         <%= order.number %>
-      </g-td>
+      <% end %>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
+      <%= link_to spree.edit_admin_order_path(order) do %>
         <%= order_time(@show_only_completed ? order.completed_at : order.created_at) %>
-      </g-td>
+      <% end %>
 
       <g-td class="dropdown">
         <% if order.user %>
@@ -22,33 +22,33 @@
         <% end %>
       </g-td>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
+      <%= link_to spree.edit_admin_order_path(order) do %>
         <span class="badge rounded-pill bg-<%= order.considered_risky ? 'considered_risky' : 'considered_safe' %>">
           <%= order.considered_risky ? I18n.t("spree.admin.risky") : I18n.t("spree.admin.safe") %>
         </span>
-      </g-td>
+      <% end %>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
+      <%= link_to spree.edit_admin_order_path(order) do %>
         <% if order.payment_state %>
           <span class="badge rounded-pill bg-<%= order.payment_state %>">
             <%= I18n.t("spree.admin.payment_states.#{order.payment_state}") %>
           </span>
         <% end %>
-      </g-td>
+      <% end %>
 
       <% if Spree::Order.checkout_step_names.include?(:delivery) %>
-        <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
+        <%= link_to spree.edit_admin_order_path(order) do %>
           <% if order.shipment_state %>
             <span class="badge rounded-pill bg-<%= order.shipment_state %>">
               <%= I18n.t("spree.admin.shipment_states.#{order.shipment_state}") %>
             </span>
           <% end %>
-        </g-td>
+        <% end %>
       <% end %>
 
-      <g-td data-controller="linkable-td" data-linkable-td-uri-value="<%= spree.edit_admin_order_path(order) %>">
+      <%= link_to spree.edit_admin_order_path(order) do %>
         <%= order.display_total.to_html %>
-      </g-td>
+      <% end %>
     </g-tr>
   <% end %>
 
