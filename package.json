@@ -20,7 +20,7 @@
   "author": "Matthew Kennedy <m.kennedy@me.com>",
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/turbo-rails": "7.2.0-rc.3",
+    "@hotwired/turbo-rails": "7.2.0",
     "@popperjs/core": "^2.11.5",
     "@rails/request.js": "^0.0.6",
     "animate.css": "^4.1.1",
