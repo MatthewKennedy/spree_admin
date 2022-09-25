@@ -586,6 +586,7 @@ en:
         preview: Preview %{name}
       variant: Variant
       webhooks:
+        search_webhooks_by_url: Search webhooks by url
         subscribers:
           addresses: Addresses
           all_events: All Events

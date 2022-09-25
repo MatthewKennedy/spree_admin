@@ -5,23 +5,26 @@ module Spree
       create.before :process_subscriptions
       update.before :process_subscriptions
 
-      def index
-        params[:q] ||= {}
-        params[:q][:s] ||= "created_at desc"
-
-        search = Webhooks::Subscriber.accessible_by(current_ability).ransack(params[:q])
-        @webhooks_subscribers = search.result
-          .includes(:events)
-          .page(params[:page])
-          .per(params[:per_page])
-      end
-
       def show
         @webhooks_subscriber = Webhooks::Subscriber.find(params[:id])
         @events = @webhooks_subscriber.events.order(created_at: :desc).page(params[:page]).per(params[:per_page])
       end
 
       private
+
+      def collection
+        return @collection if @collection.present?
+
+        @collection = super
+
+        per_page_limit = params[:per_page] || Pagy::DEFAULT[:items]
+
+        @search = @collection.ransack(params[:q])
+        @collection = @search.result
+        @pagy, @collection = pagy(@collection, items: per_page_limit)
+
+        @collection
+      end
 
       def load_main_menu_panel
         @menu_panel_kind = "settings"

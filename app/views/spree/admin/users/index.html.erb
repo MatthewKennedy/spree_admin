@@ -13,14 +13,18 @@
 <% content_for :index_table do %>
   <% if @users.any? %>
     <g-responsive>
-      <g-table id="listing_users">
-        <g-thead style="grid-template-columns: 2fr 3fr;">
+      <g-table style="grid-template-columns: 2fr 2fr 1fr;">
+        <g-thead>
           <g-tr>
-            <g-th><%= sort_link @search,:email, Spree.t(:user), {}, {title: 'users_email'} %></g-th>
-            <g-th><%= sort_link @search,:created_at, Spree.t(:created_at), {}, {title: 'account_created'} %></g-th>
+            <g-th>
+              <%= sort_link @search,:email, Spree.t(:user), {}, {title: 'users_email'} %>
+            </g-th>
+            <g-th style="grid-column: span 2;">
+              <%= sort_link @search,:created_at, Spree.t(:created_at), {}, {title: 'account_created'} %>
+            </g-th>
           </g-tr>
         </g-thead>
-        <g-tbody style="grid-template-columns: 2fr 2fr 1fr;">
+        <g-tbody>
           <%= render partial: "users_list" %>
         </g-tbody>
       </g-table>

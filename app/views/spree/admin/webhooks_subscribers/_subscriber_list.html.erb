@@ -1,0 +1,21 @@
+<%= turbo_frame_tag "#{plural_resource_name(@collection).downcase}-page-#{@pagy.page}" do %>
+  <% @collection.each do |webhooks_subscriber| %>
+    <g-tr id="<%= dom_id(webhooks_subscriber) %>" data-stream-exit-class="animate__fadeOut">
+      <g-td><code><%= webhooks_subscriber.url %></code></g-td>
+      <g-td><%= active_badge(webhooks_subscriber.active) %></g-td>
+      <g-td><%= webhooks_subscriber.subscriptions&.join(', ') %></g-td>
+      <g-td><%= webhooks_subscriber.events.order(:created_at).last&.created_at %></g-td>
+      <g-td><%= link_to Spree.t(:view), admin_webhooks_subscriber_path(webhooks_subscriber) %></g-td>
+      <g-td class="justify-content-end">
+        <div>
+          <%= link_to_edit(webhooks_subscriber) if can? :edit, webhooks_subscriber %>
+          <%= link_to_delete(webhooks_subscriber) if can? :delete, webhooks_subscriber %>
+        </div>
+      </g-td>
+    </g-tr>
+  <% end %>
+
+  <% unless @pagy.nil? %>
+    <%= render "spree/admin/shared/next_page" %>
+  <% end %>
+<% end %>
