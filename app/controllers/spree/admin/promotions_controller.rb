@@ -5,6 +5,10 @@ module Spree
 
       helper "spree/admin/promotion_rules"
 
+      def index
+        render "list" if params[:page]
+      end
+
       def clone
         promotion = current_store.promotions.find(params[:id])
         duplicator = Spree::PromotionHandler::PromotionDuplicator.new(promotion)
@@ -36,15 +40,17 @@ module Spree
       def collection
         return @collection if defined?(@collection)
 
+        per_page_limit = params[:per_page] || Spree::Backend::Config[:admin_promotions_per_page]
+
         params[:q] ||= HashWithIndifferentAccess.new
         params[:q][:s] ||= "id desc"
 
         @collection = super
         @search = @collection.ransack(params[:q])
-        @collection = @search.result(distinct: true)
-          .includes(promotion_includes)
-          .page(params[:page])
-          .per(params[:per_page] || Spree::Backend::Config[:admin_promotions_per_page])
+        @collection = @search.result(distinct: true).includes(promotion_includes)
+
+        @pagy, @collection = pagy(@collection, items: per_page_limit)
+        @collection
       end
 
       def promotion_includes

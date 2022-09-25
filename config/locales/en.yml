@@ -390,8 +390,12 @@ en:
         user_logged_in:
           name: User Signed-in
       promotions:
+        category: Category
+        code: Code
+        name: Name
         new_promotion_category: New Promotion Category
         organizations: Organizations
+        path: Path
         promotions: Promotions
       properties: Properties
       quantity: Quantity
@@ -575,6 +579,7 @@ en:
         manage: Manage
         name_and_email: Name and email
         search_by_order_number: Search by order number
+        search_for_promotion_by_name: Search for promotion by name
         search_for_users_by_email: Search for users by email
         users: Users
       utilities:

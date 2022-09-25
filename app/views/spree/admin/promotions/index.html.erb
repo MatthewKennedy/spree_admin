@@ -6,81 +6,43 @@
   <%= link_to_with_icon Spree.t(:new_promotion), new_object_url, class: "btn-primary btn", icon: 'plus-square.svg' %>
 <% end if can?(:create, Spree::Promotion) %>
 
-<% content_for :table_filter do %>
-  <div data-hook="admin_promotions_index_search">
-    <%= search_form_for [:admin, @search] do |f| %>
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="form-group">
-            <%= label_tag :q_name_cont, Spree.t(:name) %>
-            <%= f.text_field :name_cont, tabindex: 1, class: "form-control js-quick-search-target js-filterable" %>
-          </div>
-
-          <div class="form-group">
-            <%= label_tag :q_code_cont, Spree.t(:code) %>
-            <%= f.text_field :code_cont, tabindex: 1, class: "form-control js-filterable" %>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-6">
-          <div class="form-group">
-            <%= label_tag :q_path_cont, Spree.t(:path) %>
-            <%= f.text_field :path_cont, tabindex: 1, class: "form-control js-filterable" %>
-          </div>
-
-          <div class="form-group">
-            <%= label_tag :q_promotion_category_id_eq, Spree.t(:promotion_category) %>
-            <%= f.collection_select(:promotion_category_id_eq, @promotion_categories, :id, :name, { include_blank: I18n.t('spree.admin.match_choices.all') }, { class: 'js-filterable', data: {controller: 'ts--select'} } ) %>
-          </div>
-        </div>
-      </div>
-
-      <div data-hook="admin_promotions_index_search_buttons" class="form-actions">
-        <%= button Spree.t(:filter_results), 'search.svg' %>
-      </div>
-    <% end %>
-  </div>
+<% content_for :index_table_filter_buttons do %>
+  <%= link_to I18n.t('spree.admin.more_filters'), spree.filter_admin_promotions_path(request.query_parameters), class: "btn btn-outline-secondary", data: {turbo_frame: :offcanvas} %>
 <% end %>
 
-<% if @promotions.any? %>
-  <div class="table-responsive border rounded bg-white">
-    <table class="table">
-      <thead class="text-muted">
-        <tr>
-          <th><%= Spree.t(:name) %></th>
-          <th><%= Spree.t(:code) %></th>
-          <th><%= Spree.t(:description) %></th>
-          <th><%= Spree.t(:usage_limit) %></th>
-          <th><%= Spree.t(:promotion_uses) %></th>
-          <th><%= Spree.t(:expiration) %></th>
-          <th data-hook="admin_promotions_index_header_actions" class="actions"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @promotions.each do |promotion| %>
-          <tr id="<%= dom_id(promotion) %>" data-stream-exit-class="animate__fadeOut">
-            <td><%= link_to promotion.name, spree.edit_admin_promotion_path(promotion) %></td>
-            <td><%= promotion.code %></td>
-            <td><%= promotion.description %></td>
-            <td><%= promotion.usage_limit.nil? ? "∞" : promotion.usage_limit %></td>
-            <td><%= Spree.t(:current_promotion_usage, count: promotion.credits_count) %></td>
-            <td><%= promotion.expires_at.to_date.to_s(:short_date) if promotion.expires_at %></td>
-            <td class="actions" data-hook="admin_promotions_index_row_actions">
-              <span class="d-flex justify-content-end">
-               <%= link_to_edit(promotion) if can?(:edit, promotion) %>
-               <%= link_to_clone(promotion) if can?(:clone, promotion) %>
-               <%= link_to_delete(promotion) if can?(:delete, promotion) %>
-              </span>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <%= render 'spree/admin/shared/index_table_options', collection: @promotions, simple: true %>
-<% else %>
-  <div class="text-center no-objects-found m-5">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Promotion)) %>,
-    <%= link_to Spree.t(:add_one), new_object_url if can?(:create, Spree::Promotion) %>!
-  </div>
+<% content_for :index_table do %>
+  <% if @promotions.any? %>
+    <g-responsive>
+      <g-table style="grid-template-columns: repeat(7, 1fr)">
+        <g-thead>
+          <g-tr>
+            <g-th><%= Spree.t(:name) %></g-th>
+            <g-th><%= Spree.t(:code) %></g-th>
+            <g-th><%= Spree.t(:description) %></g-th>
+            <g-th><%= Spree.t(:usage_limit) %></g-th>
+            <g-th><%= Spree.t(:promotion_uses) %></g-th>
+            <g-th style="grid-column: span 2;"><%= Spree.t(:expiration) %></g-th>
+          </g-tr>
+        </g-thead>
+        <g-tbody>
+          <%= render partial: "promotions_list" %>
+        </g-tbody>
+      </g-table>
+    </g-responsive>
+  <% else %>
+    <div class="text-center no-objects-found m-5">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Promotion)) %>,
+      <%= link_to Spree.t(:add_one), new_object_url if can?(:create, Spree::Promotion) %>!
+    </div>
+  <% end %>
 <% end %>
+
+<%#-------------------------------------------------%>
+<%# Render the index_table partial passing a        %>
+<%# search_field_value and search_field_placeholder %>
+<%# text if you want to add a search bar            %>
+<%#-------------------------------------------------%>
+<%= render partial: "spree/admin/shared/index_table",
+           locals: { search_url: spree.admin_promotions_path,
+                     search_record: :name_i_cont,
+                     search_placeholder: I18n.t('spree.admin.users.search_for_promotion_by_name')} %>
