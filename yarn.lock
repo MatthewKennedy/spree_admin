@@ -228,9 +228,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "18.7.19"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.19.tgz#ad83aa9b7af470fab7e0f562be87e97dc8ffe08e"
-  integrity sha512-Sq1itGUKUX1ap7GgZlrzdBydjbsJL/NSQt/4wkAxUJ7/OS5c2WkoN6WSpWc2Yc5wtKMZOUA0VCs/j2XJadN3HA==
+  version "18.7.20"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.20.tgz#d9442de7b5cb166476340b4271b15300fe058a39"
+  integrity sha512-adzY4vLLr5Uivmx8+zfSJ5fbdgKxX8UMtjtl+17n0B1q1Nz8JEmE151vefMdpD+1gyh+77weN4qEhej/O7budQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -1122,9 +1122,9 @@ grapheme-splitter@^1.0.4:
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
 gridtable.css@^0.1.1:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/gridtable.css/-/gridtable.css-0.1.5.tgz#bf9359597440cbccb274edb017c6d597c3d74f1c"
-  integrity sha512-iu4FiLCnbHkyNt0BVWqYJyBPUty570lU2Y3bgXvUFGYzUmyONTunbJuaH3EWh9GkxBilEzOWB1vWifRmZTaw0g==
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/gridtable.css/-/gridtable.css-0.1.6.tgz#1e6544002149e7de0e1d52ea725f5be5b0c77e46"
+  integrity sha512-YBkPAGrYeGd58Y/2XE0TnqIOqGoUch5B6zP0chIcUEthlMCGwU5bWVvfGDmIa/Eehbcnf3fMR1pQcAdXbGzBHg==
 
 hard-rejection@^2.1.0:
   version "2.1.0"
@@ -2432,7 +2432,7 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-tom-select@^2.0.3:
+tom-select@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tom-select/-/tom-select-2.2.0.tgz#4896ddc41ed9a5f0a9f543afcd0487377cd453a9"
   integrity sha512-MNB2DCITQ6HFYQIIKaRC78AO3PU9AO+gMEAQh6OLvTspeQJOKDb4Of9ddak/GErhzIs2Q9KZklt4WjVh1pr4yQ==
