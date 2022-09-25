@@ -14,7 +14,7 @@
         </ul>
       </g-td>
       <g-td><%= webhooks_subscriber.events.order(:created_at).last&.created_at %></g-td>
-      <g-td><%= link_to Spree.t(:view), admin_webhooks_subscriber_path(webhooks_subscriber) %></g-td>
+      <%= link_to Spree.t(:view), admin_webhooks_subscriber_path(webhooks_subscriber) %>
       <g-td class="justify-content-end">
         <div>
           <%= link_to_edit(webhooks_subscriber) if can? :edit, webhooks_subscriber %>

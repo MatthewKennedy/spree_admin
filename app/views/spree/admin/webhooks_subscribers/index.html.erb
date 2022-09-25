@@ -9,14 +9,14 @@
 <% content_for :index_table do %>
   <% if @webhooks_subscribers.any? %>
     <g-responsive>
-      <g-table style="grid-template-columns: 2fr repeat(5, 1fr);">
+      <g-table style="grid-template-columns: 2fr repeat(4, 1fr) 96px;">
         <g-thead>
           <g-tr>
             <g-th><%= I18n.t('spree.admin.url') %></g-th>
             <g-th><%= I18n.t('spree.admin.active') %></g-th>
             <g-th><%= I18n.t('spree.admin.webhooks.subscribers.subscriptions') %></g-th>
             <g-th><%= I18n.t('spree.admin.webhooks.subscribers.time_of_last_event') %></g-th>
-            <g-th style="grid-column: span 2;"><%= I18n.t('spree.admin.webhooks.subscribers.all_events') %></g-th>
+            <g-th style="grid-column: span 2;"><%= I18n.t('spree.admin.webhooks.subscribers.events') %></g-th>
           </g-tr>
         </g-thead>
         <g-tbody>
