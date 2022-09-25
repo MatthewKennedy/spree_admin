@@ -1,6 +1,6 @@
 {
   "name": "@omes/admin",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Admin UI for Spree",
   "main": "app/assets/javascripts/spree_admin.js",
   "type": "module",
@@ -20,7 +20,7 @@
   "author": "Matthew Kennedy <m.kennedy@me.com>",
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
-    "@hotwired/turbo-rails": "7.2.0-rc.2",
+    "@hotwired/turbo-rails": "7.2.0",
     "@popperjs/core": "^2.11.5",
     "@rails/request.js": "^0.0.6",
     "animate.css": "^4.1.1",
@@ -30,7 +30,7 @@
     "deserialize-json-api": "^1.4.0",
     "dompurify": "^2.3.8",
     "flatpickr": "4.6.9",
-    "grid-table-css": "^0.0.3",
+    "gridtable.css": "^0.1.1",
     "jsuri": "^1.3.1",
     "lodash": "^4.17.21",
     "sortablejs": "^1.15.0",
@@ -39,7 +39,7 @@
     "stimulus-form-state": "^0.1.1",
     "stimulus-sortable": "^3.1.0",
     "tinymce": "^6.0.2",
-    "tom-select": "^2.0.3"
+    "tom-select": "^2.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.1",

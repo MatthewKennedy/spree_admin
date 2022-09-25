@@ -32,9 +32,13 @@
   <% content_for :index_table do %>
     <% if @collection.any? %>
       <g-responsive>
-        <g-table class="table-hover" id="listing_products" data-controller="input--checkbox-state">
+        <g-table class="gridtable-hover"
+                 id="listing_products"
+                 data-controller="input--checkbox-state"
+                 style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr;">
+
           <g-thead>
-            <g-tr style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr ;" data-hook="admin_products_index_headers">
+            <g-tr>
 
               <g-th>
                 <div class="form-check d-flex justify-content-center m-0 ms-2">
@@ -72,13 +76,13 @@
                 <%= Spree.t(:status) %>
               </g-th>
 
-              <g-th style="grid-column: span 2;" data-input--checkbox-state-target="initialPanel">
+              <g-th data-input--checkbox-state-target="initialPanel" style="grid-column: span 2;">
                 <%= Spree.t(:price) %>
               </g-th>
             </g-tr>
           </g-thead>
 
-          <g-tbody style="grid-template-columns: 65px 76px 3fr 1fr 1fr 1fr 1fr;">
+          <g-tbody>
             <%= render partial: "products_list" %>
           </g-tbody>
         </g-table>

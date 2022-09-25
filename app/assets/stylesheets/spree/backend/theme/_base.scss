@@ -31,16 +31,20 @@
   }
 
   g-table {
-    --g-table-color:          #{$table-color};
-    --g-table-bg:             #{$table-bg};
-    --g-table-border-color:   #{$table-border-color};
-    --g-table-accent-bg:      #{$table-accent-bg};
-    --g-table-active-color:   #{$table-active-color};
-    --g-table-active-bg:      #{$table-active-bg};
-    --g-table-hover-color:    #{$table-hover-color};
-    --g-table-hover-bg:       #{$table-hover-bg};
-    --g-table-cell-padding-x: #{$table-cell-padding-x};
-    --g-table-cell-padding-y: #{$table-cell-padding-y};
+    --gridtable-color:          #{$table-color};
+    --gridtable-bg:             #{$table-bg};
+    --gridtable-border-color:   #{$table-border-color};
+    --gridtable-accent-bg:      #{$table-accent-bg};
+    --gridtable-active-color:   #{$table-active-color};
+    --gridtable-active-bg:      #{$table-active-bg};
+    --gridtable-hover-color:    #{$table-hover-color};
+    --gridtable-hover-bg:       #{$table-hover-bg};
+    --gridtable-cell-padding-x: #{$table-cell-padding-x};
+    --gridtable-cell-padding-y: #{$table-cell-padding-y};
+
+    g-tr > a {
+      text-decoration: none;
+    }
   }
 
   .modal {
@@ -159,5 +163,4 @@
 
 g-thead {
   @extend .text-muted;
-  font-weight: 700;
 }

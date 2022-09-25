@@ -2,23 +2,13 @@ table.table {
   &:last-child {
     margin-bottom: 0;
   }
-
-    tbody {
-      tr {
-        td.small-img { width: 50px; }
-        td.medium-img { width: 75px; }
-        td[data-controller="linkable-td"] {
-          cursor: pointer;
-        }
-      }
-    }
 }
 
 table > thead {
-  color: grey;
+  @extend .text-muted;
 }
 
-/* Apply a default padding if legacy cellpadding attribute is missing */
+/* Apply a default padding if legacy cell padding attribute is missing */
 table:not([cellpadding]) th,
 table:not([cellpadding]) td {
    padding: $table-cell-padding-y $table-cell-padding-x;

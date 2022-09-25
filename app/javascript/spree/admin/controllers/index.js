@@ -17,7 +17,6 @@ import InputDisableController from './input_disable_controller'
 import InputFormatDecimalController from './input/format_decimal_controller'
 import InputFormatIntegerController from './input/format_integer_controller'
 import InputFormattingController from './input_formatting_controller'
-import LinkableTd from './linkable_td_controller'
 import MenuController from './menu_controller'
 import ModalController from './modal_controller'
 import NumberIncrementController from './number_increment_controller'
@@ -50,7 +49,6 @@ Stimulus.register('input-formatting', InputFormattingController)
 Stimulus.register('input--format-decimal', InputFormatDecimalController)
 Stimulus.register('input--format-integer', InputFormatIntegerController)
 Stimulus.register('input--required', RequiredController)
-Stimulus.register('linkable-td', LinkableTd)
 Stimulus.register('menu', MenuController)
 Stimulus.register('modal', ModalController)
 Stimulus.register('number-increment', NumberIncrementController)
