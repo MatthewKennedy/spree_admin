@@ -12,10 +12,6 @@ module Spree
       update.before :skip_updating_status
       update.after :update_status
 
-      def filter
-        collection
-      end
-
       def bulk_update_status
         @selected_products = Product.where(id: params.fetch(:product_ids, []).compact)
 

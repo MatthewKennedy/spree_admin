@@ -150,22 +150,27 @@ Spree::Core::Engine.add_routes do
 
     # Prototypes
     resources :prototypes do
-      member do
-        post :select
-      end
-
       collection do
         get :available
+      end
+
+      member do
+        post :select
       end
     end
 
     # Promotions
     resources :promotions do
-      resources :promotion_rules
-      resources :promotion_actions
+      collection do
+        get :filter
+      end
+
       member do
         post :clone
       end
+
+      resources :promotion_rules
+      resources :promotion_actions
     end
     resources :promotion_categories, except: [:show]
 

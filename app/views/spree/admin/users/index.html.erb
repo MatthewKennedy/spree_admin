@@ -6,11 +6,6 @@
   <%= link_to_with_icon Spree.t(:new_user), spree.new_admin_user_url, class: "btn-primary btn", icon: 'plus-square.svg', id: 'admin_new_user_link', data: {turbo_frame: :modal} %>
 <% end if can? :create, Spree::user_class %>
 
-<% content_for :index_table_filter_tabs do %>
-  <%#= link_to I18n.t('admin.product.all'), spree.admin_users_path, class: "#{'active' if params[:q][:spree_admin_eq] == 'admin' }" %>
-  <%#= link_to I18n.t('admin.product.admin'), params.merge({q: {role_eq: :admin}}).permit!, class: "#{'active' if params[:q][:role_eq] == 'draft'}" %>
-<% end %>
-
 <% content_for :index_table_filter_buttons do %>
   <%= link_to I18n.t('spree.admin.more_filters'), spree.filter_admin_users_path(request.query_parameters), class: "btn btn-outline-secondary", data: {turbo_frame: :offcanvas} %>
 <% end %>
@@ -43,7 +38,7 @@
 <%# search_field_value and search_field_placeholder %>
 <%# text if you want to add a search bar            %>
 <%#-------------------------------------------------%>
-  <%= render partial: "spree/admin/shared/index_table",
-             locals: { search_url: spree.admin_users_path,
-                       search_record: :email_cont,
-                       search_placeholder: I18n.t('spree.admin.users.search_for_users_by_email')} %>
+<%= render partial: "spree/admin/shared/index_table",
+           locals: { search_url: spree.admin_users_path,
+                     search_record: :email_cont,
+                     search_placeholder: I18n.t('spree.admin.users.search_for_users_by_email')} %>
