@@ -32,10 +32,6 @@ module Spree
         redirect_to action: :edit
       end
 
-      def index
-        render "list" if params[:page]
-      end
-
       def update
         if params[:product][:taxon_ids].present?
           params[:product][:taxon_ids] = params[:product][:taxon_ids].reject(&:empty?)

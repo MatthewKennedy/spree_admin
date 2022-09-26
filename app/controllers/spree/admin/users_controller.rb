@@ -5,10 +5,6 @@ module Spree
       after_action :sign_in_if_change_own_password, only: :update
       before_action :other_addresses, only: [:addresses, :update_address]
 
-      def index
-        render "list" if params[:page]
-      end
-
       def show
         redirect_to spree.edit_admin_user_path(@user)
       end
