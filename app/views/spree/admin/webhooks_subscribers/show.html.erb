@@ -2,24 +2,26 @@
   <%= breadcrumb_builder(link_one_uri: spree.admin_webhooks_subscribers_path, link_one_text: I18n.t('spree.admin.webhooks.subscribers.subscribers'), current_page_name: I18n.t('spree.admin.webhooks.subscribers.webhooks_events')) %>
 <% end %>
 
-<fieldset>
-  <div class="table-responsive border rounded bg-white">
-    <table class="table border rounded">
-      <tr>
-        <td><strong><%= I18n.t('spree.admin.url') %></strong></td>
-        <td><%= @webhooks_subscriber.url %></td>
-      </tr>
-      <tr>
-        <td><strong><%= I18n.t('spree.admin.active') %></strong></td>
-        <td><%= active_badge(@webhooks_subscriber.active) %></td>
-      </tr>
-      <tr>
-        <td><strong><%= I18n.t('spree.admin.webhooks.subscribers.subscriptions') %></strong></td>
-        <td><%= @webhooks_subscriber.subscriptions&.join(', ') %></td>
-      </tr>
-    </table>
-  </div>
-</fieldset>
+<div class="card">
+  <g-responsive>
+    <g-table style="grid-template-columns: minmax(100px, 600px) minmax(100px, 600px);">
+      <g-tbody>
+        <g-tr>
+          <g-th><%= I18n.t('spree.admin.url') %></g-th>
+          <g-td><code><%= @webhooks_subscriber.url %></code></g-td>
+        </g-tr>
+        <g-tr>
+          <g-th><%= I18n.t('spree.admin.active') %></g-th>
+          <g-td><%= active_badge(@webhooks_subscriber.active) %></g-td>
+        </g-tr>
+        <g-tr>
+          <g-th><%= I18n.t('spree.admin.webhooks.subscribers.subscriptions') %></g-th>
+          <g-td style="white-space: unset;"><%= @webhooks_subscriber.subscriptions&.join(', ') %></g-td>
+        </g-tr>
+      </g-tbody>
+    </g-table>
+  </g-responsive>
+</div>
 
 <% if @events.any? %>
   <div class="table-responsive border rounded bg-white">
