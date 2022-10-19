@@ -92,7 +92,7 @@
             <h5 class="card-title"><%= I18n.t('spree.admin.products.products') %></h5>
           </div>
           <div>
-            Add A Product
+            <%= I18n.t('spree.admin.products.add_a_product') %>
           </div>
         </div>
         <div class="pb-2">
@@ -113,7 +113,7 @@
                       <%= render 'spree/admin/shared/drag_handle' %>
                     </div>
 
-                    <div class="admin-product-image-container small-img m-0 flex-shrink-0">
+                    <div class="product-image-container small-img m-0 flex-shrink-0">
                       <% if product.images.any? %>
                         <% image =  product.images[0] %>
                         <%= image_tag(main_app.cdn_image_url(image.url(:product))) %>

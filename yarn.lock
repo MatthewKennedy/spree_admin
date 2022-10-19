@@ -1115,10 +1115,10 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
-gridtable.css@^0.1.1:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/gridtable.css/-/gridtable.css-0.1.6.tgz#1e6544002149e7de0e1d52ea725f5be5b0c77e46"
-  integrity sha512-YBkPAGrYeGd58Y/2XE0TnqIOqGoUch5B6zP0chIcUEthlMCGwU5bWVvfGDmIa/Eehbcnf3fMR1pQcAdXbGzBHg==
+gridtable.css@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gridtable.css/-/gridtable.css-1.0.0.tgz#a37054a538c10f9a9f838e5a1b34b6ae3632fcc9"
+  integrity sha512-Acjxq2bAMatpGfEoF++CyVklz1+4uiePFB/pyvD9YExgLkcMnv2D7Jl18Awfp2vdx74v4R/wlhkWT6EDfzHIuA==
 
 hard-rejection@^2.1.0:
   version "2.1.0"

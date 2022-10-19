@@ -7,7 +7,7 @@
   <div class="container">
     <%= form_with model: [:admin, @product, @image], id: "editImageForm", data: { turbo_frame: :product_images, action: "turbo:submit-end->modal#submitEnd"} do |f| %>
       <div data-hook="thumbnail" class="col-12 text-center">
-        <div class="admin-product-image-container product-img mb-4">
+        <div class="product-image-container product-img mb-4">
            <%= image_tag(main_app.cdn_image_url(@image.url(:product))) %>
         </div>
       </div>
