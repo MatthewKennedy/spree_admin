@@ -46,7 +46,11 @@ module Spree
       end
 
       def collection_url
-        spree.edit_admin_product_path(params[:product_id])
+        if @variant.is_master?
+          spree.edit_admin_product_path(params[:product_id])
+        else
+          spree.edit_admin_product_variant_path(params[:product_id], params[:id])
+        end
       end
 
       def redirect_on_empty_option_values

@@ -15,28 +15,25 @@ module Spree
 
       def load_edit_data
         @variants = @product.variants
+        @option_values = []
         @option_value_ids = []
 
         @variants.each do |variant|
           variant.option_values.each do |ov|
-            @option_value_ids << ov.id
+            next unless ov.option_type.image_filter
+
+            @option_values << ov
           end
         end
 
-        @option_value_ids.uniq!
-        @option_values = Spree::OptionValue.where(id: @option_value_ids)
+        @option_values.uniq!
+
+        @option_value_ids = @option_values.map(&:id)
       end
 
       def set_viewable
         @image.viewable_type = "Spree::Variant"
         @image.viewable_id = @product.master_id
-
-        if params[:image][:private_metadata] && params[:image][:private_metadata][:variant_ids]
-          variant_ids = params[:image][:private_metadata][:variant_ids]
-          variant_ids.reject!(&:empty?)
-
-          @image.private_metadata[:variant_ids] = variant_ids
-        end
       end
 
       def load_product

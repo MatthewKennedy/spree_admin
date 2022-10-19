@@ -19,11 +19,12 @@
     <%= f.fields_for :private_metadata do |private_metadata| %>
       <%= f.field_container :option_value_ids do %>
         <%= private_metadata.select :option_value_ids, options_from_collection_for_select(@option_values, :id, :option_type_and_value, @image.private_metadata[:option_value_ids]),
-                                                        { include_hidden: true },
+                                                        { include_hidden: false },
                                                           multiple: true,
                                                           data: { controller: 'ts--search' } %>
 
         <%= private_metadata.label :option_values %>
+        <small class="text-muted">Options listed are those with the Option type set to Image Filter true</small>
       <% end %>
     <% end %>
 

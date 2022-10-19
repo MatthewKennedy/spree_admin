@@ -4,7 +4,19 @@ module Spree
       before_action :determine_backorderable, only: :update
 
       def update
-        stock_item.save
+        if stock_item.save
+          variant = stock_item.variant
+
+          flash[:success] = flash_message_for(stock_item, :successfully_updated)
+
+          if variant.is_master?
+            redirect_to spree.edit_admin_product_path(variant.product)
+          else
+            redirect_to spree.edit_admin_product_variant_path(variant.product, variant)
+          end
+        else
+          flash[:error] = Spree.t(:could_not_update_stock_item)
+        end
       end
 
       def create

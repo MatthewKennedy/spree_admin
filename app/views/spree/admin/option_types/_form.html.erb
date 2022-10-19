@@ -28,4 +28,20 @@
       </small>
     </div>
   </div>
+
+  <div class="col-12 col-md-6">
+    <%= f.field_container :image_filter, class: ['form-switch', 'mb-0'] do %>
+      <%= f.check_box :image_filter %>
+      <%= f.label :image_filter, Spree.t(:image_filter), class: 'form-check-label' %>
+      <a data-bs-toggle="collapse" href="#optionTypeFilterInformation" role="button" aria-expanded="false" aria-controls="optionTypeFilterInformation" class="align-self-center">
+        <%= inline_svg_tag "info-circle.svg", size: '14px * 14px', class: 'ms-1 shim-bottom' %>
+      </a>
+    <% end %>
+
+    <div class="collapse" id="optionTypeFilterInformation">
+      <small class="form-text text-muted">
+        <%= raw I18n.t('spree.admin.option_type_filterable_info') %>
+      </small>
+    </div>
+  </div>
 </div>
