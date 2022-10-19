@@ -22,6 +22,8 @@
   </div>
 <% end %>
 
+<%= render partial: 'spree/admin/products/forms/stock', locals: { variant: @variant } %>
+
 <%= form_with model: [:admin, @product], scope: :prices, url: spree.admin_product_prices_path(@product), method: :post, data: {controller: "form-state", turbo_frame: :product_variants} do |f| %>
   <div class="card">
     <div class="card-header d-flex">

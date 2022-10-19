@@ -27,35 +27,35 @@
 <% end %>
 
 <% if @collection.any? %>
-<div class="table-responsive border rounded bg-white">
-  <table class="table">
-    <thead class="text-muted">
-      <tr data-hook="rate_header">
-        <th><%= Spree.t(:created_at) %></th>
-        <th><%= Spree.t(:number) %></th>
-        <th><%= Spree.t(:order) %></th>
-        <th><%= Spree.t(:status) %></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @collection.each do |return_authorization| %>
-        <tr id="<%= dom_id(return_authorization) %>" data-hook="return_authorization_row">
-          <td><%= return_authorization.created_at.strftime('%F %T %Z') %></td>
-          <td><%= link_to return_authorization.number, spree.edit_admin_order_return_authorization_path(return_authorization.order, return_authorization) %></td>
-          <td><%= link_to return_authorization.order.number, spree.edit_admin_order_path(return_authorization.order) %></td>
-          <td>
-            <span class="badge rounded-pill bg-<%= return_authorization.state %>"><%= I18n.t("spree.admin.return_authorization_states.#{return_authorization.state}") %></span>
-          </td>
-          <td class="actions">
-            <span class="d-flex justify-content-end">
-              <%= link_to_edit return_authorization, url: spree.edit_admin_order_return_authorization_path(return_authorization.order, return_authorization), no_text: true if can?(:edit, return_authorization) %>
-            </span>
-          </td>
+  <div class="table-responsive border rounded bg-white">
+    <table class="table">
+      <thead class="text-muted">
+        <tr data-hook="rate_header">
+          <th><%= Spree.t(:created_at) %></th>
+          <th><%= Spree.t(:number) %></th>
+          <th><%= Spree.t(:order) %></th>
+          <th><%= Spree.t(:status) %></th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @collection.each do |return_authorization| %>
+          <tr id="<%= dom_id(return_authorization) %>" data-hook="return_authorization_row">
+            <td><%= return_authorization.created_at.strftime('%F %T %Z') %></td>
+            <td><%= link_to return_authorization.number, spree.edit_admin_order_return_authorization_path(return_authorization.order, return_authorization) %></td>
+            <td><%= link_to return_authorization.order.number, spree.edit_admin_order_path(return_authorization.order) %></td>
+            <td>
+              <span class="badge rounded-pill bg-<%= return_authorization.state %>"><%= I18n.t("spree.admin.return_authorization_states.#{return_authorization.state}") %></span>
+            </td>
+            <td class="actions">
+              <span class="d-flex justify-content-end">
+                <%= link_to_edit return_authorization, url: spree.edit_admin_order_return_authorization_path(return_authorization.order, return_authorization), no_text: true if can?(:edit, return_authorization) %>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 <% else %>
   <div class="text-center no-objects-found m-5">

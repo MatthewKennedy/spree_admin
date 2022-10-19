@@ -14,18 +14,29 @@ module Spree
       end
 
       def load_edit_data
-        @variants = @product.variants.map do |variant|
-          [variant.sku_and_options_text, variant.id]
+        @variants = @product.variants
+        @option_values = []
+        @option_value_ids = []
+
+        @variants.each do |variant|
+          variant.option_values.each do |ov|
+            # TEMP catch for old spree vs new spree.
+            if ov.option_type.has_attribute?(:image_filter)
+              next unless ov.option_type.image_filter
+            end
+
+            @option_values << ov
+          end
         end
-        @variants.insert(0, [Spree.t(:all), @product.master_id])
+
+        @option_values.uniq!
+
+        @option_value_ids = @option_values.map(&:id)
       end
 
       def set_viewable
         @image.viewable_type = "Spree::Variant"
-
-        if params[:image][:viewable_id].present?
-          @image.viewable_id = params[:image][:viewable_id]
-        end
+        @image.viewable_id = @product.master_id
       end
 
       def load_product

@@ -1,69 +1,70 @@
 <%= turbo_frame_tag :product_stock do %>
-  <% variant = @product.master %>
+  <% variant ||= @product.master %>
+
   <div class="card">
     <div class="card-header d-flex">
       <div class="flex-fill">
         <h5 class="card-title"><%= I18n.t('spree.admin.products.stock') %></h5>
       </div>
       <div>
-        <%= link_to_with_icon(I18n.t('spree.admin.products.add_stock'), spree.add_stock_admin_product_path(@product, variant.id), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: {turbo_frame: :modal}}) %>
+        <%= link_to_with_icon(I18n.t('spree.admin.products.add_stock'), spree.add_stock_admin_product_path(@product, variant.id), { icon: 'plus-square.svg', class: 'btn-light btn btn-sm', data: { turbo_frame: :modal }}) %>
       </div>
     </div>
 
     <div class="table-responsive ">
       <% if variant.stock_items.present? %>
-      <table class="table" id="listing_product_stock">
-        <tbody>
-          <tr id="<%= dom_id(variant) %>" data-hook="admin_product_stock_management_index_rows">
-            <td>
-              <%= variant.sku_and_options_text %>
-              <%= form_tag admin_product_variants_including_master_path(@product, variant), method: :put do %>
-                <div class="checkbox">
-                  <%= label_tag "track_inventory_#{ variant.id }" do %>
-                    <%= check_box_tag 'track_inventory', 1, variant.track_inventory?,
-                                      class: 'track_inventory_checkbox', id: "track_inventory_#{ variant.id }" %>
-                    <%= Spree.t(:track_inventory) %>
-                    <%= hidden_field_tag 'variant[track_inventory]', variant.track_inventory?, class: 'variant_track_inventory', id: "variant_track_inventory_#{variant.id}" %>
-                  <% end %>
-                </div>
-              <% end if can?(:update, @product) && can?(:update, variant) %>
-            </td>
+        <table class="table" id="listing_product_stock">
+          <tbody>
+            <tr id="<%= dom_id(variant) %>" data-hook="admin_product_stock_management_index_rows">
+              <td>
+                <%= form_with url: spree.admin_product_variants_including_master_path(@product, variant), method: :put, data: { turbo_frame: :product_stock, controller: 'form--autosave' } do %>
+                  <div class="form-check form-switch">
 
-            <td colspan="3" class="stock_location_info">
-              <table class="table border rounded mb-0">
-                <thead class="text-muted">
-                  <th><%= Spree.t(:stock_location) %></th>
-                  <th class="text-center"><%= Spree.t(:count_on_hand) %></th>
-                  <th class="text-center"><%= Spree.t(:backorderable) %></th>
-                  <th class="actions text-center"></th>
-                </thead>
-                <tbody>
-                  <% variant.stock_items.each do |item| %>
-                    <tr id="stock-item-<%= item.id %>">
-                      <td><%= link_to item.stock_location.name, spree.edit_admin_stock_location_path(item.stock_location) %></td>
-                      <td class="text-center"><%= item.count_on_hand %></td>
-                      <td class="text-center">
-                        <%= form_tag admin_stock_item_path(item), method: :put, class: 'toggle_stock_item_backorderable' do %>
-                          <%= check_box_tag 'stock_item[backorderable]', true,
-                                item.backorderable?,
-                                class: 'stock_item_backorderable',
-                                id: "stock_item_backorderable_#{item.stock_location.id}" %>
-                        <% end if can? :update, item %>
-                      </td>
-                      <td class="actions">
-                        <span class="d-flex justify-content-center">
-                          <%= link_to_delete(item, url: spree.admin_stock_item_path(item)) if can?(:destroy, item) %>
-                        </span>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                    <%= label_tag "track_inventory_#{ variant.id }" do %>
+                      <%= hidden_field_tag 'variant[track_inventory]', false %>
+                      <%= check_box_tag 'variant[track_inventory]', true, variant.track_inventory?, class: 'form-check-input', data: {action: 'form--autosave#save'} %>
+                      <%= Spree.t(:track_inventory) %>
+                    <% end %>
+                  </div>
+                  <%= submit_tag I18n.t('spree.admin.actions.save'), data: {form__autosave_target: 'submitButton'} %>
+                <% end if can?(:update, @product) && can?(:update, variant) %>
+              </td>
+
+              <td colspan="3">
+                <table class="table border rounded mb-0">
+                  <thead class="text-muted">
+                    <th><%= Spree.t(:stock_location) %></th>
+                    <th class="text-center"><%= Spree.t(:count_on_hand) %></th>
+                    <th class="text-center"><%= Spree.t(:backorderable) %></th>
+                    <th></th>
+                  </thead>
+                  <tbody>
+                    <% variant.stock_items.each do |item| %>
+                      <tr id="stock-item-<%= item.id %>">
+                        <td><%= link_to item.stock_location.name, spree.edit_admin_stock_location_path(item.stock_location) %></td>
+                        <td class="text-center"><%= item.count_on_hand %></td>
+                        <td class="text-center">
+                          <%= form_with url: spree.admin_stock_item_path(item), method: :put, data: { turbo_frame: :product_stock, controller: 'form--autosave' } do %>
+                            <%= check_box_tag 'stock_item[backorderable]', true, item.backorderable?, class: 'form-check-input', data: {action: 'form--autosave#save'} %>
+                            <%= submit_tag I18n.t('spree.admin.actions.save'), data: {form__autosave_target: 'submitButton'} %>
+                          <% end if can? :update, item %>
+                        </td>
+                        <td>
+                          <span class="d-flex justify-content-end">
+                            <%= link_to_delete(item, url: spree.admin_stock_item_path(item)) if can?(:destroy, item) %>
+                          </span>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       <% end %>
     </div>
   </div>
+
+  <%= flash_alert(flash) %>
 <% end if can?(:admin, Spree::StockItem) && !@product.deleted? %>

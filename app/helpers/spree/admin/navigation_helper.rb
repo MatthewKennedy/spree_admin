@@ -193,7 +193,7 @@ module Spree
           end
         end
 
-        button(button_text, "check-lg.svg", "submit", {form: form_id, class: "btn btn-success animate__fadeIn animate__animated animate__faster", id: "globalFormSubmitButton"})
+        button(button_text, "check-lg.svg", "submit", {form: form_id, class: "btn btn-primary animate__fadeIn animate__animated animate__faster"})
       end
 
       def active_badge(condition, options = {})
