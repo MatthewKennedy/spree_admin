@@ -46,7 +46,7 @@ module Spree
       end
 
       def collection_url
-        if @variant.is_master?
+        if @variant&.is_master?
           spree.edit_admin_product_path(params[:product_id])
         else
           spree.edit_admin_product_variant_path(params[:product_id], params[:id])

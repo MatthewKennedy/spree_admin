@@ -22,7 +22,7 @@ platforms :ruby do
 end
 
 group :test do
-  gem "capybara", "~> 3.24"
+  gem "capybara"
   gem "capybara-screenshot", "~> 1.0"
   gem "database_cleaner", "~> 2.0"
   gem "email_spec"
@@ -47,7 +47,7 @@ group :test, :development do
   gem "gem-release"
   gem "i18n-tasks"
   gem "pry-byebug"
-  gem "puma"
+  gem "puma", "~> 5.0"
   gem "redis"
   gem "rubocop", "1.26.0"
   gem "standard", "1.9.0"
