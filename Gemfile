@@ -32,7 +32,7 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks", "~> 1.0"
   gem "rspec_junit_formatter"
-  gem "rspec-rails", "~> 5.0"
+  gem "rspec-rails", "~> 6.0"
   gem "rspec-retry"
   gem "rswag-specs"
   gem "simplecov", "0.21.2"
