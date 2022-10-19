@@ -20,7 +20,10 @@ module Spree
 
         @variants.each do |variant|
           variant.option_values.each do |ov|
-            next unless ov.option_type.image_filter
+            # TEMP catch for old spree vs new spree.
+            if ov.option_type.has_attribute?(:image_filter)
+              next unless ov.option_type.image_filter
+            end
 
             @option_values << ov
           end
