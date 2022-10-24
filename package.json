@@ -57,7 +57,7 @@
     "build:js": "rollup --config rollup.config.js",
     "watch:js": "rollup --config rollup.config.js -w",
     "lint": "eslint app/javascript",
-    "build:css": "sass ./app/assets/stylesheets/spree/backend/spree_admin.scss:./app/assets/stylesheets/spree/backend/admin.css --no-source-map --load-path=node_modules",
+    "build:css": "sass ./app/assets/stylesheets/spree/backend/spree_admin.scss:./app/assets/stylesheets/spree/backend/omes_admin.css --no-source-map --load-path=node_modules",
     "watch:css": "sass ./app/assets/stylesheets/spree/backend/spree_admin.scss:./app/assets/builds/spree_admin.css --no-source-map --load-path=node_modules -w",
     "prepublishOnly": "rm -rf src && cp -R app/javascript/spree/admin src"
   },
