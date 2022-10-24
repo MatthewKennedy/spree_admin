@@ -7,7 +7,7 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules/bootstrap
 Rails.application.config.assets.paths << Rails.root.join("node_modules/flatpickr/dist")
 Rails.application.config.assets.paths << Rails.root.join("node_modules/gridtable.css")
 Rails.application.config.assets.paths << Rails.root.join("node_modules/tinymce")
-Rails.application.config.assets.paths << Rails.root.join("node_modules/tinymce/models/dom/model.js")
+Rails.application.config.assets.paths << Rails.root.join("node_modules/tinymce/models/dom")
 
 Rails.application.config.assets.paths << Rails.root.join("node_modules/tom-select/dist/css")
 
