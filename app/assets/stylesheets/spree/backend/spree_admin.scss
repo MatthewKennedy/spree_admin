@@ -1,15 +1,15 @@
 @import 'global';
 
 // Imports From node_modules
-@import 'bootstrap';
-@import 'tom-select.bootstrap5.css';
-@import 'flatpickr';
-@import 'gridtable.css';
-@import 'animate.css';
+@import 'bootstrap/scss/bootstrap';
+@import 'tom-select/src/scss/tom-select.bootstrap5';
+@import 'flatpickr/dist/flatpickr';
+@import 'gridtable.css/gridtable';
+@import 'animate.css/animate';
 
-@import 'skins/ui/oxide/content.min.css';
-@import 'skins/ui/oxide/skin.min.css';
-@import 'skins/content/default/content.css';
+@import 'tinymce/skins/ui/oxide/content';
+@import 'tinymce/skins/ui/oxide/skin';
+@import 'tinymce/skins/content/default/content';
 
 @import 'components';
 @import 'plugins';
