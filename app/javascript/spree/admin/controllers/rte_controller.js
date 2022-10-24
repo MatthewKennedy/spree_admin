@@ -9,7 +9,8 @@ import 'tinymce/themes/silver'
 import 'tinymce/plugins/link'
 import 'tinymce/plugins/table'
 import 'tinymce/plugins/image'
-import 'tinymce/plugins/code'
+
+import 'tinymce/models/dom'
 
 export default class extends Controller {
   static values = {
