@@ -1,6 +1,6 @@
 {
   "name": "@omes/admin",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Admin UI for Spree",
   "main": "app/assets/javascripts/spree_admin.js",
   "type": "module",
