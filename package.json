@@ -19,7 +19,7 @@
   },
   "author": "Matthew Kennedy <m.kennedy@me.com>",
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/stimulus": "^3.1.0",
     "@hotwired/turbo-rails": "7.2.0",
     "@popperjs/core": "^2.11.5",
     "@rails/request.js": "^0.0.6",
@@ -38,6 +38,7 @@
     "stimulus-flatpickr": "^3.0.0-0",
     "stimulus-form-state": "^0.1.1",
     "stimulus-sortable": "^3.1.0",
+    "stimulus-use": "^0.51.0",
     "tinymce": "^6.0.2",
     "tom-select": "^2.2.0"
   },

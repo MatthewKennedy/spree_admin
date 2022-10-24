@@ -43,7 +43,7 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@hotwired/stimulus@^3.0.0", "@hotwired/stimulus@^3.0.1":
+"@hotwired/stimulus@^3.0.0", "@hotwired/stimulus@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.1.0.tgz#20215251e5afe6e0a3787285181ba1bfc9097df0"
   integrity sha512-iDMHUhiEJ1xFeicyHcZQQgBzhtk5mPR0QZO3L6wtqzMsJEk2TKECuCQTGKjm+KJTHVY0dKq1dOOAWvODjpd2Mg==
@@ -1178,6 +1178,11 @@ hosted-git-info@^4.0.1:
   dependencies:
     lru-cache "^6.0.0"
 
+hotkeys-js@>=3:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.10.0.tgz#2bbd13de4aa002fa916c34e3859239924311e35a"
+  integrity sha512-20xeVdOqcgTkMox0+BqFwADZP7+5dy/9CFPpAinSMh2d0s3b0Hs2V2D+lMh4Hphkf7VE9pwnOl58eP1te+REcg==
+
 html-tags@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.2.0.tgz#dbb3518d20b726524e4dd43de397eb0a95726961"
@@ -2241,6 +2246,13 @@ stimulus-sortable@^3.1.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/stimulus-sortable/-/stimulus-sortable-3.2.0.tgz#16927f72b22d8e103a0102b2ed52a502d708fff7"
   integrity sha512-hA1/jggRIOy7UK+BsKRNzfFNguWKo8yD64Oi6Y/n9qELm+G5sE4buuMK8ebAIU01kL5w8jGalPnpKAQkX/q9ZA==
+
+stimulus-use@^0.51.0:
+  version "0.51.0"
+  resolved "https://registry.yarnpkg.com/stimulus-use/-/stimulus-use-0.51.0.tgz#d750137cdc263c13e6f5bc114c3a8d4ea4411901"
+  integrity sha512-LI3jRiN2T9zzP27uZ7Mv8rdzwJqqoyKwmRHSkLnuKw8SrInsj9mw2dzDfuBkmZp8a3B5w0fFY0UXb2C3TzqgRA==
+  dependencies:
+    hotkeys-js ">=3"
 
 string-width@^4.2.3:
   version "4.2.3"
