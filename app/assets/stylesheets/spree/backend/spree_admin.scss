@@ -8,8 +8,10 @@
 @import 'flatpickr';
 @import 'gridtable.css';
 @import 'animate.css';
-@import 'skins/ui/oxide/content';
-@import 'skins/content/default/content';
+
+@import 'skins/ui/oxide/content.min.css';
+@import 'skins/ui/oxide/skin.min.css';
+@import 'skins/content/default/content.css';
 
 @import 'components';
 @import 'plugins';
