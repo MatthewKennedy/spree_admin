@@ -1,4 +1,4 @@
-<%= f.fields_for image do |ff| %>
+<%= f.fields_for image.to_s + '_attributes' do |ff| %>
   <%= f.field_container image do %>
     <% attachment = @cms_section.send(image).attachment %>
     <% if attachment&.attached? && attachment&.variable? %>
