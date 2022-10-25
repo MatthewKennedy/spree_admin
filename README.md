@@ -67,14 +67,10 @@ Install the Spree Admin javascript bundle
    yarn add "@omes/admin"
 ```
 
-Add to your project the path to load bootstrap SVG icons from node_modules
-
+NOTE: In production you will need to asset precompile Bootstrap SVG icons from node_modules by adding the following line to your `app/assets/config/manifest.js` file:
 ```javascript
-// In -> app/assets/config/manifest.js
-
 //= link_tree ../../../node_modules/bootstrap-icons/icons .svg
 ```
-
 
 ### Development Setup (JavaScript)
 
