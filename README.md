@@ -9,7 +9,7 @@ An alternative Admin UI for Spree.
 ## Tech Stack Benefits
 
 - jQuery Free
-- No compiling SCSS or Javascript through Sprockets
+- SASS/SCSS and JavaScript all compiled by modern processors, not Sprockets.
 - Uses Stimulus and Turbo
 
 
