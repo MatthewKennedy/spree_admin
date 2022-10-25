@@ -4,7 +4,7 @@
 
 # Omes Admin
 
-An alternative Admin UI for Spree
+An alternative Admin UI for Spree.
 
 ## Tech Stack Benefits
 
@@ -12,11 +12,13 @@ An alternative Admin UI for Spree
 - No compiling SCSS or Javascript through Sprockets
 - Uses Stimulus and Turbo
 
+
 ## User Benefits
 
 - Product Images can be tagged to the applicable options
 - New order process, more akin to building an invoice than attempting to replicate a shopping cart in an admin UI (WIP)
--
+- Modern UI
+
 
 ### What Is The Difference Between Omes Admin and Spree Backend?
 
@@ -24,6 +26,7 @@ Omes Admin is a fresh take on an Admin UI for Spree, it is currently intended to
 working with old Spree extensions, old Rails versions, or large Spree apps that rely heavily on Spree Backend.
 
 The goal is that we can move fast and fluid find new intuitive ways of using Spree Admin.
+
 
 ### What About The Javascript?
 You might be pleased to know we have completely stripped out all the old JavaScript, reducing the dependency on 3rd party libraries to a minimum,
@@ -67,7 +70,7 @@ Install the Spree Admin javascript bundle
 Add to your project the path to load bootstrap SVG icons from node_modules
 
 ```javascript
-//In -> app/assets/config/manifest.js
+// In -> app/assets/config/manifest.js
 
 //= link_tree ../../../node_modules/bootstrap-icons/icons .svg
 ```
@@ -105,6 +108,16 @@ bin/dev
 ```
 
 Any changes made to the JavaScript files in `spree_admin` will be processed by yarn and picked up in the Rails app you are running for development.
+
+
+### Development Setup (CSS)
+
+To work on the CSS of this project run:
+
+```bash
+yarn watch:css
+```
+
 
 ### Local setup
 
