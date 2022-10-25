@@ -1,10 +1,1 @@
-// To import CSS from node_modules/@spree/admin package
-
-// (1) Add the following line to config/initializers/assets.rb
-// Rails.application.config.assets.paths << Rails.root.join("node_modules/@spree/admin/app/assets/stylesheets/spree/backend")
-
-// (2) Change @import 'spree/backend/spree_admin'; to @import 'spree_admin';
-
-// (3) Restart the server.
-
-@import 'spree/backend/spree_admin';
+@import 'spree/backend/omes_admin.css';

@@ -2,17 +2,25 @@
 [![Standard RB](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardrb.yml/badge.svg)](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardrb.yml)
 [![Standard JS](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardjs.yml/badge.svg)](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardjs.yml)
 
-# Spree Admin
+# Omes Admin
 
 An alternative Admin UI for Spree
 
-## Key Features
+## Tech Stack Benefits
 
 - jQuery Free
+- No compiling SCSS or Javascript through Sprockets
+- Uses Stimulus and Turbo
 
-### What Is The Difference Between Spree Admin and Spree Backend?
+## User Benefits
 
-Spree Admin is a fresh take on an Admin UI for Spree, it is currently intended to be experimental in the early stages, free from any legacy dependencies, being locked-into
+- Product Images can be tagged to the applicable options
+- New order process, more akin to building an invoice than attempting to replicate a shopping cart in an admin UI (WIP)
+-
+
+### What Is The Difference Between Omes Admin and Spree Backend?
+
+Omes Admin is a fresh take on an Admin UI for Spree, it is currently intended to be experimental in the early stages, free from any legacy dependencies, being locked-into
 working with old Spree extensions, old Rails versions, or large Spree apps that rely heavily on Spree Backend.
 
 The goal is that we can move fast and fluid find new intuitive ways of using Spree Admin.
@@ -67,7 +75,7 @@ Add to your project the path to load bootstrap SVG icons from node_modules
 
 ### Development Setup (JavaScript)
 
-When working locally on the JavaScript in Spree Admin, you will need to yarn link your local development copy of `@omes/admin`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
+When working locally on the JavaScript in Omes Admin, you will need to yarn link your local development copy of `@omes/admin`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
 
 From the root of `spree_admin` run:
 
@@ -87,7 +95,7 @@ one at the root of your Rails app, and one at the root of `spree_admin`.
 In the terminal window at the root of the `spree_admin` run:
 
 ```bash
-yarn watch
+yarn watch:js
 ```
 
 And from the Rails app you are using to run Spree and develop in run the following:
