@@ -2,7 +2,7 @@ module Spree
   module Backend
     module Generators
       class InstallGenerator < Rails::Generators::Base
-        desc "Installs Spree Dash"
+        desc "Installs Spree Admin"
 
         def self.source_paths
           [
