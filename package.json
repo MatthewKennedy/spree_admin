@@ -47,6 +47,9 @@
     "@rollup/plugin-node-resolve": "^11.0.1",
     "eslint": "^8.16.0",
     "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.1.1",
     "less": "^4.1.3",
     "postcss": "^8.4.18",
     "postcss-import": "^15.0.0",
@@ -68,7 +71,6 @@
   },
   "standard": {
     "ignore": [
-      "handlebars.js",
       "lib/*"
     ],
     "globals": [
