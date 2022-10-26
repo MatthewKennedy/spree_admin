@@ -1,7 +1,7 @@
  <div class="row">
-    <div id="pageSectionsArea" class="col-12">
-      <div class="row g-0">
-        <div id="draggableSectionsHolder" class="col-12 col-md-3 bg-light">
+    <div id="pageSectionsArea" class="col-12" style="min-height: 750px;">
+      <div class="row g-0 h-100">
+        <div id="draggableSectionsHolder" class="col-12 col-md-3 bg-light h-100">
 
           <% if @cms_page.cms_sections.any? %>
             <div id="cmsPagesectionsArea"
@@ -25,7 +25,7 @@
           <% end %>
         </div>
 
-        <div class="d-none d-md-block col bg-secondary overflow-hidden">
+        <div class="d-none d-md-block col bg-secondary overflow-hidden h-100">
           <div id="liveViewCont" class="desktopLiveView">
             <div class="embed-responsive embed-responsive-4by3">
                <%= render 'iframe_content' %>
