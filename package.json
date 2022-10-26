@@ -1,13 +1,16 @@
 {
   "name": "@omes/admin",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Admin UI for Spree",
-  "main": "app/assets/javascripts/spree_admin.js",
+  "main": "dist/js/spree_admin.js",
   "type": "module",
   "license": "MIT",
   "files": [
-    "app/assets/javascripts/*.js",
-    "src/*.js"
+    "dist/js/*.js",
+    "dist/js/*.map",
+    "dist/css/*.css",
+    "dist/css/*.map",
+    "src/*"
   ],
   "homepage": "https://github.com/matthewkennedy/spree_admin.git",
   "repository": {
@@ -33,7 +36,6 @@
     "gridtable.css": "^1.0.0",
     "jsuri": "^1.3.1",
     "lodash": "^4.17.21",
-    "sass": "^1.55.0",
     "sortablejs": "^1.15.0",
     "stimulus-checkbox-select-all": "^5.1.0",
     "stimulus-flatpickr": "^3.0.0-0",
@@ -48,18 +50,24 @@
     "@rollup/plugin-node-resolve": "^11.0.1",
     "eslint": "^8.16.0",
     "eslint-config-standard": "^17.0.0",
+    "less": "^4.1.3",
+    "postcss": "^8.4.18",
+    "postcss-import": "^15.0.0",
+    "postcss-nesting": "^10.2.0",
+    "postcss-preset-env": "^7.8.2",
     "rollup": "^2.35.1",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.55.0",
     "standard": "^17.0.0",
-    "stylelint": "^14.8.3"
+    "stylelint": "^14.8.3",
+    "stylus": "^0.59.0"
   },
   "scripts": {
-    "build:js": "rollup --config rollup.config.js",
-    "watch:js": "rollup --config rollup.config.js -w",
+    "build": "rollup --config rollup.config.js",
+    "watch": "rollup --config rollup.config.js -w",
     "lint": "eslint app/javascript",
-    "build:css": "sass ./app/assets/stylesheets/spree/backend/main.scss:./app/assets/stylesheets/omes_admin.css --no-source-map --load-path=node_modules",
-    "watch:css": "sass ./app/assets/stylesheets/spree/backend/main.scss:./app/assets/stylesheets/omes_admin.css --no-source-map --load-path=node_modules -w",
-    "prepublishOnly": "rm -rf src && cp -R app/javascript/spree/admin src"
+    "prepublishOnly": "rm -rf src && mkdir -p src/js && mkdir -p src/scss && cp -R app/javascript/spree/backend src/js && cp -R app/assets/stylesheets/spree/backend src/scss"
   },
   "standard": {
     "ignore": [

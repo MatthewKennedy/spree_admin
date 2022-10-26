@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
+import postcss from 'rollup-plugin-postcss'
 
 const terserOptions = {
   mangle: false,
@@ -11,28 +12,62 @@ const terserOptions = {
   }
 }
 
+const postCssOptions = {
+  minimize: true,
+  modules: false,
+  extract: true,
+  config: {
+    plugins: [
+      require('postcss-import'),
+      require('postcss-nesting'),
+      require('postcss-preset-env')({
+        browsers: ['last 2 versions', '> 5%']
+      }),
+      require('autoprefixer')
+    ]
+  }
+}
+
 export default [
   {
-    input: 'app/javascript/spree/admin/index.js',
-    output: {
-      file: 'app/assets/javascripts/spree_admin.js',
-      format: 'umd',
-      name: 'SpreeAdmin',
-      inlineDynamicImports: true,
-      sourcemap: false
-    },
-    plugins: [resolve(), commonjs(), terser(terserOptions)]
-  },
+    input: 'app/javascript/spree/backend/index.js',
+    output: [
+      // Outputs for Rails Gem and live SCSS in development mode with yarn watch
+      {
+        file: 'app/assets/stylesheets/spree_admin.css',
+        inlineDynamicImports: true,
+        format: 'es',
+        sourcemap: true
+      },
 
-  {
-    input: 'app/javascript/spree/admin/index.js',
-    output: {
-      file: 'app/assets/javascripts/spree_admin.esm.js',
-      format: 'es',
-      name: 'SpreeAdmin',
-      inlineDynamicImports: true,
-      sourcemap: false
-    },
-    plugins: [resolve(), commonjs(), terser(terserOptions)]
+      // Outputs for NPM package
+      {
+        file: 'dist/css/spree_admin.css',
+        inlineDynamicImports: true,
+        format: 'es',
+        name: 'SpreeFrontendCSS',
+        sourcemap: true
+      },
+      {
+        file: 'dist/js/spree_admin.js',
+        format: 'umd',
+        name: 'SpreeFrontendJs',
+        inlineDynamicImports: true,
+        sourcemap: true
+      },
+      {
+        file: 'dist/js/spree_admin.esm.js',
+        format: 'es',
+        name: 'SpreeFrontendEsm',
+        inlineDynamicImports: true,
+        sourcemap: true
+      }
+    ],
+    plugins: [
+      postcss(postCssOptions),
+      resolve(),
+      commonjs(),
+      terser(terserOptions)
+    ]
   }
 ]
