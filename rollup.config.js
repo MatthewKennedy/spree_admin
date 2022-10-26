@@ -29,42 +29,51 @@ const postCssOptions = {
 }
 
 export default [
+
+  // CSS
   {
-    input: 'app/javascript/spree/backend/index.js',
+    input: './postcss_styles.js',
     output: [
-      // Outputs for Rails Gem and live SCSS in development mode with yarn watch
       {
+        name: 'CSS For Rails Gem',
         file: 'app/assets/stylesheets/spree_admin.css',
         inlineDynamicImports: true,
         format: 'es',
         sourcemap: true
       },
-
-      // Outputs for NPM package
       {
+        name: 'CSS For NPM',
         file: 'dist/css/spree_admin.css',
         inlineDynamicImports: true,
         format: 'es',
-        name: 'SpreeAdminCSS',
         sourcemap: true
-      },
+      }
+    ],
+    plugins: [
+      postcss(postCssOptions)
+    ]
+  },
+
+  // JAVASCRIPT
+  {
+    input: 'app/javascript/spree/backend/index.js',
+    output: [
       {
+        name: 'UDM JavaScript For NPM',
         file: 'dist/js/spree_admin.js',
         format: 'umd',
-        name: 'SpreeAdminJs',
         inlineDynamicImports: true,
         sourcemap: true
       },
       {
+        name: 'ESM JavaScript For NPM',
         file: 'dist/js/spree_admin.esm.js',
         format: 'es',
-        name: 'SpreeAdminEsm',
         inlineDynamicImports: true,
         sourcemap: true
       }
     ],
     plugins: [
-      postcss(postCssOptions),
       resolve(),
       commonjs(),
       terser(terserOptions)
