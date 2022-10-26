@@ -29,10 +29,13 @@ const postCssOptions = {
 }
 
 export default [
+
+  // CSS PROCESSING
   {
-    input: 'app/javascript/spree/backend/index.js',
+    input: './postcss_styles.js',
     output: [
-      // Outputs for Rails Gem and live SCSS in development mode with yarn watch
+
+      // Outputs for Rails Gem
       {
         file: 'app/assets/stylesheets/spree_admin.css',
         inlineDynamicImports: true,
@@ -47,7 +50,18 @@ export default [
         format: 'es',
         name: 'SpreeAdminCSS',
         sourcemap: true
-      },
+      }
+    ],
+    plugins: [
+      postcss(postCssOptions),
+      resolve()
+    ]
+  },
+
+  // JS PROCESSING
+  {
+    input: 'app/javascript/spree/backend/index.js',
+    output: [
       {
         file: 'dist/js/spree_admin.js',
         format: 'umd',
@@ -64,7 +78,6 @@ export default [
       }
     ],
     plugins: [
-      postcss(postCssOptions),
       resolve(),
       commonjs(),
       terser(terserOptions)
