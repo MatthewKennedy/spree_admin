@@ -6,11 +6,8 @@
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist/js/*.js",
-    "dist/js/*.map",
-    "dist/css/*.css",
-    "dist/css/*.map",
-    "src/*"
+    "dist",
+    "src"
   ],
   "homepage": "https://github.com/matthewkennedy/spree_admin.git",
   "repository": {
