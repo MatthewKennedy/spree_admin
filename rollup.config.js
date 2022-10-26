@@ -20,10 +20,10 @@ const postCssOptions = {
     plugins: [
       require('postcss-import'),
       require('postcss-nesting'),
+      require('autoprefixer'),
       require('postcss-preset-env')({
         browsers: ['last 2 versions', '> 5%']
-      }),
-      require('autoprefixer')
+      })
     ]
   }
 }
@@ -45,20 +45,20 @@ export default [
         file: 'dist/css/spree_admin.css',
         inlineDynamicImports: true,
         format: 'es',
-        name: 'SpreeFrontendCSS',
+        name: 'SpreeAdminCSS',
         sourcemap: true
       },
       {
         file: 'dist/js/spree_admin.js',
         format: 'umd',
-        name: 'SpreeFrontendJs',
+        name: 'SpreeAdminJs',
         inlineDynamicImports: true,
         sourcemap: true
       },
       {
         file: 'dist/js/spree_admin.esm.js',
         format: 'es',
-        name: 'SpreeFrontendEsm',
+        name: 'SpreeAdminEsm',
         inlineDynamicImports: true,
         sourcemap: true
       }
