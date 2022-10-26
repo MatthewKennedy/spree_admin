@@ -72,9 +72,9 @@ NOTE: In production you will need to asset precompile Bootstrap SVG icons from n
 //= link_tree ../../../node_modules/bootstrap-icons/icons .svg
 ```
 
-### Development Setup (JavaScript)
+### Development Setup (JavaScript, SCSS)
 
-When working locally on the JavaScript in Omes Admin, you will need to yarn link your local development copy of `@omes/admin`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
+When working locally on the JavaScript or CSS you will need to yarn link your local development copy of `@omes/admin`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
 
 From the root of `spree_admin` run:
 
@@ -94,7 +94,7 @@ one at the root of your Rails app, and one at the root of `spree_admin`.
 In the terminal window at the root of the `spree_admin` run:
 
 ```bash
-yarn watch:js
+yarn watch
 ```
 
 And from the Rails app you are using to run Spree and develop in run the following:
@@ -104,15 +104,6 @@ bin/dev
 ```
 
 Any changes made to the JavaScript files in `spree_admin` will be processed by yarn and picked up in the Rails app you are running for development.
-
-
-### Development Setup (CSS)
-
-To work on the CSS of this project run:
-
-```bash
-yarn watch:css
-```
 
 
 ### Local setup

@@ -126,7 +126,7 @@ module Spree
 
         options[:no_text] ||= true
         options[:class] ||= "btn btn-light btn-sm icon-clone"
-        options[:icon] = "clone.svg"
+        options[:icon] = "spree/backend/clone.svg"
         options[:data] = {turbo_method: :post, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
         link_to_with_icon(name, url, options)
