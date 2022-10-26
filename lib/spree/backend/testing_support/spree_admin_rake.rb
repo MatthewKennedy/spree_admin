@@ -21,8 +21,7 @@ namespace :spree_admin do
     if ENV["LIB_NAME"] == "spree/admin"
       puts "Preparing NPM package..."
       system("yarn install")
-      system("yarn build:js")
-      system("yarn build:css")
+      system("yarn build")
     end
 
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
