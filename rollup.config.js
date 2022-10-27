@@ -1,16 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import postcss from 'rollup-plugin-postcss'
-
-const terserOptions = {
-  mangle: false,
-  compress: false,
-  format: {
-    beautify: true,
-    indent_level: 2
-  }
-}
+import commonjs from '@rollup/plugin-commonjs';
+import pkg from './package.json' assert { type: 'json' }
 
 const postCssOptions = {
   minimize: true,
@@ -18,65 +10,56 @@ const postCssOptions = {
   extract: true,
   config: {
     plugins: [
-      require('postcss-import'),
-      require('postcss-nesting'),
-      require('autoprefixer'),
-      require('postcss-preset-env')({
-        browsers: ['last 2 versions', '> 5%']
-      })
+      import('postcss-nesting'),
+      import('autoprefixer')
     ]
   }
 }
 
 export default [
-
-  // CSS
-  {
+  { // CSS
     input: './postcss_styles.js',
-    output: [
-      {
-        name: 'CSS For Rails Gem',
-        file: 'app/assets/stylesheets/spree_admin.css',
-        inlineDynamicImports: true,
-        format: 'es',
-        sourcemap: true
-      },
-      {
-        name: 'CSS For NPM',
-        file: 'dist/css/spree_admin.css',
-        inlineDynamicImports: true,
-        format: 'es',
-        sourcemap: true
-      }
-    ],
+    output: [{ file: './lib/assets/stylesheets/spree_admin.css' }],
     plugins: [
       postcss(postCssOptions)
     ]
   },
-
-  // JAVASCRIPT
-  {
-    input: 'app/javascript/spree/backend/index.js',
-    output: [
-      {
-        name: 'UDM JavaScript For NPM',
-        file: 'dist/js/spree_admin.js',
-        format: 'umd',
-        inlineDynamicImports: true,
-        sourcemap: true
-      },
-      {
-        name: 'ESM JavaScript For NPM',
-        file: 'dist/js/spree_admin.esm.js',
-        format: 'es',
-        inlineDynamicImports: true,
-        sourcemap: true
-      }
-    ],
+  { // JavaScript
+    input: pkg.module,
+    output: {
+      file: pkg.main,
+      format: 'es',
+      inlineDynamicImports: true
+    },
     plugins: [
       resolve(),
       commonjs(),
-      terser(terserOptions)
+      terser({
+        mangle: false,
+        compress: false,
+        format: {
+          beautify: true,
+          indent_level: 2
+        }
+      })
+    ]
+  },
+
+  {
+    input: pkg.module,
+    output: {
+      file: 'app/assets/javascripts/spree_admin.min.js',
+      format: 'es',
+      inlineDynamicImports: true,
+      sourcemap: true
+    },
+    plugins: [
+      resolve(),
+      commonjs(),
+      terser({
+        mangle: true,
+        compress: true
+      })
     ]
   }
 ]
