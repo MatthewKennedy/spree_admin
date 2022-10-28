@@ -22,7 +22,7 @@
                 <%= password_field_tag :password, application.uid, class: 'form-control unhide text-muted border-0 shadow-none bg-transparent', data: { password_toggle_target: 'unhide' }, readonly: true, autocomplete: false %>
                 <div class="input-group-append">
                   <%= button_tag class: 'btn btn-link rounded', data: { action: 'click->password-toggle#password' } do %>
-                    <%= inline_svg_tag "eye.svg", size: '18px * 18px' %>
+                    <%= spree_admin_svg_tag "eye.svg", size: '18px * 18px' %>
                   <% end %>
                 </div>
               </div>

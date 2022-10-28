@@ -2,7 +2,7 @@
   <div class="promo-rule-option-values">
     <div class="js-promo-rule-option-values"></div> <!-- display div for option value select -->
     <button class="btn btn-primary  btn-primary  js-add-promo-rule-option-value">
-      <%= inline_svg_tag "plus-circle", size: '16px * 16px' %>
+      <%= spree_admin_svg_tag "plus-circle", size: '16px * 16px' %>
       <%= Spree.t(:add) %>
     </button>
   </div>
@@ -20,7 +20,7 @@
     <div class="card-header d-flex justify-content-between">
       <label><%= Spree.t(:product) %> <%= Spree.t(:option_values) %></label>
       <a class="js-remove-promo-rule-option-value delete">
-        <%= inline_svg_tag "delete.svg", size: '16px * 16px' %>
+        <%= spree_admin_svg_tag "delete.svg", size: '16px * 16px' %>
       </a>
     </div>
     <div class="card-body row p-3">

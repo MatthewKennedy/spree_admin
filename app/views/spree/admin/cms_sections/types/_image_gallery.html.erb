@@ -2,10 +2,10 @@
   <div id="ImageGalleryLayout" class="col-12 col-md-6 m-auto">
     <div id="LayoutType">
       <div id="Default" class="<% unless @cms_section.layout_style == 'Default' %>d-none<% end %>">
-        <%= inline_svg_tag "default-layout.svg", size: '150px * 150px' %>
+        <%= spree_admin_svg_tag "default-layout.svg", size: '150px * 150px' %>
       </div>
       <div id="Reversed" class="<% unless @cms_section.layout_style == 'Reversed' %>d-none<% end %>">
-        <%= inline_svg_tag "reversed-layout.svg", size: '150px * 150px' %>
+        <%= spree_admin_svg_tag "reversed-layout.svg", size: '150px * 150px' %>
       </div>
     </div>
 

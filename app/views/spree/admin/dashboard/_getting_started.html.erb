@@ -5,33 +5,33 @@
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action <% if @products_added %>list-group-item-info<% elsif @active_tab == 'products' %>active<% end %>" id="list-products-list" data-toggle="list" href="#list-products" role="tab" aria-controls="products">
         <% if @products_added %>
-          <%= inline_svg_tag 'check-circle-fill.svg', size: '20px * 20px', class: "me-3" %>
+          <%= spree_admin_svg_tag 'check-circle-fill.svg', size: '20px * 20px', class: "me-3" %>
         <% else %>
-          <%= inline_svg_tag 'tags.svg', size: '20px * 20px', class: "me-3" %>
+          <%= spree_admin_svg_tag 'tags.svg', size: '20px * 20px', class: "me-3" %>
         <% end %>
         Add products
       </a>
       <a class="list-group-item list-group-item-action <% if @shipping_methods_added %>list-group-item-info<% elsif @active_tab == 'shipping' %>active<% end %>" id="list-shipping-list" data-toggle="list" href="#list-shipping" role="tab" aria-controls="shipping">
         <% if @shipping_methods_added %>
-          <%= inline_svg_tag 'check-circle-fill.svg', size: '20px * 20px', class: "me-3" %>
+          <%= spree_admin_svg_tag 'check-circle-fill.svg', size: '20px * 20px', class: "me-3" %>
         <% else %>
-          <%= inline_svg_tag 'truck.svg', size: '20px * 20px', class: "me-3" %>
+          <%= spree_admin_svg_tag 'truck.svg', size: '20px * 20px', class: "me-3" %>
         <% end %>
         Setup shipping
       </a>
       <a class="list-group-item list-group-item-action <% if @payment_methods_added %>list-group-item-info<% elsif @active_tab == 'payments' %>active<% end %>" id="list-payments-list" data-toggle="list" href="#list-payments" role="tab" aria-controls="payments">
         <% if @payment_methods_added %>
-          <%= inline_svg_tag 'check-circle-fill.svg', size: '20px * 20px', class: "me-3" %>
+          <%= spree_admin_svg_tag 'check-circle-fill.svg', size: '20px * 20px', class: "me-3" %>
         <% else %>
-          <%= inline_svg_tag 'cash-coin.svg', size: '20px * 20px', class: "me-3" %>
+          <%= spree_admin_svg_tag 'cash-coin.svg', size: '20px * 20px', class: "me-3" %>
         <% end %>
         Setup payment methods
       </a>
       <a class="list-group-item list-group-item-action <% if @taxes_added %>list-group-item-info<% elsif @active_tab == 'taxes' %>active<% end %>" id="list-taxes-list" data-toggle="list" href="#list-taxes" role="tab" aria-controls="taxes">
         <% if @taxes_added %>
-          <%= inline_svg_tag 'check-circle-fill.svg', size: '20px * 20px', class: "me-3" %>
+          <%= spree_admin_svg_tag 'check-circle-fill.svg', size: '20px * 20px', class: "me-3" %>
         <% else %>
-          <%= inline_svg_tag 'receipt.svg', size: '20px * 20px', class: "me-3" %>
+          <%= spree_admin_svg_tag 'receipt.svg', size: '20px * 20px', class: "me-3" %>
         <% end %>
         Setup taxes
       </a>

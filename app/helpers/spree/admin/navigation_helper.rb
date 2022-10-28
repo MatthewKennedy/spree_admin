@@ -81,9 +81,9 @@ module Spree
       # Single main menu item
       def main_menu_item(text, url: nil, icon: nil)
         link_to url, data: {bs_toggle: "collapse"}, class: "d-flex w-100 px-3 py-2 position-relative align-items-center" do
-          inline_svg_tag(icon, class: "me-2 text-muted", size: "#{MENU_ICON_SIZE}px * #{MENU_ICON_SIZE}px") +
+          spree_admin_svg_tag(icon, class: "me-2 text-muted", size: "#{MENU_ICON_SIZE}px * #{MENU_ICON_SIZE}px") +
             content_tag(:span, raw(" #{text}"), class: "text-muted") +
-            inline_svg_tag("chevron-right.svg", class: "drop-menu-indicator text-muted position-absolute", size: "#{MENU_ICON_SIZE - 8}px * #{MENU_ICON_SIZE - 8}")
+            spree_admin_svg_tag("chevron-right.svg", class: "drop-menu-indicator text-muted position-absolute", size: "#{MENU_ICON_SIZE - 8}px * #{MENU_ICON_SIZE - 8}")
         end
       end
 
@@ -126,7 +126,7 @@ module Spree
 
         options[:no_text] ||= true
         options[:class] ||= "btn btn-light btn-sm icon-clone"
-        options[:icon] = "spree/backend/clone.svg"
+        options[:icon] = "clone.svg"
         options[:data] = {turbo_method: :post, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
         link_to_with_icon(name, url, options)
@@ -151,7 +151,7 @@ module Spree
         if html_options[:icon]
           icon_class = html_options[:no_text] ? "" : "me-md-1"
           html_options[:icon_size] ||= "#{ICON_SIZE}px * #{ICON_SIZE}px"
-          icon = inline_svg_tag(html_options[:icon], class: "#{icon_class} #{html_options[:icon_class]}", size: html_options[:icon_size])
+          icon = spree_admin_svg_tag(html_options[:icon], class: "#{icon_class} #{html_options[:icon_class]}", size: html_options[:icon_size])
           name = "#{icon} #{name}"
         end
 
@@ -161,7 +161,7 @@ module Spree
       # Override: Add disable_with option to prevent multiple request on consecutive clicks
       def button(text, icon_name = nil, button_type = "submit", html_options = {})
         if icon_name
-          icon = inline_svg_tag(icon_name, class: "svg-icon icon-#{icon_name}", size: "#{ICON_SIZE}px * #{ICON_SIZE}px")
+          icon = spree_admin_svg_tag(icon_name, class: "svg-icon icon-#{icon_name}", size: "#{ICON_SIZE}px * #{ICON_SIZE}px")
           text = "#{icon} #{text}"
         end
 
