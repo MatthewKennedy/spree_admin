@@ -37,6 +37,7 @@ namespace :spree_admin do
     $stdout.puts "(2) Setting up dummy database..."
     system("bin/rails db:environment:set RAILS_ENV=test")
     system("bundle exec rake db:drop db:create")
+    Spree::DummyModelGenerator.start
     system("bundle exec rake db:migrate")
 
     $stdout.puts "(3) Bundling ..."
