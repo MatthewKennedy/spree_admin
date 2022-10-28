@@ -2,7 +2,7 @@
 [![Standard RB](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardrb.yml/badge.svg)](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardrb.yml)
 [![Standard JS](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardjs.yml/badge.svg)](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardjs.yml)
 
-# Omes Admin
+# Spree Admin
 
 An alternative Admin UI for Spree.
 
@@ -20,9 +20,9 @@ An alternative Admin UI for Spree.
 - Modern UI
 
 
-### What Is The Difference Between Omes Admin and Spree Backend?
+### What Is The Difference Between Spree Admin and Spree Backend?
 
-Omes Admin is a fresh take on an Admin UI for Spree, it is currently intended to be experimental in the early stages, free from any legacy dependencies, being locked-into
+Spree Admin is a fresh take on an Admin UI for Spree, it is currently intended to be experimental in the early stages, free from any legacy dependencies, being locked-into
 working with old Spree extensions, old Rails versions, or large Spree apps that rely heavily on Spree Backend.
 
 The goal is that we can move fast and fluid find new intuitive ways of using Spree Admin.
@@ -69,26 +69,10 @@ If you are using NPM to manage your javascript and want to import the javascript
 ```
 And then create a new file in `app/javascript` called `spree_admin.js` and then import `import '@omes/admin'`.
 
-### Development Setup (JavaScript, SCSS)
 
-When working locally on the JavaScript or CSS you will need to yarn link your local development copy of `@omes/admin`, to the Rails app you are working in, so that your changes are picked up and represented live in the view.
+## Development Setup (JavaScript, SCSS)
 
 From the root of `spree_admin` run:
-
-```bash
-yarn link
-```
-
-Next, from the root of the Rails app you are using to develop run:
-
-```bash
-yarn link "@omes/admin"
-```
-
-Once your local Spree Dashboard is linked with the Rails app you are using for development you will need two terminal tabs open,
-one at the root of your Rails app, and one at the root of `spree_admin`.
-
-In the terminal window at the root of the `spree_admin` run:
 
 ```bash
 yarn watch
@@ -99,9 +83,6 @@ And from the Rails app you are using to run Spree and develop in run the followi
 ```bash
 bin/dev
 ```
-
-Any changes made to the JavaScript files in `spree_admin` will be processed by yarn and picked up in the Rails app you are running for development.
-
 
 ### Local setup
 
