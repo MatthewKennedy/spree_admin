@@ -58,7 +58,7 @@ module Spree
         )
       end
 
-      def spree_admin_svg_tag(file_name, options={})
+      def spree_admin_svg_tag(file_name, options = {})
         prefixed_file = "spree/backend/#{file_name}"
 
         inline_svg_tag(prefixed_file, options)
