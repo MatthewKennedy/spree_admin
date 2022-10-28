@@ -62,15 +62,12 @@ Install Spree Admin
    bin/rails g spree:backend:install
 ```
 
-Install the Spree Admin javascript bundle
+### Use @omes/admin NPM - OPTIONAL
+If you are using NPM to manage your javascript and want to import the javascript via node_modules run:
 ```bash
    yarn add "@omes/admin"
 ```
-
-NOTE: In production you will need to asset precompile Bootstrap SVG icons from node_modules by adding the following line to your `app/assets/config/manifest.js` file:
-```javascript
-//= link_tree ../../../node_modules/bootstrap-icons/icons .svg
-```
+And then create a new file in `app/javascript` called `spree_admin.js` and then import `import '@omes/admin'`.
 
 ### Development Setup (JavaScript, SCSS)
 

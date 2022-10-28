@@ -11,19 +11,12 @@ namespace :spree_admin do
     args.with_defaults(user_class: "Spree::LegacyUser", install_storefront: "false", install_admin: "false")
     require ENV["LIB_NAME"].to_s
 
-    ENV["SPREE_ADMIN_SKIP_INSTALL_NODE_JS_FILES"] = "true"
     ENV["RAILS_ENV"] = "test"
-
     ENV["DUMMY_PATH"] = "tmp/dummy"
 
     Rails.env = "test"
 
-    if ENV["LIB_NAME"] == "spree/admin"
-      puts "Preparing NPM package..."
-      system("yarn install")
-      system("yarn build")
-    end
-
+    puts "(1) Building dummy app for testing"
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
     Spree::InstallGenerator.start [
       "--lib_name=#{ENV["LIB_NAME"]}",
@@ -38,39 +31,24 @@ namespace :spree_admin do
       "--user_class=#{args[:user_class]}"
     ]
 
-    $stdout.puts "Setting up dummy database..."
+    $stdout.puts "(2) Setting up dummy database..."
     system("bin/rails db:environment:set RAILS_ENV=test")
     system("bundle exec rake db:drop db:create")
     Spree::DummyModelGenerator.start
     system("bundle exec rake db:migrate")
 
+    $stdout.puts "(3) Bundling ..."
     system("bundle install")
 
-    unless ["spree/api", "spree/core", "spree/sample", "spree/emails"].include?(ENV["LIB_NAME"])
-      $stdout.puts "Setting up node environment"
-      system("bin/rails javascript:install:esbuild")
-      system("bin/rails turbo:install")
-    end
+    $stdout.puts "(4) Running spree:backend:install ..."
+    system("bin/rails g spree:backend:install")
 
-    unless ["spree/api", "spree/core", "spree/sample"].include?(ENV["LIB_NAME"])
-      if ENV["LIB_NAME"] == "spree/admin"
-        $stdout.puts "Installing Spree Admin node dependencies..."
-
-        system("yarn add file:./../../../spree_admin")
-        system("yarn install")
-
-        $stdout.puts "Adding Spree Admin assets after @spree/admin installed by yarn..."
-        ENV["SPREE_ADMIN_SKIP_INSTALL_NODE_JS_FILES"] = "false"
-        system("bin/rails g spree:backend:install")
-      end
-
-      $stdout.puts "Precompiling assets..."
-      system("bundle exec rake assets:precompile")
-    end
+    $stdout.puts "(5) Precompiling assets..."
+    system("bundle exec rake assets:precompile")
   end
 
   task :seed do |_t|
-    $stdout.puts "Seeding ..."
+    $stdout.puts "(6 of 6) Seeding ..."
     system("bundle exec rake db:seed RAILS_ENV=test")
   end
 end

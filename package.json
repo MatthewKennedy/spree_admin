@@ -2,12 +2,12 @@
   "name": "@omes/admin",
   "version": "0.0.9",
   "description": "Admin UI for Spree",
-  "main": "dist/js/spree_admin.js",
+  "main": "app/assets/javascripts/spree_admin.js",
+  "module": "app/javascript/spree/backend/index.js",
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist",
-    "src"
+    "app/javascript/spree/backend"
   ],
   "homepage": "https://github.com/matthewkennedy/spree_admin.git",
   "repository": {
@@ -32,7 +32,6 @@
     "flatpickr": "4.6.9",
     "gridtable.css": "^1.0.0",
     "jsuri": "^1.3.1",
-    "lodash": "^4.17.21",
     "sortablejs": "^1.15.0",
     "stimulus-checkbox-select-all": "^5.1.0",
     "stimulus-flatpickr": "^3.0.0-0",
@@ -43,8 +42,9 @@
     "tom-select": "^2.2.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^19.0.1",
-    "@rollup/plugin-node-resolve": "^11.0.1",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "autoprefixer": "^10.4.12",
     "eslint": "^8.16.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -52,10 +52,8 @@
     "eslint-plugin-promise": "^6.1.1",
     "less": "^4.1.3",
     "postcss": "^8.4.18",
-    "postcss-import": "^15.0.0",
     "postcss-nesting": "^10.2.0",
-    "postcss-preset-env": "^7.8.2",
-    "rollup": "^2.35.1",
+    "rollup": "^3.2.3",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.55.0",
@@ -66,12 +64,13 @@
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "watch": "rollup --config rollup.config.js -w",
-    "lint": "eslint app/javascript",
-    "prepublishOnly": "rm -rf src && mkdir -p src/js && mkdir -p src/scss && cp -R app/javascript/spree/backend src/js && cp -R app/assets/stylesheets/spree/backend src/scss"
+    "lint": "eslint app/javascript"
   },
   "standard": {
     "ignore": [
-      "lib/*"
+      "lib/*",
+      "app/assets/javascripts/*",
+      "rollup.config.js"
     ],
     "globals": [
       "SpreeAdmin",

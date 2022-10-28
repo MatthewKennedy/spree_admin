@@ -58,10 +58,6 @@ vendor/bundle
 .ignore
 
 node_modules
-app/assets/javascripts/spree_admin.js
-app/assets/javascripts/spree_admin.*.js
-app/assets/javascripts/spree_admin.js.map
-app/assets/javascripts/spree_admin.*.js.map
 src
 *.gem
 gemfiles/**/*.lock
