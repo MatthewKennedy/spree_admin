@@ -31,4 +31,4 @@ jobs:
       - name: Install
         run: wget -O - -q https://git.io/misspell | sh -s -- -b .
       - name: Misspell
-        run: git ls-files --empty-directory | xargs ./misspell -i 'substitued,neccessary,immediatly,mistery' -error
+        run: git ls-files --empty-directory | xargs ./misspell -i 'devels,substitued,neccessary,immediatly,mistery' -error
