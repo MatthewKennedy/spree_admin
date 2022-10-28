@@ -11,6 +11,7 @@ namespace :spree_admin do
     args.with_defaults(user_class: "Spree::LegacyUser", install_storefront: "false", install_admin: "false")
     require ENV["LIB_NAME"].to_s
 
+    ENV["TEST_NPM_PACKAGE"] = "false"
     ENV["SPREE_ADMIN_SKIP_INSTALL_NODE_JS_FILES"] = "true"
     ENV["RAILS_ENV"] = "test"
 
@@ -46,21 +47,25 @@ namespace :spree_admin do
 
     system("bundle install")
 
-    unless ["spree/api", "spree/core", "spree/sample", "spree/emails"].include?(ENV["LIB_NAME"])
-      $stdout.puts "Setting up node environment"
-      system("bin/rails javascript:install:esbuild")
-      system("bin/rails turbo:install")
+    if ENV["TEST_NPM_PACKAGE"] == "true"
+      unless ["spree/api", "spree/core", "spree/sample", "spree/emails"].include?(ENV["LIB_NAME"])
+        $stdout.puts "Setting up node environment"
+        system("bin/rails javascript:install:esbuild")
+        system("bin/rails turbo:install")
+      end
     end
 
     unless ["spree/api", "spree/core", "spree/sample"].include?(ENV["LIB_NAME"])
       if ENV["LIB_NAME"] == "spree/admin"
-        $stdout.puts "Installing Spree Admin node dependencies..."
+        if ENV["TEST_NPM_PACKAGE"] == "true"
+          $stdout.puts "Installing Spree Admin node dependencies..."
 
-        system("yarn add file:./../../../spree_admin")
-        system("yarn install")
+          system("yarn add file:./../../../spree_admin") if ENV["TEST_NPM_PACKAGE"] == "true"
+          system("yarn install") if ENV["TEST_NPM_PACKAGE"] == "true"
 
-        $stdout.puts "Adding Spree Admin assets after @spree/admin installed by yarn..."
-        ENV["SPREE_ADMIN_SKIP_INSTALL_NODE_JS_FILES"] = "false"
+          $stdout.puts "Adding Spree Admin assets after @spree/admin installed by yarn..."
+          ENV["SPREE_ADMIN_SKIP_INSTALL_NODE_JS_FILES"] = "false"
+        end
         system("bin/rails g spree:backend:install")
       end
 
