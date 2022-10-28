@@ -37,12 +37,12 @@ All new JavaScript is written in Stimulus controllers so it is all Hotwire/Turbo
 
 ## Installation
 
-Starting with a freshly generated Rails 7 app using esbuild simply add the following gems to your gem file:
+Starting with a freshly generated Rails 7 app add the following gems to your gem file:
 ```ruby
 # USE THESE TEMP
-gem 'spree', github: 'MatthewKennedy/spree', branch: 'custom/spree_admin'
-gem 'spree_admin', github: 'MatthewKennedy/spree_admin'
-gem 'spree_auth_devise', github: 'MatthewKennedy/spree_auth_devise', branch: 'custom/spree_admin'
+gem 'spree',                github: 'MatthewKennedy/spree', branch: 'custom/spree_admin'
+gem 'spree_admin',          github: 'MatthewKennedy/spree_admin'
+gem 'spree_auth_devise',    github: 'MatthewKennedy/spree_auth_devise', branch: 'custom/spree_admin'
 ```
 
 From the command line run the following commands to:
