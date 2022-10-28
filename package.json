@@ -68,7 +68,9 @@
   },
   "standard": {
     "ignore": [
-      "lib/*"
+      "lib/*",
+      "app/assets/javascripts/*",
+      "rollup.config.js"
     ],
     "globals": [
       "SpreeAdmin",
