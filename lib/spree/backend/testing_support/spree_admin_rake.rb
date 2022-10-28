@@ -16,10 +16,7 @@ namespace :spree_admin do
 
     Rails.env = "test"
 
-    puts "(1) Building latest JavaScript & CSS ..."
-    system("yarn install")
-    system("yarn build")
-
+    puts "(1) Building dummy app for testing"
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
     Spree::InstallGenerator.start [
       "--lib_name=#{ENV["LIB_NAME"]}",
