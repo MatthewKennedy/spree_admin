@@ -8,7 +8,7 @@ require "generators/spree/dummy_model/dummy_model_generator"
 desc "Generates a dummy app for testing"
 namespace :spree_admin do
   task :test_app, :user_class do |_t, args|
-    args.with_defaults(user_class: "Spree::LegacyUser", install_storefront: "false", install_admin: "false")
+    args.with_defaults(user_class: "Spree::LegacyUser")
     require ENV["LIB_NAME"].to_s
 
     ENV["RAILS_ENV"] = "test"
@@ -16,7 +16,7 @@ namespace :spree_admin do
 
     Rails.env = "test"
 
-    puts "(1) Building dummy app for testing"
+    $stdout.puts "(1) Building dummy app for testing #{ENV["LIB_NAME"]}"
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
     Spree::InstallGenerator.start [
       "--lib_name=#{ENV["LIB_NAME"]}",
@@ -25,9 +25,6 @@ namespace :spree_admin do
       "--seed=false",
       "--sample=false",
       "--quiet",
-      "--copy_storefront=false",
-      "--install_storefront=#{args[:install_storefront]}",
-      "--install_admin=#{args[:install_admin]}",
       "--user_class=#{args[:user_class]}"
     ]
 
@@ -45,10 +42,5 @@ namespace :spree_admin do
 
     $stdout.puts "(5) Precompiling assets..."
     system("bundle exec rake assets:precompile")
-  end
-
-  task :seed do |_t|
-    $stdout.puts "(6 of 6) Seeding ..."
-    system("bundle exec rake db:seed RAILS_ENV=test")
   end
 end

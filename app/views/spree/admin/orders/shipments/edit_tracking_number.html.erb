@@ -10,7 +10,7 @@
       </div>
       <div class="col-auto">
         <%= f.button :submit, class: "btn btn-primary" do %>
-          <%= inline_svg_tag "check-lg.svg", size: '16px * 16px' %>
+          <%= spree_admin_svg_tag "check-lg.svg", size: '16px * 16px' %>
         <% end %>
 
         <%= link_to_with_icon I18n.t('spree.admin.actions.cancel'), spree.edit_admin_order_url(@shipment.order), class: 'btn btn-light' , title: I18n.t('spree.admin.actions.cancel'), icon: 'x-lg.svg', no_text: true, data: { turbo_frame: frame_id } %>

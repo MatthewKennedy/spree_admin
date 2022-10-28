@@ -21,7 +21,7 @@ module Spree
           "file-earmark.svg"
         end
 
-        inline_svg_tag file_name, size: "50px * 50px"
+        spree_admin_svg_tag file_name, size: "50px * 50px"
       end
     end
   end

@@ -8,8 +8,8 @@
 <% link = pagy_link_proc(pagy, link_extra: 'class="btn btn-outline-secondary" style="padding-left:0.6rem; padding-right:0.6rem;"') -%>
 <%#                            -%><nav aria-label="pager"  class="pagy-bootstrap-nav">
 <%#                            -%>  <ul class="pagination">
-<% if pagy.prev                -%>    <li class="page-item prev"><%== link.call(pagy.prev, inline_svg_tag("chevron-left.svg", size: '18px * 18px', style: 'margin-bottom: 0;'), 'aria-label="previous"') %></li>
-<% else                        -%>    <li class="page-item prev disabled"><a href="#" class="btn btn-outline-secondary disabled" style="padding-left:0.6rem; padding-right:0.6rem;"><%== inline_svg_tag("chevron-left.svg", size: '18px * 18px', style: 'margin-bottom: 0;') %></a></li>
+<% if pagy.prev                -%>    <li class="page-item prev"><%== link.call(pagy.prev, spree_admin_svg_tag("chevron-left.svg", size: '18px * 18px', style: 'margin-bottom: 0;'), 'aria-label="previous"') %></li>
+<% else                        -%>    <li class="page-item prev disabled"><a href="#" class="btn btn-outline-secondary disabled" style="padding-left:0.6rem; padding-right:0.6rem;"><%== spree_admin_svg_tag("chevron-left.svg", size: '18px * 18px', style: 'margin-bottom: 0;') %></a></li>
 <% end                         -%>
 <% pagy.series.each do |item| # series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36] -%>
 <%   if    item.is_a?(Integer) -%>    <li class="page-item"><%== link.call(item) %></li>
@@ -17,8 +17,8 @@
 <%   elsif item == :gap        -%>    <li class="page-item disabled gap"><a href="#" class="page-link"><%== pagy_t('pagy.nav.gap') %></a></li>
 <%   end                       -%>
 <% end                         -%>
-<% if pagy.next                -%>    <li class="page-item next"><%== link.call(pagy.next, inline_svg_tag("chevron-right.svg", size: '18px * 18px', style: 'margin-bottom: 0;'), 'aria-label="next"') %></li>
-<% else                        -%>    <li class="page-item next disabled"><a href="#" class="btn btn-outline-secondary disabled" style="padding-left:0.6rem; padding-right:0.6rem;"><%== inline_svg_tag("chevron-right.svg", size: '18px * 18px', style: 'margin-bottom: 0;') %></a></li>
+<% if pagy.next                -%>    <li class="page-item next"><%== link.call(pagy.next, spree_admin_svg_tag("chevron-right.svg", size: '18px * 18px', style: 'margin-bottom: 0;'), 'aria-label="next"') %></li>
+<% else                        -%>    <li class="page-item next disabled"><a href="#" class="btn btn-outline-secondary disabled" style="padding-left:0.6rem; padding-right:0.6rem;"><%== spree_admin_svg_tag("chevron-right.svg", size: '18px * 18px', style: 'margin-bottom: 0;') %></a></li>
 <% end                         -%>
 <%#                            -%>  </ul>
 <%#                            -%></nav>

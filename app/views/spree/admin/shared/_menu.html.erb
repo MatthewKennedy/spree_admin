@@ -9,7 +9,7 @@
   <div id="navHeader" class="py-2 position-absolute top-0 w-100">
     <div class="d-flex align-items-center">
       <div class="flex-fill" style="height: 40px;">
-        <%= inline_svg_tag "spree/backend/spree-logo.svg", size: '100px * 35px' %>
+        <%= spree_admin_svg_tag "admin-ui-logo.svg", size: '100px * 35px' %>
       </div>
       <div>
         <%= link_to_with_icon(I18n.t('spree.admin.search'), spree.new_admin_search_path, no_text: true, data: { turbo_frame: :modal }, class: 'btn btn-light d-none d-lg-inline-block m-1', icon: 'search.svg') %>
@@ -22,14 +22,14 @@
                 data-bs-target="aside#main-sidebar"
                 aria-label="Close">
 
-          <%= inline_svg_tag "x-lg.svg", size: '16px * 16px', class: 'p-0 m-0' %>
+          <%= spree_admin_svg_tag "x-lg.svg", size: '16px * 16px', class: 'p-0 m-0' %>
         </button>
       </div>
     </div>
 
     <div class="w-100 p-1">
       <%= link_to(spree.new_admin_search_path, data: { turbo_frame: :modal }, class: 'btn btn-light d-none d-lg-block w-100') do %>
-      <%= current_store.name %> <%= inline_svg_tag('shuffle.svg', class: "ms-3") %>
+      <%= current_store.name %> <%= spree_admin_svg_tag('shuffle.svg', class: "ms-3") %>
       <% end %>
     </div>
   </div>
@@ -58,15 +58,15 @@
 
   <div id="navFooter" class="d-flex bottom-0 position-absolute w-100 bg-light justify-content-center bg-light btn-group rounded-0">
     <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="0" class="btn btn-light p-2 rounded-0 <%= "active" if settings_menu_active? %>" aria-current="true" aria-label="Settings">
-      <%= inline_svg_tag "gear.svg", size: '16px * 16px', class: 'p-0 m-0' %>
+      <%= spree_admin_svg_tag "gear.svg", size: '16px * 16px', class: 'p-0 m-0' %>
     </button>
     <% if try_spree_current_user %>
       <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="1" class="btn btn-light p-2 rounded-0 <%= "active" if accounts_menu_active? %>" aria-label="Account">
-        <%= inline_svg_tag "person-square.svg", size: '16px * 16px', class: 'p-0 m-0' %>
+        <%= spree_admin_svg_tag "person-square.svg", size: '16px * 16px', class: 'p-0 m-0' %>
       </button>
     <% end %>
     <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="2" class="btn btn-light p-2 rounded-0 <%= "active" if main_menu_active? %>" aria-label="Main Menu">
-      <%= inline_svg_tag "list.svg", size: '16px * 16px', class: 'p-0 m-0' %>
+      <%= spree_admin_svg_tag "list.svg", size: '16px * 16px', class: 'p-0 m-0' %>
     </button>
   </div>
 </aside>

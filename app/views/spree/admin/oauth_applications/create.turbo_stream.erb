@@ -12,7 +12,7 @@
             <%= label_tag :client_id, I18n.t('spree.admin.oauth_applications.client_id') %>
           </div>
           <button data-action="clipboard#copy" class="btn btn-outline-secondary">
-            <%= inline_svg_tag 'clone.svg', size: '16px * 16px' %>
+            <%= spree_admin_svg_tag 'clone.svg', size: '16px * 16px' %>
             <%= I18n.t("spree.admin.copy_to_clipboard") %>
           </button>
         </div>
@@ -25,7 +25,7 @@
             <%= label_tag :client_secret, I18n.t('spree.admin.oauth_applications.client_secret') %>
           </div>
           <button data-action="clipboard#copy" class="btn btn-outline-secondary">
-            <%= inline_svg_tag 'clone.svg', size: '16px * 16px' %>
+            <%= spree_admin_svg_tag 'clone.svg', size: '16px * 16px' %>
             <%= I18n.t("spree.admin.copy_to_clipboard") %>
           </button>
         </div>

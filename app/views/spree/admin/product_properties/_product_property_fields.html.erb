@@ -29,7 +29,7 @@
         <%= link_to_delete(f.object, url: spree.admin_product_product_property_path(@product, f.object)) %>
       <% else %>
       <span class="btn btn-danger btn-sm icon-link disabled" style="opacity:0.2;">
-        <%= inline_svg_tag "delete.svg", size: '16px * 16px' %>
+        <%= spree_admin_svg_tag "delete.svg", size: '16px * 16px' %>
       </span>
       <% end %>
     </span>

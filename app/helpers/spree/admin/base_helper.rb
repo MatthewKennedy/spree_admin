@@ -25,7 +25,7 @@ module Spree
         end
 
         link_to remove_filter_url, class: "badge bg-secondary", id: "removeFilter-#{filter[0]}", data: {turbo_cache: "false"} do
-          (content_tag :span, I18n.t("spree.admin.filters.#{filter[0]}") + filter_value_text) + inline_svg_tag("x-lg.svg", size: "16px*16px")
+          (content_tag :span, I18n.t("spree.admin.filters.#{filter[0]}") + filter_value_text) + spree_admin_svg_tag("x-lg.svg", size: "16px*16px")
         end
       end
 
@@ -56,6 +56,12 @@ module Spree
           :div, capture(&block),
           options.merge(class: css_classes.join(" "), id: "#{model}_#{method}_field")
         )
+      end
+
+      def spree_admin_svg_tag(file_name, options = {})
+        prefixed_file = "spree/backend/#{file_name}"
+
+        inline_svg_tag(prefixed_file, options)
       end
 
       # Returns Humanized Dropdown Values From a Constant In the Model
