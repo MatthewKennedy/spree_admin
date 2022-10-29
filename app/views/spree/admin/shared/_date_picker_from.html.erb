@@ -4,6 +4,7 @@
 <% f ||= nil %>
 
 <div id="<%= "datePickerFrom_#{from_field.to_s}" %>" class="input-group" data-controller="datepicker"
+                                                                         data-datepicker-locale-value="<%= flatpickr_local_fallback %>"
                                                                          data-datepicker-from="true"
                                                                          data-wrap="true"
                                                                          data-max-date="<%= data_max_date %>"

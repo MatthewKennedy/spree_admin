@@ -5,7 +5,7 @@ import { RequestInterceptor, FetchRequest } from '@rails/request.js'
 //
 // Inject Authorization & Content-Type into @rails/request.js requests.
 RequestInterceptor.register(async request => {
-  request.addHeader('Authorization', `Bearer ${SpreeAdmin.OAUTH_TOKEN}`)
+  request.addHeader('Authorization', `Bearer ${SpreeAdmin.authorization.oauth_token}`)
 })
 
 //

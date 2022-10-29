@@ -3,11 +3,15 @@ import { Locales } from '../i18n/flatpickr'
 
 export default class extends Flatpickr {
   static targets = ['watch']
+  static values = {
+    locale: String
+  }
+
   locales = Locales
 
   connect () {
     this.config = {
-      locale: SpreeAdmin.translations.flatpickr_locale,
+      locale: this.localeValue,
       altInput: true,
       time_24hr: true,
       altInputClass: 'flatpickr-alt-input form-control rounded-start',
