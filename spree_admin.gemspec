@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
   s.requirements << "none"
 
-  s.add_dependency "babel-transpiler"
   s.add_dependency "inline_svg"
   s.add_dependency "jsbundling-rails"
   s.add_dependency "pagy"
