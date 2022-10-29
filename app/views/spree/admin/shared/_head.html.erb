@@ -40,7 +40,7 @@
 </script>
 
 <%= stylesheet_link_tag 'spree/backend/all', media: :all, data: { turbo_track: "reload" } %>
-<%= javascript_include_tag "spree_admin", data: { turbo_track: "reload" }, defered: true %>
+<%= javascript_include_tag "spree_admin", data: { turbo_track: "reload" }, defer: true %>
 
 <meta name="turbo-root" content="<%= Spree::Backend::Config[:admin_path] %>">
 
