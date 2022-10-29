@@ -90405,13 +90405,12 @@ const pathFor = function(path) {
 };
 
 SpreeAdmin$1.localizedPathFor = function(path) {
-  const currentCurrency = this.localization.current_currency;
+  const defaultLocale = this.localization.default_locale;
   const currentLocale = this.localization.current_locale;
-  if (typeof currentCurrency !== "undefined" && typeof currentLocale !== "undefined") {
+  if (defaultLocale !== currentLocale) {
     const fullUrl = new URL(pathFor(path));
     const params = fullUrl.searchParams;
     const pathName = fullUrl.pathname;
-    params.set("currency", currentCurrency);
     params.set("locale", currentLocale);
     return fullUrl.origin + pathName + "?" + params.toString();
   }
