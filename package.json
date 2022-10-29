@@ -21,7 +21,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.1.0",
     "@hotwired/turbo-rails": "^7.2.0",
-    "@popperjs/core": "^2.11.5",
+    "@popperjs/core": "^2.10",
     "@rails/request.js": "^0.0.6",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.2.0",
@@ -39,7 +39,7 @@
     "stimulus-sortable": "^3.1.0",
     "stimulus-use": "^0.51.0",
     "tinymce": "^6.0.2",
-    "tom-select": "^2.2.0"
+    "tom-select": "^2.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",

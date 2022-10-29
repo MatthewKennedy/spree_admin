@@ -67,13 +67,13 @@
   integrity sha512-c3xlOroHp/cCZHDOuLp6uzQYEbvXBUVaal0puXoGJ9M8L/KHwZ3hQozD4dVeSN9msHWLxxtmPT1TlCN7gFhj4w==
 
 "@humanwhocodes/config-array@^0.11.6":
-  version "0.11.6"
-  resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.6.tgz#6a51d603a3aaf8d4cf45b42b3f2ac9318a4adc4b"
-  integrity sha512-jJr+hPTJYKyDILJfhNSHsjiwXYf26Flsz8DvNndOsHs5pwSnpGUEy8yzF0JYhCEvTDdV2vuOK5tt8BVhwO5/hg==
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.7.tgz#38aec044c6c828f6ed51d5d7ae3d9b9faf6dbb0f"
+  integrity sha512-kBbPWzN8oVMLb0hOUYXhmxggL/1cJE6ydvjDIGi9EnAGUyA7cLVKQg+d/Dsm+KZwx2czGHrCmMVLiyg8s5JPKw==
   dependencies:
     "@humanwhocodes/object-schema" "^1.2.1"
     debug "^4.1.1"
-    minimatch "^3.0.4"
+    minimatch "^3.0.5"
 
 "@humanwhocodes/module-importer@^1.0.1":
   version "1.0.1"
@@ -158,7 +158,7 @@
   resolved "https://registry.yarnpkg.com/@orchidjs/unicode-variants/-/unicode-variants-1.0.4.tgz#6d2f812e3b19545bba2d81caffff1204de9a6a58"
   integrity sha512-NvVBRnZNE+dugiXERFsET1JlKZfM5lJDEpSMilKW4bToYJ7pxf0Zne78xyXB2ny2c2aHfJ6WLnz1AaTNHAmQeQ==
 
-"@popperjs/core@^2.11.5":
+"@popperjs/core@^2.10":
   version "2.11.6"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
@@ -1992,7 +1992,7 @@ min-indent@^1.0.0:
   resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
 
-minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
+minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
   integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
@@ -3259,7 +3259,7 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-tom-select@^2.2.0:
+tom-select@^2.0.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/tom-select/-/tom-select-2.2.2.tgz#8e5f9296e6d80254feccb57f0986bd6c44d126e2"
   integrity sha512-igGah1yY6yhrnN2h/Ky8I5muw/nE/YQxIsEZoYu5qaA4bsRibvKto3s8QZZosKpOd0uO8fNYhRfAwgHB4IAYew==
