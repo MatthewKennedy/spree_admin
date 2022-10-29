@@ -62,12 +62,12 @@ Install Spree Admin
    bin/rails g spree:backend:install
 ```
 
-### Use @omes/admin NPM - OPTIONAL
+### Use Javascript from NPM package - (OPTIONAL)
 If you are using NPM to manage your javascript and want to import the javascript via node_modules run:
 ```bash
-   yarn add "@omes/admin"
+   yarn add @matthewkennedy/spree_admin
 ```
-And then create a new file in `app/javascript` called `spree_admin.js` and then import `import '@omes/admin'`.
+And then create a new file in `app/javascript` called `spree_admin.js` and then import `import '@matthewkennedy/spree_admin'`.
 
 
 ## Development Setup (JavaScript, SCSS)
