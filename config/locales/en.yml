@@ -196,7 +196,6 @@ en:
         menu_item_icon: Menu item icon
         menu_items: "%{menu_name} Items"
         menus: Menus
-        move_could_not_be_saved: 'ERROR: This move could not be saved.'
         nested_under: Nested Under
         nested_under_info: Quickly nest your Menu Item if you already know where it needs to be.
         new_menu: New Menu

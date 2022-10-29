@@ -24,8 +24,9 @@ export default class extends Controller {
       target: this.element,
       plugins: this.pluginsValue,
       menubar: this.menubarValue,
-      toolbar: this.toolbarValue
-
+      toolbar: this.toolbarValue,
+      skin: false,
+      content_css: false
     }
   }
 
