@@ -75,37 +75,7 @@
     "globals": [
       "SpreeAdmin",
       "Turbo",
-      "URL",
-      "SPREE_CURRENCY",
-      "SPREE_LOCALE",
-      "SpreeAdmin.OAUTH_TOKEN",
-      "Handlebars",
-      "SpreeAdmin.ADDRESS_FIELDS",
-      "clearTimeout",
-      "setTimeout",
-      "jQuery",
-      "FormData",
-      "$",
-      "document",
-      "window",
-      "console",
-      "fetch",
-      "Rails",
-      "updateAddressState",
-      "toggleItemEdit",
-      "confirm",
-      "_",
-      "variantLineItemTemplate",
-      "variantTemplate",
-      "orderNumber",
-      "Option",
-      "orderId",
-      "jsonApiVariants",
-      "alert",
-      "variants",
-      "spreeWindowReload",
-      "formatSelect2Options",
-      "productTemplate"
+      "FormData"
     ]
   }
 }
