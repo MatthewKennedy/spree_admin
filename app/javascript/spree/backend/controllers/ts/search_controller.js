@@ -1,6 +1,6 @@
 import StimulusTomSelect from './stimulus_tom_select'
 import { get } from '../../utilities/request_utility'
-import { deserialize } from 'deserialize-json-api'
+import { deserialize } from '@matthewkennedy/json-api-deserializer'
 
 // Connects to data-controller="ts--search"
 export default class extends StimulusTomSelect {

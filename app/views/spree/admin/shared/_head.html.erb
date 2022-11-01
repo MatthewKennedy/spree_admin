@@ -21,14 +21,13 @@
 
     // Localization
     SpreeAdmin.localization = <%== {
-      current_currency: current_currency,
-      current_locale: I18n.locale
+      current_locale: I18n.locale,
+      default_locale: I18n.default_locale
     }.to_json %>
 
-    // Paths
-    SpreePaths = <%== {
-      mounted_at: Rails.application.routes.url_helpers.spree_path(trailing_slash: true),
-      admin: Spree.admin_path.gsub(/\A(\/)?(.*[^\/])(\/)?\z/, '\\2/')
+    // Path
+    SpreeAdmin.paths = <%== {
+      platform_api_mounted_at: Rails.application.routes.url_helpers.spree_path(trailing_slash: true)
     }.to_json %>
 
     // Authorization

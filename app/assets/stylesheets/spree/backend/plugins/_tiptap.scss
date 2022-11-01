@@ -1,0 +1,65 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  max-height: 26rem;
+  color: $input-color;
+  background-color: $input-bg;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+}
+
+.editor__header {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  padding: .25rem;
+  border-bottom: $input-border-width solid $input-border-color;
+
+  .divider {
+    width: 2px;
+    height: 1.25rem;
+    background-color: #0000001a;
+    margin-left: .5rem;
+    margin-right: .75rem;
+  }
+}
+
+.ProseMirror {
+  padding: 1.25rem 1rem;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.menu-item {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: $input-color;
+  border: none;
+  background-color: transparent;
+  border-radius: $input-border-radius;
+  padding: .25rem;
+  margin-right: .25rem;
+  display: flex;
+
+  &:hover,
+  &.is-active {
+    color: #fff;
+    background-color: $input-color;
+
+    .svg {
+       color: #fff;
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.2;
+    cursor: not-allowed;
+
+    &:hover {
+      color: $input-color;
+      background: transparent;
+    }
+  }
+}

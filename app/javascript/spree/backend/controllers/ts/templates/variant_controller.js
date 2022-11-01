@@ -1,5 +1,5 @@
 import TsSearchController from '../search_controller.js'
-import { deserialize } from 'deserialize-json-api'
+import { deserialize } from '@matthewkennedy/json-api-deserializer'
 
 export default class extends TsSearchController {
   initialize () {

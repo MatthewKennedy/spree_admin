@@ -11,13 +11,6 @@
     }
 
     .flatpickr-monthDropdown-months {
-      @include prefix(
-        (
-          appearance: none
-        ),
-        webkit moz ms khtml
-      );
-
       padding: 0.2em;
       border-radius: var(--bs-border-radius);
     }
