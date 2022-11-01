@@ -34150,7 +34150,7 @@ const Link = Mark.create({
 });
 
 class TipTapEditorController extends Controller$1 {
-  static targets=[ "input", "boldBtn", "italicBtn", "strikeBtn", "undoBtn", "redoBtn", "linkBtn", "unlinkBtn" ];
+  static targets=[ "input", "boldBtn", "italicBtn", "strikeBtn", "paragraphBtn", "headingOneBtn", "headingTwoBtn", "headingThreeBtn", "headingFourBtn", "headingFiveBtn", "headingSixBtn", "undoBtn", "redoBtn", "linkBtn", "unlinkBtn" ];
   initialize() {
     this.config = {};
   }
@@ -34198,6 +34198,67 @@ class TipTapEditorController extends Controller$1 {
         this.strikeBtnTarget.classList.remove("is-active");
       }
     }
+    if (this.hasParagraphBtnTarget) {
+      if (this.editor.isActive("paragraph")) {
+        this.paragraphBtnTarget.classList.add("is-active");
+      } else {
+        this.paragraphBtnTarget.classList.remove("is-active");
+      }
+    }
+    if (this.hasHeadingOneBtnTarget) {
+      if (this.editor.isActive("heading", {
+        level: 1
+      })) {
+        this.headingOneBtnTarget.classList.add("is-active");
+      } else {
+        this.headingOneBtnTarget.classList.remove("is-active");
+      }
+    }
+    if (this.hasHeadingTwoBtnTarget) {
+      if (this.editor.isActive("heading", {
+        level: 2
+      })) {
+        this.headingTwoBtnTarget.classList.add("is-active");
+      } else {
+        this.headingTwoBtnTarget.classList.remove("is-active");
+      }
+    }
+    if (this.hasHeadingThreeBtnTarget) {
+      if (this.editor.isActive("heading", {
+        level: 3
+      })) {
+        this.headingThreeBtnTarget.classList.add("is-active");
+      } else {
+        this.headingThreeBtnTarget.classList.remove("is-active");
+      }
+    }
+    if (this.hasHeadingFourBtnTarget) {
+      if (this.editor.isActive("heading", {
+        level: 4
+      })) {
+        this.headingFourBtnTarget.classList.add("is-active");
+      } else {
+        this.headingFourBtnTarget.classList.remove("is-active");
+      }
+    }
+    if (this.hasHeadingFiveBtnTarget) {
+      if (this.editor.isActive("heading", {
+        level: 5
+      })) {
+        this.headingFiveBtnTarget.classList.add("is-active");
+      } else {
+        this.headingFiveBtnTarget.classList.remove("is-active");
+      }
+    }
+    if (this.hasHeadingSixBtnTarget) {
+      if (this.editor.isActive("heading", {
+        level: 6
+      })) {
+        this.headingSixBtnTarget.classList.add("is-active");
+      } else {
+        this.headingSixBtnTarget.classList.remove("is-active");
+      }
+    }
     if (this.hasUndoBtnTarget) {
       if (!this.editor.can().chain().focus().undo().run()) {
         this.undoBtnTarget.disabled = true;
@@ -34230,7 +34291,8 @@ class TipTapEditorController extends Controller$1 {
   }
   buttonAction(event) {
     event.preventDefault();
-    this.editor.chain().focus()[event.params.buttonAction]().run();
+    this.editor.chain().focus()[event.params.buttonAction](event.params.buttonActionArgs).run();
+    this.updateButtonState();
   }
   disconnect() {
     this.editor.destroy();

@@ -23,6 +23,40 @@
   </button>
 
 <div class="divider"></div>
+  <button data-tiptap--editor-target="headingOneBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="toggleHeading"
+          data-tiptap--editor-button-action-args-param='{ "level": 1 }'
+          data-tiptap--editor-is-active-param="true"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'heading-1.svg', width: '20px', height: '20px' %>
+  </button>
+  <button data-tiptap--editor-target="headingTwoBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="toggleHeading"
+          data-tiptap--editor-button-action-args-param='{ "level": 2 }'
+          data-tiptap--editor-is-active-param="true"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'heading-2.svg', width: '20px', height: '20px' %>
+  </button>
+  <button data-tiptap--editor-target="headingThreeBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="toggleHeading"
+          data-tiptap--editor-button-action-args-param='{ "level": 3 }'
+          data-tiptap--editor-is-active-param="true"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'heading-3.svg', width: '20px', height: '20px' %>
+  </button>
+  <button data-tiptap--editor-target="paragraphBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="setParagraph"
+          data-tiptap--editor-is-active-param="true"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'paragraph.svg', width: '20px', height: '20px' %>
+  </button>
+
+<div class="divider"></div>
+
   <%# Link / Un-link %>
   <button data-tiptap--editor-target="linkBtn"
           data-action="tiptap--editor#setLink"
@@ -32,7 +66,6 @@
   <button data-tiptap--editor-target="linkBtn"
           data-action="tiptap--editor#buttonAction"
           data-tiptap--editor-button-action-param="unsetLink"
-          data-tiptap--editor-is-active-param="true"
           class="menu-item">
     <%= spree_admin_svg_tag 'unlink.svg', width: '20px', height: '20px' %>
   </button>
