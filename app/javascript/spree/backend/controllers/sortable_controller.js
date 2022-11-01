@@ -2,8 +2,7 @@ import Sortable from 'stimulus-sortable'
 import { patch } from '../utilities/request_utility'
 
 export default class extends Sortable {
-  async end ({ item, newIndex, oldIndex }) {
-    if (newIndex === oldIndex) return
+  async onUpdate ({ item, newIndex, oldIndex }) {
     if (!item.dataset.sortableUpdateUrl) return
 
     const param = this.resourceNameValue ? `${this.resourceNameValue}[${this.paramNameValue}]` : this.paramNameValue

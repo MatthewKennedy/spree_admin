@@ -1,7 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 import postcss from 'rollup-plugin-postcss'
-import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json' assert { type: 'json' }
 
 const postCssOptions = {
@@ -19,7 +18,7 @@ const postCssOptions = {
 export default [
   { // CSS
     input: './postcss_styles.js',
-    output: [{ file: './lib/assets/stylesheets/spree_admin.css' }],
+    output: [{ file: './app/assets/stylesheets/spree_admin.css' }],
     plugins: [
       postcss(postCssOptions)
     ]
@@ -33,7 +32,7 @@ export default [
     },
     plugins: [
       resolve(),
-      commonjs(),
+
       terser({
         mangle: false,
         compress: false,
@@ -55,7 +54,7 @@ export default [
     },
     plugins: [
       resolve(),
-      commonjs(),
+
       terser({
         mangle: true,
         compress: true

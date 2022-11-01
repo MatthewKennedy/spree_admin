@@ -1,0 +1,58 @@
+<div class="editor__header">
+  <%# Text Formatting %>
+  <button data-tiptap--editor-target="boldBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="toggleBold"
+          data-tiptap--editor-is-active-param="true"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'bold.svg', width: '20px', height: '20px' %>
+  </button>
+  <button data-tiptap--editor-target="italicBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="toggleItalic"
+          data-tiptap--editor-is-active-param="true"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'italic.svg', width: '20px', height: '20px' %>
+  </button>
+  <button data-tiptap--editor-target="strikeBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="toggleStrike"
+          data-tiptap--editor-is-active-param="true"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'strike.svg', width: '20px', height: '20px' %>
+  </button>
+
+<div class="divider"></div>
+  <%# Link / Un-link %>
+  <button data-tiptap--editor-target="linkBtn"
+          data-action="tiptap--editor#setLink"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'link.svg', width: '20px', height: '20px' %>
+  </button>
+  <button data-tiptap--editor-target="linkBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="unsetLink"
+          data-tiptap--editor-is-active-param="true"
+          class="menu-item">
+    <%= spree_admin_svg_tag 'unlink.svg', width: '20px', height: '20px' %>
+  </button>
+
+<div class="divider"></div>
+  <%# Undo / Redo %>
+  <button data-tiptap--editor-target="undoBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="undo"
+          data-tiptap--editor-is-disabled-param="true"
+          class="menu-item" disabled>
+    <%= spree_admin_svg_tag 'undo.svg', width: '20px', height: '20px' %>
+  </button>
+  <button data-tiptap--editor-target="redoBtn"
+          data-action="tiptap--editor#buttonAction"
+          data-tiptap--editor-button-action-param="redo"
+          data-tiptap--editor-is-disabled-param="true"
+          class="menu-item"
+          title="Redo"
+          disabled>
+    <%= spree_admin_svg_tag 'redo.svg', width: '20px', height: '20px' %>
+  </button>
+</div>

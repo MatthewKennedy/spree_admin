@@ -20,11 +20,17 @@
           <%= f.label :slug, raw(Spree.t(:slug) + required_span_tag) %>
         <% end %>
 
-        <%= f.field_container :description do %>
-          <%= f.label :description, Spree.t(:description) %>
-          <%= f.text_area :description, {rows: 15, data: { controller: "#{'rte' if product_wysiwyg_editor_enabled?}", form_state_target: "watch" }} %>
+        <% if product_wysiwyg_editor_enabled? %>
+          <%= f.field_container :description, data: {controller: "tiptap--editor"}, class: ["editor"] do %>
+            <%= f.text_field :description, {data: { tiptap__editor_target: "input", form_state_target: "watch" }} %>
+            <%= render partial: 'spree/admin/shared/editor_buttons' %>
+          <% end %>
+        <% else %>
+          <%= f.field_container :description do %>
+            <%= f.label :description, Spree.t(:description) %>
+            <%= f.text_area :description, {rows: 15, form_state_target: "watch" } %>
+          <% end %>
         <% end %>
-
         <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>

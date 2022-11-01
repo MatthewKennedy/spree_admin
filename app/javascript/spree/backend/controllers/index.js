@@ -21,10 +21,11 @@ import MenuController from './menu_controller'
 import ModalController from './modal_controller'
 import NumberIncrementController from './number_increment_controller'
 import PasswordToggleController from './password_toggle_controller'
-import RteController from './rte_controller'
+// import RteController from './rte_controller'
 import RequiredController from './input/required_controller'
 import Sortable from './sortable_controller'
 import SortableTreeController from './sortable_tree_controller'
+import TipTapEditorController from './tiptap/editor_controller'
 import ToastController from './toast_controller'
 import TsSearchController from './ts/search_controller'
 import TsSelectController from './ts/select_controller'
@@ -53,10 +54,11 @@ Stimulus.register('menu', MenuController)
 Stimulus.register('modal', ModalController)
 Stimulus.register('number-increment', NumberIncrementController)
 Stimulus.register('password-toggle', PasswordToggleController)
-Stimulus.register('rte', RteController)
+// Stimulus.register('rte', RteController)
 Stimulus.register('sortable', Sortable)
 Stimulus.register('sortable-tree', SortableTreeController)
 Stimulus.register('toast', ToastController)
+Stimulus.register('tiptap--editor', TipTapEditorController)
 Stimulus.register('ts--search', TsSearchController)
 Stimulus.register('ts--select', TsSelectController)
 Stimulus.register('ts--search-user', userSearchController)
