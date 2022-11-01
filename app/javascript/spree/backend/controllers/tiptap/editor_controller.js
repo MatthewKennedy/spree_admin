@@ -13,6 +13,7 @@ export default class extends Controller {
   connect () {
     const input = this.inputTarget
     const editorContent = input.value
+    const inputEvent = new Event('input')
 
     input.style.display = 'none'
 
@@ -31,6 +32,7 @@ export default class extends Controller {
       onUpdate ({ editor }) {
         const html = this.getHTML()
         input.value = html.toString()
+        input.dispatchEvent(inputEvent) // Allow any change listeners on the input to notice the text has changed.
       },
       onSelectionUpdate: () => this.updateButtonState()
     })

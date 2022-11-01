@@ -34157,6 +34157,7 @@ class TipTapEditorController extends Controller$1 {
   connect() {
     const input = this.inputTarget;
     const editorContent = input.value;
+    const inputEvent = new Event("input");
     input.style.display = "none";
     this.editor = new Editor({
       element: this.element,
@@ -34170,6 +34171,7 @@ class TipTapEditorController extends Controller$1 {
       onUpdate({editor: editor}) {
         const html = this.getHTML();
         input.value = html.toString();
+        input.dispatchEvent(inputEvent);
       },
       onSelectionUpdate: () => this.updateButtonState()
     });
