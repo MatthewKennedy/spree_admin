@@ -34231,6 +34231,8 @@ class TipTapEditorController extends Controller$1 {
       autofocus: true,
       editable: true,
       injectCSS: true,
+      onFocus: () => this.updateButtonState(),
+      onBlur: () => this.updateButtonState(),
       onUpdate({editor: editor}) {
         const html = this.getHTML();
         input.value = html.toString();
@@ -34344,7 +34346,7 @@ class TipTapEditorController extends Controller$1 {
       }
     }
   }
-  addImage() {
+  addImage(event) {
     event.preventDefault();
     const url = window.prompt("URL");
     if (url) {

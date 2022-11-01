@@ -5,8 +5,10 @@ import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
 
 export default class extends Controller {
-  static targets = ['input', 'boldBtn', 'italicBtn', 'strikeBtn', 'paragraphBtn', 'headingOneBtn', 'headingTwoBtn',
-    'headingThreeBtn', 'headingFourBtn', 'headingFiveBtn', 'headingSixBtn', 'undoBtn', 'redoBtn', 'linkBtn', 'unlinkBtn',
+  static targets = [
+    'input', 'boldBtn', 'italicBtn', 'strikeBtn', 'paragraphBtn',
+    'headingOneBtn', 'headingTwoBtn', 'headingThreeBtn', 'headingFourBtn',
+    'headingFiveBtn', 'headingSixBtn', 'undoBtn', 'redoBtn', 'linkBtn', 'unlinkBtn',
     'horizontalRuleBtn', 'blockquoteBtn', 'bulletListBtn', 'orderedListBtn']
 
   initialize () {
@@ -33,6 +35,8 @@ export default class extends Controller {
       autofocus: true,
       editable: true,
       injectCSS: true,
+      onFocus: () => this.updateButtonState(),
+      onBlur: () => this.updateButtonState(),
       onUpdate ({ editor }) {
         const html = this.getHTML()
         input.value = html.toString()
@@ -42,11 +46,6 @@ export default class extends Controller {
     })
   }
 
-  // Controlling Button State
-  //
-  // If the cursor is placed within bold text, the Bold button is marked as active
-  // For Undo / Redo buttons a disable or not disabled state is set based on the
-  // validity of use.
   updateButtonState () {
     // Bold
     if (this.hasBoldBtnTarget) {
