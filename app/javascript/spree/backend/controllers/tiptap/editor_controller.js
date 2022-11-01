@@ -88,7 +88,7 @@ export default class extends Controller {
     }
   }
 
-  setLink () {
+  setLink (event) {
     event.preventDefault()
     const previousUrl = this.editor.getAttributes('link').href
     const url = window.prompt('URL', previousUrl)

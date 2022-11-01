@@ -34211,7 +34211,7 @@ class TipTapEditorController extends Controller$1 {
       }
     }
   }
-  setLink() {
+  setLink(event) {
     event.preventDefault();
     const previousUrl = this.editor.getAttributes("link").href;
     const url = window.prompt("URL", previousUrl);
