@@ -166,7 +166,7 @@ export default class extends Controller {
     }
   }
 
-  addImage () {
+  addImage (event) {
     event.preventDefault()
     const url = window.prompt('URL')
 
