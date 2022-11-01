@@ -23,11 +23,11 @@ export default class extends Controller {
     this.editor = new Editor({
       element: this.element,
       extensions: [
+        Image,
         StarterKit,
         Link.configure({
           openOnClick: false
-        }),
-        Image
+        })
       ],
       content: editorContent,
       autofocus: true,
@@ -216,7 +216,6 @@ export default class extends Controller {
     event.preventDefault()
 
     this.editor.chain().focus()[event.params.buttonAction](event.params.buttonActionArgs).run()
-
     this.updateButtonState()
   }
 

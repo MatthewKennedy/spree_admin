@@ -34224,9 +34224,9 @@ class TipTapEditorController extends Controller$1 {
     input.style.display = "none";
     this.editor = new Editor({
       element: this.element,
-      extensions: [ StarterKit, Link.configure({
+      extensions: [ Image, StarterKit, Link.configure({
         openOnClick: false
-      }), Image ],
+      }) ],
       content: editorContent,
       autofocus: true,
       editable: true,
