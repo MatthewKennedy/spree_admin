@@ -31362,7 +31362,7 @@ function markPasteRule(config) {
   });
 }
 
-const inputRegex$4 = /^\s*>\s$/;
+const inputRegex$5 = /^\s*>\s$/;
 
 const Blockquote = Node$1.create({
   name: "blockquote",
@@ -31396,7 +31396,7 @@ const Blockquote = Node$1.create({
   },
   addInputRules() {
     return [ wrappingInputRule({
-      find: inputRegex$4,
+      find: inputRegex$5,
       type: this.type
     }) ];
   }
@@ -31464,7 +31464,7 @@ const Bold = Mark.create({
   }
 });
 
-const inputRegex$3 = /^\s*([-+*])\s$/;
+const inputRegex$4 = /^\s*([-+*])\s$/;
 
 const BulletList = Node$1.create({
   name: "bulletList",
@@ -31498,13 +31498,13 @@ const BulletList = Node$1.create({
   },
   addInputRules() {
     return [ wrappingInputRule({
-      find: inputRegex$3,
+      find: inputRegex$4,
       type: this.type
     }) ];
   }
 });
 
-const inputRegex$2 = /(?:^|\s)((?:`)((?:[^`]+))(?:`))$/;
+const inputRegex$3 = /(?:^|\s)((?:`)((?:[^`]+))(?:`))$/;
 
 const pasteRegex$1 = /(?:^|\s)((?:`)((?:[^`]+))(?:`))/g;
 
@@ -31540,7 +31540,7 @@ const Code = Mark.create({
   },
   addInputRules() {
     return [ markInputRule({
-      find: inputRegex$2,
+      find: inputRegex$3,
       type: this.type
     }) ];
   },
@@ -32878,7 +32878,7 @@ const ListItem = Node$1.create({
   }
 });
 
-const inputRegex$1 = /^(\d+)\.\s$/;
+const inputRegex$2 = /^(\d+)\.\s$/;
 
 const OrderedList = Node$1.create({
   name: "orderedList",
@@ -32921,7 +32921,7 @@ const OrderedList = Node$1.create({
   },
   addInputRules() {
     return [ wrappingInputRule({
-      find: inputRegex$1,
+      find: inputRegex$2,
       type: this.type,
       getAttributes: match => ({
         start: +match[1]
@@ -32961,7 +32961,7 @@ const Paragraph = Node$1.create({
   }
 });
 
-const inputRegex = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))$/;
+const inputRegex$1 = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))$/;
 
 const pasteRegex = /(?:^|\s)((?:~~)((?:[^~]+))(?:~~))/g;
 
@@ -33002,7 +33002,7 @@ const Strike = Mark.create({
   },
   addInputRules() {
     return [ markInputRule({
-      find: inputRegex,
+      find: inputRegex$1,
       type: this.type
     }) ];
   },
@@ -34149,8 +34149,71 @@ const Link = Mark.create({
   }
 });
 
+const inputRegex = /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/;
+
+const Image = Node$1.create({
+  name: "image",
+  addOptions() {
+    return {
+      inline: false,
+      allowBase64: false,
+      HTMLAttributes: {}
+    };
+  },
+  inline() {
+    return this.options.inline;
+  },
+  group() {
+    return this.options.inline ? "inline" : "block";
+  },
+  draggable: true,
+  addAttributes() {
+    return {
+      src: {
+        default: null
+      },
+      alt: {
+        default: null
+      },
+      title: {
+        default: null
+      }
+    };
+  },
+  parseHTML() {
+    return [ {
+      tag: this.options.allowBase64 ? "img[src]" : 'img[src]:not([src^="data:"])'
+    } ];
+  },
+  renderHTML({HTMLAttributes: HTMLAttributes}) {
+    return [ "img", mergeAttributes(this.options.HTMLAttributes, HTMLAttributes) ];
+  },
+  addCommands() {
+    return {
+      setImage: options => ({commands: commands}) => commands.insertContent({
+        type: this.name,
+        attrs: options
+      })
+    };
+  },
+  addInputRules() {
+    return [ nodeInputRule({
+      find: inputRegex,
+      type: this.type,
+      getAttributes: match => {
+        const [, , alt, src, title] = match;
+        return {
+          src: src,
+          alt: alt,
+          title: title
+        };
+      }
+    }) ];
+  }
+});
+
 class TipTapEditorController extends Controller$1 {
-  static targets=[ "input", "boldBtn", "italicBtn", "strikeBtn", "paragraphBtn", "headingOneBtn", "headingTwoBtn", "headingThreeBtn", "headingFourBtn", "headingFiveBtn", "headingSixBtn", "undoBtn", "redoBtn", "linkBtn", "unlinkBtn" ];
+  static targets=[ "input", "boldBtn", "italicBtn", "strikeBtn", "paragraphBtn", "headingOneBtn", "headingTwoBtn", "headingThreeBtn", "headingFourBtn", "headingFiveBtn", "headingSixBtn", "undoBtn", "redoBtn", "linkBtn", "unlinkBtn", "horizontalRuleBtn", "blockquoteBtn", "bulletListBtn", "orderedListBtn" ];
   initialize() {
     this.config = {};
   }
@@ -34163,7 +34226,7 @@ class TipTapEditorController extends Controller$1 {
       element: this.element,
       extensions: [ StarterKit, Link.configure({
         openOnClick: false
-      }) ],
+      }), Image ],
       content: editorContent,
       autofocus: true,
       editable: true,
@@ -34259,6 +34322,13 @@ class TipTapEditorController extends Controller$1 {
         this.headingSixBtnTarget.classList.remove("is-active");
       }
     }
+    if (this.hasBlockquoteBtnTarget) {
+      if (this.editor.isActive("blockquote")) {
+        this.blockquoteBtnTarget.classList.add("is-active");
+      } else {
+        this.blockquoteBtnTarget.classList.remove("is-active");
+      }
+    }
     if (this.hasUndoBtnTarget) {
       if (!this.editor.can().chain().focus().undo().run()) {
         this.undoBtnTarget.disabled = true;
@@ -34273,6 +34343,19 @@ class TipTapEditorController extends Controller$1 {
         this.redoBtnTarget.disabled = false;
       }
     }
+  }
+  addImage() {
+    event.preventDefault();
+    const url = window.prompt("URL");
+    if (url) {
+      this.editor.chain().focus().setImage({
+        src: url
+      }).run();
+    }
+    if (!this.editor) {
+      return null;
+    }
+    return this.editor;
   }
   setLink(event) {
     event.preventDefault();

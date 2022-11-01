@@ -2,10 +2,12 @@ import { Controller } from '@hotwired/stimulus'
 import { Editor } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
+import Image from '@tiptap/extension-image'
 
 export default class extends Controller {
   static targets = ['input', 'boldBtn', 'italicBtn', 'strikeBtn', 'paragraphBtn', 'headingOneBtn', 'headingTwoBtn',
-    'headingThreeBtn', 'headingFourBtn', 'headingFiveBtn', 'headingSixBtn', 'undoBtn', 'redoBtn', 'linkBtn', 'unlinkBtn']
+    'headingThreeBtn', 'headingFourBtn', 'headingFiveBtn', 'headingSixBtn', 'undoBtn', 'redoBtn', 'linkBtn', 'unlinkBtn',
+    'horizontalRuleBtn', 'blockquoteBtn', 'bulletListBtn', 'orderedListBtn']
 
   initialize () {
     this.config = {}
@@ -24,7 +26,8 @@ export default class extends Controller {
         StarterKit,
         Link.configure({
           openOnClick: false
-        })
+        }),
+        Image
       ],
       content: editorContent,
       autofocus: true,
@@ -135,6 +138,15 @@ export default class extends Controller {
       }
     }
 
+    // Block Quote
+    if (this.hasBlockquoteBtnTarget) {
+      if (this.editor.isActive('blockquote')) {
+        this.blockquoteBtnTarget.classList.add('is-active')
+      } else {
+        this.blockquoteBtnTarget.classList.remove('is-active')
+      }
+    }
+
     // Undo
     if (this.hasUndoBtnTarget) {
       if (!this.editor.can().chain().focus().undo().run()) {
@@ -152,6 +164,21 @@ export default class extends Controller {
         this.redoBtnTarget.disabled = false
       }
     }
+  }
+
+  addImage () {
+    event.preventDefault()
+    const url = window.prompt('URL')
+
+    if (url) {
+      this.editor.chain().focus().setImage({ src: url }).run()
+    }
+
+    if (!this.editor) {
+      return null
+    }
+
+    return this.editor
   }
 
   setLink (event) {
