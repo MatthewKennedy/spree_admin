@@ -2,9 +2,14 @@ import { Controller } from '@hotwired/stimulus'
 import { Editor } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
+import Image from '@tiptap/extension-image'
 
 export default class extends Controller {
-  static targets = ['input', 'boldBtn', 'italicBtn', 'strikeBtn', 'undoBtn', 'redoBtn', 'linkBtn', 'unlinkBtn']
+  static targets = [
+    'input', 'boldBtn', 'italicBtn', 'strikeBtn', 'paragraphBtn',
+    'headingOneBtn', 'headingTwoBtn', 'headingThreeBtn', 'headingFourBtn',
+    'headingFiveBtn', 'headingSixBtn', 'undoBtn', 'redoBtn', 'linkBtn', 'unlinkBtn',
+    'horizontalRuleBtn', 'blockquoteBtn', 'bulletListBtn', 'orderedListBtn']
 
   initialize () {
     this.config = {}
@@ -20,6 +25,7 @@ export default class extends Controller {
     this.editor = new Editor({
       element: this.element,
       extensions: [
+        Image,
         StarterKit,
         Link.configure({
           openOnClick: false
@@ -29,6 +35,8 @@ export default class extends Controller {
       autofocus: true,
       editable: true,
       injectCSS: true,
+      onFocus: () => this.updateButtonState(),
+      onBlur: () => this.updateButtonState(),
       onUpdate ({ editor }) {
         const html = this.getHTML()
         input.value = html.toString()
@@ -38,11 +46,6 @@ export default class extends Controller {
     })
   }
 
-  // Controlling Button State
-  //
-  // If the cursor is placed within bold text, the Bold button is marked as active
-  // For Undo / Redo buttons a disable or not disabled state is set based on the
-  // validity of use.
   updateButtonState () {
     // Bold
     if (this.hasBoldBtnTarget) {
@@ -71,6 +74,78 @@ export default class extends Controller {
       }
     }
 
+    // Paragraph
+    if (this.hasParagraphBtnTarget) {
+      if (this.editor.isActive('paragraph')) {
+        this.paragraphBtnTarget.classList.add('is-active')
+      } else {
+        this.paragraphBtnTarget.classList.remove('is-active')
+      }
+    }
+
+    // Heading Level 1
+    if (this.hasHeadingOneBtnTarget) {
+      if (this.editor.isActive('heading', { level: 1 })) {
+        this.headingOneBtnTarget.classList.add('is-active')
+      } else {
+        this.headingOneBtnTarget.classList.remove('is-active')
+      }
+    }
+
+    // Heading Level 2
+    if (this.hasHeadingTwoBtnTarget) {
+      if (this.editor.isActive('heading', { level: 2 })) {
+        this.headingTwoBtnTarget.classList.add('is-active')
+      } else {
+        this.headingTwoBtnTarget.classList.remove('is-active')
+      }
+    }
+
+    // Heading Level 3
+    if (this.hasHeadingThreeBtnTarget) {
+      if (this.editor.isActive('heading', { level: 3 })) {
+        this.headingThreeBtnTarget.classList.add('is-active')
+      } else {
+        this.headingThreeBtnTarget.classList.remove('is-active')
+      }
+    }
+
+    // Heading Level 4
+    if (this.hasHeadingFourBtnTarget) {
+      if (this.editor.isActive('heading', { level: 4 })) {
+        this.headingFourBtnTarget.classList.add('is-active')
+      } else {
+        this.headingFourBtnTarget.classList.remove('is-active')
+      }
+    }
+
+    // Heading Level 5
+    if (this.hasHeadingFiveBtnTarget) {
+      if (this.editor.isActive('heading', { level: 5 })) {
+        this.headingFiveBtnTarget.classList.add('is-active')
+      } else {
+        this.headingFiveBtnTarget.classList.remove('is-active')
+      }
+    }
+
+    // Heading Level 6
+    if (this.hasHeadingSixBtnTarget) {
+      if (this.editor.isActive('heading', { level: 6 })) {
+        this.headingSixBtnTarget.classList.add('is-active')
+      } else {
+        this.headingSixBtnTarget.classList.remove('is-active')
+      }
+    }
+
+    // Block Quote
+    if (this.hasBlockquoteBtnTarget) {
+      if (this.editor.isActive('blockquote')) {
+        this.blockquoteBtnTarget.classList.add('is-active')
+      } else {
+        this.blockquoteBtnTarget.classList.remove('is-active')
+      }
+    }
+
     // Undo
     if (this.hasUndoBtnTarget) {
       if (!this.editor.can().chain().focus().undo().run()) {
@@ -88,6 +163,21 @@ export default class extends Controller {
         this.redoBtnTarget.disabled = false
       }
     }
+  }
+
+  addImage (event) {
+    event.preventDefault()
+    const url = window.prompt('URL')
+
+    if (url) {
+      this.editor.chain().focus().setImage({ src: url }).run()
+    }
+
+    if (!this.editor) {
+      return null
+    }
+
+    return this.editor
   }
 
   setLink (event) {
@@ -123,7 +213,9 @@ export default class extends Controller {
 
   buttonAction (event) {
     event.preventDefault()
-    this.editor.chain().focus()[event.params.buttonAction]().run()
+
+    this.editor.chain().focus()[event.params.buttonAction](event.params.buttonActionArgs).run()
+    this.updateButtonState()
   }
 
   disconnect () {

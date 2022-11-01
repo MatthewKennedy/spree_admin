@@ -1,5 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import postcss from 'rollup-plugin-postcss'
 import pkg from './package.json' assert { type: 'json' }
 
@@ -32,7 +32,6 @@ export default [
     },
     plugins: [
       resolve(),
-
       terser({
         mangle: false,
         compress: false,
@@ -48,13 +47,12 @@ export default [
     input: pkg.module,
     output: {
       file: 'app/assets/javascripts/spree_admin.min.js',
-      format: 'es',
+      format: 'esm',
       inlineDynamicImports: true,
       sourcemap: true
     },
     plugins: [
       resolve(),
-
       terser({
         mangle: true,
         compress: true
