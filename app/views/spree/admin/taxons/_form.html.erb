@@ -21,9 +21,9 @@
             <% end %>
           <% end %>
 
-          <%= f.field_container :description do %>
-            <%= f.text_area :description, data: { controller: "rte" } %>
-            <%= f.label :description, I18n.t('spree.admin.description') %>
+          <%= f.field_container :description, data: { controller: 'tiptap--editor'}, class: ['none'] do %>
+            <%= render partial: 'spree/admin/shared/editor_buttons' %>
+            <%= f.text_field :description, { class: 'd-none', data: { tiptap__editor_target: "input", form_state_target: "watch" }} %>
           <% end %>
         </div>
       </div>

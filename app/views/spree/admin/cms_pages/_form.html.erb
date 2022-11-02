@@ -83,9 +83,9 @@
 
           <% if @cms_page.standard? %>
             <div class="card-body">
-              <%= f.field_container :content  do %>
-                <%= f.text_area :content, { data: { controller: 'rte', form_state_target: "watch"}, style: "height: 283px;" } %>
-                <%= f.label :content, I18n.t('spree.admin.cms.content') %>
+              <%= f.field_container :content, data: { controller: 'tiptap--editor'}, class: ['none'] do %>
+                <%= render partial: 'spree/admin/shared/editor_buttons' %>
+                <%= f.text_field :content, { class: 'd-none', data: { tiptap__editor_target: "input", form_state_target: "watch" }} %>
               <% end %>
             </div>
           <% end %>
