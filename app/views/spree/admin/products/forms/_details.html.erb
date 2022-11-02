@@ -21,9 +21,9 @@
         <% end %>
 
         <% if product_wysiwyg_editor_enabled? %>
-          <%= f.field_container :description, data: {controller: "tiptap--editor"}, class: ["editor"] do %>
-            <%= f.text_field :description, {data: { tiptap__editor_target: "input", form_state_target: "watch" }} %>
+          <%= f.field_container :description, data: {controller: "tiptap--editor"} do %>
             <%= render partial: 'spree/admin/shared/editor_buttons' %>
+            <%= f.text_field :description, { class: 'd-none', data: { tiptap__editor_target: "input", form_state_target: "watch" }} %>
           <% end %>
         <% else %>
           <%= f.field_container :description do %>
@@ -31,6 +31,7 @@
             <%= f.text_area :description, {rows: 15, form_state_target: "watch" } %>
           <% end %>
         <% end %>
+
         <%= render partial: 'spree/admin/shared/resource_actions' %>
       </div>
     </div>
