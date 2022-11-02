@@ -68,7 +68,6 @@
   },
   "standard": {
     "ignore": [
-      "lib/*",
       "app/assets/javascripts/*",
       "rollup.config.js"
     ],
