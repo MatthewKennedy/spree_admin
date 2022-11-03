@@ -32,7 +32,7 @@
 
     // Authorization
     SpreeAdmin.authorization = <%== {
-      oauth_token: admin_oauth_token
+      oauth_token: admin_oauth_token if defined?(admin_oauth_token)
     }.to_json %>
   })
 </script>
