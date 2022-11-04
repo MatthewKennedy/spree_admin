@@ -1,5 +1,4 @@
 name: Standard RB
-
 on:
   pull_request:
     branches:
@@ -10,7 +9,7 @@ on:
 
 jobs:
   standard:
-    name: StandardRB Check Action
+    name: Standard RB Check Action
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -21,5 +20,5 @@ jobs:
         ruby-version: 3.1
         bundler-cache: true
 
-    - name: Run StandardRB
+    - name: Run Standard RB
       run: bundle exec standardrb --format progress
