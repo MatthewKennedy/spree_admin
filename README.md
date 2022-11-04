@@ -4,8 +4,9 @@
 
 # Spree Admin
 
-Spree Admin is a fresh take on an Admin UI for Spree, it is currently intended to be experimental in the early stages,
-free from any legacy dependencies. The goal is to speed up development and find new intuitive ways of using Spree Admin while
+A fresh take on an Admin UI for Spree, this is currently intended to be experimental and should not be used for production Spree applications.
+
+Spree Admin is free of legacy dependencies and constraints. The goal is to speed up development and find new intuitive ways of using Spree Admin while
 completely modernizing the tech stack and user experience.
 
 
@@ -22,9 +23,9 @@ Starting with a freshly generated Rails 7 app, add the following gems to your Ge
 
 ```ruby
 # USE THESE FOR NOW...
-gem 'spree',                github: 'MatthewKennedy/spree',             branch: 'custom/spree_admin'
-gem 'spree_admin',          github: 'MatthewKennedy/spree_admin',       branch: 'main'
-gem 'spree_auth_devise',    github: 'MatthewKennedy/spree_auth_devise', branch: 'custom/spree_admin'
+gem 'spree',             github: 'MatthewKennedy/spree',             branch: 'custom/spree_admin'
+gem 'spree_admin',       github: 'MatthewKennedy/spree_admin',       branch: 'main'
+gem 'spree_auth_devise', github: 'MatthewKennedy/spree_auth_devise', branch: 'custom/spree_admin'
 ```
 
 From the command line run the following commands to:
@@ -45,7 +46,7 @@ Install Spree Admin
 ```
 
 
-### Use Javascript from NPM package - (OPTIONAL)
+### Import Javascript from NPM - (OPTIONAL)
 
 If you are using NPM to manage your javascript and want to import the javascript via node_modules run:
 ```bash
@@ -62,7 +63,7 @@ And then create a new file in `app/javascript` called `spree_admin.js` and then 
 - Bootstrap 5
 
 
-## Development strategy for JavaScript & SCSS
+## Development strategy for JavaScript & CSS
 
 The idea is to utilize as much of the Rails Hotwire ecosystem as possible while adding as little custom JavaScript
 and relying on as few external JavaScript libraries as possible (as hard as this may be).
