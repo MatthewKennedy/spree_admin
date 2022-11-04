@@ -1,6 +1,6 @@
 {
   "name": "@matthewkennedy/spree_admin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Admin UI for Spree",
   "main": "app/assets/javascripts/spree_admin.js",
   "module": "app/javascript/spree/backend/index.js",
