@@ -31,4 +31,4 @@ jobs:
     - name: Yarn install
       run: yarn
     - name: Run standard check
-      run: yarn run standard
+      run: yarn lint
