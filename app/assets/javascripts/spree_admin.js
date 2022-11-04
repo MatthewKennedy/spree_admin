@@ -236,7 +236,7 @@ function addTrailingSlash(value) {
   return value.endsWith("/") ? value : value + "/";
 }
 
-let FetchResponse$1 = class FetchResponse {
+class FetchResponse$1 {
   constructor(response) {
     this.response = response;
   }
@@ -280,7 +280,7 @@ let FetchResponse$1 = class FetchResponse {
   header(name) {
     return this.response.headers.get(name);
   }
-};
+}
 
 function isAction(action) {
   return action == "advance" || action == "replace" || action == "restore";
@@ -485,7 +485,7 @@ function fetchMethodFromString(method) {
   }
 }
 
-let FetchRequest$1 = class FetchRequest {
+class FetchRequest$1 {
   constructor(delegate, method, location, body = new URLSearchParams, target = null) {
     this.abortController = new AbortController;
     this.resolveRequestPromise = _value => {};
@@ -596,7 +596,7 @@ let FetchRequest$1 = class FetchRequest {
     });
     return !event.defaultPrevented;
   }
-};
+}
 
 class AppearanceObserver {
   constructor(delegate, element) {
@@ -2200,7 +2200,7 @@ class FrameRedirector {
   }
 }
 
-let History$1 = class History {
+class History$1 {
   constructor(delegate) {
     this.restorationIdentifier = uuid();
     this.restorationData = {};
@@ -2281,7 +2281,7 @@ let History$1 = class History {
   pageIsLoaded() {
     return this.pageLoaded || document.readyState == "complete";
   }
-};
+}
 
 class Navigator {
   constructor(delegate) {
@@ -11607,7 +11607,7 @@ function writeString$1(value) {
   return `${value}`;
 }
 
-let Controller$1 = class Controller {
+class Controller$1 {
   constructor(context) {
     this.context = context;
   }
@@ -11648,7 +11648,7 @@ let Controller$1 = class Controller {
     target.dispatchEvent(event);
     return event;
   }
-};
+}
 
 Controller$1.blessings = [ ClassPropertiesBlessing$1, TargetPropertiesBlessing$1, ValuePropertiesBlessing$1 ];
 
@@ -16015,7 +16015,7 @@ class FormAutoSaveController extends Controller$1 {
   }
 }
 
-let src_default$2 = class src_default extends Controller$1 {
+class src_default$2 extends Controller$1 {
   connect() {
     this.checkForChanges();
   }
@@ -16073,7 +16073,7 @@ let src_default$2 = class src_default extends Controller$1 {
       target.setAttribute("data-action", `${this.identifier}#checkForChanges`);
     }
   }
-};
+}
 
 src_default$2.targets = [ "saveButton", "watch" ];
 
@@ -16136,7 +16136,7 @@ class FormResetController extends Controller$1 {
   }
 }
 
-let src_default$1 = class src_default extends Controller$1 {
+class src_default$1 extends Controller$1 {
   initialize() {
     this.toggle = this.toggle.bind(this);
     this.refresh = this.refresh.bind(this);
@@ -16178,7 +16178,7 @@ let src_default$1 = class src_default extends Controller$1 {
   get unchecked() {
     return this.checkboxTargets.filter((checkbox => !checkbox.checked));
   }
-};
+}
 
 src_default$1.targets = [ "checkboxAll", "checkbox" ];
 
@@ -19416,7 +19416,7 @@ function compareDeep(a, b) {
   return true;
 }
 
-let Mark$1 = class Mark {
+class Mark$1 {
   constructor(type, attrs) {
     this.type = type;
     this.attrs = attrs;
@@ -19483,7 +19483,7 @@ let Mark$1 = class Mark {
     copy.sort(((a, b) => a.type.rank - b.type.rank));
     return copy;
   }
-};
+}
 
 Mark$1.none = [];
 
@@ -19818,7 +19818,7 @@ class NodeRange {
 
 const emptyAttrs = Object.create(null);
 
-let Node$2 = class Node {
+class Node$2 {
   constructor(type, attrs, content, marks = Mark$1.none) {
     this.type = type;
     this.attrs = attrs;
@@ -20020,7 +20020,7 @@ let Node$2 = class Node {
     let content = Fragment.fromJSON(schema, json.content);
     return schema.nodeType(json.type).create(json.attrs, content, marks);
   }
-};
+}
 
 Node$2.prototype.text = undefined;
 
@@ -20451,7 +20451,7 @@ function initAttrs(attrs) {
   return result;
 }
 
-let NodeType$1 = class NodeType {
+class NodeType$1 {
   constructor(name, schema, spec) {
     this.name = name;
     this.schema = schema;
@@ -20547,7 +20547,7 @@ let NodeType$1 = class NodeType {
     for (let _ in result.text.attrs) throw new RangeError("The text node type should not have attributes");
     return result;
   }
-};
+}
 
 class Attribute {
   constructor(options) {
@@ -20663,7 +20663,7 @@ function gatherMarks(schema, marks) {
   return found;
 }
 
-let DOMParser$1 = class DOMParser {
+class DOMParser$1 {
   constructor(schema, rules) {
     this.schema = schema;
     this.rules = rules;
@@ -20742,7 +20742,7 @@ let DOMParser$1 = class DOMParser {
   static fromSchema(schema) {
     return schema.cached.domParser || (schema.cached.domParser = new DOMParser$1(schema, DOMParser$1.schemaRules(schema)));
   }
-};
+}
 
 const blockTags = {
   address: true,
@@ -28836,25 +28836,53 @@ function run$2(config) {
 function pasteRulesPlugin(props) {
   const {editor: editor, rules: rules} = props;
   let dragSourceElement = null;
+  let draggedElement;
+  let draggedText = null;
+  let caretOffset;
   let isPastedFromProseMirror = false;
   let isDroppedFromProseMirror = false;
   const plugins = rules.map((rule => new Plugin({
     view(view) {
       const handleDragstart = event => {
-        var _a;
-        dragSourceElement = ((_a = view.dom.parentElement) === null || _a === void 0 ? void 0 : _a.contains(event.target)) ? view.dom.parentElement : null;
+        var _a, _b;
+        draggedElement = event.target;
+        draggedText = window.getSelection();
+        (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.setData("text/plain", draggedText === null || draggedText === void 0 ? void 0 : draggedText.toString());
+        dragSourceElement = ((_b = view.dom.parentElement) === null || _b === void 0 ? void 0 : _b.contains(event.target)) ? view.dom.parentElement : null;
+      };
+      const handleDragEnter = event => {
+        event.preventDefault();
+      };
+      const handleDragOver = event => {
+        event.preventDefault();
+        let caretData;
+        if (document.caretRangeFromPoint) {
+          caretData = document.caretRangeFromPoint(event.clientX, event.clientY);
+        }
+        caretOffset = caretData === null || caretData === void 0 ? void 0 : caretData.startOffset;
       };
       window.addEventListener("dragstart", handleDragstart);
+      window.addEventListener("dragenter", handleDragEnter);
+      window.addEventListener("dragover", handleDragOver);
       return {
         destroy() {
           window.removeEventListener("dragstart", handleDragstart);
+          window.removeEventListener("dragenter", handleDragEnter);
+          window.removeEventListener("dragover", handleDragOver);
         }
       };
     },
     props: {
       handleDOMEvents: {
-        drop: view => {
+        drop: (view, event) => {
+          var _a;
           isDroppedFromProseMirror = dragSourceElement === view.dom.parentElement;
+          event.preventDefault();
+          const data = (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.getData("text/plain");
+          if (event.target.parentElement.className === "ProseMirror") {
+            draggedElement.textContent = draggedElement.textContent.replace(data, "");
+            event.target.textContent = event.target.textContent.slice(0, caretOffset) + data + event.target.textContent.slice(caretOffset);
+          }
           return false;
         },
         paste: (view, event) => {
@@ -31265,7 +31293,7 @@ class Mark {
   }
 }
 
-let Node$1 = class Node {
+class Node$1 {
   constructor(config = {}) {
     this.type = "node";
     this.name = "node";
@@ -31323,7 +31351,7 @@ let Node$1 = class Node {
     }));
     return extension;
   }
-};
+}
 
 function markPasteRule(config) {
   return new PasteRule({
@@ -33871,6 +33899,14 @@ var INIT = {
   initialized: false
 };
 
+function reset() {
+  INIT.scanner = null;
+  INIT.parser = null;
+  INIT.pluginQueue = [];
+  INIT.customProtocols = [];
+  INIT.initialized = false;
+}
+
 function registerCustomProtocol(protocol) {
   if (INIT.initialized) {
     warn('linkifyjs: already initialized - will not register custom protocol "'.concat(protocol, '" until you manually call linkify.init(). To avoid this warning, please register all custom protocols before invoking linkify the first time.'));
@@ -34055,6 +34091,9 @@ const Link = Mark.create({
   keepOnSplit: false,
   onCreate() {
     this.options.protocols.forEach(registerCustomProtocol);
+  },
+  onDestroy() {
+    reset();
   },
   inclusive() {
     return this.options.autolink;
