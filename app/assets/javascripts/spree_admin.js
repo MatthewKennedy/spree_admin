@@ -38625,20 +38625,15 @@ class variantSearchController extends TsSearchController {
       item: this.render_item
     };
   }
-  requestFormatted(body) {
-    if (body.data[0].attributes.purchasable === false) return;
-    const formatted = deserialize(body);
-    return formatted;
-  }
   render_option(data, escape) {
     if (data.images) {
-      return `<div class="row">\n                <div class="col-auto">\n                  <img src="${escape(data.images[0].original_url)}" alt="${escape(data.name)}" width="50" height="50">\n                </div>\n                <div class="col">\n                  <div>${escape(data.name)}</div>\n                  ${data.sku ? `<div><span class="text-muted">SKU:</span> ${escape(data.sku)}</div>` : ""}\n                  ${data.total_on_hand ? `<div><span class="text-muted">On Hand:</span> ${escape(data.total_on_hand)}</div>` : '<div><span class="text-muted">On Hand:</span> Not Tracked</span></div>'}\n                </div>\n              </div>`;
+      return `\n\n<div class="row">\n  <div class="col-auto">\n    <img src="${escape(data.images[0].original_url)}" alt="${escape(data.name)}" width="50" height="50">\n  </div>\n  <div class="col">\n    <div><span class="text-muted">Product Name:</span> ${escape(data.name)}</div>\n    <div><span class="text-muted">SKU:</span> ${data.options_text}</div>\n    ${data.sku ? `<div><span class="text-muted">Options:</span> ${escape(data.sku)}</div>` : ""}\n    ${data.total_on_hand ? `<div><span class="text-muted">On Hand:</span> ${escape(data.total_on_hand)}</div>` : '<div><span class="text-muted">On Hand:</span> Not Tracked</span></div>'}\n  </div>\n</div>\n\n`;
     } else {
-      return `<div class="row">\n                <div class="col">\n                  <div>${escape(data.name)}</div>\n                  ${data.sku ? `<div><span class="text-muted">SKU:</span> ${escape(data.sku)}</div>` : ""}\n                  ${data.total_on_hand ? `<div><span class="text-muted">On Hand:</span> ${escape(data.total_on_hand)}</div>` : "Not Tracked"}\n                </div>\n              </div>`;
+      return `\n\n<div class="row">\n  <div class="col">\n    <div><span class="text-muted">Product Name:</span> ${escape(data.name)}</div>\n    <div><span class="text-muted">Options:</span> ${data.options_text}</div>\n    ${data.sku ? `<div><span class="text-muted">SKU:</span> ${escape(data.sku)}</div>` : ""}\n    ${data.total_on_hand ? `<div><span class="text-muted">On Hand:</span> ${escape(data.total_on_hand)}</div>` : "Not Tracked"}\n  </div>\n</div>\n\n`;
     }
   }
   render_item(data, escape) {
-    return `<div>${data.name}</div>`;
+    return `<div>${data.name} | ${data.options_text}</div>`;
   }
 }
 
