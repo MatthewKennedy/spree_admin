@@ -1,5 +1,5 @@
 {
-  "name": "@matthewkennedy/spree_admin",
+  "name": "@matthewkennedy/spree-admin",
   "version": "0.0.5",
   "description": "Admin UI for Spree",
   "main": "app/assets/javascripts/spree_admin.js",
@@ -21,7 +21,9 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.1.0",
     "@hotwired/turbo-rails": "^7.2.0",
+    "@matthewkennedy/gridtable.css": "^1.0.0",
     "@matthewkennedy/json-api-deserializer": "^1.0.0",
+    "@matthewkennedy/stimulus-form-state": "^0.1.1",
     "@popperjs/core": "^2.10",
     "@rails/request.js": "^0.0.6",
     "@tiptap/core": "^2.0.0-beta.199",
@@ -33,11 +35,9 @@
     "cleave.js": "^1.6.0",
     "dompurify": "^2.3.8",
     "flatpickr": "4.6.9",
-    "gridtable.css": "^1.0.0",
     "sortablejs": "^1.15.0",
     "stimulus-checkbox-select-all": "^5.1.0",
     "stimulus-flatpickr": "^3.0.0-0",
-    "stimulus-form-state": "^0.1.1",
     "stimulus-sortable": "^4.0",
     "stimulus-use": "^0.51.0",
     "tom-select": "^2.0.0"

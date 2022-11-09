@@ -1,4 +1,4 @@
-import StimulusFormState from 'stimulus-form-state'
+import StimulusFormState from '@matthewkennedy/stimulus-form-state'
 
 export default class extends StimulusFormState {
   enableChangeControles () {
