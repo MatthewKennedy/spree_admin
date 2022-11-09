@@ -4,30 +4,32 @@
   </h5>
 </div>
 <div id="action_fields" class="card-body">
-  <%= form_tag spree.admin_promotion_promotion_actions_path(@promotion), remote: true, id: 'new_promotion_action_form', class: 'mb-3' do %>
-    <% options = options_for_select(  @actions.map(&:name).map {|name| [ I18n.t("spree.admin.promotion_action_types.#{name.demodulize.underscore}.name"), name] } ) %>
+  <%= turbo_frame_tag :promotion_actions do %>
+    <%= form_tag spree.admin_promotion_promotion_actions_path(@promotion), remote: true, id: 'new_promotion_action_form', class: 'mb-3' do %>
+      <% options = options_for_select(  @actions.map(&:name).map {|name| [ I18n.t("spree.admin.promotion_action_types.#{name.demodulize.underscore}.name"), name] } ) %>
 
-    <div class="input-group">
-      <div class="form-floating">
-        <%= select_tag 'action_type', options, class: "form-select", data: {controller: 'ts--select'} %>
-        <%= label_tag :action_type, Spree.t(:add_action_of_type) %>
-      </div>
-      <%= button '', 'plus-square.svg', 'submit', class: "btn btn-outline-secondary input-group-text" %>
-    </div>
-  <% end %>
-
-  <%= form_with model: @promotion, url: spree.admin_promotion_path(@promotion), method: :put do |f| %>
-    <div id="actions" class="filter_list mt-3">
-      <% if @promotion.actions.any? %>
-        <%= render partial: 'promotion_action',  collection: @promotion.actions %>
-      <% else %>
-        <div class="alert alert-warning">
-          <%= Spree.t(:no_actions_added) %>
+      <div class="input-group">
+        <div class="form-floating">
+          <%= select_tag 'action_type', options, class: "form-select", include_blank: true, data: {controller: 'ts--select'} %>
+          <%= label_tag :action_type, Spree.t(:add_action_of_type) %>
         </div>
-      <% end %>
-    </div>
-    <div class="actions promotion-update">
-      <%= render partial: 'spree/admin/shared/resource_actions' %>
-    </div>
+        <%= button '', 'plus-lg.svg', 'submit', class: "btn btn-outline-secondary input-group-text" %>
+      </div>
+    <% end %>
+
+    <%= form_with model: @promotion, url: spree.admin_promotion_path(@promotion), method: :put do |f| %>
+      <div id="actions" class="filter_list mt-3">
+        <% if @promotion.actions.any? %>
+          <%= render partial: 'promotion_action',  collection: @promotion.actions %>
+        <% else %>
+          <div class="alert alert-warning">
+            <%= Spree.t(:no_actions_added) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="actions promotion-update">
+        <%= render partial: 'spree/admin/shared/resource_actions' %>
+      </div>
+    <% end %>
   <% end %>
 </div>

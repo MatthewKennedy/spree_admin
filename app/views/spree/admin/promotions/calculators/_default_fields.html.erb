@@ -1,11 +1,13 @@
 <% calculator.preferences.keys.map do |key| %>
-  <div class="form-group">
+  <div class="form-floating">
     <% field_name = "#{prefix}[calculator_attributes][preferred_#{key}]" %>
-    <%= label_tag field_name, Spree.t(key.to_s) %>
+
     <%= preference_field_tag(
       field_name,
       calculator.get_preference(key),
       type: calculator.preference_type(key),
       key: key) %>
+
+    <%= label_tag field_name, Spree.t(key.to_s) %>
   </div>
 <% end %>

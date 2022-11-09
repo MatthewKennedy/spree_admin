@@ -16,31 +16,25 @@
 <div class="js-tiers"></div>
 <button class="btn btn-primary  js-add-tier"><%= Spree.t(:add) %></button>
 
-<script type="text/x-handlebars-template" id="tier-input-name">
-  <%= prefix %>[calculator_attributes][preferred_tiers][{{base}}]
-</script>
-
-<script type="text/x-handlebars-template" id="tier-fields-template">
-  <div class="tier card mb-3">
-    <div class="card-body p-3">
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">$</div>
-          </div>
-          <input class="js-base-input form-control" type="text" value={{baseField.value}}>
+<div class="tier card mb-3">
+  <div class="card-body p-3">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
         </div>
+        <input class="js-base-input form-control" type="text" value={{baseField.value}} autocomplete="off">
       </div>
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">$</div>
-          </div>
-          <input class="js-value-input form-control"
-            name="{{valueField.name}}" type="text" value={{valueField.value}}>
-        </div>
-      </div>
-      <a class="js-remove-tier btn btn-light btn-sm"><span class="icon icon-delete"></span></a>
     </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <input class="js-value-input form-control"
+          name="{{valueField.name}}" type="text" value={{valueField.value}} autocomplete="off">
+      </div>
+    </div>
+    <a class="js-remove-tier btn btn-light btn-sm"><span class="icon icon-delete"></span></a>
   </div>
-</script>
+</div>

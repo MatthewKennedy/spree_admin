@@ -5,6 +5,17 @@
   }
 }
 
+.plugin-clear_button .clear-button {
+  // height: 100%;
+  // display: flex;
+  // align-items: center;
+  // transform: none;
+}
+
+.form-floating .plugin-clear_button .clear-button {
+  top: unset !important;
+}
+
 .dropdown-input-wrap {
   position: relative;
   overflow: hidden;
