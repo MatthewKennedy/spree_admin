@@ -75,9 +75,16 @@
     }
   }
 
+  .dashed-card,
   .card-body > .card {
-    border-style: dashed;
-    border-width: 2px;
+    border-style: dashed !important;
+    border-width: 1px !important;
+    border-color: var(--bs-gray-500) !important;
+    box-shadow: none;
+  }
+
+  .sub-card {
+    background-color: var(--bs-gray-100);
   }
 
   .card-title {
@@ -85,7 +92,7 @@
   }
 
   .card-header {
-    background-color: white ;
+    background-color: inherit;
     border-bottom: none;
     min-height: 47px;
   }
@@ -95,7 +102,7 @@
   }
 
   .card-footer {
-    background-color: white ;
+    background-color: inherit;
     border-top: none;
   }
 
