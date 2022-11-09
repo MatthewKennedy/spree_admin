@@ -28836,53 +28836,25 @@ function run$2(config) {
 function pasteRulesPlugin(props) {
   const {editor: editor, rules: rules} = props;
   let dragSourceElement = null;
-  let draggedElement;
-  let draggedText = null;
-  let caretOffset;
   let isPastedFromProseMirror = false;
   let isDroppedFromProseMirror = false;
   const plugins = rules.map((rule => new Plugin({
     view(view) {
       const handleDragstart = event => {
-        var _a, _b;
-        draggedElement = event.target;
-        draggedText = window.getSelection();
-        (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.setData("text/plain", draggedText === null || draggedText === void 0 ? void 0 : draggedText.toString());
-        dragSourceElement = ((_b = view.dom.parentElement) === null || _b === void 0 ? void 0 : _b.contains(event.target)) ? view.dom.parentElement : null;
-      };
-      const handleDragEnter = event => {
-        event.preventDefault();
-      };
-      const handleDragOver = event => {
-        event.preventDefault();
-        let caretData;
-        if (document.caretRangeFromPoint) {
-          caretData = document.caretRangeFromPoint(event.clientX, event.clientY);
-        }
-        caretOffset = caretData === null || caretData === void 0 ? void 0 : caretData.startOffset;
+        var _a;
+        dragSourceElement = ((_a = view.dom.parentElement) === null || _a === void 0 ? void 0 : _a.contains(event.target)) ? view.dom.parentElement : null;
       };
       window.addEventListener("dragstart", handleDragstart);
-      window.addEventListener("dragenter", handleDragEnter);
-      window.addEventListener("dragover", handleDragOver);
       return {
         destroy() {
           window.removeEventListener("dragstart", handleDragstart);
-          window.removeEventListener("dragenter", handleDragEnter);
-          window.removeEventListener("dragover", handleDragOver);
         }
       };
     },
     props: {
       handleDOMEvents: {
-        drop: (view, event) => {
-          var _a;
+        drop: view => {
           isDroppedFromProseMirror = dragSourceElement === view.dom.parentElement;
-          event.preventDefault();
-          const data = (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.getData("text/plain");
-          if (event.target.parentElement.className === "ProseMirror") {
-            draggedElement.textContent = draggedElement.textContent.replace(data, "");
-            event.target.textContent = event.target.textContent.slice(0, caretOffset) + data + event.target.textContent.slice(caretOffset);
-          }
           return false;
         },
         paste: (view, event) => {

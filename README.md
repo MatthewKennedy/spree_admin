@@ -50,9 +50,9 @@ Install Spree Admin
 
 If you are using NPM to manage your javascript and want to import the javascript via node_modules run:
 ```bash
-   yarn add @matthewkennedy/spree_admin
+   yarn add @matthewkennedy/spree-admin
 ```
-And then create a new file in `app/javascript` called `spree_admin.js` and then import `import '@matthewkennedy/spree_admin'`.
+And then create a new file in `app/javascript` called `spree_admin.js` and then import `import '@matthewkennedy/spree-admin'`.
 
 
 ## The Tech Stack
@@ -118,3 +118,10 @@ bundle exec rspec spec/features/admin/users_spec.rb
 ```bash
 brew install chromedriver
 ```
+
+
+## ToDo
+
+- [ ] Fix Discount Codes
+- [ ] Fix Order Workflow
+- [ ] Fix Flash Notice
