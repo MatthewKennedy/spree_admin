@@ -76,6 +76,6 @@ export default class extends StimulusTomSelect {
   }
 
   doNext (value) {
-    console.log('Override the doNext function if you need to do something special on change')
+    if (this.debugValue) console.log('Override the doNext function if you need to do something special on change')
   }
 }
