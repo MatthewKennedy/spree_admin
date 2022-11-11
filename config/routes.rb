@@ -169,7 +169,9 @@ Spree::Core::Engine.add_routes do
         post :clone
       end
 
-      resources :promotion_rules
+      resources :promotion_rules do
+        post :product_options
+      end
       resources :promotion_actions
     end
     resources :promotion_categories, except: [:show]

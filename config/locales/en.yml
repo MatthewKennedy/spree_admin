@@ -161,6 +161,11 @@ en:
         search_by_name: Product Name
         shipment_state_not_eq: Shipment State Not Equal
         variants_including_master_sku_cont: SKU
+      item_total:
+        preferred_amount_max: Preferred amount max
+        preferred_amount_min: Preferred amount min
+        preferred_operator_max: Preferred operator max
+        preferred_operator_min: Preferred operator min
       item_total_rule:
         operators:
           gt: Is greater than
@@ -323,6 +328,7 @@ en:
         match_all: Match all
         match_any: Match any
         match_none: Match none
+        product: Product
         products: Products
       products:
         active: Active
@@ -413,6 +419,7 @@ en:
           description: Applies only if the user has an account and is logged in
           name: User Signed-in
       promotions:
+        add_new_product_options_set: Add new product options set
         category: Category
         code: Code
         name: Name
@@ -558,6 +565,8 @@ en:
         permalink: Permalink
         taxons: Taxons
         use_the_search_box_above_to_search_for_taxons: Use the search box above to search for a Taxon.
+      tee:
+        search_products_by_name_or_sku: Search products by name or sku
       this_order_has_already_received_a_refund: This order has already received a refund
       time: Time
       total: Total

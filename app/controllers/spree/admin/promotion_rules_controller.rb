@@ -1,7 +1,7 @@
 class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
   helper "spree/admin/promotion_rules"
 
-  before_action :load_promotion, only: [:create, :destroy]
+  before_action :load_promotion, only: [:create, :destroy, :product_options]
   before_action :validate_promotion_rule_type, only: :create
 
   def create
@@ -23,6 +23,12 @@ class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
     respond_to do |format|
       format.html { redirect_to spree.edit_admin_promotion_path(@promotion) }
     end
+  end
+
+  def product_options
+    @product ||= Spree::Product.find(params[:product_id])
+    @product_options ||= @product.all_option_values
+    @promotion_rule ||= @promotion.promotion_rules.find(params[:promotion_rule_id])
   end
 
   private

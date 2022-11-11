@@ -15,30 +15,28 @@
       </div>
     <% end %>
 
-    <%= form_with model: @promotion, url: object_url, method: :put do |f| %>
+    <%= form_with model: @promotion, url: object_url, method: :put, data: { controller: 'form--autosave' } do |f| %>
       <div id="promotion-policy-select">
         <% Spree::Promotion::MATCH_POLICIES.each do |policy| %>
           <div class="form-check">
-            <%= f.radio_button :match_policy, policy %>
+            <%= f.radio_button :match_policy, policy, data: { action: 'form--autosave#save'} %>
             <%= f.label "match_policy_#{policy}", Spree.t("promotion_form.match_policies.#{policy}") %>
           </div>
         <% end %>
       </div>
 
-      <div id="rules" class="filter_list mt-3">
-        <% if @promotion.rules.any? %>
-        <hr>
-          <%= render partial: 'promotion_rule', collection: @promotion.rules, locals: {} %>
-        <% else %>
-          <div class="alert alert-warning">
-            <%= Spree.t(:no_rules_added) %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="promotion-update actions">
-        <%= render partial: 'spree/admin/shared/resource_actions' %>
-      </div>
+      <%= submit_tag 'save', data: {form__autosave_target: 'submitButton'} %>
     <% end %>
+
+    <div id="rules" class="filter_list mt-3">
+      <% if @promotion.rules.any? %>
+      <hr>
+        <%= render partial: 'promotion_rule', collection: @promotion.rules, locals: {} %>
+      <% else %>
+        <div class="alert alert-warning">
+          <%= Spree.t(:no_rules_added) %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>

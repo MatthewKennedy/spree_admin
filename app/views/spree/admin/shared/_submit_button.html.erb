@@ -1,3 +1,5 @@
-<%= button_tag( {class: 'btn btn-primary btn-sm', data: { form_state_target: "saveButton" }}) do %>
+<% button_classes ||= 'btn btn-primary btn-sm' %>
+
+<%= button_tag( {class: button_classes, data: { form_state_target: "saveButton" }}) do %>
   <%= I18n.t('spree.admin.actions.save') %>
 <% end %>
