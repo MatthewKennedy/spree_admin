@@ -170,7 +170,8 @@ Spree::Core::Engine.add_routes do
       end
 
       resources :promotion_rules do
-        post :product_options
+        get  :get_product_option_values
+        get :product_options
       end
       resources :promotion_actions
     end

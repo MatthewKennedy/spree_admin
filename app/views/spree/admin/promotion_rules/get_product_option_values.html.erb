@@ -1,0 +1,53 @@
+<%= turbo_frame_tag :opts do %>
+  <% @promotion_rule.preferred_eligible_values.each_with_index do |(key, values), index| %>
+    <% product = @products.find { |product| product.id.to_s == key.to_s } %>
+
+
+    <sa-card>
+      <sa-header>
+        <div class="flex-fill"></div>
+        <div>
+          <a class="btn btn-sm btn-outline-secondary"><%= spree_admin_svg_tag "x-lg.svg", size: '16px' %></a>
+        </div>
+      </sa-header>
+
+      <sa-body>
+        <div class="row">
+          <div class="col-12 mb-3" data-controller="form--autosave">
+            <div class="form-floating">
+              <%= select_tag "product_id", options_from_collection_for_select([product], :id, :name, key),
+                                            class: 'form-select',
+                                            placeholder: I18n.t('spree.admin.order.search_products_by_name_or_sku'),
+                                            data: {
+                                                   action: 'form--autosave#save',
+                                                   form__autosave_target: 'paramHolder',
+                                                   controller: 'ts--search',
+                                                   ts__search_debug_value: true,
+                                                   ts__search_uri_value: '/api/v2/platform/products',
+                                                   ts__search_fields_value: ['name', 'sku'],
+                                                   ts__search_include_value: 'option_types.option_values'
+                                                 } %>
+              <%= label_tag 'product', I18n.t('spree.admin.option_values_rule.product') %>
+            </div>
+
+            <%= link_to "save", spree.admin_promotion_promotion_rule_product_options_path(@promotion, @promotion_rule, stream_id: "card_#{dom_id(@promotion_rule)}_#{index}"), data: { form__autosave_target: 'submitButton', turbo_stream: true } %>
+          </div>
+
+          <div class="col-12">
+            <div class="form-floating">
+              <%= fields_for :promotion, @promotion do |f|%>
+                <%= f.fields_for :promotion_rules, @promotion_rule do |pr|%>
+                  <div id="card_<%= dom_id(@promotion_rule) %>_<%= index %>" class="form-floating">
+                    <%= pr.collection_select("preferred_eligible_values[#{product.id if product}]", product.all_option_values, :id, :presentation, {selected: values.flatten, include_hidden: false}, { multiple: true, disabled: product.all_option_values.empty?, class: 'form-select' ,data: { controller: 'ts--select' } }) %>
+                    <%= label_tag 'options', I18n.t('spree.admin.option_values_rule.options') %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </sa-body>
+    </sa-card>
+  <% end %>
+<% end %>

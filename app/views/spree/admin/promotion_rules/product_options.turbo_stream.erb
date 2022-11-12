@@ -1,3 +1,4 @@
-<%= turbo_stream.update "ovs_#{dom_id(@promotion_rule)}" do %>
-  <%= collection_select(nil, "promotion[promotion_rules_attributes][#{@promotion_rule.id}][preferred_eligible_values][#{@product.id if @product}][]", @product_options, :id, :presentation, { include_blank: false }, multiple: true, disabled: @product_options.empty?, data: { controller: 'ts--select' }) %>
+<%= turbo_stream.update @stream_id do %>
+  <%= collection_select(nil, "promotion[promotion_rules_attributes][#{@promotion_rule.id}][preferred_eligible_values][#{@product.id}]", @product_options, :id, :presentation, { include_hidden: false }, multiple: true, data: { controller: 'ts--select' }) %>
+  <%= label_tag 'options', I18n.t('spree.admin.option_values_rule.options') %>
 <% end %>

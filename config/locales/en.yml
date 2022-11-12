@@ -120,8 +120,6 @@ en:
         iso_name: ISO Name
         search_by_country_name: Search by country name
         states: States
-      country_rule:
-        label: Select a country
       create_platform_application: Create platform application
       create_webhook_subscriber: Create webhook subscriber
       created_at: Created At
@@ -243,6 +241,10 @@ en:
         scope: Scope
       option_type_filterable_info: When an option type is filterable, your storefront visitors are presented with the option to filter a collection of products based on the option type. A typical example of this would be to filter clothing by size and color.<br><br><b>Please Note:</b> Filters will only be visible in the storefront taxons that contain products with this option type set.
       option_types: Option types
+      option_values_rule:
+        options: Options
+        product: Product
+        products: Products
       options:
         add_option_value: Add Option Value
         all_option_types: All Option Types
@@ -267,7 +269,6 @@ en:
         products: Products
         resend_shipping_confirmation_email: Resend Shipping Confirmation Email
         same_as_billing_address: Same as billing address
-        search_categories: Search categories
         search_for_a_product_or_variant: Search for products by name or SKU.
         search_products_by_name_or_sku: Search products by name or sku
         search_users_by_email: Search users by email
@@ -419,7 +420,6 @@ en:
           description: Applies only if the user has an account and is logged in
           name: User Signed-in
       promotions:
-        add_new_product_options_set: Add new product options set
         category: Category
         code: Code
         name: Name
