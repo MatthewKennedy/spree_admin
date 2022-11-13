@@ -244,7 +244,6 @@ en:
       option_values_rule:
         options: Options
         product: Product
-        products: Products
       options:
         add_option_value: Add Option Value
         all_option_types: All Option Types
@@ -329,7 +328,6 @@ en:
         match_all: Match all
         match_any: Match any
         match_none: Match none
-        product: Product
         products: Products
       products:
         active: Active
