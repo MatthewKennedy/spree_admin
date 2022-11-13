@@ -1,6 +1,14 @@
-<div class="card-body">
-  <div class="form-floating">
-    <%= select_tag("#{param_prefix}[preferred_country_id]", options_for_select(Spree::Country.pluck(:name, :id), promotion_rule.preferred_country_id), { class: 'form-select', data: { controller: 'ts--select' } }) %>
-    <%= label_tag I18n.t('spree.admin.country_rule.label') %>
+<%= form_with model: @promotion, url: object_url, method: :put, data: { controller: 'form-state' } do |f| %>
+  <%= f.fields_for :promotion_rules, promotion_rule do |pr|%>
+    <%= f.field_container :preferred_country_id do %>
+      <% opts = options_for_select(Spree::Country.pluck(:name, :id), promotion_rule.preferred_country_id) %>
+
+      <%= pr.select :preferred_country_id, opts, { include_hidden: false, include_blank: false } %>
+      <%= pr.label :preferred_country_id, I18n.t('spree.admin.product_rule.label') %>
+    <% end %>
+  <% end %>
+
+  <div class="text-end">
+    <%= render partial: 'spree/admin/shared/submit_button' %>
   </div>
-</div>
+<% end %>

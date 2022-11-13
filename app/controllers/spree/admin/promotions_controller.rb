@@ -31,6 +31,7 @@ module Spree
 
         @calculators = Rails.application.config.spree.calculators.promotion_actions_create_adjustments
         @promotion_categories = Spree::PromotionCategory.order(:name)
+        @product_options = []
       end
 
       def collection

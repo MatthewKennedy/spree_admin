@@ -15991,7 +15991,7 @@ class ThrottleController extends Controller$1 {}
 ThrottleController.throttles = [];
 
 class FormAutoSaveController extends Controller$1 {
-  static targets=[ "submitButton" ];
+  static targets=[ "submitButton", "paramHolder" ];
   static values={
     delay: {
       default: 250,
@@ -16011,6 +16011,14 @@ class FormAutoSaveController extends Controller$1 {
     if (this.hasSubmitButtonTarget) this.submitButtonTarget.style.display = "none";
   }
   save(event) {
+    if (this.hasParamHolderTarget) {
+      const fullUrl = new URL(this.submitButtonTarget.href);
+      const params = fullUrl.searchParams;
+      const paramName = this.paramHolderTarget.name;
+      const paramValue = this.paramHolderTarget.value;
+      params.set(paramName, paramValue);
+      this.submitButtonTarget.href = fullUrl.href;
+    }
     this.submitButtonTarget.click();
   }
 }
@@ -37895,9 +37903,15 @@ class StimulusTomSelect extends Controller$1 {
     this.element.setAttribute("autocomplete", "random");
     if (this.element.options.length && this.element.options[0].value == "") {
       if (!this.config.plugins.includes("clear_button")) this.config.plugins.push("clear_button");
+    } else {
+      const resetConfs = this.config.plugins.filter((a => a !== "clear_button"));
+      this.config.plugins = resetConfs;
     }
     if (this.element.attributes.multiple) {
       if (!this.config.plugins.includes("remove_button")) this.config.plugins.push("remove_button");
+    } else {
+      const resetConfs = this.config.plugins.filter((a => a !== "remove_button"));
+      this.config.plugins = resetConfs;
     }
     this.ts = new TomSelect(this.element, {
       ...this.config

@@ -1,28 +1,46 @@
-<sa-body>
-  <div class="promo-rule-option-values">
-    <div class="js-promo-rule-option-values"></div> <!-- display div for option value select -->
-    <button class="btn btn-primary  btn-primary  js-add-promo-rule-option-value">
-      <%= spree_admin_svg_tag "plus-lg.svg" %>
-      <%= Spree.t(:add) %>
-    </button>
+<%= form_with model: @promotion, url: object_url, method: :put do |f| %>
+  <div id="product_option_value_set_container">
+    <sa-card>
+      <sa-body>
+        <div class="row">
+          <div class="col-12 mb-3" data-controller="form--autosave">
+            <div class="form-floating">
+              <%= select_tag "product_id", nil, class: 'form-select',
+                                               placeholder: I18n.t('spree.admin.order.search_products_by_name_or_sku'),
+                                               data: {
+                                                       action: 'form--autosave#save',
+                                                       form__autosave_target: 'paramHolder',
+                                                       controller: 'ts--search',
+                                                       ts__search_debug_value: true,
+                                                       ts__search_uri_value: '/api/v2/platform/products',
+                                                       ts__search_fields_value: ['name', 'sku'],
+                                                       ts__search_include_value: 'option_types.option_values'
+                                                     } %>
+
+              <%= label_tag 'product', I18n.t('spree.admin.option_values_rule.product') %>
+            </div>
+
+            <%= link_to "save", spree.admin_promotion_promotion_rule_product_options_path(@promotion, promotion_rule, stream_id: "card_#{dom_id(promotion_rule)}_new_set"), data: { form__autosave_target: 'submitButton', turbo_stream: true } %>
+          </div>
+
+          <div class="col-12">
+            <%= f.fields_for :promotion_rules, promotion_rule do |pr|%>
+              <div id="card_<%= dom_id(promotion_rule) %>_new_set" class="form-floating">
+                <%= pr.collection_select(:preferred_eligible_values, [], :id, :presentation, {include_blank: false}, { multiple: true, disabled: true, placeholder: 'Search Options' , class: 'form-select', data: { controller: 'ts--select' } }) %>
+                <%= label_tag 'options', I18n.t('spree.admin.option_values_rule.options') %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </sa-body>
+    </sa-card>
+
+    <hr class="my-5">
+
+    <%= turbo_frame_tag :opts, src: spree.admin_promotion_promotion_rule_get_product_option_values_path(@promotion, promotion_rule) %>
   </div>
 
-  <%= content_tag :div, nil, class: "hidden js-original-promo-rule-option-values", data: { :'original-option-values' => promotion_rule.preferred_eligible_values } %>
-
-  <div class="promo-rule-option-value panel card mb-3" id="promo-rule-option-value-{{productId}}">
-    <div class="card-header d-flex justify-content-between">
-      <label><%= Spree.t(:product) %> <%= Spree.t(:option_values) %></label>
-      <a class="js-remove-promo-rule-option-value delete">
-        <%= spree_admin_svg_tag "delete.svg", size: '16px * 16px' %>
-      </a>
-    </div>
-    <div class="card-body row p-3">
-      <div class="col-12 col-md-6 product-select">
-        <%= select_tag "product", nil, class: 'js-promo-rule-option-value-product-select d-block w-100', id: "promo-rule-option-value-product-select-{{productId}}" %>
-      </div>
-      <div class="col-12 col-md-6 option-value-select">
-        <%= select_tag "#{param_prefix}[preferred_eligible_values][{{ productId }}][]", nil, multiple: true, disabled: true, class: 'js-promo-rule-option-value-option-values-select d-none w-100', id: "promo-rule-option-value-option-values-select-{{productId}}" %>
-      </div>
-    </div>
+  <div class="text-end">
+    <%= render partial: 'spree/admin/shared/submit_button' %>
   </div>
-</sa-body>
+<% end %>
