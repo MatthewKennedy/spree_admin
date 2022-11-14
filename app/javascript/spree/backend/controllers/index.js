@@ -8,6 +8,7 @@ import CardFormattingController from './card_formatting_controller'
 import CheckboxValidationController from './checkbox_validation_controller'
 import ClipboardController from './clipboard_controller'
 import DatePickerController from './datepicker_controller'
+import DomController from './dom_controller'
 import FormAutoSaveController from './form/autosave_controller'
 import FormStateController from './form_state_controller'
 import FormValidationController from './form_validation_controller'
@@ -39,6 +40,7 @@ Stimulus.register('card-formatting', CardFormattingController)
 Stimulus.register('checkbox-validation', CheckboxValidationController)
 Stimulus.register('clipboard', ClipboardController)
 Stimulus.register('datepicker', DatePickerController)
+Stimulus.register('dom', DomController)
 Stimulus.register('form-state', FormStateController)
 Stimulus.register('form-validation', FormValidationController)
 Stimulus.register('form--autosave', FormAutoSaveController)

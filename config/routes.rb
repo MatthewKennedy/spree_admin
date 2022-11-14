@@ -173,7 +173,6 @@ Spree::Core::Engine.add_routes do
         get :get_product_option_values
         get :product_options
       end
-      get :remove_from_dom
       resources :promotion_actions
     end
     resources :promotion_categories, except: [:show]

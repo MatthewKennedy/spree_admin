@@ -1,13 +1,13 @@
 <%= turbo_frame_tag :opts do %>
   <% @promotion_rule.preferred_eligible_values.each_with_index do |(key, values), index| %>
     <% product = @products.find { |product| product.id.to_s == key.to_s } %>
-    <sa-card id="opv_card_<%= index %>">
+    <sa-card id="opv_card_<%= index %>" data-controller='dom' data-dom-target='element' class="animate__animated animate__faster">
       <sa-header>
         <div class="flex-fill"></div>
         <div>
-          <%= link_to spree.admin_promotion_remove_from_dom_path(@promotion, dom_id: "opv_card_#{index}"), data: { turbo_stream: true } do %>
+          <button type="button" data-action="dom#removeElement" class="btn btn-sm btn-outline-secondary">
             <%= spree_admin_svg_tag "x-lg.svg", size: '16px' %>
-          <% end %>
+          </button>
         </div>
       </sa-header>
 
