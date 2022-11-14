@@ -15472,6 +15472,20 @@ class DatePickerController extends StimulusFlatpickr {
   }
 }
 
+class DomController extends Controller$1 {
+  static targets=[ "element" ];
+  static values={
+    duration: {
+      default: 500,
+      type: Number
+    }
+  };
+  removeElement() {
+    this.element.classList.add("animate__fadeOut");
+    setTimeout((() => this.elementTarget.remove()), this.durationValue);
+  }
+}
+
 /**! 
  * hotkeys-js v3.10.0 
  * A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies. 
@@ -38662,6 +38676,8 @@ Stimulus.register("checkbox-validation", CheckboxValidationController);
 Stimulus.register("clipboard", ClipboardController);
 
 Stimulus.register("datepicker", DatePickerController);
+
+Stimulus.register("dom", DomController);
 
 Stimulus.register("form-state", FormStateController);
 

@@ -108,12 +108,6 @@ class Spree::Admin::ResourceController < Spree::Admin::BaseController
   def filter
   end
 
-  def remove_from_dom
-    respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(params[:dom_id]) }
-    end
-  end
-
   protected
 
   class << self
