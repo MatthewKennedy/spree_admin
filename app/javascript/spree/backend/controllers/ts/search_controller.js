@@ -3,20 +3,34 @@ import { get } from '../../utilities/request_utility'
 import { deserialize } from '@matthewkennedy/json-api-deserializer'
 
 // Connects to data-controller="ts--search"
+
+/// //////////
+// Options ///
+/// //////////
+// Set the endpoint name for the Platform API.    ts__search_endpoint_value: 'products'
+// Set the returned option value.                 ts__search_val_value: 'slug'
+// Set the returned option text.                  ts__search_txt_value: 'name'
+// Fields that TomSelect searches.                ts__search_fields_value: ['name', 'sku']
+// Set the name of the filter ransack fields.     ts__search_ransack_value: ['name_i_cont', 'sku_i_cont']
+// Set custom params as an array within an array. ts__search_custom_params_value: [['[filter]purchasable', true], ['[filter]has_variants', true]]
+// Set a string of included resources.            ts__search_include_value: 'option_types.option_values'
+// Debug mode.                                    ts__search_debug_value: true
+
 export default class extends StimulusTomSelect {
   static values = {
-    uri: String, // Set the uri for the API.                                                  Example ->  ts__search_uri_value: '/api/v2/platform/products'
-    val: { type: String, default: 'id' }, // Set the option value.                            Example ->  ts__search_val_value: 'slug'
-    txt: { type: String, default: 'name' }, // Set the visible option text.                   Example ->  ts__search_txt_value: 'name'
-    fields: { type: Array, default: ['name'] }, // Set the fields that Tom Select searches    Example ->  ts__search_fields_value: ['name', 'sku']
-    ransack: Array, // Set the name of the filter ransack fields                              Example ->  ts__search_ransack_value: ['name_i_cont', 'sku_i_cont']
-    customParams: Array, // Set custom params as an array within an array                     Example ->  ts__search_custom_params_value: [['[filter]purchasable', true], ['[filter]has_variants', true]]
-    include: String, // Set a string of included resources as you would in the api docs.      Example ->  ts__search_include_value: 'option_types.option_values'
-    debug: { type: Boolean, default: false }, // Debug mode.                                  Example ->  ts__search_debug_value: true
+    uri: { type: String, default: '/api/v2/platform/' },
+    endpoint: String,
+    val: { type: String, default: 'id' },
+    txt: { type: String, default: 'name' },
+    fields: { type: Array, default: ['name'] },
+    ransack: Array,
+    customParams: Array,
+    include: String,
+    debug: { type: Boolean, default: false },
     loadThrottle: { type: Number, default: 400 },
     queryCount: { type: Number, default: 2 },
     options: { type: Array, default: [] },
-    plugins: { type: Array, default: ['dropdown_input', 'search_icon'] } // Set an array of plugin names as per Tom Select docs.
+    plugins: { type: Array, default: ['dropdown_input', 'search_icon'] }
   }
 
   initialize () {
@@ -49,7 +63,8 @@ export default class extends StimulusTomSelect {
   }
 
   buildRequestURL (q) {
-    const urlWithParams = new URL(SpreeAdmin.localizedPathFor(this.uriValue))
+    const uriBase = this.uriValue + this.endpointValue
+    const urlWithParams = new URL(SpreeAdmin.localizedPathFor(uriBase))
 
     if (this.hasRansackValue) {
       this.ransackValue.forEach(target => {

@@ -38529,7 +38529,11 @@ const deserialize = (resp, options = {}) => {
 
 class TsSearchController extends StimulusTomSelect {
   static values={
-    uri: String,
+    uri: {
+      type: String,
+      default: "/api/v2/platform/"
+    },
+    endpoint: String,
     val: {
       type: String,
       default: "id"
@@ -38591,7 +38595,8 @@ class TsSearchController extends StimulusTomSelect {
     }
   }
   buildRequestURL(q) {
-    const urlWithParams = new URL(SpreeAdmin.localizedPathFor(this.uriValue));
+    const uriBase = this.uriValue + this.endpointValue;
+    const urlWithParams = new URL(SpreeAdmin.localizedPathFor(uriBase));
     if (this.hasRansackValue) {
       this.ransackValue.forEach((target => {
         urlWithParams.searchParams.append(`[filter]${target}`, q);
