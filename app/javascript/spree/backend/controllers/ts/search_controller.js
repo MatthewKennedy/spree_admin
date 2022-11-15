@@ -5,14 +5,14 @@ import { deserialize } from '@matthewkennedy/json-api-deserializer'
 // Connects to data-controller="ts--search"
 export default class extends StimulusTomSelect {
   static values = {
-    uri: String, // Set the uri for the API Example: '/api/v2/platform/variants'
-    val: { type: String, default: 'id' }, // Set the value, the default is 'id' but this can be overridden Example: 'order_number'
-    txt: { type: String, default: 'name' }, // Set the visible text in the option, the default is 'name' but this can be overridden Example: 'pretty_name'
-    fields: { type: Array, default: ['name'] }, // Set the name of the returned fields that Tom Select searches on, the default is ['name'] Example: '['name', 'sku']'
-    ransack: Array, // Set the name of the filter ransack fields Example: '['name_i_cont', 'sku_i_cont']'
-    customParams: Array, // Set custom params as an array within an array Example: [ ['[filter]purchasable', true], ['[filter]eligible, true] ]
-    include: String, // Set a string of included resources as you would in the api docs Example: 'images,stock_items.stock_location'
-    debug: { type: Boolean, default: false }, // Debug mode can be set to log out your response helping you debug.
+    uri: String, // Set the uri for the API.                                                  Example ->  ts__search_uri_value: '/api/v2/platform/products'
+    val: { type: String, default: 'id' }, // Set the option value.                            Example ->  ts__search_val_value: 'slug'
+    txt: { type: String, default: 'name' }, // Set the visible option text.                   Example ->  ts__search_txt_value: 'name'
+    fields: { type: Array, default: ['name'] }, // Set the fields that Tom Select searches    Example ->  ts__search_fields_value: ['name', 'sku']
+    ransack: Array, // Set the name of the filter ransack fields                              Example ->  ts__search_ransack_value: ['name_i_cont', 'sku_i_cont']
+    customParams: Array, // Set custom params as an array within an array                     Example ->  ts__search_custom_params_value: [['[filter]purchasable', true], ['[filter]has_variants', true]]
+    include: String, // Set a string of included resources as you would in the api docs.      Example ->  ts__search_include_value: 'option_types.option_values'
+    debug: { type: Boolean, default: false }, // Debug mode.                                  Example ->  ts__search_debug_value: true
     loadThrottle: { type: Number, default: 400 },
     queryCount: { type: Number, default: 2 },
     options: { type: Array, default: [] },
