@@ -15,6 +15,7 @@ completely modernizing the tech stack and user experience.
 - Product Images can be tagged to their applicable option(s).
 - New order process, more akin to building an invoice than attempting to replicate a shopping cart in an admin UI (WIP).
 - Modern UI (WIP).
+- Adaptive Light/Dark modes
 
 
 ## Installation
@@ -122,6 +123,8 @@ brew install chromedriver
 
 ## ToDo
 
-- [ ] Fix Discount Codes
+- [ ] Add dark mode
+- [ ] Tidy up CSS
+- [x] Fix Discount Codes
 - [ ] Fix Order Workflow
 - [ ] Fix Flash Notice

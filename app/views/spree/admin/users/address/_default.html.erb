@@ -15,7 +15,7 @@
           <%= form_with model: [:admin, @user],scope: :user, url: spree.update_address_admin_user_path(@user), method: :put, id: :use_billing_for_both_form do |f| %>
             <%= f.hidden_field :ship_address_id, value: @user.bill_address.id %>
           <% end unless @user.bill_address == @user.ship_address %>
-          <%= button(nil, "truck.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_billing_for_both_form", id: "use_billing_for_shipping"}) unless @user.bill_address == @user.ship_address %>
+          <%= button(nil, "truck.svg", "submit", {class: 'btn btn-sm btn-matching-bg', form: "use_billing_for_both_form", id: "use_billing_for_shipping"}) unless @user.bill_address == @user.ship_address %>
           <%= link_to_edit(@user.bill_address, url: spree.edit_admin_address_path(@user.bill_address, address: {user_id: @user.id}), data: {turbo_frame: :modal}) %>
         </div>
       <% else %>
@@ -40,7 +40,7 @@
             <%= form_with model: [:admin, @user],scope: :user, url: spree.update_address_admin_user_path(@user), method: :put, id: :use_shipping_for_both_form do |f| %>
               <%= f.hidden_field :bill_address_id, value: @user.ship_address.id %>
             <% end unless @user.ship_address == @user.bill_address %>
-            <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_shipping_for_both_form", id: "use_shipping_for_both"}) unless @user.bill_address == @user.ship_address %>
+            <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-matching-bg', form: "use_shipping_for_both_form", id: "use_shipping_for_both"}) unless @user.bill_address == @user.ship_address %>
             <%= link_to_edit(@user.ship_address, url: spree.edit_admin_address_path(@user.ship_address, address: {user_id: @user.id}), data: {turbo_frame: :modal}) %>
           </div>
         <% else %>

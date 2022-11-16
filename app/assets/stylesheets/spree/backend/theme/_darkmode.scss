@@ -1,0 +1,118 @@
+///////////////
+// DARK MODE //
+///////////////
+@media (prefers-color-scheme: dark) {
+  :root body.admin {
+
+    --bs-primary-rgb:         83, 155, 245;
+    --bs-primary-hover-rgb:   0, 110, 82;
+
+    --bs-secondary-rgb:       55, 62, 71;
+    --bs-secondary-hover-rgb: 68, 76, 86;
+
+    --bs-success-rgb:         174, 233, 209;
+    --bs-success-hover-rgb:   21, 115, 71;
+
+    --bs-info-rgb:            13, 202, 240;
+    --bs-info-hover-rgb:      49, 210, 242;
+
+    --bs-warning-rgb:         255, 215, 157;
+    --bs-warning-hover-rgb:   255, 202, 44;
+
+    --bs-danger-rgb:          220, 53, 69;
+    --bs-danger-hover-rgb:    187, 45, 59;
+
+    --bs-light-rgb:           55, 62, 71;
+    --bs-light-hover-rgb:     68, 76, 86;
+
+    --bs-dark-rgb:            33, 37, 41;
+    --bs-dark-hover-rgb:      28, 31, 35;
+
+    --bs-white-rgb:           255, 255, 255;
+    --bs-black-rgb:           0, 0, 0;
+
+    --bs-body-color-rgb:      207, 207, 207;
+    --bs-body-bg-rgb:         34, 39, 46;
+
+    --bs-black:        rgb(var(--bs-black-rgb));
+    --bs-white:        rgb(var(--bs-white-rgb));
+    --bs-primary:      rgb(var(--bs-primary-rgb));
+    --bs-secondary:    rgb(var(--bs-secondary-rgb));
+    --bs-success:      rgb(var(--bs-success-rgb));
+    --bs-info:         rgb(var(--bs-info-rgb));
+    --bs-warning:      rgb(var(--bs-warning-rgb));
+    --bs-danger:       rgb(var(--bs-danger-rgb));
+    --bs-light:        rgb(var(--bs-light-rgb));
+    --bs-dark:         rgb(var(--bs-dark-rgb));
+
+    --bs-gradient:                    linear-gradient(180deg, rgba(var(--bs-body-color-rgb), 0.15), rgba(var(--bs-body-color-rgb), 0));
+
+    --bs-body-color:                  rgb(var(--bs-body-color-rgb));
+    --bs-body-bg:                     rgb(var(--bs-body-bg-rgb));
+
+    --bs-border-color:              #373e47;
+    --bs-border-color-translucent:  rgba(0, 0, 0, 0.175);
+
+    --bs-link-color:                  var(--bs-primary-rgb);
+    --bs-link-hover-color:            rgb(var(--bs-primary-hover-rgb));
+
+    --bs-code-color:                #d63384;
+    --bs-highlight-bg:              #fff3cd;
+
+    --sa-logo:        rgba(190, 6, 80);
+    --sa-navbar-bg:   rgba(var(--bs-body-bg-rgb));
+    --sa-sidebar-bg:  rgba(var(--bs-body-bg-rgb));
+
+    .btn-matching-bg {
+      --bs-btn-color:                 var(--bs-gray-300);
+      --bs-btn-bg:                    rgba(var(--bs-light-rgb), .1);
+      --bs-btn-border-color:          rgba(var(--bs-light-rgb));
+
+      --bs-btn-hover-color:           rgba(var(--bs-gray-300));
+      --bs-btn-hover-bg:              rgba(var(--bs-light-rgb), .2);
+      --bs-btn-hover-border-color:    rgba(var(--bs-light-hover-rgb));
+
+      --bs-btn-focus-shadow-rgb:      var(--bs-light-rgb);
+
+      --bs-btn-active-color:          rgba(var(--bs-gray-100));
+      --bs-btn-active-bg:             rgba(var(--bs-light-rgb), .5);
+      --bs-btn-active-border-color:   rgba(var(--bs-light-hover-rgb));
+
+      --bs-btn-disabled-color:        rgba(var(--bs-dark-rgb));
+      --bs-btn-disabled-bg:           rgba(var(--bs-light-rgb));
+      --bs-btn-disabled-border-color: rgba(var(--bs-light-rgb));
+    }
+
+    .card {
+      --#{$prefix}card-bg: rgba(var(--bs-body-bg-rgb));
+    }
+
+    .offcanvas {
+      --bs-offcanvas-bg: rgba(var(--bs-body-bg-rgb));
+    }
+
+    .list-group {
+      background-color: rgba(var(--bs-body-bg-rgb));
+    }
+
+    .list-group-item {
+      background-color: rgba(var(--bs-body-bg-rgb));
+    }
+
+    .form-control,
+    .form-select,
+    .form-check-input {
+      border-color: #444c56;
+      background-color: #1c2128;
+      color: white;
+
+      &:focus-visible,
+      &:focus,
+      &:checked,
+      &:has( > div.ProseMirror:focus) {
+        border-color: #539bf5;
+        box-shadow: inset 0 0 0 1px #539bf5;
+      }
+    }
+  }
+}

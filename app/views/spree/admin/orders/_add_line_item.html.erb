@@ -23,7 +23,7 @@
             <%= label_tag :variant_id, I18n.t('spree.admin.order.products'), class: 'form-label' %>
             <%= hidden_field nil, 'line_item[quantity]', value: "1" %>
           </div>
-          <%= f.submit I18n.t('spree.admin.order.products'), class: 'btn btn-light', data: { form_validation_target: "submitBtn" } %>
+          <%= f.submit I18n.t('spree.admin.order.products'), class: 'btn btn-matching-bg', data: { form_validation_target: "submitBtn" } %>
         <% end %>
       <% end %>
     </div>

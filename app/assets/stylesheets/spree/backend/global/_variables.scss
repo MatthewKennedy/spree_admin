@@ -241,44 +241,24 @@
     --bs-btn-disabled-border-color: rgba(var(--bs-info-rgb));
   }
 
-  .btn-light {
-    --bs-btn-color: rgba(var(--bs-dark-rgb));
-    --bs-btn-bg: rgba(var(--bs-light-rgb));
-    --bs-btn-border-color: rgba(var(--bs-light-rgb));
+  .btn-matching-bg {
+    --bs-btn-color:                 rgba(var(--bs-dark-rgb));
+    --bs-btn-bg:                    rgba(var(--bs-light-rgb));
+    --bs-btn-border-color:          rgba(var(--bs-light-rgb));
 
-    --bs-btn-hover-color: rgba(var(--bs-dark-rgb));
-    --bs-btn-hover-bg: rgba(var(--bs-light-hover-rgb));
-    --bs-btn-hover-border-color: rgba(var(--bs-light-hover-rgb));
+    --bs-btn-hover-color:           rgba(var(--bs-dark-rgb));
+    --bs-btn-hover-bg:              rgba(var(--bs-light-hover-rgb));
+    --bs-btn-hover-border-color:    rgba(var(--bs-light-hover-rgb));
 
-    --bs-btn-focus-shadow-rgb: var(--bs-light-rgb);
+    --bs-btn-focus-shadow-rgb:      var(--bs-light-rgb);
 
-    --bs-btn-active-color: rgba(var(--bs-dark-rgb));
-    --bs-btn-active-bg: rgba(var(--bs-light-hover-rgb));
-    --bs-btn-active-border-color: rgba(var(--bs-light-hover-rgb));
+    --bs-btn-active-color:          rgba(var(--bs-dark-rgb));
+    --bs-btn-active-bg:             rgba(var(--bs-light-hover-rgb));
+    --bs-btn-active-border-color:   rgba(var(--bs-light-hover-rgb));
 
-    --bs-btn-disabled-color: rgba(var(--bs-dark-rgb));
-    --bs-btn-disabled-bg: rgba(var(--bs-light-rgb));
+    --bs-btn-disabled-color:        rgba(var(--bs-dark-rgb));
+    --bs-btn-disabled-bg:           rgba(var(--bs-light-rgb));
     --bs-btn-disabled-border-color: rgba(var(--bs-light-rgb));
-  }
-
-  .btn-dark {
-    --bs-btn-color: rgba(var(--bs-light-rgb));
-    --bs-btn-bg: rgba(var(--bs-dark-rgb));
-    --bs-btn-border-color: rgba(var(--bs-dark-rgb));
-
-    --bs-btn-hover-color: rgba(var(--bs-light-rgb));
-    --bs-btn-hover-bg: rgba(var(--bs-dark-hover-rgb));
-    --bs-btn-hover-border-color: rgba(var(--bs-dark-hover-rgb));
-
-    --bs-btn-focus-shadow-rgb: var(--bs-dark-rgb);
-
-    --bs-btn-active-color: rgba(var(--bs-light-rgb));
-    --bs-btn-active-bg: rgba(var(--bs-dark-hover-rgb));
-    --bs-btn-active-border-color: rgba(var(--bs-dark-hover-rgb));
-
-    --bs-btn-disabled-color: rgba(var(--bs-light-rgb));
-    --bs-btn-disabled-bg: rgba(var(--bs-dark-rgb));
-    --bs-btn-disabled-border-color: rgba(var(--bs-dark-rgb));
   }
 }
 

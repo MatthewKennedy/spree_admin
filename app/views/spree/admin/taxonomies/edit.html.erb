@@ -10,7 +10,7 @@
         <div class="card-header">
           <div class="row pb-0">
             <div class="col d-flex my-1">
-              <%= link_to_with_icon I18n.t('spree.admin.taxonomies.edit_root_taxonomy', name: @taxonomy.root.name ), spree.edit_admin_taxonomy_taxon_path(@taxonomy, @taxonomy.root.id), icon: 'edit.svg', class: 'text-nowrap btn btn-light btn-sm align-self-center' %>
+              <%= link_to_with_icon I18n.t('spree.admin.taxonomies.edit_root_taxonomy', name: @taxonomy.root.name ), spree.edit_admin_taxonomy_taxon_path(@taxonomy, @taxonomy.root.id), icon: 'edit.svg', class: 'text-nowrap btn btn-matching-bg btn-sm align-self-center' %>
             </div>
             <div class="col d-flex my-1 justify-content-end">
               <%= link_to_with_icon I18n.t('spree.admin.taxonomies.add_new_taxon'), spree.new_admin_taxonomy_taxon_path(@taxonomy.id), icon: 'plus-square.svg', class: 'text-nowrap btn btn-sm btn-primary align-self-center' %>

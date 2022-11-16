@@ -2,18 +2,7 @@
   display: flex;
   flex-direction: column;
   max-height: 26rem;
-  color: $input-color;
-  background-color: $input-bg;
-  border: $input-border-width solid $input-border-color;
-  border-radius: $input-border-radius;
-
-  &:has( > div.ProseMirror:focus) {
-    background-color: $input-focus-bg;
-    border-color: $input-focus-border-color;
-    box-shadow: $input-focus-box-shadow;
-    color: $input-focus-color;
-    outline: 0;
-  }
+  @extend .form-control;
 }
 
 .editor__header {
@@ -49,21 +38,26 @@
 .menu-item {
   width: 1.75rem;
   height: 1.75rem;
-  color: $input-color;
   border: none;
-  background-color: transparent;
+
+  color: var(--bs-btn-color);
+  background-color: var(--bs-btn-bg);
+
   border-radius: $input-border-radius;
   padding: .25rem;
   margin-right: .25rem;
   display: flex;
 
+  @extend .btn-matching-bg;
+
   &:hover,
   &.is-active {
-    color: $input-bg;
-    background-color: $input-color;
+
+   color: var(--bs-btn-active-color);
+   background-color: var(--bs-btn-active-bg);
 
     .svg {
-       color: $input-bg;
+       color: var(--bs-btn-active-color);
     }
   }
 
@@ -72,8 +66,8 @@
     cursor: not-allowed;
 
     &:hover {
-      color: $input-color;
-      background: transparent;
+      color: var(--bs-btn-disabled-color);
+      background: var(--bs-btn-disabled-bg);
     }
   }
 }

@@ -18,8 +18,8 @@
                     <%= f.hidden_field :ship_address_id, value: address.id %>
                   <% end unless address == @user.ship_address %>
 
-                  <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_for_billing_form"}) %>
-                  <%= button(nil, "truck.svg", "submit", {class: 'btn btn-sm btn-light', form: "use_for_shipping_form"}) %>
+                  <%= button(nil, "receipt.svg", "submit", {class: 'btn btn-sm btn-matching-bg', form: "use_for_billing_form"}) %>
+                  <%= button(nil, "truck.svg", "submit", {class: 'btn btn-sm btn-matching-bg', form: "use_for_shipping_form"}) %>
                   <%= link_to_edit(address, url: spree.edit_admin_address_path(address, address: {user_id: @user.id}), data: {turbo_frame: :modal}) %>
                   <%= link_to_delete(address, url: spree.admin_address_path(address)) %>
                 </div>

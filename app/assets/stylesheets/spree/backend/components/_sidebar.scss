@@ -1,11 +1,14 @@
 aside#main-sidebar {
   overflow-y: auto;
-  border-right: 1px solid var(--bs-gray-200);
-  background: white !important;
+  background: var(--sa-sidebar-bg) !important;
   top: 0;
 
   #navHeader {
     z-index: 1042;
+
+    .spree-logo{
+      color: var(--sa-logo);
+    }
   }
 
   #navFooter {
@@ -14,7 +17,7 @@ aside#main-sidebar {
 
   #carouselMainNavigation {
     margin-bottom: var(--nav-bar-height);
-    margin-top: 90px;
+    margin-top: 100px;
   }
 
   li.selected {
