@@ -1,7 +1,7 @@
 <sa-card>
   <sa-header>
     <h5><%= I18n.t('spree.admin.countries.states') %></h5>
-    <%= link_to I18n.t('spree.admin.countries.add_new_state'), spree.new_admin_country_state_path(@country), class: 'btn btn-sm btn-light', data: { turbo_frame: :modal } %>
+    <%= link_to I18n.t('spree.admin.countries.add_new_state'), spree.new_admin_country_state_path(@country), class: 'btn btn-sm btn-matching-bg', data: { turbo_frame: :modal } %>
   </sa-header>
   <g-responsive>
     <g-table>

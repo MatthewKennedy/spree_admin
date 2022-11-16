@@ -7,8 +7,8 @@
         </div>
         <div>
           <% if can? :create, Spree::ProductProperty %>
-            <%= link_to_with_icon(I18n.t('spree.admin.products.select_from_prototype'), spree.prototypes_admin_product_product_properties_path(@product), icon: 'list.svg', class: 'btn btn-light btn-sm', data: { turbo_frame: :modal}) if Spree::Prototype.any? %>
-            <%= link_to_with_icon I18n.t('spree.admin.products.add_new_property'), spree.new_admin_product_product_property_path(@product), icon: 'plus-square.svg', class: 'btn btn-light btn-sm', data: { turbo_frame: :modal } %>
+            <%= link_to_with_icon(I18n.t('spree.admin.products.select_from_prototype'), spree.prototypes_admin_product_product_properties_path(@product), icon: 'list.svg', class: 'btn btn-matching-bg btn-sm', data: { turbo_frame: :modal}) if Spree::Prototype.any? %>
+            <%= link_to_with_icon I18n.t('spree.admin.products.add_new_property'), spree.new_admin_product_product_property_path(@product), icon: 'plus-square.svg', class: 'btn btn-matching-bg btn-sm', data: { turbo_frame: :modal } %>
           <% end %>
         </div>
       </div>
