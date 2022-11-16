@@ -7,7 +7,7 @@
 <% end if can? :create, Spree::CmsPage %>
 
 <% content_for :index_table_filter_buttons do %>
-  <%= link_to I18n.t('spree.admin.more_filters'), spree.filter_admin_cms_pages_path(request.query_parameters), class: "btn btn-outline-secondary", data: {turbo_frame: :offcanvas} %>
+  <%= link_to I18n.t('spree.admin.more_filters'), spree.filter_admin_cms_pages_path(request.query_parameters), class: "btn btn-secondary", data: {turbo_frame: :offcanvas} %>
 <% end %>
 
 <% content_for :index_table do %>

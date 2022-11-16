@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :additional_form_buttons do %>
-  <%= link_to_with_icon Spree.t(:delete), spree.admin_store_url(@store), { class: 'btn btn-outline-danger', data: { confirm: Spree.t(:are_you_sure), method: :delete }, icon: 'delete.svg' } if can?(:delete, @store) && @store.can_be_deleted? %>
+  <%= link_to_with_icon Spree.t(:delete), spree.admin_store_url(@store), { class: 'btn btn-danger', data: { confirm: Spree.t(:are_you_sure), method: :delete }, icon: 'delete.svg' } if can?(:delete, @store) && @store.can_be_deleted? %>
 <% end %>
 
 <%= form_with model: [:admin, @store], data: {controller: "form-state"} do |f| %>

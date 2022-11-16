@@ -8,7 +8,7 @@ module Spree
           next unless order.send("can_#{event}?")
 
           label = Spree.t(event, scope: "admin.order.events", default: Spree.t(event))
-          links << link_to_with_icon(label.capitalize, [event.to_sym, :admin, order], icon: event.to_s + ".svg", data: {turbo_method: :put, turbo_confirm: Spree.t(:order_sure_want_to, event: label)}, class: "btn btn-matching-bg")
+          links << link_to_with_icon(label.capitalize, [event.to_sym, :admin, order], icon: event.to_s + ".svg", data: {turbo_method: :put, turbo_confirm: Spree.t(:order_sure_want_to, event: label)}, class: "btn btn-secondary")
         end
         safe_join(links, "".html_safe)
       end

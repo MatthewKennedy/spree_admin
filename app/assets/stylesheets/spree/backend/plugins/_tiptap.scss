@@ -48,7 +48,7 @@
   margin-right: .25rem;
   display: flex;
 
-  @extend .btn-matching-bg;
+  @extend .btn-secondary;
 
   &:hover,
   &.is-active {

@@ -10,7 +10,7 @@
       <%= form.text_field :email, required: true %>
       <%= form.label :email, raw(I18n.t('spree.admin.orders.email')) + required_span_tag %>
     <% end %>
-    <%= button_tag(I18n.t('spree.admin.actions.save'), {data: { input__required_target: "saveButton", form_state_target: "saveButton"}, class: 'btn-outline-secondary btn'}) %>
+    <%= button_tag(I18n.t('spree.admin.actions.save'), {data: { input__required_target: "saveButton", form_state_target: "saveButton"}, class: 'btn-secondary btn'}) %>
   </div>
 <% end %>
 

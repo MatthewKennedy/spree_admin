@@ -7,7 +7,7 @@
     <div class="accordion" id="accordionPanelsStayOpenExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-          <button class="accordion-button btn btn-matching-bg collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          <button class="accordion-button btn btn-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
             <%= I18n.t('spree.admin.products.search') %>
           </button>
         </h2>
@@ -36,7 +36,7 @@
 
   <%= content_for :offcanvas_footer do %>
     <div class="flex-fill">
-      <%= link_to I18n.t('spree.admin.actions.clear_filters'), spree.admin_products_path, class: "btn btn-outline-secondary", data: {turbo_frame: :index_table, action: "form--reset#clearForm"} %>
+      <%= link_to I18n.t('spree.admin.actions.clear_filters'), spree.admin_products_path, class: "btn btn-secondary", data: {turbo_frame: :index_table, action: "form--reset#clearForm"} %>
     </div>
     <div data-hook="admin_products_index_search_buttons" class="form-actions">
       <button type="button" class="btn-primary btn" data-bs-dismiss="offcanvas" aria-label="Close"><%= I18n.t('spree.admin.actions.done') %></button>

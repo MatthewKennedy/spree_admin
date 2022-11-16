@@ -1,5 +1,5 @@
 <div class="input-group" style="min-width: 145px;">
-  <button class="btn btn-outline-secondary" type="button" data-number-increment-target="decreaseButton">-</button>
+  <button class="btn btn-secondary" type="button" data-number-increment-target="decreaseButton">-</button>
   <%= number_field_tag attribute, value, min: 0,
         class: "line_item_quantity form-control text-center",
         data: {
@@ -7,7 +7,7 @@
           input_formatting_options_value: { numericOnly: true, blocks: [5] },
           action: 'change->form-validation#validate'
         } %>
-  <button class="btn btn-outline-secondary" type="button" data-number-increment-target="increaseButton">+</button>
+  <button class="btn btn-secondary" type="button" data-number-increment-target="increaseButton">+</button>
 </div>
 
 <%= submit_tag nil, data: { form_validation_target: "submitBtn", number_increment_target: "submitBtn" } %>

@@ -11,7 +11,7 @@
           <%= select_tag('promotion_rule[type]', options_for_promotion_rule_types(@promotion), include_blank: true, class: "form-select",  data: { controller: 'ts--select' }) %>
           <%= label_tag :promotion_rule_type, Spree.t(:add_rule_of_type) %>
         </div>
-        <%= button '', 'plus-lg.svg', 'submit', class: "btn btn-outline-secondary input-group-text" %>
+        <%= button '', 'plus-lg.svg', 'submit', class: "btn btn-secondary input-group-text" %>
       </div>
     <% end %>
 
