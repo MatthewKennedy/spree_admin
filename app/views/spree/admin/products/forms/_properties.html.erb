@@ -34,7 +34,7 @@
       </div>
       <% else %>
         <% if can? :create, Spree::ProductProperty %>
-          <div class="alert alert-light text-center mx-5" role="alert">
+          <div class="text-center m-4">
             <%= I18n.t('spree.admin.products.add_first_property') %>
           </div>
         <% end %>

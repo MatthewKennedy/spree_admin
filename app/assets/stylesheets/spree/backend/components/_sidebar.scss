@@ -32,7 +32,7 @@ aside#main-sidebar {
       display: block;
       position: absolute;
       content: "";
-      width:5px;
+      width: 5px;
       height: 100%;
       background-color: var(--bs-primary);
       border-radius: var(--#{$prefix}border-radius) 0 0 var(--#{$prefix}border-radius);
