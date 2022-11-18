@@ -29,7 +29,7 @@
       <% end %>
 
       <%= link_to spree.edit_admin_product_path(product), data: {turbo_frame: :_top} do %>
-        <span class="badge rounded-pill text-bg-light">
+        <span class="badge rounded-pill normal">
           <% if product.digital? %>
             <%= I18n.t('spree.admin.product_kinds.digital') %>
           <% else %>

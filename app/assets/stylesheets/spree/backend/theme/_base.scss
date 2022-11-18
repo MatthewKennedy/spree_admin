@@ -2,17 +2,14 @@
   --nav-bar-height: 54px;
   --#{$prefix}border-radius: 3px;
 
-  .accordion {
-    --bs-accordion-btn-bg: inherit;
-    --bs-accordion-active-bg: inherit;
-    --bs-accordion-active-color: inherit;
-    --bs-accordion-btn-focus-box-shadow: 0;
-    --bs-accordion-btn-focus-border-color: transparent;
-    --bs-accordion-border-color: transparent;
-  }
-
   .badge {
+    border-width: 1px;
+    border-style: solid;
+
     --bs-badge-font-weight: 300;
+    --perceived-lightness:  calc( ((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255 );
+    --lightness-switch:     max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+    --lighten-by:           calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
   }
 
   .card {
@@ -58,10 +55,6 @@
   // Universal disabled on link or button element
   // All disabled buttons might as well look the same.
   .btn[disabled] {
-    color: black;
-    background-color: transparent;
-    border-color: black;
-    opacity: 0.25;
     pointer-events: none;
   }
 

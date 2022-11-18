@@ -39,7 +39,6 @@
     --#{$prefix}input-focus-border-rgb: 83, 155, 245;
 
 
-
 ////////////////
 // POLYFILL   //
 ////////////////
@@ -61,7 +60,6 @@
 ///////////////////
 // UI COMPONENTS //
 ///////////////////
-
     .btn-primary {
       --#{$prefix}btn-color:                 rgba(var(--#{$prefix}primary-rgb), 0.9);
       --#{$prefix}btn-bg:                    rgba(var(--#{$prefix}primary-rgb), .06);
@@ -77,9 +75,9 @@
       --#{$prefix}btn-active-bg:             rgba(var(--#{$prefix}primary-rgb), .5);
       --#{$prefix}btn-active-border-color:   rgba(var(--#{$prefix}primary-hover-rgb));
 
-      --#{$prefix}btn-disabled-color:        rgba(var(--#{$prefix}dark-rgb));
-      --#{$prefix}btn-disabled-bg:           rgba(var(--#{$prefix}primary-rgb));
-      --#{$prefix}btn-disabled-border-color: rgba(var(--#{$prefix}primary-rgb));
+      --#{$prefix}btn-disabled-color:        rgba(var(--#{$prefix}primary-rgb), 0.4);
+      --#{$prefix}btn-disabled-bg:           rgba(var(--#{$prefix}primary-rgb), 0);
+      --#{$prefix}btn-disabled-border-color: rgba(var(--#{$prefix}primary-rgb), 0.4);
     }
 
     .btn-secondary {
@@ -122,48 +120,140 @@
       --#{$prefix}btn-disabled-border-color: rgba(var(--#{$prefix}danger-rgb));
     }
 
+    .accordion {
+      --#{$prefix}accordion-color:        rgba(var(--#{$prefix}body-color-rgb));
+      --#{$prefix}accordion-bg:           rgba(var(--#{$prefix}body-bg-rgb));
+      --#{$prefix}accordion-active-color: rgba(var(--#{$prefix}primary-rgb));
+      --#{$prefix}accordion-btn-color:    rgba(var(--#{$prefix}body-color-rgb));
+      --#{$prefix}accordion-active-bg:    rgba(var(--#{$prefix}sub-bg-rgb));
+
+      &-button {
+        &:after {
+          background-image: url("data:image/svg+xml; charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor' %3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+        }
+        &:not(.collapsed):after{
+          background-image: url("data:image/svg+xml; charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor' %3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+        }
+      }
+    }
+
+    .badge.danger {
+      --label-r: 220;
+      --label-g: 53;
+      --label-b: 69;
+      --label-h: 354;
+      --label-s: 70;
+      --label-l: 53;
+    }
+
+    .badge.primary {
+      --label-r: 253;
+      --label-g: 152;
+      --label-b: 67;
+      --label-h: 27;
+      --label-s: 97;
+      --label-l: 62;
+    }
+
+    .badge.success {
+      --label-r: 25;
+      --label-g: 135;
+      --label-b: 84;
+      --label-h: 152;
+      --label-s: 68;
+      --label-l: 31;
+    }
+
+    .badge.warning {
+      --label-r: 247;
+      --label-g: 223;
+      --label-b: 30;
+      --label-h: 53;
+      --label-s: 93;
+      --label-l: 54;
+    }
+
+    .badge.normal {
+      --label-r: 191;
+      --label-g: 212;
+      --label-b: 242;
+      --label-h: 215;
+      --label-s: 66;
+      --label-l: 84;
+    }
+
+    .badge {
+      --lightness-threshold:  0.6;
+      --background-alpha:     0.18;
+      --border-alpha:         0.3;
+
+      color:          hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
+      background:     rgba(var(--label-r), var(--label-g), var(--label-b), var(--background-alpha));
+      border-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+    }
+
     .card {
-      --#{$prefix}card-bg:                   rgba(var(--#{$prefix}sub-bg-rgb));
-      --#{$prefix}card-border-color:         rgba(var(--#{$prefix}sub-border-rgb));
+      --#{$prefix}card-bg: rgba(var(--#{$prefix}sub-bg-rgb));
+      --#{$prefix}card-border-color: rgba(var(--#{$prefix}sub-border-rgb));
     }
 
-    .offcanvas {
-      --#{$prefix}offcanvas-bg:              rgba(var(--#{$prefix}body-bg-rgb));
-    }
+    .dropdown{
+      &-menu {
+        --bs-dropdown-bg: rgba(var(--#{$prefix}sub-bg-rgb));
+        --bs-dropdown-border-color: rgba(var(--#{$prefix}sub-border-rgb));
+      }
+      &-item {
+        --bs-dropdown-link-color: rgba(var(--#{$prefix}body-color-rgb));
 
-    .list-group {
-      background-color:                      rgba(var(--#{$prefix}body-bg-rgb));
-    }
-
-    .list-group-item {
-      background-color:                      rgba(var(--#{$prefix}body-bg-rgb));
+        &:hover {
+          background-color: rgba(var(--#{$prefix}body-bg-rgb));
+          color: rgba(var(--#{$prefix}body-color-rgb));
+        }
+      }
     }
 
     .form-control,
     .form-select,
     .form-check-input {
-      background-color:                      rgba(var(--#{$prefix}input-bg-rgb));
-      border-color:                          rgba(var(--#{$prefix}input-border-rgb));
-      color:                                 rgba(var(--#{$prefix}input-color-rgb));
+      background-color: rgba(var(--#{$prefix}input-bg-rgb));
+      border-color: rgba(var(--#{$prefix}input-border-rgb));
+      color: rgba(var(--#{$prefix}input-color-rgb));
 
       &:focus-visible,
       &:focus,
       &:checked,
       &:has( > div.ProseMirror:focus) {
-        border-color:                        rgba(var(--#{$prefix}input-focus-border-rgb));
-        box-shadow: inset 0 0 0 1px          rgba(var(--#{$prefix}input-focus-border-rgb));
+        border-color: rgba(var(--#{$prefix}input-focus-border-rgb));
+        box-shadow: inset 0 0 0 1px rgba(var(--#{$prefix}input-focus-border-rgb));
       }
     }
 
     .input-group-text {
-      background-color:                      rgba(var(--#{$prefix}input-bg-rgb));
-      border-color:                          rgba(var(--#{$prefix}input-border-rgb));
-      color:                                 rgba(var(--#{$prefix}input-color-rgb));
+      background-color: rgba(var(--#{$prefix}input-bg-rgb));
+      border-color: rgba(var(--#{$prefix}input-border-rgb));
+      color: rgba(var(--#{$prefix}input-color-rgb));
+    }
+
+    .list-group {
+      background-color: rgba(var(--#{$prefix}body-bg-rgb));
+    }
+
+    .list-group-item {
+      background-color: rgba(var(--#{$prefix}body-bg-rgb));
+    }
+
+    .modal-content {
+      background-color: rgba(var(--#{$prefix}sub-bg-rgb));
+      border-color: rgba(var(--#{$prefix}sub-border-rgb));
+    }
+
+    .offcanvas {
+      --#{$prefix}offcanvas-bg: rgba(var(--#{$prefix}body-bg-rgb));
     }
 
     aside#main-sidebar {
       li.selected {
-        background-color:                    rgba(var(--#{$prefix}primary-rgb), .04);
+        background-color: rgba(var(--#{$prefix}primary-rgb), .04);
       }
     }
   }

@@ -4,9 +4,9 @@
   </div>
   <div class="card-body">
     <h5>
-      <span class="badge bg-success animate__animated" id="productStatus" data-stream-enter-class="animate__pulse"><%= @product.status.capitalize %></span>
+      <span class="badge success animate__animated" id="productStatus" data-stream-enter-class="animate__pulse"><%= @product.status.capitalize %></span>
 
-    <span class="badge text-bg-success">
+    <span class="badge success">
       <% if @product.digital? %>
         <%= I18n.t('spree.admin.product_kinds.digital') %>
       <% else %>
@@ -15,7 +15,7 @@
     </span>
 
     <% if @product.has_variants? %>
-      <span class="badge text-bg-success"><%= I18n.t("spree.admin.product.has_variants") %></span>
+      <span class="badge success"><%= I18n.t("spree.admin.product.has_variants") %></span>
     <% end %>
     </h5>
   </div>
