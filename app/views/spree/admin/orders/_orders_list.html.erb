@@ -1,11 +1,17 @@
 <%= turbo_frame_tag "#{plural_resource_name(@collection).downcase}-page-#{@pagy.page}" do %>
   <% @collection.each do |order| %>
-    <g-tr style=" grid-template-columns: 2fr 3fr 2fr 1fr 1fr 1fr 1fr; " class="<%= "text-muted" if order.shipment_state == 'shipped' %>">
-      <%= link_to spree.edit_admin_order_path(order) do %>
+    <% if order.complete? %>
+        <% muted_text_class = 'text-muted' %>
+      <% else %>
+        <% muted_text_class = '' %>
+    <% end %>
+
+    <g-tr style=" grid-template-columns: 2fr 3fr 2fr 1fr 1fr 1fr 1fr; " class="<%= muted_text_class %>">
+      <%= link_to spree.edit_admin_order_path(order), class: muted_text_class do %>
         <%= order.number %>
       <% end %>
 
-      <%= link_to spree.edit_admin_order_path(order) do %>
+      <%= link_to spree.edit_admin_order_path(order), class: muted_text_class do %>
         <%= order_time(@show_only_completed ? order.completed_at : order.created_at) %>
       <% end %>
 
@@ -23,30 +29,24 @@
       </g-td>
 
       <%= link_to spree.edit_admin_order_path(order) do %>
-        <span class="badge rounded-pill bg-<%= order.considered_risky ? 'considered_risky' : 'considered_safe' %>">
-          <%= order.considered_risky ? I18n.t("spree.admin.risky") : I18n.t("spree.admin.safe") %>
-        </span>
+        <%= order_risk_state_badge(order) %>
       <% end %>
 
       <%= link_to spree.edit_admin_order_path(order) do %>
         <% if order.payment_state %>
-          <span class="badge rounded-pill bg-<%= order.payment_state %>">
-            <%= I18n.t("spree.admin.payment_states.#{order.payment_state}") %>
-          </span>
+          <%= order_payment_state_badge(order) %>
         <% end %>
       <% end %>
 
       <% if Spree::Order.checkout_step_names.include?(:delivery) %>
         <%= link_to spree.edit_admin_order_path(order) do %>
           <% if order.shipment_state %>
-            <span class="badge rounded-pill bg-<%= order.shipment_state %>">
-              <%= I18n.t("spree.admin.shipment_states.#{order.shipment_state}") %>
-            </span>
+            <%= order_shipment_badge(order) %>
           <% end %>
         <% end %>
       <% end %>
 
-      <%= link_to spree.edit_admin_order_path(order) do %>
+      <%= link_to spree.edit_admin_order_path(order), class: muted_text_class do %>
         <%= order.display_total.to_html %>
       <% end %>
     </g-tr>

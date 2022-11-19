@@ -188,6 +188,15 @@
       --label-l: 84;
     }
 
+    .badge.muted {
+      --label-r: 0;
+      --label-g: 0;
+      --label-b: 0;
+      --label-h: 0;
+      --label-s: 0;
+      --label-l: 0;
+    }
+
     .badge {
       --lightness-threshold:  0.6;
       --background-alpha:     0.18;
