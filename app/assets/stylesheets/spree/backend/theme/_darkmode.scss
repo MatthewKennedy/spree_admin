@@ -154,13 +154,31 @@
       --label-l: 53;
     }
 
-    .badge.primary {
+    .badge.brand {
       --label-r: 250;
       --label-g: 84;
       --label-b: 0;
       --label-h: 20;
       --label-s: 100;
       --label-l: 49;
+    }
+
+    .badge.primary {
+      --label-r: 83;
+      --label-g: 155;
+      --label-b: 245;
+      --label-h: 213;
+      --label-s: 89;
+      --label-l: 64.3;
+    }
+
+    .badge.info {
+      --label-r: 83;
+      --label-g: 155;
+      --label-b: 245;
+      --label-h: 213;
+      --label-s: 89;
+      --label-l: 64.3;
     }
 
     .badge.success {
