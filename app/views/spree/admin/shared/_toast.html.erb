@@ -1,15 +1,21 @@
-<div aria-live="polite" aria-atomic="true" class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-5">
-  <div class="toast align-items-center border-0 py-2 text-bg-dark animate__animated animate__faster animate__fadeInUp"
-       role="alert"
-       aria-live="assertive"
-       data-bs-animation="false"
-       aria-atomic="true"
-       data-controller="toast">
-    <div class="d-flex">
-      <div class="toast-body">
-        <%= message %>
+<div aria-live="polite" aria-atomic="true" class="position-relative">
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x">
+
+    <div class="toast align-items-center py-2 animate__animated animate__faster animate__fadeInUp mb-5"
+         role="alert"
+         aria-live="assertive"
+         data-bs-animation="false"
+         aria-atomic="true"
+         data-controller="toast">
+      <div class="d-flex">
+        <div class="toast-body text-start">
+          <%= message %>
+        </div>
+        <button type="button" class="btn" data-bs-dismiss="toast" aria-label="Close">
+          <%= spree_admin_svg_tag "x-lg.svg", size: '22px', class: 'mb-0' %>
+        </button>
       </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
+
   </div>
 </div>

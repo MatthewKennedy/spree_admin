@@ -21,7 +21,9 @@
   <div id="navHeader" class="py-2 position-absolute top-0 w-100">
     <div class="d-flex align-items-center">
       <div class="flex-fill spree-logo" style="height: 40px;">
-        <%= spree_admin_svg_tag "admin-ui-logo.svg", size: '100px * 35px' %>
+        <%= link_to spree.admin_path do %>
+          <%= spree_admin_svg_tag "admin-ui-logo.svg", size: '100px * 35px' %>
+        <% end %>
       </div>
       <div>
         <%= link_to_with_icon(I18n.t('spree.admin.search'), spree.new_admin_search_path, no_text: true, data: { turbo_frame: :modal }, class: 'btn btn-secondary d-none d-lg-inline-block m-1', icon: 'search.svg') %>
@@ -40,7 +42,7 @@
     </div>
 
     <div class="w-100 p-1">
-      <%= link_to(spree.new_admin_search_path, data: { turbo_frame: :modal }, class: 'btn btn-secondary d-none d-lg-block w-100') do %>
+      <%= link_to(spree.switcher_admin_stores_path, data: { turbo_frame: :modal }, class: 'btn btn-secondary d-none d-lg-block w-100') do %>
       <%= current_store.name %> <%= spree_admin_svg_tag('shuffle.svg', class: "ms-3") %>
       <% end %>
     </div>
