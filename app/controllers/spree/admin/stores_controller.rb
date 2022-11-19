@@ -22,6 +22,11 @@ module Spree
         end
       end
 
+      def switcher
+        # DO NOT REMOVE!!
+        # This is used to launch the Store Switcher Modal.
+      end
+
       def update
         @store.assign_attributes(permitted_store_params)
 

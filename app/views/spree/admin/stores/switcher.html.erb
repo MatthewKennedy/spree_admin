@@ -1,0 +1,26 @@
+<% content_for :modal_header do %>
+  <h5>Switch Store</h5>
+
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+  </button>
+<% end %>
+
+<% content_for :modal_body do %>
+  <div class="container">
+   <% @stores.each do |store| %>
+    <% next if current_store.id == store.id %>
+
+    <%= link_to spree.admin_url(host: store.formatted_url), class: "py-3 px-4 dropdown-item rounded", id: store.code, data: { turbo: false } do %>
+      <div><%= store.unique_name %></div>
+      <div><small class="text-muted"><%= store.url %></small></div>
+    <% end %>
+   <% end %>
+  </div>
+<% end %>
+
+<% content_for :modal_footer do %>
+  <%= link_to "Create a new Store", spree.new_admin_store_path(host: current_store.formatted_url), class: 'btn btn-primary w-100', data: {turbo_frame: :_top} %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/modal', locals: { modal_dialog_settings: 'modal-dialog-scrollable' } %>

@@ -219,7 +219,11 @@ Spree::Core::Engine.add_routes do
     end
 
     # Stores
-    resources :stores, except: %i[index show]
+    resources :stores, except: %i[index show] do
+      collection do
+        get :switcher
+      end
+    end
 
     # States
     resources :states

@@ -117,7 +117,8 @@
     -webkit-animation-name: fadeOutDown;
     animation-name: fadeOutDown;
     display: block !important;
-    bottom: -200px;
+    bottom: 0;
+    margin-bottom: 0 !important;
   }
 
   table.table tr:last-child td {
