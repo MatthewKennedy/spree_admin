@@ -102,20 +102,19 @@
     border-top: none;
   }
 
-  @keyframes fadeOutDown {
+  @keyframes fadeOutDownAlert {
     from {
       opacity: 1;
     }
 
     to {
       opacity: 0;
-      -webkit-transform: translate3d(0, 100%, 0);
-      transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 500px, 0);
     }
   }
+
   .animate__fadeInUp.hide {
-    -webkit-animation-name: fadeOutDown;
-    animation-name: fadeOutDown;
+    animation-name: fadeOutDownAlert;
     display: block !important;
     bottom: 0;
     margin-bottom: 0 !important;

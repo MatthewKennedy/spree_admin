@@ -20469,11 +20469,9 @@ class MarkType {
 class Schema {
   constructor(spec) {
     this.cached = Object.create(null);
-    this.spec = {
-      nodes: OrderedMap.from(spec.nodes),
-      marks: OrderedMap.from(spec.marks || {}),
-      topNode: spec.topNode
-    };
+    let instanceSpec = this.spec = {};
+    for (let prop in spec) instanceSpec[prop] = spec[prop];
+    instanceSpec.nodes = OrderedMap.from(spec.nodes), instanceSpec.marks = OrderedMap.from(spec.marks || {}), 
     this.nodes = NodeType$1.compile(this.spec.nodes, this);
     this.marks = MarkType.compile(this.spec.marks, this);
     let contentExprCache = Object.create(null);

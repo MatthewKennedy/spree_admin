@@ -12,11 +12,13 @@
 ////////////////
 // RGB VALUES //
 ////////////////
+    --#{$prefix}brand-color-rgb:        250, 84, 0;
+
     --#{$prefix}black-rgb:              0, 0, 0;
     --#{$prefix}white-rgb:              255, 255, 255;
 
     // Primary
-    --#{$prefix}primary-rgb:            250, 84, 0;
+    --#{$prefix}primary-rgb:            83, 155, 245;
     --#{$prefix}primary-hover-rgb:      var(--#{$prefix}primary-rgb);
 
    // Secondary
@@ -57,7 +59,7 @@
     --#{$prefix}link-color:                  rgba(var(--#{$prefix}primary-rgb));
     --#{$prefix}link-hover-color:            rgba(var(--#{$prefix}primary-hover-rgb));
 
-    --sa-logo:                               rgba(var(--#{$prefix}primary-rgb));
+    --sa-logo:                               rgba(var(--#{$prefix}brand-color-rgb));
     --sa-navbar-bg:                          rgba(var(--#{$prefix}body-bg-rgb));
     --sa-sidebar-bg:                         rgba(var(--#{$prefix}body-bg-rgb));
 
@@ -270,6 +272,12 @@
 
     .offcanvas {
       --#{$prefix}offcanvas-bg: rgba(var(--#{$prefix}body-bg-rgb));
+    }
+
+    .toast {
+      --bs-toast-bg: var(--#{$prefix}gray-200);
+      --bs-toast-color: rgba(var(--#{$prefix}sub-bg-rgb));
+      --bs-toast-border-color: rgba(var(--#{$prefix}input-border-rgb));
     }
 
     aside#main-sidebar {
