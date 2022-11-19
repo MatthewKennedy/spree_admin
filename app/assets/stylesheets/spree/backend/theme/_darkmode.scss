@@ -3,6 +3,11 @@
 ///////////////
 @media (prefers-color-scheme: dark) {
   :root body.admin {
+    * {
+      --perceived-lightness:  calc( ((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255 );
+      --lightness-switch:     max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+      --lighten-by:           calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
+    }
 
 ////////////////
 // RGB VALUES //
@@ -10,7 +15,7 @@
     --#{$prefix}black-rgb:              0, 0, 0;
     --#{$prefix}white-rgb:              255, 255, 255;
 
-    // Primary color: rgb(250, 84, 0);
+    // Primary
     --#{$prefix}primary-rgb:            250, 84, 0;
     --#{$prefix}primary-hover-rgb:      var(--#{$prefix}primary-rgb);
 
@@ -95,9 +100,10 @@
       --#{$prefix}btn-active-bg:             rgba(var(--#{$prefix}secondary-rgb), .5);
       --#{$prefix}btn-active-border-color:   rgba(var(--#{$prefix}secondary-hover-rgb));
 
-      --#{$prefix}btn-disabled-color:        rgba(var(--#{$prefix}dark-rgb));
-      --#{$prefix}btn-disabled-bg:           rgba(var(--#{$prefix}secondary-rgb));
+      --#{$prefix}btn-disabled-color:        var(--#{$prefix}gray-700);
+      --#{$prefix}btn-disabled-bg:           rgba(var(--#{$prefix}secondary-rgb), 0);
       --#{$prefix}btn-disabled-border-color: rgba(var(--#{$prefix}secondary-rgb));
+      --#{$prefix}btn-disabled-opacity:      1;
     }
 
     .btn-danger {
@@ -147,12 +153,12 @@
     }
 
     .badge.primary {
-      --label-r: 253;
-      --label-g: 152;
-      --label-b: 67;
-      --label-h: 27;
-      --label-s: 97;
-      --label-l: 62;
+      --label-r: 250;
+      --label-g: 84;
+      --label-b: 0;
+      --label-h: 20;
+      --label-s: 100;
+      --label-l: 49;
     }
 
     .badge.success {
@@ -186,10 +192,6 @@
       --lightness-threshold:  0.6;
       --background-alpha:     0.18;
       --border-alpha:         0.3;
-
-      color:          hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
-      background:     rgba(var(--label-r), var(--label-g), var(--label-b), var(--background-alpha));
-      border-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
     }
 
     .card {
@@ -228,6 +230,12 @@
       }
     }
 
+    .plugin-dropdown_input.focus .ts-dropdown .dropdown-input {
+      color: white;
+      border-color: rgba(var(--#{$prefix}input-focus-border-rgb));
+      box-shadow: inset 0 0 0 1px rgba(var(--#{$prefix}input-focus-border-rgb));
+    }
+
     .input-group-text {
       background-color: rgba(var(--#{$prefix}input-bg-rgb));
       border-color: rgba(var(--#{$prefix}input-border-rgb));
@@ -245,6 +253,10 @@
     .modal-content {
       background-color: rgba(var(--#{$prefix}sub-bg-rgb));
       border-color: rgba(var(--#{$prefix}sub-border-rgb));
+    }
+
+    .modal-backdrop.show {
+      --bs-backdrop-opacity: 0.75;
     }
 
     .offcanvas {

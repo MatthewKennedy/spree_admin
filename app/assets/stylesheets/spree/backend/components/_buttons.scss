@@ -10,12 +10,22 @@
   }
 }
 
+.form-control:not(:disabled):not([readonly])::file-selector-button {
+  @extend .btn-secondary;
 
-input[type="file"]::file-selector-button {
-  margin-top: 0.1rem;
-  padding-top: 0;
+  margin-top: -6px;
   padding-bottom: 0;
-  background-color: transparent !important;
+  padding-top: 0;
+  height: 54px;
+  color: var(--#{$prefix}btn-color);
+  background-color: var(--#{$prefix}btn-bg);
+}
+
+.form-control:hover:not(:disabled):not([readonly])::file-selector-button {
+  @extend .btn-secondary;
+
+  color: var(--#{$prefix}btn-hover-color);
+  background-color: var(--#{$prefix}btn-hover-bg);
 }
 
 .show-active-bar button,

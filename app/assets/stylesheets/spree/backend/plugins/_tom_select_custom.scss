@@ -38,38 +38,46 @@ input::-webkit-contacts-auto-fill-button {
   right: 0;
 }
 
-.ts-dropdown-content {
-  padding: 0;
-}
+.ts-dropdown {
+  @extend .form-control;
 
-.ts-dropdown .option[data-selectable] {
-  padding: 7.5px;
-  margin: 5px 7.5px;
-  border-radius: 5px;
-  overflow: visible;
-  position: relative;
-}
+  &-content {
+    padding: 0;
+  }
 
-.ts-dropdown .active {
-  background-color: transparent;
-}
+  .option[data-selectable] {
+    padding: 7.5px;
+    margin: 5px 7.5px;
+    border-radius: 5px;
+    overflow: visible;
+    position: relative;
+  }
 
+  .create:hover,
+  .option:hover,
+  .selected {
+    border: none;
+    color:            rgba(var(--#{$prefix}input-color-rgb));
+    background-color: rgba(var(--#{$prefix}sub-bg-rgb));
+  }
 
-.ts-dropdown .create:hover, .ts-dropdown .option:hover, .ts-dropdown .selected {
-  background-color: rgba(242, 247, 254, 1);
-}
+  .selected:before {
+    background-color: var(--bs-primary);
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    content: "";
+    display: block;
+    height: 100%;
+    left: -8px;
+    position: absolute;
+    top: 0;
+    width: 5px;
+  }
 
-.ts-dropdown .selected:before {
-  background-color: var(--bs-primary);
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
-  content: "";
-  display: block;
-  height: 100%;
-  left: -8px;
-  position: absolute;
-  top: 0;
-  width: 5px;
+  .active {
+    color:            rgba(var(--#{$prefix}input-color-rgb));
+    background-color: transparent;
+  }
 }
 
 .form-floating {
@@ -111,12 +119,33 @@ input::-webkit-contacts-auto-fill-button {
   padding-right: calc(2.5rem - 5px);
 }
 
-.ts-dropdown {
-  @extend .form-control;
+.ts-control .item {
+  color: rgba(var(--#{$prefix}input-color-rgb));
+}
 
-  .selected
-  .option:hover {
-     @extend .form-control;
-     border: none;
+.ts-wrapper {
+  --label-r: 191;
+  --label-g: 212;
+  --label-b: 242;
+  --label-h: 215;
+  --label-s: 66;
+  --label-l: 84;
+
+  --lightness-threshold:  0.6;
+  --background-alpha:     0.18;
+  --border-alpha:         0.3;
+
+  &.plugin-remove_button:not(.rtl) .item .remove {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+  }
+
+  &.multi .ts-control>div {
+    border-width: 1px;
+    border-style: solid;
+    color:          hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
+    background:     rgba(var(--label-r), var(--label-g), var(--label-b), var(--background-alpha));
+    border-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
   }
 }
