@@ -23,10 +23,10 @@ module Spree
           badge_text = I18n.t("spree.admin.risky")
         else
           badge_style = if order.complete?
-                          "muted"
-                        else
-                          "success"
-                        end
+            "muted"
+          else
+            "success"
+          end
 
           badge_text = I18n.t("spree.admin.safe")
         end
@@ -36,24 +36,23 @@ module Spree
 
       def order_payment_state_badge(order)
         badge_style = if order.payment_state == "paid"
-                        order.complete? ? "muted" : "success"
-                      else
-                        "normal"
-                      end
+          order.complete? ? "muted" : "success"
+        else
+          "normal"
+        end
 
         content_tag :span, I18n.t("spree.admin.payment_states.#{order.payment_state}"), class: "badge rounded-pill #{badge_style}"
       end
 
       def order_shipment_badge(order)
         badge_style = if order.shipment_state == "shipped"
-                        order.complete? ? "muted" : "success"
-                      else
-                        "normal"
-                      end
+          order.complete? ? "muted" : "success"
+        else
+          "normal"
+        end
 
         content_tag :span, I18n.t("spree.admin.shipment_states.#{order.shipment_state}"), class: "badge rounded-pill #{badge_style}"
       end
-
 
       def avs_response_code
         {
