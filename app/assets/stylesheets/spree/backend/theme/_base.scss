@@ -20,6 +20,10 @@
     --#{$prefix}card-cap-padding-x: var(--#{$prefix}card-spacer-x);
   }
 
+  .carousel-item {
+    transition: transform .2s ease-in-out;
+  }
+
   .dropdown-menu {
     --bs-dropdown-item-padding-x: .5rem;
     --bs-dropdown-item-padding-y: .5rem;
