@@ -22,7 +22,7 @@
            <%= f.select(:stock_location_id, Spree::StockLocation.all.collect {|s| [ s.name, s.id ] }, { include_blank: false }) %>
            <%= f.label :shipping_location %>
          <% end %>
-         <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-outline-secondary input-group-text' %>
+         <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-secondary input-group-text' %>
         </div>
       <% end %>
       <hr>
@@ -50,7 +50,7 @@
 
             <% if shipment.ready? and can? :update, shipment %>
               <div>
-                <%= link_to I18n.t('spree.admin.order.mark_as_shipped'), spree.ship_admin_shipment_path(shipment.id), class: 'btn btn-matching-bg btn-sm', data: { turbo_method: :patch } , title: I18n.t('spree.admin.order.mark_as_shipped') %>
+                <%= link_to I18n.t('spree.admin.order.mark_as_shipped'), spree.ship_admin_shipment_path(shipment.id), class: 'btn btn-secondary btn-sm', data: { turbo_method: :patch } , title: I18n.t('spree.admin.order.mark_as_shipped') %>
               </div>
             <% end %>
           </div>
@@ -83,7 +83,7 @@
 
                       <%= label_tag :variant_id, I18n.t('spree.admin.order.products'), class: 'form-label' %>
                     </div>
-                    <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-outline-secondary input-group-text', data: { form_validation_target: "submitBtn" } %>
+                    <%= f.submit I18n.t('spree.admin.order.add'), class: 'btn btn-secondary input-group-text', data: { form_validation_target: "submitBtn" } %>
                   </div>
               <% end %>
             <% end %>
@@ -125,7 +125,7 @@
                       <% end %>
                     </div>
                     <div class="col-auto">
-                      <%= link_to_edit(shipment, { url: spree.edit_tracking_number_admin_shipment_path(shipment.id), class: 'btn btn-matching-bg' }) %>
+                      <%= link_to_edit(shipment, { url: spree.edit_tracking_number_admin_shipment_path(shipment.id), class: 'btn btn-secondary' }) %>
                     </div>
                   </div>
                 <% else %>
@@ -162,7 +162,7 @@
     <% end %>
 
     <% if @order.shipped? and can?(:resend, @order) %>
-      <%= link_to_with_icon I18n.t('spree.admin.order.resend_shipping_confirmation_email'), resend_admin_order_url(@order), method: :post, icon: 'envelope.svg', class: 'btn btn-matching-bg' %>
+      <%= link_to_with_icon I18n.t('spree.admin.order.resend_shipping_confirmation_email'), resend_admin_order_url(@order), method: :post, icon: 'envelope.svg', class: 'btn btn-secondary' %>
     <% end %>
 
     <% if @order.special_instructions.present? %>

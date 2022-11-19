@@ -38,38 +38,46 @@ input::-webkit-contacts-auto-fill-button {
   right: 0;
 }
 
-.ts-dropdown-content {
-  padding: 0;
-}
+.ts-dropdown {
+  @extend .form-control;
 
-.ts-dropdown .option[data-selectable] {
-  padding: 7.5px;
-  margin: 5px 7.5px;
-  border-radius: 5px;
-  overflow: visible;
-  position: relative;
-}
+  &-content {
+    padding: 0;
+  }
 
-.ts-dropdown .active {
-  background-color: transparent;
-}
+  .option[data-selectable] {
+    padding: 7.5px;
+    margin: 5px 7.5px;
+    border-radius: 5px;
+    overflow: visible;
+    position: relative;
+  }
 
+  .create:hover,
+  .option:hover,
+  .selected {
+    border: none;
+    color:            rgba(var(--#{$prefix}input-color-rgb));
+    background-color: rgba(var(--#{$prefix}sub-bg-rgb));
+  }
 
-.ts-dropdown .create:hover, .ts-dropdown .option:hover, .ts-dropdown .selected {
-  background-color: rgba(242, 247, 254, 1);
-}
+  .selected:before {
+    background-color: var(--bs-primary);
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    content: "";
+    display: block;
+    height: 100%;
+    left: -8px;
+    position: absolute;
+    top: 0;
+    width: 5px;
+  }
 
-.ts-dropdown .selected:before {
-  background-color: var(--bs-primary);
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
-  content: "";
-  display: block;
-  height: 100%;
-  left: -8px;
-  position: absolute;
-  top: 0;
-  width: 5px;
+  .active {
+    color:            rgba(var(--#{$prefix}input-color-rgb));
+    background-color: transparent;
+  }
 }
 
 .form-floating {
@@ -94,10 +102,6 @@ input::-webkit-contacts-auto-fill-button {
   padding-top: 22px !important;
 }
 
-.ts-wrapper.form-select.disabled .ts-control {
-  background: #e9ecef !important;
-}
-
 
 .form-select.plugin-search_icon {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
@@ -113,4 +117,35 @@ input::-webkit-contacts-auto-fill-button {
 .ts-wrapper.multi.has-items .ts-control {
   padding-top: 1.6rem !important;
   padding-right: calc(2.5rem - 5px);
+}
+
+.ts-control .item {
+  color: rgba(var(--#{$prefix}input-color-rgb));
+}
+
+.ts-wrapper {
+  --label-r: 191;
+  --label-g: 212;
+  --label-b: 242;
+  --label-h: 215;
+  --label-s: 66;
+  --label-l: 84;
+
+  --lightness-threshold:  0.6;
+  --background-alpha:     0.18;
+  --border-alpha:         0.3;
+
+  &.plugin-remove_button:not(.rtl) .item .remove {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+  }
+
+  &.multi .ts-control>div {
+    border-width: 1px;
+    border-style: solid;
+    color:          hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
+    background:     rgba(var(--label-r), var(--label-g), var(--label-b), var(--background-alpha));
+    border-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+  }
 }

@@ -115,7 +115,7 @@ module Spree
 
         options[:no_text] ||= true
         options[:icon] = "pen.svg"
-        options[:class] ||= "btn btn-matching-bg btn-sm icon-edit"
+        options[:class] ||= "btn btn-secondary btn-sm icon-edit"
 
         link_to_with_icon(name, url, options.except(:url))
       end
@@ -125,7 +125,7 @@ module Spree
         name = options[:name] || I18n.t("spree.admin.actions.clone")
 
         options[:no_text] ||= true
-        options[:class] ||= "btn btn-matching-bg btn-sm icon-clone"
+        options[:class] ||= "btn btn-secondary btn-sm icon-clone"
         options[:icon] = "clone.svg"
         options[:data] = {turbo_method: :post, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
@@ -137,7 +137,7 @@ module Spree
         name = options[:name] || I18n.t("spree.admin.actions.delete")
 
         options[:no_text] ||= true
-        options[:class] ||= "btn btn-sm btn-outline-danger icon-delete"
+        options[:class] ||= "btn btn-sm btn-danger icon-delete"
         options[:icon] = "x-lg.svg"
         options[:data] = {turbo_method: :delete, turbo_confirm: I18n.t("spree.admin.are_you_sure_you_want_to", action: name, resource: spree_humanize_type(resource.class.name))}
 
@@ -199,7 +199,7 @@ module Spree
       def active_badge(condition, options = {})
         label = options[:label]
         label ||= condition ? Spree.t(:say_yes) : Spree.t(:say_no)
-        css_class = condition ? "text-bg-success" : "text-bg-light"
+        css_class = condition ? "success" : "normal"
 
         content_tag(:small, class: "badge rounded-pill #{css_class}") do
           label

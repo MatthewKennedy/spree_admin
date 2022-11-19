@@ -2,8 +2,10 @@
   "name": "@matthewkennedy/spree-admin",
   "version": "0.0.6",
   "description": "Admin UI for Spree",
-  "main": "app/assets/javascripts/spree_admin.js",
   "module": "app/javascript/spree/backend/index.js",
+  "main": "app/assets/javascripts/spree_admin.esm.js",
+  "browser": "app/assets/javascripts/spree_admin.min.js",
+  "gem": "app/assets/javascripts/spree_admin.js",
   "type": "module",
   "license": "MIT",
   "files": [
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.1",
     "@rollup/plugin-terser": "^0.1.0",
     "autoprefixer": "^10.4.12",
     "eslint": "^8.16.0",

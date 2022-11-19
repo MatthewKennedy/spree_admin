@@ -5,7 +5,7 @@
     </div>
 
     <div>
-      <%= link_to I18n.t('spree.admin.order.email_copy_of_invoice_to_customer'), 'spree.ship_admin_shipment_path(shipment.id)', class: 'btn btn-matching-bg btn-sm', data: { turbo_method: :patch } , title: I18n.t('spree.admin.order.mark_as_shipped') %>
+      <%= link_to I18n.t('spree.admin.order.email_copy_of_invoice_to_customer'), 'spree.ship_admin_shipment_path(shipment.id)', class: 'btn btn-secondary btn-sm', data: { turbo_method: :patch } , title: I18n.t('spree.admin.order.mark_as_shipped') %>
     </div>
   </div>
   <div class="card-body" id="order_tab_summary">

@@ -131,7 +131,7 @@
                     </div>
 
                     <div>
-                      <%= link_to_with_icon(:product, spree.remove_from_taxon_admin_product_path(product, taxon_id: @taxon.id ), { class: 'btn btn-outline-danger btn-sm', icon: "x-lg.svg", no_text: true, data: { turbo_method: :patch, action: :remove_from_taxon } }) %>
+                      <%= link_to_with_icon(:product, spree.remove_from_taxon_admin_product_path(product, taxon_id: @taxon.id ), { class: 'btn btn-danger btn-sm', icon: "x-lg.svg", no_text: true, data: { turbo_method: :patch, action: :remove_from_taxon } }) %>
                     </div>
                   </li>
                 <% end %>

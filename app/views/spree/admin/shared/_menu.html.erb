@@ -24,10 +24,10 @@
         <%= spree_admin_svg_tag "admin-ui-logo.svg", size: '100px * 35px' %>
       </div>
       <div>
-        <%= link_to_with_icon(I18n.t('spree.admin.search'), spree.new_admin_search_path, no_text: true, data: { turbo_frame: :modal }, class: 'btn btn-matching-bg d-none d-lg-inline-block m-1', icon: 'search.svg') %>
+        <%= link_to_with_icon(I18n.t('spree.admin.search'), spree.new_admin_search_path, no_text: true, data: { turbo_frame: :modal }, class: 'btn btn-secondary d-none d-lg-inline-block m-1', icon: 'search.svg') %>
 
         <button id="sidebar-close"
-                class="btn btn-matching-bg col-auto d-lg-none"
+                class="btn btn-secondary col-auto d-lg-none"
                 type="button"
                 aria-label="Toggle navigation"
                 data-bs-dismiss="offcanvas"
@@ -40,7 +40,7 @@
     </div>
 
     <div class="w-100 p-1">
-      <%= link_to(spree.new_admin_search_path, data: { turbo_frame: :modal }, class: 'btn btn-matching-bg d-none d-lg-block w-100') do %>
+      <%= link_to(spree.new_admin_search_path, data: { turbo_frame: :modal }, class: 'btn btn-secondary d-none d-lg-block w-100') do %>
       <%= current_store.name %> <%= spree_admin_svg_tag('shuffle.svg', class: "ms-3") %>
       <% end %>
     </div>
@@ -69,15 +69,15 @@
   </div>
 
   <div id="navFooter" class="d-flex bottom-0 position-absolute w-100 justify-content-center btn-group rounded-0">
-    <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="0" class="btn btn-matching-bg p-2 rounded-0 <%= "active" if settings_menu_active? %>" aria-current="true" aria-label="Settings">
+    <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="0" class="btn btn-secondary p-2 rounded-0 <%= "active" if settings_menu_active? %>" aria-current="true" aria-label="Settings">
       <%= spree_admin_svg_tag "gear.svg", size: '16px * 16px', class: 'p-0 m-0' %>
     </button>
     <% if try_spree_current_user %>
-      <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="1" class="btn btn-matching-bg p-2 rounded-0 <%= "active" if accounts_menu_active? %>" aria-label="Account">
+      <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="1" class="btn btn-secondary p-2 rounded-0 <%= "active" if accounts_menu_active? %>" aria-label="Account">
         <%= spree_admin_svg_tag "person-square.svg", size: '16px * 16px', class: 'p-0 m-0' %>
       </button>
     <% end %>
-    <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="2" class="btn btn-matching-bg p-2 rounded-0 <%= "active" if main_menu_active? %>" aria-label="Main Menu">
+    <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="2" class="btn btn-secondary p-2 rounded-0 <%= "active" if main_menu_active? %>" aria-label="Main Menu">
       <%= spree_admin_svg_tag "list.svg", size: '16px * 16px', class: 'p-0 m-0' %>
     </button>
   </div>

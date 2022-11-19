@@ -11,12 +11,12 @@
   flex: 0 0 auto;
   flex-wrap: wrap;
   padding: .25rem;
-  border-bottom: $input-border-width solid $input-border-color;
+  border-bottom: $input-border-width solid var(--bs-border-color);
 
   .divider {
     width: 2px;
     height: 1.25rem;
-    background-color: #0000001a;
+    background-color: var(--bs-border-color);
     margin-left: .5rem;
     margin-right: .75rem;
   }
@@ -41,23 +41,23 @@
   border: none;
 
   color: var(--bs-btn-color);
-  background-color: var(--bs-btn-bg);
+  background-color: transparent;
 
   border-radius: $input-border-radius;
   padding: .25rem;
   margin-right: .25rem;
   display: flex;
 
-  @extend .btn-matching-bg;
+  @extend .btn-secondary;
 
   &:hover,
   &.is-active {
 
-   color: var(--bs-btn-active-color);
+   color:            var(--bs-btn-active-color);
    background-color: var(--bs-btn-active-bg);
 
     .svg {
-       color: var(--bs-btn-active-color);
+       color:        var(--bs-btn-active-color);
     }
   }
 
@@ -66,8 +66,8 @@
     cursor: not-allowed;
 
     &:hover {
-      color: var(--bs-btn-disabled-color);
-      background: var(--bs-btn-disabled-bg);
+      color:         var(--bs-btn-disabled-color);
+      background:    var(--bs-btn-disabled-bg);
     }
   }
 }

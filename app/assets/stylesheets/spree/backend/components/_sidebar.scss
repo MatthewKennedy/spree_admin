@@ -22,7 +22,7 @@ aside#main-sidebar {
 
   li.selected {
     position: relative;
-    background: var(--bs-gray-100);
+    background-color: var(--bs-gray-100);
 
     a {
       color: var(--bs-primary) !important;
@@ -32,7 +32,7 @@ aside#main-sidebar {
       display: block;
       position: absolute;
       content: "";
-      width:5px;
+      width: 5px;
       height: 100%;
       background-color: var(--bs-primary);
       border-radius: var(--#{$prefix}border-radius) 0 0 var(--#{$prefix}border-radius);

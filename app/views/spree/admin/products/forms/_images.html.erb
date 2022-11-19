@@ -6,7 +6,7 @@
       </div>
 
       <div>
-        <%= link_to_with_icon(Spree.t(:new_image), spree.new_admin_product_image_url(@product), { class: "btn-matching-bg btn btn-sm", icon: 'plus-square.svg', id: 'new_image_link', data: {turbo_frame: :modal} }) if can? :create, Spree::Image %>
+        <%= link_to_with_icon(Spree.t(:new_image), spree.new_admin_product_image_url(@product), { class: "btn-secondary btn btn-sm", icon: 'plus-square.svg', id: 'new_image_link', data: {turbo_frame: :modal} }) if can? :create, Spree::Image %>
       </div>
     </div>
 

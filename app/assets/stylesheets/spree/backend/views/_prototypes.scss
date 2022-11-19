@@ -11,6 +11,7 @@ $color_size: 26px;
         display: none;
       }
     }
+
     li {
       display: flex;
       align-items: center;
@@ -20,6 +21,7 @@ $color_size: 26px;
       }
     }
   }
+
   .option-value__color {
     border-radius: 50%;
     border: 2px solid var(--bs-gray-300);
@@ -36,6 +38,7 @@ $color_size: 26px;
       border-radius: 50%;
     }
   }
+
   input:checked + .option-value__color {
     border-color: var(--bs-gray-800);
   }

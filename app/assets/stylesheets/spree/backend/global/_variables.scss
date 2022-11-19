@@ -38,29 +38,29 @@
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 246, 246, 247;
 
-    --bs-blue: #0d6efd;
-    --bs-indigo: #6610f2;
-    --bs-purple: #6f42c1;
-    --bs-pink: #d63384;
-    --bs-red: #dc3545;
-    --bs-orange: #fd7e14;
-    --bs-yellow: #ffc107;
-    --bs-green: #198754;
-    --bs-teal: #20c997;
-    --bs-cyan: #0dcaf0;
-    --bs-black: rgb(var(--bs-black-rgb));
-    --bs-white: rgb(var(--bs-white-rgb));
-    --bs-gray: #6c757d;
-    --bs-gray-dark: #343a40;
-    --bs-gray-100: #f8f9fa;
-    --bs-gray-200: #e9ecef;
-    --bs-gray-300: #dee2e6;
-    --bs-gray-400: #ced4da;
-    --bs-gray-500: #adb5bd;
-    --bs-gray-600: #6c757d;
-    --bs-gray-700: #495057;
-    --bs-gray-800: #343a40;
-    --bs-gray-900: #212529;
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-black: rgb(var(--bs-black-rgb));
+  --bs-white: rgb(var(--bs-white-rgb));
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-gray-100: #f8f9fa;
+  --bs-gray-200: #e9ecef;
+  --bs-gray-300: #dee2e6;
+  --bs-gray-400: #ced4da;
+  --bs-gray-500: #adb5bd;
+  --bs-gray-600: #6c757d;
+  --bs-gray-700: #495057;
+  --bs-gray-800: #343a40;
+  --bs-gray-900: #212529;
 
   --bs-primary: rgb(var(--bs-primary-rgb));
   --bs-secondary: rgb(var(--bs-secondary-rgb));
@@ -71,29 +71,29 @@
   --bs-light: rgb(var(--bs-light-rgb));
   --bs-dark: rgb(var(--bs-dark-rgb));
 
-    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    --bs-body-font-family: var(--bs-font-sans-serif);
-    --bs-body-font-size: 1rem;
-    --bs-body-font-weight: 400;
-    --bs-body-line-height: 1.5;
-    --bs-body-color: rgb(var(--bs-body-color-rgb));
-    --bs-body-bg: rgb(var(--bs-body-bg-rgb));
-    --bs-border-width: 1px;
-    --bs-border-style: solid;
-    --bs-border-color: #dee2e6;
-    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
-    --bs-border-radius: 0.375rem;
-    --bs-border-radius-sm: 0.25rem;
-    --bs-border-radius-lg: 0.5rem;
-    --bs-border-radius-xl: 1rem;
-    --bs-border-radius-2xl: 2rem;
-    --bs-border-radius-pill: 50rem;
-    --bs-link-color: var(--bs-primary-rgb);
-    --bs-link-hover-color: rgb(var(--bs-primary-hover-rgb));
-    --bs-code-color: #d63384;
-    --bs-highlight-bg: #fff3cd;
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: rgb(var(--bs-body-color-rgb));
+  --bs-body-bg: rgb(var(--bs-body-bg-rgb));
+  --bs-border-width: 1px;
+  --bs-border-style: solid;
+  --bs-border-color: #dee2e6;
+  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+  --bs-border-radius: 0.375rem;
+  --bs-border-radius-sm: 0.25rem;
+  --bs-border-radius-lg: 0.5rem;
+  --bs-border-radius-xl: 1rem;
+  --bs-border-radius-2xl: 2rem;
+  --bs-border-radius-pill: 50rem;
+  --bs-link-color: var(--bs-primary-rgb);
+  --bs-link-hover-color: rgb(var(--bs-primary-hover-rgb));
+  --bs-code-color: #d63384;
+  --bs-highlight-bg: #fff3cd;
 
   .btn-primary {
     --bs-btn-color: rgba(var(--bs-white-rgb));
@@ -135,46 +135,6 @@
     --bs-btn-disabled-border-color: rgba(var(--bs-secondary-rgb));
   }
 
-  .btn-outline-secondary {
-    --bs-btn-color: rgba(120,120,120);
-    --bs-btn-bg: transparent;
-    --bs-btn-border-color: rgba(130,130,130);
-
-    --bs-btn-hover-color: var(--bs-btn-border-color);
-    --bs-btn-hover-bg: transparent;
-    --bs-btn-hover-border-color: var(--bs-btn-border-color);
-
-    --bs-btn-focus-shadow-rgb: var(--bs-secondary-rgb);
-
-    --bs-btn-active-color: var(--bs-btn-border-color);
-    --bs-btn-active-bg: transparent;
-    --bs-btn-active-border-color: var(--bs-btn-border-color);
-
-    --bs-btn-disabled-color: var(--bs-btn-border-color);
-    --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: var(--bs-btn-border-color);
-  }
-
-  .btn-success {
-    --bs-btn-color: rgba(var(--bs-white-rgb));
-    --bs-btn-bg: rgba(var(--bs-success-rgb));
-    --bs-btn-border-color: rgba(var(--bs-success-rgb));
-
-    --bs-btn-hover-color: rgba(var(--bs-white-rgb));
-    --bs-btn-hover-bg: rgba(var(--bs-success-hover-rgb));
-    --bs-btn-hover-border-color: rgba(var(--bs-success-hover-rgb));
-
-    --bs-btn-focus-shadow-rgb: var(--bs-success-rgb);
-
-    --bs-btn-active-color: rgba(var(--bs-white-rgb));
-    --bs-btn-active-bg: rgba(var(--bs-success-hover-rgb));
-    --bs-btn-active-border-color: rgba(var(--bs-success-hover-rgb));
-
-    --bs-btn-disabled-color: rgba(var(--bs-white-rgb));
-    --bs-btn-disabled-bg: rgba(var(--bs-success-rgb));
-    --bs-btn-disabled-border-color: rgba(var(--bs-success-rgb));
-  }
-
   .btn-danger {
     --bs-btn-color: rgba(var(--bs-white-rgb));
     --bs-btn-bg: rgba(var(--bs-danger-rgb));
@@ -193,72 +153,6 @@
     --bs-btn-disabled-color: rgba(var(--bs-white-rgb));
     --bs-btn-disabled-bg: rgba(var(--bs-danger-rgb));
     --bs-btn-disabled-border-color: rgba(var(--bs-danger-rgb));
-  }
-
-  .btn-outline-danger {
-    --bs-btn-hover-color: #dc3545;
-    --bs-btn-hover-bg: rgba(255, 0, 25, 0.12);
-    --bs-btn-hover-border-color: rgba(var(--bs-danger-hover-rgb));
-  }
-
-  .btn-warning {
-    --bs-btn-color: rgba(var(--bs-white-rgb));
-    --bs-btn-bg: rgba(var(--bs-warning-rgb));
-    --bs-btn-border-color: rgba(var(--bs-warning-rgb));
-
-    --bs-btn-hover-color: rgba(var(--bs-white-rgb));
-    --bs-btn-hover-bg: rgba(var(--bs-warning-hover-rgb));
-    --bs-btn-hover-border-color: rgba(var(--bs-warning-hover-rgb));
-
-    --bs-btn-focus-shadow-rgb: var(--bs-warning-rgb);
-
-    --bs-btn-active-color: rgba(var(--bs-white-rgb));
-    --bs-btn-active-bg: rgba(var(--bs-warning-hover-rgb));
-    --bs-btn-active-border-color: rgba(var(--bs-warning-hover-rgb));
-
-    --bs-btn-disabled-color: rgba(var(--bs-white-rgb));
-    --bs-btn-disabled-bg: rgba(var(--bs-warning-rgb));
-    --bs-btn-disabled-border-color: rgba(var(--bs-warning-rgb));
-  }
-
-  .btn-info {
-    --bs-btn-color: rgba(var(--bs-white-rgb));
-    --bs-btn-bg: rgba(var(--bs-info-rgb));
-    --bs-btn-border-color: rgba(var(--bs-info-rgb));
-
-    --bs-btn-hover-color: rgba(var(--bs-white-rgb));
-    --bs-btn-hover-bg: rgba(var(--bs-info-hover-rgb));
-    --bs-btn-hover-border-color: rgba(var(--bs-info-hover-rgb));
-
-    --bs-btn-focus-shadow-rgb: var(--bs-info-rgb);
-
-    --bs-btn-active-color: rgba(var(--bs-white-rgb));
-    --bs-btn-active-bg: rgba(var(--bs-info-hover-rgb));
-    --bs-btn-active-border-color: rgba(var(--bs-info-hover-rgb));
-
-    --bs-btn-disabled-color: rgba(var(--bs-white-rgb));
-    --bs-btn-disabled-bg: rgba(var(--bs-info-rgb));
-    --bs-btn-disabled-border-color: rgba(var(--bs-info-rgb));
-  }
-
-  .btn-matching-bg {
-    --bs-btn-color:                 rgba(var(--bs-dark-rgb));
-    --bs-btn-bg:                    rgba(var(--bs-light-rgb));
-    --bs-btn-border-color:          rgba(var(--bs-light-rgb));
-
-    --bs-btn-hover-color:           rgba(var(--bs-dark-rgb));
-    --bs-btn-hover-bg:              rgba(var(--bs-light-hover-rgb));
-    --bs-btn-hover-border-color:    rgba(var(--bs-light-hover-rgb));
-
-    --bs-btn-focus-shadow-rgb:      var(--bs-light-rgb);
-
-    --bs-btn-active-color:          rgba(var(--bs-dark-rgb));
-    --bs-btn-active-bg:             rgba(var(--bs-light-hover-rgb));
-    --bs-btn-active-border-color:   rgba(var(--bs-light-hover-rgb));
-
-    --bs-btn-disabled-color:        rgba(var(--bs-dark-rgb));
-    --bs-btn-disabled-bg:           rgba(var(--bs-light-rgb));
-    --bs-btn-disabled-border-color: rgba(var(--bs-light-rgb));
   }
 }
 

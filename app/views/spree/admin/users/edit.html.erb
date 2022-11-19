@@ -12,7 +12,7 @@
           <h5 class="card-title"><%= I18n.t('spree.admin.user.orders') %></h5>
         </div>
         <div>
-          <%= link_to_with_icon Spree.t(:create_new_order), spree.new_admin_order_path(user_id: @user.id), class: "btn btn-sm btn-outline-secondary", icon: 'plus-square.svg' if can?(:create, Spree::Order) %>
+          <%= link_to_with_icon Spree.t(:create_new_order), spree.new_admin_order_path(user_id: @user.id), class: "btn btn-sm btn-secondary", icon: 'plus-square.svg' if can?(:create, Spree::Order) %>
         </div>
       </div>
       <%= turbo_frame_tag :user_orders, src: spree.orders_admin_user_path(@user), loading: :lazy %>
@@ -26,7 +26,7 @@
           </h5>
         </div>
         <div>
-          <%= link_to_with_icon(Spree.t(:add_store_credit), spree.new_admin_user_store_credit_path(@user), class: "btn btn-sm btn-outline-secondary", icon: 'plus-square.svg', data: {turbo_frame: :modal}) if can?(:create, Spree::StoreCredit) %>
+          <%= link_to_with_icon(Spree.t(:add_store_credit), spree.new_admin_user_store_credit_path(@user), class: "btn btn-sm btn-secondary", icon: 'plus-square.svg', data: {turbo_frame: :modal}) if can?(:create, Spree::StoreCredit) %>
         </div>
       </div>
       <%= turbo_frame_tag :user_store_credits_wrapper do %>
@@ -40,7 +40,7 @@
     <sa-card id="customerDetails">
       <sa-header>
         <h5><%= I18n.t('spree.admin.user.customer') %></h5>
-        <%= link_to I18n.t('spree.admin.actions.edit'), spree.customer_details_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary", data: {turbo_frame: :modal} %>
+        <%= link_to I18n.t('spree.admin.actions.edit'), spree.customer_details_admin_user_path(@user), class: "btn btn-sm btn-secondary", data: {turbo_frame: :modal} %>
       </sa-header>
 
       <sa-body>
@@ -70,7 +70,7 @@
 
       <sa-header id="customerAddresses">
         <h5 class="card-title"><%= I18n.t('spree.admin.user.addresses') %></h5>
-        <%= link_to I18n.t('spree.admin.users.manage'), spree.addresses_admin_user_path(@user), class: "btn btn-sm btn-outline-secondary" %>
+        <%= link_to I18n.t('spree.admin.users.manage'), spree.addresses_admin_user_path(@user), class: "btn btn-sm btn-secondary" %>
       </sa-header>
 
       <sa-body>

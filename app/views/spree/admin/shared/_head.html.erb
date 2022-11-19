@@ -31,9 +31,11 @@
     }.to_json %>
 
     // Authorization
-    SpreeAdmin.authorization = <%== {
-      oauth_token: admin_oauth_token
-    }.to_json if defined?(admin_oauth_token) %>
+    <% if defined?(admin_oauth_token) %>
+      SpreeAdmin.authorization = <%== { oauth_token: admin_oauth_token }.to_json %>
+    <% else %>
+      SpreeAdmin.authorization = {}
+    <% end %>
   })
 </script>
 
