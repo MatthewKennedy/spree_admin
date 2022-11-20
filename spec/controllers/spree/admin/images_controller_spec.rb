@@ -28,7 +28,6 @@ module Spree
 
               it_behaves_like "correct response"
 
-              it { expect(flash[:kind]).to eq("success") }
               it { expect(flash[:message]).to be_nil }
             end
           end
@@ -64,7 +63,7 @@ module Spree
 
             it do
               send_request
-              expect(flash[:kind]).to eq("error")
+              expect(flash[:kind]).to eq(:error)
               expect(flash[:message]).to eq("Image is not found")
             end
           end
@@ -75,7 +74,7 @@ module Spree
 
             it do
               expect(send_request).to redirect_to(spree.admin_product_images_path(product))
-              expect(flash[:kind]).to eq("error")
+              expect(flash[:kind]).to eq(:error)
               expect(flash[:message]).to eq("Image is not found")
             end
           end
@@ -115,7 +114,7 @@ module Spree
             it do
               send_request
 
-              expect(flash[:kind]).to eq("success")
+              expect(flash[:kind]).to eq(:success)
               expect(flash[:message]).to eq("Image has been successfully removed!")
               expect(send_request).to redirect_to(spree.admin_product_images_path(product))
             end
@@ -135,7 +134,7 @@ module Spree
             it do
               send_request
 
-              expect(flash[:kind]).to eq("error")
+              expect(flash[:kind]).to eq(:error)
               expect(flash[:message]).to eq("Image is not found")
             end
           end
@@ -148,7 +147,7 @@ module Spree
             it do
               expect(send_request).to redirect_to(spree.admin_product_images_path(product))
 
-              expect(flash[:kind]).to eq("error")
+              expect(flash[:kind]).to eq(:error)
               expect(flash[:message]).to eq("Image is not found")
             end
           end

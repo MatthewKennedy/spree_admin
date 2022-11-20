@@ -68,7 +68,7 @@ module Spree
       def dispatch_notice(message, kind)
         turbo_frame_id = turbo_frame_request_id || :_top
 
-        flash[:kind] = kind.to_s
+        flash[:kind] = kind
         flash[:turbo_frame_request_id] = turbo_frame_id
         flash[:message] = message
       end

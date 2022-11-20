@@ -56,14 +56,14 @@ module Spree
           it "returns success flash response" do
             destroy
 
-            expect(flash[:kind]).to eq("success")
+            expect(flash[:kind]).to eq(:success)
             expect(flash[:message]).to be_nil
           end
 
           it "leaves error flash empty" do
             destroy
 
-            expect(flash[:kind]).to eq("error")
+            expect(flash[:kind]).to eq(:error)
             expect(flash[:message]).to be_nil
           end
         end

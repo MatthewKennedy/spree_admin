@@ -57,7 +57,7 @@ module Spree
           expect(assigns(:object)).to eq(webhooks_subscriber)
           expect(response).to have_http_status(:found)
 
-          expect(flash[:kind]).to eq("success")
+          expect(flash[:kind]).to eq(:success)
           expect(flash[:message]).to include("successfully removed")
         end
       end
