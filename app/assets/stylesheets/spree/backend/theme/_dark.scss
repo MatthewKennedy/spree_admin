@@ -14,35 +14,35 @@
 ////////////////
 
     // Brand
-    --#{$prefix}brand-color-rgb:        250, 84, 0;
+    --bs-brand-color-rgb:        250, 84, 0;
 
     // Primary
-    --#{$prefix}primary-rgb:            83, 155, 245;
-    --#{$prefix}primary-hover-rgb:      var(--#{$prefix}primary-rgb);
+    --bs-primary-rgb:            83, 155, 245;
+    --bs-primary-hover-rgb:      var(--bs-primary-rgb);
 
    // Secondary
-    --#{$prefix}secondary-rgb:          55, 62, 71;
-    --#{$prefix}secondary-hover-rgb:    68, 76, 86;
+    --bs-secondary-rgb:          55, 62, 71;
+    --bs-secondary-hover-rgb:    68, 76, 86;
 
     // Danger
-    --#{$prefix}danger-rgb:             255, 0, 24;
-    --#{$prefix}danger-hover-rgb:       255, 0, 24;
+    --bs-danger-rgb:             255, 0, 24;
+    --bs-danger-hover-rgb:       255, 0, 24;
 
     // Body
-    --#{$prefix}body-color-rgb:         207, 207, 207;
-    --#{$prefix}body-bg-rgb:            28, 33, 40;
+    --bs-body-color-rgb:         207, 207, 207;
+    --bs-body-bg-rgb:            28, 33, 40;
 
     // Sub Colors, used for Cards
-    --#{$prefix}sub-bg-rgb:             34, 39, 46;
-    --#{$prefix}sub-border-rgb:         68, 76, 86;
-    --#{$prefix}sub-color-rgb:          34, 39, 46;
+    --bs-sub-bg-rgb:             34, 39, 46;
+    --bs-sub-border-rgb:         68, 76, 86;
+    --bs-sub-color-rgb:          34, 39, 46;
 
     // Input
-    --#{$prefix}input-bg-rgb:           28, 33, 40;
-    --#{$prefix}input-border-rgb:       68, 76, 86;
-    --#{$prefix}input-color-rgb:        255, 255, 255;
+    --bs-input-bg-rgb:           28, 33, 40;
+    --bs-input-border-rgb:       68, 76, 86;
+    --bs-input-color-rgb:        255, 255, 255;
 
-    --#{$prefix}input-focus-border-rgb: 83, 155, 245;
+    --bs-input-focus-border-rgb: 83, 155, 245;
 
 
 ////////////////
@@ -50,111 +50,111 @@
 ////////////////
 
     // Converting RGB values colors where appropriate
-    --#{$prefix}gradient:                    linear-gradient(180deg, rgba(var(--#{$prefix}body-color-rgb), 0.15), rgba(var(--#{$prefix}body-color-rgb), 0));
+    --bs-gradient:                    linear-gradient(180deg, rgba(var(--bs-body-color-rgb), 0.15), rgba(var(--bs-body-color-rgb), 0));
 
-    --#{$prefix}border-color:                rgba(var(--#{$prefix}secondary-rgb));
-    --#{$prefix}border-color-translucent:    rgba(var(--#{$prefix}black-rgb), 0.175);
+    --bs-border-color:                rgba(var(--bs-secondary-rgb));
+    --bs-border-color-translucent:    rgba(var(--bs-black-rgb), 0.175);
 
-    --#{$prefix}link-color:                  rgba(var(--#{$prefix}primary-rgb));
-    --#{$prefix}link-hover-color:            rgba(var(--#{$prefix}primary-hover-rgb));
+    --bs-link-color:                  rgba(var(--bs-primary-rgb));
+    --bs-link-hover-color:            rgba(var(--bs-primary-hover-rgb));
 
-    --sa-logo:                               rgba(var(--#{$prefix}brand-color-rgb));
-    --sa-navbar-bg:                          rgba(var(--#{$prefix}body-bg-rgb));
-    --sa-sidebar-bg:                         rgba(var(--#{$prefix}body-bg-rgb));
+    --sa-logo:                               rgba(var(--bs-brand-color-rgb));
+    --sa-navbar-bg:                          rgba(var(--bs-body-bg-rgb));
+    --sa-sidebar-bg:                         rgba(var(--bs-body-bg-rgb));
 
 
 ///////////////////
 // UI COMPONENTS //
 ///////////////////
     .btn-primary {
-      --#{$prefix}btn-color:                 rgba(var(--#{$prefix}primary-rgb), 0.9);
-      --#{$prefix}btn-bg:                    rgba(var(--#{$prefix}primary-rgb), .06);
-      --#{$prefix}btn-border-color:          rgba(var(--#{$prefix}primary-rgb), 0.9);
+      --bs-btn-color:                 rgba(var(--bs-primary-rgb), 0.9);
+      --bs-btn-bg:                    rgba(var(--bs-primary-rgb), .06);
+      --bs-btn-border-color:          rgba(var(--bs-primary-rgb), 0.9);
 
-      --#{$prefix}btn-hover-color:           rgba(var(--#{$prefix}primary-rgb), 1);
-      --#{$prefix}btn-hover-bg:              rgba(var(--#{$prefix}primary-rgb), .13);
-      --#{$prefix}btn-hover-border-color:    rgba(var(--#{$prefix}primary-rgb));
+      --bs-btn-hover-color:           rgba(var(--bs-primary-rgb), 1);
+      --bs-btn-hover-bg:              rgba(var(--bs-primary-rgb), .13);
+      --bs-btn-hover-border-color:    rgba(var(--bs-primary-rgb));
 
-      --#{$prefix}btn-focus-shadow-rgb:      var(--#{$prefix}primary-bg-rgb);
+      --bs-btn-focus-shadow-rgb:      var(--bs-primary-bg-rgb);
 
-      --#{$prefix}btn-active-color:          rgba(var(--#{$prefix}gray-100));
-      --#{$prefix}btn-active-bg:             rgba(var(--#{$prefix}primary-rgb), .5);
-      --#{$prefix}btn-active-border-color:   rgba(var(--#{$prefix}primary-hover-rgb));
+      --bs-btn-active-color:          rgba(var(--bs-gray-100));
+      --bs-btn-active-bg:             rgba(var(--bs-primary-rgb), .5);
+      --bs-btn-active-border-color:   rgba(var(--bs-primary-hover-rgb));
 
-      --#{$prefix}btn-disabled-color:        rgba(var(--#{$prefix}primary-rgb), 0.4);
-      --#{$prefix}btn-disabled-bg:           rgba(var(--#{$prefix}primary-rgb), 0);
-      --#{$prefix}btn-disabled-border-color: rgba(var(--#{$prefix}primary-rgb), 0.4);
+      --bs-btn-disabled-color:        rgba(var(--bs-primary-rgb), 0.4);
+      --bs-btn-disabled-bg:           rgba(var(--bs-primary-rgb), 0);
+      --bs-btn-disabled-border-color: rgba(var(--bs-primary-rgb), 0.4);
     }
 
     .btn-secondary {
-      --#{$prefix}btn-color:                 var(--#{$prefix}gray-500);
-      --#{$prefix}btn-bg:                    rgba(var(--#{$prefix}secondary-rgb), .1);
-      --#{$prefix}btn-border-color:          rgba(var(--#{$prefix}secondary-rgb));
+      --bs-btn-color:                 var(--bs-gray-500);
+      --bs-btn-bg:                    rgba(var(--bs-secondary-rgb), .1);
+      --bs-btn-border-color:          rgba(var(--bs-secondary-rgb));
 
-      --#{$prefix}btn-hover-color:           rgba(var(--#{$prefix}gray-300));
-      --#{$prefix}btn-hover-bg:              rgba(var(--#{$prefix}secondary-rgb), .2);
-      --#{$prefix}btn-hover-border-color:    rgba(var(--#{$prefix}secondary-hover-rgb));
+      --bs-btn-hover-color:           rgba(var(--bs-gray-300));
+      --bs-btn-hover-bg:              rgba(var(--bs-secondary-rgb), .2);
+      --bs-btn-hover-border-color:    rgba(var(--bs-secondary-hover-rgb));
 
-      --#{$prefix}btn-focus-shadow-rgb:      var(--#{$prefix}secondary-bg-rgb);
+      --bs-btn-focus-shadow-rgb:      var(--bs-secondary-bg-rgb);
 
-      --#{$prefix}btn-active-color:          rgba(var(--#{$prefix}gray-100));
-      --#{$prefix}btn-active-bg:             rgba(var(--#{$prefix}secondary-rgb), .5);
-      --#{$prefix}btn-active-border-color:   rgba(var(--#{$prefix}secondary-hover-rgb));
+      --bs-btn-active-color:          rgba(var(--bs-gray-100));
+      --bs-btn-active-bg:             rgba(var(--bs-secondary-rgb), .5);
+      --bs-btn-active-border-color:   rgba(var(--bs-secondary-hover-rgb));
 
-      --#{$prefix}btn-disabled-color:        var(--#{$prefix}gray-700);
-      --#{$prefix}btn-disabled-bg:           rgba(var(--#{$prefix}secondary-rgb), 0);
-      --#{$prefix}btn-disabled-border-color: rgba(var(--#{$prefix}secondary-rgb));
-      --#{$prefix}btn-disabled-opacity:      1;
+      --bs-btn-disabled-color:        var(--bs-gray-700);
+      --bs-btn-disabled-bg:           rgba(var(--bs-secondary-rgb), 0);
+      --bs-btn-disabled-border-color: rgba(var(--bs-secondary-rgb));
+      --bs-btn-disabled-opacity:      1;
     }
 
     .btn-danger {
-      --#{$prefix}btn-color:                 rgba(var(--#{$prefix}danger-rgb), 0.6);
-      --#{$prefix}btn-bg:                    rgba(var(--#{$prefix}danger-rgb), .06);
-      --#{$prefix}btn-border-color:          rgba(var(--#{$prefix}danger-rgb), 0.6);
+      --bs-btn-color:                 rgba(var(--bs-danger-rgb), 0.6);
+      --bs-btn-bg:                    rgba(var(--bs-danger-rgb), .06);
+      --bs-btn-border-color:          rgba(var(--bs-danger-rgb), 0.6);
 
-      --#{$prefix}btn-hover-color:           rgba(var(--#{$prefix}danger-rgb), 1);
-      --#{$prefix}btn-hover-bg:              rgba(var(--#{$prefix}danger-rgb), .13);
-      --#{$prefix}btn-hover-border-color:    rgba(var(--#{$prefix}danger-rgb));
+      --bs-btn-hover-color:           rgba(var(--bs-danger-rgb), 1);
+      --bs-btn-hover-bg:              rgba(var(--bs-danger-rgb), .13);
+      --bs-btn-hover-border-color:    rgba(var(--bs-danger-rgb));
 
-      --#{$prefix}btn-focus-shadow-rgb:      var(--#{$prefix}danger-bg-rgb);
+      --bs-btn-focus-shadow-rgb:      var(--bs-danger-bg-rgb);
 
-      --#{$prefix}btn-active-color:          rgba(var(--#{$prefix}gray-100));
-      --#{$prefix}btn-active-bg:             rgba(var(--#{$prefix}danger-rgb), .5);
-      --#{$prefix}btn-active-border-color:   rgba(var(--#{$prefix}danger-hover-rgb));
+      --bs-btn-active-color:          rgba(var(--bs-gray-100));
+      --bs-btn-active-bg:             rgba(var(--bs-danger-rgb), .5);
+      --bs-btn-active-border-color:   rgba(var(--bs-danger-hover-rgb));
 
-      --#{$prefix}btn-disabled-color:        rgba(var(--#{$prefix}dark-rgb));
-      --#{$prefix}btn-disabled-bg:           rgba(var(--#{$prefix}danger-rgb));
-      --#{$prefix}btn-disabled-border-color: rgba(var(--#{$prefix}danger-rgb));
+      --bs-btn-disabled-color:        rgba(var(--bs-dark-rgb));
+      --bs-btn-disabled-bg:           rgba(var(--bs-danger-rgb));
+      --bs-btn-disabled-border-color: rgba(var(--bs-danger-rgb));
     }
 
     .btn-closer {
-      --#{$prefix}btn-color:                 var(--#{$prefix}gray-100);
-      --#{$prefix}btn-bg:                    transparent;
-      --#{$prefix}btn-border-color:          transparent;
+      --bs-btn-color:                 var(--bs-gray-100);
+      --bs-btn-bg:                    transparent;
+      --bs-btn-border-color:          transparent;
 
-      --#{$prefix}btn-hover-color:           var(--#{$prefix}gray-300);
-      --#{$prefix}btn-hover-bg:              transparent;
-      --#{$prefix}btn-hover-border-color:    transparent;
+      --bs-btn-hover-color:           var(--bs-gray-300);
+      --bs-btn-hover-bg:              transparent;
+      --bs-btn-hover-border-color:    transparent;
 
-      --#{$prefix}btn-focus-shadow-rgb:      transparent;
+      --bs-btn-focus-shadow-rgb:      transparent;
 
-      --#{$prefix}btn-active-color:          var(--#{$prefix}gray-300);
-      --#{$prefix}btn-active-bg:             transparent;
-      --#{$prefix}btn-active-border-color:   transparent;
+      --bs-btn-active-color:          var(--bs-gray-300);
+      --bs-btn-active-bg:             transparent;
+      --bs-btn-active-border-color:   transparent;
 
-      --#{$prefix}btn-disabled-color:        var(--#{$prefix}gray-500);
-      --#{$prefix}btn-disabled-bg:           transparent;
-      --#{$prefix}btn-disabled-border-color: transparent;
+      --bs-btn-disabled-color:        var(--bs-gray-500);
+      --bs-btn-disabled-bg:           transparent;
+      --bs-btn-disabled-border-color: transparent;
     }
 
 
 
     .accordion {
-      --#{$prefix}accordion-color:        rgba(var(--#{$prefix}body-color-rgb));
-      --#{$prefix}accordion-bg:           rgba(var(--#{$prefix}body-bg-rgb));
-      --#{$prefix}accordion-active-color: rgba(var(--#{$prefix}primary-rgb));
-      --#{$prefix}accordion-btn-color:    rgba(var(--#{$prefix}body-color-rgb));
-      --#{$prefix}accordion-active-bg:    rgba(var(--#{$prefix}sub-bg-rgb));
+      --bs-accordion-color:        rgba(var(--bs-body-color-rgb));
+      --bs-accordion-bg:           rgba(var(--bs-body-bg-rgb));
+      --bs-accordion-active-color: rgba(var(--bs-primary-rgb));
+      --bs-accordion-btn-color:    rgba(var(--bs-body-color-rgb));
+      --bs-accordion-active-bg:    rgba(var(--bs-sub-bg-rgb));
 
       &-button {
         &:after {
@@ -245,21 +245,21 @@
     }
 
     .card {
-      --#{$prefix}card-bg: rgba(var(--#{$prefix}sub-bg-rgb));
-      --#{$prefix}card-border-color: rgba(var(--#{$prefix}sub-border-rgb));
+      --bs-card-bg: rgba(var(--bs-sub-bg-rgb));
+      --bs-card-border-color: rgba(var(--bs-sub-border-rgb));
     }
 
     .dropdown{
       &-menu {
-        --bs-dropdown-bg: rgba(var(--#{$prefix}sub-bg-rgb));
-        --bs-dropdown-border-color: rgba(var(--#{$prefix}sub-border-rgb));
+        --bs-dropdown-bg: rgba(var(--bs-sub-bg-rgb));
+        --bs-dropdown-border-color: rgba(var(--bs-sub-border-rgb));
       }
       &-item {
-        --bs-dropdown-link-color: rgba(var(--#{$prefix}body-color-rgb));
+        --bs-dropdown-link-color: rgba(var(--bs-body-color-rgb));
 
         &:hover {
-          background-color: rgba(var(--#{$prefix}body-bg-rgb));
-          color: rgba(var(--#{$prefix}body-color-rgb));
+          background-color: rgba(var(--bs-body-bg-rgb));
+          color: rgba(var(--bs-body-color-rgb));
         }
       }
     }
@@ -267,42 +267,42 @@
     .form-control,
     .form-select,
     .form-check-input {
-      background-color: rgba(var(--#{$prefix}input-bg-rgb));
-      border-color: rgba(var(--#{$prefix}input-border-rgb));
-      color: rgba(var(--#{$prefix}input-color-rgb));
+      background-color: rgba(var(--bs-input-bg-rgb));
+      border-color: rgba(var(--bs-input-border-rgb));
+      color: rgba(var(--bs-input-color-rgb));
 
       &:focus-visible,
       &:focus,
       &:checked,
       &:has( > div.ProseMirror:focus) {
-        border-color: rgba(var(--#{$prefix}input-focus-border-rgb));
-        box-shadow: inset 0 0 0 1px rgba(var(--#{$prefix}input-focus-border-rgb));
+        border-color: rgba(var(--bs-input-focus-border-rgb));
+        box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb));
       }
     }
 
     .plugin-dropdown_input.focus .ts-dropdown .dropdown-input {
       color: white;
-      border-color: rgba(var(--#{$prefix}input-focus-border-rgb));
-      box-shadow: inset 0 0 0 1px rgba(var(--#{$prefix}input-focus-border-rgb));
+      border-color: rgba(var(--bs-input-focus-border-rgb));
+      box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb));
     }
 
     .input-group-text {
-      background-color: rgba(var(--#{$prefix}input-bg-rgb));
-      border-color: rgba(var(--#{$prefix}input-border-rgb));
-      color: rgba(var(--#{$prefix}input-color-rgb));
+      background-color: rgba(var(--bs-input-bg-rgb));
+      border-color: rgba(var(--bs-input-border-rgb));
+      color: rgba(var(--bs-input-color-rgb));
     }
 
     .list-group {
-      background-color: rgba(var(--#{$prefix}body-bg-rgb));
+      background-color: rgba(var(--bs-body-bg-rgb));
     }
 
     .list-group-item {
-      background-color: rgba(var(--#{$prefix}body-bg-rgb));
+      background-color: rgba(var(--bs-body-bg-rgb));
     }
 
     .modal-content {
-      background-color: rgba(var(--#{$prefix}sub-bg-rgb));
-      border-color: rgba(var(--#{$prefix}sub-border-rgb));
+      background-color: rgba(var(--bs-sub-bg-rgb));
+      border-color: rgba(var(--bs-sub-border-rgb));
     }
 
     .modal-backdrop.show {
@@ -310,7 +310,7 @@
     }
 
     .offcanvas {
-      --#{$prefix}offcanvas-bg: rgba(var(--#{$prefix}body-bg-rgb));
+      --bs-offcanvas-bg: rgba(var(--bs-body-bg-rgb));
     }
 
     .toast.success,
@@ -321,14 +321,14 @@
     }
 
     .toast.error {
-      --bs-toast-bg:            rgba(var(--#{$prefix}danger-rgb), .75);
-      --bs-toast-color:         rgba(var(--#{$prefix}white-rgb));
-      --bs-toast-border-color:  rgba(var(--#{$prefix}danger-rgb));
+      --bs-toast-bg:            rgba(var(--bs-danger-rgb), .75);
+      --bs-toast-color:         rgba(var(--bs-white-rgb));
+      --bs-toast-border-color:  rgba(var(--bs-danger-rgb));
     }
 
     aside#main-sidebar {
       li.selected {
-        background-color: rgba(var(--#{$prefix}primary-rgb), .04);
+        background-color: rgba(var(--bs-primary-rgb), .04);
       }
     }
   }
