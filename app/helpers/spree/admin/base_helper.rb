@@ -29,9 +29,9 @@ module Spree
         end
       end
 
-      def flash_alert(flash)
-        if flash.present?
-          render "spree/admin/shared/toast", message: flash.first[1]
+      def flash_alert(flash, turbo_frame_id)
+        if flash.present? && flash[:turbo_frame_request_id] == turbo_frame_id.to_s
+          render "spree/admin/shared/toast", message: flash[:message], kind: flash[:kind]
         end
       end
 

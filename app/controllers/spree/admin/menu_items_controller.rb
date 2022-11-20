@@ -15,10 +15,10 @@ module Spree
 
       def remove_icon
         if @menu_item.icon&.destroy
-          flash[:success] = I18n.t("spree.admin.notice_messages.icon_removed")
+          dispatch_notice(I18n.t("spree.admin.notice_messages.icon_removed"), :success)
           redirect_to spree.edit_admin_menu_menu_item_path(@menu, @menu_item)
         else
-          flash[:error] = I18n.t("spree.admin.errors.messages.cannot_remove_icon")
+          dispatch_notice(I18n.t("spree.admin.errors.messages.cannot_remove_icon"), :error)
           render :edit
         end
       end

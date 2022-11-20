@@ -47,18 +47,20 @@ module Spree
             # already complete) then trigger it manually now
 
             saved_payments.each { |payment| payment.process! if payment.reload.checkout? && @order.complete? }
-            flash[:success] = flash_message_for(saved_payments.first, :successfully_created)
+            flash_message_for(saved_payments.first, :successfully_created)
 
             redirect_to spree.edit_admin_order_url(@order)
           else
             @payment ||= @order.payments.build(object_params)
             invoke_callbacks(:create, :fails)
-            flash[:error] = Spree.t(:payment_could_not_be_created)
+            dispatch_notice(Spree.t(:payment_could_not_be_created), :error)
+
             render :new, status: :unprocessable_entity
           end
         rescue Spree::Core::GatewayError => e
           invoke_callbacks(:create, :fails)
-          flash[:error] = e.message.to_s
+          dispatch_notice(e.message.to_s, :error)
+
           redirect_to new_admin_order_payment_path(@order)
         end
       end
@@ -69,12 +71,12 @@ module Spree
         # Because we have a transition method also called void, we do this to avoid conflicts.
         event = "void_transaction" if event == "void"
         if @payment.send("#{event}!")
-          flash[:success] = Spree.t(:payment_updated)
+          dispatch_notice(Spree.t(:payment_updated), :success)
         else
-          flash[:error] = Spree.t(:cannot_perform_operation)
+          dispatch_notice(Spree.t(:cannot_perform_operation), :error)
         end
       rescue Spree::Core::GatewayError => ge
-        flash[:error] = ge.message.to_s
+        dispatch_notice(ge.message.to_s, :error)
       ensure
         redirect_to spree.admin_order_payments_path(@order)
       end

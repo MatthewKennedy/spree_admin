@@ -19,13 +19,13 @@
               <td>
                 <%= form_with url: spree.admin_product_variants_including_master_path(@product, variant), method: :put, data: { turbo_frame: :product_stock, controller: 'form--autosave' } do %>
                   <div class="form-check form-switch">
-
                     <%= label_tag "track_inventory_#{ variant.id }" do %>
                       <%= hidden_field_tag 'variant[track_inventory]', false %>
                       <%= check_box_tag 'variant[track_inventory]', true, variant.track_inventory?, class: 'form-check-input', data: {action: 'form--autosave#save'} %>
                       <%= Spree.t(:track_inventory) %>
                     <% end %>
                   </div>
+
                   <%= submit_tag I18n.t('spree.admin.actions.save'), data: {form__autosave_target: 'submitButton'} %>
                 <% end if can?(:update, @product) && can?(:update, variant) %>
               </td>
@@ -66,5 +66,4 @@
     </div>
   </div>
 
-  <%= flash_alert(flash) %>
 <% end if can?(:admin, Spree::StockItem) && !@product.deleted? %>

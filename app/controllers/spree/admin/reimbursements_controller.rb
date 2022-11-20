@@ -37,7 +37,7 @@ module Spree
       end
 
       def spree_core_gateway_error(error)
-        flash[:error] = error.message
+        dispatch_notice(error.message, :error)
         redirect_to spree.edit_admin_order_reimbursement_path(parent, @reimbursement)
       end
     end

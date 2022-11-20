@@ -12,10 +12,10 @@ module Spree
         @new_promo = duplicator.duplicate
 
         if @new_promo.errors.empty?
-          flash[:success] = I18n.t("spree.admin.promotion_cloned")
+          dispatch_notice(I18n.t("spree.admin.promotion_cloned"), :success)
           redirect_to spree.edit_admin_promotion_url(@new_promo)
         else
-          flash[:error] = I18n.t("spree.admin.promotion_not_cloned", error: @new_promo.errors.full_messages.to_sentence)
+          dispatch_notice(I18n.t("spree.admin.promotion_not_cloned", error: @new_promo.errors.full_messages.to_sentence), :error)
           redirect_to spree.admin_promotions_url(@new_promo)
         end
       end

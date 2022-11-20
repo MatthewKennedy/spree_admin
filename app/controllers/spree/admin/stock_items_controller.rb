@@ -7,7 +7,7 @@ module Spree
         if stock_item.save
           variant = stock_item.variant
 
-          flash[:success] = flash_message_for(stock_item, :successfully_updated)
+          flash_message_for(stock_item, :successfully_updated)
 
           if variant.is_master?
             redirect_to spree.edit_admin_product_path(variant.product)
@@ -15,7 +15,7 @@ module Spree
             redirect_to spree.edit_admin_product_variant_path(variant.product, variant)
           end
         else
-          flash[:error] = Spree.t(:could_not_update_stock_item)
+          dispatch_notice(Spree.t(:could_not_update_stock_item), :error)
         end
       end
 
@@ -26,12 +26,12 @@ module Spree
         stock_movement.stock_item = stock_location.set_up_stock_item(variant)
 
         if stock_movement.save
-          flash[:success] = flash_message_for(stock_movement, :successfully_created)
+          flash_message_for(stock_movement, :successfully_created)
           if variant.is_master?
           end
           redirect_to spree.edit_admin_product_path(variant.product)
         else
-          flash[:error] = Spree.t(:could_not_create_stock_movement)
+          dispatch_notice(Spree.t(:could_not_create_stock_movement), :error)
         end
       end
 

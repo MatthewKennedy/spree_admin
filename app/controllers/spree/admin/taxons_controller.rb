@@ -36,7 +36,7 @@ module Spree
           @taxon.update(taxon_params.except(:icon))
         end
         if successful
-          flash[:success] = flash_message_for(@taxon, :successfully_updated)
+          flash_message_for(@taxon, :successfully_updated)
 
           # rename child taxons
           rename_child_taxons if @update_children
@@ -53,10 +53,11 @@ module Spree
 
       def remove_icon
         if @taxon.icon.destroy
-          flash[:success] = I18n.t("spree.admin.notice_messages.icon_removed")
+
+          dispatch_notice(I18n.t("spree.admin.notice_messages.icon_removed"), :success)
           redirect_to spree.edit_admin_taxonomy_taxon_url(@taxonomy.id, @taxon.id)
         else
-          flash[:error] = I18n.t("spree.admin.errors.messages.cannot_remove_icon")
+          dispatch_notice(I18n.t("spree.admin.errors.messages.cannot_remove_icon"), :error)
           render :edit, status: :unprocessable_entity
         end
       end

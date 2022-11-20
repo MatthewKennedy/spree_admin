@@ -12,7 +12,7 @@ module Spree
       def create
         @user = Spree.user_class.new(user_params)
         if @user.save
-          flash[:success] = flash_message_for(@user, :successfully_created)
+          flash_message_for(@user, :successfully_created)
           redirect_to spree.edit_admin_user_path(@user)
         else
           render :new, status: :unprocessable_entity

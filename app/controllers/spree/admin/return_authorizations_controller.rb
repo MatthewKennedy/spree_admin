@@ -9,7 +9,7 @@ module Spree
 
       def cancel
         @return_authorization.cancel!
-        flash[:success] = Spree.t(:return_authorization_canceled)
+        dispatch_notice(Spree.t(:return_authorization_canceled), :success)
         redirect_back fallback_location: spree.edit_admin_order_return_authorization_path(@order, @return_authorization)
       end
 

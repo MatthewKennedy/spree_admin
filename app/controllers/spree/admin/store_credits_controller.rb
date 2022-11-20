@@ -22,11 +22,11 @@ module Spree
         )
 
         if @store_credit.save
-          flash[:success] = flash_message_for(@store_credit, :successfully_created)
+          flash_message_for(@store_credit, :successfully_created)
           redirect_to spree.edit_admin_user_path(@user)
         else
           load_categories
-          flash[:error] = I18n.t("spree.admin.store_credit.errors.unable_to_create")
+          dispatch_notice(I18n.t("spree.admin.store_credit.errors.unable_to_create"), :error)
           render :new, status: :unprocessable_entity
         end
       end
@@ -36,11 +36,12 @@ module Spree
         @store_credit.created_by = try_spree_current_user
 
         if @store_credit.save
-          flash[:success] = flash_message_for(@store_credit, :successfully_updated)
+          flash_message_for(@store_credit, :successfully_updated)
           redirect_to spree.edit_admin_user_path(@user)
         else
           load_categories
-          flash[:error] = I18n.t("spree.admin.store_credit.errors.unable_to_update")
+          dispatch_notice(I18n.t("spree.admin.store_credit.errors.unable_to_update"), :error)
+
           render :edit, status: :unprocessable_entity
         end
       end
@@ -50,7 +51,7 @@ module Spree
         ensure_unused_store_credit
 
         if @store_credit.destroy
-          flash[:success] = flash_message_for(@store_credit, :successfully_removed)
+          flash_message_for(@store_credit, :successfully_removed)
         else
           render plain: I18n.t("spree.admin.store_credit.errors.unable_to_delete"), status: :unprocessable_entity
         end
@@ -72,7 +73,7 @@ module Spree
         @user = Spree.user_class.find_by(id: params[:user_id])
 
         unless @user
-          flash[:error] = Spree.t(:user_not_found)
+          dispatch_notice(Spree.t(:user_not_found), :error)
           redirect_to spree.admin_path
         end
       end
