@@ -23,7 +23,9 @@ describe Spree::Admin::RefundsController do
 
       it "sets an error message with the correct text" do
         subject
-        expect(flash[:error]).to eq "An error has occurred"
+
+        expect(flash[:kind]).to eq(:error)
+        expect(flash[:message]).to eq("An error has occurred")
       end
 
       it { is_expected.to render_template(:new) }

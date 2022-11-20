@@ -37,7 +37,7 @@ module Spree
             it { expect(assigns(:store_credit)).to eq(store_credit_to_destroy) }
             it { expect(response).to have_http_status(:ok) }
 
-            it { expect(flash[:kind]).to eq("success") }
+            it { expect(flash[:kind]).to eq(:success) }
             it { expect(flash[:message]).to eq(I18n.t("spree.successfully_removed", resource: "Store Credit")) }
           end
         end

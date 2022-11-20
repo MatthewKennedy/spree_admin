@@ -26,7 +26,6 @@ module Spree
 
             it_behaves_like "correct response"
             it do
-              expect(flash[:kind]).to eq(:success)
               expect(flash[:message]).to be_nil
             end
           end
