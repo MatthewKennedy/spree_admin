@@ -1,23 +1,148 @@
 :root body.admin {
+  /////////////////////////
+  // BS RGB COLOR VALUES //
+  /////////////////////////
+  --bs-brand-color-rgb: 250, 84, 0;
+  --bs-brand-rgb: 0, 128, 96;
+  --bs-primary-rgb: 0, 128, 96;
+  --bs-primary-hover-rgb: 0, 110, 82;
+  --bs-secondary-rgb: 108, 117, 125;
+  --bs-secondary-hover-rgb: 92, 99, 106;
+  --bs-success-rgb: 174, 233, 209;
+  --bs-success-hover-rgb: 21, 115, 71;
+  --bs-info-rgb: 13, 202, 240;
+  --bs-info-hover-rgb: 49, 210, 242;
+  --bs-warning-rgb: 255, 215, 157;
+  --bs-warning-hover-rgb: 255, 202, 44;
+  --bs-danger-rgb: 220, 53, 69;
+  --bs-danger-hover-rgb: 187, 45, 59;
+  --bs-light-rgb: 241, 241, 241;
+  --bs-light-hover-rgb: 249, 250, 251;
+  --bs-dark-rgb: 33, 37, 41;
+  --bs-dark-hover-rgb: 28, 31, 35;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-body-color-rgb: 33, 37, 41;
+  --bs-body-bg-rgb: 246, 246, 247;
+
+
+
+  ////////////////////////
+  // SPREE ADMIN COLORS //
+  ////////////////////////
+  --sa-logo: rgba(var(--bs-brand-color-rgb));
+  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb));
+
+
+
+  /////////////////////////////
+  // BS RGB COLOR VALUES MAP //
+  /////////////////////////////
+  --bs-black: rgba(var(--bs-black-rgb));
+  --bs-body-color: rgba(var(--bs-body-color-rgb));
+  --bs-body-bg: rgba(var(--bs-body-bg-rgb));
+  --bs-danger: rgba(var(--bs-danger-rgb));
+  --bs-dark: rgba(var(--bs-dark-rgb));
+  --bs-info: rgba(var(--bs-info-rgb));
+  --bs-light: rgba(var(--bs-light-rgb));
+  --bs-link-color: rgba(var(--bs-primary-rgb));
+  --bs-link-hover-color: rgba(var(--bs-primary-hover-rgb));
+  --bs-primary: rgba(var(--bs-primary-rgb));
+  --bs-secondary: rgba(var(--bs-secondary-rgb));
+  --bs-success: rgba(var(--bs-success-rgb));
+  --bs-warning: rgba(var(--bs-warning-rgb));
+  --bs-white: rgba(var(--bs-white-rgb));
+
+
+
+  ////////////////
+  // BS BUTTONS //
+  ////////////////
+  .btn-primary {
+    --bs-btn-color: rgba(var(--bs-white-rgb));
+    --bs-btn-bg: rgba(var(--bs-primary-rgb));
+    --bs-btn-border-color: rgba(var(--bs-primary-rgb));
+
+    --bs-btn-hover-color: rgba(var(--bs-white-rgb));
+    --bs-btn-hover-bg: rgba(var(--bs-primary-hover-rgb));
+    --bs-btn-hover-border-color: rgba(var(--bs-primary-hover-rgb));
+
+    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+
+    --bs-btn-active-color: rgba(var(--bs-white-rgb));
+    --bs-btn-active-bg: rgba(var(--bs-primary-hover-rgb));
+    --bs-btn-active-border-color: rgba(var(--bs-primary-hover-rgb));
+
+    --bs-btn-disabled-color: rgba(84, 84, 84);
+    --bs-btn-disabled-bg: rgba(224, 224, 224);
+    --bs-btn-disabled-border-color: var(--bs-btn-disabled-bg);
+  }
+
+  .btn-secondary {
+    --bs-btn-color: rgba(var(--bs-white-rgb));
+    --bs-btn-bg: rgba(var(--bs-secondary-rgb));
+    --bs-btn-border-color: rgba(var(--bs-secondary-rgb));
+
+    --bs-btn-hover-color: rgba(var(--bs-white-rgb));
+    --bs-btn-hover-bg: rgba(var(--bs-secondary-hover-rgb));
+    --bs-btn-hover-border-color: rgba(var(--bs-secondary-hover-rgb));
+
+    --bs-btn-focus-shadow-rgb: var(--bs-secondary-rgb);
+
+    --bs-btn-active-color: rgba(var(--bs-white-rgb));
+    --bs-btn-active-bg: rgba(var(--bs-secondary-hover-rgb));
+    --bs-btn-active-border-color: rgba(var(--bs-secondary-hover-rgb));
+
+    --bs-btn-disabled-color: rgba(var(--bs-white-rgb));
+    --bs-btn-disabled-bg: rgba(var(--bs-secondary-rgb));
+    --bs-btn-disabled-border-color: rgba(var(--bs-secondary-rgb));
+  }
+
+  .btn-danger {
+    --bs-btn-color: rgba(var(--bs-white-rgb));
+    --bs-btn-bg: rgba(var(--bs-danger-rgb));
+    --bs-btn-border-color: rgba(var(--bs-danger-rgb));
+
+    --bs-btn-hover-color: rgba(var(--bs-white-rgb));
+    --bs-btn-hover-bg: rgba(var(--bs-danger-hover-rgb));
+    --bs-btn-hover-border-color: rgba(var(--bs-danger-hover-rgb));
+
+    --bs-btn-focus-shadow-rgb: var(--bs-danger-rgb);
+
+    --bs-btn-active-color: rgba(var(--bs-white-rgb));
+    --bs-btn-active-bg: rgba(var(--bs-danger-hover-rgb));
+    --bs-btn-active-border-color: rgba(var(--bs-danger-hover-rgb));
+
+    --bs-btn-disabled-color: rgba(var(--bs-white-rgb));
+    --bs-btn-disabled-bg: rgba(var(--bs-danger-rgb));
+    --bs-btn-disabled-border-color: rgba(var(--bs-danger-rgb));
+  }
+
+
+
+  ///////////////
+  // BS CUSTOM //
+  ///////////////
   --nav-bar-height: 54px;
-  --#{$prefix}border-radius: 3px;
+  --bs-border-radius: 3px;
 
   .badge {
     border-width: 1px;
     border-style: solid;
     --bs-badge-font-weight: 300;
 
-    color:          hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
-    background:     rgba(var(--label-r), var(--label-g), var(--label-b), var(--background-alpha));
-    border-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+    color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
+    background: rgba(var(--label-r), var(--label-g), var(--label-b), var(--background-alpha));
+    border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
   }
 
   .card {
-    --#{$prefix}card-spacer-x: 0.75rem;
+    --bs-card-spacer-x: 0.75rem;
   }
 
   .card-header {
-    --#{$prefix}card-cap-padding-x: var(--#{$prefix}card-spacer-x);
+    --bs-card-cap-padding-x: var(--bs-card-spacer-x);
   }
 
   .carousel-item {
@@ -35,22 +160,25 @@
     color: var(--sa-logo);
   }
 
-
   g-table {
-    --gridtable-color:          #{$table-color};
-    --gridtable-bg:             #{$table-bg};
-    --gridtable-border-color:   #{$table-border-color};
-    --gridtable-accent-bg:      #{$table-accent-bg};
-    --gridtable-active-color:   #{$table-active-color};
-    --gridtable-active-bg:      #{$table-active-bg};
-    --gridtable-hover-color:    #{$table-hover-color};
-    --gridtable-hover-bg:       #{$table-hover-bg};
+    --gridtable-color: #{$table-color};
+    --gridtable-bg: #{$table-bg};
+    --gridtable-border-color: #{$table-border-color};
+    --gridtable-accent-bg: #{$table-accent-bg};
+    --gridtable-active-color: #{$table-active-color};
+    --gridtable-active-bg: #{$table-active-bg};
+    --gridtable-hover-color: #{$table-hover-color};
+    --gridtable-hover-bg: #{$table-hover-bg};
     --gridtable-cell-padding-x: #{$table-cell-padding-x};
     --gridtable-cell-padding-y: #{$table-cell-padding-y};
 
-    g-tr > a {
+    g-tr>a {
       text-decoration: none;
     }
+  }
+
+  g-thead {
+    @extend .text-muted;
   }
 
   .modal {
@@ -63,13 +191,14 @@
 
   // Universal disabled on link or button element
   // All disabled buttons might as well look the same.
-  .btn[disabled] {
+  .btn[disabled],
+  a.disabled {
     pointer-events: none;
   }
 
   .card {
     margin-bottom: 1rem !important;
-    box-shadow: 0 0 0.3125rem #1718180d,0 0.0625rem 0.125rem #00000026;
+    box-shadow: 0 0 0.3125rem #1718180d, 0 0.0625rem 0.125rem #00000026;
 
     .no_shadow_if_nested {
       box-shadow: none !important;
@@ -77,7 +206,7 @@
   }
 
   .dashed-card,
-  .card-body > .card {
+  .card-body>.card {
     border-style: dashed !important;
     border-width: 1px !important;
     border-color: var(--bs-gray-500) !important;
@@ -89,7 +218,7 @@
   }
 
   .card-title {
-    margin-bottom: 0 ;
+    margin-bottom: 0;
   }
 
   .card-header {
@@ -126,7 +255,7 @@
   }
 
   table.table tr:last-child td {
-      border-bottom: none;
+    border-bottom: none;
   }
 
   .shim-bottom {
@@ -161,14 +290,10 @@
   }
 
   .text-mid-light {
-    color:rgba(201, 201, 201, 1) !important;
+    color: rgba(201, 201, 201, 1) !important;
   }
 
   .card .border-adaptive-to-card {
     border-color: #ccc !important;
   }
-}
-
-g-thead {
-  @extend .text-muted;
 }
