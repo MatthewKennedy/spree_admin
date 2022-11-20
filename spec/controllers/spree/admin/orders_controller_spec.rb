@@ -49,7 +49,7 @@ describe Spree::Admin::OrdersController, type: :controller do
     describe "#approve" do
       it "approves an order" do
         put :approve, params: {id: order.number}
-        expect(flash[:success]).to eq Spree.t(:order_approved)
+        expect(flash[:message]).to eq Spree.t(:order_approved)
         order.reload
         expect(order.approved?).to eq true
         expect(order.approver).to eq admin_user
@@ -61,7 +61,7 @@ describe Spree::Admin::OrdersController, type: :controller do
 
       it "cancels an order" do
         put :cancel, params: {id: order.number}
-        expect(flash[:success]).to eq Spree.t(:order_canceled)
+        expect(flash[:message]).to eq Spree.t(:order_canceled)
         order.reload
         expect(order.canceled?).to eq true
         expect(order.canceler).to eq admin_user
@@ -75,7 +75,7 @@ describe Spree::Admin::OrdersController, type: :controller do
         put :resume, params: {id: order.number}
         order.reload
         expect(order.resumed?).to eq(true)
-        expect(flash[:success]).to eq Spree.t(:order_resumed)
+        expect(flash[:message]).to eq Spree.t(:order_resumed)
       end
     end
 
@@ -84,7 +84,7 @@ describe Spree::Admin::OrdersController, type: :controller do
 
       it "resends order mailer" do
         put :resend, params: {id: order.number}
-        expect(flash[:success]).to eq Spree.t(:order_email_resent)
+        expect(flash[:message]).to eq Spree.t(:order_email_resent)
       end
     end
 
@@ -158,7 +158,7 @@ describe Spree::Admin::OrdersController, type: :controller do
 
       it "sets the flash success message" do
         put :open_adjustments, params: {id: order.number}
-        expect(flash[:success]).to eql("All adjustments successfully opened!")
+        expect(flash[:message]).to eql("All adjustments successfully opened!")
       end
 
       context "when referer" do
@@ -206,7 +206,7 @@ describe Spree::Admin::OrdersController, type: :controller do
 
       it "sets the flash success message" do
         put :close_adjustments, params: {id: order.number}
-        expect(flash[:success]).to eql("All adjustments successfully closed!")
+        expect(flash[:message]).to eql("All adjustments successfully closed!")
       end
 
       context "when referer" do

@@ -36,7 +36,8 @@ describe Spree::Admin::ProductsController, type: :controller do
 
     it "will successfully update product" do
       send_request
-      expect(flash[:success]).to eq("Product #{product.name.inspect} has been successfully updated!")
+      expect(flash[:kind]).to eq("success")
+      expect(flash[:message]).to eq("Product #{product.name.inspect} has been successfully updated!")
       expect(product.reload.status).to eq("draft")
       expect(product.make_active_at).to eq(Time.current.beginning_of_day)
     end
@@ -55,7 +56,8 @@ describe Spree::Admin::ProductsController, type: :controller do
 
       it "cannot change the product status and make_available_at" do
         send_request
-        expect(flash[:success]).to eq("Product #{product.name.inspect} has been successfully updated!")
+        expect(flash[:kind]).to eq("success")
+        expect(flash[:message]).to eq("Product #{product.name.inspect} has been successfully updated!")
         expect(product.reload.status).not_to eq("active")
         expect(product.make_active_at).not_to eq(Time.current.beginning_of_day)
       end
@@ -67,7 +69,9 @@ describe Spree::Admin::ProductsController, type: :controller do
 
       specify do
         send_request
-        expect(flash[:success]).to eq("Product #{product.name.inspect} has been successfully updated!")
+
+        expect(flash[:kind]).to eq("success")
+        expect(flash[:message]).to eq("Product #{product.name.inspect} has been successfully updated!")
       end
     end
   end
@@ -106,7 +110,7 @@ describe Spree::Admin::ProductsController, type: :controller do
         before { send_request }
 
         it { expect(response).to have_http_status(:ok) }
-        it { expect(flash[:success]).to be_nil }
+        it { expect(flash[:message]).to be_nil }
       end
     end
 
@@ -141,7 +145,9 @@ describe Spree::Admin::ProductsController, type: :controller do
 
         it "set flash error" do
           expected_error = I18n.t("spree.admin.notice_messages.product_not_deleted", error: error_msg)
-          expect(flash[:error]).to eq(expected_error)
+
+          expect(flash[:kind]).to eq("error")
+          expect(flash[:message]).to eq(expected_error)
         end
       end
     end
@@ -153,7 +159,9 @@ describe Spree::Admin::ProductsController, type: :controller do
 
       it do
         send_request
-        expect(flash[:error]).to eq("Product is not found")
+
+        expect(flash[:kind]).to eq("error")
+        expect(flash[:message]).to eq("Product is not found")
       end
     end
   end
@@ -181,7 +189,11 @@ describe Spree::Admin::ProductsController, type: :controller do
       describe "response" do
         it { expect(response).to have_http_status(:found) }
         it { expect(response).to be_redirect }
-        it { expect(flash[:success]).to eq(I18n.t("spree.admin.notice_messages.product_cloned")) }
+
+        it do
+          expect(flash[:kind]).to eq("success")
+          expect(flash[:message]).to eq(I18n.t("spree.admin.notice_messages.product_cloned"))
+        end
       end
     end
 
@@ -198,7 +210,9 @@ describe Spree::Admin::ProductsController, type: :controller do
 
         it "set flash error" do
           expected_error = I18n.t("spree.admin.notice_messages.product_not_cloned", error: "Validation failed: Sku has already been taken")
-          expect(flash[:error]).to eq(expected_error)
+
+          expect(flash[:kind]).to eq("error")
+          expect(flash[:message]).to eq(expected_error)
         end
       end
     end
@@ -210,7 +224,9 @@ describe Spree::Admin::ProductsController, type: :controller do
 
       it do
         send_request
-        expect(flash[:error]).to eq("Product is not found")
+
+        expect(flash[:kind]).to eq("error")
+        expect(flash[:message]).to eq("Product is not found")
       end
     end
   end
@@ -228,7 +244,9 @@ describe Spree::Admin::ProductsController, type: :controller do
 
       it do
         send_request
-        expect(flash[:error]).to eq("Product is not found")
+
+        expect(flash[:kind]).to eq("error")
+        expect(flash[:message]).to eq("Product is not found")
       end
     end
   end
@@ -251,7 +269,9 @@ describe Spree::Admin::ProductsController, type: :controller do
 
       it do
         send_request
-        expect(flash[:error]).to eq("Product is not found")
+
+        expect(flash[:kind]).to eq("error")
+        expect(flash[:message]).to eq("Product is not found")
       end
     end
   end

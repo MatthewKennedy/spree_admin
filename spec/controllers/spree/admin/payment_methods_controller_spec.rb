@@ -107,7 +107,8 @@ module Spree
           before { send_request }
 
           it_behaves_like "correct response"
-          it { expect(flash[:success]).to be_nil }
+          it { expect(flash[:kind]).to eq("success") }
+          it { expect(flash[:message]).to be_nil }
         end
       end
 
@@ -118,7 +119,9 @@ module Spree
 
         it do
           send_request
-          expect(flash[:error]).to eq("Payment Method is not found")
+
+          expect(flash[:kind]).to eq("error")
+          expect(flash[:message]).to eq("Payment Method is not found")
         end
       end
     end

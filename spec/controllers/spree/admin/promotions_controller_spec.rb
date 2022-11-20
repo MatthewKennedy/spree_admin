@@ -76,7 +76,9 @@ describe Spree::Admin::PromotionsController, type: :controller do
 
         it { expect(assigns(:promotion)).to eq(promotion) }
         it { expect(response).to have_http_status(:ok) }
-        it { expect(flash[:success]).to be_nil }
+
+        it { expect(flash[:kind]).to eq("success") }
+        it { expect(flash[:message]).to be_nil }
       end
     end
 
