@@ -58,7 +58,6 @@
       <%#-------------------------------------------------%>
       <%= flash_alert(flash, :inner_main_content) %>
       <%= flash_alert(flash, :modal) %>
-      <%= flash_alert(flash, :_top) %>
 
       <%#-------------------------------------------------%>
       <%# Mobile Buttons                                  %>
@@ -75,6 +74,9 @@
       <%#-------------------------------------------------%>
       <div data-hook="admin_footer_scripts"></div>
     <% end %>
+
+    <%= flash_alert(flash) %>
+    <%= flash_alert(flash, :_top) %>
 
     <%#-------------------------------------------------%>
     <%# Universal Modal & OffCanvas                     %>
