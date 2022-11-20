@@ -31,7 +31,7 @@
       </div>
       <%= turbo_frame_tag :user_store_credits_wrapper do %>
         <%= turbo_frame_tag :user_store_credits, src: spree.admin_user_store_credits_path(@user), loading: :lazy %>
-        <%= flash_alert(flash) %>
+        <%= flash_alert(flash, :user_store_credits_wrapper) %>
       <% end %>
     </div>
   </div>
