@@ -1,11 +1,24 @@
 <div aria-live="polite" aria-atomic="true" class="position-relative">
-  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x">
-    <div class="toast align-items-center py-2 animate__animated animate__faster animate__fadeInUp mb-5"
+  <div class="toast-container
+              position-fixed
+              bottom-0
+              start-50
+              translate-middle-x">
+
+    <div class="toast
+                align-items-center
+                py-2
+                mb-5
+                animate__animated
+                animate__faster
+                animate__fadeInUp
+                <%= kind %>"
          role="alert"
          aria-live="assertive"
          data-bs-animation="false"
          aria-atomic="true"
          data-controller="toast">
+
       <div class="d-flex">
         <div class="toast-body text-start flex-fill">
           <%= message %>

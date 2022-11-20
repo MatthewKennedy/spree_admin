@@ -29,7 +29,6 @@ module Spree
         else
           dispatch_notice(result.error.to_s, :error)
         end
-        end
       end
 
       def increment_item
@@ -56,7 +55,6 @@ module Spree
             redirect_back fallback_location: location_after_save
           else
             dispatch_notice(result.error.to_s, :error)
-        end
           end
         end
       end
@@ -72,7 +70,6 @@ module Spree
           redirect_to location_after_save
         else
           dispatch_notice(result.error.to_s, :error)
-        end
         end
       end
 
