@@ -517,6 +517,8 @@ en:
         default_language: Default language
         seo_robots: Please check <a href='https://developers.google.com/search/reference/robots_meta_tag' target='_blank'>this page for more help</a>
         supported_languages: Supported languages
+      store_switcher:
+        switch_store: Switch store
       storefront_api: Storefront API
       stores:
         checkout: Checkout

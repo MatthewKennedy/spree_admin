@@ -25,7 +25,9 @@ module Spree
             before { send_request }
 
             it_behaves_like "correct response"
-            it { expect(flash[:success]).to be_nil }
+            it do
+              expect(flash[:message]).to be_nil
+            end
           end
         end
 
@@ -35,7 +37,9 @@ module Spree
 
           it do
             send_request
-            expect(flash[:error]).to eq("Variant is not found")
+
+            expect(flash[:kind]).to eq(:error)
+            expect(flash[:message]).to eq("Variant is not found")
           end
         end
 

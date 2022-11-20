@@ -14,10 +14,10 @@ module Spree
         @store = stores_scope.new(permitted_store_params)
 
         if @store.save
-          flash[:success] = flash_message_for(@store, :successfully_created)
+          flash_message_for(@store, :successfully_created)
           redirect_to spree.admin_url(domain: @store.url), allow_other_host: true
         else
-          flash[:error] = "#{I18n.t("spree.admin.store_errors.unable_to_create")}: #{@store.errors.full_messages.join(", ")}"
+          dispatch_notice("#{I18n.t("spree.admin.store_errors.unable_to_create")}: #{@store.errors.full_messages.join(", ")}", :error)
           render :new, status: :unprocessable_entity
         end
       end
@@ -31,9 +31,9 @@ module Spree
         @store.assign_attributes(permitted_store_params)
 
         if @store.save
-          flash[:success] = flash_message_for(@store, :successfully_updated)
+          flash_message_for(@store, :successfully_updated)
         else
-          flash[:error] = "#{I18n.t("spree.admin.store_errors.unable_to_update")}: #{@store.errors.full_messages.join(", ")}"
+          dispatch_notice("#{I18n.t("spree.admin.store_errors.unable_to_update")}: #{@store.errors.full_messages.join(", ")}", :error)
         end
 
         redirect_to spree.edit_admin_store_path(@store)
@@ -43,7 +43,7 @@ module Spree
         @store = stores_scope.find(params[:id])
 
         if @store.destroy
-          flash[:success] = flash_message_for(@store, :successfully_removed)
+          flash_message_for(@store, :successfully_removed)
           redirect_to spree.admin_url(domain: Spree::Store.default.url), allow_other_host: true
         else
           render plain: "#{I18n.t("spree.admin.store_errors.unable_to_delete")}: #{@store.errors.full_messages.join(", ")}", status: :unprocessable_entity

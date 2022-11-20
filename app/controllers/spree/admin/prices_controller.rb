@@ -18,7 +18,7 @@ module Spree
             price.save! if price.new_record? && price.price || !price.new_record? && price.changed?
           end
         end
-        flash[:success] = I18n.t("spree.admin.notice_messages.prices_saved")
+        dispatch_notice(I18n.t("spree.admin.notice_messages.prices_saved"), :success)
         redirect_to spree.admin_product_path(parent)
       end
     end

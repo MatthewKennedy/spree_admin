@@ -23,7 +23,7 @@ module Spree
           @selected_products.update_all(status: :archived)
         end
 
-        flash[:success] = "#{@selected_products.count} #{I18n.t("spree.admin.products.products_marked_as")} #{params[:button].capitalize}"
+        dispatch_notice("#{@selected_products.count} #{I18n.t("spree.admin.products.products_marked_as")} #{params[:button].capitalize}", :success)
         redirect_to action: :index
       end
 
@@ -47,15 +47,15 @@ module Spree
         @new = @product.duplicate
 
         if @new.persisted?
-          flash[:success] = I18n.t("spree.admin.notice_messages.product_cloned")
+          dispatch_notice(I18n.t("spree.admin.notice_messages.product_cloned"), :success)
           redirect_to spree.edit_admin_product_url(@new)
         else
-          flash[:error] = I18n.t("spree.admin.notice_messages.product_not_cloned", error: @new.errors.full_messages.to_sentence)
+          dispatch_notice(I18n.t("spree.admin.notice_messages.product_not_cloned", error: @new.errors.full_messages.to_sentence), :error)
           redirect_to spree.admin_products_url
         end
       rescue ActiveRecord::RecordInvalid => e
         # Handle error on uniqueness validation on product fields
-        flash[:error] = I18n.t("spree.admin.notice_messages.product_not_cloned", error: e.message)
+        dispatch_notice(I18n.t("spree.admin.notice_messages.product_not_cloned", error: e.message), :error)
         redirect_to spree.admin_products_url
       end
 
@@ -63,7 +63,7 @@ module Spree
         @variant = @product.variants_including_master.find_by(id: params[:variant_id])
         @stock_locations = StockLocation.accessible_by(current_ability)
         if @stock_locations.empty?
-          flash[:error] = Spree.t(:stock_management_requires_a_stock_location)
+          dispatch_notice(Spree.t(:stock_management_requires_a_stock_location), :error)
           redirect_to spree.admin_stock_locations_path
         end
       end

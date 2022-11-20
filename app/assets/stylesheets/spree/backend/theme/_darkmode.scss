@@ -145,6 +145,26 @@
       }
     }
 
+    .btn-closer {
+      --#{$prefix}btn-color:                 var(--#{$prefix}gray-100);
+      --#{$prefix}btn-bg:                    transparent;
+      --#{$prefix}btn-border-color:          transparent;
+
+      --#{$prefix}btn-hover-color:           var(--#{$prefix}gray-300);
+      --#{$prefix}btn-hover-bg:              transparent;
+      --#{$prefix}btn-hover-border-color:    transparent;
+
+      --#{$prefix}btn-focus-shadow-rgb:      transparent;
+
+      --#{$prefix}btn-active-color:          var(--#{$prefix}gray-300);
+      --#{$prefix}btn-active-bg:             transparent;
+      --#{$prefix}btn-active-border-color:   transparent;
+
+      --#{$prefix}btn-disabled-color:        var(--#{$prefix}gray-500);
+      --#{$prefix}btn-disabled-bg:           transparent;
+      --#{$prefix}btn-disabled-border-color: transparent;
+    }
+
     .badge.danger {
       --label-r: 220;
       --label-g: 53;
@@ -292,10 +312,17 @@
       --#{$prefix}offcanvas-bg: rgba(var(--#{$prefix}body-bg-rgb));
     }
 
-    .toast {
-      --bs-toast-bg: var(--#{$prefix}gray-200);
-      --bs-toast-color: rgba(var(--#{$prefix}sub-bg-rgb));
-      --bs-toast-border-color: rgba(var(--#{$prefix}input-border-rgb));
+    .toast.success,
+    .toast.notice {
+      --bs-toast-bg:            rgba(59, 65, 75);
+      --bs-toast-color:         rgba(191, 209, 238);
+      --bs-toast-border-color:  rgba(99, 109, 124);
+    }
+
+    .toast.error {
+      --bs-toast-bg:            rgba(var(--#{$prefix}danger-rgb), .75);
+      --bs-toast-color:         rgba(var(--#{$prefix}white-rgb));
+      --bs-toast-border-color:  rgba(var(--#{$prefix}danger-rgb));
     }
 
     aside#main-sidebar {

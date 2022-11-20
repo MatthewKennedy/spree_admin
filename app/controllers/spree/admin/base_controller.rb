@@ -42,7 +42,7 @@ module Spree
 
       def redirect_unauthorized_access
         if try_spree_current_user
-          flash[:error] = Spree.t(:authorization_failure)
+          dispatch_notice(Spree.t(:authorization_failure), :error)
           redirect_to spree.admin_forbidden_path
         else
           store_location
@@ -58,10 +58,19 @@ module Spree
         end
       end
 
-      def flash_message_for(object, event_sym)
+      def flash_message_for(object, event_sym, kind = :success)
         resource_desc = object.class.model_name.human
         resource_desc += " \"#{object.name}\"" if (object.persisted? || object.destroyed?) && object.respond_to?(:name) && object.name.present? && !object.is_a?(Spree::Order)
-        Spree.t(event_sym, resource: resource_desc)
+
+        dispatch_notice(Spree.t(event_sym, resource: resource_desc), kind)
+      end
+
+      def dispatch_notice(message, kind)
+        turbo_frame_id = turbo_frame_request_id || :_top
+
+        flash[:kind] = kind
+        flash[:turbo_frame_request_id] = turbo_frame_id
+        flash[:message] = message
       end
 
       def stream_flash_alert(message: I18n.t("spree.admin.no_message_set"))
@@ -90,7 +99,7 @@ module Spree
 
       def can_not_transition_without_customer_info
         unless @order.billing_address.present?
-          flash[:notice] = Spree.t(:fill_in_customer_info)
+          dispatch_notice(Spree.t(:fill_in_customer_info), :notice)
           redirect_to spree.edit_admin_order_url(@order)
         end
       end

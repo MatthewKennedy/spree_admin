@@ -36,7 +36,7 @@ module Spree
             destination_location,
             variants)
 
-          flash[:success] = Spree.t(:stock_successfully_transferred)
+          dispatch_notice(Spree.t(:stock_successfully_transferred), :success)
           redirect_to spree.admin_stock_transfer_path(stock_transfer)
         end
       end

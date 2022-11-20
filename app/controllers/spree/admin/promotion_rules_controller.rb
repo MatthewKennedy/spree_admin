@@ -8,7 +8,7 @@ class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
     @promotion_rule = @promotion_rule_type.new(promotion_rule_params)
     @promotion_rule.promotion = @promotion
     if @promotion_rule.save
-      flash[:success] = Spree.t(:successfully_created, resource: Spree.t(:promotion_rule))
+      dispatch_notice(Spree.t(:successfully_created, resource: Spree.t(:promotion_rule)), :success)
     end
     respond_to do |format|
       format.html { redirect_to spree.edit_admin_promotion_path(@promotion) }
@@ -18,7 +18,7 @@ class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
   def destroy
     @promotion_rule = @promotion.promotion_rules.find(params[:id])
     if @promotion_rule.destroy
-      flash[:success] = Spree.t(:successfully_removed, resource: Spree.t(:promotion_rule))
+      dispatch_notice(Spree.t(:successfully_removed, resource: Spree.t(:promotion_rule)), :success)
     end
     respond_to do |format|
       format.html { redirect_to spree.edit_admin_promotion_path(@promotion) }
@@ -52,7 +52,8 @@ class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
       klass.name == requested_type
     end
     unless @promotion_rule_type
-      flash[:error] = Spree.t(:invalid_promotion_rule)
+      dispatch_notice(Spree.t(:invalid_promotion_rule), :error)
+
       respond_to do |format|
         format.html { redirect_to spree.edit_admin_promotion_path(@promotion) }
       end

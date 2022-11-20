@@ -44,32 +44,35 @@ module Spree
 
       def cancel
         @order.canceled_by(try_spree_current_user)
-        flash[:success] = Spree.t(:order_canceled)
+        dispatch_notice(Spree.t(:order_canceled), :success)
+
         redirect_back fallback_location: spree.edit_admin_order_url(@order)
       end
 
       def resume
         @order.resume!
-        flash[:success] = Spree.t(:order_resumed)
+        dispatch_notice(Spree.t(:order_resumed), :success)
+
         redirect_back fallback_location: spree.edit_admin_order_url(@order)
       end
 
       def approve
         @order.approved_by(try_spree_current_user)
-        flash[:success] = Spree.t(:order_approved)
+        dispatch_notice(Spree.t(:order_approved), :success)
+
         redirect_back fallback_location: spree.edit_admin_order_url(@order)
       end
 
       def resend
         @order.deliver_order_confirmation_email
-        flash[:success] = Spree.t(:order_email_resent)
+        dispatch_notice(Spree.t(:order_email_resent), :success)
 
         redirect_back fallback_location: spree.edit_admin_order_url(@order)
       end
 
       def reset_digitals
         @order.digital_links.each(&:reset!)
-        flash[:notice] = I18n.t("spree.admin.digitals.downloads_reset")
+        dispatch_notice(I18n.t("spree.admin.digitals.downloads_reset"), :notice)
 
         redirect_back fallback_location: spree.edit_admin_order_url(@order)
       end
@@ -77,7 +80,7 @@ module Spree
       def open_adjustments
         adjustments = @order.all_adjustments.finalized
         adjustments.update_all(state: "open")
-        flash[:success] = Spree.t(:all_adjustments_opened)
+        dispatch_notice(Spree.t(:all_adjustments_opened), :success)
 
         redirect_back fallback_location: spree.admin_order_adjustments_url(@order)
       end
@@ -85,7 +88,7 @@ module Spree
       def close_adjustments
         adjustments = @order.all_adjustments.not_finalized
         adjustments.update_all(state: "closed")
-        flash[:success] = Spree.t(:all_adjustments_closed)
+        dispatch_notice(Spree.t(:all_adjustments_closed), :success)
 
         redirect_back fallback_location: spree.admin_order_adjustments_url(@order)
       end

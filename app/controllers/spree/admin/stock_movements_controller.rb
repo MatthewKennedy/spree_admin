@@ -16,7 +16,7 @@ module Spree
       def create
         @stock_movement = stock_location.stock_movements.build(stock_movement_params)
         if @stock_movement.save
-          flash[:success] = flash_message_for(@stock_movement, :successfully_created)
+          flash_message_for(@stock_movement, :successfully_created)
           redirect_to spree.admin_stock_location_stock_movements_path(stock_location)
         else
           render :new

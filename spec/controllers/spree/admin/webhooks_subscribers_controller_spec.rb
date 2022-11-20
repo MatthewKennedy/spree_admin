@@ -56,7 +56,9 @@ module Spree
         it "deletes the subscriber" do
           expect(assigns(:object)).to eq(webhooks_subscriber)
           expect(response).to have_http_status(:found)
-          expect(flash[:success]).to include("successfully removed")
+
+          expect(flash[:kind]).to eq(:success)
+          expect(flash[:message]).to include("successfully removed")
         end
       end
     end

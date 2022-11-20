@@ -61,7 +61,9 @@ describe Spree::Admin::ReimbursementsController, type: :controller do
 
       it "sets an error message with the correct text" do
         subject
-        expect(flash[:error]).to eq "An error has occurred"
+
+        expect(flash[:kind]).to eq(:error)
+        expect(flash[:message]).to eq("An error has occurred")
       end
 
       it "redirects to the edit page" do

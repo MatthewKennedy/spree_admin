@@ -31,7 +31,8 @@ module Spree
         if @payment_method.update(attributes)
           set_current_store
           invoke_callbacks(:update, :after)
-          flash[:success] = Spree.t(:successfully_updated, resource: Spree.t(:payment_method))
+          dispatch_notice(Spree.t(:successfully_updated, resource: Spree.t(:payment_method)), :success)
+
           redirect_to spree.edit_admin_payment_method_path(@payment_method)
         else
           invoke_callbacks(:update, :fails)
@@ -68,7 +69,7 @@ module Spree
       def validate_payment_method_provider
         valid_payment_methods = Rails.application.config.spree.payment_methods.map(&:to_s)
         unless valid_payment_methods.include?(params[:payment_method][:type])
-          flash[:error] = Spree.t(:invalid_payment_provider)
+          dispatch_notice(Spree.t(:invalid_payment_provider), :error)
           redirect_to spree.new_admin_payment_method_path
         end
       end

@@ -74,7 +74,7 @@ module Spree
       end
 
       def resource_not_found
-        flash[:error] = flash_message_for(model_class.new, :not_found)
+        flash_message_for(model_class.new, :not_found, :error)
         redirect_to spree.admin_orders_path
       end
     end

@@ -13,7 +13,7 @@ module Spree
         if result.success?
           redirect_back fallback_location: location_after_save
         else
-          flash[:error] = result.error.to_s
+          dispatch_notice(result.error.to_s, :error)
         end
       end
 
@@ -27,7 +27,7 @@ module Spree
         if result.success?
           redirect_back fallback_location: location_after_save
         else
-          flash[:error] = result.error.to_s
+          dispatch_notice(result.error.to_s, :error)
         end
       end
 
@@ -54,7 +54,7 @@ module Spree
           if result.success?
             redirect_back fallback_location: location_after_save
           else
-            flash[:error] = result.error.to_s
+            dispatch_notice(result.error.to_s, :error)
           end
         end
       end
@@ -69,7 +69,7 @@ module Spree
         if result.success?
           redirect_to location_after_save
         else
-          flash[:error] = result.error.to_s
+          dispatch_notice(result.error.to_s, :error)
         end
       end
 

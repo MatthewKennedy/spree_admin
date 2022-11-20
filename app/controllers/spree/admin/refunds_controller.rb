@@ -30,7 +30,7 @@ module Spree
       end
 
       def spree_core_gateway_error(error)
-        flash[:error] = error.message
+        dispatch_notice(error.message, :error)
         render :new
       end
     end

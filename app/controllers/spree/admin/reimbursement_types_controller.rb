@@ -7,7 +7,7 @@ module Spree
           invoke_callbacks(:update, :after)
           respond_with(@object) do |format|
             format.html do
-              flash[:success] = flash_message_for(@object, :successfully_updated)
+              flash_message_for(@object, :successfully_updated)
               redirect_to location_after_save
             end
           end

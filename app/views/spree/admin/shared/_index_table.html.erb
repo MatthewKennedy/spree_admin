@@ -15,6 +15,6 @@
     <div class="col-12 p-0">
       <%= yield :index_table if content_for?(:index_table) %>
     </div>
-      <%= flash_alert(flash) %>
+      <%= flash_alert(flash, :index_table) %>
   <% end %>
 </div>

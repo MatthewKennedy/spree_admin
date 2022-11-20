@@ -19,7 +19,7 @@ module Spree
 
           redirect_back fallback_location: spree.edit_admin_order_url(@order)
         else
-          flash[:error] = result.error.to_s
+          dispatch_notice(result.error.to_s, :error)
         end
       end
 
@@ -31,7 +31,7 @@ module Spree
 
           redirect_back fallback_location: spree.edit_admin_order_url(@order)
         else
-          flash[:error] = result.error.to_s
+          dispatch_notice(result.error.to_s, :error)
         end
       end
 
@@ -43,7 +43,7 @@ module Spree
 
           redirect_back fallback_location: spree.edit_admin_order_url(@order)
         else
-          flash[:error] = result.error.to_s
+          dispatch_notice(result.error.to_s, :error)
         end
       end
 
