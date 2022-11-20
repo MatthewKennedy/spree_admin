@@ -312,10 +312,17 @@
       --#{$prefix}offcanvas-bg: rgba(var(--#{$prefix}body-bg-rgb));
     }
 
-    .toast {
-      --bs-toast-bg:            rgba(var(--#{$prefix}primary-rgb));
+    .toast.success,
+    .toast.notice {
+      --bs-toast-bg:            rgba(59, 65, 75);
+      --bs-toast-color:         rgba(191, 209, 238);
+      --bs-toast-border-color:  rgba(99, 109, 124);
+    }
+
+    .toast.error {
+      --bs-toast-bg:            rgba(var(--#{$prefix}danger-rgb), .75);
       --bs-toast-color:         rgba(var(--#{$prefix}white-rgb));
-      --bs-toast-border-color:  rgba(var(--#{$prefix}primary-rgb));
+      --bs-toast-border-color:  rgba(var(--#{$prefix}danger-rgb));
     }
 
     aside#main-sidebar {
