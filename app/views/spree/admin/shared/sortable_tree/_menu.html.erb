@@ -8,7 +8,7 @@
     <div class="overflow-hidden">
       <%= item.name %><br>
       <% if item.link.present? %>
-        <span class="badge rounded-pill bg-light bg-light-muted-text">-> <%= item.link %></span>
+        <span class="badge rounded-pill rgb-hsl-muted">-> <%= item.link %></span>
       <% end %>
       <small class="form-text text-muted mt-0">
         <%= "#{I18n.t('spree.admin.navigation.type')}: #{item.item_type}" %>

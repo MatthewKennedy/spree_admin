@@ -61,7 +61,7 @@
         <span class="text-muted"><%= I18n.t('spree.admin.user.user_since') %>:</span> <%= pretty_date(@user.created_at) %>
         <div class="mt-2">
           <% @user.spree_roles.each do |role| %>
-            <span class="badge bg-secondary"><%= role.name %></span>
+            <span class="badge rgb-hsl-default"><%= role.name %></span>
           <% end %>
         </div>
       </sa-body>

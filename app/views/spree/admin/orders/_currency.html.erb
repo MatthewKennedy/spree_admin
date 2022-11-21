@@ -1,7 +1,7 @@
 <sa-card>
   <sa-header>
     <h5><%= I18n.t('spree.admin.order.currency') %></h5>
-    <h5><span class="badge bg-success"><%= currency_symbol(@order.currency) %> <%= @order.currency %></span></h5>
+    <h5><span class="badge rgb-hsl-success"><%= currency_symbol(@order.currency) %> <%= @order.currency %></span></h5>
   </sa-header>
   <sa-body>
     <% currency_label_text = @order.item_count > 0 ? I18n.t('spree.admin.order.the_order_currency_is_locked_once_items_are_added') : Spree.t(:currency) %>

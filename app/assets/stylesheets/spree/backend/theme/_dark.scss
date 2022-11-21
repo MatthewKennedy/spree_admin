@@ -3,12 +3,6 @@
 ///////////////
 @media (prefers-color-scheme: dark) {
   :root body.admin {
-    * {
-      --perceived-lightness:  calc( ((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255 );
-      --lightness-switch:     max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
-      --lighten-by:           calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
-    }
-
 ////////////////
 // RGB VALUES //
 ////////////////
@@ -75,7 +69,7 @@
       --bs-btn-hover-bg:              rgba(var(--bs-primary-rgb), .13);
       --bs-btn-hover-border-color:    rgba(var(--bs-primary-rgb));
 
-      --bs-btn-focus-shadow-rgb:      var(--bs-primary-bg-rgb);
+      --bs-btn-focus-shadow-rgb:      rgba(var(--bs-primary-bg-rgb));
 
       --bs-btn-active-color:          rgba(var(--bs-gray-100));
       --bs-btn-active-bg:             rgba(var(--bs-primary-rgb), .5);
@@ -95,7 +89,7 @@
       --bs-btn-hover-bg:              rgba(var(--bs-secondary-rgb), .2);
       --bs-btn-hover-border-color:    rgba(var(--bs-secondary-hover-rgb));
 
-      --bs-btn-focus-shadow-rgb:      var(--bs-secondary-bg-rgb);
+      --bs-btn-focus-shadow-rgb:      rgba(var(--bs-secondary-bg-rgb));
 
       --bs-btn-active-color:          rgba(var(--bs-gray-100));
       --bs-btn-active-bg:             rgba(var(--bs-secondary-rgb), .5);
@@ -116,7 +110,7 @@
       --bs-btn-hover-bg:              rgba(var(--bs-danger-rgb), .13);
       --bs-btn-hover-border-color:    rgba(var(--bs-danger-rgb));
 
-      --bs-btn-focus-shadow-rgb:      var(--bs-danger-bg-rgb);
+      --bs-btn-focus-shadow-rgb:      rgba(var(--bs-danger-bg-rgb));
 
       --bs-btn-active-color:          rgba(var(--bs-gray-100));
       --bs-btn-active-bg:             rgba(var(--bs-danger-rgb), .5);
@@ -166,61 +160,7 @@
       }
     }
 
-    .badge.danger {
-      --label-r: 220;
-      --label-g: 53;
-      --label-b: 69;
-      --label-h: 354;
-      --label-s: 70;
-      --label-l: 53;
-    }
-
-    .badge.brand {
-      --label-r: 250;
-      --label-g: 84;
-      --label-b: 0;
-      --label-h: 20;
-      --label-s: 100;
-      --label-l: 49;
-    }
-
-    .badge.primary {
-      --label-r: 83;
-      --label-g: 155;
-      --label-b: 245;
-      --label-h: 213;
-      --label-s: 89;
-      --label-l: 64.3;
-    }
-
-    .badge.info {
-      --label-r: 83;
-      --label-g: 155;
-      --label-b: 245;
-      --label-h: 213;
-      --label-s: 89;
-      --label-l: 64.3;
-    }
-
-    .badge.success {
-      --label-r: 25;
-      --label-g: 135;
-      --label-b: 84;
-      --label-h: 152;
-      --label-s: 68;
-      --label-l: 31;
-    }
-
-    .badge.warning {
-      --label-r: 247;
-      --label-g: 223;
-      --label-b: 30;
-      --label-h: 53;
-      --label-s: 93;
-      --label-l: 54;
-    }
-
-    .badge.normal {
+    .badge.rgb-hsl-default {
       --label-r: 191;
       --label-g: 212;
       --label-b: 242;
@@ -229,7 +169,61 @@
       --label-l: 84;
     }
 
-    .badge.muted {
+    .badge.rgb-hsl-danger {
+      --label-r: 220;
+      --label-g: 53;
+      --label-b: 69;
+      --label-h: 354;
+      --label-s: 70;
+      --label-l: 53;
+    }
+
+    .badge.rgb-hsl-brand {
+      --label-r: 250;
+      --label-g: 84;
+      --label-b: 0;
+      --label-h: 20;
+      --label-s: 100;
+      --label-l: 49;
+    }
+
+    .badge.rgb-hsl-primary {
+      --label-r: 83;
+      --label-g: 155;
+      --label-b: 245;
+      --label-h: 213;
+      --label-s: 89;
+      --label-l: 64.3;
+    }
+
+    .badge.rgb-hsl-info {
+      --label-r: 83;
+      --label-g: 155;
+      --label-b: 245;
+      --label-h: 213;
+      --label-s: 89;
+      --label-l: 64.3;
+    }
+
+    .badge.rgb-hsl-success {
+      --label-r: 25;
+      --label-g: 135;
+      --label-b: 84;
+      --label-h: 152;
+      --label-s: 68;
+      --label-l: 31;
+    }
+
+    .badge.rgb-hsl-warning {
+      --label-r: 247;
+      --label-g: 223;
+      --label-b: 30;
+      --label-h: 53;
+      --label-s: 93;
+      --label-l: 54;
+    }
+
+    .badge.rgb-hsl-muted {
       --label-r: 0;
       --label-g: 0;
       --label-b: 0;
@@ -242,6 +236,7 @@
       --lightness-threshold:  0.6;
       --background-alpha:     0.18;
       --border-alpha:         0.3;
+      color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
     }
 
     .card {

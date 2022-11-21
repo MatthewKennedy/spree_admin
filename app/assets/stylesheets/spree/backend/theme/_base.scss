@@ -80,8 +80,8 @@
   }
 
   .btn-secondary {
-    --bs-btn-color:        rgba(var(--bs-secondary-rgb));
-    --bs-btn-bg:           rgba(var(--bs-secondary-rgb), .15);
+    --bs-btn-color: rgba(var(--bs-secondary-rgb));
+    --bs-btn-bg: rgba(var(--bs-secondary-rgb), .15);
     --bs-btn-border-color: rgba(var(--bs-secondary-rgb), .0);
 
     --bs-btn-hover-color: rgba(var(--bs-secondary-rgb));
@@ -149,11 +149,93 @@
   .badge {
     border-width: 1px;
     border-style: solid;
-    --bs-badge-font-weight: 300;
 
-    color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
+    // Light Color Scheme
+    --lightness-threshold: 0.453;
+    --background-alpha: 0.96;
+    --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
+
+    --bs-badge-font-weight: 300;
+    --perceived-lightness: calc(((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255);
+    --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+    --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
+
+    color: hsl(0deg, 0%, calc(var(--lightness-switch) * 100%));
     background: rgba(var(--label-r), var(--label-g), var(--label-b), var(--background-alpha));
     border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+  }
+
+
+  .badge.rgb-hsl-default {
+    --label-r: 191;
+    --label-g: 212;
+    --label-b: 242;
+    --label-h: 215;
+    --label-s: 66;
+    --label-l: 84;
+  }
+
+  .badge.rgb-hsl-danger {
+    --label-r: 220;
+    --label-g: 53;
+    --label-b: 69;
+    --label-h: 354;
+    --label-s: 70;
+    --label-l: 53;
+  }
+
+  .badge.rgb-hsl-brand {
+    --label-r: 250;
+    --label-g: 84;
+    --label-b: 0;
+    --label-h: 20;
+    --label-s: 100;
+    --label-l: 49;
+  }
+
+  .badge.rgb-hsl-primary {
+    --label-r: 83;
+    --label-g: 155;
+    --label-b: 245;
+    --label-h: 213;
+    --label-s: 89;
+    --label-l: 64.3;
+  }
+
+  .badge.rgb-hsl-info {
+    --label-r: 83;
+    --label-g: 155;
+    --label-b: 245;
+    --label-h: 213;
+    --label-s: 89;
+    --label-l: 64.3;
+  }
+
+  .badge.rgb-hsl-success {
+    --label-r: 25;
+    --label-g: 135;
+    --label-b: 84;
+    --label-h: 152;
+    --label-s: 68;
+    --label-l: 31;
+  }
+
+  .badge.rgb-hsl-warning {
+    --label-r: 247;
+    --label-g: 223;
+    --label-b: 30;
+    --label-h: 53;
+    --label-s: 93;
+    --label-l: 54;
+  }
+
+  .badge.rgb-hsl-muted {
+    --label-r: 0;
+    --label-g: 0;
+    --label-b: 0;
+    --label-h: 0;
+    --label-s: 0;
+    --label-l: 0;
   }
 
   .card {
