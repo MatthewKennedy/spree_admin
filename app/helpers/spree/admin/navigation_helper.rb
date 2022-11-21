@@ -171,7 +171,7 @@ module Spree
       end
 
       def breadcrumb_builder(options = {})
-        divider = content_tag(:span, "/", class: "text-mid-light mx-1 pb-1")
+        divider = content_tag(:span, "/", class: "text-muted mx-1 pb-1")
 
         if options[:link_one_uri] && options[:link_two_text]
           link_to(options[:link_one_text], options[:link_one_uri]) + divider + link_to(options[:link_two_text], options[:link_two_uri]) + divider + options[:current_page_name]

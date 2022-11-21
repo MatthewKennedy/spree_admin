@@ -1,15 +1,9 @@
 .plugin-clear_button {
+
   &.focus.has-items .clear-button,
   &:not(.disabled).has-items .clear-button {
     opacity: 1;
   }
-}
-
-.plugin-clear_button .clear-button {
-  // height: 100%;
-  // display: flex;
-  // align-items: center;
-  // transform: none;
 }
 
 .form-floating .plugin-clear_button .clear-button {
@@ -57,8 +51,8 @@ input::-webkit-contacts-auto-fill-button {
   .option:hover,
   .selected {
     border: none;
-    color:            rgba(var(--#{$prefix}input-color-rgb));
-    background-color: rgba(var(--#{$prefix}sub-bg-rgb));
+    color: rgba(var(--bs-input-color-rgb));
+    background-color: rgba(var(--bs-sub-bg-rgb));
   }
 
   .selected:before {
@@ -75,7 +69,7 @@ input::-webkit-contacts-auto-fill-button {
   }
 
   .active {
-    color:            rgba(var(--#{$prefix}input-color-rgb));
+    color: rgba(var(--bs-input-color-rgb));
     background-color: transparent;
   }
 }
@@ -94,14 +88,13 @@ input::-webkit-contacts-auto-fill-button {
   }
 
   .plugin-clear_button .clear-button {
-    top:  1rem;
+    top: 1rem;
   }
 }
 
 .form-select .ts-control {
   padding-top: 22px !important;
 }
-
 
 .form-select.plugin-search_icon {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
@@ -113,39 +106,20 @@ input::-webkit-contacts-auto-fill-button {
   }
 }
 
-
-.ts-wrapper.multi.has-items .ts-control {
-  padding-top: 1.6rem !important;
-  padding-right: calc(2.5rem - 5px);
-}
-
-.ts-control .item {
-  color: rgba(var(--#{$prefix}input-color-rgb));
-}
-
 .ts-wrapper {
-  --label-r: 191;
-  --label-g: 212;
-  --label-b: 242;
-  --label-h: 215;
-  --label-s: 66;
-  --label-l: 84;
-
-  --lightness-threshold:  0.6;
-  --background-alpha:     0.18;
-  --border-alpha:         0.3;
+  @extend .rgb-hsl-default;
+  @extend .rgb-hsl-base-presets;
 
   &.plugin-remove_button:not(.rtl) .item .remove {
-    border-left-width: 1px;
-    border-left-style: solid;
-    border-left-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+    border-left-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
   }
 
-  &.multi .ts-control>div {
-    border-width: 1px;
-    border-style: solid;
-    color:          hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
-    background:     rgba(var(--label-r), var(--label-g), var(--label-b), var(--background-alpha));
-    border-color:   hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+  &.multi .ts-control>.item {
+   @extend .rgb-hsl-colorway;
+  }
+
+  &.multi.has-items .ts-control {
+    padding-top: 1.6rem !important;
+    padding-right: calc(2.5rem - 5px);
   }
 }

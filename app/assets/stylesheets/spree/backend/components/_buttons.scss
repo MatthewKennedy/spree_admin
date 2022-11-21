@@ -17,15 +17,15 @@
   padding-bottom: 0;
   padding-top: 0;
   height: 54px;
-  color: var(--#{$prefix}btn-color);
-  background-color: var(--#{$prefix}btn-bg);
+  color: var(--bs-btn-color);
+  background-color: var(--bs-btn-bg);
 }
 
 .form-control:hover:not(:disabled):not([readonly])::file-selector-button {
   @extend .btn-secondary;
 
-  color: var(--#{$prefix}btn-hover-color);
-  background-color: var(--#{$prefix}btn-hover-bg);
+  color: var(--bs-btn-hover-color);
+  background-color: var(--bs-btn-hover-bg);
 }
 
 .show-active-bar button,
