@@ -199,7 +199,7 @@ module Spree
       def active_badge(condition, options = {})
         label = options[:label]
         label ||= condition ? Spree.t(:say_yes) : Spree.t(:say_no)
-        css_class = condition ? "rgb-hsl-success" : "rgb-hsl-default"
+        css_class = condition ? "rgb-hsl-success" : "rgb-hsl-secondary"
 
         content_tag(:small, class: "badge rounded-pill #{css_class}") do
           label

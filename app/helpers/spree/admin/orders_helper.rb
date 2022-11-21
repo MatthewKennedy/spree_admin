@@ -38,7 +38,7 @@ module Spree
         badge_style = if order.payment_state == "paid"
           order.complete? ? "rgb-hsl-muted" : "rgb-hsl-success"
         else
-          "rgb-hsl-default"
+          "rgb-hsl-secondary"
         end
 
         content_tag :span, I18n.t("spree.admin.payment_states.#{order.payment_state}"), class: "badge rounded-pill #{badge_style}"
@@ -48,7 +48,7 @@ module Spree
         badge_style = if order.shipment_state == "shipped"
           order.complete? ? "rgb-hsl-muted" : "rgb-hsl-success"
         else
-          "rgb-hsl-default"
+          "rgb-hsl-secondary"
         end
 
         content_tag :span, I18n.t("spree.admin.shipment_states.#{order.shipment_state}"), class: "badge rounded-pill #{badge_style}"

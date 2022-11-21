@@ -107,15 +107,16 @@ input::-webkit-contacts-auto-fill-button {
 }
 
 .ts-wrapper {
-  @extend .rgb-hsl-default;
+  @extend .rgb-hsl-secondary;
   @extend .rgb-hsl-base-presets;
 
   &.plugin-remove_button:not(.rtl) .item .remove {
-    border-left-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), var(--border-alpha));
+    border-left-color: var(--hsla-border-color);
   }
 
   &.multi .ts-control>.item {
-   @extend .rgb-hsl-colorway;
+    color: var(--hsla-color);
+    background-color: var(--hsla-bg);
   }
 
   &.multi.has-items .ts-control {

@@ -29,7 +29,7 @@
       <% if @order.included_tax_total != 0 %>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <small data-hook='admin_order_tab_included_tax_title'><%= Spree.t(:tax_included) %></small>
-          <span class="badge rounded-pill rgb-hsl-default" id='included_tax_total'>
+          <span class="badge rounded-pill rgb-hsl-secondary" id='included_tax_total'>
             <%= @order.display_included_tax_total.to_html %>
           </span>
         </li>
@@ -38,7 +38,7 @@
       <% if @order.additional_tax_total != 0 %>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <small data-hook='admin_order_tab_additional_tax_title'><%= Spree.t(:tax) %></small>
-          <span class="badge rounded-pill rgb-hsl-default" id='additional_tax_total'>
+          <span class="badge rounded-pill rgb-hsl-secondary" id='additional_tax_total'>
             <%= @order.display_additional_tax_total.to_html %>
           </span>
         </li>
