@@ -19,13 +19,13 @@ module Spree
 
       def order_risk_state_badge(order)
         if order.considered_risky
-          badge_style = "danger"
+          badge_style = "rgb-hsl-danger"
           badge_text = I18n.t("spree.admin.risky")
         else
           badge_style = if order.complete?
-            "muted"
+            "rgb-hsl-muted"
           else
-            "success"
+            "rgb-hsl-success"
           end
 
           badge_text = I18n.t("spree.admin.safe")
@@ -36,9 +36,9 @@ module Spree
 
       def order_payment_state_badge(order)
         badge_style = if order.payment_state == "paid"
-          order.complete? ? "muted" : "success"
+          order.complete? ? "rgb-hsl-muted" : "rgb-hsl-success"
         else
-          "normal"
+          "rgb-hsl-secondary"
         end
 
         content_tag :span, I18n.t("spree.admin.payment_states.#{order.payment_state}"), class: "badge rounded-pill #{badge_style}"
@@ -46,9 +46,9 @@ module Spree
 
       def order_shipment_badge(order)
         badge_style = if order.shipment_state == "shipped"
-          order.complete? ? "muted" : "success"
+          order.complete? ? "rgb-hsl-muted" : "rgb-hsl-success"
         else
-          "normal"
+          "rgb-hsl-secondary"
         end
 
         content_tag :span, I18n.t("spree.admin.shipment_states.#{order.shipment_state}"), class: "badge rounded-pill #{badge_style}"

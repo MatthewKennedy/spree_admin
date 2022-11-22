@@ -1,0 +1,257 @@
+:root body.admin {
+  /////////////////////////
+  // BS RGB COLOR VALUES //
+  /////////////////////////
+  --bs-body-color-rgb: 33, 37, 41;
+  --bs-body-bg-rgb: 246, 246, 247;
+
+  ///////////
+  // light //
+  ///////////
+  --bs-light-rgb: 241, 241, 241;
+  .rgb-hsl-light {
+    // rgb(241, 241, 241)
+    --label-r: 241;
+    --label-g: 241;
+    --label-b: 241;
+
+    // hsl(0, 0%, 94.5%)
+    --label-h: 0;
+    --label-s: 0;
+    --label-l: 94.5;
+  }
+
+  ///////////
+  // dark //
+  ///////////
+  --bs-dark-rgb: 33, 37, 41;
+  .rgb-hsl-dark {
+    // rgb(241, 241, 241)
+    --label-r: 241;
+    --label-g: 241;
+    --label-b: 241;
+
+    // hsl(0, 0%, 94.5%)
+    --label-h: 0;
+    --label-s: 0;
+    --label-l: 94.5;
+  }
+
+  //////////
+  // info //
+  //////////
+  --bs-info-rgb: 13, 202, 240;
+  .rgb-hsl-info {
+    // rgb(13, 202, 240)
+    --label-r: 13;
+    --label-g: 202;
+    --label-b: 240;
+
+    // hsl(190, 89.7%, 49.6%)
+    --label-h: 190;
+    --label-s: 89.7;
+    --label-l: 49.6;
+  }
+
+  ////////////
+  // danger //
+  ////////////
+  --bs-danger-rgb: 220, 53, 69;
+  .rgb-hsl-danger {
+    // rgb(220, 53, 69)
+    --label-r: 220;
+    --label-g: 53;
+    --label-b: 69;
+
+    // hsl(354.3, 70.5%, 53.5%)
+    --label-h: 354.3;
+    --label-s: 70.5;
+    --label-l: 53.5;
+  }
+
+  ///////////
+  // brand //
+  ///////////
+  --bs-brand-rgb: 250, 84, 0;
+  .rgb-hsl-brand {
+    // rgb(250, 84, 0)
+    --label-r: 250;
+    --label-g: 84;
+    --label-b: 0;
+
+    // hsl(20.2, 100%, 49%)
+    --label-h: 20.2;
+    --label-s: 100;
+    --label-l: 49;
+  }
+
+  /////////////
+  // primary //
+  /////////////
+  --bs-primary-rgb: 13, 110, 253;
+  .rgb-hsl-primary {
+    // rgb(13, 110, 253)
+    --label-r: 13;
+    --label-g: 110;
+    --label-b: 253;
+
+    // hsl(215.8, 98.4%, 52.2%)
+    --label-h: 215.8;
+    --label-s: 98.4;
+    --label-l: 52.2;
+  }
+
+  ///////////////
+  // secondary //
+  ///////////////
+  --bs-secondary-rgb: 108, 117, 125;
+  .rgb-hsl-secondary {
+    // rgb(108, 117, 125)
+    --label-r: 108;
+    --label-g: 117;
+    --label-b: 125;
+
+    // hsl(208.2, 7.3%, 45.7%)
+    --label-h: 208.2;
+    --label-s: 7.3;
+    --label-l: 45.7;
+  }
+
+
+  /////////////
+  // success //
+  /////////////
+  --bs-success-rgb: 25, 135, 84;
+  .rgb-hsl-success {
+    // rgb(25, 135, 84)
+    --label-r: 25;
+    --label-g: 135;
+    --label-b: 84;
+
+    // hsl(152.2, 68.8%, 31.4%)
+    --label-h: 152.2;
+    --label-s: 68.8;
+    --label-l: 31.4;
+  }
+
+
+  /////////////
+  // warning //
+  /////////////
+  --bs-warning-rgb: 247, 223, 30;
+  .rgb-hsl-warning {
+    // rgb(247, 223, 30)
+    --label-r: 247;
+    --label-g: 223;
+    --label-b: 30;
+
+    // hsl(53.4, 93.1%, 54.3%)
+    --label-h: 53.4;
+    --label-s: 93.1;
+    --label-l: 54.3;
+  }
+
+  ///////////
+  // black //
+  ///////////
+  --bs-black-rgb: 0, 0, 0;
+  .rgb-hsl-black {
+    // rgb(0, 0, 0)
+    --label-r: 0;
+    --label-g: 0;
+    --label-b: 0;
+
+    // hsl(0, 0%, 0%)
+    --label-h: 0;
+    --label-s: 0;
+    --label-l: 0;
+  }
+
+  ///////////
+  // white //
+  ///////////
+  --bs-white-rgb: 255, 255, 255;
+  .rgb-hsl-white {
+    // rgb(255, 255, 255)
+    --label-r: 255;
+    --label-g: 255;
+    --label-b: 255;
+
+    // hsl(0, 0%, 100%)
+    --label-h: 0;
+    --label-s: 0;
+    --label-l: 100;
+  }
+
+
+  ///////////
+  // muted //
+  ///////////
+  --bs-muted-rgb: 0, 0, 0;
+  .rgb-hsl-muted {
+    // rgb(0, 0, 0)
+    --label-r: 0;
+    --label-g: 0;
+    --label-b: 0;
+
+    // hsl(0, 0%, 0%)
+    --label-h: 0;
+    --label-s: 0;
+    --label-l: 0;
+  }
+
+  .rgb-hsl-base-presets {
+    // Light Color Scheme
+    --lightness-threshold: 0.456;
+    --border-threshold: 0.96;
+    --background-alpha: 1;
+    --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
+
+    --perceived-lightness: calc(((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255);
+    --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+    --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
+
+    --hsla-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
+    --hsla-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .9%), var(--background-alpha));
+    --hsla-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .9%), var(--border-alpha));
+
+    --hsla-hover-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
+    --hsla-hover-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .8%), var(--background-alpha));
+    --hsla-hover-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .8%), var(--border-alpha));
+
+    --hsla-active-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
+    --hsla-active-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .7%), var(--background-alpha));
+    --hsla-active-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .7%), var(--border-alpha));
+
+    --hsla-disabled-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%), 0.9);
+    --hsla-disabled-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--background-alpha) / 1.2));
+    --hsla-disabled-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--border-alpha) / 1.2));
+  }
+
+
+  ///////////////////////////
+  // BS RGB COLOR MAPPIING //
+  ///////////////////////////
+  --bs-black: rgba(var(--bs-black-rgb));
+  --bs-body-color: rgba(var(--bs-body-color-rgb));
+  --bs-body-bg: rgba(var(--bs-body-bg-rgb));
+  --bs-danger: rgba(var(--bs-danger-rgb));
+  --bs-dark: rgba(var(--bs-dark-rgb));
+  --bs-info: rgba(var(--bs-info-rgb));
+  --bs-light: rgba(var(--bs-light-rgb));
+  --bs-link-color: rgba(var(--bs-primary-rgb));
+  --bs-link-hover-color: rgba(var(--bs-primary-hover-rgb));
+  --bs-primary: rgba(var(--bs-primary-rgb));
+  --bs-secondary: rgba(var(--bs-secondary-rgb));
+  --bs-success: rgba(var(--bs-success-rgb));
+  --bs-warning: rgba(var(--bs-warning-rgb));
+  --bs-white: rgba(var(--bs-white-rgb));
+
+
+  //////////////////////////////////
+  // SPREE ADMIN UI COLOR MAPPING //
+  //////////////////////////////////
+  --sa-logo: rgba(var(--bs-brand-rgb));
+  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb));
+}

@@ -24,7 +24,7 @@ module Spree
           ": #{filter[1]} "
         end
 
-        link_to remove_filter_url, class: "badge bg-secondary", id: "removeFilter-#{filter[0]}", data: {turbo_cache: "false"} do
+        link_to remove_filter_url, class: "badge rgb-hsl-secondary", id: "removeFilter-#{filter[0]}", data: {turbo_cache: "false"} do
           (content_tag :span, I18n.t("spree.admin.filters.#{filter[0]}") + filter_value_text) + spree_admin_svg_tag("x-lg.svg", size: "16px*16px")
         end
       end

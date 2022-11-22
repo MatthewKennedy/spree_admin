@@ -171,7 +171,7 @@ module Spree
       end
 
       def breadcrumb_builder(options = {})
-        divider = content_tag(:span, "/", class: "text-mid-light mx-1 pb-1")
+        divider = content_tag(:span, "/", class: "text-muted mx-1 pb-1")
 
         if options[:link_one_uri] && options[:link_two_text]
           link_to(options[:link_one_text], options[:link_one_uri]) + divider + link_to(options[:link_two_text], options[:link_two_uri]) + divider + options[:current_page_name]
@@ -199,7 +199,7 @@ module Spree
       def active_badge(condition, options = {})
         label = options[:label]
         label ||= condition ? Spree.t(:say_yes) : Spree.t(:say_no)
-        css_class = condition ? "success" : "normal"
+        css_class = condition ? "rgb-hsl-success" : "rgb-hsl-secondary"
 
         content_tag(:small, class: "badge rounded-pill #{css_class}") do
           label
