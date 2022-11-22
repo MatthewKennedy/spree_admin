@@ -8,11 +8,16 @@ content-header {
   z-index: 1040;
   height: 60px;
   width: 100%;
+  overflow-y: scroll;
   @extend .border-bottom;
 
   h4>a {
     text-decoration: none;
     color: var(--bs-primary);
+  }
+
+  #contentNavInnerContainer {
+    min-width: max-content;
   }
 }
 

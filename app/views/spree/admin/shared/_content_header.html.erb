@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="d-flex align-items-center">
+  <div id="contentNavInnerContainer" class="d-flex align-items-center">
 
     <!-- We are keeping the empty <div> tags in DOM for turbo stream target -->
-    <div id="pageTitle" class="flex-fill align-items-center" data-hook="page_title">
+    <div id="pageTitle" class="flex-fill align-items-center me-2" data-hook="page_title">
       <% if content_for?(:page_title) %>
         <h4 class="p-0 mb-0 sm-h6 d-flex align-items-center">
           <%= yield :page_title %>
@@ -11,7 +11,7 @@
     </div>
 
     <!-- We are keeping the empty <div> tags in DOM for turbo stream target -->
-    <div id="pageActions" class="page-actions" data-hook="page_actions">
+    <div id="pageActions" class="page-actions ms-2" data-hook="page_actions">
       <%= yield :page_actions if content_for?(:page_actions) %>
     </div>
   </div>
