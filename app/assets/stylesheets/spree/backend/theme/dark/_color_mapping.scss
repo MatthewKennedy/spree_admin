@@ -43,14 +43,17 @@
 .form-control,
 .form-select,
 .form-check-input {
+  color: rgba(var(--bs-input-color-rgb));
   background-color: rgba(var(--bs-input-bg-rgb));
   border-color: rgba(var(--bs-input-border-rgb));
-  color: rgba(var(--bs-input-color-rgb));
+
 
   &:focus-visible,
   &:focus,
   &:checked,
   &:has(> div.ProseMirror:focus) {
+    color: rgba(var(--bs-input-color-rgb));
+    background-color: rgba(var(--bs-input-bg-rgb));
     border-color: rgba(var(--bs-input-focus-border-rgb));
     box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb));
   }

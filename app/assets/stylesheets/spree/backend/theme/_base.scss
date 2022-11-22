@@ -1,5 +1,3 @@
-@import 'default';
-
 :root body.admin {
   --nav-bar-height: 54px;
   --bs-border-radius: 3px;
@@ -9,9 +7,9 @@
 
      --bs-badge-font-weight: 300;
 
-    background-color: var(--hsla-bg);
-    color: var(--hsla-color);
-    border-color: var(--hsla-border-color);
+    background-color: var(--hsla-hover-bg);
+    color: var(--hsla-hover-color);
+    border-color: var(--hsla-active-color);
     border-width: 1px;
     border-style: solid;
   }

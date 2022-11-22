@@ -71,9 +71,9 @@
 
   .rgb-hsl-base-presets {
     // Light Color Scheme
-    --lightness-threshold: 0.6;
-    --border-threshold: 0.96;
-    --background-alpha: 0.1;
+    --lightness-threshold: 0.7;
+    --border-threshold: 0.16;
+    --background-alpha: 0.5;
     --border-alpha: 0.5;
 
     --perceived-lightness: calc(((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255);
@@ -81,20 +81,20 @@
     --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
 
     --hsla-color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%));
-    --hsla-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), calc(var(--background-alpha) * .2));
+    --hsla-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), calc(var(--background-alpha) / 10));
     --hsla-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), var(--border-alpha));
 
     --hsla-hover-color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%));
-    --hsla-hover-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), var(--background-alpha));
+    --hsla-hover-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), calc(var(--background-alpha) / 3));
     --hsla-hover-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), var(--border-alpha));
 
-    --hsla-active-color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 6%));
-    --hsla-active-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), var(--background-alpha));
+    --hsla-active-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .65%));
+    --hsla-active-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), calc(var(--background-alpha) / 2));
     --hsla-active-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), var(--border-alpha));
 
-    --hsla-disabled-color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%));
-    --hsla-disabled-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--background-alpha) / 1.2));
-    --hsla-disabled-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--border-alpha) / 1.2));
+    --hsla-disabled-color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1.05%));
+    --hsla-disabled-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--background-alpha) / 10));
+    --hsla-disabled-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--background-alpha) / 5));
   }
 
 
