@@ -1,9 +1,7 @@
 :root body.admin {
-  /////////////////////////
-  // BS RGB COLOR VALUES //
-  /////////////////////////
-  --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg-rgb: 246, 246, 247;
+  ////////////////////////////
+  // RGB + HLS COLOR VALUES //
+  ////////////////////////////
 
   ///////////
   // light //
@@ -56,17 +54,17 @@
   ////////////
   // danger //
   ////////////
-  --bs-danger-rgb: 220, 53, 69;
+  --bs-danger-rgb: 196, 34, 49;
   .rgb-hsl-danger {
-    // rgb(220, 53, 69)
-    --label-r: 220;
-    --label-g: 53;
-    --label-b: 69;
+    // rgb(196,34,49)
+    --label-r: 196;
+    --label-g: 34;
+    --label-b: 49;
 
-    // hsl(354.3, 70.5%, 53.5%)
+    // hsl(354.3, 70.5%, 45%)
     --label-h: 354.3;
     --label-s: 70.5;
-    --label-l: 53.5;
+    --label-l: 45;
   }
 
   ///////////
@@ -104,17 +102,17 @@
   ///////////////
   // secondary //
   ///////////////
-  --bs-secondary-rgb: 108, 117, 125;
+  --bs-secondary-rgb: 240, 242, 244;
   .rgb-hsl-secondary {
-    // rgb(108, 117, 125)
-    --label-r: 108;
-    --label-g: 117;
-    --label-b: 125;
+    // rgb(240,242,244)
+    --label-r: 240;
+    --label-g: 242;
+    --label-b: 244;
 
-    // hsl(208.2, 7.3%, 45.7%)
-    --label-h: 208.2;
-    --label-s: 7.3;
-    --label-l: 45.7;
+    // hsl(210, 14%, 95%)
+    --label-h: 210;
+    --label-s: 14;
+    --label-l: 95;
   }
 
 
@@ -202,8 +200,8 @@
 
   .rgb-hsl-base-presets {
     // Light Color Scheme
-    --lightness-threshold: 0.456;
-    --border-threshold: 0.96;
+    --lightness-threshold: .456;
+    --border-threshold: .96;
     --background-alpha: 1;
     --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
 
@@ -212,22 +210,28 @@
     --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
 
     --hsla-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
-    --hsla-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .9%), var(--background-alpha));
-    --hsla-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .9%), var(--border-alpha));
+    --hsla-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .98%), var(--background-alpha));
+    --hsla-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .98%), var(--border-alpha));
 
     --hsla-hover-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
-    --hsla-hover-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .8%), var(--background-alpha));
-    --hsla-hover-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .8%), var(--border-alpha));
+    --hsla-hover-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .94%), var(--background-alpha));
+    --hsla-hover-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .94%), var(--border-alpha));
 
     --hsla-active-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
-    --hsla-active-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .7%), var(--background-alpha));
-    --hsla-active-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .7%), var(--border-alpha));
+    --hsla-active-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .90%), var(--background-alpha));
+    --hsla-active-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .90%), var(--border-alpha));
 
     --hsla-disabled-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%), 0.9);
-    --hsla-disabled-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--background-alpha) / 1.2));
-    --hsla-disabled-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--border-alpha) / 1.2));
+    --hsla-disabled-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .98%), calc(var(--background-alpha) / 1.2));
+    --hsla-disabled-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .98%), calc(var(--border-alpha) / 1.2));
   }
 
+
+  /////////////////////////
+  // BS RGB COLOR VALUES //
+  /////////////////////////
+  --bs-body-color-rgb: 33, 37, 41;
+  --bs-body-bg-rgb: 246, 246, 247;
 
   ///////////////////////////
   // BS RGB COLOR MAPPIING //
@@ -246,6 +250,21 @@
   --bs-success: rgba(var(--bs-success-rgb));
   --bs-warning: rgba(var(--bs-warning-rgb));
   --bs-white: rgba(var(--bs-white-rgb));
+
+  // Sub Colors, used for Cards and Inputs
+  --bs-sub-bg-rgb: 34, 39, 46;
+  --bs-sub-border-rgb: 68, 76, 86;
+  --bs-sub-color-rgb: 34, 39, 46;
+
+  // Links
+  --bs-link-color: rgba(var(--bs-primary-rgb));
+  --bs-link-hover-color: rgba(var(--bs-primary-rgb), .85);
+
+  // Input
+  --bs-input-color-rgb: var(--bs-body-color-rgb);
+  --bs-input-bg-rgb: var(--bs-white-rgb);
+  --bs-input-border-rgb: var(--bs-secondary-rgb);
+  --bs-input-focus-border-rgb: var(--bs-primary-rgb);
 
 
   //////////////////////////////////

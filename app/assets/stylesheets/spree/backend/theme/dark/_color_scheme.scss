@@ -1,23 +1,7 @@
 :root body.admin {
-  /////////////////////////
-  // BS RGB COLOR VALUES //
-  /////////////////////////
-
-  // Body
-  --bs-body-color-rgb: 207, 207, 207;
-  --bs-body-bg-rgb: 28, 33, 40;
-
-  // Sub Colors, used for Cards
-  --bs-sub-bg-rgb: 34, 39, 46;
-  --bs-sub-border-rgb: 68, 76, 86;
-  --bs-sub-color-rgb: 34, 39, 46;
-
-  // Input
-  --bs-input-bg-rgb: 28, 33, 40;
-  --bs-input-border-rgb: 68, 76, 86;
-  --bs-input-color-rgb: 255, 255, 255;
-  --bs-input-focus-border-rgb: 83, 155, 245;
-
+  ////////////////////////////
+  // RGB + HLS COLOR VALUES //
+  ////////////////////////////
 
   /////////////
   // primary //
@@ -101,9 +85,28 @@
   /////////////////////////
   // BS RGB COLOR VALUES //
   /////////////////////////
+  // Body
+  --bs-body-color-rgb: 207, 207, 207;
+  --bs-body-bg-rgb: 28, 33, 40;
+
+  // Sub Colors, used for Cards and Inputs
+  --bs-sub-bg-rgb: 34, 39, 46;
+  --bs-sub-border-rgb: 68, 76, 86;
+  --bs-sub-color-rgb: 34, 39, 46;
+
+
   // Converting RGB values colors where appropriate
+  // Borders
   --bs-border-color: rgba(var(--bs-secondary-rgb));
   --bs-border-color-translucent: rgba(var(--bs-black-rgb), 0.175);
+
+  // Links
   --bs-link-color: rgba(var(--bs-primary-rgb));
   --bs-link-hover-color: rgba(var(--bs-primary-rgb), .85);
+
+  // Input
+  --bs-input-bg-rgb: var(--bs-body-bg-rgb);
+  --bs-input-border-rgb: var(--bs-sub-border-rgb);
+  --bs-input-color-rgb: var(--bs-body-color-rgb);
+  --bs-input-focus-border-rgb: var(--bs-primary-rgb);
 }
