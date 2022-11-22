@@ -2,6 +2,8 @@
   ////////////////////////////
   // RGB + HLS COLOR VALUES //
   ////////////////////////////
+  // https://convertacolor.com
+
 
   ///////////
   // light //
@@ -54,17 +56,17 @@
   ////////////
   // danger //
   ////////////
-  --bs-danger-rgb: 196, 34, 49;
+  --bs-danger-rgb: 152, 27, 39;
   .rgb-hsl-danger {
-    // rgb(196,34,49)
-    --label-r: 196;
-    --label-g: 34;
-    --label-b: 49;
+    // rgb(152, 27, 39)
+    --label-r: 152;
+    --label-g: 27;
+    --label-b: 39;
 
-    // hsl(354.3, 70.5%, 45%)
-    --label-h: 354.3;
-    --label-s: 70.5;
-    --label-l: 45;
+    // hsl(354.2,69.8%,35.1%)
+    --label-h: 354.2;
+    --label-s: 69.8;
+    --label-l: 35.1;
   }
 
   ///////////
@@ -198,6 +200,22 @@
     --label-l: 0;
   }
 
+
+  // This utility create colors for buttons and badges based
+  // on the rgb-hsl color variables provided, it provides a
+  // lightness switch similar to those found in SASS.
+  //
+  // You can build solid or outline stye badges and buttons by tweaking the alpha settings
+  // and can adjust the threshold for buttons color to flip based on the background.
+  //
+  // To use extend this along with a color set to access the variables inside the class.
+  //
+  // .badge-success {
+  //   @extend .rgb-hsl-success
+  //   @extend .rgb-hsl-base-presets;
+  //
+  //   background-color: var(--hsla-bg);
+  // }
   .rgb-hsl-base-presets {
     // Light Color Scheme
     --lightness-threshold: .456;

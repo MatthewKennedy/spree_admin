@@ -2,6 +2,8 @@
   ////////////////////////////
   // RGB + HLS COLOR VALUES //
   ////////////////////////////
+  // https://convertacolor.com
+
 
   /////////////
   // primary //
@@ -53,9 +55,24 @@
   }
 
 
+  // This utility create colors for buttons and badges based
+  // on the rgb-hsl color variables provided, it provides a
+  // lightness switch similar to those found in SASS.
+  //
+  // You can build solid or outline stye badges and buttons by tweaking the alpha settings
+  // and can adjust the threshold for buttons color to flip based on the background.
+  //
+  // To use extend this along with a color set to access the variables inside the class.
+  //
+  // .badge-success {
+  //   @extend .rgb-hsl-success
+  //   @extend .rgb-hsl-base-presets;
+  //
+  //   background-color: var(--hsla-bg);
+  // }
   .rgb-hsl-base-presets {
     // Light Color Scheme
-    --lightness-threshold: 0.7;
+    --lightness-threshold: 0.8;
     --border-threshold: 0.16;
     --background-alpha: 0.5;
     --border-alpha: 0.5;
@@ -64,7 +81,7 @@
     --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
     --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
 
-    --hsla-color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%));
+    --hsla-color: hsl(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .7%));
     --hsla-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), calc(var(--background-alpha) / 10));
     --hsla-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .6%), var(--border-alpha));
 

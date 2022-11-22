@@ -28,22 +28,80 @@
   background-color: var(--bs-btn-hover-bg);
 }
 
-.show-active-bar button,
-.show-active-bar a {
-  border: 0 !important;
-  position: relative;
-  background: transparent !important;
-  color: var(--bs-dark);
-  padding: 0.75rem;
-  text-decoration: none;
+.with-active-indicator-bar {
+  &.at-the-bottom {
+    a {
+      @extend .btn-secondary;
 
-  &.active::before {
-    content: '';
-    height: 4px;
-    width: 100%;
-    background: var(--bs-primary);
-    position: absolute;
-    left: 0;
-    bottom: -1px;
+      border-width: 0;
+      border-radius: 0;
+      position: relative;
+      background-color: transparent;
+      color: var(--bs-btn-color);
+      padding: 0.75rem;
+      text-decoration: none;
+      overflow: hidden;
+
+      &:hover {
+        color: var(--bs-btn-hover-color);
+        &::before {
+          content: '';
+          height: 4px;
+          width: 100%;
+          background-color: var(--bs-secondary);
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+      }
+
+      &.active::before {
+        content: '';
+        height: 4px;
+        width: 100%;
+        background-color: var(--bs-primary);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  &.at-the-top {
+    a {
+      @extend .btn-secondary;
+
+      border-width: 0;
+      border-radius: 0;
+      position: relative;
+      background-color: transparent;
+      color: var(--bs-btn-color);
+      padding: 0.75rem;
+      text-decoration: none;
+      overflow: hidden;
+
+      &:hover {
+        color: var(--bs-btn-hover-color);
+        &::before {
+          content: '';
+          height: 4px;
+          width: 100%;
+          background-color: var(--bs-secondary);
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+
+      &.active::before {
+        content: '';
+        height: 4px;
+        width: 100%;
+        background-color: var(--bs-primary);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
   }
 }
