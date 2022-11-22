@@ -76,7 +76,7 @@ module Spree
       def stream_flash_alert(message: I18n.t("spree.admin.no_message_set"), kind: :success)
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream: turbo_stream.append("FlashAlertsContainer", partial: "spree/admin/shared/toast", locals: { message: message, kind: kind })
+            render turbo_stream: turbo_stream.append("FlashAlertsContainer", partial: "spree/admin/shared/toast", locals: {message: message, kind: kind})
           end
         end
       end
