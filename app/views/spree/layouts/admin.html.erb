@@ -75,8 +75,12 @@
       <div data-hook="admin_footer_scripts"></div>
     <% end %>
 
-    <%= flash_alert(flash) %>
-    <%= flash_alert(flash, :_top) %>
+
+      <div id="FlashAlertsContainer"><%# Used For TurboStreams %></div>
+      <%= flash_alert(flash) %>
+      <%= flash_alert(flash, :_top) %>
+
+
 
     <%#-------------------------------------------------%>
     <%# Universal Modal & OffCanvas                     %>
