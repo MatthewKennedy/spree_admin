@@ -1,7 +1,6 @@
 aside#main-sidebar {
   overflow-y: auto;
   background: var(--sa-sidebar-bg) !important;
-  top: 0;
 
   #navHeader {
     z-index: 1042;
@@ -17,8 +16,6 @@ aside#main-sidebar {
   }
 
   ul {
-    border-radius: var(--bs-border-radius);
-
     &.active-option {
 
       .drop-menu-indicator {
@@ -27,17 +24,9 @@ aside#main-sidebar {
     }
 
     >li {
-      position: relative;
-      border-radius: var(--bs-border-radius);
-
       >a {
         color: var(--sa-sidebar-link-color);
         text-decoration: none;
-
-        &:hover,
-        &[aria-expanded='true'] {
-          text-decoration: none;
-        }
 
         .drop-menu-indicator {
           right: 1rem;
@@ -56,17 +45,12 @@ aside#main-sidebar {
             transition: 0.3s ease-in-out;
           }
         }
-
-        &.sidebar-submenu-item {
-          text-decoration: none;
-          padding-left: 2.6rem !important;
-        }
       }
 
       &.selected {
         background-color: var(--sa-sidebar-selected-link-bg);
 
-        a {
+        > a {
           color: var(--sa-sidebar-selected-link-color);
         }
 
@@ -96,7 +80,6 @@ aside#main-sidebar {
   aside#main-sidebar {
     left: 0;
     z-index: 999;
-    height: 100%;
     width: 25%;
     transition: none;
 

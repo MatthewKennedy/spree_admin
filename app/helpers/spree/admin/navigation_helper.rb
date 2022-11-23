@@ -53,7 +53,7 @@ module Spree
           I18n.t(options[:label], default: options[:label], scope: [:spree, :dash, :tab]).titleize
         end
 
-        css_classes = ["sidebar-menu-item d-block w-100 position-relative"]
+        css_classes = ["sidebar-menu-item d-block w-100 position-relative rounded"]
 
         if (selected = options[:selected]).nil?
           selected = if options[:match_path].is_a? Regexp
@@ -68,7 +68,7 @@ module Spree
         link = if options[:icon]
           link_to_with_icon(titleized_label, destination_url, {class: "w-100 px-3 py-2 d-flex align-items-center", icon: options[:icon], icon_class: "me-2"})
         else
-          link_to(titleized_label, destination_url, {class: "sidebar-submenu-item w-100 py-2 py-md-1 d-block"})
+          link_to(titleized_label, destination_url, {class: "sidebar-submenu-item w-100 py-2 py-md-1 d-block ps-3 ms-4"})
         end
 
         css_classes << "selected" if selected
@@ -89,7 +89,7 @@ module Spree
 
       # Main menu tree menu
       def main_menu_tree(text, icon: nil, sub_menu: nil, url: "#")
-        content_tag :li, class: "d-block w-100" do
+        content_tag :li, class: "d-block w-100 rounded position-relative" do
           main_menu_item(text, url: url, icon: icon) +
             render(partial: "spree/admin/shared/sub_menu/#{sub_menu}")
         end
