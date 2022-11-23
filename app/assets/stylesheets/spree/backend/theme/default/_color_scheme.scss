@@ -288,7 +288,18 @@
   //////////////////////////////////
   // SPREE ADMIN UI COLOR MAPPING //
   //////////////////////////////////
+
+  // Logo
   --sa-logo: rgba(var(--bs-brand-rgb));
+
+  // Top Nav Bar
   --sa-navbar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-navbar-box-shadow: 0 2px 2px -2px rgba(34, 47, 62, .1), 0 8px 8px -4px rgba(34, 47, 62, .07);
+
+  // Main Menu
   --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-sidebar-link-color: var(--bs-gray-600);
+  --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb));
+  --sa-sidebar-selected-link-bg: rgba(var(--bs-primary-rgb), .04);
 }
+

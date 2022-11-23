@@ -16,129 +16,74 @@ aside#main-sidebar {
     margin-top: 100px;
   }
 
-  li.selected {
-    position: relative;
-    background-color: var(--bs-gray-100);
+  ul {
+    border-radius: var(--bs-border-radius);
 
-    a {
-      color: var(--bs-primary) !important;
-    }
-
-    &::before {
-      display: block;
-      position: absolute;
-      content: "";
-      width: 5px;
-      height: 100%;
-      background-color: var(--bs-primary);
-      border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
-      top: 0;
-      left: 0;
-    }
-  }
-
-  ul.nav {
-    li {
-      border-radius: var(--bs-border-radius);
-    }
-  }
-}
-
-body.sidebar-open {
-  overflow-x: hidden;
-  aside#main-sidebar {
-    left: 0;
-    transition: 0.3s ease;
-  }
-  .disable-when-main-menu-is-open {
-    z-index: 1040 !important;
-  }
-}
-.sidebar-submenu-item.pl-5 {
-  padding-left: 2.6rem !important;
-}
-a.sidebar-submenu-item {
-  text-decoration: none;
-}
-
-ul.active-option {
-  border-radius: var(--bs-border-radius);
-  .drop-menu-indicator {
-    transform: rotate(90deg);
-  }
-}
-
-ul.nav-sidebar {
-  > li {
-    > a {
-      color: var(--bs-gray-700);
-      text-decoration: none;
-
-      &:hover,
-      &[aria-expanded='true'] {
-        text-decoration: none;
-      }
+    &.active-option {
 
       .drop-menu-indicator {
-        right: 1rem;
+        transform: rotate(90deg);
       }
+    }
 
-      &[aria-expanded='true'] {
+    >li {
+      position: relative;
+      border-radius: var(--bs-border-radius);
+
+      >a {
+        color: var(--sa-sidebar-link-color);
+        text-decoration: none;
+
+        &:hover,
+        &[aria-expanded='true'] {
+          text-decoration: none;
+        }
+
         .drop-menu-indicator {
-          transform: rotate(90deg);
-          transition: 0.3s ease-in-out;
+          right: 1rem;
+        }
+
+        &[aria-expanded='true'] {
+          .drop-menu-indicator {
+            transform: rotate(90deg);
+            transition: 0.3s ease-in-out;
+          }
+        }
+
+        &[aria-expanded='false'] {
+          .drop-menu-indicator {
+            transform: rotate(0deg);
+            transition: 0.3s ease-in-out;
+          }
+        }
+
+        &.sidebar-submenu-item {
+          text-decoration: none;
+          padding-left: 2.6rem !important;
         }
       }
 
-      &[aria-expanded='false'] {
-        .drop-menu-indicator {
-          transform: rotate(0deg);
-          transition: 0.3s ease-in-out;
+      &.selected {
+        background-color: var(--sa-sidebar-selected-link-bg);
+
+        a {
+          color: var(--sa-sidebar-selected-link-color);
+        }
+
+        &::before {
+          display: block;
+          position: absolute;
+          content: "";
+          width: 5px;
+          height: 100%;
+          background-color: var(--sa-sidebar-selected-link-color);
+          border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+          top: 0;
+          left: 0;
         }
       }
     }
   }
-}
-
-#contextualSideMenu {
-  max-height: 85vh;
-  overflow-x: auto;
-  background-color: white;
-  position: fixed;
-  left: 0;
-  top: -100%;
-  z-index: 1041;
-  transition: 0.3s ease-in-out;
-  .page-actions__close {
-    margin: -1.5rem 1.5rem;
-  }
-}
-
-#contextual-menu-toggle {
-  & svg {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease-in-out;
-  }
-}
-
-#sidebar a svg {
-  margin-bottom: 3px;
-}
-
-body.contextualSideMenu-open #contextualSideMenu {
-  top: 0;
-  transition: 0.3s ease-in-out;
-}
-
-body.contextualSideMenu-open #contextual-menu-toggle {
-  svg {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease-in-out;
-  }
-}
-
-.contextual-title {
-  font-size: 1.25rem;
 }
 
 @include media-breakpoint-up(sm) {
@@ -149,40 +94,18 @@ body.contextualSideMenu-open #contextual-menu-toggle {
 
 @include media-breakpoint-up(lg) {
   aside#main-sidebar {
-    width: 50%;
-  }
-
-  #contextualSideMenu {
-    border: none;
-    height: max-content;
-    z-index: 1000;
-    position: sticky;
-    top: 75px;
-    transition: none;
-  }
-
-.tabsAndActionsShim {
-  #contextualSideMenu {
-    top: 118px;
-  }
-}
-
-  aside#main-sidebar {
     left: 0;
     z-index: 999;
     height: 100%;
     width: 25%;
     transition: none;
+
     body.sidebar-open {
       aside#main-sidebar {
         left: 0;
         transition: none;
       }
     }
-  }
-
-  .contextual-title {
-    font-size: 1.5rem;
   }
 }
 

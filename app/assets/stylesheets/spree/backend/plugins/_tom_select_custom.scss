@@ -1,25 +1,23 @@
-.plugin-clear_button {
-  &.focus.has-items .clear-button,
-  &:not(.disabled).has-items .clear-button {
-    opacity: 1;
+.plugin {
+  &-clear_button {
+    &.focus.has-items .clear-button,
+    &:not(.disabled).has-items .clear-button {
+      opacity: 1;
+    }
   }
-}
 
-.form-floating .plugin-clear_button .clear-button {
-  top: unset !important;
+  &-dropdown_input.focus {
+    .ts-dropdown .dropdown-input {
+      border-radius: 5px;
+      border-width: 1px;
+    }
+  }
 }
 
 .dropdown-input-wrap {
   position: relative;
   overflow: hidden;
   padding: 10px;
-}
-
-.plugin-dropdown_input.focus {
-  .ts-dropdown .dropdown-input {
-    border-radius: 5px;
-    border-width: 1px;
-  }
 }
 
 input::-webkit-contacts-auto-fill-button {

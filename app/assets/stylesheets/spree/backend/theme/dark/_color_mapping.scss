@@ -1,12 +1,6 @@
 ///////////////////
 // UI COMPONENTS //
 ///////////////////
-aside#main-sidebar {
-  li.selected {
-    background-color: rgba(var(--bs-primary-rgb), .04);
-  }
-}
-
 .accordion {
   --bs-accordion-color: rgba(var(--bs-body-color-rgb));
   --bs-accordion-bg: rgba(var(--bs-body-bg-rgb));
