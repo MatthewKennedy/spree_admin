@@ -1,17 +1,13 @@
-table.table {
-  &:last-child {
-    margin-bottom: 0;
+table {
+  > thead {
+    @extend .text-muted;
   }
-}
 
-table > thead {
-  @extend .text-muted;
-}
-
-/* Apply a default padding if legacy cell padding attribute is missing */
-table:not([cellpadding]) th,
-table:not([cellpadding]) td {
-   padding: $table-cell-padding-y $table-cell-padding-x;
+  &.table {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .sort_link {
