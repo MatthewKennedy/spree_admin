@@ -53,7 +53,7 @@ module Spree
           I18n.t(options[:label], default: options[:label], scope: [:spree, :dash, :tab]).titleize
         end
 
-        css_classes = ["sidebar-menu-item d-block w-100 position-relative"]
+        css_classes = ["sidebar-menu-item d-block w-100 position-relative rounded"]
 
         if (selected = options[:selected]).nil?
           selected = if options[:match_path].is_a? Regexp
@@ -66,9 +66,9 @@ module Spree
         end
 
         link = if options[:icon]
-          link_to_with_icon(titleized_label, destination_url, {class: "w-100 px-3 py-2 d-flex align-items-center text-muted", icon: options[:icon], icon_class: "me-2"})
+          link_to_with_icon(titleized_label, destination_url, {class: "w-100 px-3 py-2 d-flex align-items-center", icon: options[:icon], icon_class: "me-2"})
         else
-          link_to(titleized_label, destination_url, {class: "sidebar-submenu-item w-100 py-2 py-md-1 ps-5 d-block #{selected ? "font-weight-bold" : "text-muted"}"})
+          link_to(titleized_label, destination_url, {class: "sidebar-submenu-item w-100 py-2 py-md-1 d-block ps-3 ms-4"})
         end
 
         css_classes << "selected" if selected
@@ -81,15 +81,15 @@ module Spree
       # Single main menu item
       def main_menu_item(text, url: nil, icon: nil)
         link_to url, data: {bs_toggle: "collapse"}, class: "d-flex w-100 px-3 py-2 position-relative align-items-center" do
-          spree_admin_svg_tag(icon, class: "me-2 text-muted", size: "#{MENU_ICON_SIZE}px * #{MENU_ICON_SIZE}px") +
-            content_tag(:span, raw(" #{text}"), class: "text-muted") +
-            spree_admin_svg_tag("chevron-right.svg", class: "drop-menu-indicator text-muted position-absolute", size: "#{MENU_ICON_SIZE - 8}px * #{MENU_ICON_SIZE - 8}")
+          spree_admin_svg_tag(icon, class: "me-2", size: "#{MENU_ICON_SIZE}px * #{MENU_ICON_SIZE}px") +
+            content_tag(:span, raw(" #{text}")) +
+            spree_admin_svg_tag("chevron-right.svg", class: "drop-menu-indicator position-absolute", size: "#{MENU_ICON_SIZE - 8}px * #{MENU_ICON_SIZE - 8}")
         end
       end
 
       # Main menu tree menu
       def main_menu_tree(text, icon: nil, sub_menu: nil, url: "#")
-        content_tag :li, class: "sidebar-menu-item d-block w-100 text-muted" do
+        content_tag :li, class: "d-block w-100 rounded position-relative" do
           main_menu_item(text, url: url, icon: icon) +
             render(partial: "spree/admin/shared/sub_menu/#{sub_menu}")
         end

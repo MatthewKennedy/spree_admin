@@ -1,4 +1,4 @@
-<ul id="sidebar-tax-and-shipping" class="collapse nav nav-pills nav-stacked" data-hook="admin_tax_and_shipping">
+<ul id="sidebar-tax-and-shipping" class="collapse nav nav-pills " data-hook="admin_tax_and_shipping">
   <%= tab :countries, url: spree.admin_countries_path, label: I18n.t('spree.admin.settings_menu.countries') if can? :manage, Spree::Country %>
   <%= tab :shipping_categories, url: spree.admin_shipping_categories_path, label: I18n.t('spree.admin.settings_menu.shipping_categories') if can? :manage, Spree::ShippingCategory %>
   <%= tab :shipping_methods, url: spree.admin_shipping_methods_path, label: I18n.t('spree.admin.settings_menu.shipping_methods') if can? :manage, Spree::ShippingMethod %>

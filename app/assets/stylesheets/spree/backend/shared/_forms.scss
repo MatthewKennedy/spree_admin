@@ -15,6 +15,10 @@
   }
 }
 
+.form-select {
+  min-width: 150px;
+}
+
 // Hide number toggle
 // Chrome, Safari, Edge, Opera
 input.hide-number-toggle::-webkit-outer-spin-button,
@@ -32,8 +36,4 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.pad-as-btn {
-  padding: 16px;
 }

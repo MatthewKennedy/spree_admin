@@ -1,6 +1,6 @@
 <% if @payment.capture_events.exists? %>
   <h3><%= Spree.t(:capture_events) %></h3>
-  <div class="table-responsive border rounded bg-white">
+  <div class="table-responsive border rounded">
     <table class="table table-condensed border rounded" id="capture_events">
       <thead class="text-muted">
         <tr data-hook="payments_header">
