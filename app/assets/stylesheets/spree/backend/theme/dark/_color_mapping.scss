@@ -73,6 +73,19 @@
   --bs-offcanvas-bg: rgba(var(--bs-body-bg-rgb));
 }
 
+// .table {
+//   --bs-table-color: var(--bs-body-color);
+//   --bs-table-bg: red;
+//   --bs-table-border-color: var(--bs-border-color);
+//   --bs-table-accent-bg: transparent;
+//   --bs-table-striped-color: var(--bs-body-color);
+//   --bs-table-striped-bg: rgba(0,0,0,.05);
+//   --bs-table-active-color: var(--bs-body-color);
+//   --bs-table-active-bg: rgba(0,0,0,.1);
+//   --bs-table-hover-color: inherit;
+//   --bs-table-hover-bg: rgba(0,0,0,.02);
+// }
+
 .toast{
   &.success,
   &.notice {

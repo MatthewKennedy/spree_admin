@@ -1,6 +1,6 @@
 <fieldset id="risk_analysis">
   <legend><%= "#{Spree.t(:risk_analysis)}: #{Spree.t(:not) unless @order.is_risky?} #{Spree.t(:risky)}" %></legend>
-  <div class="table-responsive border rounded bg-white">
+  <div class="table-responsive border rounded">
     <table class="table table-condensed border rounded">
       <thead class="text-muted">
         <th><%= I18n.t('spree.admin.risk') %></th>

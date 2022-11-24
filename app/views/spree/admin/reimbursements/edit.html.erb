@@ -9,7 +9,7 @@
 <%= form_with model: [:admin, @order, @reimbursement] do |f| %>
   <fieldset class='no-border-bottom'>
     <legend><%= Spree.t(:items_to_be_reimbursed) %></legend>
-    <div class="table-responsive border rounded bg-white">
+    <div class="table-responsive border rounded">
       <table class="table table-condensed border rounded reimbursement-return-items-table">
         <thead class="text-muted">
           <tr>
@@ -68,7 +68,7 @@
 
 <fieldset class="mt-3">
   <legend><%= Spree.t(:calculated_reimbursements) %></legend>
-  <div class="table-responsive border rounded bg-white">
+  <div class="table-responsive border rounded">
     <table class="table table-condensed border rounded">
       <thead data-hook="customer_return_header">
         <tr>

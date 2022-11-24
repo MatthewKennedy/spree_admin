@@ -5,7 +5,7 @@
 <% end %>
 
 <% if @order.shipments.any?(&:shipped?) && @order.return_authorizations.any? %>
-<div class="table-responsive border rounded bg-white">
+<div class="table-responsive border rounded">
   <table class="table">
     <thead data-hook="rma_header">
       <tr>
