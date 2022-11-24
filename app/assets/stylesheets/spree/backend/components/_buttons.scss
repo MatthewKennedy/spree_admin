@@ -1,8 +1,3 @@
-.actions .btn,
-.page-actions .btn {
-  margin: 2px;
-}
-
 .btn {
   svg {
     vertical-align: text-bottom;
@@ -10,22 +5,24 @@
   }
 }
 
-.form-control:not(:disabled):not([readonly])::file-selector-button {
-  @extend .btn-secondary;
+.form-control {
+  &:not(:disabled):not([readonly])::file-selector-button {
+    @extend .btn-secondary;
 
-  margin-top: -6px;
-  padding-bottom: 0;
-  padding-top: 0;
-  height: 54px;
-  color: var(--bs-btn-color);
-  background-color: var(--bs-btn-bg);
-}
+    margin-top: -6px;
+    padding-bottom: 0;
+    padding-top: 0;
+    height: 54px;
+    color: var(--bs-btn-color);
+    background-color: var(--bs-btn-bg);
+  }
 
-.form-control:hover:not(:disabled):not([readonly])::file-selector-button {
-  @extend .btn-secondary;
+  &:hover:not(:disabled):not([readonly])::file-selector-button {
+    @extend .btn-secondary;
 
-  color: var(--bs-btn-hover-color);
-  background-color: var(--bs-btn-hover-bg);
+    color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+  }
 }
 
 .with-active-indicator-bar {

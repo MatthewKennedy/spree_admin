@@ -9,14 +9,9 @@ turbo-frame[complete] {
 }
 
 .product-image-container {
-
   img {
     max-width: 100%;
   }
-}
-
-.form-select {
-  min-width: 150px;
 }
 
 .admin-img-holder {
@@ -40,22 +35,6 @@ turbo-frame[complete] {
 
 #mobileButtons {
   z-index: 1000;
-}
-
-.sort-handle {
-  cursor: grab;
-}
-
-.rounded-bottom-only {
-  border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius);
-}
-
-.rounded-top-only {
-  border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0;
-}
-
-.alert {
-  border: 0 none !important;
 }
 
 .product-image-container {
@@ -116,10 +95,6 @@ turbo-frame[complete] {
   }
 }
 
-.button_to {
-  display: inline-block;
-}
-
 .move-handle {
   width: 40px;
   height: 40px;
@@ -144,18 +119,6 @@ dialog#customTurboConfirm {
   background-clip: padding-box;
   border: var(--bs-border-width) solid var(--bs-border-color);
   border-radius: var(--bs-border-radius);
-}
-
-
-#formActionButtons {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 990;
-  border-top: 1px solid rgb(235, 235, 235);
-  background: white;
-  width: 100%;
-  text-align: center;
 }
 
 @include media-breakpoint-down(sm) {
