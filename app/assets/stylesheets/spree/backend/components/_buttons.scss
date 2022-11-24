@@ -41,6 +41,7 @@
 
       &:hover {
         color: var(--bs-btn-hover-color);
+
         &::before {
           content: '';
           height: 4px;
@@ -79,6 +80,7 @@
 
       &:hover {
         color: var(--bs-btn-hover-color);
+
         &::before {
           content: '';
           height: 4px;
