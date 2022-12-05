@@ -62,7 +62,7 @@ jobs:
       - name: Make bin/ci executable
         run: chmod +x ./bin/ci
 
-      - name: Setup chromedriver
+      - name: Setup Chrome Driver
         uses: nanasess/setup-chromedriver@v1.1.0
       - run: |
           export DISPLAY=:99
