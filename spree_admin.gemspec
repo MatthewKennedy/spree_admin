@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
   s.requirements << "none"
 
   s.add_dependency "inline_svg"
-  s.add_dependency "jsbundling-rails"
   s.add_dependency "pagy"
   s.add_dependency "responders"
   s.add_dependency "sass-rails"
