@@ -63,15 +63,11 @@ jobs:
         run: chmod +x ./bin/ci
 
       - name: Setup chromedriver
-        uses: nanasess/setup-chromedriver@master
-      - name: Install dependencies
-        run: |
-          sudo apt-get update -y
-          sudo apt-get -yqq install libpq-dev
-          sudo apt-get install -y --no-install-recommends wget xvfb xauth unzip libpq-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev
-          sudo apt-get -y install g++ qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x libxml2-dev libxslt1-dev
-          sudo apt-get update -y
-          sudo apt-get install yarn
+        uses: nanasess/setup-chromedriver@v1.1.0
+      - run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
 
       - name: Run Tests
         env:
