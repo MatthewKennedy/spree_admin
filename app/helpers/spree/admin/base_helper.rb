@@ -68,6 +68,10 @@ module Spree
         inline_svg_tag(prefixed_file, options)
       end
 
+      def path_for(obj)
+        obj.class.name.demodulize.underscore
+      end
+
       # Returns Humanized Dropdown Values From a Constant In the Model
       # Pass the model name as a string and then a hash containing the constant name
       # and the option to paramatize the return value.
