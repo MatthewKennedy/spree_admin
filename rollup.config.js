@@ -2,16 +2,30 @@ import resolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import replace from '@rollup/plugin-replace'
 import postcss from 'rollup-plugin-postcss'
+import autoprefixer from 'autoprefixer'
+import postcssnesting from 'postcss-nesting'
 import pkg from './package.json'
 
 const postCssOptions = {
+  minimize: false,
+  modules: false,
+  extract: true,
+  config: {
+    plugins: [
+      postcssnesting,
+      autoprefixer
+    ]
+  }
+}
+
+const postCssOptionsMin = {
   minimize: true,
   modules: false,
   extract: true,
   config: {
     plugins: [
-      import('postcss-nesting'),
-      import('autoprefixer')
+      postcssnesting,
+      autoprefixer
     ]
   }
 }
@@ -22,6 +36,13 @@ export default [
     output: [{ file: './app/assets/stylesheets/spree_admin.css' }],
     plugins: [
       postcss(postCssOptions)
+    ]
+  },
+  { // CSS
+    input: './postcss_styles.js',
+    output: [{ file: './app/assets/stylesheets/spree_admin.min.css' }],
+    plugins: [
+      postcss(postCssOptionsMin)
     ]
   },
 

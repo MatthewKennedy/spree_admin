@@ -9,6 +9,10 @@ module Spree
         si sk sl sq sr sv th tr uk uz vn zh
       ].freeze
 
+      def path_for(obj)
+        obj.class.name.demodulize.underscore
+      end
+
       def filters_in_use(filter)
         return if filter[1].blank?
 
