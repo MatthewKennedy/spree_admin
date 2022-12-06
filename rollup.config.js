@@ -18,12 +18,31 @@ const postCssOptions = {
   }
 }
 
+const postCssOptionsMin = {
+  minimize: true,
+  modules: false,
+  extract: true,
+  config: {
+    plugins: [
+      postcssnesting,
+      autoprefixer
+    ]
+  }
+}
+
 export default [
   { // CSS
     input: './postcss_styles.js',
     output: [{ file: './app/assets/stylesheets/spree_admin.css' }],
     plugins: [
       postcss(postCssOptions)
+    ]
+  },
+  { // CSS
+    input: './postcss_styles.js',
+    output: [{ file: './app/assets/stylesheets/spree_admin.min.css' }],
+    plugins: [
+      postcss(postCssOptionsMin)
     ]
   },
 
