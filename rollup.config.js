@@ -7,7 +7,7 @@ import postcssnesting from 'postcss-nesting'
 import pkg from './package.json'
 
 const postCssOptions = {
-  minimize: true,
+  minimize: false,
   modules: false,
   extract: true,
   config: {
@@ -21,7 +21,7 @@ const postCssOptions = {
 export default [
   { // CSS
     input: './postcss_styles.js',
-    output: [{ file: './app/assets/stylesheets/spree_admin.css' }],
+    output: [{ file: './app/assets/stylesheets/spree/backend/spree_admin.css' }],
     plugins: [
       postcss(postCssOptions)
     ]
