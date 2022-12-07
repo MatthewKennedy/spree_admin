@@ -254,20 +254,20 @@
   ///////////////////////////
   // BS RGB COLOR MAPPIING //
   ///////////////////////////
-  --bs-black: rgba(var(--bs-black-rgb));
-  --bs-body-color: rgba(var(--bs-body-color-rgb));
-  --bs-body-bg: rgba(var(--bs-body-bg-rgb));
-  --bs-danger: rgba(var(--bs-danger-rgb));
-  --bs-dark: rgba(var(--bs-dark-rgb));
-  --bs-info: rgba(var(--bs-info-rgb));
-  --bs-light: rgba(var(--bs-light-rgb));
-  --bs-link-color: rgba(var(--bs-primary-rgb));
-  --bs-link-hover-color: rgba(var(--bs-primary-hover-rgb));
-  --bs-primary: rgba(var(--bs-primary-rgb));
-  --bs-secondary: rgba(var(--bs-secondary-rgb));
-  --bs-success: rgba(var(--bs-success-rgb));
-  --bs-warning: rgba(var(--bs-warning-rgb));
-  --bs-white: rgba(var(--bs-white-rgb));
+  --bs-black: rgba(var(--bs-black-rgb), 1);
+  --bs-body-color: rgba(var(--bs-body-color-rgb), 1);
+  --bs-body-bg: rgba(var(--bs-body-bg-rgb), 1);
+  --bs-danger: rgba(var(--bs-danger-rgb), 1);
+  --bs-dark: rgba(var(--bs-dark-rgb), 1);
+  --bs-info: rgba(var(--bs-info-rgb), 1);
+  --bs-light: rgba(var(--bs-light-rgb), 1);
+  --bs-link-color: rgba(var(--bs-primary-rgb), 1);
+  --bs-link-hover-color: rgba(var(--bs-primary-hover-rgb), 1);
+  --bs-primary: rgba(var(--bs-primary-rgb), 1);
+  --bs-secondary: rgba(var(--bs-secondary-rgb), 1);
+  --bs-success: rgba(var(--bs-success-rgb), 1);
+  --bs-warning: rgba(var(--bs-warning-rgb), 1);
+  --bs-white: rgba(var(--bs-white-rgb), 1);
 
   // Sub Colors, used for Cards and Inputs
   --bs-sub-bg-rgb: 34, 39, 46;
@@ -275,7 +275,7 @@
   --bs-sub-color-rgb: 34, 39, 46;
 
   // Links
-  --bs-link-color: rgba(var(--bs-primary-rgb));
+  --bs-link-color: rgba(var(--bs-primary-rgb), 1);
   --bs-link-hover-color: rgba(var(--bs-primary-rgb), .85);
 
   // Input
@@ -290,16 +290,16 @@
   //////////////////////////////////
 
   // Logo
-  --sa-logo: rgba(var(--bs-brand-rgb));
+  --sa-logo: rgba(var(--bs-brand-rgb), 1);
 
   // Top Nav Bar
-  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb), 1);
   --sa-navbar-box-shadow: 0 2px 2px -2px rgba(34, 47, 62, .1), 0 8px 8px -4px rgba(34, 47, 62, .07);
 
   // Main Menu
-  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb), 1);
   --sa-sidebar-link-color: var(--bs-gray-600);
-  --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb));
+  --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb), 1);
   --sa-sidebar-selected-link-bg: rgba(var(--bs-primary-rgb), .04);
 }
 

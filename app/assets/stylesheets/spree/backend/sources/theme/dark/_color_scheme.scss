@@ -114,11 +114,11 @@
 
   // Converting RGB values colors where appropriate
   // Borders
-  --bs-border-color: rgba(var(--bs-secondary-rgb));
+  --bs-border-color: rgba(var(--bs-secondary-rgb), 1);
   --bs-border-color-translucent: rgba(var(--bs-black-rgb), 0.175);
 
   // Links
-  --bs-link-color: rgba(var(--bs-primary-rgb));
+  --bs-link-color: rgba(var(--bs-primary-rgb), 1);
   --bs-link-hover-color: rgba(var(--bs-primary-rgb), .85);
 
   // Input
@@ -132,15 +132,15 @@
   //////////////////////////////////
 
   // Logo
-  --sa-logo: rgba(var(--bs-brand-rgb));
+  --sa-logo: rgba(var(--bs-brand-rgb), 1);
 
   // Top Nav Bar
-  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb), 1);
   --sa-navbar-box-shadow: none;
 
   // Main Menu
-  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb), 1);
   --sa-sidebar-link-color: var(--bs-gray-600);
-  --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb));
+  --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb), 1);
   --sa-sidebar-selected-link-bg: rgba(var(--bs-primary-rgb), .04);
 }

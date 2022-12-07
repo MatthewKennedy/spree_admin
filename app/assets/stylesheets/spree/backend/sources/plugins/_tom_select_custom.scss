@@ -47,8 +47,8 @@ input::-webkit-contacts-auto-fill-button {
   .option:hover,
   .selected {
     border: none;
-    color: rgba(var(--bs-input-color-rgb));
-    background-color: rgba(var(--bs-sub-bg-rgb));
+    color: rgba(var(--bs-input-color-rgb), 1);
+    background-color: rgba(var(--bs-sub-bg-rgb), 1);
   }
 
   .selected:before {
@@ -65,7 +65,7 @@ input::-webkit-contacts-auto-fill-button {
   }
 
   .active {
-    color: rgba(var(--bs-input-color-rgb));
+    color: rgba(var(--bs-input-color-rgb), 1);
     background-color: transparent;
   }
 }

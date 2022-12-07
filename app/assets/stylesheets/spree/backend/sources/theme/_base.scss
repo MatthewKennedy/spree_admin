@@ -76,18 +76,18 @@
   .form-control,
   .form-select,
   .form-check-input {
-    color: rgba(var(--bs-input-color-rgb));
-    background-color: rgba(var(--bs-input-bg-rgb));
-    border-color: rgba(var(--bs-input-border-rgb));
+    color: rgba(var(--bs-input-color-rgb), 1);
+    background-color: rgba(var(--bs-input-bg-rgb), 1);
+    border-color: rgba(var(--bs-input-border-rgb), 1);
 
     &:focus-visible,
     &:focus,
     &:checked,
     &:has(> div.ProseMirror:focus) {
-      color: rgba(var(--bs-input-color-rgb));
-      background-color: rgba(var(--bs-input-bg-rgb));
-      border-color: rgba(var(--bs-input-focus-border-rgb));
-      box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb));
+      color: rgba(var(--bs-input-color-rgb), 1);
+      background-color: rgba(var(--bs-input-bg-rgb), 1);
+      border-color: rgba(var(--bs-input-focus-border-rgb), 1);
+      box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb), 1);
     }
   }
 
@@ -149,15 +149,15 @@
 
     &.success,
     &.notice {
-      --bs-toast-bg: rgba(0, 0, 0);
-      --bs-toast-color: rgba(255, 255, 255);
-      --bs-toast-border-color: rgba(0, 0, 0);
+      --bs-toast-bg: rgba(0, 0, 0, 1);
+      --bs-toast-color: rgba(255, 255, 255, 1);
+      --bs-toast-border-color: rgba(0, 0, 0, 1);
     }
 
     &.error {
-      --bs-toast-bg: rgba(var(--bs-danger-rgb));
-      --bs-toast-color: rgba(var(--bs-white-rgb));
-      --bs-toast-border-color: rgba(var(--bs-danger-rgb));
+      --bs-toast-bg: rgba(var(--bs-danger-rgb), 1);
+      --bs-toast-color: rgba(var(--bs-white-rgb), 1);
+      --bs-toast-border-color: rgba(var(--bs-danger-rgb), 1);
     }
   }
 }

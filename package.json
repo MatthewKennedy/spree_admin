@@ -42,7 +42,7 @@
     "stimulus-flatpickr": "^3.0.0-0",
     "stimulus-sortable": "^4.0.0",
     "stimulus-use": "^0.51.1",
-    "tom-select": "^2.2.2"
+    "tom-select": "2.2.1"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",

@@ -16871,8 +16871,8 @@ input::-webkit-contacts-auto-fill-button {
 .ts-dropdown .option:hover,
 .ts-dropdown .selected {
   border: none;
-  color: rgba(var(--bs-input-color-rgb));
-  background-color: rgba(var(--bs-sub-bg-rgb));
+  color: rgba(var(--bs-input-color-rgb), 1);
+  background-color: rgba(var(--bs-sub-bg-rgb), 1);
 }
 .ts-dropdown .selected:before {
   background-color: var(--bs-primary);
@@ -16887,7 +16887,7 @@ input::-webkit-contacts-auto-fill-button {
   width: 5px;
 }
 .ts-dropdown .active {
-  color: rgba(var(--bs-input-color-rgb));
+  color: rgba(var(--bs-input-color-rgb), 1);
   background-color: transparent;
 }
 
@@ -17575,9 +17575,9 @@ div.previous_cards ul li input {
 :root body.admin .form-control, :root body.admin .ts-dropdown, :root body.admin [data-controller=tiptap--editor],
 :root body.admin .form-select,
 :root body.admin .form-check-input {
-  color: rgba(var(--bs-input-color-rgb));
-  background-color: rgba(var(--bs-input-bg-rgb));
-  border-color: rgba(var(--bs-input-border-rgb));
+  color: rgba(var(--bs-input-color-rgb), 1);
+  background-color: rgba(var(--bs-input-bg-rgb), 1);
+  border-color: rgba(var(--bs-input-border-rgb), 1);
 }
 :root body.admin .form-control:focus-visible, :root body.admin .ts-dropdown:focus-visible, :root body.admin [data-controller=tiptap--editor]:focus-visible, :root body.admin .form-control:focus, :root body.admin .ts-dropdown:focus, :root body.admin [data-controller=tiptap--editor]:focus, :root body.admin .form-control:checked, :root body.admin .ts-dropdown:checked, :root body.admin [data-controller=tiptap--editor]:checked, :root body.admin .form-control:has(> div.ProseMirror:focus), :root body.admin .ts-dropdown:has(> div.ProseMirror:focus), :root body.admin [data-controller=tiptap--editor]:has(> div.ProseMirror:focus),
 :root body.admin .form-select:focus-visible,
@@ -17588,10 +17588,10 @@ div.previous_cards ul li input {
 :root body.admin .form-check-input:focus,
 :root body.admin .form-check-input:checked,
 :root body.admin .form-check-input:has(> div.ProseMirror:focus) {
-  color: rgba(var(--bs-input-color-rgb));
-  background-color: rgba(var(--bs-input-bg-rgb));
-  border-color: rgba(var(--bs-input-focus-border-rgb));
-  box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb));
+  color: rgba(var(--bs-input-color-rgb), 1);
+  background-color: rgba(var(--bs-input-bg-rgb), 1);
+  border-color: rgba(var(--bs-input-focus-border-rgb), 1);
+  box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb), 1);
 }
 :root body.admin g-table {
   --gridtable-color: var(--bs-body-color);
@@ -17642,14 +17642,14 @@ div.previous_cards ul li input {
   --bs-toast-font-size: 0.95rem;
 }
 :root body.admin .toast.success, :root body.admin .toast.notice {
-  --bs-toast-bg: rgba(0, 0, 0);
-  --bs-toast-color: rgba(255, 255, 255);
-  --bs-toast-border-color: rgba(0, 0, 0);
+  --bs-toast-bg: rgba(0, 0, 0, 1);
+  --bs-toast-color: rgba(255, 255, 255, 1);
+  --bs-toast-border-color: rgba(0, 0, 0, 1);
 }
 :root body.admin .toast.error {
-  --bs-toast-bg: rgba(var(--bs-danger-rgb));
-  --bs-toast-color: rgba(var(--bs-white-rgb));
-  --bs-toast-border-color: rgba(var(--bs-danger-rgb));
+  --bs-toast-bg: rgba(var(--bs-danger-rgb), 1);
+  --bs-toast-color: rgba(var(--bs-white-rgb), 1);
+  --bs-toast-border-color: rgba(var(--bs-danger-rgb), 1);
 }
 
 :root body.admin {
@@ -17667,35 +17667,35 @@ div.previous_cards ul li input {
   --bs-muted-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 246, 246, 247;
-  --bs-black: rgba(var(--bs-black-rgb));
-  --bs-body-color: rgba(var(--bs-body-color-rgb));
-  --bs-body-bg: rgba(var(--bs-body-bg-rgb));
-  --bs-danger: rgba(var(--bs-danger-rgb));
-  --bs-dark: rgba(var(--bs-dark-rgb));
-  --bs-info: rgba(var(--bs-info-rgb));
-  --bs-light: rgba(var(--bs-light-rgb));
-  --bs-link-color: rgba(var(--bs-primary-rgb));
-  --bs-link-hover-color: rgba(var(--bs-primary-hover-rgb));
-  --bs-primary: rgba(var(--bs-primary-rgb));
-  --bs-secondary: rgba(var(--bs-secondary-rgb));
-  --bs-success: rgba(var(--bs-success-rgb));
-  --bs-warning: rgba(var(--bs-warning-rgb));
-  --bs-white: rgba(var(--bs-white-rgb));
+  --bs-black: rgba(var(--bs-black-rgb), 1);
+  --bs-body-color: rgba(var(--bs-body-color-rgb), 1);
+  --bs-body-bg: rgba(var(--bs-body-bg-rgb), 1);
+  --bs-danger: rgba(var(--bs-danger-rgb), 1);
+  --bs-dark: rgba(var(--bs-dark-rgb), 1);
+  --bs-info: rgba(var(--bs-info-rgb), 1);
+  --bs-light: rgba(var(--bs-light-rgb), 1);
+  --bs-link-color: rgba(var(--bs-primary-rgb), 1);
+  --bs-link-hover-color: rgba(var(--bs-primary-hover-rgb), 1);
+  --bs-primary: rgba(var(--bs-primary-rgb), 1);
+  --bs-secondary: rgba(var(--bs-secondary-rgb), 1);
+  --bs-success: rgba(var(--bs-success-rgb), 1);
+  --bs-warning: rgba(var(--bs-warning-rgb), 1);
+  --bs-white: rgba(var(--bs-white-rgb), 1);
   --bs-sub-bg-rgb: 34, 39, 46;
   --bs-sub-border-rgb: 68, 76, 86;
   --bs-sub-color-rgb: 34, 39, 46;
-  --bs-link-color: rgba(var(--bs-primary-rgb));
+  --bs-link-color: rgba(var(--bs-primary-rgb), 1);
   --bs-link-hover-color: rgba(var(--bs-primary-rgb), .85);
   --bs-input-color-rgb: var(--bs-body-color-rgb);
   --bs-input-bg-rgb: var(--bs-white-rgb);
   --bs-input-border-rgb: var(--bs-secondary-rgb);
   --bs-input-focus-border-rgb: var(--bs-primary-rgb);
-  --sa-logo: rgba(var(--bs-brand-rgb));
-  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-logo: rgba(var(--bs-brand-rgb), 1);
+  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb), 1);
   --sa-navbar-box-shadow: 0 2px 2px -2px rgba(34, 47, 62, .1), 0 8px 8px -4px rgba(34, 47, 62, .07);
-  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb), 1);
   --sa-sidebar-link-color: var(--bs-gray-600);
-  --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb));
+  --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb), 1);
   --sa-sidebar-selected-link-bg: rgba(var(--bs-primary-rgb), .04);
 }
 :root body.admin .rgb-hsl-light {
@@ -17887,20 +17887,20 @@ div.previous_cards ul li input {
     --bs-sub-bg-rgb: 34, 39, 46;
     --bs-sub-border-rgb: 68, 76, 86;
     --bs-sub-color-rgb: 34, 39, 46;
-    --bs-border-color: rgba(var(--bs-secondary-rgb));
+    --bs-border-color: rgba(var(--bs-secondary-rgb), 1);
     --bs-border-color-translucent: rgba(var(--bs-black-rgb), 0.175);
-    --bs-link-color: rgba(var(--bs-primary-rgb));
+    --bs-link-color: rgba(var(--bs-primary-rgb), 1);
     --bs-link-hover-color: rgba(var(--bs-primary-rgb), .85);
     --bs-input-bg-rgb: var(--bs-body-bg-rgb);
     --bs-input-border-rgb: var(--bs-sub-border-rgb);
     --bs-input-color-rgb: var(--bs-body-color-rgb);
     --bs-input-focus-border-rgb: var(--bs-primary-rgb);
-    --sa-logo: rgba(var(--bs-brand-rgb));
-    --sa-navbar-bg: rgba(var(--bs-body-bg-rgb));
+    --sa-logo: rgba(var(--bs-brand-rgb), 1);
+    --sa-navbar-bg: rgba(var(--bs-body-bg-rgb), 1);
     --sa-navbar-box-shadow: none;
-    --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb));
+    --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb), 1);
     --sa-sidebar-link-color: var(--bs-gray-600);
-    --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb));
+    --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb), 1);
     --sa-sidebar-selected-link-bg: rgba(var(--bs-primary-rgb), .04);
   }
   :root body.admin .rgb-hsl-primary, :root body.admin .btn-primary {
@@ -17949,11 +17949,11 @@ div.previous_cards ul li input {
     --hsla-disabled-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * 1%), calc(var(--background-alpha) / 5));
   }
   :root body.admin .accordion {
-    --bs-accordion-color: rgba(var(--bs-body-color-rgb));
-    --bs-accordion-bg: rgba(var(--bs-body-bg-rgb));
-    --bs-accordion-active-color: rgba(var(--bs-primary-rgb));
-    --bs-accordion-btn-color: rgba(var(--bs-body-color-rgb));
-    --bs-accordion-active-bg: rgba(var(--bs-sub-bg-rgb));
+    --bs-accordion-color: rgba(var(--bs-body-color-rgb), 1);
+    --bs-accordion-bg: rgba(var(--bs-body-bg-rgb), 1);
+    --bs-accordion-active-color: rgba(var(--bs-primary-rgb), 1);
+    --bs-accordion-btn-color: rgba(var(--bs-body-color-rgb), 1);
+    --bs-accordion-active-bg: rgba(var(--bs-sub-bg-rgb), 1);
   }
   :root body.admin .accordion-button:after {
     background-image: url("data:image/svg+xml; charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor' %3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
@@ -17962,54 +17962,54 @@ div.previous_cards ul li input {
     background-image: url("data:image/svg+xml; charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor' %3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
   }
   :root body.admin .card, :root body.admin sa-card {
-    --bs-card-bg: rgba(var(--bs-sub-bg-rgb));
-    --bs-card-border-color: rgba(var(--bs-sub-border-rgb));
+    --bs-card-bg: rgba(var(--bs-sub-bg-rgb), 1);
+    --bs-card-border-color: rgba(var(--bs-sub-border-rgb), 1);
   }
   :root body.admin .dropdown-menu {
-    --bs-dropdown-bg: rgba(var(--bs-sub-bg-rgb));
-    --bs-dropdown-border-color: rgba(var(--bs-sub-border-rgb));
+    --bs-dropdown-bg: rgba(var(--bs-sub-bg-rgb), 1);
+    --bs-dropdown-border-color: rgba(var(--bs-sub-border-rgb), 1);
   }
   :root body.admin .dropdown-item {
-    --bs-dropdown-link-color: rgba(var(--bs-body-color-rgb));
+    --bs-dropdown-link-color: rgba(var(--bs-body-color-rgb), 1);
   }
   :root body.admin .dropdown-item:hover {
-    background-color: rgba(var(--bs-body-bg-rgb));
-    color: rgba(var(--bs-body-color-rgb));
+    background-color: rgba(var(--bs-body-bg-rgb), 1);
+    color: rgba(var(--bs-body-color-rgb), 1);
   }
   :root body.admin .plugin-dropdown_input.focus .ts-dropdown .dropdown-input {
-    color: rgba(var(--bs-input-color-rgb));
-    border-color: rgba(var(--bs-input-focus-border-rgb));
-    box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb));
+    color: rgba(var(--bs-input-color-rgb), 1);
+    border-color: rgba(var(--bs-input-focus-border-rgb), 1);
+    box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb), 1);
   }
   :root body.admin .input-group-text {
-    background-color: rgba(var(--bs-input-bg-rgb));
-    border-color: rgba(var(--bs-input-border-rgb));
-    color: rgba(var(--bs-input-color-rgb));
+    background-color: rgba(var(--bs-input-bg-rgb), 1);
+    border-color: rgba(var(--bs-input-border-rgb), 1);
+    color: rgba(var(--bs-input-color-rgb), 1);
   }
   :root body.admin .list-group {
-    background-color: rgba(var(--bs-body-bg-rgb));
+    background-color: rgba(var(--bs-body-bg-rgb), 1);
   }
   :root body.admin .list-group-item {
-    background-color: rgba(var(--bs-body-bg-rgb));
+    background-color: rgba(var(--bs-body-bg-rgb), 1);
   }
   :root body.admin .modal-content {
-    background-color: rgba(var(--bs-sub-bg-rgb));
-    border-color: rgba(var(--bs-sub-border-rgb));
+    background-color: rgba(var(--bs-sub-bg-rgb), 1);
+    border-color: rgba(var(--bs-sub-border-rgb), 1);
   }
   :root body.admin .modal-backdrop.show {
     --bs-backdrop-opacity: 0.75;
   }
   :root body.admin .offcanvas {
-    --bs-offcanvas-bg: rgba(var(--bs-body-bg-rgb));
+    --bs-offcanvas-bg: rgba(var(--bs-body-bg-rgb), 1);
   }
   :root body.admin .toast.success, :root body.admin .toast.notice {
-    --bs-toast-bg: rgba(59, 65, 75);
-    --bs-toast-color: rgba(191, 209, 238);
-    --bs-toast-border-color: rgba(99, 109, 124);
+    --bs-toast-bg: rgba(59, 65, 75, 1);
+    --bs-toast-color: rgba(191, 209, 238, 1);
+    --bs-toast-border-color: rgba(99, 109, 124, 1);
   }
   :root body.admin .toast.error {
     --bs-toast-bg: rgba(var(--bs-danger-rgb), .75);
-    --bs-toast-color: rgba(var(--bs-white-rgb));
-    --bs-toast-border-color: rgba(var(--bs-danger-rgb));
+    --bs-toast-color: rgba(var(--bs-white-rgb), 1);
+    --bs-toast-border-color: rgba(var(--bs-danger-rgb), 1);
   }
 }
