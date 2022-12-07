@@ -6,4 +6,4 @@
 //= link spree_admin.min.js
 //= link spree_admin.min.js.map
 
-//= link spree/backend/all.css
+//= link spree/backend/spree_admin.css
