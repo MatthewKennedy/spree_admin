@@ -15,7 +15,7 @@ completely modernizing the tech stack and user experience.
 - Product Images can be tagged to their applicable option(s).
 - New order process, more akin to building an invoice than attempting to replicate a shopping cart in an admin UI (WIP).
 - Modern UI (WIP).
-- Adaptive Light/Dark modes
+- Adaptive Light/Dark modes.
 
 
 ## Installation
@@ -33,25 +33,19 @@ From the command line run the following commands to:
 
 Install Spree
 ```bash
-   bin/rails g spree:install --user_class=Spree::User
+bin/rails g spree:install --user_class=Spree::User
 ```
 
 Install Spree Auth Devise
 ```bash
-   bin/rails g spree:auth:install
+bin/rails g spree:auth:install
 ```
-
-Install Spree Admin
-```bash
-   bin/rails g spree:backend:install
-```
-
 
 ### Import Javascript from NPM - (OPTIONAL)
 
 If you are using NPM to manage your javascript and want to import the javascript via node_modules run:
 ```bash
-   yarn add @matthewkennedy/spree-admin
+yarn add @matthewkennedy/spree-admin
 ```
 And then create a new file in `app/javascript` called `spree_admin.js` and then import `import '@matthewkennedy/spree-admin'`.
 
@@ -94,9 +88,9 @@ yarn watch
 3. Create test application:
 
    ```bash
-   cd spree_admin
-   bundle install
-   bundle exec rake test_app
+cd spree_admin
+bundle install
+bundle exec rake test_app
    ```
 
 
@@ -123,8 +117,8 @@ brew install chromedriver
 
 ## ToDo
 
-- [ ] Add dark mode
-- [ ] Tidy up CSS
+- [x] Add dark mode
+- [x] Tidy up CSS
 - [x] Fix Discount Codes
 - [ ] Fix Order Workflow
-- [ ] Fix Flash Notice
+- [x] Fix Flash Notice

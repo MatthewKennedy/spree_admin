@@ -16,7 +16,7 @@ namespace :spree_admin do
 
     Rails.env = "test"
 
-    $stdout.puts "(1 of 5) Building dummy app for testing #{ENV["LIB_NAME"]}"
+    $stdout.puts "(1 of 4) Building dummy app for testing #{ENV["LIB_NAME"]}"
     Spree::DummyGenerator.start ["--lib_name=#{ENV["LIB_NAME"]}", "--quiet"]
     Spree::InstallGenerator.start [
       "--lib_name=#{ENV["LIB_NAME"]}",
@@ -28,19 +28,16 @@ namespace :spree_admin do
       "--user_class=#{args[:user_class]}"
     ]
 
-    $stdout.puts "(2 of 5) Setting up dummy database..."
+    $stdout.puts "(2 of 4) Setting up dummy database..."
     system("bin/rails db:environment:set RAILS_ENV=test")
     system("bundle exec rake db:drop db:create")
     Spree::DummyModelGenerator.start
     system("bundle exec rake db:migrate")
 
-    $stdout.puts "(3 of 5) Bundling ..."
+    $stdout.puts "(3 of 4) Bundling ..."
     system("bundle install")
 
-    $stdout.puts "(4 of 5) Running spree:backend:install ..."
-    system("bin/rails g spree:backend:install")
-
-    $stdout.puts "(5 of 5) Precompiling assets..."
+    $stdout.puts "(4 of 4) Precompiling assets..."
     system("bundle exec rake assets:precompile")
 
     $stdout.puts "Fin!"
