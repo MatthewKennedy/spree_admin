@@ -1,4 +1,4 @@
-@import 'global';
+@import '../sources/global';
 
 // Imports From node_modules
 @import '~bootstrap/scss/bootstrap';
@@ -7,8 +7,6 @@
 @import '~@matthewkennedy/gridtable.css/gridtable';
 @import '~animate.css/animate';
 
-@import 'components';
-@import 'plugins';
-@import 'shared';
-@import 'views';
-@import 'theme';
+@import '../sources'
+
+
