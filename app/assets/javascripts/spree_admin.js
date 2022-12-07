@@ -14795,7 +14795,7 @@
     }
   }
   /**! 
-   * hotkeys-js v3.10.0 
+   * hotkeys-js v3.10.1 
    * A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies. 
    * 
    * Copyright (c) 2022 kenny wong <wowohoo@qq.com> 
@@ -15201,12 +15201,14 @@
   function trigger(shortcut) {
     var scope = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "all";
     Object.keys(_handlers).forEach((function(key) {
-      var data = _handlers[key].find((function(item) {
+      var dataList = _handlers[key].filter((function(item) {
         return item.scope === scope && item.shortcut === shortcut;
       }));
-      if (data && data.method) {
-        data.method();
-      }
+      dataList.forEach((function(data) {
+        if (data && data.method) {
+          data.method();
+        }
+      }));
     }));
   }
   var _api = {
@@ -21133,6 +21135,26 @@
   function joinable(a, b) {
     return !!(a && b && !a.isLeaf && a.canAppend(b));
   }
+  function joinPoint(doc, pos, dir = -1) {
+    let $pos = doc.resolve(pos);
+    for (let d = $pos.depth; ;d--) {
+      let before, after, index = $pos.index(d);
+      if (d == $pos.depth) {
+        before = $pos.nodeBefore;
+        after = $pos.nodeAfter;
+      } else if (dir > 0) {
+        before = $pos.node(d + 1);
+        index++;
+        after = $pos.node(d).maybeChild(index);
+      } else {
+        before = $pos.node(d).maybeChild(index - 1);
+        after = $pos.node(d + 1);
+      }
+      if (before && !before.isTextblock && joinable(before, after) && $pos.node(d).canReplace(index, index + 1)) return pos;
+      if (d == 0) break;
+      pos = dir < 0 ? $pos.before(d) : $pos.after(d);
+    }
+  }
   function join(tr, pos, depth) {
     let step = new ReplaceStep(pos - depth, pos + depth, Slice.empty, true);
     tr.step(step);
@@ -26442,9 +26464,14 @@
     if (dispatch) dispatch(state.tr.deleteSelection().scrollIntoView());
     return true;
   };
-  const joinBackward$1 = (state, dispatch, view) => {
+  function atBlockStart(state, view) {
     let {$cursor: $cursor} = state.selection;
-    if (!$cursor || (view ? !view.endOfTextblock("backward", state) : $cursor.parentOffset > 0)) return false;
+    if (!$cursor || (view ? !view.endOfTextblock("backward", state) : $cursor.parentOffset > 0)) return null;
+    return $cursor;
+  }
+  const joinBackward$1 = (state, dispatch, view) => {
+    let $cursor = atBlockStart(state, view);
+    if (!$cursor) return false;
     let $cut = findCutBefore($cursor);
     if (!$cut) {
       let range = $cursor.blockRange(), target = range && liftTarget(range);
@@ -26497,9 +26524,14 @@
     }
     return null;
   }
-  const joinForward$1 = (state, dispatch, view) => {
+  function atBlockEnd(state, view) {
     let {$cursor: $cursor} = state.selection;
-    if (!$cursor || (view ? !view.endOfTextblock("forward", state) : $cursor.parentOffset < $cursor.parent.content.size)) return false;
+    if (!$cursor || (view ? !view.endOfTextblock("forward", state) : $cursor.parentOffset < $cursor.parent.content.size)) return null;
+    return $cursor;
+  }
+  const joinForward$1 = (state, dispatch, view) => {
+    let $cursor = atBlockEnd(state, view);
+    if (!$cursor) return false;
     let $cut = findCutAfter($cursor);
     if (!$cut) return false;
     let after = $cut.nodeAfter;
@@ -26541,6 +26573,34 @@
     }
     return null;
   }
+  const joinUp$1 = (state, dispatch) => {
+    let sel = state.selection, nodeSel = sel instanceof NodeSelection, point;
+    if (nodeSel) {
+      if (sel.node.isTextblock || !canJoin(state.doc, sel.from)) return false;
+      point = sel.from;
+    } else {
+      point = joinPoint(state.doc, sel.from, -1);
+      if (point == null) return false;
+    }
+    if (dispatch) {
+      let tr = state.tr.join(point);
+      if (nodeSel) tr.setSelection(NodeSelection.create(tr.doc, point - state.doc.resolve(point).nodeBefore.nodeSize));
+      dispatch(tr.scrollIntoView());
+    }
+    return true;
+  };
+  const joinDown$1 = (state, dispatch) => {
+    let sel = state.selection, point;
+    if (sel instanceof NodeSelection) {
+      if (sel.node.isTextblock || !canJoin(state.doc, sel.to)) return false;
+      point = sel.to;
+    } else {
+      point = joinPoint(state.doc, sel.to, 1);
+      if (point == null) return false;
+    }
+    if (dispatch) dispatch(state.tr.join(point).scrollIntoView());
+    return true;
+  };
   const lift$1 = (state, dispatch) => {
     let {$from: $from, $to: $to} = state.selection;
     let range = $from.blockRange($to), target = range && liftTarget(range);
@@ -26690,20 +26750,29 @@
   }
   function setBlockType(nodeType, attrs = null) {
     return function(state, dispatch) {
-      let {from: from, to: to} = state.selection;
       let applicable = false;
-      state.doc.nodesBetween(from, to, ((node, pos) => {
-        if (applicable) return false;
-        if (!node.isTextblock || node.hasMarkup(nodeType, attrs)) return;
-        if (node.type == nodeType) {
-          applicable = true;
-        } else {
-          let $pos = state.doc.resolve(pos), index = $pos.index();
-          applicable = $pos.parent.canReplaceWith(index, index + 1, nodeType);
-        }
-      }));
+      for (let i = 0; i < state.selection.ranges.length && !applicable; i++) {
+        let {$from: {pos: from}, $to: {pos: to}} = state.selection.ranges[i];
+        state.doc.nodesBetween(from, to, ((node, pos) => {
+          if (applicable) return false;
+          if (!node.isTextblock || node.hasMarkup(nodeType, attrs)) return;
+          if (node.type == nodeType) {
+            applicable = true;
+          } else {
+            let $pos = state.doc.resolve(pos), index = $pos.index();
+            applicable = $pos.parent.canReplaceWith(index, index + 1, nodeType);
+          }
+        }));
+      }
       if (!applicable) return false;
-      if (dispatch) dispatch(state.tr.setBlockType(from, to, nodeType, attrs).scrollIntoView());
+      if (dispatch) {
+        let tr = state.tr;
+        for (let i = 0; i < state.selection.ranges.length; i++) {
+          let {$from: {pos: from}, $to: {pos: to}} = state.selection.ranges[i];
+          tr.setBlockType(from, to, nodeType, attrs);
+        }
+        dispatch(tr.scrollIntoView());
+      }
       return true;
     };
   }
@@ -27975,6 +28044,26 @@
   };
   const command = fn => props => fn(props);
   const createParagraphNear = () => ({state: state, dispatch: dispatch}) => createParagraphNear$1(state, dispatch);
+  const deleteCurrentNode = () => ({tr: tr, dispatch: dispatch}) => {
+    const {selection: selection} = tr;
+    const currentNode = selection.$anchor.node();
+    if (currentNode.content.size > 0) {
+      return false;
+    }
+    const $pos = tr.selection.$anchor;
+    for (let depth = $pos.depth; depth > 0; depth -= 1) {
+      const node = $pos.node(depth);
+      if (node.type === currentNode.type) {
+        if (dispatch) {
+          const from = $pos.before(depth);
+          const to = $pos.after(depth);
+          tr.delete(from, to).scrollIntoView();
+        }
+        return true;
+      }
+    }
+    return false;
+  };
   const deleteNode = typeOrName => ({tr: tr, state: state, dispatch: dispatch}) => {
     const type = getNodeType(typeOrName, state.schema);
     const $pos = tr.selection.$anchor;
@@ -28255,6 +28344,8 @@
     }
     return true;
   };
+  const joinUp = () => ({state: state, dispatch: dispatch}) => joinUp$1(state, dispatch);
+  const joinDown = () => ({state: state, dispatch: dispatch}) => joinDown$1(state, dispatch);
   const joinBackward = () => ({state: state, dispatch: dispatch}) => joinBackward$1(state, dispatch);
   const joinForward = () => ({state: state, dispatch: dispatch}) => joinForward$1(state, dispatch);
   function isMacOS() {
@@ -29189,6 +29280,7 @@
     clearNodes: clearNodes,
     command: command,
     createParagraphNear: createParagraphNear,
+    deleteCurrentNode: deleteCurrentNode,
     deleteNode: deleteNode,
     deleteRange: deleteRange,
     deleteSelection: deleteSelection,
@@ -29200,6 +29292,8 @@
     forEach: forEach,
     insertContent: insertContent,
     insertContentAt: insertContentAt,
+    joinUp: joinUp,
+    joinDown: joinDown,
     joinBackward: joinBackward,
     joinForward: joinForward,
     keyboardShortcut: keyboardShortcut,
@@ -29296,7 +29390,7 @@
         }
         return commands.clearNodes();
       })), () => commands.deleteSelection(), () => commands.joinBackward(), () => commands.selectNodeBackward() ]));
-      const handleDelete = () => this.editor.commands.first((({commands: commands}) => [ () => commands.deleteSelection(), () => commands.joinForward(), () => commands.selectNodeForward() ]));
+      const handleDelete = () => this.editor.commands.first((({commands: commands}) => [ () => commands.deleteSelection(), () => commands.deleteCurrentNode(), () => commands.joinForward(), () => commands.selectNodeForward() ]));
       const handleEnter = () => this.editor.commands.first((({commands: commands}) => [ () => commands.newlineInCode(), () => commands.createParagraphNear(), () => commands.liftEmptyBlock(), () => commands.splitBlock() ]));
       const baseKeymap = {
         Enter: handleEnter,
@@ -32953,72 +33047,30 @@
     return result;
   };
   /*! @orchidjs/unicode-variants | https://github.com/orchidjs/unicode-variants | Apache License (v2) */  const code_points = [ [ 0, 65535 ] ];
-  const accent_pat = "[̀-ͯ·ʾʼ]";
+  const accent_pat = "[̀-ͯ·ʾ]";
   let unicode_map;
   let multi_char_reg;
   const max_char_length = 3;
-  const latin_convert = {};
-  const latin_condensed = {
-    "/": "⁄∕",
-    0: "߀",
-    a: "ⱥɐɑ",
-    aa: "ꜳ",
-    ae: "æǽǣ",
-    ao: "ꜵ",
-    au: "ꜷ",
-    av: "ꜹꜻ",
-    ay: "ꜽ",
-    b: "ƀɓƃ",
-    c: "ꜿƈȼↄ",
-    d: "đɗɖᴅƌꮷԁɦ",
-    e: "ɛǝᴇɇ",
-    f: "ꝼƒ",
-    g: "ǥɠꞡᵹꝿɢ",
-    h: "ħⱨⱶɥ",
-    i: "ɨı",
-    j: "ɉȷ",
-    k: "ƙⱪꝁꝃꝅꞣ",
-    l: "łƚɫⱡꝉꝇꞁɭ",
-    m: "ɱɯϻ",
-    n: "ꞥƞɲꞑᴎлԉ",
-    o: "øǿɔɵꝋꝍᴑ",
-    oe: "œ",
-    oi: "ƣ",
-    oo: "ꝏ",
-    ou: "ȣ",
-    p: "ƥᵽꝑꝓꝕρ",
-    q: "ꝗꝙɋ",
-    r: "ɍɽꝛꞧꞃ",
-    s: "ßȿꞩꞅʂ",
-    t: "ŧƭʈⱦꞇ",
-    th: "þ",
-    tz: "ꜩ",
-    u: "ʉ",
-    v: "ʋꝟʌ",
-    vy: "ꝡ",
-    w: "ⱳ",
-    y: "ƴɏỿ",
-    z: "ƶȥɀⱬꝣ",
-    hv: "ƕ"
+  const latin_convert = {
+    "æ": "ae",
+    "ⱥ": "a",
+    "ø": "o",
+    "⁄": "/",
+    "∕": "/"
   };
-  for (let latin in latin_condensed) {
-    let unicode = latin_condensed[latin] || "";
-    for (let i = 0; i < unicode.length; i++) {
-      let char = unicode.substring(i, i + 1);
-      latin_convert[char] = latin;
-    }
-  }
   const convert_pat = new RegExp(Object.keys(latin_convert).join("|") + "|" + accent_pat, "gu");
   const initialize = _code_points => {
     if (unicode_map !== undefined) return;
     unicode_map = generateMap(_code_points || code_points);
   };
   const normalize = (str, form = "NFKD") => str.normalize(form);
-  const asciifold = str => toArray(str).reduce(((result, char) => result + _asciifold(char)), "");
-  const _asciifold = str => {
-    str = normalize(str).toLowerCase().replace(convert_pat, (char => latin_convert[char] || ""));
-    return normalize(str, "NFC");
+  const decompose = str => {
+    if (str.match(/[\u0f71-\u0f81]/)) {
+      return toArray(str).reduce(((result, char) => result + normalize(char)), "");
+    }
+    return normalize(str);
   };
+  const asciifold = str => decompose(str).toLowerCase().replace(convert_pat, (char => latin_convert[char] || ""));
   function* generator(code_points) {
     for (const [code_point_min, code_point_max] of code_points) {
       for (let i = code_point_min; i <= code_point_max; i++) {
@@ -33031,6 +33083,11 @@
           continue;
         }
         if (folded.length == 0) {
+          continue;
+        }
+        let decomposed = normalize(composed);
+        let recomposed = normalize(decomposed, "NFC");
+        if (recomposed === composed && folded === decomposed) {
           continue;
         }
         yield {
@@ -34163,6 +34220,7 @@
       addEvent(focus_node, "keydown", (e => self.onKeyDown(e)));
       addEvent(control_input, "keypress", (e => self.onKeyPress(e)));
       addEvent(control_input, "input", (e => self.onInput(e)));
+      addEvent(focus_node, "resize", (() => self.positionDropdown()), passive_event);
       addEvent(focus_node, "blur", (e => self.onBlur(e)));
       addEvent(focus_node, "focus", (e => self.onFocus(e)));
       addEvent(control_input, "paste", (e => self.onPaste(e)));
@@ -35556,8 +35614,8 @@
         return null;
       }
       html = self.settings.render[templateName].call(this, data, escape_html);
-      if (!html) {
-        return null;
+      if (html == null) {
+        return html;
       }
       html = getDom(html);
       if (templateName === "option" || templateName === "option_create") {
