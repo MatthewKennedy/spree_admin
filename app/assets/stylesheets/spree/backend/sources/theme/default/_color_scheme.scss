@@ -9,6 +9,7 @@
   // light //
   ///////////
   --bs-light-rgb: 241, 241, 241;
+
   .rgb-hsl-light {
     // rgb(241, 241, 241)
     --label-r: 241;
@@ -25,6 +26,7 @@
   // dark //
   ///////////
   --bs-dark-rgb: 33, 37, 41;
+
   .rgb-hsl-dark {
     // rgb(241, 241, 241)
     --label-r: 241;
@@ -41,6 +43,7 @@
   // info //
   //////////
   --bs-info-rgb: 13, 202, 240;
+
   .rgb-hsl-info {
     // rgb(13, 202, 240)
     --label-r: 13;
@@ -57,6 +60,7 @@
   // danger //
   ////////////
   --bs-danger-rgb: 152, 27, 39;
+
   .rgb-hsl-danger {
     // rgb(152, 27, 39)
     --label-r: 152;
@@ -73,6 +77,7 @@
   // brand //
   ///////////
   --bs-brand-rgb: 250, 84, 0;
+
   .rgb-hsl-brand {
     // rgb(250, 84, 0)
     --label-r: 250;
@@ -89,6 +94,7 @@
   // primary //
   /////////////
   --bs-primary-rgb: 13, 110, 253;
+
   .rgb-hsl-primary {
     // rgb(13, 110, 253)
     --label-r: 13;
@@ -105,6 +111,7 @@
   // secondary //
   ///////////////
   --bs-secondary-rgb: 240, 242, 244;
+
   .rgb-hsl-secondary {
     // rgb(240,242,244)
     --label-r: 240;
@@ -122,6 +129,7 @@
   // success //
   /////////////
   --bs-success-rgb: 25, 135, 84;
+
   .rgb-hsl-success {
     // rgb(25, 135, 84)
     --label-r: 25;
@@ -139,6 +147,7 @@
   // warning //
   /////////////
   --bs-warning-rgb: 247, 223, 30;
+
   .rgb-hsl-warning {
     // rgb(247, 223, 30)
     --label-r: 247;
@@ -155,6 +164,7 @@
   // black //
   ///////////
   --bs-black-rgb: 0, 0, 0;
+
   .rgb-hsl-black {
     // rgb(0, 0, 0)
     --label-r: 0;
@@ -171,6 +181,7 @@
   // white //
   ///////////
   --bs-white-rgb: 255, 255, 255;
+
   .rgb-hsl-white {
     // rgb(255, 255, 255)
     --label-r: 255;
@@ -188,6 +199,7 @@
   // muted //
   ///////////
   --bs-muted-rgb: 0, 0, 0;
+
   .rgb-hsl-muted {
     // rgb(0, 0, 0)
     --label-r: 0;
@@ -204,16 +216,16 @@
   // This utility create colors for buttons and badges based
   // on the rgb-hsl color variables provided, it provides a
   // lightness switch similar to those found in SASS.
-  //
+
   // You can build solid or outline stye badges and buttons by tweaking the alpha settings
   // and can adjust the threshold for buttons color to flip based on the background.
-  //
+
   // To use extend this along with a color set to access the variables inside the class.
-  //
+
   // .badge-success {
   //   @extend .rgb-hsl-success
   //   @extend .rgb-hsl-base-presets;
-  //
+
   //   background-color: var(--hsla-bg);
   // }
   .rgb-hsl-base-presets {
@@ -222,26 +234,21 @@
     --border-threshold: .96;
     --background-alpha: 1;
     --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
-
     --perceived-lightness: calc(((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255);
     --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
     --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
-
-    --hsla-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
-    --hsla-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .98%), var(--background-alpha));
-    --hsla-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .98%), var(--border-alpha));
-
-    --hsla-hover-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
-    --hsla-hover-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .94%), var(--background-alpha));
-    --hsla-hover-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .94%), var(--border-alpha));
-
-    --hsla-active-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%));
-    --hsla-active-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .90%), var(--background-alpha));
-    --hsla-active-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .90%), var(--border-alpha));
-
-    --hsla-disabled-color: hsla(0deg, 0%, calc(var(--lightness-switch) * 100%), 0.9);
-    --hsla-disabled-bg: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .98%), calc(var(--background-alpha) / 1.2));
-    --hsla-disabled-border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) + var(--lighten-by)) * .98%), calc(var(--border-alpha) / 1.2));
+    --hsla-color: hsl(0deg 0% calc(var(--lightness-switch) * 100%));
+    --hsla-bg: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .98%) / var(--background-alpha));
+    --hsla-border-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .98%) / var(--border-alpha));
+    --hsla-hover-color: hsl(0deg 0% calc(var(--lightness-switch) * 100%));
+    --hsla-hover-bg: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .94%) / var(--background-alpha));
+    --hsla-hover-border-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .94%) / var(--border-alpha));
+    --hsla-active-color: hsl(0deg 0% calc(var(--lightness-switch) * 100%));
+    --hsla-active-bg: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .90%) / var(--background-alpha));
+    --hsla-active-border-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .90%) / var(--border-alpha));
+    --hsla-disabled-color: hsl(0deg 0% calc(var(--lightness-switch) * 100%) / 90%);
+    --hsla-disabled-bg: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .98%) / calc(var(--background-alpha) / 1.2));
+    --hsla-disabled-border-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .98%) / calc(var(--border-alpha) / 1.2));
   }
 
 
@@ -254,20 +261,18 @@
   ///////////////////////////
   // BS RGB COLOR MAPPIING //
   ///////////////////////////
-  --bs-black: rgba(var(--bs-black-rgb));
-  --bs-body-color: rgba(var(--bs-body-color-rgb));
-  --bs-body-bg: rgba(var(--bs-body-bg-rgb));
-  --bs-danger: rgba(var(--bs-danger-rgb));
-  --bs-dark: rgba(var(--bs-dark-rgb));
-  --bs-info: rgba(var(--bs-info-rgb));
-  --bs-light: rgba(var(--bs-light-rgb));
-  --bs-link-color: rgba(var(--bs-primary-rgb));
-  --bs-link-hover-color: rgba(var(--bs-primary-hover-rgb));
-  --bs-primary: rgba(var(--bs-primary-rgb));
-  --bs-secondary: rgba(var(--bs-secondary-rgb));
-  --bs-success: rgba(var(--bs-success-rgb));
-  --bs-warning: rgba(var(--bs-warning-rgb));
-  --bs-white: rgba(var(--bs-white-rgb));
+  --bs-black: rgb(var(--bs-black-rgb) 1);
+  --bs-body-color: rgb(var(--bs-body-color-rgb) 1);
+  --bs-body-bg: rgb(var(--bs-body-bg-rgb) 1);
+  --bs-danger: rgb(var(--bs-danger-rgb) 1);
+  --bs-dark: rgb(var(--bs-dark-rgb) 1);
+  --bs-info: rgb(var(--bs-info-rgb) 1);
+  --bs-light: rgb(var(--bs-light-rgb) 1);
+  --bs-primary: rgb(var(--bs-primary-rgb) 1);
+  --bs-secondary: rgb(var(--bs-secondary-rgb) 1);
+  --bs-success: rgb(var(--bs-success-rgb) 1);
+  --bs-warning: rgb(var(--bs-warning-rgb) 1);
+  --bs-white: rgb(var(--bs-white-rgb) 1);
 
   // Sub Colors, used for Cards and Inputs
   --bs-sub-bg-rgb: 34, 39, 46;
@@ -275,8 +280,8 @@
   --bs-sub-color-rgb: 34, 39, 46;
 
   // Links
-  --bs-link-color: rgba(var(--bs-primary-rgb));
-  --bs-link-hover-color: rgba(var(--bs-primary-rgb), .85);
+  --bs-link-color: rgb(var(--bs-primary-rgb) 1);
+  --bs-link-hover-color: rgb(var(--bs-primary-rgb) .85);
 
   // Input
   --bs-input-color-rgb: var(--bs-body-color-rgb);
@@ -290,16 +295,16 @@
   //////////////////////////////////
 
   // Logo
-  --sa-logo: rgba(var(--bs-brand-rgb));
+  --sa-logo: rgb(var(--bs-brand-rgb) 1);
 
   // Top Nav Bar
-  --sa-navbar-bg: rgba(var(--bs-body-bg-rgb));
-  --sa-navbar-box-shadow: 0 2px 2px -2px rgba(34, 47, 62, .1), 0 8px 8px -4px rgba(34, 47, 62, .07);
+  --sa-navbar-bg: rgb(var(--bs-body-bg-rgb) 1);
+  --sa-navbar-box-shadow: 0 2px 2px -2px rgb(34 47 62 / 10%), 0 8px 8px -4px rgb(34 47 62 / 7%);
 
   // Main Menu
-  --sa-sidebar-bg: rgba(var(--bs-body-bg-rgb));
+  --sa-sidebar-bg: rgb(var(--bs-body-bg-rgb) 1);
   --sa-sidebar-link-color: var(--bs-gray-600);
-  --sa-sidebar-selected-link-color: rgba(var(--bs-primary-rgb));
-  --sa-sidebar-selected-link-bg: rgba(var(--bs-primary-rgb), .04);
+  --sa-sidebar-selected-link-color: rgb(var(--bs-primary-rgb) 1);
+  --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb) .04);
 }
 

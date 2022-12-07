@@ -2,3 +2,4 @@
 **/dummy/**
 **/sandbox/**
 /cli/lib/spree_cli/templates/**
+/app/assets/stylesheets/spree/backend/spree_admin.css

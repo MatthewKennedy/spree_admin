@@ -17,7 +17,6 @@ aside#main-sidebar {
 
   ul {
     &.active-option {
-
       .drop-menu-indicator {
         transform: rotate(90deg);
       }
@@ -28,6 +27,7 @@ aside#main-sidebar {
         color: var(--sa-sidebar-link-color);
         text-decoration: none;
 
+        /* stylelint-disable-next-line no-descending-specificity */
         .drop-menu-indicator {
           right: 1rem;
         }
@@ -94,6 +94,6 @@ aside#main-sidebar {
 
 @include media-breakpoint-up(xl) {
   aside#main-sidebar {
-    width: 16.66666667%;
+    width: 16.6667%;
   }
 }

@@ -4,6 +4,7 @@ import replace from '@rollup/plugin-replace'
 import postcss from 'rollup-plugin-postcss'
 import autoprefixer from 'autoprefixer'
 import postcssnesting from 'postcss-nesting'
+import stylelint from 'stylelint'
 import pkg from './package.json'
 
 const postCssOptions = {
@@ -13,7 +14,8 @@ const postCssOptions = {
   config: {
     plugins: [
       postcssnesting,
-      autoprefixer
+      autoprefixer,
+      stylelint
     ]
   }
 }
