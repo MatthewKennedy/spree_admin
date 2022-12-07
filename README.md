@@ -2,6 +2,7 @@
 [![Standard RB](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardrb.yml/badge.svg)](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardrb.yml)
 [![Standard JS](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardjs.yml/badge.svg)](https://github.com/MatthewKennedy/spree_admin/actions/workflows/standardjs.yml)
 [![StyleLint](https://github.com/MatthewKennedy/spree_admin/actions/workflows/stylelint.yml/badge.svg)](https://github.com/MatthewKennedy/spree_admin/actions/workflows/stylelint.yml)
+
 # Spree Admin
 
 A fresh take on an Admin UI for Spree, this is currently intended to be experimental and should not be used for production Spree applications.
@@ -29,7 +30,7 @@ gem 'spree_admin',       github: 'MatthewKennedy/spree_admin',       branch: 'ma
 gem 'spree_auth_devise', github: 'MatthewKennedy/spree_auth_devise', branch: 'custom/spree_admin'
 ```
 
-From the command line run the following commands to:
+From the command line run the following commands:
 
 Install Spree
 ```bash
@@ -53,8 +54,8 @@ And then create a new file in `app/javascript` called `spree_admin.js` and then 
 ## The Tech Stack
 
 - All ES6 Vanilla JavaScript.
-- SASS/SCSS and JavaScript compiled by Rollup.
-- Uses the Rails Hotwire ecosystem where ever possible.
+- CSS and images all set for Rails Propshaft
+- Uses the Rails Hotwire ecosystem where possible.
 - Bootstrap 5
 
 
@@ -81,24 +82,12 @@ yarn watch
 ```
 
 
-### Local setup
-
-1. Fork it!
-2. Clone the repository
-3. Create test application:
-
-   ```bash
-cd spree_admin
-bundle install
-bundle exec rake test_app
-   ```
-
-
 ### Running tests
-
-Entire test suite (this can take some time!)
-
 ```bash
+cd spree_admin
+bundle update
+yarn build
+bundle exec rake test_app
 bundle exec rspec
 ```
 
