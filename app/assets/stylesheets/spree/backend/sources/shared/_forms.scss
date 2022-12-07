@@ -2,8 +2,6 @@
   opacity: 0.4;
 }
 
-.input-group > .form-group {margin-bottom: 0;}
-
 .form-group {
   margin-bottom: 1rem;
 
@@ -15,6 +13,8 @@
     }
   }
 }
+
+.input-group > .form-group {margin-bottom: 0;}
 
 .form-select {
   min-width: 150px;

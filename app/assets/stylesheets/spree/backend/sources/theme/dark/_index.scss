@@ -1,7 +1,3 @@
-@media (prefers-color-scheme: dark) {
-  @import 'color_scheme';
+@import 'color_scheme';
+@import 'color_mapping';
 
-  :root body.admin {
-    @import 'color_mapping';
-  }
-}

@@ -216,16 +216,16 @@
   // This utility create colors for buttons and badges based
   // on the rgb-hsl color variables provided, it provides a
   // lightness switch similar to those found in SASS.
-  //
+
   // You can build solid or outline stye badges and buttons by tweaking the alpha settings
   // and can adjust the threshold for buttons color to flip based on the background.
-  //
+
   // To use extend this along with a color set to access the variables inside the class.
-  //
+
   // .badge-success {
   //   @extend .rgb-hsl-success
   //   @extend .rgb-hsl-base-presets;
-  //
+
   //   background-color: var(--hsla-bg);
   // }
   .rgb-hsl-base-presets {
@@ -268,8 +268,6 @@
   --bs-dark: rgb(var(--bs-dark-rgb) 1);
   --bs-info: rgb(var(--bs-info-rgb) 1);
   --bs-light: rgb(var(--bs-light-rgb) 1);
-  --bs-link-color: rgb(var(--bs-primary-rgb) 1);
-  --bs-link-hover-color: rgb(var(--bs-primary-hover-rgb) 1);
   --bs-primary: rgb(var(--bs-primary-rgb) 1);
   --bs-secondary: rgb(var(--bs-secondary-rgb) 1);
   --bs-success: rgb(var(--bs-success-rgb) 1);

@@ -1,4 +1,4 @@
-$color_size: 26px;
+$color-size: 26px;
 
 .product-prototype-options {
   .option-type-values {
@@ -27,8 +27,8 @@ $color_size: 26px;
   .option-value__color {
     border-radius: 50%;
     border: 2px solid var(--bs-gray-300);
-    width: $color_size;
-    height: $color_size;
+    width: $color-size;
+    height: $color-size;
     overflow: hidden;
     padding: 1px;
 

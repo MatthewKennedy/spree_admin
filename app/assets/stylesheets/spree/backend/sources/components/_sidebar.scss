@@ -27,6 +27,7 @@ aside#main-sidebar {
         color: var(--sa-sidebar-link-color);
         text-decoration: none;
 
+        /* stylelint-disable-next-line no-descending-specificity */
         .drop-menu-indicator {
           right: 1rem;
         }

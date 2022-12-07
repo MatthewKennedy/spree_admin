@@ -2,5 +2,12 @@
   "extends": [
     "stylelint-config-standard-scss",
     "stylelint-config-prettier-scss"
-  ]
+  ],
+
+  "rules": {
+    "scss/at-extend-no-missing-placeholder": null,
+    "selector-class-pattern": null,
+    "selector-id-pattern": null,
+    "keyframes-name-pattern": null
+  }
 }
