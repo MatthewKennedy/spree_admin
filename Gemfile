@@ -29,6 +29,7 @@ group :test do
   gem "factory_bot_rails", "~> 6.0"
   gem "jsonapi-rspec"
   gem "multi_json"
+  gem "propshaft"
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks", "~> 1.0"
   gem "rspec_junit_formatter"
