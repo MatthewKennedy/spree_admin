@@ -4,8 +4,10 @@
   ul.pagination {
     margin-left: auto;
     margin-right: auto;
+
     li {
       padding: 0.25rem;
+
       &.disabled {
         opacity: 0.3;
       }

@@ -34948,7 +34948,7 @@ const allSubstrings = input => {
 
 /*! @orchidjs/unicode-variants | https://github.com/orchidjs/unicode-variants | Apache License (v2) */ const code_points = [ [ 0, 65535 ] ];
 
-const accent_pat = "[̀-ͯ·ʾ]";
+const accent_pat = "[̀-ͯ·ʾʼ]";
 
 let unicode_map;
 
@@ -34956,13 +34956,59 @@ let multi_char_reg;
 
 const max_char_length = 3;
 
-const latin_convert = {
-  "æ": "ae",
-  "ⱥ": "a",
-  "ø": "o",
-  "⁄": "/",
-  "∕": "/"
+const latin_convert = {};
+
+const latin_condensed = {
+  "/": "⁄∕",
+  0: "߀",
+  a: "ⱥɐɑ",
+  aa: "ꜳ",
+  ae: "æǽǣ",
+  ao: "ꜵ",
+  au: "ꜷ",
+  av: "ꜹꜻ",
+  ay: "ꜽ",
+  b: "ƀɓƃ",
+  c: "ꜿƈȼↄ",
+  d: "đɗɖᴅƌꮷԁɦ",
+  e: "ɛǝᴇɇ",
+  f: "ꝼƒ",
+  g: "ǥɠꞡᵹꝿɢ",
+  h: "ħⱨⱶɥ",
+  i: "ɨı",
+  j: "ɉȷ",
+  k: "ƙⱪꝁꝃꝅꞣ",
+  l: "łƚɫⱡꝉꝇꞁɭ",
+  m: "ɱɯϻ",
+  n: "ꞥƞɲꞑᴎлԉ",
+  o: "øǿɔɵꝋꝍᴑ",
+  oe: "œ",
+  oi: "ƣ",
+  oo: "ꝏ",
+  ou: "ȣ",
+  p: "ƥᵽꝑꝓꝕρ",
+  q: "ꝗꝙɋ",
+  r: "ɍɽꝛꞧꞃ",
+  s: "ßȿꞩꞅʂ",
+  t: "ŧƭʈⱦꞇ",
+  th: "þ",
+  tz: "ꜩ",
+  u: "ʉ",
+  v: "ʋꝟʌ",
+  vy: "ꝡ",
+  w: "ⱳ",
+  y: "ƴɏỿ",
+  z: "ƶȥɀⱬꝣ",
+  hv: "ƕ"
 };
+
+for (let latin in latin_condensed) {
+  let unicode = latin_condensed[latin] || "";
+  for (let i = 0; i < unicode.length; i++) {
+    let char = unicode.substring(i, i + 1);
+    latin_convert[char] = latin;
+  }
+}
 
 const convert_pat = new RegExp(Object.keys(latin_convert).join("|") + "|" + accent_pat, "gu");
 
@@ -34973,14 +35019,12 @@ const initialize = _code_points => {
 
 const normalize = (str, form = "NFKD") => str.normalize(form);
 
-const decompose = str => {
-  if (str.match(/[\u0f71-\u0f81]/)) {
-    return toArray(str).reduce(((result, char) => result + normalize(char)), "");
-  }
-  return normalize(str);
-};
+const asciifold = str => toArray(str).reduce(((result, char) => result + _asciifold(char)), "");
 
-const asciifold = str => decompose(str).toLowerCase().replace(convert_pat, (char => latin_convert[char] || ""));
+const _asciifold = str => {
+  str = normalize(str).toLowerCase().replace(convert_pat, (char => latin_convert[char] || ""));
+  return normalize(str, "NFC");
+};
 
 function* generator(code_points) {
   for (const [code_point_min, code_point_max] of code_points) {
@@ -34994,11 +35038,6 @@ function* generator(code_points) {
         continue;
       }
       if (folded.length == 0) {
-        continue;
-      }
-      let decomposed = normalize(composed);
-      let recomposed = normalize(decomposed, "NFC");
-      if (recomposed === composed && folded === decomposed) {
         continue;
       }
       yield {
@@ -36192,7 +36231,6 @@ class TomSelect extends(MicroPlugin(MicroEvent)){
     addEvent(focus_node, "keydown", (e => self.onKeyDown(e)));
     addEvent(control_input, "keypress", (e => self.onKeyPress(e)));
     addEvent(control_input, "input", (e => self.onInput(e)));
-    addEvent(focus_node, "resize", (() => self.positionDropdown()), passive_event);
     addEvent(focus_node, "blur", (e => self.onBlur(e)));
     addEvent(focus_node, "focus", (e => self.onFocus(e)));
     addEvent(control_input, "paste", (e => self.onPaste(e)));
@@ -37586,8 +37624,8 @@ class TomSelect extends(MicroPlugin(MicroEvent)){
       return null;
     }
     html = self.settings.render[templateName].call(this, data, escape_html);
-    if (html == null) {
-      return html;
+    if (!html) {
+      return null;
     }
     html = getDom(html);
     if (templateName === "option" || templateName === "option_create") {

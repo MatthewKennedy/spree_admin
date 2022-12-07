@@ -1,5 +1,6 @@
 #menuItemImgContainer {
   width: 200px;
+
   img {
     max-width: 100%;
   }
@@ -9,10 +10,12 @@
   .space-buttons {
     box-shadow: -11px 0 16px 6px var(--bs-white);
     z-index: 9;
+
     a {
       margin: 2px;
     }
   }
+
   .container-item-row {
     overflow: hidden;
     border: 1px solid var(--bs-border-color);
@@ -49,6 +52,7 @@
     overflow: hidden;
     width: 45px;
     height: 45px;
+
     img {
       position: absolute;
       left: 50%;

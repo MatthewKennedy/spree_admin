@@ -6,7 +6,7 @@
 }
 
 .form-control {
-  &:not(:disabled):not([readonly])::file-selector-button {
+  &:not(:disabled, [readonly])::file-selector-button {
     @extend .btn-secondary;
 
     margin-top: -6px;
@@ -17,7 +17,7 @@
     background-color: var(--bs-btn-bg);
   }
 
-  &:hover:not(:disabled):not([readonly])::file-selector-button {
+  &:hover:not(:disabled, [readonly])::file-selector-button {
     @extend .btn-secondary;
 
     color: var(--bs-btn-hover-color);

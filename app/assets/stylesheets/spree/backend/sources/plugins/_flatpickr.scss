@@ -4,6 +4,7 @@
     span.cur-month:hover {
       background: transparent;
     }
+
     .numInputWrapper {
       margin-left: 3px;
       border-radius: var(--bs-border-radius);
@@ -38,9 +39,11 @@
 
   .flatpickr-time {
     border-radius: 0 0 5px 5px;
-    &:after {
+
+    &::after {
       display: none;
     }
+
     .numInputWrapper {
       span {
         border-color: transparent;

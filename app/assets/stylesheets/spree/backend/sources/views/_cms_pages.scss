@@ -19,6 +19,7 @@
   span.more {
     display: inline;
   }
+
   span.less {
     display: none;
   }
@@ -28,6 +29,7 @@
   span.more {
     display: none;
   }
+
   span.less {
     display: inline;
   }
@@ -87,7 +89,7 @@ button#cmsSectionEditorFullScreen {
       left: 0;
       z-index: 9999;
       background: var(--bs-white);
-      padding: 15px 15px 0 15px;
+      padding: 15px 15px 0;
       height: 100vh;
 
       #cmsPagesectionsArea {

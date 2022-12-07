@@ -28,12 +28,13 @@
   }
 
   .callout-info {
-    --bd-callout-bg: rgba(var(--bs-info-rgb), .075);
-    --bd-callout-border: rgba(var(--bs-info-rgb), .5);
+    --bd-callout-bg: rgb(var(--bs-info-rgb) .075);
+    --bd-callout-border: rgb(var(--bs-info-rgb) .5);
   }
 
   .card {
     --bs-card-spacer-x: 0.75rem;
+
     margin-bottom: 1rem !important;
     box-shadow: 0 0 0.3125rem #1718180d, 0 0.0625rem 0.125rem #00000026;
 
@@ -52,6 +53,7 @@
 
     &-header {
       --bs-card-cap-padding-x: var(--bs-card-spacer-x);
+
       background-color: inherit;
       border-bottom: none;
       min-height: 47px;
@@ -76,18 +78,18 @@
   .form-control,
   .form-select,
   .form-check-input {
-    color: rgba(var(--bs-input-color-rgb), 1);
-    background-color: rgba(var(--bs-input-bg-rgb), 1);
-    border-color: rgba(var(--bs-input-border-rgb), 1);
+    color: rgb(var(--bs-input-color-rgb) 1);
+    background-color: rgb(var(--bs-input-bg-rgb) 1);
+    border-color: rgb(var(--bs-input-border-rgb) 1);
 
     &:focus-visible,
     &:focus,
     &:checked,
     &:has(> div.ProseMirror:focus) {
-      color: rgba(var(--bs-input-color-rgb), 1);
-      background-color: rgba(var(--bs-input-bg-rgb), 1);
-      border-color: rgba(var(--bs-input-focus-border-rgb), 1);
-      box-shadow: inset 0 0 0 1px rgba(var(--bs-input-focus-border-rgb), 1);
+      color: rgb(var(--bs-input-color-rgb) 1);
+      background-color: rgb(var(--bs-input-bg-rgb) 1);
+      border-color: rgb(var(--bs-input-focus-border-rgb) 1);
+      box-shadow: inset 0 0 0 1px rgb(var(--bs-input-focus-border-rgb) 1);
     }
   }
 
@@ -149,15 +151,15 @@
 
     &.success,
     &.notice {
-      --bs-toast-bg: rgba(0, 0, 0, 1);
-      --bs-toast-color: rgba(255, 255, 255, 1);
-      --bs-toast-border-color: rgba(0, 0, 0, 1);
+      --bs-toast-bg: rgb(0 0 0 / 100%);
+      --bs-toast-color: rgb(255 255 255 / 100%);
+      --bs-toast-border-color: rgb(0 0 0 / 100%);
     }
 
     &.error {
-      --bs-toast-bg: rgba(var(--bs-danger-rgb), 1);
-      --bs-toast-color: rgba(var(--bs-white-rgb), 1);
-      --bs-toast-border-color: rgba(var(--bs-danger-rgb), 1);
+      --bs-toast-bg: rgb(var(--bs-danger-rgb) 1);
+      --bs-toast-color: rgb(var(--bs-white-rgb) 1);
+      --bs-toast-border-color: rgb(var(--bs-danger-rgb) 1);
     }
   }
 }

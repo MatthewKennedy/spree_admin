@@ -47,11 +47,11 @@ input::-webkit-contacts-auto-fill-button {
   .option:hover,
   .selected {
     border: none;
-    color: rgba(var(--bs-input-color-rgb), 1);
-    background-color: rgba(var(--bs-sub-bg-rgb), 1);
+    color: rgb(var(--bs-input-color-rgb) 1);
+    background-color: rgb(var(--bs-sub-bg-rgb) 1);
   }
 
-  .selected:before {
+  .selected::before {
     background-color: var(--bs-primary);
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
@@ -65,7 +65,7 @@ input::-webkit-contacts-auto-fill-button {
   }
 
   .active {
-    color: rgba(var(--bs-input-color-rgb), 1);
+    color: rgb(var(--bs-input-color-rgb) 1);
     background-color: transparent;
   }
 }

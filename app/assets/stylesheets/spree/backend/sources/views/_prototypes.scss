@@ -7,6 +7,7 @@ $color_size: 26px;
       flex-wrap: wrap;
       align-items: center;
       max-width: 350px;
+
       input {
         display: none;
       }
@@ -16,6 +17,7 @@ $color_size: 26px;
       display: flex;
       align-items: center;
       margin: 0.25rem;
+
       input {
         margin-right: 0.5rem;
       }
@@ -29,7 +31,8 @@ $color_size: 26px;
     height: $color_size;
     overflow: hidden;
     padding: 1px;
-    &:after {
+
+    &::after {
       content: '';
       display: inline-block;
       width: 100%;
