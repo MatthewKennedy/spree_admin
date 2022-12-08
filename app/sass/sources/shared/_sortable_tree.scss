@@ -1,4 +1,4 @@
-#menuItemImgContainer {
+#item-img-container {
   width: 200px;
 
   img {
@@ -6,7 +6,7 @@
   }
 }
 
-#menuArea {
+#sortable-tree-area {
   .space-buttons {
     box-shadow: -11px 0 16px 6px var(--bs-white);
     z-index: 9;
@@ -16,25 +16,26 @@
     }
   }
 
-  .container-item-row {
+  .sortable-tree-item-row {
     overflow: hidden;
     border: 1px solid var(--bs-border-color);
     margin: 2px;
     background-color: var(--bs-white);
+    min-height: 55px;
   }
 
-  .menu-container-item {
+  .sortable-tree-item {
     border: solid 1px transparent;
     padding: 0;
     background-color: var(--light);
 
-    .menu-container {
+    [data-sortable-tree-parent-id-value] {
       margin-left: 25px;
       background-color: var(--light);
     }
 
     @include media-breakpoint-up(sm) {
-      .menu-container {
+      [data-sortable-tree-parent-id-value] {
         margin-left: 50px;
       }
     }
@@ -45,7 +46,7 @@
     border-radius: 5px;
   }
 
-  .menu_items_image_holder {
+  .item-image-holder {
     position: relative;
     border: 1px solid var(--bs-border-color);
     border-radius: 7px;

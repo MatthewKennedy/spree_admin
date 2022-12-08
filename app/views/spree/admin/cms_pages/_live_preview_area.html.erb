@@ -1,10 +1,10 @@
  <div class="row">
-    <div id="pageSectionsArea" class="col-12" style="min-height: 750px;">
+    <div id="page-sections-area" class="col-12" style="min-height: 750px;">
       <div class="row g-0 h-100">
-        <div id="draggableSectionsHolder" class="col-12 col-md-3 bg-light h-100">
+        <div id="draggable-sections-holder" class="col-12 col-md-3 bg-light h-100">
 
           <% if @cms_page.cms_sections.any? %>
-            <div id="cmsPagesectionsArea"
+            <div id="cms-page-sections-area"
                  class="card-body row m-0 p-1 g-0"
                  data-controller="sortable"
                  data-sortable-resource-name-value="cms_section"
@@ -26,7 +26,7 @@
         </div>
 
         <div class="d-none d-md-block col bg-secondary overflow-hidden h-100">
-          <div id="liveViewCont" class="desktopLiveView">
+          <div id="live-view-content" class="desktop-live-view">
             <div class="embed-responsive embed-responsive-4by3">
                <%= render 'iframe_content' %>
             </div>

@@ -1,3 +1,5 @@
+/* stylelint-disable selector-class-pattern */
+
 .dropdown-input-wrap {
   position: relative;
   overflow: hidden;
@@ -31,8 +33,8 @@ input::-webkit-contacts-auto-fill-button {
   .option:hover,
   .selected {
     border: none;
-    color: rgb(var(--bs-input-color-rgb) 1);
-    background-color: rgb(var(--bs-sub-bg-rgb) 1);
+    color: rgb(var(--bs-input-color-rgb));
+    background-color: rgb(var(--bs-sub-bg-rgb));
   }
 
   .selected::before {
@@ -49,7 +51,7 @@ input::-webkit-contacts-auto-fill-button {
   }
 
   .active {
-    color: rgb(var(--bs-input-color-rgb) 1);
+    color: rgb(var(--bs-input-color-rgb));
     background-color: transparent;
   }
 }

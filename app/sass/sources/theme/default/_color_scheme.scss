@@ -261,18 +261,18 @@
   ///////////////////////////
   // BS RGB COLOR MAPPIING //
   ///////////////////////////
-  --bs-black: rgb(var(--bs-black-rgb) 1);
-  --bs-body-color: rgb(var(--bs-body-color-rgb) 1);
-  --bs-body-bg: rgb(var(--bs-body-bg-rgb) 1);
-  --bs-danger: rgb(var(--bs-danger-rgb) 1);
-  --bs-dark: rgb(var(--bs-dark-rgb) 1);
-  --bs-info: rgb(var(--bs-info-rgb) 1);
-  --bs-light: rgb(var(--bs-light-rgb) 1);
-  --bs-primary: rgb(var(--bs-primary-rgb) 1);
-  --bs-secondary: rgb(var(--bs-secondary-rgb) 1);
-  --bs-success: rgb(var(--bs-success-rgb) 1);
-  --bs-warning: rgb(var(--bs-warning-rgb) 1);
-  --bs-white: rgb(var(--bs-white-rgb) 1);
+  --bs-black: rgb(var(--bs-black-rgb));
+  --bs-body-color: rgb(var(--bs-body-color-rgb));
+  --bs-body-bg: rgb(var(--bs-body-bg-rgb));
+  --bs-danger: rgb(var(--bs-danger-rgb));
+  --bs-dark: rgb(var(--bs-dark-rgb));
+  --bs-info: rgb(var(--bs-info-rgb));
+  --bs-light: rgb(var(--bs-light-rgb));
+  --bs-primary: rgb(var(--bs-primary-rgb));
+  --bs-secondary: rgb(var(--bs-secondary-rgb));
+  --bs-success: rgb(var(--bs-success-rgb));
+  --bs-warning: rgb(var(--bs-warning-rgb));
+  --bs-white: rgb(var(--bs-white-rgb));
 
   // Sub Colors, used for Cards and Inputs
   --bs-sub-bg-rgb: 34, 39, 46;
@@ -280,7 +280,7 @@
   --bs-sub-color-rgb: 34, 39, 46;
 
   // Links
-  --bs-link-color: rgb(var(--bs-primary-rgb) 1);
+  --bs-link-color: rgb(var(--bs-primary-rgb));
   --bs-link-hover-color: rgb(var(--bs-primary-rgb) .85);
 
   // Input
@@ -295,16 +295,16 @@
   //////////////////////////////////
 
   // Logo
-  --sa-logo: rgb(var(--bs-brand-rgb) 1);
+  --sa-logo: rgb(var(--bs-brand-rgb));
 
   // Top Nav Bar
-  --sa-navbar-bg: rgb(var(--bs-body-bg-rgb) 1);
+  --sa-navbar-bg: rgb(var(--bs-body-bg-rgb));
   --sa-navbar-box-shadow: 0 2px 2px -2px rgb(34 47 62 / 10%), 0 8px 8px -4px rgb(34 47 62 / 7%);
 
   // Main Menu
-  --sa-sidebar-bg: rgb(var(--bs-body-bg-rgb) 1);
+  --sa-sidebar-bg: rgb(var(--bs-body-bg-rgb));
   --sa-sidebar-link-color: var(--bs-gray-600);
-  --sa-sidebar-selected-link-color: rgb(var(--bs-primary-rgb) 1);
+  --sa-sidebar-selected-link-color: rgb(var(--bs-primary-rgb));
   --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb) .04);
 }
 

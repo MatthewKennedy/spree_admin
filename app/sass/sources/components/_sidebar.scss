@@ -2,15 +2,15 @@ aside#main-sidebar {
   overflow-y: auto;
   background: var(--sa-sidebar-bg) !important;
 
-  #navHeader {
+  #nav-header {
     z-index: 1042;
   }
 
-  #navFooter {
+  #nav-footer {
     height: var(--nav-bar-height);
   }
 
-  #carouselMainNavigation {
+  #carousel-main-navigation {
     margin-bottom: var(--nav-bar-height);
     margin-top: 100px;
   }

@@ -6,8 +6,6 @@
 
   "rules": {
     "scss/at-extend-no-missing-placeholder": null,
-    "selector-class-pattern": null,
-    "selector-id-pattern": null,
-    "keyframes-name-pattern": null
+    "color-function-notation": null
   }
 }

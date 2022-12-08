@@ -49,7 +49,7 @@ module Spree
           css_classes << "form-group form-floating"
         end
 
-        css_classes << "withError" if error_message_on(model, method).present?
+        css_classes << "with-error" if error_message_on(model, method).present?
         content_tag(
           :div, capture(&block),
           options.merge(class: css_classes.join(" "), id: "#{model}_#{method}_field")
@@ -59,7 +59,7 @@ module Spree
       def checkbox_container(model, method, options = {}, &block)
         css_classes = options[:class].to_a
         css_classes << "form-check"
-        css_classes << "withError" if error_message_on(model, method).present?
+        css_classes << "with-error" if error_message_on(model, method).present?
         content_tag(
           :div, capture(&block),
           options.merge(class: css_classes.join(" "), id: "#{model}_#{method}_field")
@@ -128,7 +128,7 @@ module Spree
 
         if obj && obj.errors[method].present?
           errors = safe_join(obj.errors[method], "<br />".html_safe)
-          content_tag(:span, errors, class: "formError")
+          content_tag(:span, errors, class: "form-error")
         else
           ""
         end

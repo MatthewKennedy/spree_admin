@@ -3,6 +3,7 @@ body {
 }
 
 turbo-frame[complete] {
+  /* stylelint-disable-next-line selector-class-pattern */
   .turbo_frame_loading_placeholder {
     display: none;
   }
@@ -27,7 +28,7 @@ turbo-frame[complete] {
   height: 36px;
 }
 
-#mobileButtons {
+#mobile-buttons {
   z-index: 1000;
 }
 
@@ -105,7 +106,7 @@ turbo-frame[complete] {
   animation-fill-mode: both;
 }
 
-dialog#customTurboConfirm {
+dialog#custom-turbo-confirm {
   background-clip: padding-box;
   border: var(--bs-border-width) solid var(--bs-border-color);
   border-radius: var(--bs-border-radius);

@@ -3,7 +3,7 @@
 <% search_url ||= nil %>
 <% show_search = true if (!search_record.nil? && !search_placeholder.nil?) %>
 
-<div class="card no_shadow_if_nested" style="padding-bottom: 55px;">
+<div class="card no-shadow" style="padding-bottom: 55px;">
   <%= render partial: 'spree/admin/shared/index_table_filters', locals: {show_search: show_search, search_record: search_record, search_placeholder: search_placeholder, search_url:  search_url} %>
 
   <%= turbo_frame_tag :index_table, target: :_top do %>
