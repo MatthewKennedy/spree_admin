@@ -9,7 +9,7 @@ import pkg from './package.json'
 
 export default [
   { // CSS
-    input: './postcss_styles.js',
+    input: './app/sass/entrypoints/main.scss',
     output: [{ file: './app/assets/stylesheets/spree/backend/spree_admin.css' }],
     plugins: [
       postcss({

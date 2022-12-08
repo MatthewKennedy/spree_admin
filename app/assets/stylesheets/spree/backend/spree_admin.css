@@ -17474,11 +17474,11 @@ div.digital-container .delete-digital-icon-container svg {
   align-self: center;
 }
 
-div.previous_cards ul li {
+div.previous-cards ul li {
   list-style: none;
   margin: 5px 0;
 }
-div.previous_cards ul li input {
+div.previous-cards ul li input {
   margin-right: 10px;
 }
 
@@ -17519,6 +17519,7 @@ div.previous_cards ul li input {
   border-color: var(--bs-gray-800);
 }
 
+/* stylelint-disable selector-class-pattern */
 :root body.admin {
   --nav-bar-height: 54px;
   --bs-border-radius: 3px;
@@ -17955,6 +17956,9 @@ div.previous_cards ul li input {
   }
 }
 @media (prefers-color-scheme: dark) {
+  :root body.admin {
+    /* stylelint-disable-next-line selector-class-pattern */
+  }
   :root body.admin .accordion {
     --bs-accordion-color: rgb(var(--bs-body-color-rgb));
     --bs-accordion-bg: rgb(var(--bs-body-bg-rgb));
