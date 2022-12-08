@@ -5,10 +5,11 @@
 
 # Spree Admin
 
-A fresh take on an Admin UI for Spree, this is currently intended to be experimental and should not be used for production Spree applications.
+A fresh take on an Admin UI for Spree, this is currently intended to be highly experimental and should not be used for production.
 
-Spree Admin is free of legacy dependencies and constraints. The goal is to speed up development and find new intuitive ways of using Spree Admin while
-completely modernizing the tech stack and user experience.
+
+Spree Admin is free of legacy dependencies and constraints, the goal is to speed up development and find new intuitive ways of using Spree Admin while
+completely modernizing the tech stack for the developers happiness.
 
 
 ## Benefits
@@ -21,7 +22,7 @@ completely modernizing the tech stack and user experience.
 
 ## Installation
 
-Starting with a freshly generated Rails 7 app, add the following gems to your Gemfile:
+Starting with a freshly generated Rails 7 app running Propshaft, add the following gems to your Gemfile:
 
 ```ruby
 # USE THESE FOR NOW...
@@ -54,24 +55,9 @@ And then create a new file in `app/javascript` called `spree_admin.js` and then 
 ## The Tech Stack
 
 - All ES6 Vanilla JavaScript.
-- CSS and images all set for Rails Propshaft
+- CSS and images all set for Rails Propshaft.
 - Uses the Rails Hotwire ecosystem where possible.
-- Bootstrap 5
-
-
-## Development strategy for JavaScript & CSS
-
-The idea is to utilize as much of the Rails Hotwire ecosystem as possible while adding as little custom JavaScript
-and relying on as few external JavaScript libraries as possible (as hard as this may be).
-Try to build out from Stimulus controller where you can, Stimulus automatically listen to DOM changes
-from Turbo getting you a lot for free.
-
-When it comes to the CSS try to write as little CSS as you can, if there is an existing Bootstrap utility class or component, use it, also try to
-use CSS variables where ever possible, avoid using SASS variables, doing this will result in a UI that is more adaptive at runtime.
-
-Why Bootstrap when everyone is using Tailwind CSS? I hear you cry. Well this may change, but Tailwind is only a viable option when compiled to remove any unused CSS in production,
-this might create problems for extensions that want to use any Tailwind utilities that have not been used in the main Spree Admin, more consideration is needed.
-
+- Bootstrap 5.
 
 ### Run in Dev Mode
 
@@ -102,12 +88,3 @@ bundle exec rspec spec/features/admin/users_spec.rb
 ```bash
 brew install chromedriver
 ```
-
-
-## ToDo
-
-- [x] Add dark mode
-- [x] Tidy up CSS
-- [x] Fix Discount Codes
-- [ ] Fix Order Workflow
-- [x] Fix Flash Notice
