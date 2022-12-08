@@ -7,29 +7,28 @@ import postcssnesting from 'postcss-nesting'
 import stylelint from 'stylelint'
 import pkg from './package.json'
 
-const postCssOptions = {
-  minimize: false,
-  modules: false,
-  extract: true,
-  config: {
-    plugins: [
-      postcssnesting,
-      autoprefixer,
-      stylelint
-    ]
-  }
-}
-
 export default [
   { // CSS
     input: './postcss_styles.js',
     output: [{ file: './app/assets/stylesheets/spree/backend/spree_admin.css' }],
     plugins: [
-      postcss(postCssOptions)
+      postcss({
+        minimize: true,
+        modules: false,
+        extract: true,
+        config: {
+          plugins: [
+            postcssnesting,
+            autoprefixer,
+            stylelint
+          ]
+        }
+      })
     ]
   },
 
-  { // JavaScript
+  // JavaScript
+  {
     input: pkg.module,
     output: {
       file: pkg.gem,

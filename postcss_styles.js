@@ -1,2 +1,2 @@
 // Import SCSS for Post CSS build.
-import './app/assets/stylesheets/spree/backend/entrypoints/main.scss'
+import './app/scss/entrypoints/main.scss'
