@@ -114,11 +114,11 @@
     // Converting RGB values colors where appropriate
     // Borders
     --bs-border-color: rgb(var(--bs-secondary-rgb));
-    --bs-border-color-translucent: rgb(var(--bs-black-rgb) .175%);
+    --bs-border-color-translucent: rgb(var(--bs-black-rgb), .175);
 
     // Links
     --bs-link-color: rgb(var(--bs-primary-rgb));
-    --bs-link-hover-color: rgb(var(--bs-primary-rgb) .85%);
+    --bs-link-hover-color: rgb(var(--bs-primary-rgb), .85);
 
     // Input
     --bs-input-bg-rgb: var(--bs-body-bg-rgb);
@@ -141,6 +141,6 @@
     --sa-sidebar-bg: rgb(var(--bs-body-bg-rgb));
     --sa-sidebar-link-color: var(--bs-gray-600);
     --sa-sidebar-selected-link-color: rgb(var(--bs-primary-rgb));
-    --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb) .04%);
+    --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb), .04);
   }
 }

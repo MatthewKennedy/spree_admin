@@ -17894,9 +17894,9 @@ div.previous-cards ul li input {
     --bs-sub-border-rgb: 68, 76, 86;
     --bs-sub-color-rgb: 34, 39, 46;
     --bs-border-color: rgb(var(--bs-secondary-rgb));
-    --bs-border-color-translucent: rgb(var(--bs-black-rgb) .175%);
+    --bs-border-color-translucent: rgb(var(--bs-black-rgb), .175);
     --bs-link-color: rgb(var(--bs-primary-rgb));
-    --bs-link-hover-color: rgb(var(--bs-primary-rgb) .85%);
+    --bs-link-hover-color: rgb(var(--bs-primary-rgb), .85);
     --bs-input-bg-rgb: var(--bs-body-bg-rgb);
     --bs-input-border-rgb: var(--bs-sub-border-rgb);
     --bs-input-color-rgb: var(--bs-body-color-rgb);
@@ -17907,7 +17907,7 @@ div.previous-cards ul li input {
     --sa-sidebar-bg: rgb(var(--bs-body-bg-rgb));
     --sa-sidebar-link-color: var(--bs-gray-600);
     --sa-sidebar-selected-link-color: rgb(var(--bs-primary-rgb));
-    --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb) .04%);
+    --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb), .04);
   }
   :root body.admin .rgb-hsl-primary, :root body.admin .btn-primary {
     --label-r: 83;
