@@ -27,6 +27,6 @@ Gem::Specification.new do |s|
   s.add_dependency "inline_svg"
   s.add_dependency "pagy"
   s.add_dependency "responders"
-  s.add_dependency "spree", ">= 4.4.0"
+  s.add_dependency "spree", ">= 4.5.0"
   s.add_dependency "turbo-rails"
 end
