@@ -5,7 +5,6 @@
   ],
 
   "rules": {
-    "scss/at-extend-no-missing-placeholder": null,
-    "selector-class-pattern": null
+    "scss/at-extend-no-missing-placeholder": null
   }
 }

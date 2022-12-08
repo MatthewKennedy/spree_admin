@@ -5,9 +5,9 @@
 .form-group {
   margin-bottom: 1rem;
 
-  &.withError {
+  &.with-error {
     label,
-    .formError,
+    .form-error,
     .required {
       color: var(--bs-danger);
     }

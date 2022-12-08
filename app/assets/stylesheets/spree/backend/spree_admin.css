@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable keyframes-name-pattern */
 @keyframes fadeOutDownAlert {
   from {
     opacity: 1;
@@ -16677,6 +16679,7 @@ table.table:last-child {
   margin-bottom: 0;
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .sort_link {
   text-decoration: none;
 }
@@ -16800,6 +16803,7 @@ g-table {
   padding: 1rem;
 }
 
+/* stylelint-disable selector-class-pattern */
 .flatpickr-calendar .flatpickr-current-month span.cur-month:hover {
   background: transparent;
 }
@@ -16839,6 +16843,7 @@ g-table {
   border-radius: 0;
 }
 
+/* stylelint-disable selector-class-pattern */
 .dropdown-input-wrap {
   position: relative;
   overflow: hidden;
@@ -16946,6 +16951,7 @@ input::-webkit-contacts-auto-fill-button {
   opacity: 0.3;
 }
 
+/* stylelint-disable selector-class-pattern */
 [data-controller=tiptap--editor] {
   display: flex;
   flex-direction: column;
@@ -17011,6 +17017,9 @@ body {
   margin: 0;
 }
 
+turbo-frame[complete] {
+  /* stylelint-disable-next-line selector-class-pattern */
+}
 turbo-frame[complete] .turbo_frame_loading_placeholder {
   display: none;
 }
@@ -17182,9 +17191,9 @@ sa-card sa-footer {
 .form-group {
   margin-bottom: 1rem;
 }
-.form-group.withError label,
-.form-group.withError .formError,
-.form-group.withError .required {
+.form-group.with-error label,
+.form-group.with-error .form-error,
+.form-group.with-error .required {
   color: var(--bs-danger);
 }
 
@@ -17251,7 +17260,7 @@ input::-webkit-inner-spin-button {
   border: 1px dashed var(--gray);
   border-radius: 5px;
 }
-#sortable-tree-area .item_image_holder {
+#sortable-tree-area .item-image-holder {
   position: relative;
   border: 1px solid var(--bs-border-color);
   border-radius: 7px;
@@ -17259,7 +17268,7 @@ input::-webkit-inner-spin-button {
   width: 45px;
   height: 45px;
 }
-#sortable-tree-area .item_image_holder img {
+#sortable-tree-area .item-image-holder img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -17306,7 +17315,7 @@ input::-webkit-inner-spin-button {
   border: 1px dashed var(--gray);
   border-radius: 5px;
 }
-#menu-area .menu_items_image_holder {
+#menu-area .menu-items-image-holder {
   position: relative;
   border: 1px solid var(--bs-border-color);
   border-radius: 7px;
@@ -17314,7 +17323,7 @@ input::-webkit-inner-spin-button {
   width: 45px;
   height: 45px;
 }
-#menu-area .menu_items_image_holder img {
+#menu-area .menu-items-image-holder img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -17408,7 +17417,7 @@ button#cms-section-editor-full-screen.active span.exit {
   background: var(--bs-gray-800);
 }
 
-.desktopLiveView #page-live-preview {
+.desktop-live-view #page-live-preview {
   width: 200.5%;
   height: 200.5%;
   inset: 50%;
@@ -17416,7 +17425,7 @@ button#cms-section-editor-full-screen.active span.exit {
   max-width: 2600px;
 }
 
-.tabletLiveView #page-live-preview {
+.tablet-live-view #page-live-preview {
   width: 85%;
   height: 133.5%;
   inset: 50%;
@@ -17425,7 +17434,7 @@ button#cms-section-editor-full-screen.active span.exit {
   min-width: 768px;
 }
 
-.mobileLiveView #page-live-preview {
+.mobile-live-view #page-live-preview {
   width: 60%;
   height: 133.5%;
   inset: 50%;
@@ -17490,7 +17499,7 @@ div.previous_cards ul li input {
 .product-prototype-options .option-type-values li input {
   margin-right: 0.5rem;
 }
-.product-prototype-options .option-value__color {
+.product-prototype-options .option-value-color {
   border-radius: 50%;
   border: 2px solid var(--bs-gray-300);
   width: 26px;
@@ -17498,7 +17507,7 @@ div.previous_cards ul li input {
   overflow: hidden;
   padding: 1px;
 }
-.product-prototype-options .option-value__color::after {
+.product-prototype-options .option-value-color::after {
   content: "";
   display: inline-block;
   width: 100%;
@@ -17506,7 +17515,7 @@ div.previous_cards ul li input {
   background-color: var(--presentation);
   border-radius: 50%;
 }
-.product-prototype-options input:checked + .option-value__color {
+.product-prototype-options input:checked + .option-value-color {
   border-color: var(--bs-gray-800);
 }
 
@@ -17542,7 +17551,7 @@ div.previous_cards ul li input {
   margin-bottom: 1rem !important;
   box-shadow: 0 0 0.3125rem rgba(23, 24, 24, 0.0509803922), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.1490196078);
 }
-:root body.admin .card .no_shadow_if_nested, :root body.admin sa-card .no_shadow_if_nested {
+:root body.admin .card .no-shadow, :root body.admin sa-card .no-shadow {
   box-shadow: none !important;
 }
 :root body.admin .card-body, :root body.admin sa-card sa-body, :root sa-card body.admin sa-body {

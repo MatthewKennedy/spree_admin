@@ -42,6 +42,7 @@
       }
     }
 
+    /* stylelint-disable-next-line selector-class-pattern */
     .plugin-dropdown_input.focus .ts-dropdown .dropdown-input {
       color: rgb(var(--bs-input-color-rgb));
       border-color: rgb(var(--bs-input-focus-border-rgb));

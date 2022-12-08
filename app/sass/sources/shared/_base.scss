@@ -3,6 +3,7 @@ body {
 }
 
 turbo-frame[complete] {
+  /* stylelint-disable-next-line selector-class-pattern */
   .turbo_frame_loading_placeholder {
     display: none;
   }
