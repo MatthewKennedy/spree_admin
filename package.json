@@ -82,7 +82,7 @@
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "lint": "standard app/javascript",
-    "stylelint": "stylelint app/scss/**/*.scss"
+    "stylelint": "stylelint app/sass/**/**/*.scss"
   },
   "standard": {
     "globals": [

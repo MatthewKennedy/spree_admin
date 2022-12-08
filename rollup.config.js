@@ -13,7 +13,7 @@ export default [
     output: [{ file: './app/assets/stylesheets/spree/backend/spree_admin.css' }],
     plugins: [
       postcss({
-        minimize: true,
+        minimize: false,
         modules: false,
         extract: true,
         config: {

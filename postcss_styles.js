@@ -1,2 +1,2 @@
 // Import SCSS for Post CSS build.
-import './app/scss/entrypoints/main.scss'
+import './app/sass/entrypoints/main.scss'
