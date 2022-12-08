@@ -9,10 +9,10 @@ import pkg from './package.json'
 export default [
   { // CSS
     input: './app/sass/main.scss',
-    output: [{ file: './app/assets/stylesheets/spree/backend/spree_admin.css' }],
+    output: [{ file: './app/assets/stylesheets/spree/backend/spree_admin.min.css' }],
     plugins: [
       postcss({
-        minimize: false,
+        minimize: true,
         modules: false,
         extract: true,
         config: {
