@@ -20,7 +20,7 @@
        data-bs-instance-class-value='Offcanvas'
        data-bs-instance-method-value='hide'>
 
-  <div id="navHeader" class="p-2 position-absolute top-0 w-100">
+  <div id="nav-header" class="p-2 position-absolute top-0 w-100">
     <div class="d-flex align-items-center">
       <div class="flex-fill spree-logo" style="height: 40px;">
         <%= link_to spree.admin_path do %>
@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div id="carouselMainNavigation" class="carousel slide overflow-scroll" data-bs-ride="false">
+  <div id="carousel-main-navigation" class="carousel slide overflow-scroll" data-bs-ride="false">
     <div class="carousel-inner">
       <div class="carousel-item <%= "active" if settings_menu_active? %>">
         <nav class="pb-3 pt-lg-3 px-1">
@@ -72,16 +72,16 @@
     </div>
   </div>
 
-  <div id="navFooter" class="d-flex bottom-0 position-absolute w-100 justify-content-center btn-group rounded-0">
-    <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="0" class="btn btn-secondary p-2 rounded-0 <%= "active" if settings_menu_active? %>" aria-current="true" aria-label="Settings">
+  <div id="nav-footer" class="d-flex bottom-0 position-absolute w-100 justify-content-center btn-group rounded-0">
+    <button type="button" data-bs-target="#carousel-main-navigation" data-bs-slide-to="0" class="btn btn-secondary p-2 rounded-0 <%= "active" if settings_menu_active? %>" aria-current="true" aria-label="Settings">
       <%= spree_admin_svg_tag "gear.svg", size: '16px * 16px', class: 'p-0 m-0' %>
     </button>
     <% if try_spree_current_user %>
-      <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="1" class="btn btn-secondary p-2 rounded-0 <%= "active" if accounts_menu_active? %>" aria-label="Account">
+      <button type="button" data-bs-target="#carousel-main-navigation" data-bs-slide-to="1" class="btn btn-secondary p-2 rounded-0 <%= "active" if accounts_menu_active? %>" aria-label="Account">
         <%= spree_admin_svg_tag "person-square.svg", size: '16px * 16px', class: 'p-0 m-0' %>
       </button>
     <% end %>
-    <button type="button" data-bs-target="#carouselMainNavigation" data-bs-slide-to="2" class="btn btn-secondary p-2 rounded-0 <%= "active" if main_menu_active? %>" aria-label="Main Menu">
+    <button type="button" data-bs-target="#carousel-main-navigation" data-bs-slide-to="2" class="btn btn-secondary p-2 rounded-0 <%= "active" if main_menu_active? %>" aria-label="Main Menu">
       <%= spree_admin_svg_tag "list.svg", size: '16px * 16px', class: 'p-0 m-0' %>
     </button>
   </div>

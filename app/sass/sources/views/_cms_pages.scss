@@ -1,10 +1,10 @@
-#ImageGalleryLayout {
-  #LayoutType {
+#image-gallery-layout {
+  #layout-type {
     color: var(--bs-gray);
   }
 }
 
-#standardPage {
+#standard-page {
   .sp-pb-0 {
     padding-bottom: 0 !important;
   }
@@ -35,7 +35,7 @@
   }
 }
 
-button#cmsSectionEditorFullScreen {
+button#cms-section-editor-full-screen {
   span.exit {
     display: none;
   }
@@ -47,7 +47,7 @@ button#cmsSectionEditorFullScreen {
   }
 }
 
-#liveViewCont {
+#live-view-content {
   height: 100%;
 
   .embed-responsive {
@@ -55,11 +55,11 @@ button#cmsSectionEditorFullScreen {
   }
 }
 
-#draggableSectionsHolder {
+#draggable-sections-holder {
   max-height: 750px;
 }
 
-#cmsPagesectionsArea {
+#cms-page-sections-area {
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 100%;
@@ -83,7 +83,7 @@ button#cmsSectionEditorFullScreen {
       display: none;
     }
 
-    #pageSectionsArea {
+    #page-sections-area {
       position: fixed;
       top: 0;
       left: 0;
@@ -92,7 +92,7 @@ button#cmsSectionEditorFullScreen {
       padding: 15px 15px 0;
       height: 100vh;
 
-      #cmsPagesectionsArea {
+      #cms-page-sections-area {
         max-height: 90vh;
       }
 
@@ -101,19 +101,19 @@ button#cmsSectionEditorFullScreen {
       }
     }
 
-    #draggableSectionsHolder {
+    #draggable-sections-holder {
       max-width: 350px;
     }
   }
 }
 
-#pageLivePreview {
+#page-live-preview {
   // transform-origin: top left; FIX MK
   background: var(--bs-gray-800);
 }
 
 .desktopLiveView {
-  #pageLivePreview {
+  #page-live-preview {
     width: 200.5%;
     height: 200.5%;
     inset: 50%;
@@ -123,7 +123,7 @@ button#cmsSectionEditorFullScreen {
 }
 
 .tabletLiveView {
-  #pageLivePreview {
+  #page-live-preview {
     width: 85%;
     height: 133.5%;
     inset: 50%;
@@ -134,7 +134,7 @@ button#cmsSectionEditorFullScreen {
 }
 
 .mobileLiveView {
-  #pageLivePreview {
+  #page-live-preview {
     width: 60%;
     height: 133.5%;
     inset: 50%;

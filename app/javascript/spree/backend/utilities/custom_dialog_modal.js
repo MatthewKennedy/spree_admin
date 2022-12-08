@@ -1,5 +1,5 @@
 Turbo.setConfirmMethod((message, element) => {
-  const dialog = document.getElementById('customTurboConfirm')
+  const dialog = document.getElementById('custom-turbo-confirm')
   dialog.querySelector('p').textContent = message
   dialog.showModal()
 

@@ -4164,7 +4164,7 @@
     var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
     var offset = within(min, center, max);
     var axisProp = axis;
-    state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset, 
+    state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset,
     _state$modifiersData$.centerOffset = offset - center, _state$modifiersData$);
   }
   function effect$1(_ref2) {
@@ -4268,11 +4268,11 @@
     y = _ref4.y;
     if (gpuAcceleration) {
       var _Object$assign;
-      return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "", 
-      _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", 
+      return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "",
+      _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)",
       _Object$assign));
     }
-    return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : "", 
+    return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : "",
     _Object$assign2[sideX] = hasX ? x + "px" : "", _Object$assign2.transform = "", _Object$assign2));
   }
   function computeStyles(_ref5) {
@@ -12993,7 +12993,7 @@
       for (dayNumber = 1; dayNumber <= daysInMonth; dayNumber++, dayIndex++) {
         days.appendChild(createDay("", new Date(year, month, dayNumber), dayNumber, dayIndex));
       }
-      for (let dayNum = daysInMonth + 1; dayNum <= 42 - firstOfMonth && (self.config.showMonths === 1 || dayIndex % 7 !== 0); dayNum++, 
+      for (let dayNum = daysInMonth + 1; dayNum <= 42 - firstOfMonth && (self.config.showMonths === 1 || dayIndex % 7 !== 0); dayNum++,
       dayIndex++) {
         days.appendChild(createDay(nextMonthDayClass, new Date(year, month + 1, dayNum % daysInMonth), dayNum, dayIndex));
       }
@@ -14794,13 +14794,13 @@
       setTimeout((() => this.elementTarget.remove()), this.durationValue);
     }
   }
-  /**! 
-   * hotkeys-js v3.10.1 
-   * A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies. 
-   * 
-   * Copyright (c) 2022 kenny wong <wowohoo@qq.com> 
-   * http://jaywcjlove.github.io/hotkeys 
-   * Licensed under the MIT license 
+  /**!
+   * hotkeys-js v3.10.1
+   * A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies.
+   *
+   * Copyright (c) 2022 kenny wong <wowohoo@qq.com>
+   * http://jaywcjlove.github.io/hotkeys
+   * Licensed under the MIT license
    */  var isff = typeof navigator !== "undefined" ? navigator.userAgent.toLowerCase().indexOf("firefox") > 0 : false;
   function addEvent$1(object, event, method, useCapture) {
     if (object.addEventListener) {
@@ -19709,7 +19709,7 @@
       this.cached = Object.create(null);
       let instanceSpec = this.spec = {};
       for (let prop in spec) instanceSpec[prop] = spec[prop];
-      instanceSpec.nodes = OrderedMap.from(spec.nodes), instanceSpec.marks = OrderedMap.from(spec.marks || {}), 
+      instanceSpec.nodes = OrderedMap.from(spec.nodes), instanceSpec.marks = OrderedMap.from(spec.marks || {}),
       this.nodes = NodeType$1.compile(this.spec.nodes, this);
       this.marks = MarkType.compile(this.spec.marks, this);
       let contentExprCache = Object.create(null);
@@ -20090,7 +20090,7 @@
     }
     addAll(parent, startIndex, endIndex) {
       let index = startIndex || 0;
-      for (let dom = startIndex ? parent.childNodes[startIndex] : parent.firstChild, end = endIndex == null ? null : parent.childNodes[endIndex]; dom != end; dom = dom.nextSibling, 
+      for (let dom = startIndex ? parent.childNodes[startIndex] : parent.firstChild, end = endIndex == null ? null : parent.childNodes[endIndex]; dom != end; dom = dom.nextSibling,
       ++index) {
         this.findAtPoint(parent, index);
         this.addDOM(dom);
@@ -22492,7 +22492,7 @@
   function findOffsetInNode(node, coords) {
     let closest, dxClosest = 2e8, coordsClosest, offset = 0;
     let rowBot = coords.top, rowTop = coords.top;
-    for (let child = node.firstChild, childIndex = 0; child; child = child.nextSibling, 
+    for (let child = node.firstChild, childIndex = 0; child; child = child.nextSibling,
     childIndex++) {
       let rects;
       if (child.nodeType == 1) rects = child.getClientRects(); else if (child.nodeType == 3) rects = textRange(child).getClientRects(); else continue;
@@ -24356,9 +24356,9 @@
       slice = Slice.maxOpen(normalizeSiblings(slice.content, $context), true);
       if (slice.openStart || slice.openEnd) {
         let openStart = 0, openEnd = 0;
-        for (let node = slice.content.firstChild; openStart < slice.openStart && !node.type.spec.isolating; openStart++, 
+        for (let node = slice.content.firstChild; openStart < slice.openStart && !node.type.spec.isolating; openStart++,
         node = node.firstChild) {}
-        for (let node = slice.content.lastChild; openEnd < slice.openEnd && !node.type.spec.isolating; openEnd++, 
+        for (let node = slice.content.lastChild; openEnd < slice.openEnd && !node.type.spec.isolating; openEnd++,
         node = node.lastChild) {}
         slice = closeSlice(slice, openStart, openEnd);
       }
@@ -37007,7 +37007,7 @@
     }
   }));
   Turbo.setConfirmMethod(((message, element) => {
-    const dialog = document.getElementById("customTurboConfirm");
+    const dialog = document.getElementById("custom-turbo-confirm");
     dialog.querySelector("p").textContent = message;
     dialog.showModal();
     return new Promise(((resolve, reject) => {

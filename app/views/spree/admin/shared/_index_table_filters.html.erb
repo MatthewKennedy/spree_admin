@@ -1,6 +1,6 @@
 <% if content_for?(:index_table_filter_tabs) %>
   <div class="border-bottom overflow-hidden">
-    <div id="filterButtonTabs" class="btn-group with-active-indicator-bar at-the-bottom">
+    <div id="filter-button-tabs" class="btn-group with-active-indicator-bar at-the-bottom">
       <%= yield :index_table_filter_tabs %>
     </div>
   </div>
@@ -8,7 +8,7 @@
 
 <% if content_for?(:index_table_filter_buttons) || (show_search) %>
   <div class="p-2" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="row" id="additionalFilterControls">
+    <div class="row" id="additional-filter-controls">
       <% if search_record.present? && search_placeholder.present? %>
         <div class="col-12 col-sm">
          <%= search_form_for [:admin, @search], url: search_url, data: {controller: "form--autosave", turbo_frame: :index_table} do |f| %>
