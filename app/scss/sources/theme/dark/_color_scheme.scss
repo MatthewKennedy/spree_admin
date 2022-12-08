@@ -113,12 +113,12 @@
 
     // Converting RGB values colors where appropriate
     // Borders
-    --bs-border-color: rgb(var(--bs-secondary-rgb) 1);
-    --bs-border-color-translucent: rgb(var(--bs-black-rgb) 0.175);
+    --bs-border-color: rgb(var(--bs-secondary-rgb));
+    --bs-border-color-translucent: rgb(var(--bs-black-rgb) .175%);
 
     // Links
-    --bs-link-color: rgb(var(--bs-primary-rgb) 1);
-    --bs-link-hover-color: rgb(var(--bs-primary-rgb) .85);
+    --bs-link-color: rgb(var(--bs-primary-rgb));
+    --bs-link-hover-color: rgb(var(--bs-primary-rgb) .85%);
 
     // Input
     --bs-input-bg-rgb: var(--bs-body-bg-rgb);
@@ -131,16 +131,16 @@
     //////////////////////////////////
 
     // Logo
-    --sa-logo: rgb(var(--bs-brand-rgb) 1);
+    --sa-logo: rgb(var(--bs-brand-rgb));
 
     // Top Nav Bar
-    --sa-navbar-bg: rgb(var(--bs-body-bg-rgb) 1);
+    --sa-navbar-bg: rgb(var(--bs-body-bg-rgb));
     --sa-navbar-box-shadow: none;
 
     // Main Menu
-    --sa-sidebar-bg: rgb(var(--bs-body-bg-rgb) 1);
+    --sa-sidebar-bg: rgb(var(--bs-body-bg-rgb));
     --sa-sidebar-link-color: var(--bs-gray-600);
-    --sa-sidebar-selected-link-color: rgb(var(--bs-primary-rgb) 1);
-    --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb) .04);
+    --sa-sidebar-selected-link-color: rgb(var(--bs-primary-rgb));
+    --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb) .04%);
   }
 }

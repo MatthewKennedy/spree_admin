@@ -78,18 +78,18 @@
   .form-control,
   .form-select,
   .form-check-input {
-    color: rgb(var(--bs-input-color-rgb) 1);
-    background-color: rgb(var(--bs-input-bg-rgb) 1);
-    border-color: rgb(var(--bs-input-border-rgb) 1);
+    color: rgb(var(--bs-input-color-rgb));
+    background-color: rgb(var(--bs-input-bg-rgb));
+    border-color: rgb(var(--bs-input-border-rgb));
 
     &:focus-visible,
     &:focus,
     &:checked,
     &:has(> div.ProseMirror:focus) {
-      color: rgb(var(--bs-input-color-rgb) 1);
-      background-color: rgb(var(--bs-input-bg-rgb) 1);
-      border-color: rgb(var(--bs-input-focus-border-rgb) 1);
-      box-shadow: inset 0 0 0 1px rgb(var(--bs-input-focus-border-rgb) 1);
+      color: rgb(var(--bs-input-color-rgb));
+      background-color: rgb(var(--bs-input-bg-rgb));
+      border-color: rgb(var(--bs-input-focus-border-rgb));
+      box-shadow: inset 0 0 0 1px rgb(var(--bs-input-focus-border-rgb));
     }
   }
 
@@ -157,9 +157,9 @@
     }
 
     &.error {
-      --bs-toast-bg: rgb(var(--bs-danger-rgb) 1);
-      --bs-toast-color: rgb(var(--bs-white-rgb) 1);
-      --bs-toast-border-color: rgb(var(--bs-danger-rgb) 1);
+      --bs-toast-bg: rgb(var(--bs-danger-rgb));
+      --bs-toast-color: rgb(var(--bs-white-rgb));
+      --bs-toast-border-color: rgb(var(--bs-danger-rgb));
     }
   }
 }
