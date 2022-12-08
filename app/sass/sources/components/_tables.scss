@@ -1,0 +1,36 @@
+table {
+  > thead {
+    @extend .text-muted;
+  }
+
+  &.table {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.sort_link {
+  text-decoration: none;
+}
+
+.ransack-filter-arrow {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+}
+
+.filters-in-use-container {
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+      color: var(--bs-white)
+    }
+  }
+}
+
+g-table {
+  overflow: hidden;
+}

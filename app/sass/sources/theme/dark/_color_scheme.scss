@@ -1,0 +1,146 @@
+@media (prefers-color-scheme: dark) {
+  :root body.admin {
+    ////////////////////////////
+    // RGB + HLS COLOR VALUES //
+    ////////////////////////////
+    // https://convertacolor.com
+
+
+    /////////////
+    // primary //
+    /////////////
+    --bs-primary-rgb: 83, 155, 245;
+
+    .rgb-hsl-primary {
+      // rgb(83, 155, 245)
+      --label-r: 83;
+      --label-g: 155;
+      --label-b: 245;
+
+      // hsl(213.3, 89%, 64.3%)
+      --label-h: 213.3;
+      --label-s: 89;
+      --label-l: 64.3;
+    }
+
+    ///////////////
+    // secondary //
+    ///////////////
+    --bs-secondary-rgb: 55, 62, 71;
+
+    .rgb-hsl-secondary {
+      // rgb(55, 62, 71)
+      --label-r: 55;
+      --label-g: 62;
+      --label-b: 71;
+
+      // hsl(213.8, 12.7%, 24.7%)
+      --label-h: 213.8;
+      --label-s: 12.7;
+      --label-l: 24.7;
+    }
+
+
+    /////////////
+    // success //
+    /////////////
+    --bs-success-rgb: 25, 135, 84;
+
+    .rgb-hsl-success {
+      // rgb(25, 135, 84)
+      --label-r: 25;
+      --label-g: 135;
+      --label-b: 84;
+
+      // hsl(152.2, 68.8%, 31.4%)
+      --label-h: 152.2;
+      --label-s: 68.8;
+      --label-l: 31.4;
+    }
+
+
+    // This utility create colors for buttons and badges based
+    // on the rgb-hsl color variables provided, it provides a
+    // lightness switch similar to those found in SASS.
+    // /
+    // You can build solid or outline stye badges and buttons by tweaking the alpha settings
+    // and can adjust the threshold for buttons color to flip based on the background.
+
+    // To use extend this along with a color set to access the variables inside the class.
+
+    // .badge-success {
+    //   @extend .rgb-hsl-success
+    //   @extend .rgb-hsl-base-presets;
+
+    //   background-color: var(--hsla-bg);
+    // }
+    .rgb-hsl-base-presets {
+      // Light Color Scheme
+      --lightness-threshold: 0.8;
+      --border-threshold: 0.16;
+      --background-alpha: 0.5;
+      --border-alpha: 0.5;
+      --perceived-lightness: calc(((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255);
+      --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+      --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
+      --hsla-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .7%));
+      --hsla-bg: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .6%) / calc(var(--background-alpha) / 10));
+      --hsla-border-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .6%) / var(--border-alpha));
+      --hsla-hover-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .6%));
+      --hsla-hover-bg: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .6%) / calc(var(--background-alpha) / 3));
+      --hsla-hover-border-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .6%) / var(--border-alpha));
+      --hsla-active-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .65%));
+      --hsla-active-bg: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .6%) / calc(var(--background-alpha) / 2));
+      --hsla-active-border-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * .6%) / var(--border-alpha));
+      --hsla-disabled-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * 1.05%));
+      --hsla-disabled-bg: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * 1%) / calc(var(--background-alpha) / 10));
+      --hsla-disabled-border-color: hsl(var(--label-h) calc(var(--label-s) * 1%) calc((var(--label-l) + var(--lighten-by)) * 1%) / calc(var(--background-alpha) / 5));
+    }
+
+
+    /////////////////////////
+    // BS RGB COLOR VALUES //
+    /////////////////////////
+    // Body
+    --bs-body-color-rgb: 207, 207, 207;
+    --bs-body-bg-rgb: 28, 33, 40;
+
+    // Sub Colors, used for Cards and Inputs
+    --bs-sub-bg-rgb: 34, 39, 46;
+    --bs-sub-border-rgb: 68, 76, 86;
+    --bs-sub-color-rgb: 34, 39, 46;
+
+
+    // Converting RGB values colors where appropriate
+    // Borders
+    --bs-border-color: rgb(var(--bs-secondary-rgb));
+    --bs-border-color-translucent: rgb(var(--bs-black-rgb) .175%);
+
+    // Links
+    --bs-link-color: rgb(var(--bs-primary-rgb));
+    --bs-link-hover-color: rgb(var(--bs-primary-rgb) .85%);
+
+    // Input
+    --bs-input-bg-rgb: var(--bs-body-bg-rgb);
+    --bs-input-border-rgb: var(--bs-sub-border-rgb);
+    --bs-input-color-rgb: var(--bs-body-color-rgb);
+    --bs-input-focus-border-rgb: var(--bs-primary-rgb);
+
+    //////////////////////////////////
+    // SPREE ADMIN UI COLOR MAPPING //
+    //////////////////////////////////
+
+    // Logo
+    --sa-logo: rgb(var(--bs-brand-rgb));
+
+    // Top Nav Bar
+    --sa-navbar-bg: rgb(var(--bs-body-bg-rgb));
+    --sa-navbar-box-shadow: none;
+
+    // Main Menu
+    --sa-sidebar-bg: rgb(var(--bs-body-bg-rgb));
+    --sa-sidebar-link-color: var(--bs-gray-600);
+    --sa-sidebar-selected-link-color: rgb(var(--bs-primary-rgb));
+    --sa-sidebar-selected-link-bg: rgb(var(--bs-primary-rgb) .04%);
+  }
+}
