@@ -4,23 +4,21 @@ import replace from '@rollup/plugin-replace'
 import postcss from 'rollup-plugin-postcss'
 import autoprefixer from 'autoprefixer'
 import postcssnesting from 'postcss-nesting'
-import stylelint from 'stylelint'
 import pkg from './package.json'
 
 export default [
   { // CSS
-    input: './app/sass/entrypoints/main.scss',
-    output: [{ file: './app/assets/stylesheets/spree/backend/spree_admin.css' }],
+    input: './app/sass/main.scss',
+    output: [{ file: './app/assets/stylesheets/spree/backend/spree_admin.min.css' }],
     plugins: [
       postcss({
-        minimize: false,
+        minimize: true,
         modules: false,
         extract: true,
         config: {
           plugins: [
             postcssnesting,
-            autoprefixer,
-            stylelint
+            autoprefixer
           ]
         }
       })
