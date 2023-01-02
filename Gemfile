@@ -25,6 +25,7 @@ group :test do
   gem "capybara"
   gem "capybara-screenshot", "~> 1.0"
   gem "database_cleaner", "~> 2.0"
+  gem "debug"
   gem "email_spec"
   gem "factory_bot_rails", "~> 6.0"
   gem "jsonapi-rspec"

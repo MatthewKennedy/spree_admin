@@ -1,20 +1,20 @@
 /* stylelint-disable selector-class-pattern */
 /* stylelint-disable keyframes-name-pattern */
 
-  @keyframes fadeOutDownAlert {
-    from {
-      opacity: 1;
-    }
-
-    to {
-      opacity: 0;
-      transform: translate3d(0, 500px, 0);
-    }
+@keyframes fadeOutDownAlert {
+  from {
+    opacity: 1;
   }
 
-  .animate__fadeInUp.hide {
-    animation-name: fadeOutDownAlert;
-    display: block !important;
-    bottom: 0;
-    margin-bottom: 0 !important;
+  to {
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
   }
+}
+
+.animate__fadeInUp.hide {
+  animation-name: fadeOutDownAlert;
+  display: block !important;
+  bottom: 0;
+  margin-bottom: 0 !important;
+}
