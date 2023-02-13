@@ -48,7 +48,7 @@ group :test, :development do
   gem "gem-release"
   gem "i18n-tasks"
   gem "pry-byebug"
-  gem "puma", "~> 5.0"
+  gem "puma", "~> 6.1"
   gem "redis"
   gem "rubocop", "1.26.0"
   gem "standard", "1.9.0"
